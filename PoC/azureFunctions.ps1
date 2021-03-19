@@ -22,3 +22,7 @@ function createVM {
     )
     . $PSScriptRoot/functions/azureCreateVM.ps1
 }
+
+function azureConnect {
+  . $PSScriptRoot/functions/azureConnect.ps1
+}

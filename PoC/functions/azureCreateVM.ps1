@@ -1,4 +1,4 @@
-﻿$vmSecPassword = ConvertTo-SecureString -String $VMPassword -AsPlainText -Force
+$vmSecPassword = ConvertTo-SecureString -String $VMPassword -AsPlainText -Force
 
 $vmCredential = New-Object System.Management.Automation.PsCredential($VMUsername, $vmSecPassword)
 
