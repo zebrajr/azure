@@ -1,0 +1,292 @@
+<html dir="ltr"><head><title>Explore Azure ExpressRoute - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/configure-network-for-azure-virtual-machines/6-describe-azure-expressroute">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/configure-network-for-azure-virtual-machines/6-describe-azure-expressroute</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Explore Azure ExpressRoute - Learn</h1>
+  <div dir="auto" id="reader-credits">cwatson-cat</div>
+  <div dir="auto" id="reader-estimated-time">6-8 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>5 minutes</li>
+		</ul>
+			<p>As your company deals with highly sensitive data, and has large amounts of information it will store in Azure, there are some concerns about the security and reliability of connections over the public internet. The company isn't willing to migrate wholesale to Azure unless it can demonstrate higher levels of connectivity, security, and reliability.</p>
+<p>Here, we'll go beyond connections that run over the internet to dedicated lines direct into the Azure datacenters.</p>
+<h2 id="azure-expressroute">Azure ExpressRoute</h2>
+<p>Microsoft Azure ExpressRoute enables organizations to extend their on-premises networks into the Microsoft Cloud over a private connection implemented by a connectivity provider. This arrangement means that the connectivity to the Azure datacenters doesn't go over the internet but across a dedicated link. ExpressRoute also facilitates efficient connections with other Microsoft cloud-based services, such as Microsoft 365 and Dynamics 365.</p>
+<p>Advantages that ExpressRoute provides include:</p>
+<ul>
+<li><p>Faster speeds, from 50 Mbps to 10 Gbps, with dynamic bandwidth scaling</p>
+</li>
+<li><p>Lower latency</p>
+</li>
+<li><p>Greater reliability through built-in peering</p>
+</li>
+<li><p>Highly secure</p>
+</li>
+</ul>
+<p>ExpressRoute brings a number of further benefits, such as:</p>
+<ul>
+<li><p>Connectivity to all supported Azure services</p>
+</li>
+<li><p>Global connectivity to all regions (requires premium add-on)</p>
+</li>
+<li><p>Dynamic routing over Border Gateway Protocol</p>
+</li>
+<li><p>Service-level agreements (SLAs) for connection uptime</p>
+</li>
+<li><p>Quality of Service (QoS) for Skype for Business</p>
+</li>
+</ul>
+<p>Additionally, there's the ExpressRoute premium add-on, which offers benefits such as increased route limits, global service connectivity, and increased virtual network links per circuit.</p>
+<h2 id="expressroute-connectivity-models">ExpressRoute connectivity models</h2>
+<p>Connections into ExpressRoute can be through the following mechanisms:</p>
+<ul>
+<li><p>IP VPN network (any-to-any)</p>
+</li>
+<li><p>Virtual cross-connection through an ethernet exchange</p>
+</li>
+<li><p>Point-to-point ethernet connection</p>
+</li>
+</ul>
+<p>ExpressRoute capabilities and features are all identical across all of the above connectivity models.</p>
+<h3 id="what-is-layer-3-connectivity">What is layer 3 connectivity?</h3>
+<p>Microsoft uses an industry-standard dynamic routing protocol (BGP) to exchange routes between your on-premises network, your instances in Azure, and Microsoft public addresses. We establish multiple BGP sessions with your network for different traffic profiles.</p>
+<h3 id="any-to-any-ipvpn-networks">Any-to-any (IPVPN) networks</h3>
+<p>IPVPN providers typically provide connectivity between branch offices and your corporate datacenter over managed layer 3 connections. With ExpressRoute, the Azure datacenters appear as if they were another branch office.</p>
+<h3 id="virtual-cross-connection-through-an-ethernet-exchange">Virtual cross-connection through an ethernet exchange</h3>
+<p>If your organization is co-located with a cloud exchange facility, you request cross-connections to the Microsoft Cloud through your provider's ethernet exchange. These cross-connections to the Microsoft Cloud can operate at either layer 2 or layer 3 managed connections, as in the networking OSI model.</p>
+<h3 id="point-to-point-ethernet-connection">Point-to-point ethernet connection</h3>
+<p>Point-to-point ethernet links can provide layer 2 or managed layer 3 connections between your on-premises datacenters or offices to the Microsoft Cloud.</p>
+<h2 id="how-expressroute-works">How ExpressRoute works</h2>
+<p>Azure ExpressRoute uses a combination of ExpressRoute circuits and routing domains to provide high-bandwidth connectivity to the Microsoft Cloud.</p>
+<h3 id="what-are-expressroute-circuits">What are ExpressRoute circuits</h3>
+<p>An ExpressRoute circuit is the logical connection between your on-premises infrastructure and the Microsoft Cloud. A connectivity provider implements that connection, although some organizations use multiple connectivity providers for redundancy reasons. Each circuit has a fixed bandwidth of either 50, 100, 200 Mbps or 500 Mbps, or 1 Gbps or 10 Gbps, and each of those circuits map to a connectivity provider and a peering location. In addition, each ExpressRoute circuit has default quotas and limits.</p>
+<p>An ExpressRoute circuit isn't equivalent to a network connection or a network device. Each circuit is defined by a GUID, called a <em>service</em> or <em>s-key</em>. This s-key provides the connectivity link between Microsoft, your connectivity provider, and your organization - it isn't a cryptographic secret. Each s-key has a one-to-one mapping to an Azure ExpressRoute circuit.</p>
+<p>Each circuit can have up to two peerings, which are a pair of BGP sessions that are configured for redundancy. They are:</p>
+<ul>
+<li>Azure private</li>
+<li>Microsoft</li>
+</ul>
+<h3 id="routing-domains">Routing domains</h3>
+<p>ExpressRoute circuits then map to routing domains, with each ExpressRoute circuit having multiple routing domains. These domains are the same as the two peerings previously listed. In an active-active configuration, each pair of routers would have each routing domain configured identically, thus providing high availability. The Azure private peering names represent the IP addressing schemes.</p>
+<h4 id="azure-private-peering">Azure private peering</h4>
+<p>Azure private peering connects to Azure compute services such as virtual machines and cloud services that are deployed with a virtual network. As far as security goes, the private peering domain is simply an extension of your on-premises network into Azure. You then enable bidirectional connectivity between that network and any Azure virtual networks, making the Azure VM IP addresses visible within your internal network.</p>
+<p>You can connect only one virtual network to the private peering domain.</p>
+<h4 id="microsoft-peering">Microsoft peering</h4>
+<p>Microsoft peering supports connections to cloud-based SaaS offerings, such as Microsoft 365 and Dynamics 365. This peering option provides bi-directional connectivity between your company's WAN and Microsoft cloud services.</p>
+<h3 id="expressroute-health">ExpressRoute health</h3>
+<p>As with most features in Microsoft Azure, you can monitor ExpressRoute connections to ensure that they are performing satisfactorily. Monitoring includes coverage of the following areas:</p>
+<ul>
+<li>Availability</li>
+<li>Connectivity to virtual networks</li>
+<li>Bandwidth utilization</li>
+</ul>
+<p>The key tool for this monitoring activity is Network Performance Monitor, particularly NPM for ExpressRoute.</p>
+<p>Azure ExpressRoute is used to create private connections between Azure datacenters and infrastructure on your premises or in a colocation environment. ExpressRoute connections don't go over the public internet, and they offer more reliability, faster speeds, and lower latencies than typical internet connections.</p>
+
+		
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

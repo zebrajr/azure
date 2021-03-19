@@ -1,0 +1,11 @@
+1. C
+Use virtual network peering to connect virtual networks to each other so resources in either virtual network can communicate with each other. The virtual networks you connect can be in different Azure regions.
+
+2. B
+Use the PowerShell cmdlet 'New-AzVirtualNetworkGateway' where you use parameters '-GatewayType Vpn' and '-VpnType RouteBased'. Also set the '-GatewaySku' to the SKU that meets your organization's network requirements.
+
+3. B
+Azure private peering lets you directly connect to virtual machines and cloud services on their private IP addresses.
+
+4. B
+Border Gateway Protocol is an industry-standard dynamic routing protocol that can exchange routes between your on-premises network, your instances in Azure, and Microsoft public addresses.
