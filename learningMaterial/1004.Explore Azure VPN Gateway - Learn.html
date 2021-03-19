@@ -1,0 +1,336 @@
+<html dir="ltr"><head><title>Explore Azure VPN Gateway - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/configure-network-for-azure-virtual-machines/4-explore-azure-vpn-gateway">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/configure-network-for-azure-virtual-machines/4-explore-azure-vpn-gateway</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Explore Azure VPN Gateway - Learn</h1>
+  <div dir="auto" id="reader-credits">cwatson-cat</div>
+  <div dir="auto" id="reader-estimated-time">7-9 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>10 minutes</li>
+		</ul>
+			<p>To integrate your on-premises environment with Azure, you need the ability to create an encrypted connection. You can connect over the internet, or over a dedicated link. Here, we'll look at Azure VPN Gateway, which provides an endpoint for incoming connections from on-premises environments.</p>
+<p>You have set up an Azure virtual network and need to ensure that any data transfers from Azure to your site and between Azure virtual networks are encrypted. You also need to know how to connect virtual networks between regions and subscriptions.</p>
+<h2 id="what-is-a-vpn-gateway">What is a VPN gateway?</h2>
+<p>An Azure virtual network gateway provides an endpoint for incoming connections from on-premises locations to Azure over the Internet. A VPN gateway is a specific type of virtual network gateway that can be an endpoint for encrypted connections. It can also send encrypted traffic between Azure virtual networks over Microsoft's dedicated network that links Azure datacenters in different regions. This configuration enables you to link virtual machines and services in different regions securely.</p>
+<p>Each virtual network can have only one VPN gateway. All connections to that VPN gateway share the available network bandwidth.</p>
+<p>Within each virtual network gateway there are two or more virtual machines (VMs). These VMs have been deployed to a special subnet that you specify, called the <em>gateway subnet</em>. They contain routing tables for connections to other networks, along with specific gateway services. These VMs and the gateway subnet are similar to a hardened network device. You don't need to configure these VMs directly, and should not deploy any additional resources into the gateway subnet.</p>
+<p>Creating a virtual network gateway can take some time to complete, so it's vital that you plan appropriately. When you create a virtual network gateway, the provisioning process generates the gateway VMs and deploys them to the gateway subnet. These VMs will have the settings that you configure on the gateway.</p>
+<p>A key setting is the <strong><em>gateway type</em></strong>. The gateway type determines the way the gateway functions. For a VPN gateway, the gateway type is "vpn". Options for VPN gateways include:</p>
+<ul>
+<li><p>Network-to-network connections over IPsec/IKE VPN tunneling, linking VPN gateways to other VPN gateways.</p>
+</li>
+<li><p>Cross-premises IPsec/IKE VPN tunneling, for connecting on-premises networks to Azure through dedicated VPN devices to create site-to-site connections.</p>
+</li>
+<li><p>Point-to-site connections over IKEv2 or SSTP, to link client computers to resources in Azure.</p>
+</li>
+</ul>
+<p>Now, let's look at the factors you need to consider for planning your VPN gateway.</p>
+<h2 id="plan-a-vpn-gateway">Plan a VPN gateway</h2>
+<p>When you're planning a VPN gateway, there are three architectures to consider:</p>
+<ul>
+<li>Point to site over the internet</li>
+<li>Site to site over the internet</li>
+<li>Site to site over a dedicated network, such as Azure ExpressRoute</li>
+</ul>
+<h3 id="planning-factors">Planning factors</h3>
+<p>Factors that you need to cover during your planning process include:</p>
+<ul>
+<li>Throughput - Mbps or Gbps</li>
+<li>Backbone - Internet or private?</li>
+<li>Availability of a public (static) IP address</li>
+<li>VPN device compatibility</li>
+<li>Multiple client connections or a site-to-site link?</li>
+<li>VPN gateway type</li>
+<li>Azure VPN Gateway SKU</li>
+</ul>
+<p>The following table summarizes some of these planning issues. The remainder are described later.</p>
+
+<h3 id="gateway-skus">Gateway SKUs</h3>
+<p>It's important that you choose the right SKU. If you have set up your VPN gateway with the wrong one, you'll have to take it down, and rebuild the gateway, which can be time consuming. For the latest information about gateway SKUs, including throughput, see <a href="https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-about-vpngateways#gwsku" data-linktype="absolute-path">What is VPN Gateway? - Gateway SKUs</a>.</p>
+<h2 id="workflow">Workflow</h2>
+<p>When designing a cloud connectivity strategy using virtual private networking on Azure, you should apply the following workflow:</p>
+<ol>
+<li><p>Design your connectivity topology, listing the address spaces for all connecting networks.</p>
+</li>
+<li><p>Create an Azure virtual network.</p>
+</li>
+<li><p>Create a VPN gateway for the virtual network.</p>
+</li>
+<li><p>Create and configure connections to on-premises networks or other virtual networks, as required.</p>
+</li>
+<li><p>If required, create and configure a point-to-site connection for your Azure VPN gateway.</p>
+</li>
+</ol>
+<h3 id="design-considerations">Design considerations</h3>
+<p>When you design your VPN gateways to connect virtual networks, you must consider the following factors:</p>
+<ul>
+<li><p>Subnets cannot overlap</p>
+<p>It is vital that a subnet in one location does not contain the same address space as in another location.</p>
+</li>
+<li><p>IP addresses must be unique</p>
+<p>You cannot have two hosts with the same IP address in different locations, as it will be impossible to route traffic between those two hosts and the network-to-network connection will fail.</p>
+</li>
+<li><p>VPN gateways need a gateway subnet called <strong>GatewaySubnet</strong></p>
+<p>It must have this name for the gateway to work, and it should not contain any other resources.</p>
+</li>
+</ul>
+<h3 id="create-an-azure-virtual-network">Create an Azure virtual network</h3>
+<p>Before you create a VPN gateway, you need to create the Azure virtual network.</p>
+<h3 id="create-a-vpn-gateway">Create a VPN gateway</h3>
+<p>The type of VPN gateway you create will depend on your architecture. Options are:</p>
+<ul>
+<li><p>RouteBased</p>
+<p>Route-based VPN devices use any-to-any (wildcard) traffic selectors, and let routing/forwarding tables direct traffic to different IPsec tunnels. Route-based connections are typically built on router platforms where each IPsec tunnel is modeled as a network interface or virtual tunnel interface (VTI).</p>
+</li>
+<li><p>PolicyBased</p>
+<p>Policy-based VPN devices use the combinations of prefixes from both networks to define how traffic is encrypted/decrypted through IPsec tunnels. A policy-based connection is typically built on firewall devices that perform packet filtering. IPsec tunnel encryption and decryption are added to the packet filtering and processing engine.</p>
+</li>
+</ul>
+<h2 id="set-up-a-vpn-gateway">Set up a VPN gateway</h2>
+<p>The steps you need to take will depend on the type of VPN gateway that you are installing. For example, to create a point-to-site VPN gateway by using the Azure portal, you would perform the following steps:</p>
+<ol>
+<li><p>Create a virtual network.</p>
+</li>
+<li><p>Add a gateway subnet.</p>
+</li>
+<li><p>Specify a DNS server (optional).</p>
+</li>
+<li><p>Create a virtual network gateway.</p>
+</li>
+<li><p>Generate certificates.</p>
+</li>
+<li><p>Add the client address pool.</p>
+</li>
+<li><p>Configure the tunnel type.</p>
+</li>
+<li><p>Configure the authentication type.</p>
+</li>
+<li><p>Upload the root certificate public certificate data.</p>
+</li>
+<li><p>Install an exported client certificate.</p>
+</li>
+<li><p>Generate and install the VPN client configuration package.</p>
+</li>
+<li><p>Connect to Azure.</p>
+</li>
+</ol>
+<p>As there are several configuration paths with Azure VPN gateways, each with multiple options, it is not possible to cover every setup in this course. For more information, see the Additional Resources section.</p>
+<h2 id="configure-the-gateway">Configure the gateway</h2>
+<p>After your gateway is created, you'll need to configure it. There are several configuration settings you'll need to provide, such as the name, location, DNS server, and so on. We'll explore these in more detail in the exercise.</p>
+<p>Azure VPN gateways are a component in Azure virtual networks that enable point-to-site, site-to-site, or network-to-network connections. Azure VPN gateways enable individual client computers to connect to resources in Azure, extend on-premises networks into Azure, or facilitate connections between virtual networks in different regions and subscriptions.</p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Exercise - Create an Azure VPN gateway</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/configure-network-for-azure-virtual-machines/5-exercise-create-azure-vpn-gateway/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

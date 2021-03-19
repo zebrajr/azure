@@ -1,0 +1,362 @@
+<html dir="ltr"><head><title>Explore Azure virtual networking - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/configure-network-for-azure-virtual-machines/2-describe-azure-virtual-networking">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/configure-network-for-azure-virtual-machines/2-describe-azure-virtual-networking</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Explore Azure virtual networking - Learn</h1>
+  <div dir="auto" id="reader-credits">cwatson-cat</div>
+  <div dir="auto" id="reader-estimated-time">10-12 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>10 minutes</li>
+		</ul>
+			<p>You have an on-premises datacenter that you plan to keep, but you want to use Azure to offload peak traffic using virtual machines (VMs) hosted in Azure. You want to keep your existing IP addressing scheme and network appliances, while ensuring that any data transfer is secure.</p>
+<h2 id="what-is-azure-virtual-networking">What is Azure virtual networking?</h2>
+<p><strong>Azure virtual networks</strong> enable Azure resources, such as virtual machines, web apps, and databases, to communicate with: each other, users on the internet, and on-premises client computers. You can think of an Azure network as a set of resources that links other Azure resources.</p>
+<p>Azure virtual networks provide key networking capabilities:</p>
+<ul>
+<li>Isolation and segmentation</li>
+<li>Internet communications</li>
+<li>Communicate between Azure resources</li>
+<li>Communicate with on-premises resources</li>
+<li>Route network traffic</li>
+<li>Filter network traffic</li>
+<li>Connect virtual networks</li>
+</ul>
+<h4 id="network-configurations-for-virtual-machines">Network configurations for virtual machines</h4>
+
+<h3 id="isolation-and-segmentation">Isolation and segmentation</h3>
+<p>Azure enables you to create multiple isolated virtual networks. When you set up a virtual network, you define a private Internet Protocol (IP) address space, using either public or private IP address ranges. You can then segment that IP address space into subnets, and allocate part of the defined address space to each named subnet.</p>
+<p>For name resolution, you can use the name resolution service that's built in to Azure, or you can configure the virtual network to use either an internal or an external Domain Name System (DNS) server.</p>
+<h3 id="internet-communications">Internet communications</h3>
+<p>A VM in Azure can connect out to the internet by default. You can enable incoming connections from the internet by defining a public IP address or a public load balancer. For VM management, you can connect via the Azure CLI, Remote Desktop Protocol (RDP), or Secure Shell (SSH).</p>
+<h3 id="communicate-between-azure-resources">Communicate between Azure resources</h3>
+<p>You'll want to enable Azure resources to communicate securely with each other. You can do that in one of two ways:</p>
+<ul>
+<li><p><strong>Virtual networks</strong></p>
+<p>Virtual networks can connect not only VMs, but other Azure resources, such as the App Service Environment, Azure Kubernetes Service, and Azure virtual machine scale sets.</p>
+</li>
+<li><p><strong>Service endpoints</strong></p>
+<p>You can use service endpoints to connect to other Azure resource types, such as Azure SQL databases and storage accounts. This approach enables you to link multiple Azure resources to virtual networks, thereby improving security and providing optimal routing between resources.</p>
+</li>
+</ul>
+<h3 id="communicate-with-on-premises-resources">Communicate with on-premises resources</h3>
+<p>Azure virtual networks enable you to link resources together in your on-premises environment and within your Azure subscription, in effect creating a network that spans both your local and cloud environments. There are three mechanisms for you to achieve this connectivity:</p>
+<ul>
+<li><p><strong>Point-to-site Virtual Private Networks</strong></p>
+<p>This approach is like a Virtual Private Network (VPN) connection that a computer outside your organization makes back into your corporate network, except that it's working in the opposite direction. In this case, the client computer initiates an encrypted VPN connection to Azure, connecting that computer to the Azure virtual network.</p>
+</li>
+<li><p><strong>Site-to-site Virtual Private Networks</strong>
+A site-to-site VPN links your on-premises VPN device or gateway to the Azure VPN gateway in a virtual network. In effect, the devices in Azure can appear as being on the local network. The connection is encrypted and works over the internet.</p>
+</li>
+<li><p><strong>Azure ExpressRoute</strong></p>
+<p>For environments where you need greater bandwidth and even higher levels of security, Azure ExpressRoute is the best approach. Azure ExpressRoute provides dedicated private connectivity to Azure that does not travel over the internet.</p>
+</li>
+</ul>
+<h3 id="route-network-traffic">Route network traffic</h3>
+<p>By default, Azure will route traffic between subnets on any connected virtual networks, on-premises networks, and the internet. However, you can control routing and override those settings as follows:</p>
+<ul>
+<li><p><strong>Route tables</strong></p>
+<p>A route table enables you to define rules as to how traffic should be directed. You can create custom route tables that control how packets are routed between subnets.</p>
+</li>
+<li><p><strong>Border Gateway Protocol</strong></p>
+<p>Border Gateway Protocol (BGP) works with Azure VPN gateways or ExpressRoute to propagate on-premises BGP routes to Azure virtual networks.</p>
+</li>
+</ul>
+<h3 id="filter-network-traffic">Filter network traffic</h3>
+<p>Azure virtual networks enable you to filter traffic between subnets by using the following approaches:</p>
+<ul>
+<li><p><strong>Network security groups</strong></p>
+<p>A network security group (NSG) is an Azure resource that can contain multiple inbound and outbound security rules. You can define these rules to allow or block traffic, based on factors such as source and destination IP address, port, and protocol.</p>
+</li>
+<li><p><strong>Network virtual appliances</strong></p>
+<p>A network virtual appliance is a specialized VM that can be compared to a hardened network appliance. A network virtual appliance carries out a particular network function, such as running a firewall or performing WAN optimization.</p>
+</li>
+</ul>
+<h2 id="connect-virtual-networks">Connect virtual networks</h2>
+<p>You can link virtual networks together using virtual network <em>peering</em>. Peering enables resources in each virtual network to communicate with each other. These virtual networks can be in separate regions, allowing you to create a global interconnected network through Azure.</p>
+<h2 id="azure-virtual-network-settings">Azure virtual network settings</h2>
+<p>You can create and configure Azure virtual networks from the Azure portal, Azure PowerShell on your local computer, or Azure Cloud Shell.</p>
+<h3 id="create-a-virtual-network">Create a virtual network</h3>
+<p>When you create an Azure virtual network, you configure a number of basic settings. You'll have the option to configure advanced settings, such as multiple subnets, distributed denial of service (DDoS) protection, and service endpoints.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/configure-network-for-azure-virtual-machines/media/2-create-virtual-network.png" alt="Screenshot of the Azure portal showing an example of the Create virtual network pane fields." data-linktype="relative-path"></p>
+<p>You'll configure the following settings for a basic virtual network:</p>
+<ul>
+<li><p><strong>Network name</strong></p>
+<p>The network name must be unique in your subscription, but does not need to be globally unique. Make the name a descriptive one that is easy to remember and identified from other virtual networks.</p>
+</li>
+<li><p><strong>Address space</strong></p>
+<p>When you set up a virtual network, you define the internal address space in Classless Inter-Domain Routing (CIDR) format. This address space needs to be unique within your subscription and any other networks that you connect to.</p>
+<p>Let's assume you choose an address space of 10.0.0.0/24 for your first virtual network. The addresses defined in this address space ranges from 10.0.0.1 - 10.0.0.254. You then create a second virtual network, and choose an address space of 10.0.0.0/8. The address in this address space ranges from 10.0.0.1 - 10.255.255.254. Some of the address overlap and can't be used for the two virtual networks.</p>
+<p>However, you can use 10.0.0.0/16, with addresses ranging from 10.0.0.1 - 10.0.255.254, and 10.1.0.0/16, with addresses ranging from 10.1.0.1 - 10.1.255.254. You can assign these address spaces to your virtual networks because there's no address overlap.</p>
+<div>
+<p> Note</p>
+<p>You can add address spaces after creating the virtual network.</p>
+</div>
+</li>
+<li><p><strong>Subscription</strong></p>
+<p>Only applies if you have multiple subscriptions to choose from.</p>
+</li>
+<li><p><strong>Resource group</strong></p>
+<p>Like any other Azure resource, a virtual network needs to exist in a resource group. You can either select an existing resource group, or create a new one.</p>
+</li>
+<li><p><strong>Location</strong></p>
+<p>Select the location where you want the virtual network to exist.</p>
+</li>
+<li><p><strong>Subnet</strong></p>
+<p>Within each virtual network address range, you can create one or more subnets that partition the virtual network's address space. Routing between subnets will then depend on the default traffic routes, or you can define custom routes. Alternatively, you can define one subnet that encompasses all the virtual networks' address ranges.</p>
+<div>
+<p> Note</p>
+<p>Subnet names must begin with a letter or number, end with a letter, number or underscore, and may contain only letters, numbers, underscores, periods, or hyphens.</p>
+</div>
+</li>
+<li><p><strong>Distributed Denial of Service (DDoS) protection</strong></p>
+<p>You can select either Basic or Standard DDoS protection. Standard DDoS Protection is a premium service. The <a href="https://docs.microsoft.com/en-us/azure/virtual-network/ddos-protection-overview" data-linktype="absolute-path">Azure DDoS Protection Standard</a> provides more information about Standard DDoS protection.</p>
+</li>
+<li><p><strong>Service Endpoints</strong></p>
+<p>Here, you enable service endpoints, and then select from the list which Azure service endpoints you want to enable. Options include Azure Cosmos DB, Azure Service Bus, Azure Key Vault, and so on.</p>
+</li>
+</ul>
+<p>When you have configured these settings, select <strong>Create</strong>.</p>
+<h3 id="define-additional-settings">Define additional settings</h3>
+<p>After creating a virtual network, you can then define further settings. These include:</p>
+<ul>
+<li><p><strong>Network security group</strong></p>
+<p>Network security groups have security rules that enable you to filter the type of network traffic that can flow in and out of virtual network subnets and network interfaces. You create the network security group separately, and then associate it with the virtual network.</p>
+</li>
+<li><p><strong>Route table</strong></p>
+<p>Azure automatically creates a route table for each subnet within an Azure virtual network, and adds system default routes to the table. However, you can add custom route tables to modify traffic between virtual networks.</p>
+</li>
+</ul>
+<p>You can also amend the service endpoints.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/configure-network-for-azure-virtual-machines/media/2-virtual-network-additional-settings.png" alt="Screenshot of the Azure portal showing an example pane for editing virtual network settings." data-linktype="relative-path"></p>
+<h3 id="configure-virtual-networks">Configure virtual networks</h3>
+<p>When you have created a virtual network, you can change any further settings from the <strong>Virtual Networks</strong> pane in the Azure portal. Alternatively, you can use PowerShell commands or commands in Cloud Shell to make changes.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/configure-network-for-azure-virtual-machines/media/2-configure-virtual-network.png" alt="Screenshot of the Azure portal showing an example pane for configuring a virtual network." data-linktype="relative-path"></p>
+<p>You can then review and change settings in further sub-panes. These settings include:</p>
+<ul>
+<li><p>Address spaces: You can add further address spaces to the initial definition.</p>
+</li>
+<li><p>Connected devices: Use the virtual network to connect machines.</p>
+</li>
+<li><p>Subnets: Add further subnets.</p>
+</li>
+<li><p>Peerings: Link virtual networks in peering arrangements.</p>
+</li>
+</ul>
+<p>You can also monitor and troubleshoot virtual networks, or create an automation script to generate the current virtual network.</p>
+<p>Virtual networks are powerful and highly configurable mechanisms for connecting entities in Azure. You can connect Azure resources to one another, or to resources you have on-premises. You can isolate, filter, and route your network traffic, and Azure enables you to increase security where you feel you need it.</p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Exercise - Create an Azure virtual network</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/configure-network-for-azure-virtual-machines/3-exercise-create-azure-virtual-network/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>
