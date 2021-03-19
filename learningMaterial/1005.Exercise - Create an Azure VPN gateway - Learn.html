@@ -1,0 +1,476 @@
+<html dir="ltr"><head><title>Exercise - Create an Azure VPN gateway - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/configure-network-for-azure-virtual-machines/5-exercise-create-azure-vpn-gateway">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/configure-network-for-azure-virtual-machines/5-exercise-create-azure-vpn-gateway</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Exercise - Create an Azure VPN gateway - Learn</h1>
+  <div dir="auto" id="reader-credits">cwatson-cat</div>
+  <div dir="auto" id="reader-estimated-time">9-11 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>40 minutes</li>
+		</ul>
+			<p>You want to ensure that you can connect clients or sites within your environment into Azure using encrypted tunnels across the public internet. In this unit, you'll create a point-to-site VPN gateway, and then connect to that gateway from your client computer. You'll use native Azure certificate authentication connections for security.</p>
+<p>You will carry out the following process:</p>
+<ol>
+<li><p>Create a RouteBased VPN gateway.</p>
+</li>
+<li><p>Upload the public key for a root certificate for authentication purposes.</p>
+</li>
+<li><p>Generate a client certificate from the root certificate, and then install the client certificate on each client computer that will connect to the virtual network for authentication purposes.</p>
+</li>
+<li><p>Create VPN client configuration files, which contain the necessary information for the client to connect to the virtual network.</p>
+</li>
+</ol>
+<h2 id="setup">Setup</h2>
+<p>To complete this module, use Azure PowerShell from your local Windows 10 computer.</p>
+<ol>
+<li><p>Open a new PowerShell session on your local Windows 10 computer where you have the Azure PowerShell module installed.</p>
+</li>
+<li><p>Sign in to Azure by running the PowerShell cmdlet <code>Connect-AzAccount</code>.</p>
+</li>
+<li><p>Set up variables you'll use to create a virtual network. Copy and paste in the following variables into PowerShell.</p>
+</li>
+</ol>
+<pre tabindex="0"><code data-author-content="$VNetName  = &quot;VNetData&quot;
+$FESubName = &quot;FrontEnd&quot;
+$BESubName = &quot;Backend&quot;
+$GWSubName = &quot;GatewaySubnet&quot;
+$VNetPrefix1 = &quot;192.168.0.0/16&quot;
+$VNetPrefix2 = &quot;10.254.0.0/16&quot;
+$FESubPrefix = &quot;192.168.1.0/24&quot;
+$BESubPrefix = &quot;10.254.1.0/24&quot;
+$GWSubPrefix = &quot;192.168.200.0/26&quot;
+$VPNClientAddressPool = &quot;172.16.201.0/24&quot;
+$ResourceGroup = &quot;VpnGatewayDemo&quot;
+$Location = &quot;East US&quot;
+$GWName = &quot;VNetDataGW&quot;
+$GWIPName = &quot;VNetDataGWPIP&quot;
+$GWIPconfName = &quot;gwipconf&quot;
+"><span><span>$VNetName</span>  = <span>"VNetData"</span>
+<span>$FESubName</span> = <span>"FrontEnd"</span>
+<span>$BESubName</span> = <span>"Backend"</span>
+<span>$GWSubName</span> = <span>"GatewaySubnet"</span>
+<span>$VNetPrefix1</span> = <span>"192.168.0.0/16"</span>
+<span>$VNetPrefix2</span> = <span>"10.254.0.0/16"</span>
+<span>$FESubPrefix</span> = <span>"192.168.1.0/24"</span>
+<span>$BESubPrefix</span> = <span>"10.254.1.0/24"</span>
+<span>$GWSubPrefix</span> = <span>"192.168.200.0/26"</span>
+<span>$VPNClientAddressPool</span> = <span>"172.16.201.0/24"</span>
+<span>$ResourceGroup</span> = <span>"VpnGatewayDemo"</span>
+<span>$Location</span> = <span>"East US"</span>
+<span>$GWName</span> = <span>"VNetDataGW"</span>
+<span>$GWIPName</span> = <span>"VNetDataGWPIP"</span>
+<span>$GWIPconfName</span> = <span>"gwipconf"</span>
+</span></code></pre>
+<h2 id="configure-a-virtual-network">Configure a virtual network</h2>
+<ol>
+<li><p>Run the following command to create a resource group.</p>
+<pre tabindex="0"><code data-author-content="New-AzResourceGroup -Name $ResourceGroup -Location $Location
+"><span><span>New-AzResourceGroup</span><span> -Name</span> <span>$ResourceGroup</span><span> -Location</span> <span>$Location</span>
+</span></code></pre>
+</li>
+<li><p>Run the following command to create subnet configurations for the virtual network. These have the name <strong>FrontEnd, BackEnd</strong>, and <strong>GatewaySubnet</strong>. All of these subnets exist within the virtual network prefix.</p>
+<pre tabindex="0"><code data-author-content="$fesub = New-AzVirtualNetworkSubnetConfig -Name $FESubName -AddressPrefix $FESubPrefix
+$besub = New-AzVirtualNetworkSubnetConfig -Name $BESubName -AddressPrefix $BESubPrefix
+$gwsub = New-AzVirtualNetworkSubnetConfig -Name $GWSubName -AddressPrefix $GWSubPrefix
+"><span><span>$fesub</span> = <span>New-AzVirtualNetworkSubnetConfig</span><span> -Name</span> <span>$FESubName</span><span> -AddressPrefix</span> <span>$FESubPrefix</span>
+<span>$besub</span> = <span>New-AzVirtualNetworkSubnetConfig</span><span> -Name</span> <span>$BESubName</span><span> -AddressPrefix</span> <span>$BESubPrefix</span>
+<span>$gwsub</span> = <span>New-AzVirtualNetworkSubnetConfig</span><span> -Name</span> <span>$GWSubName</span><span> -AddressPrefix</span> <span>$GWSubPrefix</span>
+</span></code></pre>
+</li>
+<li><p>Next, run the following command to create the virtual network using the subnet values and a static DNS server.</p>
+<pre tabindex="0"><code data-author-content="New-AzVirtualNetwork -Name $VNetName -ResourceGroupName $ResourceGroup -Location $Location -AddressPrefix $VNetPrefix1,$VNetPrefix2 -Subnet $fesub, $besub, $gwsub -DnsServer 10.2.1.3
+"><span><span>New-AzVirtualNetwork</span><span> -Name</span> <span>$VNetName</span><span> -ResourceGroupName</span> <span>$ResourceGroup</span><span> -Location</span> <span>$Location</span><span> -AddressPrefix</span> <span>$VNetPrefix1</span>,<span>$VNetPrefix2</span><span> -Subnet</span> <span>$fesub</span>, <span>$besub</span>, <span>$gwsub</span><span> -DnsServer</span> <span>10.2</span>.<span>1.3</span>
+</span></code></pre>
+</li>
+<li><p>Now specify the variables for this network that you have just created.</p>
+<pre tabindex="0"><code data-author-content="$vnet = Get-AzVirtualNetwork -Name $VNetName -ResourceGroupName $ResourceGroup
+$subnet = Get-AzVirtualNetworkSubnetConfig -Name $GWSubName -VirtualNetwork $vnet
+"><span><span>$vnet</span> = <span>Get-AzVirtualNetwork</span><span> -Name</span> <span>$VNetName</span><span> -ResourceGroupName</span> <span>$ResourceGroup</span>
+<span>$subnet</span> = <span>Get-AzVirtualNetworkSubnetConfig</span><span> -Name</span> <span>$GWSubName</span><span> -VirtualNetwork</span> <span>$vnet</span>
+</span></code></pre>
+</li>
+<li><p>Run the following command to request a dynamically assigned public IP address.</p>
+<pre tabindex="0"><code data-author-content="$pip = New-AzPublicIpAddress -Name $GWIPName -ResourceGroupName $ResourceGroup -Location $Location -AllocationMethod Dynamic
+$ipconf = New-AzVirtualNetworkGatewayIpConfig -Name $GWIPconfName -Subnet $subnet -PublicIpAddress $pip
+"><span><span>$pip</span> = <span>New-AzPublicIpAddress</span><span> -Name</span> <span>$GWIPName</span><span> -ResourceGroupName</span> <span>$ResourceGroup</span><span> -Location</span> <span>$Location</span><span> -AllocationMethod</span> Dynamic
+<span>$ipconf</span> = <span>New-AzVirtualNetworkGatewayIpConfig</span><span> -Name</span> <span>$GWIPconfName</span><span> -Subnet</span> <span>$subnet</span><span> -PublicIpAddress</span> <span>$pip</span>
+</span></code></pre>
+</li>
+</ol>
+<h2 id="create-the-vpn-gateway">Create the VPN gateway</h2>
+<p>When creating this VPN gateway:</p>
+<ul>
+<li>GatewayType must be Vpn</li>
+<li>VpnType must be RouteBased</li>
+</ul>
+<p>Note that this part of the exercise can take up to 45 minutes to complete.</p>
+<ol>
+<li><p>To create the VPN gateway, run the following command, and press <kbd>Enter</kbd>.</p>
+<pre tabindex="0"><code data-author-content="New-AzVirtualNetworkGateway -Name $GWName -ResourceGroupName $ResourceGroup `
+-Location $Location -IpConfigurations $ipconf -GatewayType Vpn `
+-VpnType RouteBased -EnableBgp $false -GatewaySku VpnGw1 -VpnClientProtocol &quot;IKEv2&quot;
+"><span><span>New-AzVirtualNetworkGateway</span><span> -Name</span> <span>$GWName</span><span> -ResourceGroupName</span> <span>$ResourceGroup</span> `
+-Location <span>$Location</span><span> -IpConfigurations</span> <span>$ipconf</span><span> -GatewayType</span> Vpn `
+-VpnType RouteBased<span> -EnableBgp</span> <span>$false</span><span> -GatewaySku</span> VpnGw1<span> -VpnClientProtocol</span> <span>"IKEv2"</span>
+</span></code></pre>
+</li>
+<li><p>Wait for the command output to appear.</p>
+</li>
+</ol>
+<h2 id="add-the-vpn-client-address-pool">Add the VPN client address pool</h2>
+<ol>
+<li><p>Run the following command to add the VPN client address pool.</p>
+<pre tabindex="0"><code data-author-content="$Gateway = Get-AzVirtualNetworkGateway -ResourceGroupName $ResourceGroup -Name $GWName
+Set-AzVirtualNetworkGateway -VirtualNetworkGateway $Gateway -VpnClientAddressPool $VPNClientAddressPool
+"><span><span>$Gateway</span> = <span>Get-AzVirtualNetworkGateway</span><span> -ResourceGroupName</span> <span>$ResourceGroup</span><span> -Name</span> <span>$GWName</span>
+<span>Set-AzVirtualNetworkGateway</span><span> -VirtualNetworkGateway</span> <span>$Gateway</span><span> -VpnClientAddressPool</span> <span>$VPNClientAddressPool</span>
+</span></code></pre>
+</li>
+<li><p>Wait for the command output to appear.</p>
+</li>
+</ol>
+<h2 id="generate-a-client-certificate">Generate a client certificate</h2>
+<p>With the network infrastructure created on Azure, we need to create a self-signed client certificate on our local machine. This can be done similarly on most operating systems, but we will cover how to generate your client certificate on Windows 10 using PowerShell with the Azure PowerShell module and the Windows <strong>Certificate Manager</strong> utility.</p>
+<ol>
+<li><p>Our first step is to create the self-signed root certificate. Run the following command.</p>
+<pre tabindex="0"><code data-author-content="$cert = New-SelfSignedCertificate -Type Custom -KeySpec Signature `
+-Subject &quot;CN=P2SRootCert&quot; -KeyExportPolicy Exportable `
+-HashAlgorithm sha256 -KeyLength 2048 `
+-CertStoreLocation &quot;Cert:\CurrentUser\My&quot; -KeyUsageProperty Sign -KeyUsage CertSign
+"><span><span>$cert</span> = <span>New-SelfSignedCertificate</span><span> -Type</span> Custom<span> -KeySpec</span> Signature `
+-Subject <span>"CN=P2SRootCert"</span><span> -KeyExportPolicy</span> Exportable `
+-HashAlgorithm sha256<span> -KeyLength</span> <span>2048</span> `
+-CertStoreLocation <span>"Cert:\CurrentUser\My"</span><span> -KeyUsageProperty</span> Sign<span> -KeyUsage</span> CertSign
+</span></code></pre>
+</li>
+<li><p>Next, generate a client certificate signed by your new root certificate.</p>
+<pre tabindex="0"><code data-author-content="New-SelfSignedCertificate -Type Custom -DnsName P2SChildCert -KeySpec Signature `
+-Subject &quot;CN=P2SChildCert&quot; -KeyExportPolicy Exportable `
+-HashAlgorithm sha256 -KeyLength 2048 `
+-CertStoreLocation &quot;Cert:\CurrentUser\My&quot; `
+-Signer $cert -TextExtension @(&quot;2.5.29.37={text}1.3.6.1.5.5.7.3.2&quot;)
+"><span><span>New-SelfSignedCertificate</span><span> -Type</span> Custom<span> -DnsName</span> P2SChildCert<span> -KeySpec</span> Signature `
+-Subject <span>"CN=P2SChildCert"</span><span> -KeyExportPolicy</span> Exportable `
+-HashAlgorithm sha256<span> -KeyLength</span> <span>2048</span> `
+-CertStoreLocation <span>"Cert:\CurrentUser\My"</span> `
+-Signer <span>$cert</span><span> -TextExtension</span> @(<span>"2.5.29.37={text}1.3.6.1.5.5.7.3.2"</span>)
+</span></code></pre>
+</li>
+</ol>
+<h2 id="export-certificate-public-key">Export certificate public key</h2>
+<p>With our certificates generated, we need to export our root certificate's public key.</p>
+<ol>
+<li><p>Run <code>certmgr</code> from PowerShell to open the Certificate Manager.</p>
+</li>
+<li><p>Go to <strong>Personal</strong> &gt; <strong>Certificates</strong>.</p>
+</li>
+<li><p>Right-click the <strong>P2SRootCert</strong> certificate in the list, and select <strong>All tasks</strong> &gt; <strong>Export</strong>.</p>
+</li>
+<li><p>In the Certificate Export Wizard, select <strong>Next</strong>.</p>
+</li>
+<li><p>Ensure that <strong>No, do not export the private key</strong> is selected, and then select <strong>Next</strong>.</p>
+</li>
+<li><p>On the <strong>Export File Format</strong> page, ensure that <strong>Base-64 encoded X.509 (.CER)</strong> is selected, and then select <strong>Next</strong>.</p>
+</li>
+<li><p>In the <strong>File to Export</strong> page, under <strong>File name</strong>, navigate to a location you'll remember, and save the file as <strong>P2SRootCert.cer</strong>, and then select <strong>Next</strong>.</p>
+</li>
+<li><p>On the <strong>Completing the Certificate Export Wizard</strong> page, select <strong>Finish</strong>.</p>
+</li>
+<li><p>On the <strong>Certificate Export Wizard</strong> message box, select <strong>OK</strong>.</p>
+</li>
+</ol>
+<h2 id="upload-the-root-certificate-public-key-information">Upload the root certificate public key information</h2>
+<ol>
+<li><p>In the PowerShell window, run the following command to declare a variable for the certificate name.</p>
+<pre tabindex="0"><code data-author-content="$P2SRootCertName = &quot;P2SRootCert.cer&quot;
+"><span><span>$P2SRootCertName</span> = <span>"P2SRootCert.cer"</span>
+</span></code></pre>
+</li>
+<li><p>Replace the <code>&lt;cert-path&gt;</code> placeholder with the export location of your root certificate, and run the following command.</p>
+<pre tabindex="0"><code data-author-content="$filePathForCert = &quot;<cert-path>\P2SRootCert.cer&quot;
+$cert = new-object System.Security.Cryptography.X509Certificates.X509Certificate2($filePathForCert)
+$CertBase64 = [system.convert]::ToBase64String($cert.RawData)
+$p2srootcert = New-AzVpnClientRootCertificate -Name $P2SRootCertName -PublicCertData $CertBase64
+"><span><span>$filePathForCert</span> = <span>"&lt;cert-path&gt;\P2SRootCert.cer"</span>
+<span>$cert</span> = <span>new-object</span> System.Security.Cryptography.X509Certificates.X509Certificate2(<span>$filePathForCert</span>)
+<span>$CertBase64</span> = [system.convert]::ToBase64String(<span>$cert</span>.RawData)
+<span>$p2srootcert</span> = <span>New-AzVpnClientRootCertificate</span><span> -Name</span> <span>$P2SRootCertName</span><span> -PublicCertData</span> <span>$CertBase64</span>
+</span></code></pre>
+</li>
+<li><p>With the group name set, upload the certificate to Azure with the following command.</p>
+<pre tabindex="0"><code data-author-content="Add-AzVpnClientRootCertificate -VpnClientRootCertificateName $P2SRootCertName -VirtualNetworkGatewayname $GWName -ResourceGroupName $ResourceGroup -PublicCertData $CertBase64
+"><span><span>Add-AzVpnClientRootCertificate</span><span> -VpnClientRootCertificateName</span> <span>$P2SRootCertName</span><span> -VirtualNetworkGatewayname</span> <span>$GWName</span><span> -ResourceGroupName</span> <span>$ResourceGroup</span><span> -PublicCertData</span> <span>$CertBase64</span>
+</span></code></pre>
+<p>Azure will now recognize this certificate as a trusted root certificate for our virtual network.</p>
+</li>
+</ol>
+<h2 id="configure-the-native-vpn-client">Configure the native VPN client</h2>
+<ol>
+<li><p>Run the following command to create VPN client configuration files in .ZIP format.</p>
+<pre tabindex="0"><code data-author-content="$profile = New-AzVpnClientConfiguration -ResourceGroupName $ResourceGroup -Name $GWName -AuthenticationMethod &quot;EapTls&quot;
+$profile.VPNProfileSASUrl
+"><span><span>$profile</span> = <span>New-AzVpnClientConfiguration</span><span> -ResourceGroupName</span> <span>$ResourceGroup</span><span> -Name</span> <span>$GWName</span><span> -AuthenticationMethod</span> <span>"EapTls"</span>
+<span>$profile</span>.VPNProfileSASUrl
+</span></code></pre>
+</li>
+<li><p>Copy the URL returned in the output from this command, and paste it into your browser. Your browser should start downloading a .ZIP file. Extract the archive contents and put them in a suitable location.</p>
+<p>Some browsers will initially attempt to block downloading this ZIP file as a dangerous download. You will need to override this in your browser to be able to extract the archive contents.</p>
+</li>
+<li><p>In the extracted folder, navigate to either the <strong>WindowsAmd64</strong> folder (for 64-bit Windows computers) or the <strong>WindowsX86</strong> folder (for 32-bit computers).</p>
+<p>If you want to configure a VPN on a non-Windows machine, you can use the certificate and settings files from the <strong>Generic</strong> folder.</p>
+</li>
+<li><p>Double-click the <strong>VpnClientSetup{architecture}.exe</strong> file, with <code>{architecture}</code> reflecting your architecture.</p>
+</li>
+<li><p>In the <strong>Windows protected your PC</strong> screen, select <strong>More info</strong>, and then select <strong>Run anyway</strong>.</p>
+</li>
+<li><p>In the <strong>User Account Control</strong> dialog box, select <strong>Yes</strong>.</p>
+</li>
+<li><p>In the <strong>VNetData</strong> dialog box, select <strong>Yes</strong>.</p>
+</li>
+</ol>
+<h2 id="connect-to-azure">Connect to Azure</h2>
+<ol>
+<li><p>Press the <kbd>Windows</kbd> key, enter <strong>Settings</strong>, and press kbd&gt;Enter.</p>
+</li>
+<li><p>In the <strong>Settings</strong> window, select <strong>Network and Internet</strong>.</p>
+</li>
+<li><p>In the left-hand pane, select <strong>VPN</strong>.</p>
+</li>
+<li><p>In the right-hand pane, select <strong>VNetData</strong>, and then select <strong>Connect</strong>.</p>
+</li>
+<li><p>In the VNetData window, select <strong>Connect</strong>.</p>
+</li>
+<li><p>In the next VNetData window, select <strong>Continue</strong>.</p>
+</li>
+<li><p>In the <strong>User Account Control</strong> message box, select <strong>Yes</strong>.</p>
+</li>
+</ol>
+<p>If these steps do not work, you may need to restart your computer.</p>
+<h2 id="verify-your-connection">Verify your connection</h2>
+<ol>
+<li><p>In a new Windows command prompt, run <code>IPCONFIG /ALL</code>.</p>
+</li>
+<li><p>Copy the IP address under PPP adapter VNetData, or write it down.</p>
+</li>
+<li><p>Confirm that IP address is in the <strong>VPNClientAddressPool range of 172.16.201.0/24</strong>.</p>
+</li>
+<li><p>You have successfully made a connection to the Azure VPN gateway.</p>
+</li>
+</ol>
+<p>You just set up a VPN gateway, enabling you to make an encrypted client connection to a virtual network in Azure. This approach is great with client computers and smaller site-to-site connections.</p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Explore Azure ExpressRoute</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/configure-network-for-azure-virtual-machines/6-describe-azure-expressroute/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>
