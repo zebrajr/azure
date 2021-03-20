@@ -1,0 +1,370 @@
+<html dir="ltr"><head><title>Exercise - Troubleshoot a network by using Network Watcher metrics and logs - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/troubleshoot-azure-network-infrastructure/5-exercise-troubleshoot-networking-with-network-watcher-metrics-logs">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/troubleshoot-azure-network-infrastructure/5-exercise-troubleshoot-networking-with-network-watcher-metrics-logs</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Exercise - Troubleshoot a network by using Network Watcher metrics and logs - Learn</h1>
+  <div dir="auto" id="reader-credits">jboeshart</div>
+  <div dir="auto" id="reader-estimated-time">5-6 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="main-column" data-bi-name="body">
+
+					<main id="main" role="main" data-bi-name="content" lang="en-us" dir="ltr">
+
+
+
+
+
+						
+
+
+						<!-- <content> -->
+							<div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>30 minutes</li>
+		</ul>
+			<p>In Azure Network Watcher, metrics and logs can diagnose complex configuration issues.</p>
+<p>Suppose you have two virtual machines (VMs) that can't communicate. You want to obtain as much information as you can to diagnose the problem.</p>
+<p>In this unit, you'll troubleshoot by using Network Watcher metrics and logs. To diagnose the connectivity issue between the two VMs, you'll then use the network security group (NSG) flow logs.</p>
+<h2 id="register-the-microsoftinsights-provider">Register the Microsoft.Insights provider</h2>
+<p>NSG flow logging requires the <em>Microsoft.Insights</em> provider. to register for that provider, complete the following steps.</p>
+<ol>
+<li><p>Sign in to the <a href="https://portal.azure.com/" data-linktype="external" target="az-portal">Azure portal</a>, and log in to the directory with access to the subscription you created resources in.</p>
+</li>
+<li><p>In the Azure portal, search for, select <strong>Subscriptions</strong>, and then select your subscription.</p>
+</li>
+<li><p>In the left nav bar, under the <strong>Settings</strong> section, select <strong>Resource providers</strong>.</p>
+</li>
+<li><p>In the search bar, enter <strong>microsoft.insights</strong>.</p>
+</li>
+<li><p>If the status of the <strong>microsoft.insights</strong> provider is <strong>Unregistered</strong>, select <strong>Register</strong>.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/troubleshoot-azure-network-infrastructure/media/5-microsoft-insights.png" alt="A screenshot that shows the registered Microsoft.Insights provider" data-linktype="relative-path"></p>
+</li>
+</ol>
+<h2 id="create-a-storage-account">Create a storage account</h2>
+<p>Now, create a storage account for the NSG flow logs.</p>
+<ol>
+<li><p>On the Azure portal menu or from the <strong>Home</strong> page, select <strong>Create a resource</strong>. Then, select <strong>Storage</strong> &gt; <strong>Storage account</strong>, and then select <strong>Create</strong>. The <strong>Create storage account</strong> panel appears.</p>
+</li>
+<li><p>On the <strong>Basics</strong> tab, fill in the following values for each setting.</p>
+
+</li>
+<li><p>Go to the <strong>Advanced</strong> tab, and fill in this value.</p>
+
+</li>
+<li><p>Select <strong>Review + create</strong>, and when validation passes, select <strong>Create</strong>.</p>
+</li>
+</ol>
+<h2 id="create-a-log-analytics-workspace">Create a Log Analytics workspace</h2>
+<p>To view the NSG flow logs, you'll use Log Analytics.</p>
+<ol>
+<li><p>On the Azure portal menu or from the <strong>Home</strong> page, search for, and select <strong>Log Analytics workspaces</strong>. The <strong>Log Analytics workspaces</strong> panel appears.</p>
+</li>
+<li><p>On the top menu bar, select <strong>New</strong>. The <strong>Create Log Analytics workspace</strong> panel appears.</p>
+</li>
+<li><p>On the <strong>Basics</strong> tab, fill in these values for each setting.</p>
+
+</li>
+<li><p>Select <strong>Next : Pricing tier</strong>. On the <strong>Pricing tier</strong> tab, fill in the following values for each setting.</p>
+
+</li>
+<li><p>Select <strong>Review + Create</strong>, and then select <strong>Create</strong>.</p>
+</li>
+</ol>
+<h2 id="enable-flow-logs">Enable flow logs</h2>
+<p>To set up flow logs, you must configure the NSG to connect to the storage account, and add traffic analytics for the NSG.</p>
+<ol>
+<li><p>On the Azure portal menu, select <strong>All resources</strong>. Then, select the <strong>MyNSG</strong> network security group.</p>
+</li>
+<li><p>Under <strong>Monitoring</strong>, select <strong>NSG flow logs</strong>.</p>
+</li>
+<li><p>Select <strong>MyNSG</strong>, and then select <strong>On</strong>.</p>
+</li>
+<li><p>Under <strong>Storage account</strong>, select <strong>Configure</strong>. In the <strong>Storage account</strong> dropdown, select the storage account you created earlier. Then, select <strong>OK</strong>.</p>
+</li>
+<li><p>Under <strong>Traffic Analytics status</strong>, select <strong>On</strong>. In the <strong>Traffic Analytics processing interval</strong> dropdown, select <strong>Every 10 mins</strong>.</p>
+</li>
+<li><p>Select <strong>Log Analytics workspace</strong>, and then select <strong>testworkspace</strong>.</p>
+</li>
+<li><p>Select <strong>Save</strong>.</p>
+</li>
+</ol>
+<h2 id="generate-test-traffic">Generate test traffic</h2>
+<p>Now, you're ready to generate some network traffic between VMs to catch in the flow log.</p>
+<ol>
+<li><p>On the Azure portal menu, select <strong>All resources</strong>, select <strong>FrontendVM</strong>, and then select <strong>Connect</strong>.</p>
+</li>
+<li><p>Select <strong>Download RDP File</strong>, and then select <strong>OK</strong>. If you see a warning about the publisher of the remote connection, select <strong>Connect</strong>.</p>
+</li>
+<li><p>Sign in with the username <strong>azureuser</strong> and the password you specified when you created the VM, and then select <strong>Yes</strong>.</p>
+</li>
+<li><p>Open a PowerShell prompt, and then run this command.</p>
+<pre tabindex="0"><code data-author-content="Test-NetConnection 10.10.2.4 -port 80
+"><span><span>Test-NetConnection</span> <span>10.10</span>.<span>2.4</span><span> -port</span> <span>80</span>
+</span></code></pre>
+</li>
+</ol>
+<p>The connection test fails after a few seconds.</p>
+<h2 id="diagnose-the-problem">Diagnose the problem</h2>
+<p>Now, let's use log analytics to view the NSG flow logs.</p>
+<ol>
+<li><p>On the <a href="https://portal.azure.com/learn.docs.microsoft.com" data-linktype="external" target="az-portal">Azure portal</a> menu, select <strong>All services</strong>. Then, select <strong>Networking</strong> &gt; <strong>Network Watcher</strong>.</p>
+</li>
+<li><p>Under <strong>Logs</strong>, select <strong>Traffic Analytics</strong>.</p>
+</li>
+<li><p>In the <strong>Log Analytics workspace</strong> dropdown, select <strong>testworkspace</strong>.</p>
+</li>
+<li><p>Use the different views to diagnose the problem that prevents communication from the front end VM to the back end VM.</p>
+</li>
+</ol>
+<h2 id="fix-the-problem">Fix the problem</h2>
+<p>An NSG rule is blocking inbound traffic to the back end subnet from everywhere over the ports 80, 443, and 3389 instead of just blocking inbound traffic from the Internet. Let's reconfigure that rule now.</p>
+<ol>
+<li><p>On the Azure portal menu, select <strong>All resources</strong>, and then select <strong>MyNsg</strong>.</p>
+</li>
+<li><p>Under <strong>Settings</strong>, select <strong>Inbound security rules</strong>, and then select <strong>MyNSGRule</strong>.</p>
+</li>
+<li><p>Change <strong>Source</strong> to be <strong>Service Tag</strong>, and configure <strong>Source service tag</strong> to be <strong>Internet</strong>.</p>
+</li>
+<li><p>Select <strong>Save</strong>.</p>
+</li>
+</ol>
+<h2 id="retest-the-connection">Retest the connection</h2>
+<p>Connections on port 80 should now work without problems.</p>
+<ol>
+<li><p>In the RDP client, connect to <strong>FrontendVM</strong>. At the PowerShell prompt, run this command.</p>
+<pre tabindex="0"><code data-author-content="Test-NetConnection 10.10.2.4 -port 80
+"><span><span>Test-NetConnection</span> <span>10.10</span>.<span>2.4</span><span> -port</span> <span>80</span>
+</span></code></pre>
+</li>
+</ol>
+<p>The connection test should now succeed.</p>
+
+		
+	</div>
+
+						<!-- </content> -->
+
+						</main>
+
+						<!-- page rating section -->
+						<!-- end page rating section -->
+
+<section>
+		<p>
+Need help? See our <a id="troubleshooting-guide" data-bi-name="troubleshooting" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn.troubleshoot-azure-network-infrastructure.5-exercise-troubleshoot-networking-with-network-watcher-metrics-logs&amp;documentId=7b70fb75-efb8-5446-d6e6-d782ca431008&amp;versionIndependentDocumentId=5905d43e-b01f-32c8-147c-e99eb63645e5&amp;contentPath=%2FMicrosoftDocs%2Flearn-pr%2Fblob%2Flive%2Flearn-pr%2Fazure%2Ftroubleshoot-azure-network-infrastructure%2F5-exercise-troubleshoot-networking-with-network-watcher-metrics-logs.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Ftroubleshoot-azure-network-infrastructure%2F5-exercise-troubleshoot-networking-with-network-watcher-metrics-logs&amp;author=jaboes">troubleshooting guide</a> or provide specific feedback by <a id="module-unit-feedback-link" data-bi-name="feedback" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn.troubleshoot-azure-network-infrastructure.5-exercise-troubleshoot-networking-with-network-watcher-metrics-logs&amp;documentId=7b70fb75-efb8-5446-d6e6-d782ca431008&amp;versionIndependentDocumentId=5905d43e-b01f-32c8-147c-e99eb63645e5&amp;contentPath=%2FMicrosoftDocs%2Flearn-pr%2Fblob%2Flive%2Flearn-pr%2Fazure%2Ftroubleshoot-azure-network-infrastructure%2F5-exercise-troubleshoot-networking-with-network-watcher-metrics-logs.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Ftroubleshoot-azure-network-infrastructure%2F5-exercise-troubleshoot-networking-with-network-watcher-metrics-logs&amp;author=jaboes#report-feedback">reporting an issue</a>.		</p>
+	</section>
+
+						<!-- recommendations section -->
+						<!-- end recommendations section -->
+
+						<!-- feedback section -->
+						<!-- end feedback section -->
+
+						<!-- feedback report section -->
+						<!-- end feedback report section -->
+
+						
+					</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

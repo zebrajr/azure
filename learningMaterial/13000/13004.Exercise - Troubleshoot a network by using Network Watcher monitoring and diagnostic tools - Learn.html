@@ -1,0 +1,534 @@
+<html dir="ltr"><head><title>Exercise - Troubleshoot a network by using Network Watcher monitoring and diagnostic tools - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/troubleshoot-azure-network-infrastructure/3-exercise-troubleshoot-networking-with-network-watcher">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/troubleshoot-azure-network-infrastructure/3-exercise-troubleshoot-networking-with-network-watcher</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Exercise - Troubleshoot a network by using Network Watcher monitoring and diagnostic tools - Learn</h1>
+  <div dir="auto" id="reader-credits">jboeshart</div>
+  <div dir="auto" id="reader-estimated-time">10-12 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>7 minutes</li>
+		</ul>
+			<p>Azure Network Watcher helps you diagnose configuration errors that prevent virtual machines (VMs) from communicating.</p>
+<p>Suppose you have two VMs that can't communicate. You want to diagnose the problem and resolve it as fast as possible. You want to use Network Watcher to do that.</p>
+<p>Here, you'll troubleshoot connectivity between two VMs in different subnets.</p>
+<div>
+<p> Important</p>
+<p>You need your own Azure subscription to run this exercise, and you might incur charges.&nbsp;If you don't already have an Azure subscription, create a <a href="https://azure.microsoft.com/free/" data-linktype="external" target="az-portal">free account</a> before you begin.</p>
+</div>
+<h2 id="configure-a-virtual-network-and-vms">Configure a virtual network and VMs</h2>
+<p>Let's start by creating the problematic infrastructure, which includes a configuration error:</p>
+<ol>
+<li><p>In your browser, open the <a href="https://shell.azure.com/" data-linktype="external" target="az-portal">Azure Cloud Shell</a>, and log in to the directory with access to the subscription you want to create resources in.</p>
+</li>
+<li><p>To create a variable to store your resource group name, and a resource group for your resources, in the Bash Cloud Shell, run the following command. Replace <code>&lt;resource group name&gt;</code> with a name for your resource group, and <code>&lt;location&gt;</code> with the Azure region you'd like to deploy your resources in.</p>
+<pre tabindex="0"><code data-author-content="RG=<resource group name>
+
+az group create --name $RG --location <location>
+"><span>RG=<span>&lt;resource group name&gt;</span>
+
+<span>az group create </span><span>--name</span> <span>$RG</span> <span>--location</span> <span>&lt;location&gt;</span>
+</span></code></pre>
+</li>
+<li><p>To create the virtual network <strong>MyVNet1</strong> and the subnet <strong>FrontendSubnet</strong>, in Azure Cloud Shell, run this command.</p>
+<pre tabindex="0"><code data-author-content="az network vnet create \
+    --resource-group $RG \
+    --name MyVNet1 \
+    --address-prefix 10.10.0.0/16 \
+    --subnet-name FrontendSubnet \
+    --subnet-prefix 10.10.1.0/24
+"><span><span>az network vnet create </span>\
+    <span>--resource-group</span> <span>$RG</span> \
+    <span>--name</span> MyVNet1 \
+    <span>--address-prefix</span> <span>10.10.0.0</span>/<span>16</span> \
+    <span>--subnet-name</span> FrontendSubnet \
+    <span>--subnet-prefix</span> <span>10.10.1.0</span>/<span>24</span>
+</span></code></pre>
+</li>
+<li><p>To create the subnet called <strong>BackendSubnet</strong>, run this command.</p>
+<pre tabindex="0"><code data-author-content="az network vnet subnet create \
+    --address-prefixes 10.10.2.0/24 \
+    --name BackendSubnet \
+    --resource-group $RG \
+    --vnet-name MyVNet1
+"><span><span>az network vnet subnet </span>create \
+    <span>--address-prefixes</span> <span>10.10.2.0</span>/<span>24</span> \
+    <span>--name</span> BackendSubnet \
+    <span>--resource-group</span> <span>$RG</span> \
+    <span>--vnet-name</span> MyVNet1
+</span></code></pre>
+<div>
+<p> Note</p>
+<p>If you get an error, "partofthepassword: event not found; create a new password and avoid ! marks.</p>
+</div>
+</li>
+<li><p>To deploy a VM in <strong>FrontendSubnet</strong>, run this command. Replace <code>&lt;password&gt;</code> with a complex password of your choice.</p>
+<pre tabindex="0"><code data-author-content="az vm create \
+    --resource-group $RG \
+    --name FrontendVM \
+    --vnet-name MyVNet1 \
+    --subnet FrontendSubnet \
+    --image Win2019Datacenter \
+    --admin-username azureuser \
+    --admin-password <password>
+"><span><span>az vm create </span>\
+    <span>--resource-group</span> <span>$RG</span> \
+    <span>--name</span> FrontendVM \
+    <span>--vnet-name</span> MyVNet1 \
+    <span>--subnet</span> FrontendSubnet \
+    <span>--image</span> Win2019Datacenter \
+    <span>--admin-username</span> azureuser \
+    <span>--admin-password</span> <span>&lt;password&gt;</span>
+</span></code></pre>
+</li>
+<li><p>To install IIS on <strong>FrontendVM</strong>, run this command.</p>
+<pre tabindex="0"><code data-author-content="az vm extension set \
+    --publisher Microsoft.Compute \
+    --name CustomScriptExtension \
+    --vm-name FrontendVM \
+    --resource-group $RG \
+    --settings '{&quot;commandToExecute&quot;:&quot;powershell.exe Install-WindowsFeature -Name Web-Server&quot;}' \
+    --no-wait
+"><span><span>az vm extension set </span>\
+    <span>--publisher</span> Microsoft.Compute \
+    <span>--name</span> CustomScriptExtension \
+    <span>--vm-name</span> FrontendVM \
+    <span>--resource-group</span> <span>$RG</span> \
+    <span>--settings</span> <span>'{"commandToExecute":"powershell.exe Install-WindowsFeature -Name Web-Server"}'</span> \
+    <span>--no-wait</span>
+</span></code></pre>
+</li>
+<li><p>To deploy a virtual machine in <strong>BackendSubnet</strong>, run this command. Replace <code>&lt;password&gt;</code> with a complex password of your choice.</p>
+<pre tabindex="0"><code data-author-content="az vm create \
+    --resource-group $RG \
+    --name BackendVM \
+    --vnet-name MyVNet1 \
+    --subnet BackendSubnet \
+    --image Win2019Datacenter \
+    --admin-username azureuser \
+    --admin-password <password>
+"><span><span>az vm create </span>\
+    <span>--resource-group</span> <span>$RG</span> \
+    <span>--name</span> BackendVM \
+    <span>--vnet-name</span> MyVNet1 \
+    <span>--subnet</span> BackendSubnet \
+    <span>--image</span> Win2019Datacenter \
+    <span>--admin-username</span> azureuser \
+    <span>--admin-password</span> <span>&lt;password&gt;</span>
+</span></code></pre>
+</li>
+<li><p>To install IIS on <strong>BackendVM</strong>, run this command.</p>
+<pre tabindex="0"><code data-author-content="az vm extension set \
+    --publisher Microsoft.Compute \
+    --name CustomScriptExtension \
+    --vm-name BackendVM \
+    --resource-group $RG \
+    --settings '{&quot;commandToExecute&quot;:&quot;powershell.exe Install-WindowsFeature -Name Web-Server&quot;}' \
+    --no-wait
+"><span><span>az vm extension set </span>\
+    <span>--publisher</span> Microsoft.Compute \
+    <span>--name</span> CustomScriptExtension \
+    <span>--vm-name</span> BackendVM \
+    <span>--resource-group</span> <span>$RG</span> \
+    <span>--settings</span> <span>'{"commandToExecute":"powershell.exe Install-WindowsFeature -Name Web-Server"}'</span> \
+    <span>--no-wait</span>
+</span></code></pre>
+</li>
+<li><p>To create a network security group (NSG), run this command.</p>
+<pre tabindex="0"><code data-author-content="az network nsg create \
+    --name MyNsg \
+    --resource-group $RG
+"><span><span>az network nsg create </span>\
+    <span>--name</span> MyNsg \
+    <span>--resource-group</span> <span>$RG</span>
+</span></code></pre>
+</li>
+<li><p>To create an NSG <strong>configuration mistake that prevents communication</strong> between the VMs, run this command.</p>
+<pre tabindex="0"><code data-author-content="az network nsg rule create \
+    --resource-group $RG \
+    --name MyNSGRule \
+    --nsg-name MyNsg \
+    --priority 4096 \
+    --source-address-prefixes '*' \
+    --source-port-ranges '*' \
+    --destination-address-prefixes '*' \
+    --destination-port-ranges 80 443 3389 \
+    --access Deny \
+    --protocol TCP \
+    --direction Inbound \
+    --description &quot;Deny from specific IP address ranges on 80, 443 and 3389.&quot;
+"><span><span>az network nsg rule </span>create \
+    <span>--resource-group</span> <span>$RG</span> \
+    <span>--name</span> MyNSGRule \
+    <span>--nsg-name</span> MyNsg \
+    <span>--priority</span> <span>4096</span> \
+    <span>--source-address-prefixes</span> <span>'*'</span> \
+    <span>--source-port-ranges</span> <span>'*'</span> \
+    <span>--destination-address-prefixes</span> <span>'*'</span> \
+    <span>--destination-port-ranges</span> <span>80</span> <span>443</span> <span>3389</span> \
+    <span>--access</span> Deny \
+    <span>--protocol</span> TCP \
+    <span>--direction</span> Inbound \
+    <span>--description</span> <span>"Deny from specific IP address ranges on 80, 443 and 3389."</span>
+</span></code></pre>
+</li>
+<li><p>To associate a network security group with a subnet, run this command.</p>
+<pre tabindex="0"><code data-author-content="az network vnet subnet update \
+    --resource-group $RG \
+    --name BackendSubnet \
+    --vnet-name MyVNet1 \
+    --network-security-group MyNsg
+"><span><span>az network vnet subnet </span>update \
+    <span>--resource-group</span> <span>$RG</span> \
+    <span>--name</span> BackendSubnet \
+    <span>--vnet-name</span> MyVNet1 \
+    <span>--network-security-group</span> MyNsg
+</span></code></pre>
+</li>
+</ol>
+<h2 id="enable-network-watcher-for-your-region">Enable Network Watcher for your region</h2>
+<p>Now, to set up Network Watcher in the same region as the infrastructure, let's use the Azure CLI.</p>
+<p>To enable Network Watcher, run this command. Replace (match) <code>&lt;location&gt;</code> with the Azure region you created your resource group.</p>
+<pre tabindex="0"><code data-author-content="az network watcher configure \
+    --locations <location> \
+    --enabled true \
+    --resource-group $RG
+"><span><span>az network watcher configure </span>\
+    <span>--locations</span> <span>&lt;location&gt;</span> \
+    <span>--enabled</span> <span>true</span> \
+    <span>--resource-group</span> <span>$RG</span>
+</span></code></pre>
+<h2 id="use-network-watcher-to-show-the-topology">Use Network Watcher to show the topology</h2>
+<p>Now, you can use Network Watcher to troubleshoot connectivity between two VMs in different subnets. Your colleague has reported a connectivity issue over HTTP/HTTPS between the two VMs. First, investigate the network topology.</p>
+<ol>
+<li><p>Sign in to the <a href="https://portal.azure.com/" data-linktype="external" target="az-portal">Azure portal</a>.</p>
+</li>
+<li><p>On the Azure portal menu, select <strong>All services</strong>. Then, search for <strong>Network Watcher</strong>. The <strong>Network Watcher</strong> panel appears.</p>
+</li>
+<li><p>In the left nav bar, in the <strong>Monitoring</strong> section, select <strong>Topology</strong>. The <strong>Network Watcher | Topology</strong> panel appears.</p>
+</li>
+<li><p>In the dropdowns, select your <strong>Subscription</strong> and <strong>Resource Group</strong> for this exercise. Network Watcher displays your network topology.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/troubleshoot-azure-network-infrastructure/media/3-network-topology-expanded-1.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/troubleshoot-azure-network-infrastructure/media/3-network-topology.png" alt="" title="A screenshot that shows the exercise network topology" data-linktype="relative-path"></a></p>
+</li>
+</ol>
+<h2 id="use-connection-monitor-to-run-tests-from-the-back-end-to-the-front-end">Use Connection Monitor to run tests from the back end to the front end</h2>
+<p>The topology appears to be correct. To get more information, let's set up some tests in Connection Monitor. Start by creating a test from the back-end VM to the front-end VM.</p>
+<ol>
+<li><p>Under <strong>Monitoring</strong>, select <strong>Connection monitor</strong>. The <strong>Network Watcher | Connection monitor</strong> panel appears.</p>
+</li>
+<li><p>From the top menu bar, select <strong>Create</strong>. The <strong>Create Connection Monitor</strong> page appears.</p>
+</li>
+<li><p>On the <strong>Basics</strong> tab, fill in the following values.</p>
+
+</li>
+<li><p>Select <strong>Next : Test groups</strong>. The <strong>Add test group details</strong> panel appears.</p>
+</li>
+<li><p>Fill in the following values.</p>
+
+</li>
+<li><p>The <strong>Add Sources</strong> panel appears. On the <strong>Azure endpoints</strong> tab, select <strong>VNET</strong>, ensure your subscription is selected, and then select <strong>MyVNet1</strong> from the list.</p>
+</li>
+<li><p>At the bottom of the panel, expand <strong>Selected sources (2 Azure endpoints)</strong>. The <em>BackendVM</em> and <em>FrontendVM</em> Azure endpoints appear.</p>
+</li>
+<li><p>At the far right of each endpoint, select the ellipsis, and then select <strong>Enable Network Watcher</strong>. Wait for each endpoint to deploy.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/troubleshoot-azure-network-infrastructure/media/3-enable-network-watcher.png" alt="Screenshot that shows enabling of Network Watcher" data-linktype="relative-path"></p>
+</li>
+<li><p>Select <strong>BackendVM</strong> from the expanded Azure endpoint list.</p>
+</li>
+<li><p>Select <strong>Add endpoints</strong>. The <strong>Add test group details</strong> panel reappears with the BackendSubnet identified as your source.</p>
+</li>
+<li><p>In the <strong>Test configurations</strong> box, select <strong>Add Test configuration</strong>. The <strong>Add Test configuration</strong> panel appears.</p>
+</li>
+<li><p>On the <strong>New configuration</strong> tab, fill in the following values.</p>
+
+</li>
+<li><p>Select <strong>Add Test configuration</strong>. The <strong>Add test group details</strong> reappears with your test configuration identified.</p>
+</li>
+<li><p>In the <strong>Destinations</strong> box, select <strong>Add destinations</strong>. The <strong>Add Destinations</strong> panel appears. On the <strong>Azure endpoints</strong> tab, select <strong>VNET</strong>, ensure your subscription is selected, and then select <strong>MyVNet1</strong> from the list.</p>
+</li>
+<li><p>At the bottom of the panel, expand <strong>Selected destinations (2 Azure endpoints)</strong>. The <em>BackendVM</em> and <em>FrontendVM</em> Azure endpoints appear.</p>
+</li>
+<li><p>Select <strong>FrontendVM</strong> from the expanded Azure endpoint list.</p>
+</li>
+<li><p>Select <strong>Add endpoints</strong>. The <strong>Add test group details</strong> reappears with your with the FrontendSubnet identified as your destination.</p>
+</li>
+<li><p>At the bottom of the panel, select <strong>Add Test Group</strong>. The <strong>Create Connection Monitor</strong> panel reappears.</p>
+</li>
+<li><p>On the <strong>Test groups</strong> tab, notice that your test group is now listed.</p>
+</li>
+</ol>
+<p>The results should show that, because the NSG is associated with the back-end subnet, traffic flows without issues from the back-end VM to the front-end VM.</p>
+<h2 id="use-connection-monitor-to-run-tests-from-the-front-end-to-the-back-end">Use Connection Monitor to run tests from the front end to the back end</h2>
+<p>Run the same test in the opposite direction. Let's set up a test in Connection Monitor. Start by creating a test from the front-end VM to the back-end VM.</p>
+<ol>
+<li><p>Under <strong>Monitoring</strong>, select <strong>Connection monitor</strong>. The <strong>Network Watcher | Connection monitor</strong> panel appears.</p>
+</li>
+<li><p>From the top menu bar, select <strong>Create</strong>. The <strong>Create Connection Monitor</strong> page appears.</p>
+</li>
+<li><p>On the <strong>Basics</strong> tab, fill in the following values.</p>
+
+</li>
+<li><p>Select <strong>Next : Test groups</strong>. The <strong>Add test group details</strong> panel appears.</p>
+</li>
+<li><p>Fill in the following values.</p>
+
+</li>
+<li><p>The <strong>Add Sources</strong> panel appears. On the <strong>Azure endpoints</strong> tab, select <strong>VNET</strong>, ensure your subscription is selected, and then select <strong>MyVNet1</strong> from the list.</p>
+</li>
+<li><p>At the bottom of the panel, expand <strong>Selected sources (2 Azure endpoints)</strong>. The <em>BackendVM</em> and <em>FrontendVM</em> Azure endpoints appear.</p>
+</li>
+<li><p>At the far right of each endpoint, select the ellipsis, and then select <strong>Enable Network Watcher</strong>. Wait for each endpoint to deploy.</p>
+</li>
+<li><p>Select <strong>FrontendVM</strong> from the expanded Azure endpoint list.</p>
+</li>
+<li><p>Select <strong>Add endpoints</strong>. The <strong>Add test group details</strong> panel reappears with the FrontendSubnet identified as your source.</p>
+</li>
+<li><p>In the <strong>Test configurations</strong> box, select <strong>Add Test configuration</strong>. The <strong>Add Test configuration</strong> panel appears.</p>
+</li>
+<li><p>On the <strong>New configuration</strong> tab, fill in the following values.</p>
+
+</li>
+<li><p>Select <strong>Add Test configuration</strong>. The <strong>Add test group details</strong> reappears with your test configuration identified.</p>
+</li>
+<li><p>In the <strong>Destinations</strong> box, select <strong>Add destinations</strong>. The <strong>Add Destinations</strong> panel appears. On the <strong>Azure endpoints</strong> tab, select <strong>VNET</strong>, ensure your subscription is selected, and then select <strong>MyVNet1</strong> from the list.</p>
+</li>
+<li><p>At the bottom of the panel, expand <strong>Selected destinations (2 Azure endpoints)</strong>. The <em>BackendVM</em> and <em>FrontendVM</em> Azure endpoints appear.</p>
+</li>
+<li><p>Select <strong>BackendVM</strong> from the expanded Azure endpoint list.</p>
+</li>
+<li><p>Select <strong>Add endpoints</strong>. The <strong>Add test group details</strong> reappears with your with the BackendSubnet identified as your destination.</p>
+</li>
+<li><p>At the bottom of the panel, select <strong>Add Test Group</strong>. The <strong>Create Connection Monitor</strong> panel reappears.</p>
+</li>
+<li><p>On the <strong>Test groups</strong> tab, notice that your test group is now listed.</p>
+</li>
+</ol>
+<p>The results should show that, because the NSG is associated with the back-end subnet, no traffic flows from the front-end VM to the back-end VM.</p>
+<h2 id="use-ip-flow-verify-to-test-the-connection">Use IP flow verify to test the connection</h2>
+<p>Let's use the IP flow verify tool to get more information.</p>
+<ol>
+<li><p>On the <strong>Connection monitor</strong> panel, in the left nav bar, under <strong>Network diagnostic tools</strong>, select <strong>IP flow verify</strong>.</p>
+</li>
+<li><p>Configure the test with these values, and then select <strong>Check</strong>.</p>
+
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/troubleshoot-azure-network-infrastructure/media/3-ip-flow-test.png" alt="Screenshot that shows an IP flow test" data-linktype="relative-path"></p>
+</li>
+<li><p>Examine the results. They show that access is denied because of NSG and security rules.</p>
+</li>
+</ol>
+<p>In this exercise, you have successfully used Network Watcher tools to discover the connectivity issue between the two subnets. Communication is allowed one way but blocked the other way because of NSG rules.</p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Troubleshoot a network by using Network Watcher metrics and logs</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/troubleshoot-azure-network-infrastructure/4-troubleshoot-networking-with-network-watcher-metrics-logs/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

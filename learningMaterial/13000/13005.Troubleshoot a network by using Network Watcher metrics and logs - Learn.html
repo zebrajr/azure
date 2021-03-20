@@ -1,0 +1,344 @@
+<html dir="ltr"><head><title>Troubleshoot a network by using Network Watcher metrics and logs - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/troubleshoot-azure-network-infrastructure/4-troubleshoot-networking-with-network-watcher-metrics-logs">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/troubleshoot-azure-network-infrastructure/4-troubleshoot-networking-with-network-watcher-metrics-logs</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Troubleshoot a network by using Network Watcher metrics and logs - Learn</h1>
+  <div dir="auto" id="reader-credits">jboeshart</div>
+  <div dir="auto" id="reader-estimated-time">10-13 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>9 minutes</li>
+		</ul>
+			<p>If you want to diagnose a problem quickly, you have to understand the information that's available in the Azure Network Watcher logs.</p>
+<p>In your engineering company, you want to minimize the time it takes for your staff to diagnose and resolve any network configuration problem. You want to ensure they know which information is available in which logs.</p>
+<p>In this module, you'll focus on flow logs, diagnostic logs, and traffic analytics. You'll learn how these tools can help to troubleshoot the Azure network.</p>
+<h2 id="usage-and-quotas">Usage and quotas</h2>
+<p>Each Microsoft Azure resource can be used up to its quota. Each subscription has separate quotas, and usage is tracked per subscription. Only one instance of Network Watcher is required per subscription per region. This instance gives you a view of usage and quotas so that you can see if you're at risk of hitting a quota.</p>
+<p>To view the usage and quota information, go to <strong>All Services</strong> &gt; <strong>Networking</strong> &gt; <strong>Network Watcher</strong>, and then select <strong>Usage and quotas</strong>. You'll see granular data based on usage and resource location. Data for the following metrics is captured:</p>
+<ul>
+<li>Network interfaces</li>
+<li>Network security groups (NSGs)</li>
+<li>Virtual networks</li>
+<li>Public IP addresses</li>
+</ul>
+<p>Here's an example that shows usage and quotas in the portal:</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/troubleshoot-azure-network-infrastructure/media/4-usage-and-quotas-expanded-1.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/troubleshoot-azure-network-infrastructure/media/4-usage-and-quotas.png" alt="" title="A screenshot that shows usage and quotas using Network Watcher" data-linktype="relative-path"></a></p>
+<h2 id="logs">Logs</h2>
+<p>Network diagnostic logs provide granular data. You'll use this data to understand connectivity and performance issues better. There are three log display tools in Network Watcher:</p>
+<ul>
+<li>Flow logs</li>
+<li>Diagnostic logs</li>
+<li>Traffic analytics</li>
+</ul>
+<p>Let's look at each of these tools.</p>
+<h3 id="flow-logs">Flow logs</h3>
+<p>In flow logs, you can view information about ingress and egress IP traffic on network security groups. Flow logs show outbound and inbound flows on a per-rule basis, based on the network adapter that the flow applies. NSG flow logs show whether traffic was allowed or denied based on the 5-tuple information captured. This information includes:</p>
+<ul>
+<li>Source IP</li>
+<li>Source port</li>
+<li>Destination IP</li>
+<li>Destination port</li>
+<li>Protocol</li>
+</ul>
+<p>This diagram shows the workflow that the NSG follows.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/troubleshoot-azure-network-infrastructure/media/4-nsg-rule-flow.png" alt="A diagram that shows the workflow that the NSG follows" data-linktype="relative-path"></p>
+<p>Flow logs store data in a JSON file. It can be difficult to gain insights into this data by manually searching the log files, especially if you have a large infrastructure deployment in Azure. You can solve this problem by using Power BI.</p>
+<p>In Power BI, you can visualize NSG flow logs by, for example:</p>
+<ul>
+<li>Top talkers (IP address)</li>
+<li>Flows by direction (inbound and outbound)</li>
+<li>Flows by decision (allowed and denied)</li>
+<li>Flows by destination port</li>
+</ul>
+<p>You can also use open source tools to analyze your logs, such as Elastic Stack, Grafana, and Graylog.</p>
+<div>
+<p> Note</p>
+<p>NSG flow logs don't support storage accounts on the Azure classic portal.</p>
+</div>
+<h3 id="diagnostic-logs">Diagnostic logs</h3>
+<p>In Network Watcher, diagnostic logs are a central place to enable and disable logs for Azure network resources. These resources might include NSGs, public IPs, load balancers, and app gateways. After you've enabled the logs that interest you, you can use the tools to query and view log entries.</p>
+<p>You can import diagnostic logs into Power BI and other tools to analyze them.</p>
+<h3 id="traffic-analytics">Traffic analytics</h3>
+<p>To investigate user and app activity across your cloud networks, use traffic analytics.</p>
+<p>The tool gives insights into network activity across subscriptions. You can diagnose security threats such as open ports, VMs communicating with known bad networks, and traffic flow patterns. Traffic analytics analyzes NSG flow logs across Azure regions and subscriptions. You can use the data to optimize network performance.</p>
+<p>This tool requires Log Analytics. The Log Analytics workspace must exist in a supported region.</p>
+<h2 id="use-case-scenarios">Use case scenarios</h2>
+<p>Now, let's look at some use case scenarios where Azure Network Watcher metrics and logs can be helpful.</p>
+<h3 id="customer-reports-of-slow-performance">Customer reports of slow performance</h3>
+<p>To resolve slow performance, you need to determine the root cause of the problem:</p>
+<ul>
+<li>Is there too much traffic throttling the server?</li>
+<li>Is the VM size appropriate for the job?</li>
+<li>Are the scalability thresholds set appropriately?</li>
+<li>Are any malicious attacks happening?</li>
+<li>Is the VM storage configuration correct?</li>
+</ul>
+<p>First, check that the VM size is appropriate for the job. Next, enable Azure Diagnostics on the VM to get more granular data for specific metrics, such as CPU usage and memory usage. To enable VM diagnostics via the portal, go to the <strong>VM</strong>, select <strong>Diagnostics Settings</strong>, and then turn on diagnostics.</p>
+<p>Let's assume you have a VM that has been running fine. However, the VM's performance has recently degraded. To identify if you have any resource bottlenecks, you need to review the captured data.</p>
+<p>Start with a time range of captured data before, during, and after the reported problem to get an accurate view of performance. These graphs can also be useful for cross-referencing different resource behaviors in the same period. You'll check for:</p>
+<ul>
+<li>CPU bottlenecks</li>
+<li>Memory bottlenecks</li>
+<li>Disk bottlenecks</li>
+</ul>
+<h4 id="cpu-bottlenecks">CPU bottlenecks</h4>
+<p>When you're looking at performance issues, examine trends and understand if they affect your server. To spot trends, from the portal, use the monitoring graphs. You might see different types of patterns on the monitoring graphs:</p>
+<ul>
+<li><strong>Isolated spikes</strong>. A spike might be related to a scheduled task or an expected event. If you know what this task is, does it run at the required performance level? If the performance is OK, you might not need to increase capacity.</li>
+<li><strong>Spike up and constant</strong>. A new workload might cause this trend. Enable monitoring in the VM to find out what processes cause the load. The increased consumption might be due to inefficient code or normal consumption. If the consumption is normal, does the process operate at the required performance level?</li>
+<li><strong>Constant</strong>. Has your VM always been like this? If so, you should identify the processes that consume most resources and consider adding capacity.</li>
+<li><strong>Steadily increasing</strong>. Do you see a constant increase in consumption? If so, this trend might indicate inefficient code or a process taking on more user workload.</li>
+</ul>
+<p>If you do observe high CPU utilization, you can either:</p>
+<ul>
+<li>Increase the size of the VM to scale with more cores.</li>
+<li>Investigate the issue further. Locate the app and process, and troubleshoot accordingly.</li>
+</ul>
+<p>If you scale up the VM and the CPU is still running at above 95 percent, is this offering better performance or higher app throughput to an acceptable level? If not, troubleshoot that individual app.</p>
+<h4 id="memory-bottlenecks">Memory bottlenecks</h4>
+<p>You can view the amount of memory that the VM uses. Logs will help you understand the trend and if it maps to the time at which you see issues. You should not have less than 100 MB of available memory at any time. Watch out for the following trends:</p>
+<ul>
+<li><strong>Spike up and constant consumption</strong>. High memory utilization might not be the cause of bad performance. Some apps, such as relational database engines, are memory intensive by design. But if there are multiple memory-hungry apps, you might see bad performance because memory contention causes trimming and paging to disk. These processes will cause a negative performance impact.</li>
+<li><strong>Steadily increasing consumption</strong>. This trend might be an app <em>warming up</em>. It's common when database engines start up. However, it might also be a sign of a memory leak in an app.</li>
+<li><strong>Page or swap file usage</strong>. Check if you're using the Windows page file heavily, or the Linux swap file, located in /dev/sdb.</li>
+</ul>
+<p>To resolve high memory utilization, consider these solutions:</p>
+<ul>
+<li>For immediate relief or page file usage, increase the size of the VM to add memory, and then monitor.</li>
+<li>Investigate the issue further. Locate that app or process, and troubleshoot it. If you know the app, see if you can cap the memory allocation.</li>
+</ul>
+<h4 id="disk-bottlenecks">Disk bottlenecks</h4>
+<p>Network performance might also be related to the storage subsystem of the VM. You can investigate the storage account for the VM in the portal. To identify issues with storage, look at performance metrics from the storage account diagnostics and the VM diagnostics. Look for key trends when the issues occur within a particular time range.</p>
+<ul>
+<li>To check for Azure Storage timeout, use the metrics <strong>ClientTimeOutError</strong>, <strong>ServerTimeOutError</strong>, <strong>AverageE2ELatency</strong>, <strong>AverageServerLatency</strong>, and <strong>TotalRequests</strong>. If you see values in the <strong>TimeOutError</strong> metrics, an I/O operation took too long and timed out. If you see <strong>AverageServerLatency</strong> increase at the same time as <strong>TimeOutErrors</strong>, it might be a platform issue. Raise a case with Microsoft technical support.</li>
+<li>To check for Azure Storage throttling, use the storage account metric <strong>ThrottlingError</strong>. If you see throttling, you're hitting the IOPS limit of the account. You can check this problem by investigating the metric <strong>TotalRequests</strong>.</li>
+</ul>
+<p>To remediate high disk utilization and latency issues:</p>
+<ul>
+<li>Optimize VM I/O to scale past virtual hard disk (VHD) limits.</li>
+<li>Increase throughput and reduce latency. If you find that you have a latency-sensitive app and require high throughput, migrate your VHDs to Azure Premium Storage.</li>
+</ul>
+<h4 id="virtual-machine-firewall-rules-that-block-traffic">Virtual machine firewall rules that block traffic</h4>
+<p>To troubleshoot an NSG flow issue, use the Network Watcher IP flow verify tool and NSG flow logging to determine whether an NSG or User Defined Routing (UDR) is interfering with traffic flow.</p>
+<p>Run IP flow verify, and specify the local VM and the remote VM. After you select <strong>Check</strong>, Azure runs a logical test on rules in place. If the result is that access is allowed, use NSG flow logs.</p>
+<p>In the portal, go to the NSGs. Under the flow log settings, select <strong>On</strong>. Now try to connect to the VM again. Use Network Watcher traffic analytics to visualize the data. If the result is that access is allowed, there's no NSG rule in the way.</p>
+<p>If you've reached this point and still haven't diagnosed the problem, there might be something wrong on the remote VM. Disable the firewall on the remote VM, and then retest connectivity. If you can connect to the remote VM with the firewall disabled, verify the remote firewall settings. Then re-enable the firewall.</p>
+<h4 id="inability-of-the-front-end-and-back-end-subnets-to-communicate">Inability of the front end and back end subnets to communicate</h4>
+<p>By default, all subnets can communicate in Azure. If two VMs on two subnets can't communicate, there must be a configuration that's blocking communication. Before you check the flow logs, run the IP flow verify tool from the front end VM to the back end VM. This tool runs a logical test on the rules on the network.</p>
+<p>If the result is an NSG on the back end subnet blocking all communication, reconfigure that NSG. For security purposes, you must block some communication with the front end because the front end is exposed to the public internet.</p>
+<p>By blocking communication to the back end, you limit the amount of exposure in the event of a malware or security attack. However, if the NSG blocks everything, then it's incorrectly configured. Enable the specific protocols and ports that are required.</p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Exercise - Troubleshoot a network by using Network Watcher metrics and logs</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/troubleshoot-azure-network-infrastructure/5-exercise-troubleshoot-networking-with-network-watcher-metrics-logs/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

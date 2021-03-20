@@ -1,0 +1,5 @@
+1.A
+The Network Watcher Agent VM Extension is required when you capture traffic on a VM. It's automatically installed when you start a packet capture session in the Azure portal.
+
+2.C
+Connection troubleshoot displays the latency associated with each hop in a route.
