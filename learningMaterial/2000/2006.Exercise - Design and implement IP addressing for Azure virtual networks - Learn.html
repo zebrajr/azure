@@ -1,0 +1,459 @@
+<html dir="ltr"><head><title>Exercise - Design and implement IP addressing for Azure virtual networks - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/design-ip-addressing-for-azure/5-exercise-implement-vnets">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/design-ip-addressing-for-azure/5-exercise-implement-vnets</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Exercise - Design and implement IP addressing for Azure virtual networks - Learn</h1>
+  <div dir="auto" id="reader-credits">jboeshart</div>
+  <div dir="auto" id="reader-estimated-time">7-9 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>10 minutes</li>
+		</ul>
+			<p>Now, you're ready to create and deploy some virtual networks with the IP addresses that you planned.</p>
+<p>In this unit, you will implement three virtual networks and subnets to support resources in those virtual networks.</p>
+<p>The <strong>CoreServicesVnet</strong> virtual network is deployed in the <strong>US West</strong> region. This virtual network will have the largest number of resources. It will have connectivity to on-premises networks through a VPN connection. This network will have web services, databases, and other systems that are key to the operations of the business. Shared services, such as domain controllers and DNS also will be located here. A large amount of growth is anticipated, so a large address space is necessary for this virtual network.</p>
+<p>The <strong>ManufacturingVnet</strong> virtual network is deployed in the <strong>North Europe</strong> region, near the location of your organization's manufacturing facilities. This virtual network will contain systems for the operations of the manufacturing facilities. The organization is anticipating a large number of internal connected devices for their systems to retrieve data from, such as temperature, and will need an IP address space that it can expand into.</p>
+<p>The <strong>ResearchVnet</strong> virtual network is deployed in the <strong>West India</strong> region, near the location of the organization's research and development team. The research and development team uses this virtual network. The team has a small, stable set of resources that is not expected to grow. The team needs a small number of IP addresses for a few virtual machines for their work.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/design-ip-addressing-for-azure/media/5-design-implement-vnet-peering.svg" alt="A diagram of virtual networks that you need to create" data-linktype="relative-path"></p>
+<p>You will create the following resources:</p>
+
+<p>These virtual networks and subnets are structured in a way that accommodates existing resources yet allows for projected growth. Let's create these virtual networks and subnets to lay the foundation for our networking infrastructure.</p>
+<h2 id="create-the-coreservicesvnet-virtual-network">Create the <em>CoreServicesVnet</em> virtual network</h2>
+<ol>
+<li><p>In Azure Cloud Shell, run the following command to create the <strong>CoreServicesVnet</strong> virtual network:</p>
+<pre tabindex="0"><code data-author-content="az network vnet create \
+    --resource-group <rgn>[sandbox resource group name]</rgn> \
+    --name CoreServicesVnet \
+    --address-prefix 10.20.0.0/16 \
+    --location westus
+"><span><span>az network vnet create </span>\
+    <span>--resource-group</span> <rgn data-author-content="[sandbox resource group name]">[sandbox resource group name]</rgn> \
+    <span>--name</span> CoreServicesVnet \
+    <span>--address-prefix</span> <span>10.20.0.0</span>/<span>16</span> \
+    <span>--location</span> westus
+</span></code></pre>
+</li>
+<li><p>Now, let's create the subnets that we need for the planned resources in the virtual network:</p>
+<pre tabindex="0"><code data-author-content="az network vnet subnet create \
+    --resource-group <rgn>[sandbox resource group name]</rgn> \
+    --vnet-name CoreServicesVnet \
+    --name GatewaySubnet \
+    --address-prefixes 10.20.0.0/27
+
+az network vnet subnet create \
+    --resource-group <rgn>[sandbox resource group name]</rgn> \
+    --vnet-name CoreServicesVnet \
+    --name SharedServicesSubnet \
+    --address-prefixes 10.20.10.0/24
+
+az network vnet subnet create \
+    --resource-group <rgn>[sandbox resource group name]</rgn> \
+    --vnet-name CoreServicesVnet \
+    --name DatabaseSubnet \
+    --address-prefixes 10.20.20.0/24
+
+az network vnet subnet create \
+    --resource-group <rgn>[sandbox resource group name]</rgn> \
+    --vnet-name CoreServicesVnet \
+    --name PublicWebServiceSubnet \
+    --address-prefixes 10.20.30.0/24
+"><span><span>az network vnet subnet </span>create \
+    <span>--resource-group</span> <rgn data-author-content="[sandbox resource group name]">[sandbox resource group name]</rgn> \
+    <span>--vnet-name</span> CoreServicesVnet \
+    <span>--name</span> GatewaySubnet \
+    <span>--address-prefixes</span> <span>10.20.0.0</span>/<span>27</span>
+
+<span>az network vnet subnet </span>create \
+    <span>--resource-group</span> <rgn data-author-content="[sandbox resource group name]">[sandbox resource group name]</rgn> \
+    <span>--vnet-name</span> CoreServicesVnet \
+    <span>--name</span> SharedServicesSubnet \
+    <span>--address-prefixes</span> <span>10.20.10.0</span>/<span>24</span>
+
+<span>az network vnet subnet </span>create \
+    <span>--resource-group</span> <rgn data-author-content="[sandbox resource group name]">[sandbox resource group name]</rgn> \
+    <span>--vnet-name</span> CoreServicesVnet \
+    <span>--name</span> DatabaseSubnet \
+    <span>--address-prefixes</span> <span>10.20.20.0</span>/<span>24</span>
+
+<span>az network vnet subnet </span>create \
+    <span>--resource-group</span> <rgn data-author-content="[sandbox resource group name]">[sandbox resource group name]</rgn> \
+    <span>--vnet-name</span> CoreServicesVnet \
+    <span>--name</span> PublicWebServiceSubnet \
+    <span>--address-prefixes</span> <span>10.20.30.0</span>/<span>24</span>
+</span></code></pre>
+</li>
+<li><p>Let's take a look at what we have created. Run this command to show all the subnets that we configured:</p>
+<pre tabindex="0"><code data-author-content="az network vnet subnet list \
+    --resource-group <rgn>[sandbox resource group name]</rgn> \
+    --vnet-name CoreServicesVnet \
+    --output table
+"><span><span>az network vnet subnet </span>list \
+    <span>--resource-group</span> <rgn data-author-content="[sandbox resource group name]">[sandbox resource group name]</rgn> \
+    <span>--vnet-name</span> CoreServicesVnet \
+    <span>--output</span> <span>table</span>
+</span></code></pre>
+<p>You should see the following subnets listed:</p>
+<pre tabindex="0"><code data-author-content="AddressPrefix    Name                    ProvisioningState    ResourceGroup
+---------------  ----------------------  -------------------  -------------------------------------------
+10.20.0.0/27     GatewaySubnet           Succeeded            <rgn>[sandbox resource group name]</rgn>
+10.20.10.0/24    SharedServicesSubnet    Succeeded            <rgn>[sandbox resource group name]</rgn>
+10.20.20.0/24    DatabaseSubnet          Succeeded            <rgn>[sandbox resource group name]</rgn>
+10.20.30.0/24    PublicWebServiceSubnet  Succeeded            <rgn>[sandbox resource group name]</rgn>
+">AddressPrefix    Name                    ProvisioningState    ResourceGroup
+---------------  ----------------------  -------------------  -------------------------------------------
+10.20.0.0/27     GatewaySubnet           Succeeded            [sandbox resource group name]
+10.20.10.0/24    SharedServicesSubnet    Succeeded            [sandbox resource group name]
+10.20.20.0/24    DatabaseSubnet          Succeeded            [sandbox resource group name]
+10.20.30.0/24    PublicWebServiceSubnet  Succeeded            [sandbox resource group name]
+</code></pre>
+</li>
+</ol>
+<h2 id="create-the-manufacturingvnet-virtual-network">Create the <em>ManufacturingVnet</em> virtual network</h2>
+<ol>
+<li><p>In Cloud Shell, run the following command to create the <strong>ManufacturingVnet</strong> virtual network:</p>
+<pre tabindex="0"><code data-author-content="az network vnet create \
+    --resource-group <rgn>[sandbox resource group name]</rgn> \
+    --name ManufacturingVnet \
+    --address-prefix 10.30.0.0/16 \
+    --location northeurope
+"><span><span>az network vnet create </span>\
+    <span>--resource-group</span> <rgn data-author-content="[sandbox resource group name]">[sandbox resource group name]</rgn> \
+    <span>--name</span> ManufacturingVnet \
+    <span>--address-prefix</span> <span>10.30.0.0</span>/<span>16</span> \
+    <span>--location</span> northeurope
+</span></code></pre>
+</li>
+<li><p>Now, let's create the subnets that we need for the planned resources in the virtual network:</p>
+<pre tabindex="0"><code data-author-content="az network vnet subnet create \
+    --resource-group <rgn>[sandbox resource group name]</rgn> \
+    --vnet-name ManufacturingVnet \
+    --name ManufacturingSystemSubnet \
+    --address-prefixes 10.30.10.0/24
+
+az network vnet subnet create \
+    --resource-group <rgn>[sandbox resource group name]</rgn> \
+    --vnet-name ManufacturingVnet \
+    --name SensorSubnet1 \
+    --address-prefixes 10.30.20.0/24
+
+az network vnet subnet create \
+    --resource-group <rgn>[sandbox resource group name]</rgn> \
+    --vnet-name ManufacturingVnet \
+    --name SensorSubnet2 \
+    --address-prefixes 10.30.21.0/24
+
+az network vnet subnet create \
+    --resource-group <rgn>[sandbox resource group name]</rgn> \
+    --vnet-name ManufacturingVnet \
+    --name SensorSubnet3 \
+    --address-prefixes 10.30.22.0/24
+"><span><span>az network vnet subnet </span>create \
+    <span>--resource-group</span> <rgn data-author-content="[sandbox resource group name]">[sandbox resource group name]</rgn> \
+    <span>--vnet-name</span> ManufacturingVnet \
+    <span>--name</span> ManufacturingSystemSubnet \
+    <span>--address-prefixes</span> <span>10.30.10.0</span>/<span>24</span>
+
+<span>az network vnet subnet </span>create \
+    <span>--resource-group</span> <rgn data-author-content="[sandbox resource group name]">[sandbox resource group name]</rgn> \
+    <span>--vnet-name</span> ManufacturingVnet \
+    <span>--name</span> SensorSubnet1 \
+    <span>--address-prefixes</span> <span>10.30.20.0</span>/<span>24</span>
+
+<span>az network vnet subnet </span>create \
+    <span>--resource-group</span> <rgn data-author-content="[sandbox resource group name]">[sandbox resource group name]</rgn> \
+    <span>--vnet-name</span> ManufacturingVnet \
+    <span>--name</span> SensorSubnet2 \
+    <span>--address-prefixes</span> <span>10.30.21.0</span>/<span>24</span>
+
+<span>az network vnet subnet </span>create \
+    <span>--resource-group</span> <rgn data-author-content="[sandbox resource group name]">[sandbox resource group name]</rgn> \
+    <span>--vnet-name</span> ManufacturingVnet \
+    <span>--name</span> SensorSubnet3 \
+    <span>--address-prefixes</span> <span>10.30.22.0</span>/<span>24</span>
+</span></code></pre>
+</li>
+<li><p>Let's take a look at what we have created. Run this command to show all the subnets that we configured:</p>
+<pre tabindex="0"><code data-author-content="az network vnet subnet list \
+    --resource-group <rgn>[sandbox resource group name]</rgn> \
+    --vnet-name ManufacturingVnet \
+    --output table
+"><span><span>az network vnet subnet </span>list \
+    <span>--resource-group</span> <rgn data-author-content="[sandbox resource group name]">[sandbox resource group name]</rgn> \
+    <span>--vnet-name</span> ManufacturingVnet \
+    <span>--output</span> <span>table</span>
+</span></code></pre>
+<p>You should see the following subnets listed:</p>
+<pre tabindex="0"><code data-author-content="AddressPrefix    Name                       ProvisioningState    ResourceGroup
+---------------  -------------------------  -------------------  -------------------------------------------
+10.30.10.0/24    ManufacturingSystemSubnet  Succeeded            <rgn>[sandbox resource group name]</rgn>
+10.30.20.0/24    SensorSubnet1              Succeeded            <rgn>[sandbox resource group name]</rgn>
+10.30.21.0/24    SensorSubnet2              Succeeded            <rgn>[sandbox resource group name]</rgn>
+10.30.22.0/24    SensorSubnet3              Succeeded            <rgn>[sandbox resource group name]</rgn>
+"><span>AddressPrefix    Name                       ProvisioningState    ResourceGroup
+<span>---------------</span>  <span>-------------------------</span>  <span>-------------------</span>  <span>-------------------------------------------</span>
+<span>10.30.10.0</span>/<span>24</span>    ManufacturingSystemSubnet  Succeeded            <rgn data-author-content="[sandbox resource group name]">[sandbox resource group name]</rgn>
+<span>10.30.20.0</span>/<span>24</span>    SensorSubnet1              Succeeded            <rgn data-author-content="[sandbox resource group name]">[sandbox resource group name]</rgn>
+<span>10.30.21.0</span>/<span>24</span>    SensorSubnet2              Succeeded            <rgn data-author-content="[sandbox resource group name]">[sandbox resource group name]</rgn>
+<span>10.30.22.0</span>/<span>24</span>    SensorSubnet3              Succeeded            <rgn data-author-content="[sandbox resource group name]">[sandbox resource group name]</rgn>
+</span></code></pre>
+</li>
+</ol>
+<h2 id="create-the-researchvnet-virtual-network">Create the <em>ResearchVnet</em> virtual network</h2>
+<ol>
+<li><p>In Cloud Shell, run the following command to create the <strong>ResearchVnet</strong> virtual network:</p>
+<pre tabindex="0"><code data-author-content="az network vnet create \
+    --resource-group <rgn>[sandbox resource group name]</rgn> \
+    --name ResearchVnet \
+    --address-prefix 10.40.40.0/24 \
+    --location westindia
+"><span><span>az network vnet create </span>\
+    <span>--resource-group</span> <rgn data-author-content="[sandbox resource group name]">[sandbox resource group name]</rgn> \
+    <span>--name</span> ResearchVnet \
+    <span>--address-prefix</span> <span>10.40.40.0</span>/<span>24</span> \
+    <span>--location</span> westindia
+</span></code></pre>
+</li>
+<li><p>Now, let's create the subnets that we need for the planned resources in the virtual network:</p>
+<pre tabindex="0"><code data-author-content="az network vnet subnet create \
+    --resource-group <rgn>[sandbox resource group name]</rgn> \
+    --vnet-name ResearchVnet \
+    --name ResearchSystemSubnet \
+    --address-prefixes 10.40.40.0/24
+"><span><span>az network vnet subnet </span>create \
+    <span>--resource-group</span> <rgn data-author-content="[sandbox resource group name]">[sandbox resource group name]</rgn> \
+    <span>--vnet-name</span> ResearchVnet \
+    <span>--name</span> ResearchSystemSubnet \
+    <span>--address-prefixes</span> <span>10.40.40.0</span>/<span>24</span>
+</span></code></pre>
+</li>
+<li><p>Let's take a look at the final virtual network. Run this command to show all the subnets that we configured:</p>
+<pre tabindex="0"><code data-author-content="az network vnet subnet list \
+    --resource-group <rgn>[sandbox resource group name]</rgn> \
+    --vnet-name ResearchVnet \
+    --output table
+"><span><span>az network vnet subnet </span>list \
+    <span>--resource-group</span> <rgn data-author-content="[sandbox resource group name]">[sandbox resource group name]</rgn> \
+    <span>--vnet-name</span> ResearchVnet \
+    <span>--output</span> <span>table</span>
+</span></code></pre>
+<p>You should see the following subnets listed:</p>
+<pre tabindex="0"><code data-author-content="AddressPrefix    Name                  ProvisioningState    ResourceGroup
+---------------  --------------------  -------------------  -------------------------------------------
+10.40.40.0/24    ResearchSystemSubnet  Succeeded            <rgn>[sandbox resource group name]</rgn>
+"><span>AddressPrefix    Name                  ProvisioningState    ResourceGroup
+<span>---------------</span>  <span>--------------------</span>  <span>-------------------</span>  <span>-------------------------------------------</span>
+<span>10.40.40.0</span>/<span>24</span>    ResearchSystemSubnet  Succeeded            <rgn data-author-content="[sandbox resource group name]">[sandbox resource group name]</rgn>
+</span></code></pre>
+</li>
+</ol>
+<p>Now that you have created the virtual networks and subnets, you have the infrastructure on which you can deploy resources.</p>
+<p>These networks can be further integrated through virtual network peering and through Azure VPN Gateway to connect to on-premises networks. You can use network security groups to filter traffic and control access within and between virtual networks.</p>
+
+		
+			
+			
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>
