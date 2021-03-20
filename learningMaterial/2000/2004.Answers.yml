@@ -1,0 +1,5 @@
+1. A
+Correct. You can assign public IP addresses to virtual machines.
+
+2. C
+Correct. An IP address is assigned to a network interface, which is assigned to a virtual machine.
