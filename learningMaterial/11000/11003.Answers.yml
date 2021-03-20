@@ -1,0 +1,5 @@
+1.A
+This answer is correct.
+
+2.B
+Traffic is blocked and all requests time out and eventually fail unless this port was a probe port. In that case, the VM is removed from rotation.

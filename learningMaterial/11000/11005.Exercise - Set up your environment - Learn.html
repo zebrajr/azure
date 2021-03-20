@@ -1,0 +1,390 @@
+<html dir="ltr"><head><title>Exercise - Set up your environment - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/troubleshoot-inbound-connectivity-azure-load-balancer/4-exercise-set-up-environment">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/troubleshoot-inbound-connectivity-azure-load-balancer/4-exercise-set-up-environment</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Exercise - Set up your environment - Learn</h1>
+  <div dir="auto" id="reader-credits">cwatson-cat</div>
+  <div dir="auto" id="reader-estimated-time">5-6 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="main" role="main" data-bi-name="content" lang="en-us" dir="ltr">
+		
+		
+		<ul>
+			<li>40 minutes</li>
+		</ul>
+			<p>In this exercise, you'll set up a preconfigured environment with a load balancer and create charts to monitor the health of the load balancer.</p>
+<p>This exercise is optional. To complete it, you need access to an Azure subscription where you can create Azure resources. If you don't have an Azure subscription, create a <a href="https://azure.microsoft.com/free/" data-linktype="external" target="az-portal">free account</a> before you begin.</p>
+<h2 id="set-up-your-environment">Set up your environment</h2>
+<ol>
+<li><p>Sign in to the <a href="https://portal.azure.com/" data-linktype="external" target="az-portal">Azure portal</a>.</p>
+</li>
+<li><p>Select <strong>Cloud Shell</strong> from the menu bar in the upper right.</p>
+</li>
+<li><p>Select <strong>Bash</strong>.</p>
+</li>
+<li><p>Run the following command to download the scripts you'll use for this exercise.</p>
+<pre tabindex="0"><code data-author-content="git clone https://github.com/MicrosoftDocs/mslearn-troubleshoot-inbound-network-connectivity-azure-load-balancer load-balancer
+"><span>git <span>clone</span> https://github.com/MicrosoftDocs/mslearn-troubleshoot-inbound-network-connectivity-azure-load-balancer load-balancer
+</span></code></pre>
+</li>
+<li><p>Go to the <strong>load-balancer/src/scripts</strong> folder.</p>
+<pre tabindex="0"><code data-author-content="cd ~/load-balancer/src/scripts
+"><span><span>cd</span> ~/load-balancer/src/scripts
+</span></code></pre>
+</li>
+<li><p>Run the following command to set the user name for the VMs. You can change the user name to something different. You'll need the user name later in this exercise, so make a note of what you use.</p>
+<pre tabindex="0"><code data-author-content="export USERNAME=azureuser
+"><span><span>export</span> USERNAME=azureuser
+</span></code></pre>
+</li>
+<li><p>Run the following command to create a password for the virtual machines created by the scripts. The password is stored in a variable and also recorded in the text file passwd.txt in case you need it later.</p>
+<pre tabindex="0"><code data-author-content="export PASSWORD=$(openssl rand -base64 32)
+echo $PASSWORD > passwd.txt
+"><span><span>export</span> PASSWORD=$(openssl rand -base64 32)
+<span>echo</span> <span>$PASSWORD</span> &gt; passwd.txt
+</span></code></pre>
+</li>
+<li><p>Set the resource group name.</p>
+<pre tabindex="0"><code data-author-content="export RESOURCEGROUP=learn-ts-loadbalancer-rg
+"><span><span>export</span> RESOURCEGROUP=learn-ts-loadbalancer-rg
+</span></code></pre>
+</li>
+<li><p>Set the location. Replace the eastus value with a location near you.</p>
+<pre tabindex="0"><code data-author-content="export LOCATION=eastus
+"><span><span>export</span> LOCATION=eastus
+</span></code></pre>
+<p>The following list has some location values you can use:</p>
+<ul>
+<li>westus2</li>
+<li>southcentralus</li>
+<li>centralus</li>
+<li>eastus</li>
+<li>westeurope</li>
+<li>southeastasia</li>
+<li>japaneast</li>
+<li>brazilsouth</li>
+<li>australiasoutheast</li>
+<li>centralindia</li>
+</ul>
+</li>
+<li><p>Run the following command to create a resource group.</p>
+<pre tabindex="0"><code data-author-content="az group create --name $RESOURCEGROUP --location $LOCATION
+"><span>az group create --name <span>$RESOURCEGROUP</span> --location <span>$LOCATION</span>
+</span></code></pre>
+</li>
+<li><p>Run the following command to create the load balancer, virtual machines, and virtual network.</p>
+<pre tabindex="0"><code data-author-content="bash setup.sh $RESOURCEGROUP
+"><span>bash setup.sh <span>$RESOURCEGROUP</span>
+</span></code></pre>
+<p>This script takes up to 25 minutes to run.</p>
+</li>
+</ol>
+<h2 id="check-resources-created">Check resources created</h2>
+<ol>
+<li><p>In the Azure portal, search for <strong>Resource groups</strong>.</p>
+</li>
+<li><p>Select <strong>learn-ts-loadbalancer-rg</strong>.</p>
+</li>
+<li><p>Sort the list of resources by <strong>Type</strong>.</p>
+</li>
+<li><p>The resource group should contain the resources shown in this table.</p>
+
+</li>
+<li><p>Select the <strong>retailapplb</strong> load balancer.</p>
+</li>
+<li><p>Under <strong>Settings</strong>, select <strong>Load balancing rules</strong>.</p>
+</li>
+<li><p>Select <strong>retailapprule</strong>. The load balancer is configured to route traffic that arrives on port 80 at the front-end address to port 80 on machines in the back-end pool.</p>
+</li>
+<li><p>Close the <strong>retailapprule</strong> page.</p>
+</li>
+<li><p>Under <strong>Settings</strong>, select <strong>Health probes</strong>.</p>
+</li>
+<li><p>Select <strong>retailapphealthprobe</strong>. The health probe for the back-end pool also sends messages to port 80 to check that the application is available on each virtual machine.</p>
+</li>
+<li><p>Close the <strong>retailapphealthprobe</strong> page.</p>
+</li>
+</ol>
+<h2 id="test-the-load-balancer">Test the load balancer</h2>
+<ol>
+<li><p>Return to Azure Cloud Shell.</p>
+</li>
+<li><p>Run the following command to find the public IP address of the load balancer front end.</p>
+<pre tabindex="0"><code data-author-content="bash findip.sh
+"><span>bash findip.sh
+</span></code></pre>
+</li>
+<li><p>Open a browser window, and go to this IP address. The result should be a page with the message <strong>retailappvm1</strong> or <strong>retailappvm2</strong>, depending on how Load Balancer has routed the request.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/troubleshoot-inbound-connectivity-azure-load-balancer/media/4-browser-response.png" alt="Screenshot of the browser showing the response from the sample app running in Load Balancer." data-linktype="relative-path"></p>
+</li>
+<li><p>In Cloud Shell, run the following command to go to the <strong>src/stresstest</strong> folder.</p>
+<pre tabindex="0"><code data-author-content="cd ~/load-balancer/src/stresstest
+"><span><span>cd</span> ~/load-balancer/src/stresstest
+</span></code></pre>
+<p>This folder contains a .NET Core application that simulates hundreds of concurrent users sending requests through Load Balancer to the virtual machines.</p>
+</li>
+<li><p>Run the following command to start the application. Replace &lt;<em>ip address</em>&gt; with the front-end IP address of the load balancer.</p>
+<pre tabindex="0"><code data-author-content="dotnet run <ip address>
+"><span>dotnet run &lt;ip address&gt;
+</span></code></pre>
+<p>The application should respond with a series of messages that indicate whether a response was received from <em>retailappvm1</em> or <em>retailappvm2</em>.</p>
+</li>
+<li><p>Allow the application to run for five minutes. Select <strong>Enter</strong> to stop the application.</p>
+</li>
+</ol>
+<h2 id="create-charts-to-monitor-metrics">Create charts to monitor metrics</h2>
+<ol>
+<li><p>In the Azure portal, go to the resource group <strong>learn-ts-loadbalancer-rg</strong>.</p>
+</li>
+<li><p>Select the <strong>retailapplb</strong> load balancer.</p>
+</li>
+<li><p>Under <strong>Monitoring</strong>, select <strong>Metrics</strong>.</p>
+</li>
+<li><p>Add the following metric to the empty chart:</p>
+
+</li>
+<li><p>Select the <strong>Finish editing</strong> check box.</p>
+</li>
+<li><p>At the top of the page, set the time range to <strong>Last 30 minutes</strong>. The chart should look similar to the one shown here. Note the peak value of the average packet count.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/troubleshoot-inbound-connectivity-azure-load-balancer/media/4-packet-count-healthy.png" alt="The average packet count while the load balancer is in a healthy state." data-linktype="relative-path"></p>
+</li>
+<li><p>Select <strong>Pin to dashboard</strong>.</p>
+</li>
+<li><p>Select <strong>Create new</strong>, and use the following values:</p>
+
+</li>
+<li><p>Select <strong>Create and pin</strong>.</p>
+</li>
+<li><p>Select <strong>+ New Chart</strong>, and add the following metric:</p>
+
+</li>
+<li><p>Select <strong>Add metric</strong>, and add another metric to the chart with the following settings:</p>
+
+</li>
+<li><p>Select the <strong>Finish editing</strong> check box.</p>
+</li>
+<li><p>Set the time range to <strong>Last 30 minutes</strong>. The chart should report both statistics at 100 percent.</p>
+</li>
+<li><p>Select <strong>Pin to dashboard</strong> &gt; <strong>Existing</strong>.</p>
+</li>
+<li><p>For a dashboard, select <strong>dashboard-learn-ts-loadbalancer</strong>.</p>
+</li>
+<li><p>Select <strong>Pin</strong>.</p>
+</li>
+</ol>
+<p>You now have a baseline set of metrics for the system when it's running correctly.</p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Exercise - Identify and resolve inbound network connectivity</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/troubleshoot-inbound-connectivity-azure-load-balancer/5-exercise-identify-and-resolve-inbound-network-connectivity/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div><section>
+		<p>
+Need help? See our <a id="troubleshooting-guide" data-bi-name="troubleshooting" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn.azure.troubleshoot-inbound-network-connectivity-azure-load-balancer.exercise-set-up-environment&amp;documentId=245914f5-96ee-3bd7-2f56-7db062d0c750&amp;versionIndependentDocumentId=c1136a7c-3ba7-319e-30bc-af7d45ee428d&amp;contentPath=%2FMicrosoftDocs%2Flearn-pr%2Fblob%2Flive%2Flearn-pr%2Fazure%2Ftroubleshoot-inbound-connectivity-azure-load-balancer%2F4-exercise-set-up-environment.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Ftroubleshoot-inbound-connectivity-azure-load-balancer%2F4-exercise-set-up-environment&amp;author=cwatson">troubleshooting guide</a> or provide specific feedback by <a id="module-unit-feedback-link" data-bi-name="feedback" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn.azure.troubleshoot-inbound-network-connectivity-azure-load-balancer.exercise-set-up-environment&amp;documentId=245914f5-96ee-3bd7-2f56-7db062d0c750&amp;versionIndependentDocumentId=c1136a7c-3ba7-319e-30bc-af7d45ee428d&amp;contentPath=%2FMicrosoftDocs%2Flearn-pr%2Fblob%2Flive%2Flearn-pr%2Fazure%2Ftroubleshoot-inbound-connectivity-azure-load-balancer%2F4-exercise-set-up-environment.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Ftroubleshoot-inbound-connectivity-azure-load-balancer%2F4-exercise-set-up-environment&amp;author=cwatson#report-feedback">reporting an issue</a>.		</p>
+	</section></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>
