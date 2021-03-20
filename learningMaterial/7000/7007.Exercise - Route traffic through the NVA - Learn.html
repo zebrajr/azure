@@ -1,0 +1,376 @@
+<html dir="ltr"><head><title>Exercise - Route traffic through the NVA - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/control-network-traffic-flow-with-routes/6-exercise-route-traffic-through-nva">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/control-network-traffic-flow-with-routes/6-exercise-route-traffic-through-nva</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Exercise - Route traffic through the NVA - Learn</h1>
+  <div dir="auto" id="reader-credits">jboeshart</div>
+  <div dir="auto" id="reader-estimated-time">6-7 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="main" role="main" data-bi-name="content" lang="en-us" dir="ltr">
+		
+		
+		<ul>
+			<li>10 minutes</li>
+		</ul>
+			<p>Now that you've created the network virtual appliance (NVA) and virtual machines, you'll route the traffic through the NVA.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/control-network-traffic-flow-with-routes/media/6-vms-ip-addresses.svg" alt="Virtual machines and IP addresses" data-linktype="relative-path"></p>
+<h2 id="create-public-and-private-virtual-machines">Create public and private virtual machines</h2>
+<p>The next steps deploy a virtual machine into the public and private subnets:</p>
+<ol>
+<li><p>Open the Cloud Shell editor and create a file named cloud-init.txt.</p>
+<pre tabindex="0"><code data-author-content="code cloud-init.txt
+"><span>code cloud-init.txt
+</span></code></pre>
+</li>
+<li><p>Add the following configuration information to the file. With this configuration, the <code>inetutils-traceroute</code> package is installed when you create a new virtual machine. This package contains the <code>traceroute</code> utility that you'll use later in this exercise.</p>
+<pre tabindex="0"><code data-author-content="#cloud-config
+package_upgrade: true
+packages:
+   - inetutils-traceroute
+">#cloud-config
+package_upgrade: true
+packages:
+   - inetutils-traceroute
+</code></pre>
+</li>
+<li><p>Select <kbd>Ctrl+S</kbd> to save the file, and then select <kbd>Ctrl+Q</kbd> to close the editor.</p>
+</li>
+<li><p>Run the following command in Cloud Shell to create the <strong>public</strong> virtual machine. Replace <code>&lt;password&gt;</code> with a suitable password for the <strong>azureuser</strong> account.</p>
+<pre tabindex="0"><code data-author-content="az vm create \
+    --resource-group <rgn>[sandbox resource group name]</rgn> \
+    --name public \
+    --vnet-name vnet \
+    --subnet publicsubnet \
+    --image UbuntuLTS \
+    --admin-username azureuser \
+    --no-wait \
+    --custom-data cloud-init.txt \
+    --admin-password <password>
+"><span><span>az vm create </span>\
+    <span>--resource-group</span> <rgn data-author-content="[sandbox resource group name]">[sandbox resource group name]</rgn> \
+    <span>--name</span> public \
+    <span>--vnet-name</span> vnet \
+    <span>--subnet</span> publicsubnet \
+    <span>--image</span> UbuntuLTS \
+    <span>--admin-username</span> azureuser \
+    <span>--no-wait</span> \
+    <span>--custom-data</span> cloud<span>-init</span>.txt \
+    <span>--admin-password</span> <span>&lt;password&gt;</span>
+</span></code></pre>
+</li>
+<li><p>Run the following command to create the <strong>private</strong> virtual machine. Replace <code>&lt;password&gt;</code> with a suitable password.</p>
+<pre tabindex="0"><code data-author-content="az vm create \
+    --resource-group <rgn>[sandbox resource group name]</rgn> \
+    --name private \
+    --vnet-name vnet \
+    --subnet privatesubnet \
+    --image UbuntuLTS \
+    --admin-username azureuser \
+    --no-wait \
+    --custom-data cloud-init.txt \
+    --admin-password <password>
+"><span><span>az vm create </span>\
+    <span>--resource-group</span> <rgn data-author-content="[sandbox resource group name]">[sandbox resource group name]</rgn> \
+    <span>--name</span> private \
+    <span>--vnet-name</span> vnet \
+    <span>--subnet</span> privatesubnet \
+    <span>--image</span> UbuntuLTS \
+    <span>--admin-username</span> azureuser \
+    <span>--no-wait</span> \
+    <span>--custom-data</span> cloud<span>-init</span>.txt \
+    <span>--admin-password</span> <span>&lt;password&gt;</span>
+</span></code></pre>
+</li>
+<li><p>Run the following Linux <code>watch</code> command to check that the virtual machines are running. The <code>watch</code> command periodically runs the <code>az vm list</code> command so that you can monitor the progress of the virtual machines.</p>
+<pre tabindex="0"><code data-author-content="watch -d -n 5 &quot;az vm list \
+    --resource-group <rgn>[sandbox resource group name]</rgn> \
+    --show-details \
+    --query '[*].{Name:name, ProvisioningState:provisioningState, PowerState:powerState}' \
+    --output table&quot;
+"><span>watch -d -n 5 <span>"az vm list \
+    --resource-group <rgn data-author-content="[sandbox resource group name]">[sandbox resource group name]</rgn> \
+    --show-details \
+    --query '[*].{Name:name, ProvisioningState:provisioningState, PowerState:powerState}' \
+    --output table"</span>
+</span></code></pre>
+<p>A <strong>ProvisioningState</strong> value of "Succeeded" and a <strong>PowerState</strong> value of "VM running" indicate a successful deployment. When all three virtual machines are running, you're ready to move on. Select Ctrl-C to stop the command and continue with the exercise.</p>
+</li>
+<li><p>Run the following command to save the public IP address of the <strong>public</strong> virtual machine to a variable named <code>PUBLICIP</code>.</p>
+<pre tabindex="0"><code data-author-content="PUBLICIP=&quot;$(az vm list-ip-addresses \
+    --resource-group <rgn>[sandbox resource group name]</rgn> \
+    --name public \
+    --query &quot;[].virtualMachine.network.publicIpAddresses[*].ipAddress&quot; \
+    --output tsv)&quot;
+
+echo $PUBLICIP
+"><span>PUBLICIP=<span>"<span>$(az vm list-ip-addresses \
+    --resource-group <rgn data-author-content="[sandbox resource group name]">[sandbox resource group name]</rgn> \
+    --name public \
+    --query "[].virtualMachine.network.publicIpAddresses[*].ipAddress" \
+    --output tsv)</span>"</span>
+
+echo <span>$PUBLICIP</span>
+</span></code></pre>
+</li>
+<li><p>Run the following command to save the public IP address of the <strong>private</strong> virtual machine to a variable named <code>PRIVATEIP</code>.</p>
+<pre tabindex="0"><code data-author-content="PRIVATEIP=&quot;$(az vm list-ip-addresses \
+    --resource-group <rgn>[sandbox resource group name]</rgn> \
+    --name private \
+    --query &quot;[].virtualMachine.network.publicIpAddresses[*].ipAddress&quot; \
+    --output tsv)&quot;
+
+echo $PRIVATEIP
+"><span>PRIVATEIP=<span>"<span>$(az vm list-ip-addresses \
+    --resource-group <rgn data-author-content="[sandbox resource group name]">[sandbox resource group name]</rgn> \
+    --name private \
+    --query "[].virtualMachine.network.publicIpAddresses[*].ipAddress" \
+    --output tsv)</span>"</span>
+
+echo <span>$PRIVATEIP</span>
+</span></code></pre>
+</li>
+</ol>
+<h2 id="test-traffic-routing-through-the-network-virtual-appliance">Test traffic routing through the network virtual appliance</h2>
+<p>The final steps use the Linux <code>traceroute</code> utility to show how traffic is routed. You'll use the <code>ssh</code> command to run <code>traceroute</code> on each virtual machine. The first test will show the route taken by ICMP packets sent from the <strong>public</strong> virtual machine to the <strong>private</strong> virtual machine. The second test will show the route taken by ICMP packets sent from the <strong>private</strong> virtual machine to the <strong>public</strong> virtual machine.</p>
+<ol>
+<li><p>Run the following command to trace the route from <strong>public</strong> to <strong>private</strong>. When prompted, enter the password for the <strong>azureuser</strong> account that you specified earlier.</p>
+<pre tabindex="0"><code data-author-content="ssh -t -o StrictHostKeyChecking=no azureuser@$PUBLICIP 'traceroute private --type=icmp; exit'
+"><span>ssh -t -o StrictHostKeyChecking=no azureuser@<span>$PUBLICIP</span> <span>'traceroute private --type=icmp; exit'</span>
+</span></code></pre>
+<p>If you receive the error message <code>bash: traceroute: command not found</code>, wait a minute and retry the command. The automated installation of <code>traceroute</code> can take a minute or two after virtual machine deployment. After the command succeeds, the output should look similar to the following example:</p>
+<pre tabindex="0"><code data-author-content="traceroute to private.kzffavtrkpeulburui2lgywxwg.gx.internal.cloudapp.net (10.0.1.4), 64 hops max
+1   10.0.2.4  0.710ms  0.410ms  0.536ms
+2   10.0.1.4  0.966ms  0.981ms  1.268ms
+Connection to 52.165.151.216 closed.
+">traceroute to private.kzffavtrkpeulburui2lgywxwg.gx.internal.cloudapp.net (10.0.1.4), 64 hops max
+1   10.0.2.4  0.710ms  0.410ms  0.536ms
+2   10.0.1.4  0.966ms  0.981ms  1.268ms
+Connection to 52.165.151.216 closed.
+</code></pre>
+<p>Notice that the first hop is to 10.0.2.4. This address is the private IP address of <strong>nva</strong>. The second hop is to 10.0.1.4, the address of <strong>private</strong>. In the first exercise, you added this route to the&nbsp;route table and linked the table to the <strong>publicsubnet</strong> subnet. So now all traffic from <strong>public</strong> to <strong>private</strong> is routed through the network virtual appliance.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/control-network-traffic-flow-with-routes/media/6-public-private-route.svg" alt="Route from public to private" data-linktype="relative-path"></p>
+</li>
+<li><p>Run the following command to trace the route from <strong>private</strong> to <strong>public</strong>. When prompted, enter the password for the <strong>azureuser</strong> account.</p>
+<pre tabindex="0"><code data-author-content="ssh -t -o StrictHostKeyChecking=no azureuser@$PRIVATEIP 'traceroute public --type=icmp; exit'
+"><span>ssh -t -o StrictHostKeyChecking=no azureuser@<span>$PRIVATEIP</span> <span>'traceroute public --type=icmp; exit'</span>
+</span></code></pre>
+<p>You should see the traffic go directly to <strong>public</strong> (10.0.0.4) and not through the NVA, as shown in the following command output.</p>
+<pre tabindex="0"><code data-author-content="traceroute to public.kzffavtrkpeulburui2lgywxwg.gx.internal.cloudapp.net (10.0.0.4), 64 hops max
+1   10.0.0.4  1.095ms  1.610ms  0.812ms
+Connection to 52.173.21.188 closed.
+">traceroute to public.kzffavtrkpeulburui2lgywxwg.gx.internal.cloudapp.net (10.0.0.4), 64 hops max
+1   10.0.0.4  1.095ms  1.610ms  0.812ms
+Connection to 52.173.21.188 closed.
+</code></pre>
+<p>The <strong>private</strong> virtual machine is using default routes, and traffic is routed directly between the subnets.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/control-network-traffic-flow-with-routes/media/6-private-public-route.svg" alt="Route from private to public" data-linktype="relative-path"></p>
+</li>
+</ol>
+<p>You've now configured routing between subnets to direct traffic from the public internet through the <strong>dmzsubnet</strong> subnet before it reaches the private subnet. In the <strong>dmzsubnet</strong> subnet, you added a virtual machine that acts as an NVA. You can configure this NVA to detect potentially malicious requests and block them before they reach their intended targets.</p>
+
+		
+	</div><section>
+		<p>
+Need help? See our <a id="troubleshooting-guide" data-bi-name="troubleshooting" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn.control-network-traffic-flow-with-routes.6-exercise-route-traffic-through-nva&amp;documentId=9a80aab2-7335-543b-240b-44cd3f2f92a9&amp;versionIndependentDocumentId=bb85afc9-2725-5040-24ed-e98c9f972e0c&amp;contentPath=%2FMicrosoftDocs%2Flearn-pr%2Fblob%2Flive%2Flearn-pr%2Fazure%2Fcontrol-network-traffic-flow-with-routes%2F6-exercise-route-traffic-through-nva.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fcontrol-network-traffic-flow-with-routes%2F6-exercise-route-traffic-through-nva&amp;author=jaboes">troubleshooting guide</a> or provide specific feedback by <a id="module-unit-feedback-link" data-bi-name="feedback" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn.control-network-traffic-flow-with-routes.6-exercise-route-traffic-through-nva&amp;documentId=9a80aab2-7335-543b-240b-44cd3f2f92a9&amp;versionIndependentDocumentId=bb85afc9-2725-5040-24ed-e98c9f972e0c&amp;contentPath=%2FMicrosoftDocs%2Flearn-pr%2Fblob%2Flive%2Flearn-pr%2Fazure%2Fcontrol-network-traffic-flow-with-routes%2F6-exercise-route-traffic-through-nva.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fcontrol-network-traffic-flow-with-routes%2F6-exercise-route-traffic-through-nva&amp;author=jaboes#report-feedback">reporting an issue</a>.		</p>
+	</section></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

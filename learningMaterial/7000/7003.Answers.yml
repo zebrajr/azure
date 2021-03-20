@@ -1,0 +1,5 @@
+1.C
+This is the correct answer. Custom routes are used to override the default Azure routing so that you can route traffic through a network virtual appliance (NVA).
+
+2.A
+This is the correct answer. Virtual network peering is used to connect multiple virtual networks together. Once peered, the networks become one network, and resources across virtual networks can communicate with one another.

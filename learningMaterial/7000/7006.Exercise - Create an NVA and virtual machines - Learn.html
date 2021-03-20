@@ -1,0 +1,328 @@
+<html dir="ltr"><head><title>Exercise - Create an NVA and virtual machines - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/control-network-traffic-flow-with-routes/5-exercise-create-nva-vm">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/control-network-traffic-flow-with-routes/5-exercise-create-nva-vm</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Exercise - Create an NVA and virtual machines - Learn</h1>
+  <div dir="auto" id="reader-credits">jboeshart</div>
+  <div dir="auto" id="reader-estimated-time">3-4 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="main" role="main" data-bi-name="content" lang="en-us" dir="ltr">
+		
+		
+		<ul>
+			<li>10 minutes</li>
+		</ul>
+			<p>In the next stage of your security implementation, you'll deploy a network virtual appliance (NVA) to secure and monitor traffic between your front-end public servers and internal private servers.</p>
+<p>You'll configure the appliance to forward IP traffic. If IP forwarding isn't enabled, traffic that is routed through your appliance will never be received by its intended destination servers.</p>
+<p>In this exercise, you'll deploy the <strong>nva</strong> network appliance to the <strong>dmzsubnet</strong> subnet. You'll then enable IP forwarding so that traffic from <strong>publicsubnet</strong> and traffic that uses the custom route is sent to the <strong>privatesubnet</strong> subnet.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/control-network-traffic-flow-with-routes/media/5-nva-ip-forwarding.svg" alt="Network virtual appliance with IP forwarding enabled" data-linktype="relative-path"></p>
+<p>In the following steps, you'll deploy an NVA. You'll then update the Azure virtual NIC and the network settings within the appliance to enable IP forwarding.</p>
+<h2 id="deploy-the-network-virtual-appliance">Deploy the network virtual appliance</h2>
+<p>To build the NVA, deploy an Ubuntu LTS instance.</p>
+<ol>
+<li><p>In Cloud Shell, run the following command to deploy the appliance. Replace <code>&lt;password&gt;</code> with a suitable password of your choice for the <strong>azureuser</strong> admin account.</p>
+<pre tabindex="0"><code data-author-content="az vm create \
+    --resource-group <rgn>[sandbox resource group name]</rgn> \
+    --name nva \
+    --vnet-name vnet \
+    --subnet dmzsubnet \
+    --image UbuntuLTS \
+    --admin-username azureuser \
+    --admin-password <password>
+"><span><span>az vm create </span>\
+    <span>--resource-group</span> <rgn data-author-content="[sandbox resource group name]">[sandbox resource group name]</rgn> \
+    <span>--name</span> nva \
+    <span>--vnet-name</span> vnet \
+    <span>--subnet</span> dmzsubnet \
+    <span>--image</span> UbuntuLTS \
+    <span>--admin-username</span> azureuser \
+    <span>--admin-password</span> <span>&lt;password&gt;</span>
+</span></code></pre>
+</li>
+</ol>
+<h2 id="enable-ip-forwarding-for-the-azure-network-interface">Enable IP forwarding for the Azure network interface</h2>
+<p>In the next steps, IP forwarding for the <strong>nva</strong> network appliance is enabled. When traffic flows to the NVA but is meant for another target, the NVA will route that traffic to its correct destination.</p>
+<ol>
+<li><p>Run the following command to get the ID of the NVA network interface.</p>
+<pre tabindex="0"><code data-author-content="NICID=$(az vm nic list \
+    --resource-group <rgn>[sandbox resource group name]</rgn> \
+    --vm-name nva \
+    --query &quot;[].{id:id}&quot; --output tsv)
+
+echo $NICID
+"><span>NICID=$(<span>az vm nic list </span>\
+    <span>--resource-group</span> <rgn data-author-content="[sandbox resource group name]">[sandbox resource group name]</rgn> \
+    <span>--vm-name</span> nva \
+    <span>--query</span> <span>"[].{id:id}"</span> <span>--output</span> <span>tsv</span>)
+
+echo <span>$NICID</span>
+</span></code></pre>
+</li>
+<li><p>Run the following command to get the name of the NVA network interface.</p>
+<pre tabindex="0"><code data-author-content="NICNAME=$(az vm nic show \
+    --resource-group <rgn>[sandbox resource group name]</rgn> \
+    --vm-name nva \
+    --nic $NICID \
+    --query &quot;{name:name}&quot; --output tsv)
+
+echo $NICNAME
+"><span>NICNAME=$(<span>az vm nic show </span>\
+    <span>--resource-group</span> <rgn data-author-content="[sandbox resource group name]">[sandbox resource group name]</rgn> \
+    <span>--vm-name</span> nva \
+    <span>--nic</span> <span>$NICID</span> \
+    <span>--query</span> <span>"{name:name}"</span> <span>--output</span> <span>tsv</span>)
+
+echo <span>$NICNAME</span>
+</span></code></pre>
+</li>
+<li><p>Run the following command to enable IP forwarding for the network interface.</p>
+<pre tabindex="0"><code data-author-content="az network nic update --name $NICNAME \
+    --resource-group <rgn>[sandbox resource group name]</rgn> \
+    --ip-forwarding true
+"><span><span>az network nic update </span><span>--name</span> <span>$NICNAME</span> \
+    <span>--resource-group</span> <rgn data-author-content="[sandbox resource group name]">[sandbox resource group name]</rgn> \
+    <span>--ip-forwarding</span> <span>true</span>
+</span></code></pre>
+</li>
+</ol>
+<h2 id="enable-ip-forwarding-in-the-appliance">Enable IP forwarding in the appliance</h2>
+<ol>
+<li><p>Run the following command to save the public IP address of the NVA virtual machine to the variable <code>NVAIP</code>.</p>
+<pre tabindex="0"><code data-author-content="NVAIP=&quot;$(az vm list-ip-addresses \
+    --resource-group <rgn>[sandbox resource group name]</rgn> \
+    --name nva \
+    --query &quot;[].virtualMachine.network.publicIpAddresses[*].ipAddress&quot; \
+    --output tsv)&quot;
+
+echo $NVAIP
+"><span>NVAIP=<span>"<span>$(az vm list-ip-addresses \
+    --resource-group <rgn data-author-content="[sandbox resource group name]">[sandbox resource group name]</rgn> \
+    --name nva \
+    --query "[].virtualMachine.network.publicIpAddresses[*].ipAddress" \
+    --output tsv)</span>"</span>
+
+echo <span>$NVAIP</span>
+</span></code></pre>
+</li>
+<li><p>Run the following command to enable IP forwarding within the NVA.</p>
+<pre tabindex="0"><code data-author-content="ssh -t -o StrictHostKeyChecking=no azureuser@$NVAIP 'sudo sysctl -w net.ipv4.ip_forward=1; exit;'
+"><span>ssh -t -o StrictHostKeyChecking=no azureuser@<span>$NVAIP</span> <span>'sudo sysctl -w net.ipv4.ip_forward=1; exit;'</span>
+</span></code></pre>
+<p>When prompted, enter the password you used when you created the virtual machine.</p>
+</li>
+</ol>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Exercise - Route traffic through the NVA</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/control-network-traffic-flow-with-routes/6-exercise-route-traffic-through-nva/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div><section>
+		<p>
+Need help? See our <a id="troubleshooting-guide" data-bi-name="troubleshooting" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn.control-network-traffic-flow-with-routes.5-exercise-create-nva-vm&amp;documentId=6b56582f-d303-733e-3e65-430427a2be84&amp;versionIndependentDocumentId=19aa7f8a-0326-7818-1ab1-d411217bb223&amp;contentPath=%2FMicrosoftDocs%2Flearn-pr%2Fblob%2Flive%2Flearn-pr%2Fazure%2Fcontrol-network-traffic-flow-with-routes%2F5-exercise-create-nva-vm.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fcontrol-network-traffic-flow-with-routes%2F5-exercise-create-nva-vm&amp;author=jaboes">troubleshooting guide</a> or provide specific feedback by <a id="module-unit-feedback-link" data-bi-name="feedback" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn.control-network-traffic-flow-with-routes.5-exercise-create-nva-vm&amp;documentId=6b56582f-d303-733e-3e65-430427a2be84&amp;versionIndependentDocumentId=19aa7f8a-0326-7818-1ab1-d411217bb223&amp;contentPath=%2FMicrosoftDocs%2Flearn-pr%2Fblob%2Flive%2Flearn-pr%2Fazure%2Fcontrol-network-traffic-flow-with-routes%2F5-exercise-create-nva-vm.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fcontrol-network-traffic-flow-with-routes%2F5-exercise-create-nva-vm&amp;author=jaboes#report-feedback">reporting an issue</a>.		</p>
+	</section></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>
