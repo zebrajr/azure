@@ -1,0 +1,344 @@
+<html dir="ltr"><head><title>Exercise - Prepare Azure and on-premises virtual networks by using Azure CLI commands - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/connect-on-premises-network-with-vpn-gateway/3-exercise-prepare-azure-and-on-premises-vnets-using-azure-cli-commands">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/connect-on-premises-network-with-vpn-gateway/3-exercise-prepare-azure-and-on-premises-vnets-using-azure-cli-commands</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Exercise - Prepare Azure and on-premises virtual networks by using Azure CLI commands - Learn</h1>
+  <div dir="auto" id="reader-credits">jboeshart</div>
+  <div dir="auto" id="reader-estimated-time">4-5 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="main" role="main" data-bi-name="content" lang="en-us" dir="ltr">
+		
+		
+		<ul>
+			<li>6 minutes</li>
+		</ul>
+			<p>Your company is now ready to deploy a site-to-site VPN. This VPN will allow your on-premises servers to connect to resources in Azure. You can then start to securely share data from each of your sites, and you can use resources hosted in Azure across your organization.</p>
+<p>You'll start by creating your Azure-side resources and on-premises network resources. For this deployment, you'll use the following network topology.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/connect-on-premises-network-with-vpn-gateway/media/3-network-topology-used-in-exercise.svg" alt="Network topology for unit 3 exercise" data-linktype="relative-path"></p>
+<p>In this exercise, you'll simulate an on-premises datacenter (HQ-Network) by using an additional Azure virtual network. There are many makes and models of on-premises VPN devices, and it won't be possible to describe their configuration in this unit. The logical method of configuration is the same for a VPN device. You just need to replace the steps for HQ-Network with steps tailored to your on-premises device.</p>
+<p>In the previous diagram, notice that the local network gateway names in each location reflect the <em>target</em> networks rather than the <em>source</em> network. This is a good practice. It clarifies that the local network gateway refers to the <em>other</em> network that you're connecting to.</p>
+<p>In this unit, you'll configure the virtual networks with a subnet, add a gateway subnet, and then create the local network gateway by using the Azure CLI.</p>
+<h2 id="create-the-azure-side-resources">Create the Azure-side resources</h2>
+<ol>
+<li><p>Run this command in Azure Cloud Shell to create the <strong>Azure-VNet-1</strong> virtual network and the <strong>Services</strong> subnet.</p>
+<pre tabindex="0"><code data-author-content="az network vnet create \
+    --resource-group <rgn>[sandbox resource group name]</rgn> \
+    --name Azure-VNet-1 \
+    --address-prefix 10.0.0.0/16 \
+    --subnet-name Services \
+    --subnet-prefix 10.0.0.0/24
+"><span><span>az network vnet create </span>\
+    <span>--resource-group</span> <rgn data-author-content="[sandbox resource group name]">[sandbox resource group name]</rgn> \
+    <span>--name</span> Azure<span>-VNet-</span><span>1</span> \
+    <span>--address-prefix</span> <span>10.0.0.0</span>/<span>16</span> \
+    <span>--subnet-name</span> Services \
+    <span>--subnet-prefix</span> <span>10.0.0.0</span>/<span>24</span>
+</span></code></pre>
+</li>
+<li><p>Run this command in Cloud Shell to add the <strong>GatewaySubnet</strong> subnet to <strong>Azure-VNet-1</strong>.</p>
+<pre tabindex="0"><code data-author-content="az network vnet subnet create \
+    --resource-group <rgn>[sandbox resource group name]</rgn> \
+    --vnet-name Azure-VNet-1 \
+    --address-prefix 10.0.255.0/27 \
+    --name GatewaySubnet
+"><span><span>az network vnet subnet </span>create \
+    <span>--resource-group</span> <rgn data-author-content="[sandbox resource group name]">[sandbox resource group name]</rgn> \
+    <span>--vnet-name</span> Azure<span>-VNet-</span><span>1</span> \
+    <span>--address-prefix</span> <span>10.0.255.0</span>/<span>27</span> \
+    <span>--name</span> GatewaySubnet
+</span></code></pre>
+</li>
+<li><p>Run this command in Cloud Shell to create the <strong>LNG-HQ-Network</strong> local network gateway.</p>
+<pre tabindex="0"><code data-author-content="az network local-gateway create \
+    --resource-group <rgn>[sandbox resource group name]</rgn> \
+    --gateway-ip-address 94.0.252.160 \
+    --name LNG-HQ-Network \
+    --local-address-prefixes 172.16.0.0/16
+"><span><span>az network local-gateway create </span>\
+    <span>--resource-group</span> <rgn data-author-content="[sandbox resource group name]">[sandbox resource group name]</rgn> \
+    <span>--gateway-ip-address</span> <span>94.0.252.160</span> \
+    <span>--name</span> LNG<span>-HQ-Network</span> \
+    <span>--local-address-prefixes</span> <span>172.16.0.0</span>/<span>16</span>
+</span></code></pre>
+<p>This gateway represents the on-premises network that you're connecting to. The IP address specified as the remote gateway (which is the simulated on-premises network) will need to be updated later because it doesn't exist yet in our scenario.</p>
+</li>
+</ol>
+<h2 id="create-the-simulated-on-premises-network-and-supporting-resources">Create the simulated on-premises network and supporting resources</h2>
+<ol>
+<li><p>Run this command in Cloud Shell to create the <strong>HQ-Network</strong> virtual network and the <strong>Applications</strong> subnet.</p>
+<pre tabindex="0"><code data-author-content="az network vnet create \
+    --resource-group <rgn>[sandbox resource group name]</rgn> \
+    --name HQ-Network \
+    --address-prefix 172.16.0.0/16 \
+    --subnet-name Applications \
+    --subnet-prefix 172.16.0.0/24
+"><span><span>az network vnet create </span>\
+    <span>--resource-group</span> <rgn data-author-content="[sandbox resource group name]">[sandbox resource group name]</rgn> \
+    <span>--name</span> HQ<span>-Network</span> \
+    <span>--address-prefix</span> <span>172.16.0.0</span>/<span>16</span> \
+    <span>--subnet-name</span> Applications \
+    <span>--subnet-prefix</span> <span>172.16.0.0</span>/<span>24</span>
+</span></code></pre>
+</li>
+<li><p>Run this command in Cloud Shell to add <strong>GatewaySubnet</strong> to <strong>HQ-Network</strong>.</p>
+<pre tabindex="0"><code data-author-content="az network vnet subnet create \
+    --resource-group <rgn>[sandbox resource group name]</rgn> \
+    --address-prefix 172.16.255.0/27 \
+    --name GatewaySubnet \
+    --vnet-name HQ-Network
+"><span><span>az network vnet subnet </span>create \
+    <span>--resource-group</span> <rgn data-author-content="[sandbox resource group name]">[sandbox resource group name]</rgn> \
+    <span>--address-prefix</span> <span>172.16.255.0</span>/<span>27</span> \
+    <span>--name</span> GatewaySubnet \
+    <span>--vnet-name</span> HQ<span>-Network</span>
+</span></code></pre>
+</li>
+<li><p>Run this command in Cloud Shell to create the <strong>LNG-Azure-VNet-1</strong> local network gateway.</p>
+<pre tabindex="0"><code data-author-content="az network local-gateway create \
+    --resource-group <rgn>[sandbox resource group name]</rgn> \
+    --gateway-ip-address 94.0.252.160 \
+    --name LNG-Azure-VNet-1 \
+    --local-address-prefixes 172.16.255.0/27
+"><span><span>az network local-gateway create </span>\
+    <span>--resource-group</span> <rgn data-author-content="[sandbox resource group name]">[sandbox resource group name]</rgn> \
+    <span>--gateway-ip-address</span> <span>94.0.252.160</span> \
+    <span>--name</span> LNG<span>-Azure-VNet-</span><span>1</span> \
+    <span>--local-address-prefixes</span> <span>172.16.255.0</span>/<span>27</span>
+</span></code></pre>
+<p>This gateway describes the Azure network that you're connecting to. You'll update the IP address specified as the remote gateway (which is in Azure) later.</p>
+</li>
+</ol>
+<h2 id="verify-the-topology">Verify the topology</h2>
+<ol>
+<li><p>Run this command in Cloud Shell to verify that the virtual networks have been successfully created.</p>
+<pre tabindex="0"><code data-author-content="az network vnet list --output table
+"><span><span>az network vnet list </span><span>--output</span> <span>table</span>
+</span></code></pre>
+</li>
+<li><p>Run this command in Cloud Shell to verify that the local network gateways have been successfully created.</p>
+<pre tabindex="0"><code data-author-content="az network local-gateway list \
+    --resource-group <rgn>[sandbox resource group name]</rgn> \
+    --output table
+"><span><span>az network local-gateway list </span>\
+    <span>--resource-group</span> <rgn data-author-content="[sandbox resource group name]">[sandbox resource group name]</rgn> \
+    <span>--output</span> <span>table</span>
+</span></code></pre>
+</li>
+</ol>
+<p>The following diagram shows the resources that you've deployed.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/connect-on-premises-network-with-vpn-gateway/media/3-resources-deployed-during-exercise.svg" alt="Resources deployed during unit 3 exercise" data-linktype="relative-path"></p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Exercise - Create a site-to-site VPN gateway by using Azure CLI commands</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/connect-on-premises-network-with-vpn-gateway/4-exercise-create-a-site-to-site-vpn-gateway-using-azure-cli-commands/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div><section>
+		<p>
+Need help? See our <a id="troubleshooting-guide" data-bi-name="troubleshooting" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn.connect-on-premises-network-with-vpn-gateway.3-exercise-prepare-azure-and-on-premises-vnets-using-azure-cli-commands&amp;documentId=4b314d9a-8f09-c97d-3533-792b61c735f5&amp;versionIndependentDocumentId=6fd196dc-a9a1-11e2-cbed-75c74f7a2bbf&amp;contentPath=%2FMicrosoftDocs%2Flearn-pr%2Fblob%2Flive%2Flearn-pr%2Fazure%2Fconnect-on-premises-network-with-vpn-gateway%2F3-exercise-prepare-azure-and-on-premises-vnets-using-azure-cli-commands.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fconnect-on-premises-network-with-vpn-gateway%2F3-exercise-prepare-azure-and-on-premises-vnets-using-azure-cli-commands&amp;author=jaboes">troubleshooting guide</a> or provide specific feedback by <a id="module-unit-feedback-link" data-bi-name="feedback" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn.connect-on-premises-network-with-vpn-gateway.3-exercise-prepare-azure-and-on-premises-vnets-using-azure-cli-commands&amp;documentId=4b314d9a-8f09-c97d-3533-792b61c735f5&amp;versionIndependentDocumentId=6fd196dc-a9a1-11e2-cbed-75c74f7a2bbf&amp;contentPath=%2FMicrosoftDocs%2Flearn-pr%2Fblob%2Flive%2Flearn-pr%2Fazure%2Fconnect-on-premises-network-with-vpn-gateway%2F3-exercise-prepare-azure-and-on-premises-vnets-using-azure-cli-commands.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fconnect-on-premises-network-with-vpn-gateway%2F3-exercise-prepare-azure-and-on-premises-vnets-using-azure-cli-commands&amp;author=jaboes#report-feedback">reporting an issue</a>.		</p>
+	</section></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

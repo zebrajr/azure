@@ -1,0 +1,479 @@
+<html dir="ltr"><head><title>Exercise - Create a site-to-site VPN gateway by using Azure CLI commands - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/connect-on-premises-network-with-vpn-gateway/4-exercise-create-a-site-to-site-vpn-gateway-using-azure-cli-commands">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/connect-on-premises-network-with-vpn-gateway/4-exercise-create-a-site-to-site-vpn-gateway-using-azure-cli-commands</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Exercise - Create a site-to-site VPN gateway by using Azure CLI commands - Learn</h1>
+  <div dir="auto" id="reader-credits">jboeshart</div>
+  <div dir="auto" id="reader-estimated-time">10-13 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>25 minutes</li>
+		</ul>
+			<p>You're now ready to complete your site-to-site VPN gateway by creating the public IP addresses, virtual network gateways, and connections. Remember that you used placeholders for the public IP address references when you created your local network gateways. So one of your tasks now is to update these gateways with the actual public IP addresses assigned to your virtual network gateways.</p>
+<p>Ideally, the public IP addresses and virtual network gateways should be created <em>before</em> the local network gateways. In this exercise, you'll see how to update the local network gateways. You can use the same commands to update any configuration elements in the local network gateways, like remote network address spaces.</p>
+<h2 id="create-the-azure-side-vpn-gateway">Create the Azure-side VPN gateway</h2>
+<p>First, you'll create the VPN gateway for the Azure end of the connection. It can take up to 45 minutes to create a virtual network gateway. To save time, you'll use Azure CLI commands with the <code>--no-wait</code> parameter. This parameter lets you create both virtual network gateways simultaneously to minimize the overall time required to create these resources.</p>
+<ol>
+<li><p>Run this command in Cloud Shell to create the <strong>PIP-VNG-Azure-VNet-1</strong> public IP address.</p>
+<pre tabindex="0"><code data-author-content="az network public-ip create \
+    --resource-group <rgn>[sandbox resource group name]</rgn> \
+    --name PIP-VNG-Azure-VNet-1 \
+    --allocation-method Dynamic
+"><span><span>az network public-ip create </span>\
+    <span>--resource-group</span> <rgn data-author-content="[sandbox resource group name]">[sandbox resource group name]</rgn> \
+    <span>--name</span> PIP<span>-VNG-Azure-VNet-</span><span>1</span> \
+    <span>--allocation-method</span> Dynamic
+</span></code></pre>
+</li>
+<li><p>Run this command in Cloud Shell to create the <strong>VNG-Azure-VNet-1</strong> virtual network.</p>
+<pre tabindex="0"><code data-author-content="az network vnet create \
+    --resource-group <rgn>[sandbox resource group name]</rgn> \
+    --name VNG-Azure-VNet-1 \
+    --subnet-name GatewaySubnet 
+"><span><span>az network vnet create </span>\
+    <span>--resource-group</span> <rgn data-author-content="[sandbox resource group name]">[sandbox resource group name]</rgn> \
+    <span>--name</span> VNG<span>-Azure-VNet-</span><span>1</span> \
+    <span>--subnet-name</span> GatewaySubnet 
+</span></code></pre>
+</li>
+<li><p>Run this command in Cloud Shell to create the <strong>VNG-Azure-VNet-1</strong> virtual network gateway.</p>
+<pre tabindex="0"><code data-author-content="az network vnet-gateway create \
+    --resource-group <rgn>[sandbox resource group name]</rgn> \
+    --name VNG-Azure-VNet-1 \
+    --public-ip-address PIP-VNG-Azure-VNet-1 \
+    --vnet VNG-Azure-VNet-1 \
+    --gateway-type Vpn \
+    --vpn-type RouteBased \
+    --sku VpnGw1 \
+    --no-wait
+"><span><span>az network vnet-gateway create </span>\
+    <span>--resource-group</span> <rgn data-author-content="[sandbox resource group name]">[sandbox resource group name]</rgn> \
+    <span>--name</span> VNG<span>-Azure-VNet-</span><span>1</span> \
+    <span>--public-ip-address</span> PIP<span>-VNG-Azure-VNet-</span><span>1</span> \
+    <span>--vnet</span> VNG<span>-Azure-VNet-</span><span>1</span> \
+    <span>--gateway-type</span> Vpn \
+    <span>--vpn-type</span> RouteBased \
+    <span>--sku</span> VpnGw1 \
+    <span>--no-wait</span>
+</span></code></pre>
+</li>
+</ol>
+<h2 id="create-the-on-premises-vpn-gateway">Create the on-premises VPN gateway</h2>
+<p>Next, you'll create a VPN gateway to simulate an on-premises VPN device.</p>
+<ol>
+<li><p>Run this command in Cloud Shell to create the <strong>PIP-VNG-HQ-Network</strong> public IP address.</p>
+<pre tabindex="0"><code data-author-content="az network public-ip create \
+    --resource-group <rgn>[sandbox resource group name]</rgn> \
+    --name PIP-VNG-HQ-Network \
+    --allocation-method Dynamic
+"><span><span>az network public-ip create </span>\
+    <span>--resource-group</span> <rgn data-author-content="[sandbox resource group name]">[sandbox resource group name]</rgn> \
+    <span>--name</span> PIP<span>-VNG-HQ-Network</span> \
+    <span>--allocation-method</span> Dynamic
+</span></code></pre>
+</li>
+<li><p>Run this command in Cloud Shell to create the <strong>VNG-HQ-Network</strong> virtual network.</p>
+<pre tabindex="0"><code data-author-content="az network vnet create \
+    --resource-group <rgn>[sandbox resource group name]</rgn> \
+    --name VNG-HQ-Network \
+    --subnet-name GatewaySubnet 
+"><span><span>az network vnet create </span>\
+    <span>--resource-group</span> <rgn data-author-content="[sandbox resource group name]">[sandbox resource group name]</rgn> \
+    <span>--name</span> VNG<span>-HQ-Network</span> \
+    <span>--subnet-name</span> GatewaySubnet 
+</span></code></pre>
+</li>
+<li><p>Run this command in Cloud Shell to create the <strong>VNG-HQ-Network</strong> virtual network gateway.</p>
+<pre tabindex="0"><code data-author-content="az network vnet-gateway create \
+    --resource-group <rgn>[sandbox resource group name]</rgn> \
+    --name VNG-HQ-Network \
+    --public-ip-address PIP-VNG-HQ-Network \
+    --vnet VNG-HQ-Network \
+    --gateway-type Vpn \
+    --vpn-type RouteBased \
+    --sku VpnGw1 \
+    --no-wait
+"><span><span>az network vnet-gateway create </span>\
+    <span>--resource-group</span> <rgn data-author-content="[sandbox resource group name]">[sandbox resource group name]</rgn> \
+    <span>--name</span> VNG<span>-HQ-Network</span> \
+    <span>--public-ip-address</span> PIP<span>-VNG-HQ-Network</span> \
+    <span>--vnet</span> VNG<span>-HQ-Network</span> \
+    <span>--gateway-type</span> Vpn \
+    <span>--vpn-type</span> RouteBased \
+    <span>--sku</span> VpnGw1 \
+    <span>--no-wait</span>
+</span></code></pre>
+</li>
+<li><p>Gateway creation takes approximately 45 minutes to complete. To monitor the progress of the gateway creation, run the following command. We're using the Linux <code>watch</code> command to run the <code>az network vnet-gateway list</code> command periodically, which enables you to monitor the progress.</p>
+<pre tabindex="0"><code data-author-content="watch -d -n 5 az network vnet-gateway list \
+    --resource-group <rgn>[sandbox resource group name]</rgn> \
+    --output table
+"><span>watch <span>-d</span> <span>-n</span> <span>5</span> <span>az network vnet-gateway list </span>\
+    <span>--resource-group</span> <rgn data-author-content="[sandbox resource group name]">[sandbox resource group name]</rgn> \
+    <span>--output</span> <span>table</span>
+</span></code></pre>
+<p>After each VPN gateway shows a <strong>ProvisioningState</strong> of <strong>Succeeded</strong>, you're ready to continue. Press <kbd>Ctrl+C</kbd> to halt the command after the gateway is created.</p>
+<pre tabindex="0"><code data-author-content="ActiveActive    EnableBgp    EnablePrivateIpAddress   GatewayType    Location        Name              ProvisioningState    ResourceGroup                         ResourceGuid                          VpnType
+--------------  -----------  ------------------------ -------------  --------------  ----------------  -------------------  -----------------------------  ------------------------------------  ----------
+False           False        False                    Vpn            southcentralus  VNG-Azure-VNet-1  Succeeded            <rgn>[sandbox resource group name]</rgn>  48dc714e-a700-42ad-810f-a8163ee8e001  RouteBased
+False           False        False                    Vpn            southcentralus  VNG-HQ-Network    Succeeded            <rgn>[sandbox resource group name]</rgn>  49b3041d-e878-40d9-a135-58e0ecb7e48b  RouteBased
+">ActiveActive    EnableBgp    EnablePrivateIpAddress   GatewayType    Location        Name              ProvisioningState    ResourceGroup                         ResourceGuid                          VpnType
+--------------  -----------  ------------------------ -------------  --------------  ----------------  -------------------  -----------------------------  ------------------------------------  ----------
+False           False        False                    Vpn            southcentralus  VNG-Azure-VNet-1  Succeeded            [sandbox resource group name]  48dc714e-a700-42ad-810f-a8163ee8e001  RouteBased
+False           False        False                    Vpn            southcentralus  VNG-HQ-Network    Succeeded            [sandbox resource group name]  49b3041d-e878-40d9-a135-58e0ecb7e48b  RouteBased
+</code></pre>
+</li>
+</ol>
+<h2 id="update-the-local-network-gateway-ip-references">Update the local network gateway IP references</h2>
+<div>
+<p> Important</p>
+<p>Your virtual network gateways must be successfully deployed before you start the next exercise. A gateway can take up to 45 minutes to complete. If the ProvisioningState does not show "Succeeded" yet, you need to wait.</p>
+</div>
+<p>In this section, you'll update the remote gateway IP address references that are defined in the local network gateways. You can't update the local network gateways until you've created the VPN gateways and an IPv4 address is assigned to and associated with them. Use the following Azure CLI command to check whether both virtual network gateways have been created.</p>
+<pre tabindex="0"><code data-author-content="az network vnet-gateway list \
+    --resource-group <rgn>[sandbox resource group name]</rgn> \
+    --query &quot;[?provisioningState=='Succeeded']&quot; \
+    --output table
+"><span><span>az network vnet-gateway list </span>\
+    <span>--resource-group</span> <rgn data-author-content="[sandbox resource group name]">[sandbox resource group name]</rgn> \
+    <span>--query</span> <span>"[?provisioningState=='Succeeded']"</span> \
+    <span>--output</span> <span>table</span>
+</span></code></pre>
+<pre tabindex="0"><code data-author-content="Name              Location    GatewayType    VpnType     VpnGatewayGeneration    EnableBgp    EnablePrivateIpAddress    Active    ResourceGuid                        ProvisioningState    ResourceGroup
+----------------  ----------  -------------  ----------  ----------------------  -----------  ------------------------  --------  ------------------------------------  -------------------  ------------------------------------------
+VNG-Azure-VNet-1  westus      Vpn            RouteBased  Generation1         False        False                     False     9a2e60e6-da57-4274-99fd-e1f8b2c0326d  Succeeded            learn-cfbcca66-16fd-423e-b688-66f242d8f09e
+VNG-HQ-Network    westus      Vpn            RouteBased  Generation1         False        False                     False     c36430ed-e6c0-4230-ae40-cf937a102bcd  Succeeded            learn-cfbcca66-16fd-423e-b688-66f242d8f09e
+">Name              Location    GatewayType    VpnType     VpnGatewayGeneration    EnableBgp    EnablePrivateIpAddress    Active    ResourceGuid                        ProvisioningState    ResourceGroup
+----------------  ----------  -------------  ----------  ----------------------  -----------  ------------------------  --------  ------------------------------------  -------------------  ------------------------------------------
+VNG-Azure-VNet-1  westus      Vpn            RouteBased  Generation1         False        False                     False     9a2e60e6-da57-4274-99fd-e1f8b2c0326d  Succeeded            learn-cfbcca66-16fd-423e-b688-66f242d8f09e
+VNG-HQ-Network    westus      Vpn            RouteBased  Generation1         False        False                     False     c36430ed-e6c0-4230-ae40-cf937a102bcd  Succeeded            learn-cfbcca66-16fd-423e-b688-66f242d8f09e
+</code></pre>
+<p>Remember to wait until the lists of gateways are successfully returned. Also, remember that the local network gateway resources define the settings of the <em>remote</em> gateway and network that they're named after. For example, the <strong>LNG-Azure-VNet-1</strong> local network gateway contains information like the IP address and networks for <strong>Azure-VNet-1</strong>.</p>
+<ol>
+<li><p>Run this command in Cloud Shell to retrieve the IPv4 address assigned to <strong>PIP-VNG-Azure-VNet-1</strong> and store it in a variable.</p>
+<pre tabindex="0"><code data-author-content="PIPVNGAZUREVNET1=$(az network public-ip show \
+    --resource-group <rgn>[sandbox resource group name]</rgn> \
+    --name PIP-VNG-Azure-VNet-1 \
+    --query &quot;[ipAddress]&quot; \
+    --output tsv)
+"><span>PIPVNGAZUREVNET1=$(<span>az network public-ip show </span>\
+    <span>--resource-group</span> <rgn data-author-content="[sandbox resource group name]">[sandbox resource group name]</rgn> \
+    <span>--name</span> PIP<span>-VNG-Azure-VNet-</span><span>1</span> \
+    <span>--query</span> <span>"[ipAddress]"</span> \
+    <span>--output</span> <span>tsv</span>)
+</span></code></pre>
+</li>
+<li><p>Run this command in Cloud Shell to update the <strong>LNG-Azure-VNet-1</strong> local network gateway so that it points to the public IP address attached to the <strong>VNG-Azure-VNet-1</strong> virtual network gateway.</p>
+<pre tabindex="0"><code data-author-content="az network local-gateway update \
+    --resource-group <rgn>[sandbox resource group name]</rgn> \
+    --name LNG-Azure-VNet-1 \
+    --gateway-ip-address $PIPVNGAZUREVNET1
+"><span><span>az network local-gateway update </span>\
+    <span>--resource-group</span> <rgn data-author-content="[sandbox resource group name]">[sandbox resource group name]</rgn> \
+    <span>--name</span> LNG<span>-Azure-VNet-</span><span>1</span> \
+    <span>--gateway-ip-address</span> <span>$PIPVNGAZUREVNET1</span>
+</span></code></pre>
+</li>
+<li><p>Run this command in Cloud Shell to retrieve the IPv4 address assigned to <strong>PIP-VNG-HQ-Network</strong> and store it in a variable.</p>
+<pre tabindex="0"><code data-author-content="PIPVNGHQNETWORK=$(az network public-ip show \
+    --resource-group <rgn>[sandbox resource group name]</rgn> \
+    --name PIP-VNG-HQ-Network \
+    --query &quot;[ipAddress]&quot; \
+    --output tsv)
+"><span>PIPVNGHQNETWORK=$(<span>az network public-ip show </span>\
+    <span>--resource-group</span> <rgn data-author-content="[sandbox resource group name]">[sandbox resource group name]</rgn> \
+    <span>--name</span> PIP<span>-VNG-HQ-Network</span> \
+    <span>--query</span> <span>"[ipAddress]"</span> \
+    <span>--output</span> <span>tsv</span>)
+</span></code></pre>
+</li>
+<li><p>Run this command in Cloud Shell to update the <strong>LNG-HQ-Network</strong> local network gateway so that it points to the public IP address attached to the <strong>VNG-HQ-Network</strong> virtual network gateway.</p>
+<pre tabindex="0"><code data-author-content="az network local-gateway update \
+    --resource-group <rgn>[sandbox resource group name]</rgn> \
+    --name LNG-HQ-Network \
+    --gateway-ip-address $PIPVNGHQNETWORK
+"><span><span>az network local-gateway update </span>\
+    <span>--resource-group</span> <rgn data-author-content="[sandbox resource group name]">[sandbox resource group name]</rgn> \
+    <span>--name</span> LNG<span>-HQ-Network</span> \
+    <span>--gateway-ip-address</span> <span>$PIPVNGHQNETWORK</span>
+</span></code></pre>
+</li>
+</ol>
+<h2 id="create-the-connections">Create the connections</h2>
+<p>You'll now complete the configuration by creating the connections from each VPN gateway to the local network gateway that contains the public IP address references for that gateway's remote network.</p>
+<ol>
+<li><p>Create the shared key to use for the connections. In the following command, replace <code>&lt;shared key&gt;</code> with a text string to use for the IPSec pre-shared key. The pre-shared key is a string of printable ASCII characters no longer than 128 characters. You'll use this pre-shared key on both connections.</p>
+<div>
+<p> Note</p>
+<p>In this example, any set of numbers will work for a shared key: SHAREDKEY=123456789. In production environments, we recommend using a string of printable ASCII characters no longer than 128 characters.</p>
+</div>
+<pre tabindex="0"><code data-author-content="SHAREDKEY=<shared key>
+"><span>SHAREDKEY=&lt;shared key&gt;
+</span></code></pre>
+</li>
+<li><p>Remember that <strong>LNG-HQ-Network</strong> contains a reference to the IP address on your simulated on-premises VPN device. Run this command in Cloud Shell to create a connection from <strong>VNG-Azure-VNet-1</strong> to <strong>LNG-HQ-Network</strong>.</p>
+<pre tabindex="0"><code data-author-content="az network vpn-connection create \
+    --resource-group <rgn>[sandbox resource group name]</rgn> \
+    --name Azure-VNet-1-To-HQ-Network \
+    --vnet-gateway1 VNG-Azure-VNet-1 \
+    --shared-key $SHAREDKEY \
+    --local-gateway2 LNG-HQ-Network
+"><span><span>az network vpn-connection create </span>\
+    <span>--resource-group</span> <rgn data-author-content="[sandbox resource group name]">[sandbox resource group name]</rgn> \
+    <span>--name</span> Azure<span>-VNet-</span><span>1</span><span>-To-HQ-Network</span> \
+    <span>--vnet-gateway</span>1 VNG<span>-Azure-VNet-</span><span>1</span> \
+    <span>--shared-key</span> <span>$SHAREDKEY</span> \
+    <span>--local-gateway</span>2 LNG<span>-HQ-Network</span>
+</span></code></pre>
+</li>
+<li><p>Remember that <strong>LNG-Azure-VNet-1</strong> contains a reference to the public IP address associated with the <strong>VNG-Azure-VNet-1</strong> VPN gateway. This connection would normally be created from your on-premises device. Run this command in Cloud Shell to create a connection from <strong>VNG-HQ-Network</strong> to <strong>LNG-Azure-VNet-1</strong>.</p>
+<pre tabindex="0"><code data-author-content="az network vpn-connection create \
+    --resource-group <rgn>[sandbox resource group name]</rgn> \
+    --name HQ-Network-To-Azure-VNet-1  \
+    --vnet-gateway1 VNG-HQ-Network \
+    --shared-key $SHAREDKEY \
+    --local-gateway2 LNG-Azure-VNet-1
+"><span><span>az network vpn-connection create </span>\
+    <span>--resource-group</span> <rgn data-author-content="[sandbox resource group name]">[sandbox resource group name]</rgn> \
+    <span>--name</span> HQ<span>-Network-To-Azure-VNet-</span><span>1</span>  \
+    <span>--vnet-gateway</span>1 VNG<span>-HQ-Network</span> \
+    <span>--shared-key</span> <span>$SHAREDKEY</span> \
+    <span>--local-gateway</span>2 LNG<span>-Azure-VNet-</span><span>1</span>
+</span></code></pre>
+</li>
+</ol>
+<p>You've now finished the configuration of the site-to-site connection. This may take a few minutes, but the tunnels should automatically connect and become active.</p>
+<h2 id="verification-steps">Verification steps</h2>
+<p>Let's confirm that the VPN tunnels are connected.</p>
+<ol>
+<li><p>Run the following command to confirm that <strong>Azure-VNet-1-To-HQ-Network</strong> is connected.</p>
+<pre tabindex="0"><code data-author-content="az network vpn-connection show \
+    --resource-group <rgn>[sandbox resource group name]</rgn> \
+    --name Azure-VNet-1-To-HQ-Network  \
+    --output table \
+    --query '{Name:name,ConnectionStatus:connectionStatus}'
+"><span><span>az network vpn-connection show </span>\
+    <span>--resource-group</span> <rgn data-author-content="[sandbox resource group name]">[sandbox resource group name]</rgn> \
+    <span>--name</span> Azure<span>-VNet-</span><span>1</span><span>-To-HQ-Network</span>  \
+    <span>--output</span> <span>table</span> \
+    <span>--query</span> <span>'{Name:name,ConnectionStatus:connectionStatus}'</span>
+</span></code></pre>
+<p>You should see output like below indicating the connection is successful. If the <code>ConnectionStatus</code> shows as <code>Connecting</code> or <code>Unknown</code>, wait a minute or two and rerun the command. The connections can take a few minutes to fully connect.</p>
+<pre tabindex="0"><code data-author-content="Name                        ConnectionStatus
+--------------------------  ------------------
+Azure-VNet-1-To-HQ-Network  Connected
+">Name                        ConnectionStatus
+--------------------------  ------------------
+Azure-VNet-1-To-HQ-Network  Connected
+</code></pre>
+</li>
+</ol>
+<p>The site-to-site configuration is now complete. Your final topology, including the subnets, and connections, with logical connection points, appears in the following diagram. Virtual machines deployed in the <strong>Services</strong> and <strong>Applications</strong> subnets can now communicate with each other, now that the VPN connections have been successfully established.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/connect-on-premises-network-with-vpn-gateway/media/4-resources-deployed-during-exercise-final.svg" alt="Resources deployed during unit 4 exercise" data-linktype="relative-path"></p>
+
+		
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

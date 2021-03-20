@@ -1,0 +1,307 @@
+<html dir="ltr"><head><title>Connect on-premises networks to Azure by using site-to-site VPN gateways - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/connect-on-premises-network-with-vpn-gateway/2-connect-on-premises-networks-to-azure-using-site-to-site-vpn-gateways">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/connect-on-premises-network-with-vpn-gateway/2-connect-on-premises-networks-to-azure-using-site-to-site-vpn-gateways</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Connect on-premises networks to Azure by using site-to-site VPN gateways - Learn</h1>
+  <div dir="auto" id="reader-credits">jboeshart</div>
+  <div dir="auto" id="reader-estimated-time">9-12 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>5 minutes</li>
+		</ul>
+			<p>A virtual private network (VPN) is a type of private interconnected network. VPNs use an encrypted tunnel within another network. They're typically deployed to connect two or more trusted private networks to one another over an untrusted network (typically the public Internet). Traffic is encrypted while traveling over the untrusted network to prevent eavesdropping or other attacks.</p>
+<p>For the healthcare provider in our scenario, VPNs can enable health professionals to share sensitive information between locations. For example, say a patient requires surgery at a specialist facility. The surgical team needs to be able to see the details of the patient's medical history. This medical data is stored on a system in Azure. A VPN that connects the facility to Azure allows the surgical team to securely access this information.</p>
+<h2 id="azure-vpn-gateways">Azure VPN gateways</h2>
+<p>A VPN gateway is a type of Virtual Network Gateway. VPN gateways are deployed in Azure virtual networks and enable the following connectivity:</p>
+<ul>
+<li>Connect on-premises datacenters to Azure virtual networks through a <em>site-to-site</em> connection.</li>
+<li>Connect individual devices to Azure virtual networks through a <em>point-to-site</em> connection.</li>
+<li>Connect Azure virtual networks to other Azure virtual networks through a <em>network-to-network</em> connection.</li>
+</ul>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/connect-on-premises-network-with-vpn-gateway/media/2-vpngateway-site-to-site-connection-diagram.svg" alt="Visualization of a VPN connection to Azure" data-linktype="relative-path"></p>
+<p>All transferred data is encrypted in a private tunnel as it crosses the internet. You can deploy only one VPN gateway in each virtual network, but you can use one gateway to connect to multiple locations, including other Azure virtual networks or on-premises datacenters.</p>
+<p>When you deploy a VPN gateway, you specify the VPN type: either policy-based or route-based. The main difference of these two types of VPNs is how traffic to be encrypted is specified</p>
+<h3 id="policy-based-vpns">Policy-based VPNs</h3>
+<p>Policy-based VPN gateways specify statically the IP address of packets that should be encrypted through each tunnel. This type of device evaluates every data packet against those sets of IP addresses to choose the tunnel where that packet is going to be sent through. Key features of policy-based VPN gateways in Azure include:</p>
+<ul>
+<li>Support for IKEv1 only.</li>
+<li>Use of <em>static routing</em>, where combinations of address prefixes from both networks control how traffic is encrypted and decrypted through the VPN tunnel. The source and destination of the tunneled networks are declared in the policy and don't need to be declared in routing tables.</li>
+<li>Policy-based VPNs must be used in specific scenarios that require them, such as for compatibility with legacy on-premises VPN devices.</li>
+</ul>
+<h3 id="route-based-vpns">Route-based VPNs</h3>
+<p>If defining which IP addresses are behind each tunnel is too cumbersome, route-based gateways can be used. With route-based gateways, IPSec tunnels are modeled as a network interface or VTI (virtual tunnel interface). IP routing (static routes or dynamic routing protocols) decide across which one of these tunnel interfaces to send each packet. Route-based VPNs are the preferred connection method for on-premises devices, since they are more resilient to topology changes such as the creation of new subnets, for example. Use a route-based VPN gateway if you need any of the following types of connectivity:</p>
+<ul>
+<li>Connections between virtual networks</li>
+<li>Point-to-site connections</li>
+<li>Multisite connections</li>
+<li>Coexistence with an Azure ExpressRoute gateway</li>
+</ul>
+<p>Key features of route-based VPNs gateways in Azure include:</p>
+<ul>
+<li>Supports IKEv2.</li>
+<li>Uses any-to-any (wildcard) traffic selectors.</li>
+<li>Can use <em>dynamic routing protocols</em>, where routing/forwarding tables direct traffic to different IPSec tunnels. In this case, the source and destination networks are not statically defined as they are in policy-based VPNs or even in route-based VPNs with static routing. Instead, data packets are encrypted based on network routing tables that are created dynamically using routing protocols such as BGP (Border Gateway Protocol).</li>
+</ul>
+<p>Both types of VPN gateways (route-based and policy-based) in Azure use pre-shared key as the only method of authentication. Both types also rely on Internet Key Exchange (IKE) in either version 1 or version 2 and Internet Protocol Security (IPSec). IKE is used to set up a security association (an agreement of the encryption) between two endpoints. This association is then passed to the IPSec suite, which encrypts and decrypts data packets encapsulated in the VPN tunnel.</p>
+<h2 id="vpn-gateway-sizes">VPN gateway sizes</h2>
+<p>The capabilities of your VPN gateway are determined by the SKU or size that you deploy. This table shows the main capabilities of each available SKU:</p>
+
+<p>Basic VPN Gateway should only be used for Dev/Test workloads.  In addition, it is unsupported to migrate from Basic to any VpnGw#/Az  sku at a later time without having to remove the gateway and redeploy.</p>
+<h2 id="deploying-vpn-gateways">Deploying VPN gateways</h2>
+<p>Before you can deploy a VPN gateway, you'll need some Azure and on-premises resources.</p>
+<h3 id="required-azure-resources">Required Azure resources</h3>
+<p>You'll need these Azure resources before you can deploy an operational VPN gateway:</p>
+<ul>
+<li><p><strong>Virtual network</strong>. Deploy an Azure virtual network with enough address space for the additional subnet that you'll need for the VPN gateway. The address space for this virtual network must not overlap with the on-premises network that you'll be connecting to. Remember that you can deploy only one VPN gateway within a virtual network.</p>
+</li>
+<li><p><strong>GatewaySubnet</strong>. Deploy a subnet called <code>GatewaySubnet</code> for the VPN gateway. Use at least a <strong>/27</strong> address mask to make sure you have enough IP addresses in the subnet for future growth. You can't use this subnet for any other services.</p>
+</li>
+<li><p><strong>Public IP address</strong>. Create a Basic-SKU dynamic public IP address if using a non-zone-aware gateway. This address provides a public-routable IP address as the target for your on-premises VPN device. This IP address is dynamic, but it won't change unless you delete and re-create the VPN gateway.</p>
+</li>
+<li><p><strong>Local network gateway</strong>. Create a local network gateway to define the on-premises network's configuration: where the VPN gateway will connect and what it will connect to. This configuration includes the on-premises VPN device's public IPv4 address and the on-premises routable networks. This information is used by the VPN gateway to route packets that are destined for on-premises networks through the IPSec tunnel.</p>
+</li>
+<li><p><strong>Virtual network gateway</strong>. Create the virtual network gateway to route traffic between the virtual network and the on-premises datacenter or other virtual networks. The virtual network gateway can be either a VPN or ExpressRoute gateway, but this module deals only with VPN virtual network gateways.</p>
+</li>
+<li><p><strong>Connection</strong>. Create a Connection resource to create a logical connection between the VPN gateway and the local network gateway.</p>
+<ul>
+<li>The connection is made to the on-premises VPN device's IPv4 address as defined by the local network gateway.</li>
+<li>The connection is made from the virtual network gateway and its associated public IP address.</li>
+</ul>
+<p>You can create multiple connections.</p>
+</li>
+</ul>
+<p>The following diagram shows this combination of resources and their relationships to help you better understand what's required to deploy a VPN gateway:</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/connect-on-premises-network-with-vpn-gateway/media/2-resource-requirements-for-vpn-gateway.svg" alt="Resource requirements for a VPN gateway" data-linktype="relative-path"></p>
+<h3 id="required-on-premises-resources">Required on-premises resources</h3>
+<p>To connect your datacenter to a VPN gateway, you'll need these on-premises resources:</p>
+<ul>
+<li>A VPN device that supports policy-based or route-based VPN gateways</li>
+<li>A public-facing (internet-routable) IPv4 address</li>
+</ul>
+<h2 id="high-availability-scenarios">High availability scenarios</h2>
+<p>There are several ways to ensure you have a fault-tolerant configuration.</p>
+<h3 id="activestandby">Active/standby</h3>
+<p>By default, VPN gateways are deployed as two instances in an <em>active/standby</em> configuration, even if you only see one VPN gateway resource in Azure. When planned maintenance or unplanned disruption affects the active instance, the standby instance automatically assumes responsibility for connections without any user intervention. Connections are interrupted during this failover, but they're typically restored within a few seconds for planned maintenance and within 90 seconds for unplanned disruptions.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/connect-on-premises-network-with-vpn-gateway/media/2-active-standby.svg" alt="Active/standby virtual network gateway" data-linktype="relative-path"></p>
+<h3 id="activeactive">Active/active</h3>
+<p>With the introduction of support for the BGP routing protocol, you can also deploy VPN gateways in an <em>active/active</em> configuration. In this configuration, you assign a unique public IP address to each instance. You then create separate tunnels from the on-premises device to each IP address. You can extend the high availability by deploying an additional VPN device on-premises.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/connect-on-premises-network-with-vpn-gateway/media/2-dual-redundancy.svg" alt="Active/active virtual network Gateway" data-linktype="relative-path"></p>
+<h3 id="expressroute-failover">ExpressRoute failover</h3>
+<p>Another high availability option is to configure a VPN gateway as a secure failover path for ExpressRoute connections. ExpressRoute circuits have resiliency built in but aren't immune to physical problems that affect the cables delivering connectivity or outages affecting the complete ExpressRoute location. In high availability scenarios, where there's risk associated with an outage of an ExpressRoute circuit, you can also provision a VPN gateway which uses the internet as an alternative method of connectivity, thus ensuring there's always a connection to the Azure virtual networks.</p>
+<h3 id="zone-redundant-gateways">Zone-redundant gateways</h3>
+<p>In regions that support availability zones, VPN and ExpressRoute gateways can be deployed in a zone-redundant configuration. This brings resiliency, scalability, and higher availability to virtual network gateways. Deploying gateways in Azure Availability Zones physically and logically separates gateways within a region, while protecting your on-premises network connectivity to Azure from zone-level failures. These require different gateway SKUs and leverage Standard public IP addresses instead of Basic public IP addresses.</p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Exercise - Prepare Azure and on-premises virtual networks by using Azure CLI commands</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/connect-on-premises-network-with-vpn-gateway/3-exercise-prepare-azure-and-on-premises-vnets-using-azure-cli-commands/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>
