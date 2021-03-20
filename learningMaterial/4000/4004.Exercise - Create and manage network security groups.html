@@ -1,0 +1,628 @@
+<html dir="ltr"><head><title>Exercise - Create and manage network security groups - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/secure-and-isolate-with-nsg-and-service-endpoints/3-exercise-network-security-groups">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/secure-and-isolate-with-nsg-and-service-endpoints/3-exercise-network-security-groups</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Exercise - Create and manage network security groups - Learn</h1>
+  <div dir="auto" id="reader-credits">jboeshart</div>
+  <div dir="auto" id="reader-estimated-time">12-15 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>15 minutes</li>
+		</ul>
+			<p>As the solution architect for the manufacturing company, you now want to start moving the ERP app and database servers to Azure. As a first step, you're going to test out your network security plan, using two of your servers.</p>
+<p>In this unit, you'll configure a network security group and security rules to restrict network traffic to specific servers. You want your app server to be able to connect to your database server over HTTP. You don't want the database server to be able to use HTTP to connect to the app server.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/secure-and-isolate-with-nsg-and-service-endpoints/media/3-exercise-first-task.svg" alt="Diagram of exercise scenario network security groups" data-linktype="relative-path"></p>
+<div>
+<p> Important</p>
+<p>You need your own Azure subscription to run this exercise, and you might incur charges.&nbsp;If you don't already have an Azure subscription, create a <a href="https://azure.microsoft.com/free/" data-linktype="external" target="az-portal">free account</a> before you begin.</p>
+</div>
+<h2 id="create-a-virtual-network-and-network-security-group">Create a virtual network and network security group</h2>
+<p>First, you'll create a resource group, the virtual network, and subnets for your server resources. You'll then create a network security group.</p>
+<ol>
+<li><p>Open the <a href="https://shell.azure.com/" data-linktype="external" target="az-portal">Azure Cloud Shell</a> in your browser, and log in to the directory with access to the subscription you want to create resources in. Use the Bash version of Cloud Shell.</p>
+</li>
+<li><p>To create a variable to store your resource group name, and a resource group for your resources, in the Cloud Shell, run the following command. Replace <code>&lt;resource group name&gt;</code> with a name for your resource group, and <code>&lt;location&gt;</code> with the Azure region you'd like to deploy your resources in.</p>
+</li>
+</ol>
+<p>Find the location name with the following command.</p>
+<pre tabindex="0"><code data-author-content="    az account list-locations -o table
+"><span>    <span>az account list-locations </span><span>-o</span> <span>table</span>
+</span></code></pre>
+<ol start="3">
+<li>Next, create the resource group.</li>
+</ol>
+<pre tabindex="0"><code data-author-content="    rg=<resource group name>
+
+    az group create --name $rg --location <location>
+"><span>    rg=<span>&lt;resource group name&gt;</span>
+
+    <span>az group create </span><span>--name</span> <span>$rg</span> <span>--location</span> <span>&lt;location&gt;</span>
+</span></code></pre>
+<ol start="4">
+<li><p>To create the <strong>ERP-servers</strong> virtual network and the <strong>Applications</strong> subnet, in the Cloud Shell, run the following command.</p>
+<pre tabindex="0"><code data-author-content="az network vnet create \
+    --resource-group $rg \
+    --name ERP-servers \
+    --address-prefix 10.0.0.0/16 \
+    --subnet-name Applications \
+    --subnet-prefix 10.0.0.0/24
+"><span><span>az network vnet create </span>\
+    <span>--resource-group</span> <span>$rg</span> \
+    <span>--name</span> ERP<span>-servers</span> \
+    <span>--address-prefix</span> <span>10.0.0.0</span>/<span>16</span> \
+    <span>--subnet-name</span> Applications \
+    <span>--subnet-prefix</span> <span>10.0.0.0</span>/<span>24</span>
+</span></code></pre>
+</li>
+<li><p>To create the <strong>Databases</strong> subnet, in the Cloud Shell, run the following command.</p>
+<pre tabindex="0"><code data-author-content="az network vnet subnet create \
+    --resource-group $rg \
+    --vnet-name ERP-servers \
+    --address-prefix 10.0.1.0/24 \
+    --name Databases
+"><span><span>az network vnet subnet </span>create \
+    <span>--resource-group</span> <span>$rg</span> \
+    <span>--vnet-name</span> ERP<span>-servers</span> \
+    <span>--address-prefix</span> <span>10.0.1.0</span>/<span>24</span> \
+    <span>--name</span> Databases
+</span></code></pre>
+</li>
+<li><p>To create the <strong>ERP-SERVERS-NSG</strong> network security group, in the Cloud Shell, run the following command.</p>
+<pre tabindex="0"><code data-author-content="az network nsg create \
+    --resource-group $rg \
+    --name ERP-SERVERS-NSG
+"><span><span>az network nsg create </span>\
+    <span>--resource-group</span> <span>$rg</span> \
+    <span>--name</span> ERP<span>-SERVERS-NSG</span>
+</span></code></pre>
+</li>
+</ol>
+<h2 id="create-vms-running-ubuntu">Create VMs running Ubuntu</h2>
+<p>Next, you'll create two VMs called <strong>AppServer</strong> and <strong>DataServer</strong>. You deploy <strong>AppServer</strong> to the <strong>Applications</strong> subnet, and <strong>DataServer</strong> to the <strong>Databases</strong> subnet. Add the VM network interfaces to the <strong>ERP-SERVERS-NSG</strong> network security group. Then, to test your network security group, use these VMs.</p>
+<ol>
+<li><p>To build the <strong>AppServer</strong> VM, in the Cloud Shell, run the following command. For the admin account, define a <code>&lt;password&gt;</code>.</p>
+<pre tabindex="0"><code data-author-content="wget -N https://raw.githubusercontent.com/MicrosoftDocs/mslearn-secure-and-isolate-with-nsg-and-service-endpoints/master/cloud-init.yml &amp;&amp; \
+az vm create \
+    --resource-group $rg \
+    --name AppServer \
+    --vnet-name ERP-servers \
+    --subnet Applications \
+    --nsg ERP-SERVERS-NSG \
+    --image UbuntuLTS \
+    --size Standard_DS1_v2 \
+    --admin-username azureuser \
+    --custom-data cloud-init.yml \
+    --no-wait \
+    --admin-password <password>
+"><span>wget <span>-N</span> https://raw.githubusercontent.com/MicrosoftDocs/mslearn<span>-secure-and-isolate-with-nsg-and-service-endpoints</span>/master/cloud<span>-init</span>.yml &amp;&amp; \
+<span>az vm create </span>\
+    <span>--resource-group</span> <span>$rg</span> \
+    <span>--name</span> AppServer \
+    <span>--vnet-name</span> ERP<span>-servers</span> \
+    <span>--subnet</span> Applications \
+    <span>--nsg</span> ERP<span>-SERVERS-NSG</span> \
+    <span>--image</span> UbuntuLTS \
+    <span>--size</span> Standard_DS1_v2 \
+    <span>--admin-username</span> azureuser \
+    <span>--custom-data</span> cloud<span>-init</span>.yml \
+    <span>--no-wait</span> \
+    <span>--admin-password</span> <span>&lt;password&gt;</span>
+</span></code></pre>
+</li>
+<li><p>To build the <strong>DataServer</strong> VM, in the Cloud Shell, run the following command. For the admin account, define a <code>&lt;password&gt;</code>.</p>
+<pre tabindex="0"><code data-author-content="az vm create \
+    --resource-group $rg \
+    --name DataServer \
+    --vnet-name ERP-servers \
+    --subnet Databases \
+    --nsg ERP-SERVERS-NSG \
+    --size Standard_DS1_v2 \
+    --image UbuntuLTS \
+    --admin-username azureuser \
+    --custom-data cloud-init.yml \
+    --admin-password <password>
+"><span><span>az vm create </span>\
+    <span>--resource-group</span> <span>$rg</span> \
+    <span>--name</span> DataServer \
+    <span>--vnet-name</span> ERP<span>-servers</span> \
+    <span>--subnet</span> Databases \
+    <span>--nsg</span> ERP<span>-SERVERS-NSG</span> \
+    <span>--size</span> Standard_DS1_v2 \
+    <span>--image</span> UbuntuLTS \
+    <span>--admin-username</span> azureuser \
+    <span>--custom-data</span> cloud<span>-init</span>.yml \
+    <span>--admin-password</span> <span>&lt;password&gt;</span>
+</span></code></pre>
+</li>
+<li><p>It can take several minutes for the VMs to be in a running state. To confirm that the VMs are running, in the Cloud Shell, run the following command.</p>
+<pre tabindex="0"><code data-author-content="az vm list \
+    --resource-group $rg \
+    --show-details \
+    --query &quot;[*].{Name:name, Provisioned:provisioningState, Power:powerState}&quot; \
+    --output table
+"><span><span>az vm list </span>\
+    <span>--resource-group</span> <span>$rg</span> \
+    <span>--show-details</span> \
+    <span>--query</span> <span>"[*].{Name:name, Provisioned:provisioningState, Power:powerState}"</span> \
+    <span>--output</span> <span>table</span>
+</span></code></pre>
+<p>When your VM creation is complete, you should see the following output.</p>
+<pre tabindex="0"><code data-author-content="Name        Provisioned    Power
+----------  -------------  ----------
+AppServer   Succeeded      VM running
+DataServer  Succeeded      VM running
+">Name        Provisioned    Power
+----------  -------------  ----------
+AppServer   Succeeded      VM running
+DataServer  Succeeded      VM running
+</code></pre>
+</li>
+</ol>
+<h2 id="check-default-connectivity">Check default connectivity</h2>
+<p>Now, you'll try to open a Secure Shell (SSH) session to each of your VMs. Remember, so far you've deployed a network security group with default rules.</p>
+<ol>
+<li><p>To connect to your VMs, use SSH directly from Cloud Shell. To do this, you need the public IP addresses that have been assigned to your VMs. To list the IP addresses that you'll use to connect to the VMs, in the Cloud Shell, run the following command.</p>
+<pre tabindex="0"><code data-author-content="az vm list \
+    --resource-group $rg \
+    --show-details \
+    --query &quot;[*].{Name:name, PrivateIP:privateIps, PublicIP:publicIps}&quot; \
+    --output table
+"><span><span>az vm list </span>\
+    <span>--resource-group</span> <span>$rg</span> \
+    <span>--show-details</span> \
+    <span>--query</span> <span>"[*].{Name:name, PrivateIP:privateIps, PublicIP:publicIps}"</span> \
+    <span>--output</span> <span>table</span>
+</span></code></pre>
+</li>
+<li><p>To make it easier to connect to your VMs during the rest of this exercise, assign the public IP addresses to variables. To save the public IP address of <strong>AppServer</strong> and <strong>DataServer</strong> to a variable, in the Cloud Shell, run the following command.</p>
+<pre tabindex="0"><code data-author-content="APPSERVERIP=&quot;$(az vm list-ip-addresses \
+                 --resource-group $rg \
+                 --name AppServer \
+                 --query &quot;[].virtualMachine.network.publicIpAddresses[*].ipAddress&quot; \
+                 --output tsv)&quot;
+
+DATASERVERIP=&quot;$(az vm list-ip-addresses \
+                 --resource-group $rg \
+                 --name DataServer \
+                 --query &quot;[].virtualMachine.network.publicIpAddresses[*].ipAddress&quot; \
+                 --output tsv)&quot;
+"><span>APPSERVERIP=<span>"<span>$(az vm list-ip-addresses \
+                 --resource-group $rg \
+                 --name AppServer \
+                 --query "[].virtualMachine.network.publicIpAddresses[*].ipAddress" \
+                 --output tsv)</span>"</span>
+
+DATASERVERIP=<span>"<span>$(az vm list-ip-addresses \
+                 --resource-group $rg \
+                 --name DataServer \
+                 --query "[].virtualMachine.network.publicIpAddresses[*].ipAddress" \
+                 --output tsv)</span>"</span>
+</span></code></pre>
+</li>
+<li><p>To check whether you can connect to your <strong>AppServer</strong> VM, in the Cloud Shell, run the following command.</p>
+<pre tabindex="0"><code data-author-content="ssh azureuser@$APPSERVERIP -o ConnectTimeout=5
+"><span>ssh azureuser@<span>$APPSERVERIP</span> -o ConnectTimeout=5
+</span></code></pre>
+<p>You'll get a <code>Connection timed out</code> message.</p>
+</li>
+<li><p>To check whether you can connect to your <strong>DataServer</strong> VM, in the Cloud Shell, run the following command.</p>
+<pre tabindex="0"><code data-author-content="ssh azureuser@$DATASERVERIP -o ConnectTimeout=5
+"><span>ssh azureuser@<span>$DATASERVERIP</span> -o ConnectTimeout=5
+</span></code></pre>
+<p>You'll get the same connection failure message.</p>
+</li>
+</ol>
+<p>Remember that the default rules deny all inbound traffic into a virtual network, unless this traffic is coming from the same virtual network. The <strong>Deny All Inbound</strong> rule blocked the inbound SSH connections you just attempted.</p>
+<p><strong>Inbound</strong></p>
+
+<h2 id="create-a-security-rule-for-ssh">Create a security rule for SSH</h2>
+<p>As you've now experienced, the default rules in your <strong>ERP-SERVERS-NSG</strong> network security group include a <strong>Deny All Inbound</strong> rule. You'll now add a rule so that you can use SSH to connect to <strong>AppServer</strong> and <strong>DataServer</strong>.</p>
+<ol>
+<li><p>To create a new inbound security rule to enable SSH access, in the Cloud Shell, run the following command.</p>
+<pre tabindex="0"><code data-author-content="az network nsg rule create \
+    --resource-group $rg \
+    --nsg-name ERP-SERVERS-NSG \
+    --name AllowSSHRule \
+    --direction Inbound \
+    --priority 100 \
+    --source-address-prefixes '*' \
+    --source-port-ranges '*' \
+    --destination-address-prefixes '*' \
+    --destination-port-ranges 22 \
+    --access Allow \
+    --protocol Tcp \
+    --description &quot;Allow inbound SSH&quot;
+"><span><span>az network nsg rule </span>create \
+    <span>--resource-group</span> <span>$rg</span> \
+    <span>--nsg-name</span> ERP<span>-SERVERS-NSG</span> \
+    <span>--name</span> AllowSSHRule \
+    <span>--direction</span> Inbound \
+    <span>--priority</span> <span>100</span> \
+    <span>--source-address-prefixes</span> <span>'*'</span> \
+    <span>--source-port-ranges</span> <span>'*'</span> \
+    <span>--destination-address-prefixes</span> <span>'*'</span> \
+    <span>--destination-port-ranges</span> <span>22</span> \
+    <span>--access</span> Allow \
+    <span>--protocol</span> Tcp \
+    <span>--description</span> <span>"Allow inbound SSH"</span>
+</span></code></pre>
+</li>
+<li><p>To check whether you can now connect to your <strong>AppServer</strong> VM, in the Cloud Shell, run the following command.</p>
+<pre tabindex="0"><code data-author-content="ssh azureuser@$APPSERVERIP -o ConnectTimeout=5
+"><span>ssh azureuser@<span>$APPSERVERIP</span> -o ConnectTimeout=5
+</span></code></pre>
+<p>The network security group rule might take a minute or two to take effect. If you receive a connection failure message, try again.</p>
+</li>
+<li><p>You should now be able to connect. After the <code>Are you sure you want to continue connecting (yes/no)?</code> message, enter <code>yes</code>.</p>
+</li>
+<li><p>Enter the password you used when you created the VM.</p>
+</li>
+<li><p>Close the <strong>AppServer</strong> session, enter <code>exit</code>.</p>
+</li>
+<li><p>To check whether you can now connect to your <strong>DataServer</strong> VM, in the Cloud Shell, run the following command.</p>
+<pre tabindex="0"><code data-author-content="ssh azureuser@$DATASERVERIP -o ConnectTimeout=5
+"><span>ssh azureuser@<span>$DATASERVERIP</span> -o ConnectTimeout=5
+</span></code></pre>
+</li>
+<li><p>You should now be able to connect. After the <code>Are you sure you want to continue connecting (yes/no)?</code> message, enter <code>yes</code>.</p>
+</li>
+<li><p>Enter the password you used when you created the VM.</p>
+</li>
+<li><p>To close the <strong>DataServer</strong> session, enter <code>exit</code>.</p>
+</li>
+</ol>
+<h2 id="create-a-security-rule-to-prevent-web-access">Create a security rule to prevent web access</h2>
+<p>Now, add a rule so that <strong>AppServer</strong> can communicate with <strong>DataServer</strong> over HTTP, but <strong>DataServer</strong> can't communicate with <strong>AppServer</strong> over HTTP. These are the internal IP addresses for these servers:</p>
+
+<ol>
+<li><p>To create a new inbound security rule to deny HTTP access over port 80, in the Cloud Shell, run the following command.</p>
+<pre tabindex="0"><code data-author-content="az network nsg rule create \
+    --resource-group $rg \
+    --nsg-name ERP-SERVERS-NSG \
+    --name httpRule \
+    --direction Inbound \
+    --priority 150 \
+    --source-address-prefixes 10.0.1.4 \
+    --source-port-ranges '*' \
+    --destination-address-prefixes 10.0.0.4 \
+    --destination-port-ranges 80 \
+    --access Deny \
+    --protocol Tcp \
+    --description &quot;Deny from DataServer to AppServer on port 80&quot;
+"><span><span>az network nsg rule </span>create \
+    <span>--resource-group</span> <span>$rg</span> \
+    <span>--nsg-name</span> ERP<span>-SERVERS-NSG</span> \
+    <span>--name</span> httpRule \
+    <span>--direction</span> Inbound \
+    <span>--priority</span> <span>150</span> \
+    <span>--source-address-prefixes</span> <span>10.0.1.4</span> \
+    <span>--source-port-ranges</span> <span>'*'</span> \
+    <span>--destination-address-prefixes</span> <span>10.0.0.4</span> \
+    <span>--destination-port-ranges</span> <span>80</span> \
+    <span>--access</span> Deny \
+    <span>--protocol</span> Tcp \
+    <span>--description</span> <span>"Deny from DataServer to AppServer on port 80"</span>
+</span></code></pre>
+</li>
+</ol>
+<h2 id="test-http-connectivity-between-virtual-machines">Test HTTP connectivity between virtual machines</h2>
+<p>Here, you'll check if your new rule works. <strong>AppServer</strong> should be able to communicate with <strong>DataServer</strong> over HTTP. <strong>DataServer</strong> shouldn't be able to communicate with <strong>AppServer</strong> over HTTP.</p>
+<ol>
+<li><p>To connect to your <strong>AppServer</strong> VM, in the Cloud Shell, run the following command. Check if <strong>AppServer</strong> can communicate with <strong>DataServer</strong> over HTTP.</p>
+<pre tabindex="0"><code data-author-content="ssh -t azureuser@$APPSERVERIP 'wget http://10.0.1.4; exit; bash'
+"><span>ssh -t azureuser@<span>$APPSERVERIP</span> <span>'wget http://10.0.1.4; exit; bash'</span>
+</span></code></pre>
+</li>
+<li><p>Enter the password you used when you created the VM.</p>
+</li>
+<li><p>The response should include a <code>200 OK</code> message.</p>
+</li>
+<li><p>To connect to your <strong>DataServer</strong> VM, in the Cloud Shell, run the following command. Check if <strong>DataServer</strong> can communicate with <strong>AppServer</strong> over HTTP.</p>
+<pre tabindex="0"><code data-author-content="ssh -t azureuser@$DATASERVERIP 'wget http://10.0.0.4; exit; bash'
+"><span>ssh -t azureuser@<span>$DATASERVERIP</span> <span>'wget http://10.0.0.4; exit; bash'</span>
+</span></code></pre>
+</li>
+<li><p>Enter the password you used when you created the VM.</p>
+</li>
+<li><p>This shouldn't succeed, because you've blocked access over port 80. After several minutes, you should get a <code>Connection timed out</code> message. To stop the command before the timeout, press Ctrl+C.</p>
+</li>
+</ol>
+<h2 id="deploy-an-app-security-group">Deploy an app security group</h2>
+<p>Next, create an app security group for database servers, so that all servers in this group can be assigned the same settings. You're planning to deploy more database servers, and want to prevent these servers from accessing app servers over HTTP. By assigning sources in the app security group, you don't need to manually maintain a list of IP addresses in the network security group. Instead, you assign the network interfaces of the VMs you want to manage to the app security group.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/secure-and-isolate-with-nsg-and-service-endpoints/media/3-exercise-second-task.svg" alt="Diagram of exercise scenario app security groups" data-linktype="relative-path"></p>
+<ol>
+<li><p>To create a new app security group called <strong>ERP-DB-SERVERS-ASG</strong>, in the Cloud Shell, run the following command.</p>
+<pre tabindex="0"><code data-author-content="az network asg create \
+    --resource-group $rg \
+    --name ERP-DB-SERVERS-ASG
+"><span><span>az network asg create </span>\
+    <span>--resource-group</span> <span>$rg</span> \
+    <span>--name</span> ERP<span>-DB-SERVERS-ASG</span>
+</span></code></pre>
+</li>
+<li><p>To associate <strong>DataServer</strong> with the app security group, in the Cloud Shell, run the following command.</p>
+<pre tabindex="0"><code data-author-content="az network nic ip-config update \
+    --resource-group $rg \
+    --application-security-groups ERP-DB-SERVERS-ASG \
+    --name ipconfigDataServer \
+    --nic-name DataServerVMNic \
+    --vnet-name ERP-servers \
+    --subnet Databases
+"><span><span>az network nic ip-config </span>update \
+    <span>--resource-group</span> <span>$rg</span> \
+    <span>--application-security-groups</span> ERP<span>-DB-SERVERS-ASG</span> \
+    <span>--name</span> ipconfigDataServer \
+    <span>--nic-name</span> DataServerVMNic \
+    <span>--vnet-name</span> ERP<span>-servers</span> \
+    <span>--subnet</span> Databases
+</span></code></pre>
+</li>
+<li><p>To update the HTTP rule in the <strong>ERP-SERVERS-NSG</strong> network security group, in the Cloud Shell, run the following command. It should reference the <strong>ERP-DB-Servers</strong> app security group.</p>
+<pre tabindex="0"><code data-author-content="az network nsg rule update \
+    --resource-group $rg \
+    --nsg-name ERP-SERVERS-NSG \
+    --name httpRule \
+    --direction Inbound \
+    --priority 150 \
+    --source-address-prefixes &quot;&quot; \
+    --source-port-ranges '*' \
+    --source-asgs ERP-DB-SERVERS-ASG \
+    --destination-address-prefixes 10.0.0.4 \
+    --destination-port-ranges 80 \
+    --access Deny \
+    --protocol Tcp \
+    --description &quot;Deny from DataServer to AppServer on port 80 using application security group&quot;
+"><span><span>az network nsg rule </span>update \
+    <span>--resource-group</span> <span>$rg</span> \
+    <span>--nsg-name</span> ERP<span>-SERVERS-NSG</span> \
+    <span>--name</span> httpRule \
+    <span>--direction</span> Inbound \
+    <span>--priority</span> <span>150</span> \
+    <span>--source-address-prefixes</span> <span>""</span> \
+    <span>--source-port-ranges</span> <span>'*'</span> \
+    <span>--source-asgs</span> ERP<span>-DB-SERVERS-ASG</span> \
+    <span>--destination-address-prefixes</span> <span>10.0.0.4</span> \
+    <span>--destination-port-ranges</span> <span>80</span> \
+    <span>--access</span> Deny \
+    <span>--protocol</span> Tcp \
+    <span>--description</span> <span>"Deny from DataServer to AppServer on port 80 using application security group"</span>
+</span></code></pre>
+</li>
+</ol>
+<h2 id="test-the-updated-http-security-rule">Test the updated HTTP security rule</h2>
+<ol>
+<li><p>To connect to your <strong>AppServer</strong> VM. in the Cloud Shell, run the following command. Check if <strong>AppServer</strong> can communicate with <strong>DataServer</strong> over HTTP.</p>
+<pre tabindex="0"><code data-author-content="ssh -t azureuser@$APPSERVERIP 'wget http://10.0.1.4; exit; bash'
+"><span>ssh -t azureuser@<span>$APPSERVERIP</span> <span>'wget http://10.0.1.4; exit; bash'</span>
+</span></code></pre>
+</li>
+<li><p>Enter the password you used when you created the VM.</p>
+</li>
+<li><p>As before, the response should include a <code>200 OK</code> message. The app security group settings can take a minute or two to take effect. If you don't initially receive the <code>200 OK</code> message, wait a minute and try again.</p>
+</li>
+<li><p>To connect to your <strong>DataServer</strong> in the Cloud Shell (at the top-right in Azure; the box with the &gt;_) , run the following command. Check if <strong>DataServer</strong> can communicate with <strong>AppServer</strong> over HTTP.</p>
+<pre tabindex="0"><code data-author-content="ssh -t azureuser@$DATASERVERIP 'wget http://10.0.0.4; exit; bash'
+"><span>ssh -t azureuser@<span>$DATASERVERIP</span> <span>'wget http://10.0.0.4; exit; bash'</span>
+</span></code></pre>
+</li>
+<li><p>Enter the password you used when you created the VM.</p>
+</li>
+<li><p>As before, this shouldn't succeed, because you've blocked access over port 80. After several minutes, you should get a <code>Connection timed out</code> message. To stop the command before the timeout, press Ctrl+C.</p>
+</li>
+</ol>
+<p>You've now confirmed that your network security group rule works using an app security group, in the same way as when you used a source IP address. If we were to add additional data servers, you can easily ensure they have the proper network security by adding the new servers to the <strong>ERP-DB-SERVERS-ASG</strong>.</p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Secure network access to PaaS services with virtual network service endpoints</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/secure-and-isolate-with-nsg-and-service-endpoints/4-vnet-service-endpoints/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

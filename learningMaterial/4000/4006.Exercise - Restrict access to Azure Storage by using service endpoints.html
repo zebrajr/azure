@@ -1,0 +1,466 @@
+<html dir="ltr"><head><title>Exercise - Restrict access to Azure Storage by using service endpoints - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/secure-and-isolate-with-nsg-and-service-endpoints/5-exercise-vnet-service-endpoints">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/secure-and-isolate-with-nsg-and-service-endpoints/5-exercise-vnet-service-endpoints</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Exercise - Restrict access to Azure Storage by using service endpoints - Learn</h1>
+  <div dir="auto" id="reader-credits">jboeshart</div>
+  <div dir="auto" id="reader-estimated-time">7-8 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="main-column" data-bi-name="body">
+
+					<main id="main" role="main" data-bi-name="content" lang="en-us" dir="ltr">
+
+
+
+
+
+						
+
+
+						<!-- <content> -->
+							<div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>10 minutes</li>
+		</ul>
+			<p>As the solution architect, you're planning to move sensitive engineering diagram files into Azure Storage. The files must only be accessible from computers inside the corporate network. You want to create a virtual network service endpoint for Azure Storage to secure the connectivity to your storage accounts.</p>
+<p>In this unit, you'll create a service endpoint, and use network rules to restrict access to Azure Storage. You'll create a virtual network service endpoint for Azure Storage on the <strong>Databases</strong> subnet. You'll then verify that your <strong>DataServer</strong> VM can access Azure Storage. Lastly, you'll check that the <strong>AppServer</strong> VM, which is on a different subnet, can't access storage.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/secure-and-isolate-with-nsg-and-service-endpoints/media/5-exercise-task.svg" alt="Diagram of exercise scenario service endpoint and rules" data-linktype="relative-path"></p>
+<h2 id="add-rules-to-the-network-security-group">Add rules to the network security group</h2>
+<p>Ensure that communications with Azure Storage pass through the service endpoint. Add outbound rules to allow access to the Storage service, but deny all other internet traffic.</p>
+<ol>
+<li><p>To create an outbound rule to allow access to Storage, in the Cloud Shell, run the following command.</p>
+<pre tabindex="0"><code data-author-content="az network nsg rule create \
+    --resource-group $rg \
+    --nsg-name ERP-SERVERS-NSG \
+    --name Allow_Storage \
+    --priority 190 \
+    --direction Outbound \
+    --source-address-prefixes &quot;VirtualNetwork&quot; \
+    --source-port-ranges '*' \
+    --destination-address-prefixes &quot;Storage&quot; \
+    --destination-port-ranges '*' \
+    --access Allow \
+    --protocol '*' \
+    --description &quot;Allow access to Azure Storage&quot;
+"><span><span>az network nsg rule </span>create \
+    <span>--resource-group</span> <span>$rg</span> \
+    <span>--nsg-name</span> ERP<span>-SERVERS-NSG</span> \
+    <span>--name</span> Allow_Storage \
+    <span>--priority</span> <span>190</span> \
+    <span>--direction</span> Outbound \
+    <span>--source-address-prefixes</span> <span>"VirtualNetwork"</span> \
+    <span>--source-port-ranges</span> <span>'*'</span> \
+    <span>--destination-address-prefixes</span> <span>"Storage"</span> \
+    <span>--destination-port-ranges</span> <span>'*'</span> \
+    <span>--access</span> Allow \
+    <span>--protocol</span> <span>'*'</span> \
+    <span>--description</span> <span>"Allow access to Azure Storage"</span>
+</span></code></pre>
+</li>
+<li><p>To create an outbound rule to deny all internet access, in the Cloud Shell, run the following command.</p>
+<pre tabindex="0"><code data-author-content="az network nsg rule create \
+    --resource-group $rg \
+    --nsg-name ERP-SERVERS-NSG \
+    --name Deny_Internet \
+    --priority 200 \
+    --direction Outbound \
+    --source-address-prefixes &quot;VirtualNetwork&quot; \
+    --source-port-ranges '*' \
+    --destination-address-prefixes &quot;Internet&quot; \
+    --destination-port-ranges '*' \
+    --access Deny \
+    --protocol '*' \
+    --description &quot;Deny access to Internet.&quot;
+"><span><span>az network nsg rule </span>create \
+    <span>--resource-group</span> <span>$rg</span> \
+    <span>--nsg-name</span> ERP<span>-SERVERS-NSG</span> \
+    <span>--name</span> Deny_Internet \
+    <span>--priority</span> <span>200</span> \
+    <span>--direction</span> Outbound \
+    <span>--source-address-prefixes</span> <span>"VirtualNetwork"</span> \
+    <span>--source-port-ranges</span> <span>'*'</span> \
+    <span>--destination-address-prefixes</span> <span>"Internet"</span> \
+    <span>--destination-port-ranges</span> <span>'*'</span> \
+    <span>--access</span> Deny \
+    <span>--protocol</span> <span>'*'</span> \
+    <span>--description</span> <span>"Deny access to Internet."</span>
+</span></code></pre>
+</li>
+</ol>
+<p>You should now have the following rules in ERP-SERVERS-NSG:</p>
+
+<p>At this point, both <strong>AppServer</strong> and <strong>DataServer</strong> have access to the Azure Storage service.</p>
+
+<p>In this step, you'll create a new storage account, and then add an Azure file share to this account. This share is where you'll store your engineering diagrams.</p>
+<ol>
+<li><p>To create a storage account for engineering documents, in the Cloud Shell, run the following command.</p>
+<pre tabindex="0"><code data-author-content="STORAGEACCT=$(az storage account create \
+                --resource-group $rg \
+                --name engineeringdocs$RANDOM \
+                --sku Standard_LRS \
+                --query &quot;name&quot; | tr -d '&quot;')
+"><span>STORAGEACCT=$(az storage account create \
+                --resource-group <span>$rg</span> \
+                --name engineeringdocs<span>$RANDOM</span> \
+                --sku Standard_LRS \
+                --query <span>"name"</span> | tr -d <span>'"'</span>)
+</span></code></pre>
+</li>
+<li><p>To store the primary key for your storage in a variable, in the Cloud Shell, run the following command.</p>
+<pre tabindex="0"><code data-author-content="STORAGEKEY=$(az storage account keys list \
+                --resource-group $rg \
+                --account-name $STORAGEACCT \
+                --query &quot;[0].value&quot; | tr -d '&quot;')
+"><span>STORAGEKEY=$(az storage account keys list \
+                --resource-group <span>$rg</span> \
+                --account-name <span>$STORAGEACCT</span> \
+                --query <span>"[0].value"</span> | tr -d <span>'"'</span>)
+</span></code></pre>
+</li>
+<li><p>To create an Azure file share called <strong>erp-data-share</strong>, in the Cloud Shell, run the following command.</p>
+<pre tabindex="0"><code data-author-content="az storage share create \
+    --account-name $STORAGEACCT \
+    --account-key $STORAGEKEY \
+    --name &quot;erp-data-share&quot;
+"><span><span>az storage share create </span>\
+    <span>--account-name</span> <span>$STORAGEACCT</span> \
+    <span>--account-key</span> <span>$STORAGEKEY</span> \
+    <span>--name</span> <span>"erp-data-share"</span>
+</span></code></pre>
+</li>
+</ol>
+<h2 id="enable-the-service-endpoint">Enable the service endpoint</h2>
+<p>You now need to configure the storage account to be accessible only from database servers, by assigning the storage endpoint to the <strong>Databases</strong> subnet. You then add a security rule to the storage account.</p>
+<ol>
+<li><p>To assign the <strong>Microsoft.Storage</strong> endpoint to the subnet, in the Cloud Shell, run the following command.</p>
+<pre tabindex="0"><code data-author-content="az network vnet subnet update \
+    --vnet-name ERP-servers \
+    --resource-group $rg \
+    --name Databases \
+    --service-endpoints Microsoft.Storage
+"><span><span>az network vnet subnet </span>update \
+    <span>--vnet-name</span> ERP<span>-servers</span> \
+    <span>--resource-group</span> <span>$rg</span> \
+    <span>--name</span> Databases \
+    <span>--service-endpoints</span> Microsoft.Storage
+</span></code></pre>
+</li>
+<li><p>To deny all access to change the default action to <code>Deny</code>, in the Cloud Shell, run the following command. After network access is denied, the storage account is not accessible from any network.</p>
+<pre tabindex="0"><code data-author-content="az storage account update \
+    --resource-group $rg \
+    --name $STORAGEACCT \
+    --default-action Deny
+"><span><span>az storage account update </span>\
+    <span>--resource-group</span> <span>$rg</span> \
+    <span>--name</span> <span>$STORAGEACCT</span> \
+    <span>--default-action</span> Deny
+</span></code></pre>
+</li>
+<li><p>To restrict access to the storage account, in the Cloud Shell, run the following command. By default, storage accounts are open to accept all traffic. You want only traffic from the <strong>Databases</strong> subnet to be able to access the storage.</p>
+<pre tabindex="0"><code data-author-content="az storage account network-rule add \
+    --resource-group $rg \
+    --account-name $STORAGEACCT \
+    --vnet ERP-servers \
+    --subnet Databases
+"><span><span>az storage account network-rule </span>add \
+    <span>--resource-group</span> <span>$rg</span> \
+    <span>--account-name</span> <span>$STORAGEACCT</span> \
+    <span>--vnet</span> ERP<span>-servers</span> \
+    <span>--subnet</span> Databases
+</span></code></pre>
+</li>
+</ol>
+<h2 id="test-access-to-storage-resources">Test access to storage resources</h2>
+<p>In this step, you'll connect to both of your servers, and verify that only <strong>DataServer</strong> has access to the Azure file share on the storage account.</p>
+<ol>
+<li><p>To save the public IP addresses of <strong>AppServer</strong> and <strong>DataServer</strong> to variables, in the Cloud Shell, run the following command.</p>
+<pre tabindex="0"><code data-author-content="APPSERVERIP=&quot;$(az vm list-ip-addresses \
+                    --resource-group $rg \
+                    --name AppServer \
+                    --query &quot;[].virtualMachine.network.publicIpAddresses[*].ipAddress&quot; \
+                    --output tsv)&quot;
+
+DATASERVERIP=&quot;$(az vm list-ip-addresses \
+                    --resource-group $rg \
+                    --name DataServer \
+                    --query &quot;[].virtualMachine.network.publicIpAddresses[*].ipAddress&quot; \
+                    --output tsv)&quot;
+"><span>APPSERVERIP=<span>"<span>$(az vm list-ip-addresses \
+                    --resource-group $rg \
+                    --name AppServer \
+                    --query "[].virtualMachine.network.publicIpAddresses[*].ipAddress" \
+                    --output tsv)</span>"</span>
+
+DATASERVERIP=<span>"<span>$(az vm list-ip-addresses \
+                    --resource-group $rg \
+                    --name DataServer \
+                    --query "[].virtualMachine.network.publicIpAddresses[*].ipAddress" \
+                    --output tsv)</span>"</span>
+</span></code></pre>
+</li>
+<li><p>To connect to your <strong>AppServer</strong> VM, and attempt to mount the Azure file share, in the Cloud Shell, run the following command.</p>
+<pre tabindex="0"><code data-author-content="ssh -t azureuser@$APPSERVERIP \
+    &quot;mkdir azureshare; \
+    sudo mount -t cifs //$STORAGEACCT.file.core.windows.net/erp-data-share azureshare \
+    -o vers=3.0,username=$STORAGEACCT,password=$STORAGEKEY,dir_mode=0777,file_mode=0777,sec=ntlmssp; findmnt \
+    -t cifs; exit; bash&quot;
+"><span>ssh -t azureuser@<span>$APPSERVERIP</span> \
+    <span>"mkdir azureshare; \
+    sudo mount -t cifs //<span>$STORAGEACCT</span>.file.core.windows.net/erp-data-share azureshare \
+    -o vers=3.0,username=<span>$STORAGEACCT</span>,password=<span>$STORAGEKEY</span>,dir_mode=0777,file_mode=0777,sec=ntlmssp; findmnt \
+    -t cifs; exit; bash"</span>
+</span></code></pre>
+</li>
+<li><p>Enter the password you used when you created the VM.</p>
+</li>
+<li><p>The response should include a <code>mount error</code> message. This connection isn't allowed, because there is no service endpoint for the storage account on the <strong>Applications</strong> subnet.</p>
+</li>
+<li><p>To connect to your <strong>DataServer</strong> VM, and attempt to mount the Azure file share, in the Cloud Shell, run the following command.</p>
+<pre tabindex="0"><code data-author-content="ssh -t azureuser@$DATASERVERIP \
+    &quot;mkdir azureshare; \
+    sudo mount -t cifs //$STORAGEACCT.file.core.windows.net/erp-data-share azureshare \
+    -o vers=3.0,username=$STORAGEACCT,password=$STORAGEKEY,dir_mode=0777,file_mode=0777,sec=ntlmssp;findmnt \
+    -t cifs; exit; bash&quot;
+"><span>ssh -t azureuser@<span>$DATASERVERIP</span> \
+    <span>"mkdir azureshare; \
+    sudo mount -t cifs //<span>$STORAGEACCT</span>.file.core.windows.net/erp-data-share azureshare \
+    -o vers=3.0,username=<span>$STORAGEACCT</span>,password=<span>$STORAGEKEY</span>,dir_mode=0777,file_mode=0777,sec=ntlmssp;findmnt \
+    -t cifs; exit; bash"</span>
+</span></code></pre>
+</li>
+<li><p>Enter the password you used when you created the VM.</p>
+</li>
+<li><p>The mount should be successful, and the response should include details of the mount point. This is allowed because you created the service endpoint for the storage account on the <strong>Databases</strong> subnet.</p>
+</li>
+</ol>
+<p>By using the storage service endpoint on the <strong>Databases</strong> subnet, you've now verified that <strong>DataServer</strong> can access storage. You've also verified that <strong>AppServer</strong> can't access storage. This is because this server is on a different subnet, and doesn't have access to the virtual network service endpoint.</p>
+
+		
+	</div>
+
+						<!-- </content> -->
+
+						</main>
+
+						<!-- page rating section -->
+						<!-- end page rating section -->
+
+<section>
+		<p>
+Need help? See our <a id="troubleshooting-guide" data-bi-name="troubleshooting" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn.secure-and-isolate-with-nsg-and-service-endpoints.5-exercise-vnet-service-endpoints&amp;documentId=7d0f5807-b3cd-7202-0196-0a023ecb8c9d&amp;versionIndependentDocumentId=9928a204-0558-86f6-25ef-bb615c4999b8&amp;contentPath=%2FMicrosoftDocs%2Flearn-pr%2Fblob%2Flive%2Flearn-pr%2Fazure%2Fsecure-and-isolate-with-nsg-and-service-endpoints%2F5-exercise-vnet-service-endpoints.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fsecure-and-isolate-with-nsg-and-service-endpoints%2F5-exercise-vnet-service-endpoints&amp;author=jaboes">troubleshooting guide</a> or provide specific feedback by <a id="module-unit-feedback-link" data-bi-name="feedback" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn.secure-and-isolate-with-nsg-and-service-endpoints.5-exercise-vnet-service-endpoints&amp;documentId=7d0f5807-b3cd-7202-0196-0a023ecb8c9d&amp;versionIndependentDocumentId=9928a204-0558-86f6-25ef-bb615c4999b8&amp;contentPath=%2FMicrosoftDocs%2Flearn-pr%2Fblob%2Flive%2Flearn-pr%2Fazure%2Fsecure-and-isolate-with-nsg-and-service-endpoints%2F5-exercise-vnet-service-endpoints.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fsecure-and-isolate-with-nsg-and-service-endpoints%2F5-exercise-vnet-service-endpoints&amp;author=jaboes#report-feedback">reporting an issue</a>.		</p>
+	</section>
+
+						<!-- recommendations section -->
+						<!-- end recommendations section -->
+
+						<!-- feedback section -->
+						<!-- end feedback section -->
+
+						<!-- feedback report section -->
+						<!-- end feedback report section -->
+
+						
+					</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>
