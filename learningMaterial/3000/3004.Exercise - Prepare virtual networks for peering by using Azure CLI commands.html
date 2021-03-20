@@ -1,0 +1,406 @@
+<html dir="ltr"><head><title>Exercise - Prepare virtual networks for peering by using Azure CLI commands - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/integrate-vnets-with-vnet-peering/3-exercise-prepare-vnets-for-peering-using-azure-cli-commands">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/integrate-vnets-with-vnet-peering/3-exercise-prepare-vnets-for-peering-using-azure-cli-commands</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Exercise - Prepare virtual networks for peering by using Azure CLI commands - Learn</h1>
+  <div dir="auto" id="reader-credits">jboeshart</div>
+  <div dir="auto" id="reader-estimated-time">6-7 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="main" role="main" data-bi-name="content" lang="en-us" dir="ltr">
+		
+		
+		<ul>
+			<li>10 minutes</li>
+		</ul>
+			<p>Let's say your company is now ready to implement virtual network peering. You want to connect systems that are deployed in different virtual networks. To test out this plan, you'll start by creating virtual networks to support the services your company is already running in Azure. You need three virtual networks:</p>
+<ul>
+<li>The <strong>Sales</strong> virtual network is deployed in <strong>North Europe</strong>. Sales systems use this virtual network to process data that's added after a customer is engaged. The Sales team wants access to Marketing data.</li>
+<li>The <strong>Marketing</strong> virtual network is deployed in <strong>North Europe</strong>. Marketing systems use this virtual network. Members of the Marketing team regularly chat with the Sales team. To share their data with the Sales team, they must download it because the Sales and Marketing systems aren't connected.</li>
+<li>The <strong>Research</strong> virtual network is deployed in <strong>West Europe</strong>. Research systems use this virtual network. Members of the Research team have a logical working relationship with Marketing, but they don't want the Sales team to have direct access to their data.</li>
+</ul>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/integrate-vnets-with-vnet-peering/media/3-prepare-vnets.svg" alt="A diagram of virtual networks you need to create" data-linktype="relative-path"></p>
+<p>You'll create the following resources:</p>
+
+<h2 id="create-the-virtual-networks">Create the virtual networks</h2>
+<ol>
+<li><p>In Cloud Shell, run the following command to create the virtual network and subnet for the <strong>Sales</strong> systems.</p>
+<pre tabindex="0"><code data-author-content="az network vnet create \
+    --resource-group <rgn>[sandbox resource group name]</rgn> \
+    --name SalesVNet \
+    --address-prefix 10.1.0.0/16 \
+    --subnet-name Apps \
+    --subnet-prefix 10.1.1.0/24 \
+    --location northeurope
+"><span><span>az network vnet create </span>\
+    <span>--resource-group</span> <rgn data-author-content="[sandbox resource group name]">[sandbox resource group name]</rgn> \
+    <span>--name</span> SalesVNet \
+    <span>--address-prefix</span> <span>10.1.0.0</span>/<span>16</span> \
+    <span>--subnet-name</span> Apps \
+    <span>--subnet-prefix</span> <span>10.1.1.0</span>/<span>24</span> \
+    <span>--location</span> northeurope
+</span></code></pre>
+</li>
+<li><p>Run the following command to create the virtual network and subnet for the <strong>Marketing</strong> systems.</p>
+<pre tabindex="0"><code data-author-content="az network vnet create \
+    --resource-group <rgn>[sandbox resource group name]</rgn> \
+    --name MarketingVNet \
+    --address-prefix 10.2.0.0/16 \
+    --subnet-name Apps \
+    --subnet-prefix 10.2.1.0/24 \
+    --location northeurope
+"><span><span>az network vnet create </span>\
+    <span>--resource-group</span> <rgn data-author-content="[sandbox resource group name]">[sandbox resource group name]</rgn> \
+    <span>--name</span> MarketingVNet \
+    <span>--address-prefix</span> <span>10.2.0.0</span>/<span>16</span> \
+    <span>--subnet-name</span> Apps \
+    <span>--subnet-prefix</span> <span>10.2.1.0</span>/<span>24</span> \
+    <span>--location</span> northeurope
+</span></code></pre>
+</li>
+<li><p>Run the following command to create the virtual network and subnet for the <strong>Research</strong> systems.</p>
+<pre tabindex="0"><code data-author-content="az network vnet create \
+    --resource-group <rgn>[sandbox resource group name]</rgn> \
+    --name ResearchVNet \
+    --address-prefix 10.3.0.0/16 \
+    --subnet-name Data \
+    --subnet-prefix 10.3.1.0/24 \
+    --location westeurope
+"><span><span>az network vnet create </span>\
+    <span>--resource-group</span> <rgn data-author-content="[sandbox resource group name]">[sandbox resource group name]</rgn> \
+    <span>--name</span> ResearchVNet \
+    <span>--address-prefix</span> <span>10.3.0.0</span>/<span>16</span> \
+    <span>--subnet-name</span> Data \
+    <span>--subnet-prefix</span> <span>10.3.1.0</span>/<span>24</span> \
+    <span>--location</span> westeurope
+</span></code></pre>
+</li>
+</ol>
+<h2 id="confirm-the-virtual-network-configuration">Confirm the virtual network configuration</h2>
+<p>Let's take a quick look at what you created.</p>
+<ol>
+<li><p>In Cloud Shell, run the following command to view the virtual networks.</p>
+<pre tabindex="0"><code data-author-content="az network vnet list --output table
+"><span><span>az network vnet list </span><span>--output</span> <span>table</span>
+</span></code></pre>
+</li>
+<li><p>You should see an output like this:</p>
+<pre tabindex="0"><code data-author-content="Name           ResourceGroup                              Location    NumSubnets   Prefixes    DnsServers   DDOSProtection   VMProtection
+-------------- ------------------------------------------ ----------- ------------ ----------- ------------ ---------------- --------------
+MarketingVNet <rgn>[sandbox resource group name]</rgn> northeurope 1            10.2.0.0/16              False            False
+SalesVNet     <rgn>[sandbox resource group name]</rgn> northeurope 1            10.1.0.0/16              False            False
+ResearchVNet  <rgn>[sandbox resource group name]</rgn> westeurope  1            10.3.0.0/16              False            False
+">Name           ResourceGroup                              Location    NumSubnets   Prefixes    DnsServers   DDOSProtection   VMProtection
+-------------- ------------------------------------------ ----------- ------------ ----------- ------------ ---------------- --------------
+MarketingVNet [sandbox resource group name] northeurope 1            10.2.0.0/16              False            False
+SalesVNet     [sandbox resource group name] northeurope 1            10.1.0.0/16              False            False
+ResearchVNet  [sandbox resource group name] westeurope  1            10.3.0.0/16              False            False
+</code></pre>
+</li>
+</ol>
+<h2 id="create-virtual-machines-in-each-virtual-network">Create virtual machines in each virtual network</h2>
+<p>Now you'll deploy some Ubuntu virtual machines (VMs) in each of the virtual networks. These VMs simulate the services in each virtual network. In the final unit of this module, you'll use these VMs to test connectivity between the virtual networks.</p>
+<ol>
+<li><p>In Cloud Shell, run the following command to create an Ubuntu VM in the <strong>Apps</strong> subnet of <strong>SalesVNet</strong>. In the command, replace <code>&lt;password&gt;</code> with a password that meets the <a href="https://docs.microsoft.com/en-us/azure/virtual-machines/linux/faq#what-are-the-password-requirements-when-creating-a-vm" data-linktype="absolute-path" target="az-portal">requirements for Linux VMs</a>. Note this password for later use.</p>
+<pre tabindex="0"><code data-author-content="az vm create \
+    --resource-group <rgn>[sandbox resource group name]</rgn> \
+    --no-wait \
+    --name SalesVM \
+    --location northeurope \
+    --vnet-name SalesVNet \
+    --subnet Apps \
+    --image UbuntuLTS \
+    --admin-username azureuser \
+    --admin-password <password>
+"><span><span>az vm create </span>\
+    <span>--resource-group</span> <rgn data-author-content="[sandbox resource group name]">[sandbox resource group name]</rgn> \
+    <span>--no-wait</span> \
+    <span>--name</span> SalesVM \
+    <span>--location</span> northeurope \
+    <span>--vnet-name</span> SalesVNet \
+    <span>--subnet</span> Apps \
+    <span>--image</span> UbuntuLTS \
+    <span>--admin-username</span> azureuser \
+    <span>--admin-password</span> <span>&lt;password&gt;</span>
+</span></code></pre>
+<div>
+<p> Note</p>
+<p>The <code>--no-wait</code> parameter in this command lets you continue working in Cloud Shell while the VM is building.</p>
+</div>
+</li>
+<li><p>Run the following command to create another Ubuntu VM in the <strong>Apps</strong> subnet of <strong>MarketingVNet</strong>. Replace <code>&lt;password&gt;</code> with a password that meets the <a href="https://docs.microsoft.com/en-us/azure/virtual-machines/linux/faq#what-are-the-password-requirements-when-creating-a-vm" data-linktype="absolute-path" target="az-portal">requirements for Linux VMs</a>. Note this password for later use.</p>
+<pre tabindex="0"><code data-author-content="az vm create \
+    --resource-group <rgn>[sandbox resource group name]</rgn> \
+    --no-wait \
+    --name MarketingVM \
+    --location northeurope \
+    --vnet-name MarketingVNet \
+    --subnet Apps \
+    --image UbuntuLTS \
+    --admin-username azureuser \
+    --admin-password <password>
+"><span><span>az vm create </span>\
+    <span>--resource-group</span> <rgn data-author-content="[sandbox resource group name]">[sandbox resource group name]</rgn> \
+    <span>--no-wait</span> \
+    <span>--name</span> MarketingVM \
+    <span>--location</span> northeurope \
+    <span>--vnet-name</span> MarketingVNet \
+    <span>--subnet</span> Apps \
+    <span>--image</span> UbuntuLTS \
+    <span>--admin-username</span> azureuser \
+    <span>--admin-password</span> <span>&lt;password&gt;</span>
+</span></code></pre>
+</li>
+<li><p>Run the following command to create an Ubuntu VM in the <strong>Data</strong> subnet of <strong>ResearchVNet</strong>. Replace <code>&lt;password&gt;</code> with a password that meets the <a href="https://docs.microsoft.com/en-us/azure/virtual-machines/linux/faq#what-are-the-password-requirements-when-creating-a-vm" data-linktype="absolute-path" target="az-portal">requirements for Linux VMs</a>. Note this password for later use.</p>
+<pre tabindex="0"><code data-author-content="az vm create \
+    --resource-group <rgn>[sandbox resource group name]</rgn> \
+    --no-wait \
+    --name ResearchVM \
+    --location westeurope \
+    --vnet-name ResearchVNet \
+    --subnet Data \
+    --image UbuntuLTS \
+    --admin-username azureuser \
+    --admin-password <password>
+"><span><span>az vm create </span>\
+    <span>--resource-group</span> <rgn data-author-content="[sandbox resource group name]">[sandbox resource group name]</rgn> \
+    <span>--no-wait</span> \
+    <span>--name</span> ResearchVM \
+    <span>--location</span> westeurope \
+    <span>--vnet-name</span> ResearchVNet \
+    <span>--subnet</span> Data \
+    <span>--image</span> UbuntuLTS \
+    <span>--admin-username</span> azureuser \
+    <span>--admin-password</span> <span>&lt;password&gt;</span>
+</span></code></pre>
+<p>The VMs might take several minutes to reach a running state.</p>
+</li>
+<li><p>To confirm that the VMs are running, run the following command. This uses the Linux <code>watch</code> command which will refresh every five seconds.</p>
+<pre tabindex="0"><code data-author-content="watch -d -n 5 &quot;az vm list \
+    --resource-group <rgn>[sandbox resource group name]</rgn> \
+    --show-details \
+    --query '[*].{Name:name, ProvisioningState:provisioningState, PowerState:powerState}' \
+    --output table&quot;
+"><span>watch -d -n 5 <span>"az vm list \
+    --resource-group <rgn data-author-content="[sandbox resource group name]">[sandbox resource group name]</rgn> \
+    --show-details \
+    --query '[*].{Name:name, ProvisioningState:provisioningState, PowerState:powerState}' \
+    --output table"</span>
+</span></code></pre>
+<p>A <strong>ProvisioningState</strong> of <strong>Succeeded</strong> and a <strong>PowerState</strong> of <strong>VM running</strong> indicates a successful deployment. When your VMs are running, you're ready to move on. Press <code>Ctrl-c</code> to stop the command and continue on with the exercise.</p>
+</li>
+</ol>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Exercise - Configure virtual network peering connections by using Azure CLI commands</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/integrate-vnets-with-vnet-peering/4-exercise-configure-vnet-peering-connections-using-azure-cli-commands/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div><section>
+		<p>
+Need help? See our <a id="troubleshooting-guide" data-bi-name="troubleshooting" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn.integrate-vnets-with-vnet-peering.3-exercise-prepare-vnets-for-peering-using-azure-cli-commands&amp;documentId=c6cede1f-ec10-a8a7-c616-d0a2d67c6f50&amp;versionIndependentDocumentId=b771cd3a-9346-1c9d-aba8-d2847c8245e4&amp;contentPath=%2FMicrosoftDocs%2Flearn-pr%2Fblob%2Flive%2Flearn-pr%2Fazure%2Fintegrate-vnets-with-vnet-peering%2F3-exercise-prepare-vnets-for-peering-using-azure-cli-commands.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fintegrate-vnets-with-vnet-peering%2F3-exercise-prepare-vnets-for-peering-using-azure-cli-commands&amp;author=jaboes">troubleshooting guide</a> or provide specific feedback by <a id="module-unit-feedback-link" data-bi-name="feedback" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn.integrate-vnets-with-vnet-peering.3-exercise-prepare-vnets-for-peering-using-azure-cli-commands&amp;documentId=c6cede1f-ec10-a8a7-c616-d0a2d67c6f50&amp;versionIndependentDocumentId=b771cd3a-9346-1c9d-aba8-d2847c8245e4&amp;contentPath=%2FMicrosoftDocs%2Flearn-pr%2Fblob%2Flive%2Flearn-pr%2Fazure%2Fintegrate-vnets-with-vnet-peering%2F3-exercise-prepare-vnets-for-peering-using-azure-cli-commands.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fintegrate-vnets-with-vnet-peering%2F3-exercise-prepare-vnets-for-peering-using-azure-cli-commands&amp;author=jaboes#report-feedback">reporting an issue</a>.		</p>
+	</section></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>
