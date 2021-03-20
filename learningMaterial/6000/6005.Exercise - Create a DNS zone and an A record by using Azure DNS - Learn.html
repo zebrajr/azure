@@ -1,0 +1,299 @@
+<html dir="ltr"><head><title>Exercise - Create a DNS zone and an A record by using Azure DNS - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/host-domain-azure-dns/4-exercise-create-dns-zone-a-record">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/host-domain-azure-dns/4-exercise-create-dns-zone-a-record</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Exercise - Create a DNS zone and an A record by using Azure DNS - Learn</h1>
+  <div dir="auto" id="reader-credits">cwatson-cat</div>
+  <div dir="auto" id="reader-estimated-time">4-4 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="main" role="main" data-bi-name="content" lang="en-us" dir="ltr">
+		
+		
+		<ul>
+			<li>12 minutes</li>
+		</ul>
+			<p>In the previous unit, we described setting up and configuring the widewworldimports.com domain to point to your Azure hosting on Azure DNS.</p>
+<p>In this unit, you'll:</p>
+<ul>
+<li>Set up an Azure DNS and create a public DNS zone.</li>
+<li>Create an A record.</li>
+<li>Verify that the A record resolves to an IP address.</li>
+</ul>
+<h2 id="create-a-dns-zone-in-azure-dns">Create a DNS zone in Azure DNS</h2>
+<p>Before you can host the wideworldimports.com domain on your servers, you need to create a DNS zone. The DNS zone holds all the configuration records associated with your domain.</p>
+<p>To create your DNS zone:</p>
+<ol>
+<li><p>Sign in to the <a href="https://portal.azure.com/learn.docs.microsoft.com" data-linktype="external" target="az-portal">Azure portal</a> with the account you used to activate the sandbox.</p>
+</li>
+<li><p>Select <strong>Create a resource</strong>.</p>
+</li>
+<li><p>Search for and select <strong>DNS zone</strong>. The <strong>DNS zone</strong> pane appears.</p>
+</li>
+<li><p>Select <strong>Create</strong>.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/host-domain-azure-dns/media/4-dnszonecreate.png" alt="Screenshot of DNS zone, with Create highlighted" data-linktype="relative-path"></p>
+</li>
+<li><p>On the <strong>Basics</strong> tab, enter the following values for each setting.</p>
+
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/host-domain-azure-dns/media/4-creatednszone.png" alt="Screenshot of Create DNS zone page" data-linktype="relative-path"></p>
+</li>
+<li><p>Select <strong>Review + create</strong>.</p>
+</li>
+<li><p>After validation passes, select <strong>Create</strong>. It will take a few minutes to create the DNS zone.</p>
+</li>
+<li><p>Select <strong>Go to resource</strong>.</p>
+<p>By default, the NS and SOA records are automatically created. The NS record defines the Azure DNS name spaces and contains the four Azure DNS record sets. You use all four record sets when you update the registrar.</p>
+<p>The SOA record represents your domain, and is used when other DNS servers are searching for your domain.</p>
+</li>
+<li><p>Make a note of the NS record values. You need them in the next section.</p>
+</li>
+</ol>
+<h2 id="create-a-dns-record">Create a DNS record</h2>
+<p>Now that the DNS zone exists, you need to create the necessary records to support the domain.</p>
+<p>The primary record to create is the A record. This record contains the pairing between the IP address and the domain name. The A record can have multiple entries, called record sets. In record sets, the domain name remains constant, while the IP addresses are different.</p>
+<ol>
+<li><p>On the <strong>wideworldimportsXXXX.com - DNS zone</strong> pane, in the upper menu bar, select <strong>Record set</strong>.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/host-domain-azure-dns/media/4-add-a-record.png" alt="Screenshot of the DNS zone page, with + Record set highlighted" data-linktype="relative-path"></p>
+</li>
+<li><p>The <strong>Add record set</strong> pane appears. Enter the following values for each setting.</p>
+
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/host-domain-azure-dns/media/4-arecord.png" alt="Screenshot of Add record set" data-linktype="relative-path"></p>
+</li>
+<li><p>Select <strong>OK</strong> to add the record to your zone.</p>
+</li>
+</ol>
+<p>Note that it's possible to have more than one IP address set up for your web server. In that case, you add all the associated IP addresses as part of a record set. You can update the record set after it's created with additional IP addresses.</p>
+<h2 id="verify-your-global-azure-dns">Verify your global Azure DNS</h2>
+<p>In a real-world scenario, after you create the public DNS zone, you update the NS records of the domain-name registrar, to delegate the domain to Azure.</p>
+<p>Even though we don't have a registered domain, it's still possible to verify that the DNS zone works as expected, by using the nslookup tool.</p>
+<h3 id="use-nslookup-to-verify-the-configuration">Use nslookup to verify the configuration</h3>
+<p>Here's how to use <code>nslookup</code> to verify the DNS zone configuration.</p>
+<ol>
+<li><p>Use Cloud Shell to run the following command. Replace the DNS zone name with the zone you created. Also replace the name server address with one of the NS values you copied after you created the DNS zone.</p>
+<pre tabindex="0"><code data-author-content="nslookup www.wideworldimportsXXXX.com <name server address>
+"><span>nslookup www.wideworldimportsXXXX.com &lt;name server address&gt;
+</span></code></pre>
+<p>The command should look something like the following:</p>
+<pre tabindex="0"><code data-author-content="nslookup www.wideworldimportsXXXX.com ns1-07.azure-dns.com
+"><span>nslookup www.wideworldimportsXXXX.com ns1-07.azure-dns.com
+</span></code></pre>
+</li>
+<li><p>You should see that your host name <code>www.wideworldimportsXXXX.com</code> resolves to 10.10.10.10.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/host-domain-azure-dns/media/4-nslookup.png" alt="Screenshot of Cloud Shell, showing the nslookup results" data-linktype="relative-path"></p>
+</li>
+</ol>
+<p>You have successfully set up a DNS zone and created an A record.</p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Dynamically resolve resource name by using alias record</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/host-domain-azure-dns/5-resolve-name-alias-record/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div><section>
+		<p>
+Need help? See our <a id="troubleshooting-guide" data-bi-name="troubleshooting" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn.azure.host-domain-azure-dns.exercise-create-dns-zone-a-record&amp;documentId=129d0fff-e446-a6b5-fd77-0e19d3516d8a&amp;versionIndependentDocumentId=fe1b1d95-ef98-159b-1782-83602395d90e&amp;contentPath=%2FMicrosoftDocs%2Flearn-pr%2Fblob%2Flive%2Flearn-pr%2Fazure%2Fhost-domain-azure-dns%2F4-exercise-create-dns-zone-a-record.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fhost-domain-azure-dns%2F4-exercise-create-dns-zone-a-record&amp;author=cwatson">troubleshooting guide</a> or provide specific feedback by <a id="module-unit-feedback-link" data-bi-name="feedback" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn.azure.host-domain-azure-dns.exercise-create-dns-zone-a-record&amp;documentId=129d0fff-e446-a6b5-fd77-0e19d3516d8a&amp;versionIndependentDocumentId=fe1b1d95-ef98-159b-1782-83602395d90e&amp;contentPath=%2FMicrosoftDocs%2Flearn-pr%2Fblob%2Flive%2Flearn-pr%2Fazure%2Fhost-domain-azure-dns%2F4-exercise-create-dns-zone-a-record.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fhost-domain-azure-dns%2F4-exercise-create-dns-zone-a-record&amp;author=cwatson#report-feedback">reporting an issue</a>.		</p>
+	</section></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

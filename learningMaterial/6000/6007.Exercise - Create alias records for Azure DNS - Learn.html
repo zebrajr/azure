@@ -1,0 +1,289 @@
+<html dir="ltr"><head><title>Exercise - Create alias records for Azure DNS - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/host-domain-azure-dns/6-exercise-create-alias-records">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/host-domain-azure-dns/6-exercise-create-alias-records</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Exercise - Create alias records for Azure DNS - Learn</h1>
+  <div dir="auto" id="reader-credits">cwatson-cat</div>
+  <div dir="auto" id="reader-estimated-time">3-4 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="main" role="main" data-bi-name="content" lang="en-us" dir="ltr">
+		
+		
+		<ul>
+			<li>12 minutes</li>
+		</ul>
+			<p>The deployment of your new website was a huge success. Usage volumes are much higher than anticipated. The single web server that the website runs on is showing signs of strain. Your organization wants to increase the number of servers, and distribute the load using a load balancer.</p>
+<p>You now know you can use an Azure alias record to provide a dynamic, automatically refreshing link between the zone apex and the load balancer.</p>
+<p>In this unit, you'll:</p>
+<ul>
+<li>Set up a virtual network with two VMs and a load balancer.</li>
+<li>Learn how to configure an Azure alias at the zone apex to direct to the load balancer.</li>
+<li>Verify that the domain name resolves to one or either of the VMs on your virtual network.</li>
+</ul>
+<h2 id="set-up-a-virtual-network-load-balancer-and-vms-in-azure">Set up a virtual network, load balancer, and VMs in Azure</h2>
+<p>Manually creating a virtual network, load balancer, and two VMs will take some time. To reduce this, you can use a Bash setup script, which is available on GitHub. Follow these instructions to create a test environment for your alias record.</p>
+<ol>
+<li><p>In Azure Cloud Shell, run the following setup script.</p>
+<pre tabindex="0"><code data-author-content="git clone https://github.com/MicrosoftDocs/mslearn-host-domain-azure-dns.git
+"><span>git <span>clone</span> https://github.com/MicrosoftDocs/mslearn-host-domain-azure-dns.git
+</span></code></pre>
+</li>
+<li><p>To run the setup script, run the following commands.</p>
+<pre tabindex="0"><code data-author-content="cd mslearn-host-domain-azure-dns
+chmod +x setup.sh
+./setup.sh
+"><span><span>cd</span> mslearn-host-domain-azure-dns
+chmod +x setup.sh
+./setup.sh
+</span></code></pre>
+<p>The setup script is going to take a few minutes to run. The script:</p>
+<ul>
+<li>Creates a network security group.</li>
+<li>Creates two network interface controllers (NICs) and two VMs.</li>
+<li>Creates a virtual network and assigns the VMs.</li>
+<li>Creates a public IP address and updates the configuration of the VMs.</li>
+<li>Creates a load balancer that references the VMs, including rules for the load balancer.</li>
+<li>Links the NICs to the load balancer.</li>
+</ul>
+<p>After the script completes, it shows you the public IP address for the load balancer. Copy the IP address to use it later.</p>
+</li>
+</ol>
+<h2 id="create-an-alias-record-in-your-zone-apex">Create an alias record in your zone apex</h2>
+<p>Now that you've created a test environment, you're ready to set up the Azure alias record in your zone apex.</p>
+<ol>
+<li><p>In the <a href="https://portal.azure.com/learn.docs.microsoft.com" data-linktype="external" target="az-portal">Azure portal</a>, select <strong>Resource groups</strong>. The <strong>Resource groups</strong> pane appears.</p>
+</li>
+<li><p>Select the resource group: <rgn data-author-content="[sandbox resource group]">[sandbox resource group]</rgn>.</p>
+</li>
+<li><p>Select your DNS zone (wideworldimportsXXXX.com).</p>
+</li>
+<li><p>Select <strong>Record set</strong>. The <strong>Add record set</strong> pane appears.</p>
+</li>
+<li><p>Enter the following values to create an alias record.</p>
+
+<p>When you're done, it should look like this.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/host-domain-azure-dns/media/6-aliasrecord-azurelb.png" alt="Screenshot of Add record set" data-linktype="relative-path"></p>
+</li>
+<li><p>Select <strong>OK</strong> to add the record to your zone.</p>
+</li>
+</ol>
+<p>When the new alias record is created, it should look something like this:</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/host-domain-azure-dns/media/6-aliasrecord04.png" alt="Screenshot of the DNS zone, with an alias record created" data-linktype="relative-path"></p>
+<h2 id="verify-that-the-alias-resolves-to-the-load-balancer">Verify that the alias resolves to the load balancer</h2>
+<p>Now, you need to verify that the alias record is set up correctly. In a real-world scenario, you'll have an actual domain, and would have completed the domain delegation to Azure DNS. You would use the registered domain name for this exercise. Because this unit assumes there's no registered domain, you'll use the public IP address.</p>
+<ol>
+<li><p>If you didn't copy the public IP address in a previous step, go to the resource group, and select <strong>myPublicIP</strong>. The IP address is on the upper-right side.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/host-domain-azure-dns/media/6-publicipaddress.png" alt="Screenshot of the DNS zone with an alias record created" data-linktype="relative-path"></p>
+</li>
+<li><p>In a web browser, paste the public IP address as the URL.</p>
+</li>
+<li><p>You'll see a basic web page that shows the name of the VM that the load balancer sent the request to.</p>
+</li>
+</ol>
+
+		
+	</div><section>
+		<p>
+Need help? See our <a id="troubleshooting-guide" data-bi-name="troubleshooting" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn.azure.host-domain-azure-dns.exercise-create-alias-records&amp;documentId=30dc9929-12c0-8f2a-26e0-55d400ca43db&amp;versionIndependentDocumentId=37792aab-495c-61a8-0724-40a313294dcf&amp;contentPath=%2FMicrosoftDocs%2Flearn-pr%2Fblob%2Flive%2Flearn-pr%2Fazure%2Fhost-domain-azure-dns%2F6-exercise-create-alias-records.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fhost-domain-azure-dns%2F6-exercise-create-alias-records&amp;author=cwatson">troubleshooting guide</a> or provide specific feedback by <a id="module-unit-feedback-link" data-bi-name="feedback" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn.azure.host-domain-azure-dns.exercise-create-alias-records&amp;documentId=30dc9929-12c0-8f2a-26e0-55d400ca43db&amp;versionIndependentDocumentId=37792aab-495c-61a8-0724-40a313294dcf&amp;contentPath=%2FMicrosoftDocs%2Flearn-pr%2Fblob%2Flive%2Flearn-pr%2Fazure%2Fhost-domain-azure-dns%2F6-exercise-create-alias-records.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fhost-domain-azure-dns%2F6-exercise-create-alias-records&amp;author=cwatson#report-feedback">reporting an issue</a>.		</p>
+	</section></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

@@ -1,0 +1,297 @@
+<html dir="ltr"><head><title>Configure Azure DNS to host your domain - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/host-domain-azure-dns/3-configure-azure-dns-host-domain">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/host-domain-azure-dns/3-configure-azure-dns-host-domain</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Configure Azure DNS to host your domain - Learn</h1>
+  <div dir="auto" id="reader-credits">cwatson-cat</div>
+  <div dir="auto" id="reader-estimated-time">5-7 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>5 minutes</li>
+		</ul>
+			<p>The new company website is in final testing. You're working on the plan to deploy the wideworldimports.com domain by using Azure DNS. You need to understand what steps are involved.</p>
+<p>In this unit, you'll learn how to:</p>
+<ul>
+<li>Create and configure a DNS zone for your domain by using Azure DNS.</li>
+<li>Understand how to link your domain to an Azure DNS zone.</li>
+<li>Create and configure a private DNS zone.</li>
+</ul>
+<h2 id="configure-a-public-dns-zone">Configure a public DNS zone</h2>
+<p>You use a DNS zone to host the DNS records for a domain, such as wideworldimports.com.</p>
+<h3 id="step-1-create-a-dns-zone-in-azure">Step 1: Create a DNS zone in Azure</h3>
+<p>You used a third-party domain-name registrar to register the wideworldimports.com domain. The domain doesn't point to your organization's website yet.</p>
+<p>To host the domain name with Azure DNS, you first need to create a DNS zone for that domain. A DNS zone holds all the DNS entries for your domain.</p>
+<p>When creating a DNS zone, you need to supply the following details:</p>
+<ul>
+<li><p><strong>Subscription</strong>: The subscription to be used.</p>
+</li>
+<li><p><strong>Resource group</strong>: The name of the resource group to hold your domains. If one doesn't exist, create one to allow for better control and management.</p>
+</li>
+<li><p><strong>Name</strong>: The name of your domain, which in this case is wideworldimports.com.</p>
+</li>
+<li><p><strong>Resource group location</strong>: The location defaults to the location of the resource group.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/host-domain-azure-dns/media/3-create-dns-zone.png" alt="Screenshot of Create DNS zone page" data-linktype="relative-path"></p>
+</li>
+</ul>
+<h3 id="step-2-get-your-azure-dns-name-servers">Step 2: Get your Azure DNS name servers</h3>
+<p>After you create a DNS zone for the domain, you need to get the name server details from the name servers (NS) record. You use these details to update your domain registrar's information, and point to the Azure DNS zone.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/host-domain-azure-dns/media/3-name-server.png" alt="Screenshot of the name server details on the DNS zone page" data-linktype="relative-path"></p>
+<h3 id="step-3-update-the-domain-registrar-setting">Step 3: Update the domain registrar setting</h3>
+<p>As the owner of the domain, you need to sign in to the domain management application provided by your domain registrar. In the management application, edit the NS record, and change the NS details to match your Azure DNS name server details.</p>
+<p>Changing the NS details is called <em>domain delegation</em>. When you delegate the domain, you must use all four name servers provided by Azure DNS.</p>
+<h3 id="step-4-verify-delegation-of-domain-name-services">Step 4: Verify delegation of domain name services</h3>
+<p>The next step is to verify that the delegated domain now points to the Azure DNS zone you created for the domain. This can take as few as 10 minutes, but might take longer.</p>
+<p>To verify the success of the domain delegation, query the start of authority (SOA) record. The SOA record was automatically created when the Azure DNS zone was set up. You can do this by using a third-party tool, like nslookup.</p>
+<p>The SOA record represents your domain and will become the reference point when other DNS servers are searching for your domain on the internet.</p>
+<p>To verify the delegation, use nslookup like this:</p>
+<pre tabindex="0"><code data-author-content="nslookup -type=SOA wideworldimports.com
+"><span>nslookup -<span>type</span>=SOA wideworldimports.com
+</span></code></pre>
+<h3 id="step-5-configure-your-custom-dns-settings">Step 5: Configure your custom DNS settings</h3>
+<p>The domain name is wideworldimports.com. When it's used in a browser, the domain resolves to your website. But what if you want to add in web servers, or load balancers? These resources need to have their own custom settings in the DNS zone, either as an A record or a CNAME.</p>
+<h4 id="a-record">A record</h4>
+<p>Each A record requires the following details:</p>
+<ul>
+<li><strong>Name</strong>: The name of the custom domain, for example <em>webserver1</em>.</li>
+<li><strong>Type</strong>: In this instance, it's A.</li>
+<li><strong>TTL</strong>: Represents the "time-to-live" as a whole unit, where 1 is one hour. This value indicates how long the A record lives in a DNS cache before it expires.</li>
+<li><strong>IP address</strong>: The IP address of the server this A record should resolve to.</li>
+</ul>
+<h4 id="cname-record">CNAME record</h4>
+<p>The CNAME is the canonical name, or the alias for an A record. Use CNAME when you have different domain names that all access the same website. For example, you might need a CNAME in the <em>wideworldimports</em> zone, if you want both www.wideworldimports.com and wideworldimports.com to resolve to the same IP address.</p>
+<p>You would create the CNAME record in the <em>wideworldimports</em> zone with the following information:</p>
+<ul>
+<li>NAME: www</li>
+<li>TTL: 600 seconds</li>
+<li>Record type: CNAME</li>
+</ul>
+<p>If you exposed a web function, you would create a CNAME record that resolves to the Azure function.</p>
+<h2 id="configure-private-dns-zone">Configure private DNS zone</h2>
+<p>To provide name resolution for virtual machines (VMs) within a virtual network and between virtual networks, create a private DNS zone.</p>
+<h3 id="step-1-create-private-dns-zone">Step 1: Create private DNS zone</h3>
+<p>In the Azure portal, search on <em>private dns zones</em>. To create the private zone, you need enter a resource group and the name of the zone. For example, the name might be something like private.wideworldimports.com.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/host-domain-azure-dns/media/3-create-private-dns-zone.png" alt="Screenshot of the Create Private DNS zone page" data-linktype="relative-path"></p>
+<h3 id="step-2-identify-virtual-networks">Step 2: Identify virtual networks</h3>
+<p>Let's assume that your organization has already created your VMs and virtual networks in a production environment. Identify the virtual networks associated with VMs that need name resolution support. To link the virtual networks to the private zone, you need the virtual network names.</p>
+<h3 id="step-3-link-your-virtual-network-to-a-private-dns-zone">Step 3: Link your virtual network to a private DNS zone</h3>
+<p>To link the private DNS zone to a virtual network, you create a virtual network link. In the Azure portal, go to the private zone and select <strong>Virtual network links</strong>.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/host-domain-azure-dns/media/3-virtual-network-link-option.png" alt="Screenshot of the Create Private DNS zone page" data-linktype="relative-path"></p>
+<p>Select <strong>Add</strong> to pick the virtual network you want to link to the private zone.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/host-domain-azure-dns/media/3-add-virtual-network-link.png" alt="Screenshot of Add virtual network link page" data-linktype="relative-path"></p>
+<p>You add a virtual network link record for each virtual network that needs private name resolution support.</p>
+<p>In the next unit, you'll learn how to create a public DNS zone.</p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Exercise - Create a DNS zone and an A record by using Azure DNS</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/host-domain-azure-dns/4-exercise-create-dns-zone-a-record/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

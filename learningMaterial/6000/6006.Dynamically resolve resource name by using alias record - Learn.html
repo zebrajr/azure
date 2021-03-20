@@ -1,0 +1,261 @@
+<html dir="ltr"><head><title>Dynamically resolve resource name by using alias record - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/host-domain-azure-dns/5-resolve-name-alias-record">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/host-domain-azure-dns/5-resolve-name-alias-record</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Dynamically resolve resource name by using alias record - Learn</h1>
+  <div dir="auto" id="reader-credits">cwatson-cat</div>
+  <div dir="auto" id="reader-estimated-time">4-5 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="main" role="main" data-bi-name="content" lang="en-us" dir="ltr">
+		
+		
+		<ul>
+			<li>3 minutes</li>
+		</ul>
+			<p>You have now successfully delegated the domain from the domain registrar to your Azure DNS, and configured an A record to link the domain to your web server.</p>
+<p>The next phase of the deployment is to improve resiliency by using a load balancer. Load balancers distribute inbound data requests and traffic across one or more servers. They reduce the load on any one server, and improve performance. This technology is well established, and will be used throughout your on-premises network.</p>
+<p>You know that the A record and CNAME record don't support direct connection to Azure resources like your load balancers. You've been tasked with finding out how to link the apex domain with a load balancer.</p>
+<h2 id="what-is-an-apex-domain">What is an apex domain?</h2>
+<p>The apex domain is the highest level of your domain. In our case, that's wideworldimports.com. Note that the apex domain is also sometimes referred to as the <em>zone apex</em> or <em>root apex</em>. It's often represented by the @ symbol in your DNS zone records.</p>
+<p>If you check the DNS zone for wideworldimports.com, you'll see there are two apex domain records: NS and SOA. The NS and SOA records are automatically created when you created the DNS zone.</p>
+<p>CNAME records that you might need for an Azure Traffic Manager profile or Azure Content Delivery Network endpoints aren't supported at the zone apex level. Alias records are supported at the zone apex level.</p>
+<h2 id="what-are-alias-records">What are alias records?</h2>
+<p>Azure alias records enable a zone apex domain to reference other Azure resources from the DNS zone. You don't need to create complex redirection policies. You can also use an Azure alias to route all traffic through Traffic Manager.</p>
+<p>The Azure alias record can point to the following Azure resources:</p>
+<ul>
+<li>A Traffic Manager profile</li>
+<li>Azure Content Delivery Network endpoints</li>
+<li>A public IP resource</li>
+<li>A front door profile</li>
+</ul>
+<p>Alias records provide lifecycle tracking of target resources, ensuring that changes to any target resource are automatically applied to the DNS zone. Alias records also provide support for load-balanced applications in the zone apex.</p>
+<p>The alias record set supports the following DNS zone record types:</p>
+<ul>
+<li><strong>A</strong>: The IPv4 domain name-mapping record.</li>
+<li><strong>AAAA</strong>: The IPv6 domain name-mapping record.</li>
+<li><strong>CNAME</strong>: The alias for your domain, and links to the A record.</li>
+</ul>
+<h2 id="uses-for-alias-records">Uses for alias records</h2>
+<p>The following are some of the advantages of using alias records:</p>
+<ul>
+<li><strong>Prevents dangling DNS records</strong>: A dangling DNS record occurs when the DNS zone records aren't up-to-date with changes to IP addresses. Alias records prevent dangling references by tightly coupling the lifecycle of a DNS record with an Azure resource.</li>
+<li><strong>Updates DNS record set automatically when IP addresses change</strong>: When the underlying IP address of a resource, service, or application is changed, the alias record ensures that any associated DNS records are automatically refreshed.</li>
+<li><strong>Hosts load-balanced applications at the zone apex</strong>: Alias records allow for zone apex resource routing to Traffic Manager.</li>
+<li><strong>Points zone apex to Azure Content Delivery Network endpoints</strong>: With alias records, you can now directly reference your Azure Content Delivery Network instance.</li>
+</ul>
+<p>An alias record enables you to link the zone apex (wideworldimports.com) to a load balancer. It creates a link to the Azure resource, rather than a direct IP-based connection. So, if the IP address of your load balancer changes, the zone apex record continues to work.</p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Exercise - Create alias records for Azure DNS</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/host-domain-azure-dns/6-exercise-create-alias-records/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div><section>
+		<p>
+Need help? See our <a id="troubleshooting-guide" data-bi-name="troubleshooting" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn.azure.host-domain-azure-dns.resolve-name-alias-record&amp;documentId=666a7017-c076-3341-df4d-2ba38d9c473d&amp;versionIndependentDocumentId=4a1f9f29-da84-4c28-7d0f-037d756084be&amp;contentPath=%2FMicrosoftDocs%2Flearn-pr%2Fblob%2Flive%2Flearn-pr%2Fazure%2Fhost-domain-azure-dns%2F5-resolve-name-alias-record.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fhost-domain-azure-dns%2F5-resolve-name-alias-record&amp;author=cwatson">troubleshooting guide</a> or provide specific feedback by <a id="module-unit-feedback-link" data-bi-name="feedback" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn.azure.host-domain-azure-dns.resolve-name-alias-record&amp;documentId=666a7017-c076-3341-df4d-2ba38d9c473d&amp;versionIndependentDocumentId=4a1f9f29-da84-4c28-7d0f-037d756084be&amp;contentPath=%2FMicrosoftDocs%2Flearn-pr%2Fblob%2Flive%2Flearn-pr%2Fazure%2Fhost-domain-azure-dns%2F5-resolve-name-alias-record.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fhost-domain-azure-dns%2F5-resolve-name-alias-record&amp;author=cwatson#report-feedback">reporting an issue</a>.		</p>
+	</section></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

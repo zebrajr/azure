@@ -1,0 +1,8 @@
+1.C
+Azure DNS allows you to host your registered domains. You can control and configure the domain records, like A, CNAME, MX, and setup alias records.
+
+2.A
+Azure DNS is built on Azure Resource Manager, which provides security across all resources in Azure DNS.
+
+3.B
+The A or AAAA record maps an IP address to a domain. Multiple IP addresses are known as a record set.
