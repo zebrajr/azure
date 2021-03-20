@@ -1,0 +1,14 @@
+1.C
+Azure Bastion is a fully managed PaaS service. It provides seamless RDP/SSH access to VMs over the internet without requiring the installation of connection software like Remote Desktop.
+
+2.B
+An Azure Bastion host supports RDP and SSH connections for VMs within the same virtual network or a peered virtual network.
+
+3.C
+Create a subnet named AzureBastionSubnet for the virtual network; create a public IP; and then create the Azure Bastion resource with the virtual network and public IP address information.
+
+4.C
+You connect to internal VMs by using the public IP of Azure Bastion, not a public IP on the destination VM.
+
+5.B
+Use Azure RBAC to apply the least privilege to use Azure Bastion. Apply just the reader role on the Azure Bastion resource, on the virtual machine, and on the NIC with the private IP of the virtual machine.

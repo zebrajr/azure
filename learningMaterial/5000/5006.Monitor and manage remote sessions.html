@@ -1,0 +1,335 @@
+<html dir="ltr"><head><title>Monitor and manage remote sessions - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/connect-vm-with-azure-bastion/5-manage-remote-sessions">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/connect-vm-with-azure-bastion/5-manage-remote-sessions</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Monitor and manage remote sessions - Learn</h1>
+  <div dir="auto" id="reader-credits">cwatson-cat</div>
+  <div dir="auto" id="reader-estimated-time">4-5 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>5 minutes</li>
+		</ul>
+			<p>In this unit, you'll learn how to manage remote sessions by enabling diagnostic logs and monitoring remote sessions.</p>
+<h2 id="configure-diagnostic-settings-to-generate-audit-logs">Configure diagnostic settings to generate audit logs</h2>
+<p>Azure Bastion can log information about remote user sessions. Review the logs to see who connected to which workloads, at what time, from where, and other relevant logging information.</p>
+<p>To generate these logs, you must configure diagnostic settings on Azure Bastion. It can take several hours for the logs to stream to a storage account. The following sections show you how to configure Azure Bastion diagnostic settings so you can try this in your own subscription later.</p>
+<h3 id="enable-diagnostics-for-azure-bastion">Enable diagnostics for Azure Bastion</h3>
+<p>In the Azure Bastion resource, you add diagnostic settings under <strong>Monitoring</strong>. You need a storage account to stream the logs to. If you don't already have a storage account, create one before you try these steps in your own subscription.</p>
+<ol>
+<li><p>In the <a href="https://portal.azure.com/learn.docs.microsoft.com" data-linktype="external" target="az-portal">Azure portal</a>, search for or select <strong>Bastions</strong>.</p>
+</li>
+<li><p>Select the Azure Bastion resource.</p>
+</li>
+<li><p>Under <strong>Monitoring</strong>, select <strong>Diagnostics settings</strong>.</p>
+</li>
+<li><p>Select <strong>Add diagnostic setting</strong>.</p>
+<p><span>
+<img src="https://docs.microsoft.com/en-gb/learn/modules/connect-vm-with-azure-bastion/media/5-bastion-diagnostics-settings.png" alt="Screenshot that shows the Add diagnostic settings link within the Diagnostics settings page." data-linktype="relative-path">
+</span>
+</p>
+</li>
+<li><p>Enter a name for <strong>Diagnostic setting name</strong>.</p>
+</li>
+<li><p>Under <strong>log</strong>, select <strong>BastionAuditLogs</strong>.</p>
+</li>
+<li><p>Under <strong>Destination details</strong>, select <strong>Send to Log Analytics</strong> and <strong>Archive to storage account</strong>.</p>
+</li>
+<li><p>The location, subscription, and a storage account are autopopulated. Make sure the storage account is in the same region as the Azure Bastion resource.</p>
+<p><span>
+<img src="https://docs.microsoft.com/en-gb/learn/modules/connect-vm-with-azure-bastion/media/5-bastion-add-diagnostic-setting.png" alt="Screenshot that shows the Diagnostics setting page filled out." data-linktype="relative-path">
+</span>
+</p>
+</li>
+<li><p>Select <strong>Save</strong>.</p>
+</li>
+<li><p>After the save is complete, close the page.</p>
+</li>
+</ol>
+<h3 id="view-diagnostic-logs">View diagnostic logs</h3>
+<p>The diagnostic logs take several hours to appear in your storage account. Find them in the storage account under <strong>Containers</strong>.</p>
+<p><span>
+<img src="https://docs.microsoft.com/en-gb/learn/modules/connect-vm-with-azure-bastion/media/5-storage-container.png" alt="Screenshot of a storage account with a container called insights-logs-bastionauditlogs." data-linktype="relative-path">
+</span>
+</p>
+<p>Drill down through the resource hierarchy folders to get to the Azure Bastion host file.</p>
+<p><span>
+<img src="https://docs.microsoft.com/en-gb/learn/modules/connect-vm-with-azure-bastion/media/5-insights-folders.png" alt="Screenshot of the insights logs for Azure Bastion that shows the folder location level is at the Azure Bastion host resource." data-linktype="relative-path">
+</span>
+</p>
+<p>Continue to drill down through the year (y=), month (m=), day (d=), hour (h=), and minute (m=) folders to the find diagnostics log data for a specific the time period.</p>
+<p><span>
+<img src="https://docs.microsoft.com/en-gb/learn/modules/connect-vm-with-azure-bastion/media/5-insights-log-json-file.png" alt="Screenshot of the insights logs for Azure Bastion that shows the J S O N file for a specific time period." data-linktype="relative-path">
+</span>
+</p>
+<p>Download the .json file to view the session details. When you open the file, it will look something like the following example. In the example, you can see information like the operation type, user name, and client IP address.</p>
+<pre tabindex="0"><code data-author-content="{ 
+&quot;time&quot;:&quot;2020-10-22T23:26:00.697Z&quot;,
+&quot;resourceId&quot;:&quot;/SUBSCRIPTIONS/<subscripionID>/RESOURCEGROUPS/MYBASTION/PROVIDERS/MICROSOFT.NETWORK/BASTIONHOSTS/MYBASTION-BASTION&quot;,
+&quot;operationName&quot;:&quot;Microsoft.Network/BastionHost/connect&quot;,
+&quot;category&quot;:&quot;BastionAuditLogs&quot;,
+&quot;level&quot;:&quot;Informational&quot;,
+&quot;location&quot;:&quot;westus2&quot;,
+&quot;properties&quot;:{ 
+   &quot;userName&quot;:&quot;<username>&quot;,
+   &quot;userAgent&quot;:&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36&quot;,
+   &quot;clientIpAddress&quot;:&quot;131.107.159.86&quot;,
+   &quot;clientPort&quot;:24039,
+   &quot;protocol&quot;:&quot;ssh&quot;,
+   &quot;targetResourceId&quot;:&quot;/SUBSCRIPTIONS/<subscripionID>/RESOURCEGROUPS/MYBASTION/PROVIDERS/MICROSOFT.COMPUTE/VIRTUALMACHINES/LINUX-KEY&quot;,
+   &quot;subscriptionId&quot;:&quot;<subscripionID>&quot;,
+   &quot;message&quot;:&quot;Successfully Connected.&quot;,
+   &quot;resourceType&quot;:&quot;VM&quot;,
+   &quot;targetVMIPAddress&quot;:&quot;172.16.1.5&quot;,
+   &quot;tunnelId&quot;:&quot;<tunnelID>&quot;
+},
+&quot;FluentdIngestTimestamp&quot;:&quot;2020-10-22T23:26:00.0000000Z&quot;,
+&quot;Region&quot;:&quot;westus2&quot;,
+&quot;CustomerSubscriptionId&quot;:&quot;<subscripionID>&quot;
+}
+"><span>{ 
+<span>"time"</span>:<span>"2020-10-22T23:26:00.697Z"</span>,
+<span>"resourceId"</span>:<span>"/SUBSCRIPTIONS/&lt;subscripionID&gt;/RESOURCEGROUPS/MYBASTION/PROVIDERS/MICROSOFT.NETWORK/BASTIONHOSTS/MYBASTION-BASTION"</span>,
+<span>"operationName"</span>:<span>"Microsoft.Network/BastionHost/connect"</span>,
+<span>"category"</span>:<span>"BastionAuditLogs"</span>,
+<span>"level"</span>:<span>"Informational"</span>,
+<span>"location"</span>:<span>"westus2"</span>,
+<span>"properties"</span>:{ 
+   <span>"userName"</span>:<span>"&lt;username&gt;"</span>,
+   <span>"userAgent"</span>:<span>"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36"</span>,
+   <span>"clientIpAddress"</span>:<span>"131.107.159.86"</span>,
+   <span>"clientPort"</span>:<span>24039</span>,
+   <span>"protocol"</span>:<span>"ssh"</span>,
+   <span>"targetResourceId"</span>:<span>"/SUBSCRIPTIONS/&lt;subscripionID&gt;/RESOURCEGROUPS/MYBASTION/PROVIDERS/MICROSOFT.COMPUTE/VIRTUALMACHINES/LINUX-KEY"</span>,
+   <span>"subscriptionId"</span>:<span>"&lt;subscripionID&gt;"</span>,
+   <span>"message"</span>:<span>"Successfully Connected."</span>,
+   <span>"resourceType"</span>:<span>"VM"</span>,
+   <span>"targetVMIPAddress"</span>:<span>"172.16.1.5"</span>,
+   <span>"tunnelId"</span>:<span>"&lt;tunnelID&gt;"</span>
+},
+<span>"FluentdIngestTimestamp"</span>:<span>"2020-10-22T23:26:00.0000000Z"</span>,
+<span>"Region"</span>:<span>"westus2"</span>,
+<span>"CustomerSubscriptionId"</span>:<span>"&lt;subscripionID&gt;"</span>
+}
+</span></code></pre>
+<h2 id="manage-current-remote-sessions">Manage current remote sessions</h2>
+<p>Azure Bastion session monitoring lets you view which users are connected to which virtual machines. It shows the IP that the user connected from, how long they've been connected, and when they connected. You can select an ongoing session and force-disconnect the session to disconnect the user from the session.</p>
+<p><span>
+<img src="https://docs.microsoft.com/en-gb/learn/modules/connect-vm-with-azure-bastion/media/5-delete-remote-session.png" alt="Screenshot of the Azure Bastion sessions page with the delete option selected for one of the two sessions." data-linktype="relative-path">
+</span>
+</p>
+<p>You'll walk through how to manage remote sessions in the next unit.</p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Exercise - Enable diagnostic logs and monitor remote sessions</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/connect-vm-with-azure-bastion/6-exercise-enable-diagnostic-logs-monitor-sessions/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

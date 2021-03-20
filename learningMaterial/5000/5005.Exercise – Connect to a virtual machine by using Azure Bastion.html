@@ -1,0 +1,353 @@
+<html dir="ltr"><head><title>Exercise – Connect to a virtual machine by using Azure Bastion - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/connect-vm-with-azure-bastion/4-exercise-connect-vm-with-bastion">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/connect-vm-with-azure-bastion/4-exercise-connect-vm-with-bastion</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Exercise – Connect to a virtual machine by using Azure Bastion - Learn</h1>
+  <div dir="auto" id="reader-credits">cwatson-cat</div>
+  <div dir="auto" id="reader-estimated-time">3-4 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="main" role="main" data-bi-name="content" lang="en-us" dir="ltr">
+		
+		
+		<ul>
+			<li>15 minutes</li>
+		</ul>
+			<p>In this unit, you'll create a virtual machine (VM) to act as your internal app VM and deploy Azure Bastion to connect to it.</p>
+<p>This exercise is optional. To complete it, you need access to an Azure subscription where you have permissions to create resources like a VM. If you don't have an Azure subscription, create a <a href="https://azure.microsoft.com/free/" data-linktype="external" target="az-portal">free account</a> before you begin.</p>
+<h2 id="create-a-resource-group">Create a resource group</h2>
+<p>Create a resource group to contain all the resources that you'll create for the exercises.</p>
+<ol>
+<li><p>Sign in to the <a href="https://portal.azure.com/" data-linktype="external">Azure portal</a>.</p>
+</li>
+<li><p>Search for or select <strong>Resource groups</strong>.</p>
+</li>
+<li><p>Select <strong>Add</strong>.</p>
+</li>
+<li><p>Enter the following values for the resource group.</p>
+
+</li>
+<li><p>Select <strong>Review + create</strong> &gt; <strong>Create</strong>.</p>
+</li>
+</ol>
+<h2 id="create-a-vm">Create a VM</h2>
+<p>Create a Linux VM that's not exposed to the internet.</p>
+<ol>
+<li><p>In the <a href="https://portal.azure.com/" data-linktype="external">Azure portal</a>, search for or select <strong>Virtual machines</strong>.</p>
+</li>
+<li><p>Select <strong>Add</strong> &gt; <strong>Virtual machine</strong>.</p>
+</li>
+<li><p>Enter the following values to the <strong>Basics</strong> page.</p>
+
+<p>Use the default values for the rest of the fields on this page.</p>
+</li>
+<li><p>Select the <strong>Networking</strong> tab.</p>
+</li>
+<li><p>Change the following values.</p>
+
+</li>
+<li><p>Select <strong>Review + create</strong> &gt; <strong>Create</strong>.</p>
+</li>
+<li><p>Select <strong>Download private key and create resource</strong>.
+<span>
+<img src="https://docs.microsoft.com/en-gb/learn/modules/connect-vm-with-azure-bastion/media/4-download-private-key.png" alt="Screenshot of the Generate new key pair window with the Download private key button highlighted." data-linktype="relative-path">
+</span>
+</p>
+</li>
+</ol>
+<p>Because you created the internal app VM without a public IP, you can't connect to it over the internet. Instead of using a jumpbox VM to connect to the internal app VM, let's use Azure Bastion.</p>
+<h2 id="create-a-subnet-for-azure-bastion">Create a subnet for Azure Bastion</h2>
+<p>Before you can use Azure Bastion, you need to create a subnet on the virtual network that the internal app VM uses.</p>
+<ol>
+<li><p>In the <a href="https://portal.azure.com/" data-linktype="external">Azure portal</a>, select or search for <strong>Resource groups</strong>.</p>
+</li>
+<li><p>Select <strong>learn-bastion-rg</strong>.</p>
+</li>
+<li><p>From the list of resources, select the virtual network <strong>learn bastion-rg-vnet</strong>.</p>
+</li>
+<li><p>Under <strong>Settings</strong>, select <strong>Address space</strong>.</p>
+</li>
+<li><p>Enter an address space with a subnet mask that's /27 or larger, like /26, /25, and so on. An example is 10.0.1.0/24.</p>
+</li>
+<li><p>Select <strong>Save</strong>.</p>
+</li>
+<li><p>Under <strong>Settings</strong>, select <strong>Subnets</strong>.</p>
+</li>
+<li><p>Select <strong>+ Subnet</strong> to add a subnet.</p>
+</li>
+<li><p>Enter the following information to create a subnet.</p>
+<p><span>
+<img src="https://docs.microsoft.com/en-gb/learn/modules/connect-vm-with-azure-bastion/media/4-add-bastion-subnet.png" alt="Screenshot of the Add subnet page where the subnet name is AzureBastionSubnet." data-linktype="relative-path">
+</span>
+</p>
+
+<p>Use the default values for the rest of the fields.</p>
+</li>
+<li><p>Select <strong>OK</strong>.</p>
+</li>
+</ol>
+<h2 id="deploy-azure-bastion">Deploy Azure Bastion</h2>
+<ol>
+<li><p>In the <a href="https://portal.azure.com/" data-linktype="external">Azure portal</a>, select or search for <strong>Virtual machines</strong>.</p>
+</li>
+<li><p>Select the virtual machine <strong>internalappvm</strong>.</p>
+</li>
+<li><p>Select <strong>Connect</strong> &gt; <strong>Bastion</strong> &gt; <strong>Use Bastion</strong>.</p>
+<p><span>
+<img src="https://docs.microsoft.com/en-gb/learn/modules/connect-vm-with-azure-bastion/media/4-connect-bastion.png" alt="Screenshot of the Connect page and Bastion tab, with the Use Bastion button." data-linktype="relative-path">
+</span>
+</p>
+</li>
+<li><p>Review and use the default values like the Azure Bastion resource name, subnet, and the option to create a new public IP address.</p>
+<p><span>
+<img src="https://docs.microsoft.com/en-gb/learn/modules/connect-vm-with-azure-bastion/media/4-operations-bastion.png" alt="Screenshot of the Connect using Azure Bastion page with fields filled out by default, like Azure Bastion resource name, subnet, and create new public IP address." data-linktype="relative-path">
+</span>
+</p>
+</li>
+<li><p>Select <strong>Create</strong>.</p>
+</li>
+</ol>
+<p>Wait a few minutes for the Azure Bastion resource to be created.</p>
+<h2 id="connect-to-the-internal-app-vm">Connect to the internal app VM</h2>
+<ol>
+<li><p>After the Azure Bastion resource is created, you're prompted to enter credentials to connect to the VM.</p>
+</li>
+<li><p>Enter the username <strong>azureuser</strong>.</p>
+</li>
+<li><p>Select <strong>SSH Private Key from local file</strong>.</p>
+</li>
+<li><p>For <strong>Local file</strong>, select the <strong>internalappvm_key.ppe</strong> file that you downloaded when you created the VM.</p>
+<p><span>
+<img src="https://docs.microsoft.com/en-gb/learn/modules/connect-vm-with-azure-bastion/media/4-ready-to-connect.png" alt="Screenshot of the Azure Bastion connection page with the user name and local file fields populated." data-linktype="relative-path">
+</span>
+</p>
+</li>
+<li><p>Select <strong>Connect</strong>.</p>
+</li>
+<li><p>In the remote shell, enter Linux commands like the following command that updates the system.</p>
+<p><span>
+<img src="https://docs.microsoft.com/en-gb/learn/modules/connect-vm-with-azure-bastion/media/4-ubuntu-session.png" alt="Screenshot of a browser that shows an Ubuntu terminal session." data-linktype="relative-path">
+</span>
+</p>
+<pre tabindex="0"><code data-author-content="sudo apt-get -y update
+"><span>sudo apt-get -y update
+</span></code></pre>
+</li>
+<li><p>When you're finished, enter <code>exit</code>.</p>
+</li>
+</ol>
+<p>The next time you want to connect to the internal app VM, go to the virtual machine, select <strong>Bastion</strong>, and enter your credentials.</p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Monitor and manage remote sessions</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/connect-vm-with-azure-bastion/5-manage-remote-sessions/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div><section>
+		<p>
+Need help? See our <a id="troubleshooting-guide" data-bi-name="troubleshooting" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn.connect-vm-with-azure-bastion.exercise-connect-to-vm-with-bastion&amp;documentId=204ff96b-5ebb-3fb8-9a3f-f1642f9be036&amp;versionIndependentDocumentId=e556bf23-4efd-6532-0bcc-50e5d7bcd032&amp;contentPath=%2FMicrosoftDocs%2Flearn-pr%2Fblob%2Flive%2Flearn-pr%2Fazure%2Fconnect-vm-with-azure-bastion%2F4-exercise-connect-vm-with-bastion.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fconnect-vm-with-azure-bastion%2F4-exercise-connect-vm-with-bastion&amp;author=cwatson">troubleshooting guide</a> or provide specific feedback by <a id="module-unit-feedback-link" data-bi-name="feedback" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn.connect-vm-with-azure-bastion.exercise-connect-to-vm-with-bastion&amp;documentId=204ff96b-5ebb-3fb8-9a3f-f1642f9be036&amp;versionIndependentDocumentId=e556bf23-4efd-6532-0bcc-50e5d7bcd032&amp;contentPath=%2FMicrosoftDocs%2Flearn-pr%2Fblob%2Flive%2Flearn-pr%2Fazure%2Fconnect-vm-with-azure-bastion%2F4-exercise-connect-vm-with-bastion.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fconnect-vm-with-azure-bastion%2F4-exercise-connect-vm-with-bastion&amp;author=cwatson#report-feedback">reporting an issue</a>.		</p>
+	</section></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

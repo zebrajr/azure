@@ -1,0 +1,382 @@
+<html dir="ltr"><head><title>How does Azure Bastion work? - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/connect-vm-with-azure-bastion/3-how-does-azure-bastion-work">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/connect-vm-with-azure-bastion/3-how-does-azure-bastion-work</span>
+  </a>
+  <h1 dir="auto" id="reader-title">How does Azure Bastion work? - Learn</h1>
+  <div dir="auto" id="reader-credits">cwatson-cat</div>
+  <div dir="auto" id="reader-estimated-time">6-8 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>5 minutes</li>
+		</ul>
+			<p>An Azure Bastion deployment is per virtual network or peered virtual network. It's not per subscription, account, or virtual machine (VM). After you provision an Azure Bastion service in your virtual network, the RDP or SSH experience is available to all your VMs in the same virtual network.</p>
+<p>The following diagram shows an overview of how Azure Bastion works.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/connect-vm-with-azure-bastion/media/3-bastion-architecture-overview.png" role="presentation" data-linktype="relative-path">
+</p>
+<ol>
+<li><strong>You connect to a VM in the Azure portal</strong>. In the Azure portal, on the VM overview page, select <strong>Connect</strong> &gt; <strong>Bastion</strong> &gt; <strong>Use Bastion</strong>. Then enter your credentials for the VM.</li>
+<li><strong>Browser connects to the Azure Bastion host</strong>. The browser connects to Azure Bastion over the internet by using Transport Layer Security (TLS) and the public IP of the Azure Bastion host. Azure Gateway Manager manages portal connections to the Azure Bastion service on port 443 or 4443.</li>
+<li><strong>Bastion connects to the VM by using RDP or SSH</strong>. Azure Bastion is deployed in a separate subnet called AzureBastionSubnet within the virtual network. You create the subnet when you deploy Azure Bastion. The subnet can have address spaces with a /27 subnet mask or larger. Don't deploy other Azure resources to this subnet or change the subnet name.</li>
+<li><strong>Bastion streams the VM to the browser</strong>. Azure Bastion uses an HTML5-based web client that's automatically streamed to your local device. The Azure Bastion service packages the session information by using a custom protocol. The packages are transmitted through TLS.</li>
+</ol>
+<h2 id="verify-azure-bastion-works-with-your-network-security-group">Verify Azure Bastion works with your network security group</h2>
+<p>If you haven't deployed and configured a specific network security group for your organization, then you don't need to do anything. Azure Bastion works with the default network security group that's created with VMs.</p>
+<p>If you have a network security group configured for your organization, verify that Azure Bastion can connect to your VMs through RDP or SSH. We recommend that you add an inbound rule that allows RDP and SSH connections from the Azure Bastion subnet IP address range to your VMs.</p>
+<p>For Azure Bastion to work, your network security group needs to allow the following traffic.</p>
+
+<h2 id="deploy-an-azure-bastion-host-in-the-azure-portal">Deploy an Azure Bastion host in the Azure portal</h2>
+<p>Before you can deploy Azure Bastion, you need a virtual network. You can use an existing virtual network or deploy Azure Bastion as you create a virtual network. Create a subnet in the virtual network called <em>AzureBastionSubnet</em>. If you have a VM that's on the same or a peered virtual network, you complete the deployment in the Azure portal by selecting Azure Bastion when you connect to the VM.</p>
+<p>The following two sections show you the steps involved for each of the Azure Bastion deployment options in the Azure portal.</p>
+<h3 id="enable-azure-bastion-when-you-create-a-virtual-network">Enable Azure Bastion when you create a virtual network</h3>
+<p>If you don't already have a virtual network that you want to use for Azure Bastion, create a virtual network and enable Azure Bastion on the <strong>Security</strong> tab.</p>
+<p><span>
+<img src="https://docs.microsoft.com/en-gb/learn/modules/connect-vm-with-azure-bastion/media/3-create-virtual-network-enable-bastion.png" alt="Screenshot of the Security tab that allows you to enable and configure the Azure Bastion host in the workflow for creating a virtual network." data-linktype="relative-path">
+</span>
+</p>
+<ol>
+<li>Select <strong>Enable</strong> and enter a name for your Azure Bastion host.</li>
+<li>Add a subnet address with a subnet mask of /27 or larger.</li>
+<li>If you don't already have a public IP address that you want to use, select <strong>Create new</strong>.</li>
+<li>After you create the virtual network, add VMs to this virtual network. Or peer this virtual network to the virtual network with your VMs.</li>
+</ol>
+<h3 id="add-the-subnet-to-an-existing-virtual-network-and-provision-azure-bastion-resources">Add the subnet to an existing virtual network and provision Azure Bastion resources</h3>
+<p>On your existing virtual network, add a subnet named <em>AzureBastionSubnet</em>.</p>
+<p><span>
+<img src="https://docs.microsoft.com/en-gb/learn/modules/connect-vm-with-azure-bastion/media/3-virtual-network-add-subnet.png" alt="Screenshot of the page for adding a subnet, where the subnet name is AzureBastionSubnet." data-linktype="relative-path">
+</span>
+</p>
+<p>To provision Azure Bastion, in the portal on the VM, select <strong>Connect</strong> &gt; <strong>Bastion</strong> &gt; <strong>Use Bastion</strong>. Enter a name for the Azure Bastion resource, select the subnet, create a public IP, and so on. After Azure Bastion deploys, you can connect to the VM.</p>
+<p><span>
+<img src="https://docs.microsoft.com/en-gb/learn/modules/connect-vm-with-azure-bastion/media/3-operations-bastion.png" alt="Screenshot of the Connect using Azure Bastion page with fields filled out by default, like Azure Bastion resource name, subnet, and create public IP address." data-linktype="relative-path">
+</span>
+</p>
+<h2 id="deploy-azure-bastion-by-using-azure-powershell-or-the-azure-cli">Deploy Azure Bastion by using Azure PowerShell or the Azure CLI</h2>
+<p>If you want to use Azure PowerShell or the Azure CLI to deploy Azure Bastion, run commands to create the following resources:</p>
+<ul>
+<li>Subnet</li>
+<li>Public IP</li>
+<li>Azure Bastion resource</li>
+</ul>
+<p>The following sections show examples that you can use to deploy Azure Bastion.</p>
+<h3 id="use-azure-powershell-to-deploy-azure-bastion">Use Azure PowerShell to deploy Azure Bastion</h3>
+<ol>
+<li><p>Create the Azure Bastion subnet by using the cmdlet <code>New-AzVirtualNetworkSubnetConfig</code>. Then add the subnet to your existing virtual network by using <code>Add-AzVirtualNetworkSubnetConfig</code>. For example, the following command assumes you already have a virtual network.</p>
+<pre tabindex="0"><code data-author-content="$subnetName = &quot;AzureBastionSubnet&quot;
+$virtualNetwork = MyVirtualNetwork
+$addressPrefix = &quot;10.0.2.0/24&quot;
+$subnet = New-AzVirtualNetworkSubnetConfig ` 
+-Name $subnetName ` 
+-AddressPrefix $addressPrefix `
+
+Add-AzVirtualNetworkSubnetConfig ` 
+-Name $subnetName `
+-VirtualNetwork $virtualNetwork `
+-AddressPrefix $addressprefix
+"><span><span>$subnetName</span> = <span>"AzureBastionSubnet"</span>
+<span>$virtualNetwork</span> = MyVirtualNetwork
+<span>$addressPrefix</span> = <span>"10.0.2.0/24"</span>
+<span>$subnet</span> = <span>New-AzVirtualNetworkSubnetConfig</span> ` <span>
+-Name</span> <span>$subnetName</span> ` <span>
+-AddressPrefix</span> <span>$addressPrefix</span> `
+
+<span>Add-AzVirtualNetworkSubnetConfig</span> ` <span>
+-Name</span> <span>$subnetName</span> `
+-VirtualNetwork <span>$virtualNetwork</span> `
+-AddressPrefix <span>$addressprefix</span>
+</span></code></pre>
+</li>
+<li><p>Create a public IP address for Azure Bastion. Azure Bastion uses the public IP address to allow RDP/SSH connectivity over port 443. The public IP address must be in the same region as the Azure Bastion resource.</p>
+<pre tabindex="0"><code data-author-content="$publicip = New-AzPublicIpAddress `
+-ResourceGroupName &quot;myBastionRG&quot; `
+-name &quot;myPublicIP&quot; `
+-location &quot;westus2&quot; `
+-AllocationMethod Static `
+-Sku Standard
+"><span><span>$publicip</span> = <span>New-AzPublicIpAddress</span> `
+-ResourceGroupName <span>"myBastionRG"</span> `
+-name <span>"myPublicIP"</span> `
+-location <span>"westus2"</span> `
+-AllocationMethod Static `
+-Sku Standard
+</span></code></pre>
+</li>
+<li><p>Create an Azure Bastion resource in the subnet named AzureBastionSubnet for your virtual network.</p>
+<pre tabindex="0"><code data-author-content="$bastion = New-AzBastion `
+-ResourceGroupName &quot;myBastionRG&quot; `
+-Name &quot;myBastion&quot; `
+-PublicIpAddress $publicip `
+-VirtualNetwork $virtualNetwork
+"><span><span>$bastion</span> = <span>New-AzBastion</span> `
+-ResourceGroupName <span>"myBastionRG"</span> `
+-Name <span>"myBastion"</span> `
+-PublicIpAddress <span>$publicip</span> `
+-VirtualNetwork <span>$virtualNetwork</span>
+</span></code></pre>
+</li>
+</ol>
+<h3 id="use-the-azure-cli-to-deploy-azure-bastion">Use the Azure CLI to deploy Azure Bastion</h3>
+<ol>
+<li><p>Create the Azure Bastion subnet.</p>
+<pre tabindex="0"><code data-author-content="az network vnet subnet create \
+  --resource-group myBastionRG \
+  --vnet-name MyVirtualNetwork \
+  --name AzureBastionSubnet \
+  --address-prefixes 10.0.2.0/24
+"><span><span>az network vnet subnet </span>create \
+  <span>--resource-group</span> myBastionRG \
+  <span>--vnet-name</span> MyVirtualNetwork \
+  <span>--name</span> AzureBastionSubnet \
+  <span>--address-prefixes</span> <span>10.0.2.0</span>/<span>24</span>
+</span></code></pre>
+</li>
+<li><p>Create a public IP address for Azure Bastion.</p>
+<pre tabindex="0"><code data-author-content="az network public-ip create
+  --resource-group MyResourceGroup \
+  --name MyPublicIp \
+  --sku Standard \
+  --location westus2
+"><span><span>az network public-ip create</span>
+  <span>--resource-group</span> MyResourceGroup \
+  <span>--name</span> MyPublicIp \
+  <span>--sku</span> Standard \
+  <span>--location</span> westus2
+</span></code></pre>
+</li>
+<li><p>Create an Azure Bastion resource.</p>
+<pre tabindex="0"><code data-author-content="az network bastion create \
+  --name MyBastion \
+  --public-ip-address MyPublicIp \
+  --resource-group MyResourceGroup \
+  --vnet-name MyVnet \
+  --location westus2
+"><span><span>az network bastion create </span>\
+  <span>--name</span> MyBastion \
+  <span>--public-ip-address</span> MyPublicIp \
+  <span>--resource-group</span> MyResourceGroup \
+  <span>--vnet-name</span> MyVnet \
+  <span>--location</span> westus2
+</span></code></pre>
+</li>
+</ol>
+<h2 id="connect-to-vms-by-using-azure-bastion">Connect to VMs by using Azure Bastion</h2>
+<p>With the resources that you need in place, you should be able to connect to the VMs on the same virtual network or peered virtual network. In the Azure portal on the VM, select <strong>Bastion</strong> and enter your credentials.</p>
+<p><span>
+<img src="https://docs.microsoft.com/en-gb/learn/modules/connect-vm-with-azure-bastion/media/3-operations-bastion-connect.png" alt="Screenshot of the Connect using Azure Bastion page with prompt for username and authentication type." data-linktype="relative-path">
+</span>
+</p>
+<p>In the next unit, you'll go through the steps to deploy Azure Bastion for an existing virtual network.</p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Exercise – Connect to a virtual machine by using Azure Bastion</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/connect-vm-with-azure-bastion/4-exercise-connect-vm-with-bastion/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

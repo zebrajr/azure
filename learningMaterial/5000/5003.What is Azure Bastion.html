@@ -1,0 +1,263 @@
+<html dir="ltr"><head><title>What is Azure Bastion? - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/connect-vm-with-azure-bastion/2-what-is-azure-bastion">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/connect-vm-with-azure-bastion/2-what-is-azure-bastion</span>
+  </a>
+  <h1 dir="auto" id="reader-title">What is Azure Bastion? - Learn</h1>
+  <div dir="auto" id="reader-credits">cwatson-cat</div>
+  <div dir="auto" id="reader-estimated-time">4-4 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="main" role="main" data-bi-name="content" lang="en-us" dir="ltr">
+		
+		
+		<ul>
+			<li>3 minutes</li>
+		</ul>
+			<p>Azure Bastion provides a secure remote connection from the Azure portal to Azure virtual machines (VMs) over Transport Layer Security (TLS). Provision Azure Bastion to the same Azure virtual network as your VMs or to a peered virtual network. Then connect to any VM on that virtual network or a peered virtual network directly from the Azure portal.</p>
+<h2 id="provide-secure-rdp-and-ssh-connectivity-to-an-internal-vm">Provide secure RDP and SSH connectivity to an internal VM</h2>
+<p>You can use Azure Bastion to easily open an RDP or SSH session from the Azure portal to a VM that's not publicly exposed. Azure Bastion connects to your virtual machines over private IP. You don't have to expose RDP ports, SSH ports, or public IP addresses for your internal VMs.</p>
+<p>Because Azure Bastion is a fully managed platform as a service (PaaS) service, you don't need to apply any network security groups to the Azure Bastion subnet. But if you want additional security, you can configure your network security groups (NSGs) to allow RDP and SSH from Azure Bastion only.</p>
+<p>Azure Bastion provides RDP and SSH connectivity to all VMs on same virtual network as the Azure Bastion subnet, or on a peered virtual network. You don't need to install an additional client, agent, or software to use Azure Bastion.</p>
+<h2 id="connect-to-a-vm-by-using-azure-bastion">Connect to a VM by using Azure Bastion</h2>
+<p>After you deploy Azure Bastion, on the VM overview page, select <strong>Connect</strong> &gt; <strong>Bastion</strong> &gt; <strong>Use Bastion</strong>. Then enter the sign-in credentials for the VM to connect.</p>
+<p><span>
+<img src="https://docs.microsoft.com/en-gb/learn/modules/connect-vm-with-azure-bastion/media/2-connect-bastion-enter-credentials.png" alt="Screenshot of the Azure Bastion page that prompts you to enter username and password for the VM." data-linktype="relative-path">
+</span>
+</p>
+<h2 id="key-security-features">Key security features</h2>
+<ul>
+<li>Traffic initiated from Azure Bastion to target virtual machines stays within the virtual network or between peered virtual networks.</li>
+<li>There's no need to apply NSGs to the Azure Bastion subnet, because it's hardened internally. For additional security, you can configure NSGs to allow only remote connections to the target virtual machines from the Azure Bastion host.</li>
+<li>Azure Bastion helps protect against port scanning. RDP ports, SSH ports, and public IP addresses aren't publicly exposed for your VMs.</li>
+<li>Azure Bastion helps protect against zero-day exploits. It sits at the perimeter of your virtual network. So you don't need to worry about hardening each of the virtual machines in your virtual network. The Azure platform keeps Azure Bastion up to date.</li>
+<li>The service integrates with native security appliances for an Azure virtual network, like Azure Firewall.</li>
+<li>You can use the service to monitor and manage remote connections.</li>
+</ul>
+<h2 id="concurrent-sessions-supported">Concurrent sessions supported</h2>
+<p>The following table shows how many concurrent RDP and SSH sessions each Azure Bastion resource can support, assuming normal day-to-day usage. If there are other ongoing RDP sessions or SSH sessions, these numbers might vary.</p>
+
+<h2 id="features-supported-during-connection-to-a-vm">Features supported during connection to a VM</h2>
+<p>The following table highlights some of the user experience features that Azure Bastion supports.</p>
+
+<h2 id="roles-required-to-use-azure-bastion">Roles required to use Azure Bastion</h2>
+<p>As with other Azure resources, you need access to the resource group or the Azure Bastion resource itself to deploy or manage Azure Bastion.</p>
+<p>For you to connect to the VM resource by using Azure Bastion, the following roles provide the least privilege that you need:</p>
+<ul>
+<li>Reader role on the virtual machine</li>
+<li>Reader role on the NIC with private IP of the virtual machine</li>
+<li>Reader role on the Azure Bastion resource</li>
+</ul>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: How does Azure Bastion work?</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/connect-vm-with-azure-bastion/3-how-does-azure-bastion-work/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div><section>
+		<p>
+Need help? See our <a id="troubleshooting-guide" data-bi-name="troubleshooting" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn.connect-vm-with-azure-bastion.what-is-azure-bastion&amp;documentId=0d164441-38a0-dbf2-a772-40a70b401165&amp;versionIndependentDocumentId=cb1757a0-013a-3ddc-172a-01c534b70e9f&amp;contentPath=%2FMicrosoftDocs%2Flearn-pr%2Fblob%2Flive%2Flearn-pr%2Fazure%2Fconnect-vm-with-azure-bastion%2F2-what-is-azure-bastion.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fconnect-vm-with-azure-bastion%2F2-what-is-azure-bastion&amp;author=cwatson">troubleshooting guide</a> or provide specific feedback by <a id="module-unit-feedback-link" data-bi-name="feedback" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn.connect-vm-with-azure-bastion.what-is-azure-bastion&amp;documentId=0d164441-38a0-dbf2-a772-40a70b401165&amp;versionIndependentDocumentId=cb1757a0-013a-3ddc-172a-01c534b70e9f&amp;contentPath=%2FMicrosoftDocs%2Flearn-pr%2Fblob%2Flive%2Flearn-pr%2Fazure%2Fconnect-vm-with-azure-bastion%2F2-what-is-azure-bastion.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fconnect-vm-with-azure-bastion%2F2-what-is-azure-bastion&amp;author=cwatson#report-feedback">reporting an issue</a>.		</p>
+	</section></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>
