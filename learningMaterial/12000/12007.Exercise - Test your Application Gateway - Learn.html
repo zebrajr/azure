@@ -1,0 +1,297 @@
+<html dir="ltr"><head><title>Exercise - Test your Application Gateway - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/load-balance-web-traffic-with-application-gateway/6-exercise-test-application-gateway">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/load-balance-web-traffic-with-application-gateway/6-exercise-test-application-gateway</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Exercise - Test your Application Gateway - Learn</h1>
+  <div dir="auto" id="reader-credits">jboeshart</div>
+  <div dir="auto" id="reader-estimated-time">4-5 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="main" role="main" data-bi-name="content" lang="en-us" dir="ltr">
+		
+		
+		<ul>
+			<li>10 minutes</li>
+		</ul>
+			<p>The final step is to test the application gateway and verify that it implements load balancing, and won't attempt to direct traffic to a web server that is unavailable. We also want to ensure that our path-based routing is working correctly.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/load-balance-web-traffic-with-application-gateway/media/6-resources.svg" alt="Diagram showing the resources that have been deployed" data-linktype="relative-path"></p>
+<h2 id="test-load-balancing-for-the-vehicle-registration-web-app">Test load balancing for the vehicle registration web app</h2>
+<ol>
+<li><p>In the Cloud Shell, run the following command to generate the root URL your Application Gateway.</p>
+<pre tabindex="0"><code data-author-content="echo http://$(az network public-ip show \
+  --resource-group $RG \
+  --name appGatewayPublicIp \
+  --query dnsSettings.fqdn \
+  --output tsv)
+"><span>echo http://$(<span>az network public-ip show </span>\
+  <span>--resource-group</span> <span>$RG</span> \
+  <span>--name</span> appGatewayPublicIp \
+  <span>--query</span> dnsSettings.fqdn \
+  <span>--output</span> <span>tsv</span>)
+</span></code></pre>
+</li>
+<li><p>Using a web browser, navigate to the web site at the URL returned by the previous command. This is the address of your application gateway. Verify that the home page of the vehicle registration web app appears. Note the name of the web server that you're using as shown in the footer (<strong>webServer1</strong> or <strong>webServer2</strong>).</p>
+<p><span>
+<img src="https://docs.microsoft.com/en-gb/learn/modules/load-balance-web-traffic-with-application-gateway/media/6-default-page.png" alt="Screenshot showing an image of the vehicle registration web app." data-linktype="relative-path">
+</span>
+ <!-- no-loc --></p>
+</li>
+<li><p>Click <strong>Register a Vehicle</strong>, enter the details of a vehicle, and then click <strong>Register</strong>.</p>
+</li>
+<li><p>Click <strong>Refresh</strong> in the address bar of the web browser. Notice that your session should now be connected to a different web server. In this configuration, Application Gateway uses round-robin load balancing.</p>
+</li>
+<li><p>Click <strong>Refresh</strong> a few more times. The requests should oscillate between servers.</p>
+</li>
+</ol>
+<h2 id="test-the-resilience-of-application-gateway-to-a-failed-server">Test the resilience of Application Gateway to a failed server</h2>
+<ol>
+<li><p>In the Cloud Shell, run the following command to stop and deallocate the virtual machine for <strong>webServer1</strong>:</p>
+<pre tabindex="0"><code data-author-content="az vm deallocate \
+  --resource-group $RG \
+  --name webServer1
+"><span><span>az vm deallocate </span>\
+  <span>--resource-group</span> <span>$RG</span> \
+  <span>--name</span> webServer1
+</span></code></pre>
+</li>
+<li><p>Return to the application in the web browser and click <strong>Refresh</strong> several times. Notice that the web browser now only connects to <strong>webServer2</strong>.</p>
+</li>
+<li><p>In the Cloud Shell window on the right, restart the <strong>webServer1</strong> instance:</p>
+<pre tabindex="0"><code data-author-content="az vm start \
+  --resource-group $RG \
+  --name webServer1
+"><span><span>az vm start </span>\
+  <span>--resource-group</span> <span>$RG</span> \
+  <span>--name</span> webServer1
+</span></code></pre>
+</li>
+<li><p>Return to the web application in the web browser and click <strong>Refresh</strong> several times. You should see that the requests are now distributed across both web servers again.</p>
+</li>
+</ol>
+<p>You've verified that the web application is running. Application Gateway uses load balancing to distribute requests across servers. Application Gateway detects whether a server has failed, and won't route requests to a server that is unavailable.</p>
+<h2 id="test-path-based-routing">Test path-based routing</h2>
+<p>Now let's test out the path-based routing. Recall that URLs to the root of the site and with <strong>/VehicleRegistration/</strong> will be routed to the <strong>vmPool</strong> containing our VMs, and requests to <strong>/LicenseRenewal/</strong> will be routed to the <strong>appServicePool</strong> containing our App Service.</p>
+<p>You just confirmed that routing to the root page works, as you were able to pull up the vehicle registration page. Let's try the other routes to confirm they work.</p>
+<ol>
+<li><p>Now click <strong>Register a Vehicle</strong> in the web browser of the application gateway page. This should bring up the Vehicle Registration page for the vehicle registration site. With <strong>/VehicleRegistration/</strong> in the URL, this routes to the <strong>vmPool</strong> where our vehicle registration site is running.</p>
+<p><span>
+<img src="https://docs.microsoft.com/en-gb/learn/modules/load-balance-web-traffic-with-application-gateway/media/6-vehicle-registration.png" alt="Screenshot showing an image of the vehicle registration web app." data-linktype="relative-path">
+</span>
+ <!-- no-loc --></p>
+</li>
+<li><p>Now visit <code>http://&lt;vehicleAppGateway&gt;/LicenseRenewal/Create</code>. This should take you to the license renewal page running on App Service. With <strong>/LicenseRenewal/</strong> in the URL, this routes to the <strong>appServicePool</strong> where our license renewal site is running.</p>
+<p><span>
+<img src="https://docs.microsoft.com/en-gb/learn/modules/load-balance-web-traffic-with-application-gateway/media/6-license-renewal.png" alt="Screenshot showing an image of the license renewal web app." data-linktype="relative-path">
+</span>
+ <!-- no-loc --></p>
+</li>
+</ol>
+<p>With this configuration, we can direct all users for both sites through our Application Gateway, giving them one root URL to remember. We can add additional sites as we expand our web presence.</p>
+<h2 id="web-application-firewall">Web application firewall</h2>
+<p>We've also enabled the WAF on our Application Gateway. By doing this, we've automatically added security protection to both web sites. This provides a solid layer of protection from common vulnerabilities and helps protect our infrastructure and data.</p>
+
+		
+	</div><section>
+		<p>
+Need help? See our <a id="troubleshooting-guide" data-bi-name="troubleshooting" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn.load-balance-web-traffic-with-application-gateway.6-exercise-test-application-gateway&amp;documentId=09b7cc39-5da9-4d25-a5a6-288313315b5b&amp;versionIndependentDocumentId=be23b18c-d672-d243-5cf9-2a738d2dcd2e&amp;contentPath=%2FMicrosoftDocs%2Flearn-pr%2Fblob%2Flive%2Flearn-pr%2Fazure%2Fload-balance-web-traffic-with-application-gateway%2F6-exercise-test-application-gateway.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fload-balance-web-traffic-with-application-gateway%2F6-exercise-test-application-gateway&amp;author=jaboes">troubleshooting guide</a> or provide specific feedback by <a id="module-unit-feedback-link" data-bi-name="feedback" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn.load-balance-web-traffic-with-application-gateway.6-exercise-test-application-gateway&amp;documentId=09b7cc39-5da9-4d25-a5a6-288313315b5b&amp;versionIndependentDocumentId=be23b18c-d672-d243-5cf9-2a738d2dcd2e&amp;contentPath=%2FMicrosoftDocs%2Flearn-pr%2Fblob%2Flive%2Flearn-pr%2Fazure%2Fload-balance-web-traffic-with-application-gateway%2F6-exercise-test-application-gateway.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fload-balance-web-traffic-with-application-gateway%2F6-exercise-test-application-gateway&amp;author=jaboes#report-feedback">reporting an issue</a>.		</p>
+	</section></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

@@ -1,0 +1,376 @@
+<html dir="ltr"><head><title>Exercise - Create web sites - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/load-balance-web-traffic-with-application-gateway/3-exercise-create-web-sites">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/load-balance-web-traffic-with-application-gateway/3-exercise-create-web-sites</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Exercise - Create web sites - Learn</h1>
+  <div dir="auto" id="reader-credits">jboeshart</div>
+  <div dir="auto" id="reader-estimated-time">5-6 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="main" role="main" data-bi-name="content" lang="en-us" dir="ltr">
+		
+		
+		<ul>
+			<li>10 minutes</li>
+		</ul>
+			<p>In the motor vehicle department system, you decide to run the web app on two servers. You'll implement each server using a virtual machine.</p>
+<p>In this exercise, you'll create a pair of virtual machines and install the vehicle registration web app. You'll also configure a virtual network that Application Gateway can use to connect to the virtual machines. Finally, you'll deploy the license renewal web site to an instance of Azure App Service.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/load-balance-web-traffic-with-application-gateway/media/3-resources.svg" alt="Diagram showing the resources that will be deployed" data-linktype="relative-path"></p>
+<h2 id="create-virtual-machines-and-deploy-the-vehicle-registration-site">Create virtual machines and deploy the vehicle registration site</h2>
+<ol>
+<li><p>Open the <a href="https://shell.azure.com/" data-linktype="external" target="az-portal">Azure Cloud Shell</a> in your browser, and log in to the directory with access to the subscription you want to create resources in.</p>
+</li>
+<li><p>Run the following command in the Cloud Shell to create a variable to store your resource group name, and a resource group for your resources. Replace <code>&lt;resource group name&gt;</code> with a name for your resource group, and <code>&lt;location&gt;</code> with the Azure region you'd like to deploy your resources in.</p>
+<div>
+<p> Note</p>
+<p>If you need to find the location name, you can use the following command: az account list-locations -o table</p>
+</div>
+<pre tabindex="0"><code data-author-content="RG=<resource group name>
+az group create --name $RG --location <location>
+"><span>RG=<span>&lt;resource group name&gt;</span>
+<span>az group create </span><span>--name</span> <span>$RG</span> <span>--location</span> <span>&lt;location&gt;</span>
+</span></code></pre>
+</li>
+<li><p>In the Cloud Shell window on the right, run the following command. This command uses the Azure command-line interface to create a virtual network named <code>vehicleappvnet</code>. It's a private network that provides addresses in the range 10.0.0.0 to 10.0.255.255. The command also creates a subnet called <code>webServerSubnet</code>, with the address range 10.0.1.0 to 10.0.1.255. This subnet will contain the virtual machines.</p>
+<pre tabindex="0"><code data-author-content="az network vnet create \
+  --resource-group $RG \
+  --name vehicleAppVnet \
+  --address-prefix 10.0.0.0/16 \
+  --subnet-name webServerSubnet \
+  --subnet-prefix 10.0.1.0/24
+"><span><span>az network vnet create </span>\
+  <span>--resource-group</span> <span>$RG</span> \
+  <span>--name</span> vehicleAppVnet \
+  <span>--address-prefix</span> <span>10.0.0.0</span>/<span>16</span> \
+  <span>--subnet-name</span> webServerSubnet \
+  <span>--subnet-prefix</span> <span>10.0.1.0</span>/<span>24</span>
+</span></code></pre>
+</li>
+<li><p>To download the script that creates the virtual machines, run the following command.</p>
+<pre tabindex="0"><code data-author-content="git clone https://github.com/MicrosoftDocs/mslearn-load-balance-web-traffic-with-application-gateway module-files
+"><span>git <span>clone</span> https://github.com/MicrosoftDocs/mslearn-load-balance-web-traffic-with-application-gateway module-files
+</span></code></pre>
+</li>
+<li><p>To create and configure the virtual machines for the web servers, run the following commands. The virtual machines are called <code>webServer1</code> and <code>webServer2</code>. Each virtual machine runs Ubuntu Server. An administrative user account is created for each virtual machine, with the login name <code>azureuser</code>. Each virtual machine has the vehicle registration web app installed.</p>
+<p>The first command runs asynchronously to enable both virtual machines to be created simultaneously.</p>
+<pre tabindex="0"><code data-author-content="az vm create \
+  --resource-group $RG \
+  --name webServer1 \
+  --image UbuntuLTS \
+  --admin-username azureuser \
+  --generate-ssh-keys \
+  --vnet-name vehicleAppVnet \
+  --subnet webServerSubnet \
+  --public-ip-address &quot;&quot; \
+  --nsg &quot;&quot; \
+  --custom-data module-files/scripts/vmconfig.sh \
+  --no-wait
+"><span><span>az vm create </span>\
+  <span>--resource-group</span> <span>$RG</span> \
+  <span>--name</span> webServer1 \
+  <span>--image</span> UbuntuLTS \
+  <span>--admin-username</span> azureuser \
+  <span>--generate-ssh-keys</span> \
+  <span>--vnet-name</span> vehicleAppVnet \
+  <span>--subnet</span> webServerSubnet \
+  <span>--public-ip-address</span> <span>""</span> \
+  <span>--nsg</span> <span>""</span> \
+  <span>--custom-data</span> module<span>-files</span>/scripts/vmconfig.sh \
+  <span>--no-wait</span>
+</span></code></pre>
+<pre tabindex="0"><code data-author-content="az vm create \
+  --resource-group $RG \
+  --name webServer2 \
+  --image UbuntuLTS \
+  --admin-username azureuser \
+  --generate-ssh-keys \
+  --vnet-name vehicleAppVnet \
+  --subnet webServerSubnet \
+  --public-ip-address &quot;&quot; \
+  --nsg &quot;&quot; \
+  --custom-data module-files/scripts/vmconfig.sh
+"><span><span>az vm create </span>\
+  <span>--resource-group</span> <span>$RG</span> \
+  <span>--name</span> webServer2 \
+  <span>--image</span> UbuntuLTS \
+  <span>--admin-username</span> azureuser \
+  <span>--generate-ssh-keys</span> \
+  <span>--vnet-name</span> vehicleAppVnet \
+  <span>--subnet</span> webServerSubnet \
+  <span>--public-ip-address</span> <span>""</span> \
+  <span>--nsg</span> <span>""</span> \
+  <span>--custom-data</span> module<span>-files</span>/scripts/vmconfig.sh
+</span></code></pre>
+</li>
+<li><p>To confirm both virtual machines were created successfully, run the following command.</p>
+<pre tabindex="0"><code data-author-content="az vm list \
+  --resource-group $RG \
+  --show-details \
+  --output table
+"><span><span>az vm list </span>\
+  <span>--resource-group</span> <span>$RG</span> \
+  <span>--show-details</span> \
+  <span>--output</span> <span>table</span>
+</span></code></pre>
+<p>You should see output similar to the following. Before continuing, ensure the <strong>PowerState</strong> is <strong>VM running</strong> for both virtual machines.</p>
+<pre tabindex="0"><code data-author-content="Name          ResourceGroup      PowerState    PublicIps    Fqdns    Location        Zones
+------------  -----------------  ------------  -----------  -------  --------------  -------
+webServer1    MyResourceGroup    VM running                          southcentralus
+webServer2    MyResourceGroup    VM running                          southcentralus
+">Name          ResourceGroup      PowerState    PublicIps    Fqdns    Location        Zones
+------------  -----------------  ------------  -----------  -------  --------------  -------
+webServer1    MyResourceGroup    VM running                          southcentralus
+webServer2    MyResourceGroup    VM running                          southcentralus
+</code></pre>
+</li>
+</ol>
+<p>You've now created the virtual machines running the vehicle registration web app. Both virtual machines are identical, and are part of the same virtual network.</p>
+<h2 id="create-app-service-and-deploy-the-license-renewal-site">Create App Service and deploy the license renewal site</h2>
+<ol>
+<li><p>To start, to generate a unique name for the website, run the following command.</p>
+<pre tabindex="0"><code data-author-content="APPSERVICE=&quot;licenserenewal$RANDOM&quot;
+"><span>APPSERVICE=<span>"licenserenewal<span>$RANDOM</span>"</span>
+</span></code></pre>
+</li>
+<li><p>Next, to create the App Service plan the web app will use, run the following command.</p>
+<pre tabindex="0"><code data-author-content="az appservice plan create \
+    --resource-group $RG \
+    --name vehicleAppServicePlan \
+    --sku S1
+"><span><span>az appservice plan create </span>\
+    <span>--resource-group</span> <span>$RG</span> \
+    <span>--name</span> vehicleAppServicePlan \
+    <span>--sku</span> S1
+</span></code></pre>
+</li>
+<li><p>Lastly, create the web app and deploy the license renewal site.</p>
+<pre tabindex="0"><code data-author-content="az webapp create \
+    --resource-group $RG \
+    --name $APPSERVICE \
+    --plan vehicleAppServicePlan \
+    --deployment-source-url https://github.com/MicrosoftDocs/mslearn-load-balance-web-traffic-with-application-gateway \
+    --deployment-source-branch appService --runtime &quot;DOTNETCORE|2.1&quot; 
+"><span><span>az webapp create </span>\
+    <span>--resource-group</span> <span>$RG</span> \
+    <span>--name</span> <span>$APPSERVICE</span> \
+    <span>--plan</span> vehicleAppServicePlan \
+    <span>--deployment-source-url</span> https://github.com/MicrosoftDocs/mslearn<span>-load-balance-web-traffic-with-application-gateway</span> \
+    <span>--deployment-source-branch</span> appService <span>--runtime</span> <span>"DOTNETCORE|2.1"</span> 
+</span></code></pre>
+</li>
+</ol>
+<p>Now, let's take a closer look at configuring Application Gateway.</p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Application Gateway creation and configuration</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/load-balance-web-traffic-with-application-gateway/4-create-configure-application-gateway/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div><section>
+		<p>
+Need help? See our <a id="troubleshooting-guide" data-bi-name="troubleshooting" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn.load-balance-web-traffic-with-application-gateway.3-exercise-create-web-sites&amp;documentId=e9e2625d-ee3d-bd9e-3b1a-842f7d934510&amp;versionIndependentDocumentId=f7567038-d217-c70f-d657-f97bb2a6e58a&amp;contentPath=%2FMicrosoftDocs%2Flearn-pr%2Fblob%2Flive%2Flearn-pr%2Fazure%2Fload-balance-web-traffic-with-application-gateway%2F3-exercise-create-web-sites.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fload-balance-web-traffic-with-application-gateway%2F3-exercise-create-web-sites&amp;author=jaboes">troubleshooting guide</a> or provide specific feedback by <a id="module-unit-feedback-link" data-bi-name="feedback" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn.load-balance-web-traffic-with-application-gateway.3-exercise-create-web-sites&amp;documentId=e9e2625d-ee3d-bd9e-3b1a-842f7d934510&amp;versionIndependentDocumentId=f7567038-d217-c70f-d657-f97bb2a6e58a&amp;contentPath=%2FMicrosoftDocs%2Flearn-pr%2Fblob%2Flive%2Flearn-pr%2Fazure%2Fload-balance-web-traffic-with-application-gateway%2F3-exercise-create-web-sites.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fload-balance-web-traffic-with-application-gateway%2F3-exercise-create-web-sites&amp;author=jaboes#report-feedback">reporting an issue</a>.		</p>
+	</section></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

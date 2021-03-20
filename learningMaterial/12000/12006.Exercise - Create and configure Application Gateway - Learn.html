@@ -1,0 +1,495 @@
+<html dir="ltr"><head><title>Exercise - Create and configure Application Gateway - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/load-balance-web-traffic-with-application-gateway/5-exercise-create-configure-application-gateway">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/load-balance-web-traffic-with-application-gateway/5-exercise-create-configure-application-gateway</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Exercise - Create and configure Application Gateway - Learn</h1>
+  <div dir="auto" id="reader-credits">jboeshart</div>
+  <div dir="auto" id="reader-estimated-time">7-9 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="main" role="main" data-bi-name="content" lang="en-us" dir="ltr">
+		
+		
+		<ul>
+			<li>45 minutes</li>
+		</ul>
+			<p>Application Gateway listens on an endpoint for incoming requests, and forwards these requests to one of the web servers in its back-end pool. You provide the configuration that describes how Application Gateway directs traffic, and how to load balance requests across web servers.</p>
+<p>In the motor vehicle department system, you need to configure Application Gateway to load balance incoming requests across the web servers hosting the vehicle registration web app. You also need to configure Application Gateway to detect when either of the web servers has failed, so it can redirect traffic to a working server. Additionally, you need to configure path-based routing to send requests for the vehicle registration and license renewal sites to the proper back-end web services.</p>
+<p>In this exercise, you'll create an instance of Application Gateway with a back-end pool of web servers. You'll verify that Application Gateway is configured with the correct listener to handle incoming HTTP requests, and routes these requests to a functioning web server.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/load-balance-web-traffic-with-application-gateway/media/5-resources.svg" alt="Diagram showing the resources that will be deployed" data-linktype="relative-path"></p>
+<h2 id="configure-the-network-for-application-gateway">Configure the network for Application Gateway</h2>
+<ol>
+<li><p>To create the private subnet required by Application Gateway, run the following command. The subnet is named <code>appGatewaySubnet</code>, in the <code>vehicleAppVnet</code> virtual network that you created in the previous exercise.</p>
+<pre tabindex="0"><code data-author-content="az network vnet subnet create \
+  --resource-group $RG \
+  --vnet-name vehicleAppVnet  \
+  --name appGatewaySubnet \
+  --address-prefixes 10.0.0.0/24
+"><span><span>az network vnet subnet </span>create \
+  <span>--resource-group</span> <span>$RG</span> \
+  <span>--vnet-name</span> vehicleAppVnet  \
+  <span>--name</span> appGatewaySubnet \
+  <span>--address-prefixes</span> <span>10.0.0.0</span>/<span>24</span>
+</span></code></pre>
+</li>
+<li><p>To create a public IP address and DNS label for Application Gateway, run the following command. The DNS label must be globally unique. To generate a label, the following code uses the <code>$RANDOM</code> function.</p>
+<pre tabindex="0"><code data-author-content="az network public-ip create \
+  --resource-group $RG \
+  --name appGatewayPublicIp \
+  --sku Standard \
+  --dns-name vehicleapp${RANDOM}
+"><span><span>az network public-ip create </span>\
+  <span>--resource-group</span> <span>$RG</span> \
+  <span>--name</span> appGatewayPublicIp \
+  <span>--sku</span> Standard \
+  <span>--dns-name</span> vehicleapp<span>${RANDOM}</span>
+</span></code></pre>
+</li>
+</ol>
+<h2 id="create-an-application-gateway">Create an application gateway</h2>
+<ol>
+<li><p>Create an application gateway named <code>vehicleAppGateway</code> with the following configuration:</p>
+<ul>
+<li>A back-end pool containing the IP addresses of the web server virtual machines.</li>
+<li>A firewall that blocks malicious requests, such as those used by SQL Injection and Cross-Site Scripting attacks.</li>
+<li>A temporary listener that listens to port 8080, this will be replaced in a later step but is required for Application Gateway creation.</li>
+<li>A rule that routes (and load balances) these requests to the web servers in the back-end pool.</li>
+</ul>
+<pre tabindex="0"><code data-author-content="az network application-gateway create \
+--resource-group $RG \
+--name vehicleAppGateway \
+--sku WAF_v2 \
+--capacity 2 \
+--vnet-name vehicleAppVnet \
+--subnet appGatewaySubnet \
+--public-ip-address appGatewayPublicIp \
+--http-settings-protocol Http \
+--http-settings-port 8080 \
+--private-ip-address 10.0.0.4 \
+--frontend-port 8080
+"><span><span>az network application-gateway create </span>\
+<span>--resource-group</span> <span>$RG</span> \
+<span>--name</span> vehicleAppGateway \
+<span>--sku</span> WAF_v2 \
+<span>--capacity</span> <span>2</span> \
+<span>--vnet-name</span> vehicleAppVnet \
+<span>--subnet</span> appGatewaySubnet \
+<span>--public-ip-address</span> appGatewayPublicIp \
+<span>--http-settings-protocol</span> Http \
+<span>--http-settings-port</span> <span>8080</span> \
+<span>--private-ip-address</span> <span>10.0.0.4</span> \
+<span>--frontend-port</span> <span>8080</span>
+</span></code></pre>
+<div>
+<p> Note</p>
+<p>This command can take several minutes to complete.</p>
+</div>
+</li>
+<li><p>To find the private IP addresses of  <code>webServer1</code> and <code>webServer2</code>, run the following commands. You will save these to variables to use in the next command.</p>
+<pre tabindex="0"><code data-author-content="az vm list-ip-addresses \
+  --resource-group $RG \
+  --name webServer1 \
+  --query [0].virtualMachine.network.privateIpAddresses[0] \
+  --output tsv
+"><span><span>az vm list-ip-addresses </span>\
+  <span>--resource-group</span> <span>$RG</span> \
+  <span>--name</span> webServer1 \
+  <span>--query</span> <span>[0]</span><span>.virtualMachine.network.privateIpAddresses[0]</span> \
+  <span>--output</span> <span>tsv</span>
+</span></code></pre>
+<pre tabindex="0"><code data-author-content="az vm list-ip-addresses \
+  --resource-group $RG \
+  --name webserver2 \
+  --query [0].virtualMachine.network.privateIpAddresses[0] \
+  --output tsv
+"><span><span>az vm list-ip-addresses </span>\
+  <span>--resource-group</span> <span>$RG</span> \
+  <span>--name</span> webserver2 \
+  <span>--query</span> <span>[0]</span><span>.virtualMachine.network.privateIpAddresses[0]</span> \
+  <span>--output</span> <span>tsv</span>
+</span></code></pre>
+</li>
+<li><p>Next, we'll add the back-end pools for each web site. First, create the back-end pool for the vehicle registration site running on virtual machines. Make sure that the IP addresses in the command below match the IP addresses that were output from the previous commands.</p>
+<pre tabindex="0"><code data-author-content="az network application-gateway address-pool create \
+  --gateway-name vehicleAppGateway \
+  --resource-group $RG \
+  --name vmPool \
+  --servers 10.0.1.4 10.0.1.5
+"><span><span>az network application-gateway address-pool </span>create \
+  <span>--gateway-name</span> vehicleAppGateway \
+  <span>--resource-group</span> <span>$RG</span> \
+  <span>--name</span> vmPool \
+  <span>--servers</span> <span>10.0.1.4</span> <span>10.0.1.5</span>
+</span></code></pre>
+</li>
+<li><p>To create a back-end pool for the license renewal site running on App Service, run the following command.</p>
+<pre tabindex="0"><code data-author-content="az network application-gateway address-pool create \
+    --resource-group $RG \
+    --gateway-name vehicleAppGateway \
+    --name appServicePool \
+    --servers $APPSERVICE.azurewebsites.net
+"><span><span>az network application-gateway address-pool </span>create \
+    <span>--resource-group</span> <span>$RG</span> \
+    <span>--gateway-name</span> vehicleAppGateway \
+    <span>--name</span> appServicePool \
+    <span>--servers</span> <span>$APPSERVICE</span>.azurewebsites.net
+</span></code></pre>
+</li>
+<li><p>For port 80, create a front-end port.</p>
+<pre tabindex="0"><code data-author-content="az network application-gateway frontend-port create \
+    --resource-group $RG \
+    --gateway-name vehicleAppGateway \
+    --name port80 \
+    --port 80
+"><span><span>az network application-gateway frontend-port </span>create \
+    <span>--resource-group</span> <span>$RG</span> \
+    <span>--gateway-name</span> vehicleAppGateway \
+    <span>--name</span> port80 \
+    <span>--port</span> <span>80</span>
+</span></code></pre>
+</li>
+<li><p>To handle requests on port 80, create the listener.</p>
+<pre tabindex="0"><code data-author-content="az network application-gateway http-listener create \
+    --resource-group $RG \
+    --name vehicleListener \
+    --frontend-port port80 \
+    --frontend-ip appGatewayFrontendIP \
+    --gateway-name vehicleAppGateway
+"><span><span>az network application-gateway http-listener </span>create \
+    <span>--resource-group</span> <span>$RG</span> \
+    <span>--name</span> vehicleListener \
+    <span>--frontend-port</span> port80 \
+    <span>--frontend-ip</span> appGatewayFrontendIP \
+    <span>--gateway-name</span> vehicleAppGateway
+</span></code></pre>
+</li>
+</ol>
+<h2 id="add-a-health-probe">Add a health probe</h2>
+<ol>
+<li><p>Create a health probe that tests the availability of a web server. The health probe runs every 15 seconds (<code>--interval 15</code>), and sends an HTTP GET request to the root path of the web app. If the web app doesn't respond within 10 seconds (<code>--timeout 10</code>), the probe times out. The web server is marked as unhealthy if the probe fails three times in succession (<code>--threshold 3</code>).</p>
+<p>Because you're using App Service as one of our back-ends, you will set the host header to the name of the App Service. Without this setting, the App Service won't respond and will not show as healthy.</p>
+<pre tabindex="0"><code data-author-content="az network application-gateway probe create \
+    --resource-group $RG \
+    --gateway-name vehicleAppGateway \
+    --name customProbe \
+    --path / \
+    --interval 15 \
+    --threshold 3 \
+    --timeout 10 \
+    --protocol Http \
+    --host-name-from-http-settings true
+"><span><span>az network application-gateway probe </span>create \
+    <span>--resource-group</span> <span>$RG</span> \
+    <span>--gateway-name</span> vehicleAppGateway \
+    <span>--name</span> customProbe \
+    <span>--path</span> / \
+    <span>--interval</span> <span>15</span> \
+    <span>--threshold</span> <span>3</span> \
+    <span>--timeout</span> <span>10</span> \
+    <span>--protocol</span> Http \
+    <span>--host-name-from-http-settings</span> <span>true</span>
+</span></code></pre>
+</li>
+<li><p>Next, to use the health probe you created, create the HTTP Settings for the gateway.</p>
+<pre tabindex="0"><code data-author-content="az network application-gateway http-settings create \
+    --resource-group $RG \
+    --gateway-name vehicleAppGateway \
+    --name appGatewayBackendHttpSettings \
+    --host-name-from-backend-pool true \
+    --port 80 \
+    --probe customProbe
+"><span><span>az network application-gateway http-settings </span>create \
+    <span>--resource-group</span> <span>$RG</span> \
+    <span>--gateway-name</span> vehicleAppGateway \
+    <span>--name</span> appGatewayBackendHttpSettings \
+    <span>--host-name-from-backend-pool</span> <span>true</span> \
+    <span>--port</span> <span>80</span> \
+    <span>--probe</span> customProbe
+</span></code></pre>
+</li>
+</ol>
+<h2 id="configure-path-based-routing">Configure path-based routing</h2>
+<p>Now we need to configure path-based routing for our Application gateway. We'll route requests to <strong>/VehicleRegistration/</strong> to the <strong>vmPool</strong> and requests to <strong>/LicenseRenewal/</strong> to the <strong>appServicePool</strong>. Any requests without any URL context will be routed to the <strong>vmPool</strong> as a default.</p>
+<ol>
+<li><p>To create the path map for the <strong>vmPool</strong>, run the following command.</p>
+<pre tabindex="0"><code data-author-content="az network application-gateway url-path-map create \
+    --resource-group $RG \
+    --gateway-name vehicleAppGateway \
+    --name urlPathMap \
+    --paths /VehicleRegistration/* \
+    --http-settings appGatewayBackendHttpSettings \
+    --address-pool vmPool
+"><span><span>az network application-gateway url-path-map </span>create \
+    <span>--resource-group</span> <span>$RG</span> \
+    <span>--gateway-name</span> vehicleAppGateway \
+    <span>--name</span> urlPathMap \
+    <span>--paths</span> /VehicleRegistration/* \
+    <span>--http-settings</span> appGatewayBackendHttpSettings \
+    <span>--address-pool</span> vmPool
+</span></code></pre>
+</li>
+<li><p>To create the path map rule for the <strong>appServicePool</strong>, run the following command.</p>
+<pre tabindex="0"><code data-author-content="az network application-gateway url-path-map rule create \
+    --resource-group $RG \
+    --gateway-name vehicleAppGateway \
+    --name appServiceUrlPathMap \
+    --paths /LicenseRenewal/* \
+    --http-settings appGatewayBackendHttpSettings \
+    --address-pool appServicePool \
+    --path-map-name urlPathMap
+"><span><span>az network application-gateway url-path-map </span>rule create \
+    <span>--resource-group</span> <span>$RG</span> \
+    <span>--gateway-name</span> vehicleAppGateway \
+    <span>--name</span> appServiceUrlPathMap \
+    <span>--paths</span> /LicenseRenewal/* \
+    <span>--http-settings</span> appGatewayBackendHttpSettings \
+    <span>--address-pool</span> appServicePool \
+    <span>--path-map-name</span> urlPathMap
+</span></code></pre>
+</li>
+<li><p>Now, create a new routing rule using the path map you created.</p>
+<pre tabindex="0"><code data-author-content="az network application-gateway rule create \
+    --resource-group $RG \
+    --gateway-name vehicleAppGateway \
+    --name appServiceRule \
+    --http-listener vehicleListener \
+    --rule-type PathBasedRouting \
+    --address-pool appServicePool \
+    --url-path-map urlPathMap
+"><span><span>az network application-gateway rule </span>create \
+    <span>--resource-group</span> <span>$RG</span> \
+    <span>--gateway-name</span> vehicleAppGateway \
+    <span>--name</span> appServiceRule \
+    <span>--http-listener</span> vehicleListener \
+    <span>--rule-type</span> PathBasedRouting \
+    <span>--address-pool</span> appServicePool \
+    <span>--url-path-map</span> urlPathMap
+</span></code></pre>
+</li>
+<li><p>The last piece of configuration is to delete the rule that was created when we initially deployed the Application Gateway. With your custom rule in place, you no longer need it.</p>
+<pre tabindex="0"><code data-author-content="az network application-gateway rule delete \
+    --resource-group $RG \
+    --gateway-name vehicleAppGateway \
+    --name rule1
+"><span><span>az network application-gateway rule </span>delete \
+    <span>--resource-group</span> <span>$RG</span> \
+    <span>--gateway-name</span> vehicleAppGateway \
+    <span>--name</span> rule1
+</span></code></pre>
+</li>
+</ol>
+<p>With everything set up, it's time to test it out.</p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Exercise - Test your Application Gateway</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/load-balance-web-traffic-with-application-gateway/6-exercise-test-application-gateway/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div><section>
+		<p>
+Need help? See our <a id="troubleshooting-guide" data-bi-name="troubleshooting" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn.load-balance-web-traffic-with-application-gateway.5-exercise-create-configure-application-gateway&amp;documentId=22505c62-9b8b-9e53-a8a5-e25b6add6a4b&amp;versionIndependentDocumentId=0928369c-ce96-d908-adb4-b85cdfcbdd84&amp;contentPath=%2FMicrosoftDocs%2Flearn-pr%2Fblob%2Flive%2Flearn-pr%2Fazure%2Fload-balance-web-traffic-with-application-gateway%2F5-exercise-create-configure-application-gateway.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fload-balance-web-traffic-with-application-gateway%2F5-exercise-create-configure-application-gateway&amp;author=jaboes">troubleshooting guide</a> or provide specific feedback by <a id="module-unit-feedback-link" data-bi-name="feedback" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn.load-balance-web-traffic-with-application-gateway.5-exercise-create-configure-application-gateway&amp;documentId=22505c62-9b8b-9e53-a8a5-e25b6add6a4b&amp;versionIndependentDocumentId=0928369c-ce96-d908-adb4-b85cdfcbdd84&amp;contentPath=%2FMicrosoftDocs%2Flearn-pr%2Fblob%2Flive%2Flearn-pr%2Fazure%2Fload-balance-web-traffic-with-application-gateway%2F5-exercise-create-configure-application-gateway.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fload-balance-web-traffic-with-application-gateway%2F5-exercise-create-configure-application-gateway&amp;author=jaboes#report-feedback">reporting an issue</a>.		</p>
+	</section></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>
