@@ -1,0 +1,5 @@
+1.B
+Five-tuple hash is the default.
+
+2.B
+Availabilty sets allow virtual machines to remain available when a physical server fails.

@@ -1,0 +1,263 @@
+<html dir="ltr"><head><title>Configure a public load balancer - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/improve-app-scalability-resiliency-with-load-balancer/3-public-load-balancer">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/improve-app-scalability-resiliency-with-load-balancer/3-public-load-balancer</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Configure a public load balancer - Learn</h1>
+  <div dir="auto" id="reader-credits">jboeshart</div>
+  <div dir="auto" id="reader-estimated-time">4-5 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="main" role="main" data-bi-name="content" lang="en-us" dir="ltr">
+		
+		
+		<ul>
+			<li>10 minutes</li>
+		</ul>
+			<p>As the solution architect for the healthcare portal, you need to distribute the load from the client browsers over the virtual machines in your web farm. You need to set up a load balancer and configure the virtual machines to be balanced.</p>
+<p>A public load balancer maps the public IP address and port number of incoming traffic to the private IP address and port number of a virtual machine in the back-end pool. The responses are then returned to the client. By applying load-balancing rules, you distribute specific types of traffic across multiple virtual machines or services.</p>
+<h2 id="distribution-modes">Distribution modes</h2>
+<p>By default, Azure Load Balancer distributes network traffic equally among virtual machine instances. The following distribution modes are also possible if a different behavior is required:</p>
+<ul>
+<li><p><strong>Five-tuple hash</strong>. The default distribution mode for Load Balancer is a five-tuple hash. The tuple is composed of the source IP, source port, destination IP, destination port, and protocol type. Because the source port is included in the hash and the source port changes for each session, clients might be directed to a different virtual machine for each session.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/improve-app-scalability-resiliency-with-load-balancer/media/3-load-balancer-distribution.svg" alt="A diagram that shows how hash-based distribution works" data-linktype="relative-path"></p>
+</li>
+<li><p><strong>Source IP affinity</strong>. This distribution mode is also known as <em>session affinity</em> or <em>client IP affinity</em>. To map traffic to the available servers, the mode uses a two-tuple hash (from the source IP address and destination IP address) or three-tuple hash (from the source IP address, destination IP address, and protocol type). The hash ensures that requests from a specific client are always sent to the same virtual machine behind the load balancer.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/improve-app-scalability-resiliency-with-load-balancer/media/3-load-balancer-session-affinity.svg" alt="A diagram that shows how session affinity works" data-linktype="relative-path"></p>
+</li>
+</ul>
+<h2 id="choose-a-distribution-mode">Choose a distribution mode</h2>
+<p>In the healthcare portal example, imagine that a developer requirement of the presentation tier is to use in-memory sessions to store the logged user's profile as the user interacts with the portal.</p>
+<p>In this scenario, the load balancer must provide source IP affinity to maintain a user's session. The profile is stored only on the virtual machine that the client first connects to because that IP address is directed to the same server. When you create the load balancer endpoint, you must specify the distribution mode by using the following PowerShell example:</p>
+<pre tabindex="0"><code data-author-content="$lb = Get-AzLoadBalancer -Name MyLb -ResourceGroupName MyResourceGroup
+$lb.LoadBalancingRules[0].LoadDistribution = 'sourceIp'
+Set-AzLoadBalancer -LoadBalancer $lb
+"><span><span>$lb</span> = <span>Get-AzLoadBalancer</span><span> -Name</span> MyLb<span> -ResourceGroupName</span> MyResourceGroup
+<span>$lb</span>.LoadBalancingRules[<span>0</span>].LoadDistribution = <span>'sourceIp'</span>
+<span>Set-AzLoadBalancer</span><span> -LoadBalancer</span> <span>$lb</span>
+</span></code></pre>
+<p>To add session persistence through the Azure portal:</p>
+<ol>
+<li>In the Azure portal, open the load balancer resource.</li>
+<li>Edit the relevant line of the <strong>Load-balancing rules</strong>.</li>
+<li>Change the value for <strong>Session persistence</strong> to <strong>Client IP</strong>.</li>
+</ol>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/improve-app-scalability-resiliency-with-load-balancer/media/3-screenshot-session-persistence.png" alt="Screenshot that shows how to set IP affinity in the Azure portal" data-linktype="relative-path"></p>
+<h2 id="load-balancer-and-remote-desktop-gateway">Load Balancer and Remote Desktop Gateway</h2>
+<p>Remote Desktop Gateway is a Windows service that you can use to enable clients on the internet to make Remote Desktop Protocol (RDP) connections through firewalls to Remote Desktop servers on your private network. The default five-tuple hash in Load Balancer is incompatible with this service. If you want to use Load Balancer with your Remote Desktop servers, use source IP affinity.</p>
+
+<p>Another use case for source IP affinity is media upload. In many implementations, a client initiates a session through a TCP protocol and connects to a destination IP address. This connection remains open throughout the upload to monitor progress, but the file is uploaded through a separate UDP protocol.</p>
+<p>With the five-tuple hash, the load balancer likely will send the TCP and UDP connections to different destination IP addresses and the upload won't finish successfully. Use source IP affinity to resolve this issue.</p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Exercise - Configure a public load balancer</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/improve-app-scalability-resiliency-with-load-balancer/4-exercise-configure-public-load-balancer/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div><section>
+		<p>
+Need help? See our <a id="troubleshooting-guide" data-bi-name="troubleshooting" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn.improve-app-scalability-resiliency-with-load-balancer.3-public-load-balancer&amp;documentId=4fa9c121-758a-082f-93c4-18c28b490b5e&amp;versionIndependentDocumentId=2a80420b-f776-69a1-d506-bb1dcf46cf4a&amp;contentPath=%2FMicrosoftDocs%2Flearn-pr%2Fblob%2Flive%2Flearn-pr%2Fazure%2Fimprove-app-scalability-resiliency-with-load-balancer%2F3-public-load-balancer.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fimprove-app-scalability-resiliency-with-load-balancer%2F3-public-load-balancer&amp;author=jaboes">troubleshooting guide</a> or provide specific feedback by <a id="module-unit-feedback-link" data-bi-name="feedback" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn.improve-app-scalability-resiliency-with-load-balancer.3-public-load-balancer&amp;documentId=4fa9c121-758a-082f-93c4-18c28b490b5e&amp;versionIndependentDocumentId=2a80420b-f776-69a1-d506-bb1dcf46cf4a&amp;contentPath=%2FMicrosoftDocs%2Flearn-pr%2Fblob%2Flive%2Flearn-pr%2Fazure%2Fimprove-app-scalability-resiliency-with-load-balancer%2F3-public-load-balancer.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fimprove-app-scalability-resiliency-with-load-balancer%2F3-public-load-balancer&amp;author=jaboes#report-feedback">reporting an issue</a>.		</p>
+	</section></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

@@ -1,0 +1,5 @@
+1.A
+The virtual machines that you use a load balancer to distribute a load to must be in the same virtual network.
+
+2.C
+External load balancers have public IP addresses.

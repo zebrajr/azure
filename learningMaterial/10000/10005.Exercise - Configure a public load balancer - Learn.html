@@ -1,0 +1,600 @@
+<html dir="ltr"><head><title>Exercise - Configure a public load balancer - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/improve-app-scalability-resiliency-with-load-balancer/4-exercise-configure-public-load-balancer?pivots=bash">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/improve-app-scalability-resiliency-with-load-balancer/4-exercise-configure-public-load-balancer</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Exercise - Configure a public load balancer - Learn</h1>
+  <div dir="auto" id="reader-credits">jboeshart</div>
+  <div dir="auto" id="reader-estimated-time">9-12 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="main-column" data-bi-name="body">
+
+					<main id="main" role="main" data-bi-name="content" lang="en-us" dir="ltr">
+
+
+
+
+
+						
+
+
+						<!-- <content> -->
+							<div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>10 minutes</li>
+		</ul>
+		
+			<p>You can configure Azure Load Balancer by using the Azure portal, PowerShell, or the Azure CLI.</p>
+<p>In your healthcare organization, you want to load-balance client traffic to provide a consistent response based on the health of the patient portal web servers. You have two virtual machines in an availability set to act as your healthcare portal web application.</p>
+<p>Here, you will create a load balancer resource and use it to distribute a load across the virtual machines.</p>
+<h2 id="deploy-the-patient-portal-web-application">Deploy the patient portal web application</h2>
+<p>First, deploy your patient portal application across two virtual machines in a single availability set. To save time, let's start by running a script to create this application. The script will:</p>
+<ul>
+<li>Create a virtual network and network infrastructure for the virtual machines.</li>
+<li>Create two virtual machines in this virtual network.</li>
+</ul>
+<p>To deploy the patient portal web application:</p>
+<ol>
+<li><p>Run the following <code>git clone</code> command in Azure Cloud Shell. The command clones the repo that contains the source for the app and runs the setup script from GitHub. You then change to the directory of the cloned repo.</p>
+<pre tabindex="0"><code data-author-content="git clone https://github.com/MicrosoftDocs/mslearn-improve-app-scalability-resiliency-with-load-balancer.git
+cd mslearn-improve-app-scalability-resiliency-with-load-balancer
+"><span>git <span>clone</span> https://github.com/MicrosoftDocs/mslearn-improve-app-scalability-resiliency-with-load-balancer.git
+<span>cd</span> mslearn-improve-app-scalability-resiliency-with-load-balancer
+</span></code></pre>
+</li>
+<li><p>As its name suggests, this script generates two virtual machines in a single availability set. The script takes about two minutes to run.</p>
+<pre tabindex="0"><code data-author-content="bash create-high-availability-vm-with-sets.sh <rgn>[sandbox resource group name]</rgn>
+"><span>bash create-high-availability-vm-with-sets.sh <rgn data-author-content="[sandbox resource group name]">[sandbox resource group name]</rgn>
+</span></code></pre>
+</li>
+<li><p>When the script finishes, on the <a href="https://portal.azure.com/learn.docs.microsoft.com" data-linktype="external" target="az-portal">Azure portal</a> menu or from the <strong>Home</strong> page, select <strong>Resource groups</strong>, then select the <strong><rgn data-author-content="[sandbox resource group name]">[sandbox resource group name]</rgn></strong> resource group. Review the resources that were created by the script.</p>
+</li>
+</ol>
+<div data-pivot="portal">
+<h2 id="create-a-load-balancer">Create a load balancer</h2>
+<p>Now, let's create the load balancer.</p>
+<ol>
+<li><p>On the <a href="https://portal.azure.com/learn.docs.microsoft.com" data-linktype="external" target="az-portal">Azure portal</a> menu or from the <strong>Home</strong> page, select <strong>Create a resource</strong>.</p>
+</li>
+<li><p>In the <strong>Search the Marketplace</strong> field, search for and select <strong>Load Balancer</strong>. Then, select <strong>Create</strong>.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/improve-app-scalability-resiliency-with-load-balancer/media/4-create-lb.png" alt="Create a Load Balancer instance in the Azure portal" data-linktype="relative-path"></p>
+</li>
+<li><p>Enter the following information:</p>
+
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/improve-app-scalability-resiliency-with-load-balancer/media/4-create-details-lb.png" alt="Enter details on the Create load balancer page" data-linktype="relative-path"></p>
+</li>
+<li><p>Select the <strong>Review + create</strong> button.</p>
+</li>
+<li><p>When validation is passed, select <strong>Create</strong>.</p>
+</li>
+</ol>
+<h2 id="add-a-back-end-pool">Add a back-end pool</h2>
+<p>Next, create a back-end pool in the load balancer and add the virtual machines to it:</p>
+<ol>
+<li><p>On the <a href="https://portal.azure.com/learn.docs.microsoft.com" data-linktype="external" target="az-portal">Azure portal</a> menu or from the <strong>Home</strong> page, select <strong>All resources</strong>, and then select the load balancer you created.</p>
+</li>
+<li><p>Under <strong>Settings</strong>, select <strong>Backend pools</strong>, and then select <strong>Add</strong>.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/improve-app-scalability-resiliency-with-load-balancer/media/4-backend-pools.png" alt="A screenshot that shows the Backend pools page" data-linktype="relative-path"></p>
+</li>
+<li><p>On the <strong>Add Backend pool</strong> page, enter the following information:</p>
+
+</li>
+<li><p>In the <strong>Virtual machines</strong> section, select the <strong>webVM1</strong> and <strong>webVM2</strong> virtual machines and the <strong>ipconfig1</strong> IP addresses for both VMs.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/improve-app-scalability-resiliency-with-load-balancer/media/4-backend-pool-create.png" alt="Add a new back-end pool" data-linktype="relative-path"></p>
+</li>
+</ol>
+<h2 id="add-health-probes">Add health probes</h2>
+<p>Create a health probe that monitors the two virtual machines:</p>
+<ol>
+<li><p>Go to <strong>Health probes</strong>.</p>
+</li>
+<li><p>Select <strong>Add</strong>, and then enter the following information:</p>
+
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/improve-app-scalability-resiliency-with-load-balancer/media/4-new-health-probe.png" alt="Add a new health probe" data-linktype="relative-path"></p>
+</li>
+<li><p>Select <strong>Add</strong>.</p>
+</li>
+</ol>
+<h2 id="add-a-load-balancer-rule">Add a load balancer rule</h2>
+<p>Finally, let's create a rule for the load balancer:</p>
+<ol>
+<li><p>Go to <strong>Load Balancing Rules</strong>, select <strong>Add</strong>, and then enter the following information:</p>
+
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/improve-app-scalability-resiliency-with-load-balancer/media/4-new-lb-rule.png" alt="Add a new load balancer rule" data-linktype="relative-path"></p>
+</li>
+<li><p>Select <strong>OK</strong> to complete the load balancer configuration.</p>
+</li>
+<li><p>Return to the <strong>Overview</strong> page. Copy the <strong>Public IP address</strong> for the load balancer.</p>
+</li>
+</ol>
+</div>
+<div data-pivot="powershell">
+<h2 id="create-ip-addresses">Create IP addresses</h2>
+<p>First, we need a public IP address for the load balancer.</p>
+<ol>
+<li><p>In Cloud Shell, start PowerShell by running this command.</p>
+<pre tabindex="0"><code data-author-content="pwsh
+"><span>pwsh
+</span></code></pre>
+</li>
+<li><p>In PowerShell, create a new public IP address.</p>
+<pre tabindex="0"><code data-author-content="$Location = $(Get-AzureRmResourceGroup -ResourceGroupName <rgn>[sandbox resource group name]</rgn>).Location
+
+$publicIP = New-AzPublicIpAddress `
+  -ResourceGroupName <rgn>[sandbox resource group name]</rgn> `
+  -Location $Location `
+  -AllocationMethod &quot;Static&quot; `
+  -Name &quot;myPublicIP&quot;
+"><span><span>$Location</span> = $(<span>Get-AzureRmResourceGroup</span><span> -ResourceGroupName</span> <rgn data-author-content="[sandbox resource group name]">[sandbox resource group name]</rgn>).Location
+
+<span>$publicIP</span> = <span>New-AzPublicIpAddress</span> `
+ <span> -ResourceGroupName</span> <rgn data-author-content="[sandbox resource group name]">[sandbox resource group name]</rgn> `
+ <span> -Location</span> <span>$Location</span> `
+ <span> -AllocationMethod</span> <span>"Static"</span> `
+ <span> -Name</span> <span>"myPublicIP"</span>
+</span></code></pre>
+</li>
+<li><p>Create a front-end IP by using the <strong>New-AzLoadBalancerFrontendIpConfig</strong> cmdlet. The following example creates a front-end IP configuration named <strong>myFrontEnd</strong> and attaches the <strong>myPublicIP</strong> address.</p>
+<pre tabindex="0"><code data-author-content="$frontendIP = New-AzLoadBalancerFrontendIpConfig `
+  -Name &quot;myFrontEnd&quot; `
+  -PublicIpAddress $publicIP
+"><span><span>$frontendIP</span> = <span>New-AzLoadBalancerFrontendIpConfig</span> `
+ <span> -Name</span> <span>"myFrontEnd"</span> `
+ <span> -PublicIpAddress</span> <span>$publicIP</span>
+</span></code></pre>
+</li>
+</ol>
+<h2 id="create-the-load-balancer">Create the load balancer</h2>
+<p>When you use PowerShell to configure a load balancer, you must create the back-end address pool, the health probe, and the rule before you create the balancer itself.</p>
+<ol>
+<li><p>Create a back-end address pool by using the <strong>New-AzLoadBalancerBackendAddressPoolConfig</strong> cmdlet. You attach the virtual machines to this back-end pool in the final steps. The following example creates a back-end address pool named <strong>myBackEndPool</strong>.</p>
+<pre tabindex="0"><code data-author-content="$backendPool = New-AzLoadBalancerBackendAddressPoolConfig -Name &quot;myBackEndPool&quot;
+"><span><span>$backendPool</span> = <span>New-AzLoadBalancerBackendAddressPoolConfig</span><span> -Name</span> <span>"myBackEndPool"</span>
+</span></code></pre>
+</li>
+<li><p>To allow the load balancer to monitor the status of the healthcare portal, create a health probe. The health probe dynamically adds or removes virtual machines from the load balancer rotation based on their response to health checks.</p>
+<pre tabindex="0"><code data-author-content="$probe = New-AzLoadBalancerProbeConfig `
+  -Name &quot;myHealthProbe&quot; `
+  -Protocol http `
+  -Port 80 `
+  -IntervalInSeconds 5 `
+  -ProbeCount 2 `
+  -RequestPath &quot;/&quot;
+"><span><span>$probe</span> = <span>New-AzLoadBalancerProbeConfig</span> `
+ <span> -Name</span> <span>"myHealthProbe"</span> `
+ <span> -Protocol</span> http `
+ <span> -Port</span> <span>80</span> `
+ <span> -IntervalInSeconds</span> <span>5</span> `
+ <span> -ProbeCount</span> <span>2</span> `
+ <span> -RequestPath</span> <span>"/"</span>
+</span></code></pre>
+</li>
+<li><p>You now need a load balancer rule that's used to define how traffic is distributed to the virtual machines. You define the front-end IP configuration for the incoming traffic and the back-end IP pool to receive the traffic, along with the required source and destination port. To make sure only healthy virtual machines receive traffic, you also define the health probe to use.</p>
+<pre tabindex="0"><code data-author-content="$lbrule = New-AzLoadBalancerRuleConfig `
+  -Name &quot;myLoadBalancerRule&quot; `
+  -FrontendIpConfiguration $frontendIP `
+  -BackendAddressPool $backendPool `
+  -Protocol Tcp `
+  -FrontendPort 80 `
+  -BackendPort 80 `
+  -Probe $probe
+"><span><span>$lbrule</span> = <span>New-AzLoadBalancerRuleConfig</span> `
+ <span> -Name</span> <span>"myLoadBalancerRule"</span> `
+ <span> -FrontendIpConfiguration</span> <span>$frontendIP</span> `
+ <span> -BackendAddressPool</span> <span>$backendPool</span> `
+ <span> -Protocol</span> Tcp `
+ <span> -FrontendPort</span> <span>80</span> `
+ <span> -BackendPort</span> <span>80</span> `
+ <span> -Probe</span> <span>$probe</span>
+</span></code></pre>
+</li>
+<li><p>Now you can create the basic load balancer by using the <strong>New-AzLoadBalancer</strong> cmdlet.</p>
+<pre tabindex="0"><code data-author-content="$lb = New-AzLoadBalancer `
+  -ResourceGroupName <rgn>[sandbox resource group name]</rgn> `
+  -Name 'MyLoadBalancer' `
+  -Location $Location `
+  -FrontendIpConfiguration $frontendIP `
+  -BackendAddressPool $backendPool `
+  -Probe $probe `
+  -LoadBalancingRule $lbrule
+"><span><span>$lb</span> = <span>New-AzLoadBalancer</span> `
+ <span> -ResourceGroupName</span> <rgn data-author-content="[sandbox resource group name]">[sandbox resource group name]</rgn> `
+ <span> -Name</span> <span>'MyLoadBalancer'</span> `
+ <span> -Location</span> <span>$Location</span> `
+ <span> -FrontendIpConfiguration</span> <span>$frontendIP</span> `
+ <span> -BackendAddressPool</span> <span>$backendPool</span> `
+ <span> -Probe</span> <span>$probe</span> `
+ <span> -LoadBalancingRule</span> <span>$lbrule</span>
+</span></code></pre>
+</li>
+<li><p>Connect the virtual machines to the back-end pool by updating the network interfaces that the script created to use the back-end pool information.</p>
+<pre tabindex="0"><code data-author-content="$nic1 = Get-AzNetworkInterface -ResourceGroupName <rgn>[sandbox resource group name]</rgn> -Name &quot;webNic1&quot;
+$nic2 = Get-AzNetworkInterface -ResourceGroupName <rgn>[sandbox resource group name]</rgn> -Name &quot;webNic2&quot;
+
+$nic1.IpConfigurations[0].LoadBalancerBackendAddressPools = $backendPool
+$nic2.IpConfigurations[0].LoadBalancerBackendAddressPools = $backendPool
+
+Set-AzNetworkInterface -NetworkInterface $nic1 -AsJob
+Set-AzNetworkInterface -NetworkInterface $nic2 -AsJob
+"><span><span>$nic1</span> = <span>Get-AzNetworkInterface</span><span> -ResourceGroupName</span> <rgn data-author-content="[sandbox resource group name]">[sandbox resource group name]</rgn><span> -Name</span> <span>"webNic1"</span>
+<span>$nic2</span> = <span>Get-AzNetworkInterface</span><span> -ResourceGroupName</span> <rgn data-author-content="[sandbox resource group name]">[sandbox resource group name]</rgn><span> -Name</span> <span>"webNic2"</span>
+
+<span>$nic1</span>.IpConfigurations[<span>0</span>].LoadBalancerBackendAddressPools = <span>$backendPool</span>
+<span>$nic2</span>.IpConfigurations[<span>0</span>].LoadBalancerBackendAddressPools = <span>$backendPool</span>
+
+<span>Set-AzNetworkInterface</span><span> -NetworkInterface</span> <span>$nic1</span><span> -AsJob</span>
+<span>Set-AzNetworkInterface</span><span> -NetworkInterface</span> <span>$nic2</span><span> -AsJob</span>
+</span></code></pre>
+</li>
+<li><p>Run the following command to get the public IP address of the load balancer and the URL for your website.</p>
+<pre tabindex="0"><code data-author-content="Write-Host http://$($(Get-AzPublicIPAddress `
+  -ResourceGroupName <rgn>[sandbox resource group name]</rgn> `
+  -Name &quot;myPublicIP&quot;).IpAddress)
+"><span><span>Write-Host</span> http://$($(<span>Get-AzPublicIPAddress</span> `
+ <span> -ResourceGroupName</span> <rgn data-author-content="[sandbox resource group name]">[sandbox resource group name]</rgn> `
+ <span> -Name</span> <span>"myPublicIP"</span>).IpAddress)
+</span></code></pre>
+</li>
+</ol>
+</div>
+<div data-pivot="bash">
+<h2 id="create-a-load-balancer-1">Create a load balancer</h2>
+<p>Let's use the Azure CLI to create the load balancer and its associated resources.</p>
+<ol>
+<li><p>Create a new public IP address.</p>
+<pre tabindex="0"><code data-author-content="az network public-ip create \
+  --resource-group <rgn>[sandbox resource group name]</rgn> \
+  --allocation-method Static \
+  --name myPublicIP
+"><span><span>az network public-ip create </span>\
+  <span>--resource-group</span> <rgn data-author-content="[sandbox resource group name]">[sandbox resource group name]</rgn> \
+  <span>--allocation-method</span> Static \
+  <span>--name</span> myPublicIP
+</span></code></pre>
+</li>
+<li><p>Create the load balancer.</p>
+<pre tabindex="0"><code data-author-content="az network lb create \
+  --resource-group <rgn>[sandbox resource group name]</rgn> \
+  --name myLoadBalancer \
+  --public-ip-address myPublicIP \
+  --frontend-ip-name myFrontEndPool \
+  --backend-pool-name myBackEndPool
+"><span><span>az network lb create </span>\
+  <span>--resource-group</span> <rgn data-author-content="[sandbox resource group name]">[sandbox resource group name]</rgn> \
+  <span>--name</span> myLoadBalancer \
+  <span>--public-ip-address</span> myPublicIP \
+  <span>--frontend-ip-name</span> myFrontEndPool \
+  <span>--backend-pool-name</span> myBackEndPool
+</span></code></pre>
+</li>
+<li><p>To allow the load balancer to monitor the status of the healthcare portal, create a health probe. The health probe dynamically adds or removes virtual machines from the load balancer rotation based on their response to health checks.</p>
+<pre tabindex="0"><code data-author-content="az network lb probe create \
+  --resource-group <rgn>[sandbox resource group name]</rgn> \
+  --lb-name myLoadBalancer \
+  --name myHealthProbe \
+  --protocol tcp \
+  --port 80  
+"><span><span>az network lb probe </span>create \
+  <span>--resource-group</span> <rgn data-author-content="[sandbox resource group name]">[sandbox resource group name]</rgn> \
+  <span>--lb-name</span> myLoadBalancer \
+  <span>--name</span> myHealthProbe \
+  <span>--protocol</span> tcp \
+  <span>--port</span> <span>80</span>  
+</span></code></pre>
+</li>
+<li><p>Now you need a load balancer rule that's used to define how traffic is distributed to the virtual machines. You define the front-end IP configuration for the incoming traffic and the back-end IP pool to receive the traffic, along with the required source and destination port. To make sure only healthy virtual machines receive traffic, you also define the health probe to use.</p>
+<pre tabindex="0"><code data-author-content="az network lb rule create \
+  --resource-group <rgn>[sandbox resource group name]</rgn> \
+  --lb-name myLoadBalancer \
+  --name myHTTPRule \
+  --protocol tcp \
+  --frontend-port 80 \
+  --backend-port 80 \
+  --frontend-ip-name myFrontEndPool \
+  --backend-pool-name myBackEndPool \
+  --probe-name myHealthProbe
+"><span><span>az network lb rule </span>create \
+  <span>--resource-group</span> <rgn data-author-content="[sandbox resource group name]">[sandbox resource group name]</rgn> \
+  <span>--lb-name</span> myLoadBalancer \
+  <span>--name</span> myHTTPRule \
+  <span>--protocol</span> tcp \
+  <span>--frontend-port</span> <span>80</span> \
+  <span>--backend-port</span> <span>80</span> \
+  <span>--frontend-ip-name</span> myFrontEndPool \
+  <span>--backend-pool-name</span> myBackEndPool \
+  <span>--probe-name</span> myHealthProbe
+</span></code></pre>
+</li>
+<li><p>Connect the virtual machines to the back-end pool by updating the network interfaces you created in the script to use the back-end pool information.</p>
+<pre tabindex="0"><code data-author-content="az network nic ip-config update \
+  --resource-group <rgn>[sandbox resource group name]</rgn> \
+  --nic-name webNic1 \
+  --name ipconfig1 \
+  --lb-name myLoadBalancer \
+  --lb-address-pools myBackEndPool
+
+az network nic ip-config update \
+  --resource-group <rgn>[sandbox resource group name]</rgn> \
+  --nic-name webNic2 \
+  --name ipconfig1 \
+  --lb-name myLoadBalancer \
+  --lb-address-pools myBackEndPool
+"><span><span>az network nic ip-config </span>update \
+  <span>--resource-group</span> <rgn data-author-content="[sandbox resource group name]">[sandbox resource group name]</rgn> \
+  <span>--nic-name</span> webNic1 \
+  <span>--name</span> ipconfig1 \
+  <span>--lb-name</span> myLoadBalancer \
+  <span>--lb-address-pools</span> myBackEndPool
+
+<span>az network nic ip-config </span>update \
+  <span>--resource-group</span> <rgn data-author-content="[sandbox resource group name]">[sandbox resource group name]</rgn> \
+  <span>--nic-name</span> webNic2 \
+  <span>--name</span> ipconfig1 \
+  <span>--lb-name</span> myLoadBalancer \
+  <span>--lb-address-pools</span> myBackEndPool
+</span></code></pre>
+</li>
+<li><p>Run the following command to get the public IP address of the load balancer and the URL for your website.</p>
+<pre tabindex="0"><code data-author-content="echo http://$(az network public-ip show \
+                --resource-group <rgn>[sandbox resource group name]</rgn> \
+                --name myPublicIP \
+                --query ipAddress \
+                --output tsv)
+"><span>echo http://$(<span>az network public-ip show </span>\
+                <span>--resource-group</span> <rgn data-author-content="[sandbox resource group name]">[sandbox resource group name]</rgn> \
+                <span>--name</span> myPublicIP \
+                <span>--query</span> ipAddress \
+                <span>--output</span> <span>tsv</span>)
+</span></code></pre>
+</li>
+</ol>
+</div>
+<h2 id="test-the-load-balancer-configuration">Test the load balancer configuration</h2>
+<p>Let's test the load balancer setup to show how it can handle availability and health issues dynamically.</p>
+<ol>
+<li><p>In a new browser tab, go to the public IP address that you noted. You'll see that the response is returned from one of the virtual machines.</p>
+</li>
+<li><p>Try a "force refresh" by pressing Ctrl+F5 a few times to see that the response is returned randomly from both virtual machines.</p>
+</li>
+<li><p>On the <a href="https://portal.azure.com/learn.docs.microsoft.com" data-linktype="external" target="az-portal">Azure portal</a> menu or from the <strong>Home</strong> page, select <strong>All resources</strong>. Then select <strong>webVM1</strong> &gt; <strong>Stop</strong>.</p>
+</li>
+<li><p>Return to the tab that shows the website and force a refresh of the webpage. All requests are returned from <strong>webVM2</strong>.</p>
+</li>
+</ol>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Internal load balancer</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/improve-app-scalability-resiliency-with-load-balancer/5-internal-load-balancer/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div>
+
+						<!-- </content> -->
+
+						</main>
+
+						<!-- page rating section -->
+						<!-- end page rating section -->
+
+<section>
+		<p>
+Need help? See our <a id="troubleshooting-guide" data-bi-name="troubleshooting" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn.improve-app-scalability-resiliency-with-load-balancer.4-exercise-configure-public-load-balancer&amp;documentId=18cd4678-9301-d6c5-a837-2242eaa86d56&amp;versionIndependentDocumentId=37046674-b46d-07b6-f993-cac2c7e22f1f&amp;contentPath=%2FMicrosoftDocs%2Flearn-pr%2Fblob%2Flive%2Flearn-pr%2Fazure%2Fimprove-app-scalability-resiliency-with-load-balancer%2F4-exercise-configure-public-load-balancer.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fimprove-app-scalability-resiliency-with-load-balancer%2F4-exercise-configure-public-load-balancer&amp;author=jaboes">troubleshooting guide</a> or provide specific feedback by <a id="module-unit-feedback-link" data-bi-name="feedback" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn.improve-app-scalability-resiliency-with-load-balancer.4-exercise-configure-public-load-balancer&amp;documentId=18cd4678-9301-d6c5-a837-2242eaa86d56&amp;versionIndependentDocumentId=37046674-b46d-07b6-f993-cac2c7e22f1f&amp;contentPath=%2FMicrosoftDocs%2Flearn-pr%2Fblob%2Flive%2Flearn-pr%2Fazure%2Fimprove-app-scalability-resiliency-with-load-balancer%2F4-exercise-configure-public-load-balancer.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fimprove-app-scalability-resiliency-with-load-balancer%2F4-exercise-configure-public-load-balancer&amp;author=jaboes#report-feedback">reporting an issue</a>.		</p>
+	</section>
+
+						<!-- recommendations section -->
+						<!-- end recommendations section -->
+
+						<!-- feedback section -->
+						<!-- end feedback section -->
+
+						<!-- feedback report section -->
+						<!-- end feedback report section -->
+
+						
+					</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>
