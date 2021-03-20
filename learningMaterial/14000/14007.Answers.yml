@@ -1,0 +1,8 @@
+1.C
+In general, increased diversity means an increased number of storage accounts. A storage account by itself has no financial cost. However, the settings you choose for the account do influence the cost of services in the account. Use multiple storage accounts to reduce costs.
+
+2.C
+The storage account name is used as part of the URI for API access, so it must be globally unique.
+
+3.A
+Storage accounts are stable for the lifetime of a project. It's common to create them at the start of a project.

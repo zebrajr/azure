@@ -1,0 +1,257 @@
+<html dir="ltr"><head><title>Choose your account settings - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/create-azure-storage-account/3-choose-your-account-settings">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/create-azure-storage-account/3-choose-your-account-settings</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Choose your account settings - Learn</h1>
+  <div dir="auto" id="reader-credits">cryophobia</div>
+  <div dir="auto" id="reader-estimated-time">3-4 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="main" role="main" data-bi-name="content" lang="en-us" dir="ltr">
+		
+		
+		<ul>
+			<li>5 minutes</li>
+		</ul>
+			<p>The storage account settings we've already covered apply to the data services in the account. Here, we will discuss the three settings that apply to the account itself, rather than to the data stored in the account:</p>
+<ul>
+<li>Name</li>
+<li>Deployment model</li>
+<li>Account kind</li>
+</ul>
+<p>These settings impact how you manage your account and the cost of the services within it.</p>
+<h2 id="name">Name</h2>
+<p>Each storage account has a name. The name must be globally unique within Azure, use only lowercase letters and digits and be between 3 and 24 characters.</p>
+<h2 id="deployment-model">Deployment model</h2>
+<p>A <em>deployment model</em> is the system Azure uses to organize your resources. The model defines the API that you use to create, configure, and manage those resources. Azure provides two deployment models:</p>
+<ul>
+<li><strong>Resource Manager</strong>: the current model that uses the Azure Resource Manager API</li>
+<li><strong>Classic</strong>: a legacy offering that uses the Azure Service Management API</li>
+</ul>
+<p>Most Azure resources only work with Resource Manager, and makes it easy to decide which model to choose. However, storage accounts, virtual machines, and virtual networks support both, so you must choose one or the other when you create your storage account.</p>
+<p>The key feature difference between the two models is their support for grouping. The Resource Manager model adds the concept of a <em>resource group</em>, which is not available in the classic model. A resource group lets you deploy and manage a collection of resources as a single unit.</p>
+<p>Microsoft recommends that you use <strong>Resource Manager</strong> for all new resources.</p>
+<h2 id="account-kind">Account kind</h2>
+<p>Storage account <em>kind</em> is a set of policies that determine which data services you can include in the account and the pricing of those services. There are three kinds of storage accounts:</p>
+<ul>
+<li><strong>StorageV2 (general purpose v2)</strong>: the current offering that supports all storage types and all of the latest features</li>
+<li><strong>Storage (general purpose v1)</strong>: a legacy kind that supports all storage types but may not support all features</li>
+<li><strong>Blob storage</strong>: a legacy kind that allows only block blobs and append blobs</li>
+</ul>
+<p>Microsoft recommends that you use the <strong>General-purpose v2</strong> option for new storage accounts.</p>
+<p>There are a few special cases that can be exceptions to this rule. For example, pricing for transactions is lower in general purpose v1, which would allow you to slightly reduce costs if that matches your typical workload.</p>
+<p>The core advice here is to choose the <strong>Resource Manager</strong> deployment model and the <strong>StorageV2 (general purpose v2)</strong> account kind for all your storage accounts. The other options still exist primarily to allow existing resources to continue operation. For new resources, there are few reasons to consider the other choices.</p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Choose an account creation tool</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/create-azure-storage-account/4-choose-an-account-creation-tool/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div><section>
+		<p>
+Need help? See our <a id="troubleshooting-guide" data-bi-name="troubleshooting" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn.create-azure-storage-account.3-choose-your-account-settings&amp;documentId=f6537c81-9da7-f778-6f65-7650eaebcf75&amp;versionIndependentDocumentId=7915de21-5860-eb24-c68b-212d64e793ab&amp;contentPath=%2FMicrosoftDocs%2Flearn-pr%2Fblob%2Flive%2Flearn-pr%2Fazure%2Fcreate-azure-storage-account%2F3-choose-your-account-settings.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fcreate-azure-storage-account%2F3-choose-your-account-settings&amp;author=chrvaw">troubleshooting guide</a> or provide specific feedback by <a id="module-unit-feedback-link" data-bi-name="feedback" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn.create-azure-storage-account.3-choose-your-account-settings&amp;documentId=f6537c81-9da7-f778-6f65-7650eaebcf75&amp;versionIndependentDocumentId=7915de21-5860-eb24-c68b-212d64e793ab&amp;contentPath=%2FMicrosoftDocs%2Flearn-pr%2Fblob%2Flive%2Flearn-pr%2Fazure%2Fcreate-azure-storage-account%2F3-choose-your-account-settings.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fcreate-azure-storage-account%2F3-choose-your-account-settings&amp;author=chrvaw#report-feedback">reporting an issue</a>.		</p>
+	</section></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

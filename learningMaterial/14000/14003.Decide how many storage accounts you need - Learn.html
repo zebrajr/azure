@@ -1,0 +1,278 @@
+<html dir="ltr"><head><title>Decide how many storage accounts you need - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/create-azure-storage-account/2-decide-how-many-storage-accounts-you-need">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/create-azure-storage-account/2-decide-how-many-storage-accounts-you-need</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Decide how many storage accounts you need - Learn</h1>
+  <div dir="auto" id="reader-credits">cryophobia</div>
+  <div dir="auto" id="reader-estimated-time">7-9 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>10 minutes</li>
+		</ul>
+			<p>Organizations often have multiple storage accounts to let them implement different sets of requirements. In the chocolate-manufacturer example, there would be one storage account for the private business data and one for the consumer-facing files. Here, you will learn the policy factors that are controlled by a storage account, which will help you decide how many accounts you need.</p>
+<h2 id="what-is-azure-storage">What is Azure Storage?</h2>
+<p>Azure provides many ways to store your data. There are multiple database options like Azure SQL Database, Azure Cosmos DB, and Azure Table Storage. Azure offers multiple ways to store and send messages, such as Azure Queues and Event Hubs. You can even store loose files using services like Azure Files and Azure Blobs.</p>
+<p>Azure selected four of these data services and placed them together under the name <em>Azure Storage</em>. The four services are Azure Blobs, Azure Files, Azure Queues, and Azure Tables. The following illustration shows the elements of Azure Storage.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/create-azure-storage-account/media/2-azure-storage.png" alt="Illustration listing the Azure data services that are part of Azure Storage." data-linktype="relative-path"></p>
+<p>These four were given special treatment because they are all primitive, cloud-based storage services and are often used together in the same application.</p>
+<h2 id="what-is-a-storage-account">What is a storage account?</h2>
+<p>A <em>storage account</em> is a container that groups a set of Azure Storage services together. Only data services from Azure Storage can be included in a storage account (Azure Blobs, Azure Files, Azure Queues, and Azure Tables). The following illustration shows a storage account containing several data services.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/create-azure-storage-account/media/2-what-is-a-storage-account.png" alt="Illustration of an Azure storage account containing a mixed collection of data services." data-linktype="relative-path"></p>
+<p>Combining data services into a storage account lets you manage them as a group. The settings you specify when you create the account, or any that you change after creation, are applied to everything in the account. Deleting the storage account deletes all of the data stored inside it.</p>
+<p>A storage account is an Azure resource and is included in a resource group. The following illustration shows an Azure subscription containing multiple resource groups, where each group contains one or more storage accounts.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/create-azure-storage-account/media/2-resource-groups-and-storage-accounts.png" alt="Illustration of an Azure subscription containing multiple resource groups and storage accounts." data-linktype="relative-path"></p>
+<p>Other Azure data services like Azure SQL and Azure Cosmos DB are managed as independent Azure resources and cannot be included in a storage account. The following illustration shows a typical arrangement: Blobs, Files, Queues, and Tables are inside storage accounts, while other services are not.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/create-azure-storage-account/media/2-typical-subscription-organization.png" alt="Illustration of an Azure subscription showing some data services that cannot be placed in a storage account." data-linktype="relative-path"></p>
+<h2 id="storage-account-settings">Storage account settings</h2>
+<p>A storage account defines a policy that applies to all the storage services in the account. For example, you could specify that all the contained services will be stored in the West US datacenter, accessible only over https, and billed to the sales department's subscription.</p>
+<p>The settings that are controlled by a storage account are:</p>
+<ul>
+<li><p><strong>Subscription</strong>: The Azure subscription that will be billed for the services in the account.</p>
+</li>
+<li><p><strong>Location</strong>: The datacenter that will store the services in the account.</p>
+</li>
+<li><p><strong>Performance</strong>: Determines the data services you can have in your storage account and the type of hardware disks used to store the data. <strong>Standard</strong> allows you to have any data service (Blob, File, Queue, Table) and uses magnetic disk drives. <strong>Premium</strong> introduces additional services for storing data. For example, storing unstructured object data as block blobs or append blobs, and specialized file storage used to store and create premium file shares. These storage accounts use solid-state drives (SSD) for storage.</p>
+</li>
+<li><p><strong>Replication</strong>: Determines the strategy used to make copies of your data to protect against hardware failure or natural disaster. At a minimum, Azure will automatically maintain three copies of your data within the data center associated with the storage account. This is called locally-redundant storage (LRS), and guards against hardware failure but does not protect you from an event that incapacitates the entire datacenter. You can upgrade to one of the other options such as geo-redundant storage (GRS) to get replication at different datacenters across the world.</p>
+</li>
+<li><p><strong>Access tier</strong>: Controls how quickly you will be able to access the blobs in this storage account. Hot gives quicker access than Cool, but at increased cost. This applies only to blobs, and serves as the default value for new blobs.</p>
+</li>
+<li><p><strong>Secure transfer required</strong>: A security feature that determines the supported protocols for access. Enabled requires HTTPs, while disabled allows HTTP.</p>
+</li>
+<li><p><strong>Virtual networks</strong>: A security feature that allows inbound access requests only from the virtual network(s) you specify.</p>
+</li>
+</ul>
+<h2 id="how-many-storage-accounts-do-you-need">How many storage accounts do you need?</h2>
+<p>A storage account represents a collection of settings like location, replication strategy, and subscription owner. You need one storage account for every group of settings that you want to apply to your data. The following illustration shows two storage accounts that differ in one setting; that one difference is enough to require separate storage accounts.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/create-azure-storage-account/media/2-multiple-storage-accounts.png" alt="Illustration showing two storage accounts with different settings." data-linktype="relative-path"></p>
+<p>The number of storage accounts you need is typically determined by your data diversity, cost sensitivity, and tolerance for management overhead.</p>
+<h3 id="data-diversity">Data diversity</h3>
+<p>Organizations often generate data that differs in where it is consumed, how sensitive it is, which group pays the bills, etc. Diversity along any of these vectors can lead to multiple storage accounts. Let's consider two examples:</p>
+<ol>
+<li><p>Do you have data that is specific to a country or region? If so, you might want to locate it in a data center in that country for performance or compliance reasons. You will need one storage account for each location.</p>
+</li>
+<li><p>Do you have some data that is proprietary and some for public consumption? If so, you could enable virtual networks for the proprietary data and not for the public data. This will also require separate storage accounts.</p>
+</li>
+</ol>
+<p>In general, increased diversity means an increased number of storage accounts.</p>
+<h3 id="cost-sensitivity">Cost sensitivity</h3>
+<p>A storage account by itself has no financial cost; however, the settings you choose for the account do influence the cost of services in the account. Geo-redundant storage costs more than locally-redundant storage. Premium performance and the Hot access tier increase the cost of blobs.</p>
+<p>You can use multiple storage accounts to reduce costs. For example, you could partition your data into critical and non-critical categories. You could place your critical data into a storage account with geo-redundant storage and put your non-critical data in a different storage account with locally-redundant storage.</p>
+<h3 id="tolerance-for-management-overhead">Tolerance for management overhead</h3>
+<p>Each storage account requires some time and attention from an administrator to create and maintain. It also increases complexity for anyone who adds data to your cloud storage; everyone in this role needs to understand the purpose of each storage account so they add new data to the correct account.</p>
+<p>Storage accounts are a powerful tool to help you get the performance and security you need while minimizing costs. A typical strategy is to start with an analysis of your data and create partitions that share characteristics like location, billing, and replication strategy, and then create one storage account for each partition.</p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Choose your account settings</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/create-azure-storage-account/3-choose-your-account-settings/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

@@ -1,0 +1,289 @@
+<html dir="ltr"><head><title>Exercise - Create a storage account using the Azure portal - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/create-azure-storage-account/5-exercise-create-a-storage-account">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/create-azure-storage-account/5-exercise-create-a-storage-account</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Exercise - Create a storage account using the Azure portal - Learn</h1>
+  <div dir="auto" id="reader-credits">cryophobia</div>
+  <div dir="auto" id="reader-estimated-time">3-4 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="main" role="main" data-bi-name="content" lang="en-us" dir="ltr">
+		
+		
+		<ul>
+			<li>7 minutes</li>
+		</ul>
+			<p>In this unit, you'll use the Azure portal to create a storage account that is appropriate for a fictitious southern California surf report web app.</p>
+<p>The surf report site lets users upload photos and videos of local beach conditions. Viewers will use the content to help them choose the beach with the best surfing conditions. Your list of design and feature goals is:</p>
+<ul>
+<li>Video content must load quickly.</li>
+<li>The site must handle unexpected spikes in upload volume.</li>
+<li>Outdated content must be removed as surf conditions change so the site always shows current conditions.</li>
+</ul>
+<p>To fulfill these requirements, you decide to buffer uploaded content in an Azure Queue for processing, and then transfer it to an Azure Blob for persistent storage. You need a storage account that can hold both queues and blobs while delivering low-latency access to your content.</p>
+<h2 id="create-a-storage-account-using-azure-portal">Create a storage account using Azure portal</h2>
+<ol>
+<li><p>Sign into the <a href="https://portal.azure.com/learn.docs.microsoft.com" data-linktype="external" target="az-portal">Azure portal</a> using the same account you activated the sandbox with.</p>
+</li>
+<li><p>On the Azure portal menu, or from the <strong>Home</strong> page, select <strong>Create a resource</strong>.</p>
+</li>
+<li><p>In the left menu pane, select <strong>Storage</strong>, and then search for and select <strong>Storage account</strong>. The <strong>Storage account</strong> pane appears.</p>
+</li>
+<li><p>Select <strong>Create.</strong> The <strong>Create storage account</strong> pane appears.</p>
+</li>
+<li><p>On the <strong>Basics</strong> tab, enter the following values for each setting.</p>
+
+<p>The free sandbox allows you to create resources in a subset of the Azure global regions. Select a region from the following list when you create resources:</p>
+<section>
+<div>
+<ul>
+<li>West US 2</li>
+<li>South Central US</li>
+<li>Central US</li>
+<li>East US</li>
+<li>West Europe</li>
+</ul>
+</div>
+<div>
+<ul>
+<li>Southeast Asia</li>
+<li>Japan East</li>
+<li>Brazil South</li>
+<li>Australia Southeast</li>
+<li>Central India</li>
+</ul>
+</div>
+</section>
+</li>
+<li><p>Select <strong>Next : Networking</strong>. Enter the following values for each setting.</p>
+
+</li>
+<li><p>Select <strong>Next : Data protection</strong>. Enter the following value for the setting.</p>
+
+</li>
+<li><p>Select <strong>Next : Advanced</strong>. Enter the following values for each setting.</p>
+
+<div>
+<p> Warning</p>
+<p>If this option is enabled, it will enforce some additional restrictions. Azure files service connections without encryption will fail, including scenarios using SMB 2.1 or 3.0 on Linux. Because Azure storage doesn't support SSL for custom domain names, this option cannot be used with a custom domain name.</p>
+</div>
+</li>
+<li><p>Select <strong>Next : Tags</strong>. Here, you associate key/value pairs to the account for your categorization and determine if a feature is available to any Azure resource.</p>
+</li>
+<li><p>Select <strong>Review + create</strong> to review the settings. This will do a quick validation of your options to make sure all the required fields are selected. If there are issues, they'll be reported here.</p>
+</li>
+<li><p>After validation passes, select <strong>Create</strong> to provision the storage account.</p>
+<p>It may take two minutes to deploy the account.</p>
+</li>
+<li><p>After validation succeeds, select <strong>Go to resource</strong> to view your newly-created storage account.</p>
+</li>
+</ol>
+<p>You created a storage account with settings driven by your business requirements. For example, you might have selected a West US datacenter because your customers were primarily located in southern California. This is a typical flow: first analyze your data and goals, and then configure the storage account options to match.</p>
+
+		
+			
+			
+	</div><section>
+		<p>
+Need help? See our <a id="troubleshooting-guide" data-bi-name="troubleshooting" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn.create-azure-storage-account.5-exercise-create-a-storage-account&amp;documentId=e9944082-905c-77f9-6208-35d5d0b18ab3&amp;versionIndependentDocumentId=c6316c6d-237a-d1fb-84f2-c44ba15968cf&amp;contentPath=%2FMicrosoftDocs%2Flearn-pr%2Fblob%2Flive%2Flearn-pr%2Fazure%2Fcreate-azure-storage-account%2F5-exercise-create-a-storage-account.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fcreate-azure-storage-account%2F5-exercise-create-a-storage-account&amp;author=chrvaw">troubleshooting guide</a> or provide specific feedback by <a id="module-unit-feedback-link" data-bi-name="feedback" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn.create-azure-storage-account.5-exercise-create-a-storage-account&amp;documentId=e9944082-905c-77f9-6208-35d5d0b18ab3&amp;versionIndependentDocumentId=c6316c6d-237a-d1fb-84f2-c44ba15968cf&amp;contentPath=%2FMicrosoftDocs%2Flearn-pr%2Fblob%2Flive%2Flearn-pr%2Fazure%2Fcreate-azure-storage-account%2F5-exercise-create-a-storage-account.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fcreate-azure-storage-account%2F5-exercise-create-a-storage-account&amp;author=chrvaw#report-feedback">reporting an issue</a>.		</p>
+	</section></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>
