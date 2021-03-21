@@ -1,0 +1,8 @@
+1.B
+Zone-redundant storage (ZRS) copies your data to three different availability zones within a single region. If one datacenter is experiencing an outage, your data remains accessible from another availability zone within the same Azure region.
+
+2.C
+With geo-zone-redundant storage (GZRS), your data is copied across three availability zones in your primary region and to a paired secondary region. You could also use geographically redundant storage (GRS), read-access geo-redundant storage (RA-GRS), or read-access geo-zone-redundant storage (RA-GZRS).
+
+3.A
+There's delay before data is copied from the primary region and written to the secondary because data is copied asynchronously. After you fail over, compare the last sync time and last failover time.
