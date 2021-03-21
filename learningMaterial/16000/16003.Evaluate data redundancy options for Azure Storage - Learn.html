@@ -1,0 +1,307 @@
+<html dir="ltr"><head><title>Evaluate data redundancy options for Azure Storage - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-us/learn/modules/provide-disaster-recovery-replicate-storage-data/2-evaluate-data-redundancy-options">
+    <span>docs.microsoft.com</span>
+    <span>/en-us/learn/modules/provide-disaster-recovery-replicate-storage-data/2-evaluate-data-redundancy-options</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Evaluate data redundancy options for Azure Storage - Learn</h1>
+  <div dir="auto" id="reader-credits">cwatson-cat</div>
+  <div dir="auto" id="reader-estimated-time">6-8 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>7 minutes</li>
+		</ul>
+			<p>Data availability is business-critical for most organizations.</p>
+<p>Suppose that your customers have had problems accessing music streams on rare occasions. When you investigated, you found that these problems occurred during outages that affected the entire region. These occasions were rare but had a large impact.</p>
+<p>To improve your company's data availability, you decide to investigate the replication options available for Azure Storage.</p>
+<p>Here, you'll explore the different replication options for Azure Storage. You'll learn how they work and when to use them. You'll also see how to switch and migrate your data between them.</p>
+<h2 id="replication-options-for-azure-storage">Replication options for Azure Storage</h2>
+<p>In Azure Storage, you have several options for replication. The choice you make depends on the level of resilience you need.</p>
+<h3 id="locally-redundant-storage">Locally redundant storage</h3>
+<p><img src="https://docs.microsoft.com/en-us/learn/modules/provide-disaster-recovery-replicate-storage-data/media/2-locally-redundant-storage.png" alt="Illustration shows three copies of blob data stored in the same datacenter with LRS." data-linktype="relative-path"></p>
+<p>Locally redundant storage (LRS) copies your data three times across separate racks of hardware in a datacenter, inside one region. Even if there's a hardware failure, or if maintenance work is happening in the datacenter, this replication type ensures data is available for use.</p>
+<p>LRS doesn't protect you from a datacenter-wide outage. If the datacenter goes down, you could lose your data.</p>
+<h3 id="geographically-redundant-storage">Geographically redundant storage</h3>
+<p><img src="https://docs.microsoft.com/en-us/learn/modules/provide-disaster-recovery-replicate-storage-data/media/2-geo-redundant-storage.png" alt="Illustration shows blob data copied three times to two different datacenters with GRS." data-linktype="relative-path"></p>
+<p>With geographically redundant storage (GRS), your data is copied three times within one region, and three times in a secondary region that's paired with it. This way, if your primary region is experiencing an outage, your secondary region is available for use.</p>
+<h3 id="read-access-geo-redundant-storage">Read-access geo-redundant storage</h3>
+<p>With GRS, your secondary region isn't available for read access until the primary region fails. If you want to read from the secondary region, even if the primary region hasn't failed, use RA-GRS for your replication type.</p>
+<h3 id="zone-redundant-storage">Zone-redundant storage</h3>
+<p><img src="https://docs.microsoft.com/en-us/learn/modules/provide-disaster-recovery-replicate-storage-data/media/2-availability-zone-redundant-storage.png" alt="Illustration of data copied to three storage clusters in separate availability zones with ZRS." data-linktype="relative-path"></p>
+<p>Zone-redundant storage (ZRS) copies your data in three storage clusters in a single region. Each cluster is in a different physical location and is considered as a single availability zone. Each cluster uses its own separate utilities for things like networking and power. If one datacenter is experiencing outage, your data remains accessible from another availability zone in the same Azure region.</p>
+<p>Because all availability zones are in a single region, ZRS can't protect your data from a regional level outage.</p>
+<h3 id="geo-zone-redundant-storage">Geo-zone-redundant storage</h3>
+<p>Geo-zone-redundant storage (GZRS) combines the high availability benefits of ZRS with GRS. With this replication type, your data is copied across three availability zones in one region. Data is also replicated three times to another secondary region that's paired with it. This way, your zone-redundant data is also secure from regional level outage.</p>
+<h3 id="read-access-geo-zone-redundant-storage">Read-access geo-zone-redundant storage</h3>
+<p>Read-access geo-zone-redundant storage (RA-GZRS) uses the same replication method as GZRS but lets you read from the secondary region. If you want to read the data that's replicated to the secondary region, even if your primary isn't experiencing downtime, use RA-GZRS for your replication type.</p>
+<p>GZRS and RA-GZRS are currently available in the following regions:</p>
+<ul>
+<li>Asia Southeast</li>
+<li>Europe North</li>
+<li>Europe West</li>
+<li>Japan East</li>
+<li>UK South</li>
+<li>US Central</li>
+<li>US East</li>
+<li>US East 2</li>
+</ul>
+<h3 id="paired-regions">Paired regions</h3>
+<p>A paired region is where an Azure region is paired with another in the same geographical location to protect against regional outage. Paired regions are used with GRS and GZRS replication types.</p>
+<p><img src="https://docs.microsoft.com/en-us/learn/modules/provide-disaster-recovery-replicate-storage-data/media/2-paired-regions.png" alt="Illustration shows hierarchy of geography, regional pair, region, and datacenters." data-linktype="relative-path"></p>
+<p>Here's a list showing some of the regions that are paired together.</p>
+
+<h2 id="use-cases-for-each-replication-type">Use cases for each replication type</h2>
+<p>The following table summarizes how many copies you get with each replication type and when you should use it.</p>
+
+<h2 id="switch-replication-strategies">Switch replication strategies</h2>
+<p>You can switch your replication strategy for any storage account. The process you use depends on the current replication strategy for your account. For example, if you want to migrate from a storage account with LRS, you have two options:</p>
+<ul>
+<li>Manually move or copy your data to a new account with GZRS.</li>
+<li>Switch the replication type to GRS/RA-GRS first and then create a request with Azure Support for a live migration to GZRS.</li>
+</ul>
+<h3 id="convert-account">Convert account</h3>
+<p>If you're using a ZRS account, you can convert it to use GZRS. You convert an account using the Azure portal, the Azure CLI, or Azure PowerShell.
+For example, to convert your account to GZRS by using Azure PowerShell, you would use this command:</p>
+<pre tabindex="0"><code data-author-content="Set-AzStorageAccount -ResourceGroupName <resource-group> -AccountName <storage-account> -SkuName &quot;Standard_GZRS&quot;
+"><span><span>Set-AzStorageAccount</span><span> -ResourceGroupName</span> &lt;<span>resource-group</span>&gt;<span> -AccountName</span> &lt;<span>storage-account</span>&gt;<span> -SkuName</span> <span>"Standard_GZRS"</span>
+</span></code></pre>
+<h3 id="switch-replication-type-in-the-azure-portal">Switch replication type in the Azure portal</h3>
+<p>You can also switch your account's replication type in the Azure portal. For example, to switch from ZRS to GZRS, go to your storage account, select configuration, and change the replication type.</p>
+<p><span>
+<img src="https://docs.microsoft.com/en-us/learn/modules/provide-disaster-recovery-replicate-storage-data/media/2-change-zrs-gzrs-portal.png" alt="Screenshot of the storage account configuration where you change the replication type from ZRS to GZRS." data-linktype="relative-path">
+</span>
+</p>
+<h3 id="live-migration">Live migration</h3>
+<p>You can also use live migration to migrate your data to an account that uses ZRS, GZRS, or RA-GZRS. Use live migration to avoid downtime or data loss. The duration of your live migration generally depends on the amount of data in your account.</p>
+<p>Live migrations are done by creating an Azure support request in the Azure portal.</p>
+<p><img src="https://docs.microsoft.com/en-us/learn/modules/provide-disaster-recovery-replicate-storage-data/media/2-live-migration-portal.png" alt="Screenshot of an example Azure support ticket where you request the service: storage account management, problem type: data migration, and problem subtype: migrate to ZRS, GRS, or RA-GZRS." data-linktype="relative-path"></p>
+<p>You'll then be contacted by a support representative about your live migration request.</p>
+<p>There are some limitations to live migration. For example:</p>
+<ul>
+<li>Unlike a manual app, you won't know exactly when a live migration will complete.</li>
+<li>Data can only be migrated to the same region.</li>
+<li>Live migration is only supported for data held in standard storage account types.</li>
+<li>If your account contains a large file share, live migration to GZRS isn't supported.</li>
+</ul>
+<h3 id="manual-migration">Manual migration</h3>
+<p>Manual migration is more flexible than live migration. For example, because you control the timing, you can use manual migration if you need completion by a fixed date.</p>
+<p>To do a manual migration, you could use the AzCopy utility or one of the various third-party tools available.</p>
+<p>For example, through AzCopy, you can run the following command in your terminal, which copies all blobs, directories, and containers in your storage account to another one.</p>
+<pre tabindex="0"><code data-author-content="azcopy copy 'https://<source-storage-account-name>.blob.core.windows.net/?<your-SAS-token>'
+'https://<destination-storage-account-name>.blob.core.windows.net/' --recursive
+"><span>azcopy copy <span>'https://&lt;source-storage-account-name&gt;.blob.core.windows.net/?&lt;your-SAS-token&gt;'</span>
+<span>'https://&lt;destination-storage-account-name&gt;.blob.core.windows.net/'</span><span> --recursive</span>
+</span></code></pre>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Exercise - View replication status</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-us/learn/modules/provide-disaster-recovery-replicate-storage-data/3-exercise-change-replication-strategy/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>
