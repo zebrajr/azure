@@ -1,0 +1,5 @@
+1.C
+Azure Backup supports managed disks, so no change is needed.
+
+2.A
+Although larger standard SSD sizes support this IOPS, it's not guaranteed and might occasionally drop below 1,100. Premium SSDs do have a guaranteed performance level.

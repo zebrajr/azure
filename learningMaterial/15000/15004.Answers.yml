@@ -1,0 +1,5 @@
+1.B
+Place all your application data, including databases and static content files, on data disks.
+
+2.C
+Managed disks guarantee 99.999% availability because data is automatically replicated.

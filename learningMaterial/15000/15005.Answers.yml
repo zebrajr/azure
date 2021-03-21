@@ -1,0 +1,5 @@
+1.A
+Ultra SSDs offer the best performance of disk types on Azure.
+
+2.B
+Standard tier disks don't guarantee a minimum throughput. For such a guarantee, use premium SSD disks.
