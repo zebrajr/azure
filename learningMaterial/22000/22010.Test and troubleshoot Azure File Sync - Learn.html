@@ -1,0 +1,274 @@
+<html dir="ltr"><head><title>Test and troubleshoot Azure File Sync - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/extend-share-capacity-with-azure-file-sync/9-test-troubleshoot-azure-file-sync">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/extend-share-capacity-with-azure-file-sync/9-test-troubleshoot-azure-file-sync</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Test and troubleshoot Azure File Sync - Learn</h1>
+  <div dir="auto" id="reader-credits">cwatson-cat</div>
+  <div dir="auto" id="reader-estimated-time">5-6 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>7 minutes</li>
+		</ul>
+			<p>There are several ways to monitor Azure File Sync. You could use the Azure portal, Azure Monitor, or the event log on one of the Windows Server computers. You could also monitor Azure File Sync by adding Azure File Sync performance counters to Performance Monitor.</p>
+<p>You've set up the Azure File Sync components in your Azure environment and on the target server. Now you want to ensure the environment functions correctly and monitor replication and file copy jobs.</p>
+<h2 id="common-problems">Common problems</h2>
+<p>Later in this unit, you'll see how you can monitor Azure File Sync and check for syncing problems. But first let's look at some common problems and how they could be resolved.</p>
+
+<p>If you're unable to mount your Azure file share on Windows Server, it could be that your company's firewall rules are blocking network traffic. Azure needs to have port 445 open to connect to Azure datacenters. Azure also denies connections that aren't secure. So your on-premises Windows Server computer has to support SMB encryption. If that isn't possible, you can disable secure transfers on the Azure storage account, but your company has to accept the associated lack of security if you use this approach.</p>
+<h3 id="files-or-directory-wont-sync">Files or directory won't sync</h3>
+<p>The most common cause for files not syncing is invalid file names. The assessment tool should help you identify problems with existing file names. But if new files are created with invalid characters after the sync is set up, you'll need to identify them with the monitoring tools.</p>
+
+<p>To check that files are replicating, open two File Explorer sessions. In the first window, browse to the folder path that's synced to Azure.</p>
+<p>In the second File Explorer window, add a network connection that's mapped to the Azure file share, like <code>\\&lt;your-azure-file-share&gt;.file.core.windows.net\foldername</code>.</p>
+<p>In the first window, add a new text document in the CADFolder. Then add some text to the file. The file should appear in the mapped drive location within seconds. Open the file and check whether the contents match the contents of your local copy. If the contents match, the replication between Azure and the server endpoint is healthy.</p>
+<h2 id="view-server-health-and-metrics-for-storage-sync-service">View server health and metrics for Storage Sync Service</h2>
+<p>You can view server health, server endpoint health, and metrics in the Storage Sync Service properties in the Azure portal.</p>
+<ul>
+<li><strong>Registered server health</strong>: If the server state is <strong>Online</strong>, it's communicating successfully with the service. If the server state is <strong>Appears Offline</strong>, check the Storage Sync Monitor process service to ensure it's running on the server.</li>
+<li><strong>Server endpoint health</strong>: Server endpoint health is calculated based on events logged in <strong>Telemetry</strong>. If there are any errors, the sync health state will be registered as <strong>unhealthy</strong>.</li>
+<li><strong>Metrics</strong>: You can view various metrics from within the Storage Sync Service. The metrics are:
+<ul>
+<li><strong>Bytes synced</strong>: Size of data transferred</li>
+<li><strong>Cloud tiering recall</strong>: Size of data recalled</li>
+<li><strong>Files not syncing</strong>: Count of files that are failing to sync</li>
+<li><strong>Files synced</strong>: Count of files transferred (upload and download)</li>
+<li><strong>Server online status</strong>: Count of heartbeats received from the server</li>
+</ul>
+</li>
+</ul>
+<h2 id="use-azure-monitor">Use Azure Monitor</h2>
+<p>Azure Monitor allows you to view, analyze, and act on data in a central location in the portal. The metrics shown in Azure Monitor that are specific to Azure File Sync are:</p>
+<ul>
+<li><strong>Bytes synced</strong>: Size of data transferred</li>
+<li><strong>Cloud tiering recall</strong>: Size of data recalled</li>
+<li><strong>Files not syncing</strong>: Count of files that are failing to sync</li>
+<li><strong>Files synced</strong>: Count of files transferred (upload and download)</li>
+<li><strong>Server online status</strong>: Count of heartbeats received from the server</li>
+<li><strong>Sync session result</strong>: Sync session result (1 = successful. 0 = failed sync)</li>
+</ul>
+<h2 id="view-windows-event-logs">View Windows Event logs</h2>
+<p>The Telemetry Event Log is used to identify the registered server, sync, and cloud tiering health. Go to the Event Viewer, under the path <strong>Applications and Services\Microsoft\FileSync\Agent</strong>.</p>
+<p>Each event log entry contains various event IDs that identify sync health, registered server health, and cloud tiering health problems.</p>
+<ul>
+<li>Event ID 9102: Logged after a sync session finishes. A result of <strong>HRESULT=0</strong> indicates a successful sync. Anything else indicates a failure.</li>
+<li>Event ID 9302: Logged every 5 to 10 minutes when there's an active sync in progress. A result of <strong>AppliedItemCount &gt; 0</strong> means a sync is progressing successfully.</li>
+<li>Event ID 9301: Logged every 30 seconds when a server communicates with the service to query for jobs. A result of <strong>GetNextJob = 0</strong> means the service can communicate with Azure.</li>
+<li>Event IDs 9003, 9016, and 9029: Logged to monitor cloud tiering, when tiering is used.</li>
+</ul>
+<h2 id="use-performance-monitor-in-windows-server">Use Performance Monitor in Windows Server</h2>
+<p>You can use Performance Monitor, which is included in Windows Server, to monitor many aspects of the server in real time, including Azure File Sync. Open Performance Monitor from the Microsoft Management Console. The counters you need to add are under the <strong>AFS Bytes Transferred</strong> and <strong>AFS Sync Operations</strong> parent objects. These counters both have submetrics, like bytes, count of downloaded or uploaded sync operations, and total.</p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Exercise - Troubleshoot Azure File Sync</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/extend-share-capacity-with-azure-file-sync/10-exercise-troubleshoot-azure-file-sync/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

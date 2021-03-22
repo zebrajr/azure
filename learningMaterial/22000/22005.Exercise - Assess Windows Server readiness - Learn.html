@@ -1,0 +1,431 @@
+<html dir="ltr"><head><title>Exercise - Assess Windows Server readiness - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/extend-share-capacity-with-azure-file-sync/4-exercise-assess-windows-server-readiness">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/extend-share-capacity-with-azure-file-sync/4-exercise-assess-windows-server-readiness</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Exercise - Assess Windows Server readiness - Learn</h1>
+  <div dir="auto" id="reader-credits">cwatson-cat</div>
+  <div dir="auto" id="reader-estimated-time">5-7 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="main" role="main" data-bi-name="content" lang="en-us" dir="ltr">
+		
+		
+		<ul>
+			<li>15 minutes</li>
+		</ul>
+			<p>You can run the Azure File Sync evaluation PowerShell cmdlets on any Windows Server computer that you'd like to use file sync on. The cmdlets check the OS, file system, file name, and folder name compatibility.</p>
+<p>Before you install and set up Azure File Sync on your company's CAD file server, you're going to assess the server to ensure it's compatible. You'll run the evaluation cmdlets to produce a report.</p>
+<div>
+<p> Important</p>
+<p>You need your own Azure subscription to run this exercise, and you might incur charges.&nbsp;If you don't already have an Azure subscription, create a <a href="https://azure.microsoft.com/free/" data-linktype="external" target="az-portal">free account</a> before you begin.</p>
+</div>
+<p>The following video shows how to do the assessment on your on-premises server. Follow the steps in this exercise to complete the assessment on a virtual machine that you create in your Azure subscription.</p>
+
+<h2 id="create-a-windows-file-server">Create a Windows file server</h2>
+<p>You'd normally install Azure File Sync on your on-premises server. For this exercise, you'll create an Azure virtual machine (VM) to act as your Windows file server.</p>
+<ol>
+<li><p>Sign in to the <a href="https://portal.azure.com/" data-linktype="external">Azure portal</a>.</p>
+</li>
+<li><p>From the menu bar on the top right-hand side, open <strong>Cloud Shell</strong>.</p>
+</li>
+<li><p>Run the following command to create a resource group. Replace <code>EastUS</code> with the value of a location near you.</p>
+<pre tabindex="0"><code data-author-content="$resourceGroup = 'learn-file-sync-rg'
+$location = 'EastUS'
+New-AzResourceGroup -Name $resourceGroup -Location $location
+"><span><span>$resourceGroup</span> = <span>'learn-file-sync-rg'</span>
+<span>$location</span> = <span>'EastUS'</span>
+<span>New-AzResourceGroup</span><span> -Name</span> <span>$resourceGroup</span><span> -Location</span> <span>$location</span>
+</span></code></pre>
+<p>This list shows some location values you can use:</p>
+<ul>
+<li>westus2</li>
+<li>southcentralus</li>
+<li>centralus</li>
+<li>eastus</li>
+<li>westeurope</li>
+<li>southeastasia</li>
+<li>japaneast</li>
+<li>brazilsouth</li>
+<li>australiasoutheast</li>
+<li>centralindia</li>
+</ul>
+</li>
+<li><p>In PowerShell, run the following command to create a subnet and virtual network in the same location as the resource group:</p>
+<pre tabindex="0"><code data-author-content="$subnetConfig = New-AzVirtualNetworkSubnetConfig `
+-Name Syncpublicnet `
+-AddressPrefix 10.0.0.0/24
+
+$virtualNetwork = New-AzVirtualNetwork `
+-Name Syncvnet `
+-AddressPrefix 10.0.0.0/16 `
+-Location $location `
+-ResourceGroupName $resourceGroup `
+-Subnet $subnetConfig
+
+"><span><span>$subnetConfig</span> = <span>New-AzVirtualNetworkSubnetConfig</span> `
+-Name Syncpublicnet `
+-AddressPrefix <span>10.0</span>.<span>0.0</span>/<span>24</span>
+
+<span>$virtualNetwork</span> = <span>New-AzVirtualNetwork</span> `
+-Name Syncvnet `
+-AddressPrefix <span>10.0</span>.<span>0.0</span>/<span>16</span> `
+-Location <span>$location</span> `
+-ResourceGroupName <span>$resourceGroup</span> `
+-Subnet <span>$subnetConfig</span>
+
+</span></code></pre>
+</li>
+<li><p>Run the following command to set the user name and password for the administrator account on the VM. Enter the user name <code>learnadmin</code> and a password. The password needs to be at least eight characters long and include a digit, an uppercase letter, a lowercase letter, and a special character. Write down the password because you'll need it later.</p>
+<pre tabindex="0"><code data-author-content="$cred = Get-Credential
+
+"><span><span>$cred</span> = <span>Get-Credential</span>
+
+</span></code></pre>
+</li>
+<li><p>Create the Windows Server machine:</p>
+<pre tabindex="0"><code data-author-content=" New-Azvm `
+ -Name FileServerLocal `
+ -Credential $cred `
+ -ResourceGroupName $resourceGroup `
+ -Size Standard_DS1_v2 `
+ -VirtualNetworkName Syncvnet `
+ -SubnetName Syncpublicnet `
+ -Image &quot;MicrosoftWindowsServer:WindowsServer:2019-Datacenter-with-Containers:latest&quot; 
+
+
+"><span> <span>New-Azvm</span> `
+<span> -Name</span> FileServerLocal `
+<span> -Credential</span> <span>$cred</span> `
+<span> -ResourceGroupName</span> <span>$resourceGroup</span> `
+<span> -Size</span> Standard_DS1_v2 `
+<span> -VirtualNetworkName</span> Syncvnet `
+<span> -SubnetName</span> Syncpublicnet `
+<span> -Image</span> <span>"MicrosoftWindowsServer:WindowsServer:2019-Datacenter-with-Containers:latest"</span> 
+
+
+</span></code></pre>
+<p>Creating the VM takes a couple of minutes.</p>
+</li>
+</ol>
+<h2 id="set-up-windows-server-for-assessment">Set up Windows Server for assessment</h2>
+<p>Connect to the new server by using Remote Desktop client. You'll download a sample CAD file and install the Azure PowerShell module that you'll use later.</p>
+<ol>
+<li><p>Sign in to the <a href="https://portal.azure.com/" data-linktype="external" target="az-portal">Azure portal</a>.</p>
+</li>
+<li><p>In the portal, in the left pane, select <strong>Virtual machines</strong>.</p>
+</li>
+<li><p>Select the <strong>FileServerLocal</strong> VM.</p>
+</li>
+<li><p>In the top menu, select <strong>Connect</strong>.</p>
+</li>
+<li><p>Select <strong>Download RDP File</strong>.</p>
+</li>
+<li><p>Open the RDP file from your browser and select <strong>Connect</strong>.</p>
+</li>
+<li><p>In the <strong>Windows Security</strong> window, select <strong>More choices</strong>, and then select <strong>Use a different account</strong>.</p>
+</li>
+<li><p>Enter the user name <strong>learnadmin</strong> and the password you used earlier, and then select <strong>OK</strong>.</p>
+</li>
+<li><p>If you're asked to connect despite certificate errors, select <strong>Yes</strong>.</p>
+</li>
+<li><p>After you've logged in, select <strong>Start</strong>, type <strong>cmd</strong>, and then select <strong>Command Prompt</strong>.</p>
+</li>
+<li><p>At the command prompt, enter <strong>D:</strong> and then select <strong>Enter</strong>.</p>
+</li>
+<li><p>Download this sample CAD file by using cURL:</p>
+<pre tabindex="0"><code data-author-content="curl https://github.com/MicrosoftDocs/mslearn-extend-share-capacity-with-azure-file-sync/blob/master/resources/CADFolder.zip?raw=true -L -o CADFolder.zip
+"><span>curl https://github.com/MicrosoftDocs/mslearn-extend-share-capacity-with-azure-file-sync/blob/master/resources/CADFolder.zip?raw=true -L -o CADFolder.zip
+</span></code></pre>
+</li>
+<li><p>Expand the zip file:</p>
+<pre tabindex="0"><code data-author-content="CADFolder.zip
+"><span>CADFolder.zip
+</span></code></pre>
+</li>
+<li><p>In File Explorer, select <strong>Compressed Folder Tools</strong>, and then select <strong>Extract all</strong> and <strong>Extract</strong>.</p>
+</li>
+</ol>
+<h2 id="install-the-azure-powershell-modules">Install the Azure PowerShell modules</h2>
+<ol>
+<li><p>Right-click <strong>Start</strong>, and then select <strong>Windows PowerShell (Admin)</strong>.</p>
+</li>
+<li><p>In the console, download the latest Azure PowerShell modules:</p>
+<pre tabindex="0"><code data-author-content="Install-Module -Name Az
+"><span><span>Install-Module</span><span> -Name</span> Az
+</span></code></pre>
+</li>
+<li><p>When prompted, enter <strong>Y</strong> to accept the untrusted repository. Do the same thing for any of the modules.</p>
+<p>The modules take a minute or two to install.</p>
+</li>
+</ol>
+<h2 id="complete-an-assessment">Complete an assessment</h2>
+<p>With the evaluation cmdlets installed, check whether your file server and folders are compatible with Azure File Sync.</p>
+<ol>
+<li><p>Do a system and data file check:</p>
+<pre tabindex="0"><code data-author-content="Invoke-AzStorageSyncCompatibilityCheck -Path D:\CADFolder
+"><span><span>Invoke-AzStorageSyncCompatibilityCheck</span><span> -Path</span> D:\CADFolder
+</span></code></pre>
+</li>
+<li><p>The output should look like this output:</p>
+<pre tabindex="0"><code data-author-content="Environment validation results:
+
+Computer name: localhost
+OS version check: Passed.
+File system check: Passed.
+
+Namespace validation results:
+
+Path: C:\CADFolder
+Number of files scanned: 4
+Number of directories scanned: 6
+
+There were no compatibility issues found with your files.
+">Environment validation results:
+
+Computer name: localhost
+OS version check: Passed.
+File system check: Passed.
+
+Namespace validation results:
+
+Path: C:\CADFolder
+Number of files scanned: 4
+Number of directories scanned: 6
+
+There were no compatibility issues found with your files.
+</code></pre>
+</li>
+<li><p>Test the files only:</p>
+<pre tabindex="0"><code data-author-content="Invoke-AzStorageSyncCompatibilityCheck -Path D:\CADFolder -SkipSystemChecks
+"><span><span>Invoke-AzStorageSyncCompatibilityCheck</span><span> -Path</span> D:\CADFolder<span> -SkipSystemChecks</span>
+</span></code></pre>
+</li>
+<li><p>Test system requirements only:</p>
+<pre tabindex="0"><code data-author-content="Invoke-AzStorageSyncCompatibilityCheck -ComputerName localhost
+"><span><span>Invoke-AzStorageSyncCompatibilityCheck</span><span> -ComputerName</span> localhost
+</span></code></pre>
+</li>
+<li><p>Save the results in a CSV file:</p>
+<pre tabindex="0"><code data-author-content="$results=Invoke-AzStorageSyncCompatibilityCheck -Path D:\CADFolder
+$results | Select-Object -Property Type, Path, Level, Description | Export-Csv -Path D:\assessment-results.csv
+"><span><span>$results</span>=<span>Invoke-AzStorageSyncCompatibilityCheck</span><span> -Path</span> D:\CADFolder
+<span>$results</span> | <span>Select-Object</span><span> -Property</span> Type, Path, Level, Description | <span>Export-Csv</span><span> -Path</span> D:\<span>assessment-results</span>.csv
+</span></code></pre>
+</li>
+<li><p>Leave the Remote Desktop connection open for a later exercise.</p>
+</li>
+</ol>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Set up Azure File Sync in the Azure portal</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/extend-share-capacity-with-azure-file-sync/5-set-up-azure-file-sync/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div><section>
+		<p>
+Need help? See our <a id="troubleshooting-guide" data-bi-name="troubleshooting" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn.azure.extend-share-capacity-with-azure-file-sync.exercise-assess-windows-server-readiness&amp;documentId=9049bf8e-868a-f914-6375-0ff2863647fc&amp;versionIndependentDocumentId=73d33f6c-dbe0-966e-bff2-bb26141db2d4&amp;contentPath=%2FMicrosoftDocs%2Flearn-pr%2Fblob%2Flive%2Flearn-pr%2Fazure%2Fextend-share-capacity-with-azure-file-sync%2F4-exercise-assess-windows-server-readiness.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fextend-share-capacity-with-azure-file-sync%2F4-exercise-assess-windows-server-readiness&amp;author=cwatson">troubleshooting guide</a> or provide specific feedback by <a id="module-unit-feedback-link" data-bi-name="feedback" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn.azure.extend-share-capacity-with-azure-file-sync.exercise-assess-windows-server-readiness&amp;documentId=9049bf8e-868a-f914-6375-0ff2863647fc&amp;versionIndependentDocumentId=73d33f6c-dbe0-966e-bff2-bb26141db2d4&amp;contentPath=%2FMicrosoftDocs%2Flearn-pr%2Fblob%2Flive%2Flearn-pr%2Fazure%2Fextend-share-capacity-with-azure-file-sync%2F4-exercise-assess-windows-server-readiness.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fextend-share-capacity-with-azure-file-sync%2F4-exercise-assess-windows-server-readiness&amp;author=cwatson#report-feedback">reporting an issue</a>.		</p>
+	</section></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

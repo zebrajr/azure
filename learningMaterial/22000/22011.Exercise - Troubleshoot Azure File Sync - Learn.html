@@ -1,0 +1,330 @@
+<html dir="ltr"><head><title>Exercise - Troubleshoot Azure File Sync - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/extend-share-capacity-with-azure-file-sync/10-exercise-troubleshoot-azure-file-sync">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/extend-share-capacity-with-azure-file-sync/10-exercise-troubleshoot-azure-file-sync</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Exercise - Troubleshoot Azure File Sync - Learn</h1>
+  <div dir="auto" id="reader-credits">cwatson-cat</div>
+  <div dir="auto" id="reader-estimated-time">4-5 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="main" role="main" data-bi-name="content" lang="en-us" dir="ltr">
+		
+		
+		<ul>
+			<li>12 minutes</li>
+		</ul>
+			<p>Azure File Sync provides multiple ways to monitor and diagnose sync problems. Tools are provided in the sync group and are on the Windows Server computer. You can also set up alerts in Azure Monitor.</p>
+<p>You've deployed Azure File Sync and configured both the Azure and on-premises environments. Now you need to troubleshoot a rogue file that's not syncing. You'll use the tools provided by Microsoft.</p>
+<p>In this exercise, you'll first check that file sync is working correctly. Then you'll generate a file with invalid characters. You'll see how to diagnose sync problems and resolve them. The following video walks you through the process. Complete the steps in this exercise to continue following along in your Azure subscription.</p>
+
+<h2 id="find-your-connection-details">Find your connection details</h2>
+<ol>
+<li><p>Sign in to the <a href="https://portal.azure.com/" data-linktype="external" target="az-portal">Azure portal</a>.</p>
+</li>
+<li><p>Go to the storage account. Select <strong>All resources</strong> &gt; <strong>extendcadfiles</strong>.</p>
+</li>
+<li><p>Under <strong>Settings</strong>, select <strong>Access keys</strong>.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/extend-share-capacity-with-azure-file-sync/media/10-access-keys-option.png" alt="Screenshot of the Access keys option under settings." data-linktype="relative-path"></p>
+</li>
+<li><p>Under <strong>key1</strong>, copy the <strong>Key</strong> value. You'll use this key to set up the mapped drive.</p>
+</li>
+</ol>
+
+<ol>
+<li>If you closed your Remote Desktop connection, use these steps to connect to the VM:
+<ol>
+<li>Sign in to the <a href="https://portal.azure.com/" data-linktype="external" target="az-portal">Azure portal</a>.</li>
+<li>Go to <strong>Virtual machines</strong> &gt; <strong>FileServerLocal</strong>.</li>
+<li>Select <strong>Connect</strong> &gt; <strong>Download RDP File</strong>, and then open the RDP file.</li>
+<li>In the <strong>Windows Security</strong> window, select <strong>More choices</strong> &gt; <strong>Use a different account</strong>.</li>
+<li>Enter the user name <strong>learnadmin</strong> and the password you used when you created the VM.</li>
+</ol>
+</li>
+<li>On the toolbar, select <strong>File Explorer</strong>, and then select <strong>This PC</strong>.</li>
+<li>In the menu at the top of the window, select <strong>Computer</strong> &gt; <strong>Map network drive</strong>.</li>
+<li>In the <strong>Folder</strong> box, enter <strong>\\extendcadfiles.file.core.windows.net\cadfileshare</strong>.</li>
+<li>Select <strong>Connect using different credentials</strong>.</li>
+<li>Select <strong>Finish</strong>.</li>
+<li>For the user name, enter <strong>AZURE\extendcadfiles</strong>.</li>
+<li>For the password, paste in the key you copied in the previous section.</li>
+<li>Select <strong>OK</strong>.</li>
+</ol>
+<h2 id="check-the-file-sync">Check the file sync</h2>
+<ol>
+<li><p>Open a new File Explorer window.</p>
+</li>
+<li><p>Put the two File Explorer windows side by side, with D:\CADFolder on the left and the mapped cadfileshare on the right:</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/extend-share-capacity-with-azure-file-sync/media/10-side-by-side.png" alt="Screenshot of two File Explorer windows side by side." data-linktype="relative-path"></p>
+</li>
+<li><p>In the left window, below <strong>CADFolder</strong>, right-click and select <strong>New</strong> &gt; <strong>Text Document</strong>.</p>
+</li>
+<li><p>Rename the file to <strong>test</strong>.</p>
+</li>
+<li><p>Confirm that the file replicates to the Azure file share in the right window.</p>
+</li>
+</ol>
+<h2 id="create-an-invalid-file">Create an invalid file</h2>
+<ol>
+<li><p>Go to the <strong>CADFolder</strong> folder in both windows.</p>
+</li>
+<li><p>Open <strong>create-bad-file.js</strong> in the left window.</p>
+<p>A new file named <strong>invalid╘«nameÉ.txt</strong> will be created.</p>
+<p>This file won't replicate into the Azure file share.</p>
+</li>
+</ol>
+<h2 id="troubleshoot-file-synchronization">Troubleshoot file synchronization</h2>
+<p>You can troubleshoot on your on-premises server or in the Azure portal. Syncing to the portal can take some time, so start troubleshooting locally.</p>
+<h3 id="view-the-file-sync-issue-on-windows-server">View the file sync issue on Windows Server</h3>
+<ol>
+<li><p>Right-click <strong>Start</strong> and select <strong>Windows PowerShell (Admin)</strong>.</p>
+</li>
+<li><p>In the console, move to the File Sync folder:</p>
+<pre tabindex="0"><code data-author-content="cd 'C:\Program Files\Azure\StorageSyncAgent\'
+"><span>cd <span>'C:\Program Files\Azure\StorageSyncAgent\'</span>
+</span></code></pre>
+</li>
+<li><p>Run the error report script:</p>
+<pre tabindex="0"><code data-author-content=".\FileSyncErrorsReport.ps1
+"><span>.\FileSyncErrorsReport.ps1
+</span></code></pre>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/extend-share-capacity-with-azure-file-sync/media/10-powershell-sync-error.png" alt="Screenshot of the PowerShell window showing the error report." data-linktype="relative-path"></p>
+</li>
+<li><p>View the output of the command. The <code>ErrorDescription</code> field describes what's wrong. The <code>ItemPath</code> field gives the location of the problematic file.</p>
+</li>
+<li><p>Verify that the error is <code>0x8007007b</code> and that it refers to the invalid file you generated.</p>
+</li>
+</ol>
+<h3 id="view-the-file-sync-problem-in-the-azure-portal">View the file sync problem in the Azure portal</h3>
+<ol>
+<li><p>On your local computer, return to the Azure portal.</p>
+</li>
+<li><p>Go to the sync group. Select <strong>All resources</strong> &gt; <strong>CADSyncService</strong> &gt; <strong>CADFiles</strong>.</p>
+</li>
+<li><p>Under server endpoints, select <strong>FileServerLocal</strong>.</p>
+</li>
+<li><p>Next to <strong>Transient</strong>, select <strong>1 files</strong>. It might take a few minutes for the file to show up.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/extend-share-capacity-with-azure-file-sync/media/10-transient-error.png" alt="Screenshot of Server Endpoint Properties showing a transient error." data-linktype="relative-path"></p>
+</li>
+<li><p>Under <strong>Remediation</strong>, Azure provides advice on how to resolve the problem.</p>
+</li>
+</ol>
+<p>Because the file sync problems just started, they're listed as transient. If the file remained in the folder with the invalid characters for more than 24 hours, the status would change to persistent.</p>
+<h3 id="resolve-the-file-sync">Resolve the file sync</h3>
+<ol>
+<li><p>Return to the Remote Desktop connection.</p>
+</li>
+<li><p>Remove the invalid characters from the file name. In the left File Explorer, rename the <strong>invalid╘«nameÉ.txt</strong> file to <strong>valid-name</strong>.</p>
+</li>
+<li><p>The file should now sync. Confirm the sync works by running this command again:</p>
+<pre tabindex="0"><code data-author-content=".\FileSyncErrorsReport.ps1
+"><span>.\FileSyncErrorsReport.ps1
+</span></code></pre>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/extend-share-capacity-with-azure-file-sync/media/10-error-fixed.png" alt="Screenshot showing that no errors are found." data-linktype="relative-path"></p>
+</li>
+</ol>
+
+		
+	</div><section>
+		<p>
+Need help? See our <a id="troubleshooting-guide" data-bi-name="troubleshooting" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn.azure.extend-share-capacity-with-azure-file-sync.exercise-troubleshoot-azure-file-sync&amp;documentId=7e9ff588-e303-6e08-b739-84e18b458bac&amp;versionIndependentDocumentId=1cbe78a8-3fcc-ce58-1393-c8e73c41648a&amp;contentPath=%2FMicrosoftDocs%2Flearn-pr%2Fblob%2Flive%2Flearn-pr%2Fazure%2Fextend-share-capacity-with-azure-file-sync%2F10-exercise-troubleshoot-azure-file-sync.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fextend-share-capacity-with-azure-file-sync%2F10-exercise-troubleshoot-azure-file-sync&amp;author=cwatson">troubleshooting guide</a> or provide specific feedback by <a id="module-unit-feedback-link" data-bi-name="feedback" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn.azure.extend-share-capacity-with-azure-file-sync.exercise-troubleshoot-azure-file-sync&amp;documentId=7e9ff588-e303-6e08-b739-84e18b458bac&amp;versionIndependentDocumentId=1cbe78a8-3fcc-ce58-1393-c8e73c41648a&amp;contentPath=%2FMicrosoftDocs%2Flearn-pr%2Fblob%2Flive%2Flearn-pr%2Fazure%2Fextend-share-capacity-with-azure-file-sync%2F10-exercise-troubleshoot-azure-file-sync.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fextend-share-capacity-with-azure-file-sync%2F10-exercise-troubleshoot-azure-file-sync&amp;author=cwatson#report-feedback">reporting an issue</a>.		</p>
+	</section></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

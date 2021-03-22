@@ -1,0 +1,20 @@
+1. C
+The detection job runs every 24 hours.
+
+2. A
+Azure File Sync agent is a downloadable package that enables a Windows Server file share to be synced with an Azure file share.
+
+3. B
+The results of the cmdlet can tell you if the OS, file system, file names, or folder names have compatibility issues.
+
+4. B
+Create the storage account, and then create a file share within the storage account. Create the Storage Sync Service, and then create the sync group within the Storage Sync Service.
+
+5. C
+Cloud tiering allows frequently accessed files to be cached on the local server. Infrequently accessed files are tiered, or archived, to the Azure file share according to the policy you create.
+
+6. A
+Verify that your on-premises server's OS and file system are supported. Then create the required resources in Azure. On the local server, install the Azure File Sync agent and register the server. Finally, create the server endpoint in Azure.
+
+7. B
+The Storage Sync Service is the high-level Azure resource for Azure File Sync. You create this resource in Azure.
