@@ -1,0 +1,289 @@
+<html dir="ltr"><head><title>Protect against security threats by using Azure Security Center - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/protect-against-security-threats-azure/2-protect-threats-security-center">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/protect-against-security-threats-azure/2-protect-threats-security-center</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Protect against security threats by using Azure Security Center - Learn</h1>
+  <div dir="auto" id="reader-credits">Randall-Knapp</div>
+  <div dir="auto" id="reader-estimated-time">6-8 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>6 minutes</li>
+		</ul>
+			<p>Tailwind Traders is broadening its use of Azure services. It still has on-premises workloads with current security-related configuration best practices and business procedures. How does the company ensure that all of its systems meet a minimum level of security and that its information is protected from attacks?</p>
+<p>Many Azure services include built-in security features. Tools on Azure can also help Tailwind Traders with this requirement. Let's start by looking at Azure Security Center.</p>
+<h2 id="whats-azure-security-center">What's Azure Security Center?</h2>
+<p><a href="https://azure.microsoft.com/services/security-center" data-linktype="external" target="az-portal">Azure Security Center</a> is a monitoring service that provides visibility of your security posture across all of your services, both on Azure and on-premises. The term <em>security posture</em> refers to cybersecurity policies and controls, as well as how well you can predict, prevent, and respond to security threats.</p>
+<p>Security Center can:</p>
+<ul>
+<li>Monitor security settings across on-premises and cloud workloads.</li>
+<li>Automatically apply required security settings to new resources as they come online.</li>
+<li>Provide security recommendations that are based on your current configurations, resources, and networks.</li>
+<li>Continuously monitor your resources and perform automatic security assessments to identify potential vulnerabilities before those vulnerabilities can be exploited.</li>
+<li>Use machine learning to detect and block malware from being installed on your virtual machines (VMs) and other resources. You can also use <em>adaptive application controls</em> to define rules that list allowed applications to ensure that only applications you allow can run.</li>
+<li>Detect and analyze potential inbound attacks and investigate threats and any post-breach activity that might have occurred.</li>
+<li>Provide just-in-time access control for network ports. Doing so reduces your attack surface by ensuring that the network only allows traffic that you require at the time that you need it to.</li>
+</ul>
+<p>This short video explains how Security Center can help harden your networks, secure and monitor your cloud resources, and improve your overall security posture.</p>
+
+<h2 id="understand-your-security-posture">Understand your security posture</h2>
+<p>Tailwind Traders can use Security Center to get a detailed analysis of different components in its environment. Because the company's resources are analyzed against the security controls of any governance policies it has assigned, it can view its overall regulatory compliance from a security perspective all from one place.</p>
+<p>Here's an example of what you might see in Azure Security Center:</p>
+<p><span>
+<img src="https://docs.microsoft.com/en-gb/learn/azure-fundamentals/protect-against-security-threats-azure/media/2-security-center-compliance.png" alt="Azure Security Center dashboard showing policy compliance, resource security hygiene, and threat protection." data-linktype="relative-path">
+</span>
+</p>
+<p>Let's say that Tailwind Traders must comply with the Payment Card Industry's Data Security Standard (PCI DSS). This report shows that the company has resources that it needs to remediate.</p>
+<p>In the <strong>Resource security hygiene</strong> section, Tailwind Traders can see the health of its resources from a security perspective. To help prioritize remediation actions, recommendations are categorized as low, medium, and high. Here's an example:</p>
+<p><span>
+<img src="https://docs.microsoft.com/en-gb/learn/azure-fundamentals/protect-against-security-threats-azure/media/2-security-center-dashboard.png" alt="Azure Security Center dashboard showing the resource security hygiene section. Recommendations are categorized as low, medium, and high." data-linktype="relative-path">
+</span>
+</p>
+<h3 id="whats-secure-score">What's secure score?</h3>
+<p><a href="https://docs.microsoft.com/en-us/azure/security-center/secure-score-security-controls/" data-linktype="absolute-path" target="az-portal">Secure score</a> is a measurement of an organization's security posture.</p>
+<p>Secure score is based on <em>security controls</em>, or groups of related security recommendations. Your score is based on the percentage of security controls that you satisfy. The more security controls you satisfy, the higher the score you receive. Your score improves when you remediate all of the recommendations for a single resource within a control.</p>
+<p>Here's an example from the Azure portal showing a score of 57 percent, or 34 out of 60 points:</p>
+<p><span>
+<img src="https://docs.microsoft.com/en-gb/learn/azure-fundamentals/protect-against-security-threats-azure/media/2-single-secure-score-via-ui.png" alt="A screenshot of the Azure portal showing a score of 57 percent, or 34 out of 60 points." data-linktype="relative-path">
+</span>
+</p>
+<p>Following the secure score recommendations can help protect your organization from threats. From a centralized dashboard in Azure Security Center, organizations can monitor and work on the security of their Azure resources like identities, data, apps, devices, and infrastructure.</p>
+<p>Secure score helps you:</p>
+<ul>
+<li>Report on the current state of your organization's security posture.</li>
+<li>Improve your security posture by providing discoverability, visibility, guidance, and control.</li>
+<li>Compare with benchmarks and establish key performance indicators (KPIs).</li>
+</ul>
+<h2 id="protect-against-threats">Protect against threats</h2>
+<p>Security Center includes advanced cloud defense capabilities for virtual machines, network security, and file integrity. Let's look at how some of these capabilities apply to Tailwind Traders.</p>
+<ul>
+<li><p><strong>Just-in-time VM access</strong></p>
+<p>Tailwind Traders will configure just-in-time access to VMs. This access blocks traffic by default to specific network ports of virtual machines, but allows traffic for a specified time when an administrator requests and approves it.</p>
+</li>
+<li><p><strong>Adaptive application controls</strong></p>
+<p>Tailwind Traders can control which applications are allowed to run on its virtual machines. In the background, Security Center uses machine learning to look at the processes running on a virtual machine. It creates exception rules for each resource group that holds the virtual machines and provides recommendations. This process provides alerts that inform the company about unauthorized applications that are running on its VMs.</p>
+</li>
+<li><p><strong>Adaptive network hardening</strong></p>
+<p>Security Center can monitor the internet traffic patterns of the VMs and compare those patterns with the company's current network security group (NSG) settings. From there, Security Center can make recommendations on whether the NSGs should be locked down further and provide remediation steps.</p>
+</li>
+<li><p><strong>File integrity monitoring</strong></p>
+<p>Tailwind Traders can also configure the monitoring of changes to important files on both Windows and Linux, registry settings, applications, and other aspects that might indicate a security attack.</p>
+</li>
+</ul>
+<h2 id="respond-to-security-alerts">Respond to security alerts</h2>
+<p>Tailwind Traders can use Security Center to get a centralized view of all of its security alerts. From there, the company can dismiss false alerts, investigate them further, remediate alerts manually, or use an automated response with a <em>workflow automation</em>.</p>
+<p>Workflow automation uses Azure Logic Apps and Security Center connectors. The logic app can be triggered by a threat detection alert or by a Security Center recommendation, filtered by name or by severity. You can then configure the logic app to run an action such as sending an email or posting a message to a Microsoft Teams channel.</p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Detect and respond to security threats by using Azure Sentinel</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/protect-against-security-threats-azure/3-detect-respond-threats-sentinel/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

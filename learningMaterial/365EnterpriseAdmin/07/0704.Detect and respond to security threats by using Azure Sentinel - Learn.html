@@ -1,0 +1,280 @@
+<html dir="ltr"><head><title>Detect and respond to security threats by using Azure Sentinel - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/protect-against-security-threats-azure/3-detect-respond-threats-sentinel">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/protect-against-security-threats-azure/3-detect-respond-threats-sentinel</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Detect and respond to security threats by using Azure Sentinel - Learn</h1>
+  <div dir="auto" id="reader-credits">Randall-Knapp</div>
+  <div dir="auto" id="reader-estimated-time">4-6 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>4 minutes</li>
+		</ul>
+			<p>Security management on a large scale can benefit from a dedicated security information and event management (SIEM) system. A SIEM system aggregates security data from many different sources (as long as those sources support an open-standard logging format). It also provides capabilities for threat detection and response.</p>
+<p><a href="https://azure.microsoft.com/services/azure-sentinel/" data-linktype="external" target="az-portal">Azure Sentinel</a> is Microsoft's cloud-based SIEM system. It uses intelligent security analytics and threat analysis.</p>
+<h2 id="azure-sentinel-capabilities">Azure Sentinel capabilities</h2>
+<p>Azure Sentinel enables you to:</p>
+<ul>
+<li><p><strong>Collect cloud data at scale</strong></p>
+<p>Collect data across all users, devices, applications, and infrastructure, both on-premises and from multiple clouds.</p>
+</li>
+<li><p><strong>Detect previously undetected threats</strong></p>
+<p>Minimize false positives by using Microsoft's comprehensive analytics and threat intelligence.</p>
+</li>
+<li><p><strong>Investigate threats with artificial intelligence</strong></p>
+<p>Examine suspicious activities at scale, tapping into years of cybersecurity experience from Microsoft.</p>
+</li>
+<li><p><strong>Respond to incidents rapidly</strong></p>
+<p>Utilize built-in orchestration and automation of common tasks.</p>
+</li>
+</ul>
+<h2 id="connect-your-data-sources">Connect your data sources</h2>
+<p>Tailwind Traders decides to explore the capabilities of Azure Sentinel. First, the company identifies and connects its data sources.</p>
+<p>Azure Sentinel supports a number of data sources, which it can analyze for security events. These connections are handled by built-in connectors or industry-standard log formats and APIs.</p>
+<ul>
+<li><p><strong>Connect Microsoft solutions</strong></p>
+<p>Connectors provide real-time integration for services like Microsoft Threat Protection solutions, Microsoft 365 sources (including Office 365), Azure Active Directory, and Windows Defender Firewall.</p>
+</li>
+<li><p><strong>Connect other services and solutions</strong></p>
+<p>Connectors are available for common non-Microsoft services and solutions, including AWS CloudTrail, Citrix Analytics (Security), Sophos XG Firewall, VMware Carbon Black Cloud, and Okta SSO.</p>
+</li>
+<li><p><strong>Connect industry-standard data sources</strong></p>
+<p>Azure Sentinel supports data from other sources that use the Common Event Format (CEF) messaging standard, Syslog, or REST API.</p>
+</li>
+</ul>
+<h2 id="detect-threats">Detect threats</h2>
+<p>Tailwind Traders needs to be notified when something suspicious occurs. It decides to use both built-in analytics and custom rules to detect threats.</p>
+<p><strong>Built in analytics</strong> use templates designed by Microsoft's team of security experts and analysts based on known threats, common attack vectors, and escalation chains for suspicious activity. These templates can be customized and search across the environment for any activity that looks suspicious. Some templates use machine learning behavioral analytics that are based on Microsoft proprietary algorithms.</p>
+<p><strong>Custom analytics</strong> are rules that you create to search for specific criteria within your environment. You can preview the number of results that the query would generate (based on past log events) and set a schedule for the query to run. You can also set an alert threshold.</p>
+<h2 id="investigate-and-respond">Investigate and respond</h2>
+<p>When Azure Sentinel detects suspicious events, Tailwind Traders can investigate specific alerts or <em>incidents</em> (a group of related alerts). With the investigation graph, the company can review information from entities directly connected to the alert and see common exploration queries to help guide the investigation.</p>
+<p>Here's an example that shows what an investigation graph looks like in Azure Sentinel:</p>
+<p><span>
+<a href="https://docs.microsoft.com/en-gb/learn/azure-fundamentals/protect-against-security-threats-azure/media/3-investigate-incidents.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog">
+<img src="https://docs.microsoft.com/en-gb/learn/azure-fundamentals/protect-against-security-threats-azure/media/3-investigate-incidents.png" alt="An example incident investigation graph in Azure Sentinel." data-linktype="relative-path">
+</a>
+</span>
+</p>
+<p>The company will also use <a href="https://docs.microsoft.com/en-us/azure/azure-monitor/platform/workbooks-overview/" data-linktype="absolute-path" target="az-portal">Azure Monitor Workbooks</a> to automate responses to threats. For example, it can set an alert that looks for malicious IP addresses that access the network and create a workbook that does the following steps:</p>
+<ol>
+<li>When the alert is triggered, open a ticket in the IT ticketing system.</li>
+<li>Send a message to the security operations channel in Microsoft Teams or Slack to make sure the security analysts are aware of the incident.</li>
+<li>Send all of the information in the alert to the senior network admin and to the security admin. The email message includes two user option buttons: <strong>Block</strong> or <strong>Ignore</strong>.</li>
+</ol>
+<p>When an admin chooses <strong>Block</strong>, the IP address is blocked in the firewall and the user is disabled in Azure Active Directory. When an admin chooses <strong>Ignore</strong>, the alert is closed in Azure Sentinel and the incident is closed in the IT ticketing system.</p>
+<p>The workbook continues to run after it receives a response from the admins.</p>
+<p>Workbooks can be run manually or automatically when a rule triggers an alert.</p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Store and manage secrets by using Azure Key Vault</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/protect-against-security-threats-azure/4-manage-secrets-key-vault/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

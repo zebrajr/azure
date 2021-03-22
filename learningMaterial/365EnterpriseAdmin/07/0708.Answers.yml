@@ -1,0 +1,11 @@
+1.B
+With Azure Security Center, you can define a list of allowed applications to ensure that only applications you allow can run. Azure Security Center can also detect and block malware from being installed on your VMs.
+
+2.A
+Azure Sentinel is Microsoft's cloud-based SIEM. A SIEM aggregates security data from many different sources to provide additional capabilities for threat detection and responding to threats.
+
+3.C
+Azure Key Vault enables you to store your secrets in a single, central location. Key Vault also makes it easier to enroll and renew certificates from public certificate authorities (CAs).
+
+4.C
+Azure Dedicated Host provides dedicated physical servers to host your Azure VMs for Windows and Linux.

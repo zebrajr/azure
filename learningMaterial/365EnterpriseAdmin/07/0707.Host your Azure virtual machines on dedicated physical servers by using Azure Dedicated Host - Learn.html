@@ -1,0 +1,239 @@
+<html dir="ltr"><head><title>Host your Azure virtual machines on dedicated physical servers by using Azure Dedicated Host - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/protect-against-security-threats-azure/6-host-virtual-machines-dedicated-hosts">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/protect-against-security-threats-azure/6-host-virtual-machines-dedicated-hosts</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Host your Azure virtual machines on dedicated physical servers by using Azure Dedicated Host - Learn</h1>
+  <div dir="auto" id="reader-credits">Randall-Knapp</div>
+  <div dir="auto" id="reader-estimated-time">2-3 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="main" role="main" data-bi-name="content" lang="en-us" dir="ltr">
+		
+		
+		<ul>
+			<li>2 minutes</li>
+		</ul>
+			<p>On Azure, virtual machines (VMs) run on shared hardware that Microsoft manages. Although the underlying hardware is shared, your VM workloads are isolated from workloads that other Azure customers run.</p>
+<p>Some organizations must follow regulatory compliance that requires them to be the only customer using the physical machine that hosts their virtual machines. <a href="https://azure.microsoft.com/services/virtual-machines/dedicated-host/" data-linktype="external" target="az-portal">Azure Dedicated Host</a> provides dedicated physical servers to host your Azure VMs for Windows and Linux.</p>
+<p>Here's a diagram that shows how virtual machines relate to dedicated hosts and host groups. A <em>dedicated host</em> is mapped to a physical server in an Azure datacenter. A <em>host group</em> is a collection of dedicated hosts.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/azure-fundamentals/protect-against-security-threats-azure/media/6-dedicated-hosts.png" alt="A diagram that shows the relationship among virtual machines, dedicated hosts, and host groups." data-linktype="relative-path">
+</p>
+<h2 id="what-are-the-benefits-of-azure-dedicated-host">What are the benefits of Azure Dedicated Host?</h2>
+<p>Azure Dedicated Host:</p>
+<ul>
+<li>Gives you visibility into, and control over, the server infrastructure that's running your Azure VMs.</li>
+<li>Helps address compliance requirements by deploying your workloads on an isolated server.</li>
+<li>Lets you choose the number of processors, server capabilities, VM series, and VM sizes within the same host.</li>
+</ul>
+<h2 id="availability-considerations-for-dedicated-host">Availability considerations for Dedicated Host</h2>
+<p>After a dedicated host is provisioned, Azure assigns it to the physical server in Microsoft's cloud datacenter.</p>
+<p>For high availability, you can provision multiple hosts in a <em>host group</em> and deploy your virtual machines across this group. VMs on dedicated hosts can also take advantage of <em>maintenance control</em>. This feature enables you to control when regular maintenance updates occur, within a 35-day rolling window.</p>
+<h2 id="pricing-considerations">Pricing considerations</h2>
+<p>You're charged per dedicated host, independent of how many virtual machines you deploy to it. The host price is based on the VM family, type (hardware size), and region.</p>
+<p>Software licensing, storage, and network usage are billed separately from the host and VMs. For more information. see <a href="https://aka.ms/ADHPricing/" data-linktype="external" target="az-portal">Azure Dedicated Host pricing</a>.</p>
+
+		
+	</div><section>
+		<p>
+Need help? See our <a id="troubleshooting-guide" data-bi-name="troubleshooting" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn.azure.protect-against-security-threats-azure.6-host-virtual-machines-dedicated-hosts&amp;documentId=634f92c8-03f2-8870-cd02-4c1f3a75b354&amp;versionIndependentDocumentId=fca2c8f9-ac95-b2e7-b6cd-fa8672f41a48&amp;contentPath=%2FMicrosoftDocs%2Flearn-pr%2Fblob%2Flive%2Flearn-pr%2Fazure-fundamentals%2Fprotect-against-security-threats-azure%2F6-host-virtual-machines-dedicated-hosts.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fprotect-against-security-threats-azure%2F6-host-virtual-machines-dedicated-hosts&amp;author=rknapp">troubleshooting guide</a> or provide specific feedback by <a id="module-unit-feedback-link" data-bi-name="feedback" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn.azure.protect-against-security-threats-azure.6-host-virtual-machines-dedicated-hosts&amp;documentId=634f92c8-03f2-8870-cd02-4c1f3a75b354&amp;versionIndependentDocumentId=fca2c8f9-ac95-b2e7-b6cd-fa8672f41a48&amp;contentPath=%2FMicrosoftDocs%2Flearn-pr%2Fblob%2Flive%2Flearn-pr%2Fazure-fundamentals%2Fprotect-against-security-threats-azure%2F6-host-virtual-machines-dedicated-hosts.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fprotect-against-security-threats-azure%2F6-host-virtual-machines-dedicated-hosts&amp;author=rknapp#report-feedback">reporting an issue</a>.		</p>
+	</section></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>
