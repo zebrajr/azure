@@ -1,0 +1,261 @@
+<html dir="ltr"><head><title>Build security best practices into user experience - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/m365-identity-cultural-shift/security-best-practices">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/m365-identity-cultural-shift/security-best-practices</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Build security best practices into user experience - Learn</h1>
+  <div dir="auto" id="reader-credits">AlexandraHrt</div>
+  <div dir="auto" id="reader-estimated-time">3-4 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>13 minutes</li>
+		</ul>
+			<p>Enabling the Identity Protection policy requiring multi-factor authentication registration and then targeting all users ensures they can use Azure MFA to self-remediate in the future. Configuring this policy provides users a 14-day period to register.  At the end of the 14-day period, all users are required to register.</p>
+<p>To enable the policy:</p>
+<ol>
+<li><p>Open the Azure AD Identity Protection blade in the Azure portal, and select <strong>MFA registration policy</strong>:</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-identity-cultural-shift/media/mfa-registration-policy.png" alt="Azure AD Identity Protection blade in the Azure portal MFA registration policy selected" data-linktype="relative-path"></p>
+</li>
+<li><p>By default, the Access control to require MFA registration will be enabled. Leave this option selected.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-identity-cultural-shift/media/access.png" alt="Select controls to be enforced is selected" data-linktype="relative-path"></p>
+</li>
+<li><p>Select <strong>On</strong> under <strong>Enforce Policy</strong> to require users to register for MFA.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-identity-cultural-shift/media/enforce-policy.png" alt="Enforce policy is turned on" data-linktype="relative-path"></p>
+</li>
+</ol>
+<p>At sign-in to any Azure AD-integrated application, the user gets a notification about the requirement to set up the account for multi-factor authentication. This policy is also triggered in the Windows 10 Out-of-Box Experience for new users with a new device.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-identity-cultural-shift/media/microsoft-azure.png" alt="User gets a notification about the requirement to set up the account for multi-factor authentication." data-linktype="relative-path"></p>
+<p>An administrator can configure a policy for sign-in risks in the Azure AD Identity Protection blade, which requires users to verify their identity through MFA.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-identity-cultural-shift/media/sign-in-risk-policy.png" alt="Sign-in risk policy page" data-linktype="relative-path"></p>
+<h2 id="the-user-experience">The user experience</h2>
+<p>Affected users are notified when they try to sign in and trigger a policy, for example, when the user is informed that something unusual was detected about their sign-in, such as signing in from a new location, device, or app.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-identity-cultural-shift/media/protect.png" alt="Help us protect your account screen" data-linktype="relative-path"></p>
+<p>The user is then required to prove their identity by completing Azure MFA with one of their previously registered methods.</p>
+<h2 id="forcing-password-changes">Forcing password changes</h2>
+<p>User risk policies in Azure AD Identity Protection allow you to require a password change based on risk.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-identity-cultural-shift/media/user-risk-policy.png" alt="User risk policies in Azure AD Identity Protection screen" data-linktype="relative-path"></p>
+<p>To improve the experience, you can enable self-service password reset so users can complete this process without help desk involvement. In the Azure Active Directory portal, you can configure self-service password reset for no one, a set of Azure AD groups, or the entire organization.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-identity-cultural-shift/media/password-reset.png" alt="Password reset screen" data-linktype="relative-path"></p>
+<p>Then, when a user affected by the user risk policy is informed that their account security is at risk because of suspicious activity or leaked credentials, they are prompted to prove their identity though Azure MFA and forced to change their password.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-identity-cultural-shift/media/at-risk.png" alt="Your account security is at risk screen" data-linktype="relative-path"></p>
+<p>Both sign-in and user Azure AD Identity Protection risk policies allow the configuration of risk levels that trigger the additional verifications noted above. Risk levels in Identity Protection are based on the precision of the detection and powered by Microsoft’s machine learning. To customize what experience users are presented, administrators can include/exclude certain users/groups from the User Risk and Sign-In Risk Policies. Administrators cannot change what “triggers” result in high, medium, or low risks.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-identity-cultural-shift/media/conditions.png" alt="Sign-in risk screen set to High" data-linktype="relative-path"></p>
+<p>Now that you’ve read about creating security best practices, let’s walk through the experience of enabling a combined multi-factor authentication and self-service password reset registration for your end users.</p>
+<h3 id="explore-how-to-enable-a-combined-mfa-and-sspr-registration-experience-in-azure-ad">Explore how to enable a combined MFA and SSPR registration experience in Azure AD</h3>
+<p>View a <a href="https://www.microsoft.com/videoplayer/embed/RE4C7zQ" data-linktype="external">video version</a> of the interactive guide (captions available in more languages).</p>
+<p><a href="https://mslearn.cloudguides.com/guides/Enable%20a%20combined%20MFA%20and%20SSPR%20registration%20experience%20in%20Azure%20AD" data-linktype="external"><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-identity-cultural-shift/media/interactive-multi-factor-authentication-registration.png" alt="Enable a combined MFA and SSPR registration experience in Azure AD" data-linktype="relative-path"></a></p>
+<p>Be sure to click the full-screen option in the video player. When you're done, use the <strong>Back</strong> arrow in your browser to come back to this page.</p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Incorporate identity into your development approach</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/m365-identity-cultural-shift/identity-development-approach/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

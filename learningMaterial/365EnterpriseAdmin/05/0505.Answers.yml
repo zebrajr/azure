@@ -1,0 +1,8 @@
+1.B
+Azure Active Directory Identity Protection policies don't require end users to enroll their mobile device with Intune.
+
+2.A
+Azure AD Identity Protection sign-in risk policies allow affected users to verify their identity through Azure multi-factor authentication.
+
+3.C
+riskDetection, riskyUsers, and sign in are the three APIs that expose information about risky users and sign-ins.
