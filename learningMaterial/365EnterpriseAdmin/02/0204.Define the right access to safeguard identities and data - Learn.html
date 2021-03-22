@@ -1,0 +1,260 @@
+<html dir="ltr"><head><title>Define the right access to safeguard identities and data - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/m365-identity-provisioning/define-right-access">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/m365-identity-provisioning/define-right-access</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Define the right access to safeguard identities and data - Learn</h1>
+  <div dir="auto" id="reader-credits">AlexandraHrt</div>
+  <div dir="auto" id="reader-estimated-time">4-5 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="main" role="main" data-bi-name="content" lang="en-us" dir="ltr">
+		
+		
+		<ul>
+			<li>5 minutes</li>
+		</ul>
+			<p>Azure Active Directory (AD) lets you collaborate internally as well as externally. Users can join groups, invite guests, connect to cloud apps, and work remotely from their work or personal devices. The convenience of self-service however, has led to a need for better access management capabilities.</p>
+<p>How do you:</p>
+<ul>
+<li>Ensure new employees have the right access to be productive?</li>
+<li>Ensure access is removed when people—especially guests—leave or change teams?</li>
+<li>Ensure access rights aren't excessive, which can indicate a lack of control over access and lead to audit findings?</li>
+<li>Engage with resource owners to ensure they regularly review who has access to their resources?</li>
+</ul>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-identity-provisioning/media/azure-access-reviews.png" alt="Azure access reviews" data-linktype="relative-path"></p>
+<p>To help you address these questions, Azure AD has developed a capability called <strong>access reviews</strong>.</p>
+<p>Azure AD access reviews help you recertify and audit users' access to resources,  ensuring that their access is appropriate and reviewed on a regular basis.  Access reviews enable organizations to efficiently address excess access risks and provide more visibility about them to users in departments beyond IT.  If you're only concerned about guests, then access reviews make it easy to scope the review for guests only.</p>
+<p>To understand how Azure AD access reviews help you manage access, consider four sets of users:</p>
+<ul>
+<li><strong>Members of Office groups</strong>. Office 365 users can create as many groups as they wish. Access reviews allow you to manage membership of those groups.</li>
+<li><strong>Members of security groups</strong>. Access reviews help you manage users both cloud-only or synchronized from on-prem to cloud who should or shouldn't be in a group.</li>
+<li><strong>Users who have been directly assigned to an application</strong>.</li>
+<li><strong>Guest users</strong>. If you're only concerned about guests who have been invited to your directory, we make it easy to scope the review to be on guests only.</li>
+</ul>
+<h2 id="flexibility-in-reviewer-assignments">Flexibility in reviewer assignments</h2>
+<p>Azure AD access review provides flexibility in how you assign the reviewers.  You can assign the owners of a group directly so they can review the access of a group.  Or you can select multiple specific individuals as reviewers.</p>
+<h2 id="when-to-use-access-reviews">When to use access reviews</h2>
+<p>Azure AD Access Reviews can be used in a variety of circumstances:</p>
+<ul>
+<li><strong>Too many users in privileged roles</strong>. It's a good idea to check how many users have administrative access, how many of them are Global Administrators, and if there are any invited guests or partners that have not been removed when their tasks are complete.</li>
+<li><strong>When automation is not feasible</strong>. You can create rules for dynamic membership in security groups or Office 365 Groups. But sometimes HR data is not in Azure AD, or users still need access after leaving the group. You can then create a review of that group to ensure those who still need it have continued access.</li>
+<li><strong>When a group is repurposed</strong>. If you have a group that is going to be synced to Azure AD, it would be useful to ask the group owner to review the group membership prior to the group being used in a different risk context.</li>
+<li><strong>For business critical data access</strong>. For certain resources, you might require people outside of IT to regularly sign out and justify why they need continued access.</li>
+<li><strong>To maintain a policy's exception list</strong>. As the IT administrator, you can manage policy exceptions, avoid policy error exceptions, and provide auditors with proof that these exceptions are reviewed regularly.</li>
+<li><strong>To confirm group owners still need guests in their groups</strong>. Employee access might be automated with some on-premises access management, but that’s not the case for guests. If a group gives guests access to business sensitive content, then it's the group owner's responsibility to confirm the guests still have a legitimate business need for access.</li>
+</ul>
+<p>You can set up recurring access reviews of users at set frequencies such as weekly, monthly, quarterly, or annually, and the reviewers will be notified at the start of each review. A user-friendly interface and smart recommendations make approving or denying access easy.</p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Establish an identity governance process</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/m365-identity-provisioning/establish-identity-governance/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div><section>
+		<p>
+Need help? See our <a id="troubleshooting-guide" data-bi-name="troubleshooting" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-m365-identity.m365-identity-provisioning.right-access-safeguard&amp;documentId=cb646e95-e7c3-4b06-f818-b82d0712438b&amp;versionIndependentDocumentId=da4ada7f-d259-97bd-54b0-2e6a2341d3ea&amp;contentPath=%2FMicrosoftDocs%2Flearn-m365-pr%2Fblob%2Flive%2Flearn-m365-pr%2Fm365%2Fm365-identity-provisioning%2Fdefine-right-access.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fm365-identity-provisioning%2Fdefine-right-access&amp;author=elizapo">troubleshooting guide</a> or provide specific feedback by <a id="module-unit-feedback-link" data-bi-name="feedback" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-m365-identity.m365-identity-provisioning.right-access-safeguard&amp;documentId=cb646e95-e7c3-4b06-f818-b82d0712438b&amp;versionIndependentDocumentId=da4ada7f-d259-97bd-54b0-2e6a2341d3ea&amp;contentPath=%2FMicrosoftDocs%2Flearn-m365-pr%2Fblob%2Flive%2Flearn-m365-pr%2Fm365%2Fm365-identity-provisioning%2Fdefine-right-access.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fm365-identity-provisioning%2Fdefine-right-access&amp;author=elizapo#report-feedback">reporting an issue</a>.		</p>
+	</section></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

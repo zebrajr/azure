@@ -1,0 +1,240 @@
+<html dir="ltr"><head><title>Introduction to identity provisioning - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/m365-identity-provisioning/introduction">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/m365-identity-provisioning/introduction</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Introduction to identity provisioning - Learn</h1>
+  <div dir="auto" id="reader-credits">AlexandraHrt</div>
+  <div dir="auto" id="reader-estimated-time">2-3 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="main" role="main" data-bi-name="content" lang="en-us" dir="ltr">
+		
+		
+		<ul>
+			<li>3 minutes</li>
+		</ul>
+			<h2 id="sign-on-seamlessly-to-all-connected-apps">Sign on seamlessly to all connected apps</h2>
+<p>Single sign-on (SSO) adds security and convenience to signing on to applications in Azure Active Directory (Azure AD).</p>
+<p><strong>With single sign-on</strong>, users sign on once to access domain-joined devices, company resources, software as a service (SaaS) applications, and web applications. After signing on, the user can launch applications from the Office 365 portal or the Azure AD MyApps access panel. Administrators can centralize user account management and automatically add or remove user access to applications based on group membership.</p>
+<p><strong>Without single sign-on</strong>, by contrast, users must remember application-specific passwords and log into each application individually. IT staff needs to create and update user accounts for each application such as Office 365, Box, and Salesforce.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-identity-provisioning/media/enable-sso.png" alt="Enable a seamless user experience with single sign-on" data-linktype="relative-path"></p>
+<h2 id="configure-single-sign-on">Configure single sign-on</h2>
+<p>There are several ways to configure an application for single sign-on, depending on how the application is configured for authentication.</p>
+<ul>
+<li>Cloud applications use OpenID Connect, OAuth, SAML, password-based, linked, or disabled methods for single sign-on.</li>
+<li>On-premises applications use password-based, Integrated Windows Authentication, header-based, linked, or disabled methods for single sign-on. The on-premises choices work when applications are configured for Application Proxy. Azure AD Application Proxy is a feature of Azure AD that supports SSO and enables users to access on-premises web applications from a remote client, removing the need for a VPN or a reverse proxy.</li>
+</ul>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Be proactive with identity governance</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/m365-identity-provisioning/proactive-identity-governance/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div><section>
+		<p>
+Need help? See our <a id="troubleshooting-guide" data-bi-name="troubleshooting" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-m365-identity.m365-identity-provisioning.introduction&amp;documentId=aad56d4d-cc3e-a84b-5b31-b985853c3239&amp;versionIndependentDocumentId=ebbf6a94-aa7d-c9f4-3f22-a63ceaa59d2b&amp;contentPath=%2FMicrosoftDocs%2Flearn-m365-pr%2Fblob%2Flive%2Flearn-m365-pr%2Fm365%2Fm365-identity-provisioning%2Fintroduction.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fm365-identity-provisioning%2Fintroduction&amp;author=elizapo">troubleshooting guide</a> or provide specific feedback by <a id="module-unit-feedback-link" data-bi-name="feedback" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-m365-identity.m365-identity-provisioning.introduction&amp;documentId=aad56d4d-cc3e-a84b-5b31-b985853c3239&amp;versionIndependentDocumentId=ebbf6a94-aa7d-c9f4-3f22-a63ceaa59d2b&amp;contentPath=%2FMicrosoftDocs%2Flearn-m365-pr%2Fblob%2Flive%2Flearn-m365-pr%2Fm365%2Fm365-identity-provisioning%2Fintroduction.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fm365-identity-provisioning%2Fintroduction&amp;author=elizapo#report-feedback">reporting an issue</a>.		</p>
+	</section></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>
