@@ -1,0 +1,314 @@
+<html dir="ltr"><head><title>Exercise - Add and delete users in Azure Active Directory - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/create-users-and-groups-in-azure-active-directory/3-exercise-add-delete-users-azure-ad">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/create-users-and-groups-in-azure-active-directory/3-exercise-add-delete-users-azure-ad</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Exercise - Add and delete users in Azure Active Directory - Learn</h1>
+  <div dir="auto" id="reader-credits">cwatson-cat</div>
+  <div dir="auto" id="reader-estimated-time">3-4 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="main" role="main" data-bi-name="content" lang="en-us" dir="ltr">
+		
+		
+		<ul>
+			<li>7 minutes</li>
+		</ul>
+			<p>You need to add member user accounts for the new developer team in your organization.</p>
+<p>In this exercise, you'll create a new Azure Active Directory (Azure AD) organization to hold all of your user accounts. You'll also create a user account, delete a user account, and learn how to recover a deleted user account.</p>
+
+<p>To hold all of the users you create in this exercise, create a new organization.</p>
+<ol>
+<li><p>Sign in to the <a href="https://portal.azure.com/learn.docs.microsoft.com" data-linktype="external" target="az-portal">Azure portal</a> with the same account you used to activate the sandbox.</p>
+</li>
+<li><p>In the left navigation pane, select <strong>Create a resource</strong>.</p>
+</li>
+<li><p>In the <strong>Azure Marketplace</strong>, search for <strong>Azure Active Directory</strong>.</p>
+</li>
+<li><p>Select <strong>Create</strong>.</p>
+</li>
+<li><p>On the <strong>Create tenant</strong> pane, enter the following values:</p>
+<ul>
+<li><strong>Organization name</strong>: <em>Contoso Marketing Company</em></li>
+<li><strong>Initial domain name</strong>: <em>contosomarketingXXXX</em> where you replace XXXX with numbers or letters to make your domain name unique</li>
+</ul>
+</li>
+<li><p>Select <strong>Create</strong>.</p>
+</li>
+<li><p>Wait for the creation of your tenant to be completed.</p>
+</li>
+<li><p>Go to the new tenant by selecting <strong>Click here to manage your new tenant</strong>.</p>
+<p><span>
+<img src="https://docs.microsoft.com/en-gb/learn/modules/create-users-and-groups-in-azure-active-directory/media/3-switch-directory.png" alt="Screenshot that shows the link to manage your new organization." data-linktype="relative-path">
+</span>
+</p>
+</li>
+</ol>
+
+<p>For Azure AD Premium to complete all the exercises in this module, you'll need to activate a free trial.</p>
+<ol>
+<li><p>In the organization you just created, select <strong>Getting started</strong>.</p>
+</li>
+<li><p>Under <strong>Getting started with Azure AD</strong>, select <strong>Get a free trial for Azure AD Premium</strong>.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/create-users-and-groups-in-azure-active-directory/media/3-ad-get-started-get-trial.png" alt="Screenshot that shows the link to create free trial." data-linktype="relative-path"></p>
+</li>
+<li><p>Under <strong>Azure AD Premium 2</strong>, select <strong>Free trial</strong> &gt; <strong>Activate</strong>. If you don't have that option, that's ok. You can complete most of the exercises without it.</p>
+</li>
+<li><p>In the left pane, select <strong>Overview</strong>.</p>
+</li>
+<li><p>Refresh the browser until you see <strong>Azure AD Premium P2</strong> under the organization name. It may take a couple of minutes.</p>
+<p><span>
+<img src="https://docs.microsoft.com/en-gb/learn/modules/create-users-and-groups-in-azure-active-directory/media/3-azure-ad-premium-2.png" alt="Screenshot that shows Azure AD Premium P2 on the Overview page under Tenant information." data-linktype="relative-path">
+</span>
+</p>
+<p>You should also see your role listed as the <strong>Global administrator</strong>.</p>
+</li>
+<li><p>Copy the <strong>Primary domain</strong> name to use in the next section.</p>
+</li>
+</ol>
+<h2 id="add-a-new-user">Add a new user</h2>
+<p>Now, let's create a user account.</p>
+<ol>
+<li><p>In the Azure AD organization you created, under <strong>Manage</strong>, select <strong>Users</strong> &gt; <strong>New User</strong>.</p>
+</li>
+<li><p>The <strong>User</strong> pane now appears. Enter the following values:</p>
+<ul>
+<li><strong>User Name</strong>: chris@contosomarketingXXXXXX.onmicrosoft.com. The domain name should match the primary domain you copied in the previous section.</li>
+<li><strong>Name</strong>: <em>Chris Green</em></li>
+</ul>
+</li>
+<li><p>Select <strong>Show Password</strong>, and copy it somewhere you can refer to it later.</p>
+</li>
+<li><p>Select <strong>Create</strong>. The user is now created and registered to your organization.</p>
+</li>
+</ol>
+<h2 id="delete-a-user">Delete a user</h2>
+<p>You can delete users after they're created.</p>
+<ol>
+<li>In your Azure AD organization, under <strong>Manage</strong>, select <strong>Users</strong>.</li>
+<li>From the list, select <strong>Chris Green</strong>.</li>
+<li>Select <strong>Delete user</strong>. If you don't see that option, select <strong>More</strong>.</li>
+<li>When you're asked to confirm your deletion, select <strong>OK</strong>.</li>
+</ol>
+<h2 id="recover-a-deleted-item">Recover a deleted item</h2>
+<p>You can restore deleted users. View the list of the deleted users, and then restore one.</p>
+<ol>
+<li>In your Azure AD organization, under <strong>Manage</strong>, select <strong>Users</strong> &gt; <strong>Deleted users</strong>.</li>
+<li>You now see all of the users that were deleted within the last 30 days.</li>
+<li>Select <strong>Chris Green</strong> and <strong>Restore user</strong>.</li>
+<li>To confirm, select <strong>OK</strong>.</li>
+<li>Verify that Chris Green's account is recovered by selecting <strong>All users</strong>.</li>
+</ol>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Manage app and resource access by using Azure Active Directory groups</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/create-users-and-groups-in-azure-active-directory/4-manage-app-resource-access-azure-ad-groups/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div><section>
+		<p>
+Need help? See our <a id="troubleshooting-guide" data-bi-name="troubleshooting" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn.azure.create-users-and-groups-in-azure-active-directory.exercise-add-delete-users-azure-ad&amp;documentId=aa1e12ef-e5fa-b8d8-8c46-65f8ec84b0d4&amp;versionIndependentDocumentId=51f6b17b-6253-e912-2281-5dee721efbdd&amp;contentPath=%2FMicrosoftDocs%2Flearn-pr%2Fblob%2Flive%2Flearn-pr%2Fazure%2Fcreate-users-and-groups-in-azure-active-directory%2F3-exercise-add-delete-users-azure-ad.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fcreate-users-and-groups-in-azure-active-directory%2F3-exercise-add-delete-users-azure-ad&amp;author=cwatson">troubleshooting guide</a> or provide specific feedback by <a id="module-unit-feedback-link" data-bi-name="feedback" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn.azure.create-users-and-groups-in-azure-active-directory.exercise-add-delete-users-azure-ad&amp;documentId=aa1e12ef-e5fa-b8d8-8c46-65f8ec84b0d4&amp;versionIndependentDocumentId=51f6b17b-6253-e912-2281-5dee721efbdd&amp;contentPath=%2FMicrosoftDocs%2Flearn-pr%2Fblob%2Flive%2Flearn-pr%2Fazure%2Fcreate-users-and-groups-in-azure-active-directory%2F3-exercise-add-delete-users-azure-ad.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fcreate-users-and-groups-in-azure-active-directory%2F3-exercise-add-delete-users-azure-ad&amp;author=cwatson#report-feedback">reporting an issue</a>.		</p>
+	</section></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

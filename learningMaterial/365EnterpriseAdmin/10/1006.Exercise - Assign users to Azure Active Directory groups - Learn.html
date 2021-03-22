@@ -1,0 +1,295 @@
+<html dir="ltr"><head><title>Exercise - Assign users to Azure Active Directory groups - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/create-users-and-groups-in-azure-active-directory/5-exercise-assign-users-azure-ad-groups">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/create-users-and-groups-in-azure-active-directory/5-exercise-assign-users-azure-ad-groups</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Exercise - Assign users to Azure Active Directory groups - Learn</h1>
+  <div dir="auto" id="reader-credits">cwatson-cat</div>
+  <div dir="auto" id="reader-estimated-time">2-3 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="main" role="main" data-bi-name="content" lang="en-us" dir="ltr">
+		
+		
+		<ul>
+			<li>5 minutes</li>
+		</ul>
+			<p>In this exercise, you'll create an Azure Active Directory (Azure AD) group to manage the developer team's access. You'll also add a rule for the group to manage the membership automatically.</p>
+<h2 id="add-a-new-group">Add a new group</h2>
+<ol>
+<li><p>Sign in to the <a href="https://portal.azure.com/learn.docs.microsoft.com" data-linktype="external" target="az-portal">Azure portal</a>.</p>
+</li>
+<li><p>Select <strong>Azure Active Directory</strong> &gt; <strong>Groups</strong> &gt; <strong>New Group</strong>.</p>
+</li>
+<li><p>Enter the following information:</p>
+<ul>
+<li><strong>Group type</strong>: <em>Security</em></li>
+<li><strong>Group name</strong>: <em>Developer group</em></li>
+<li><strong>Group description</strong>: <em>Developer team</em></li>
+</ul>
+</li>
+<li><p>Select <strong>Create</strong>. The new group now appears in the list of Groups.</p>
+</li>
+</ol>
+<h2 id="use-direct-assignment-to-add-a-user-to-this-group">Use direct assignment to add a user to this group</h2>
+<p>You'll now assign members to the Developer group.</p>
+<ol>
+<li><p>Select the <strong>Developer group</strong>.</p>
+</li>
+<li><p>Select <strong>Members</strong> &gt; <strong>Add members</strong>.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/create-users-and-groups-in-azure-active-directory/media/5-add-group-member.png" alt="Screenshot that shows Add member button." data-linktype="relative-path"></p>
+</li>
+<li><p>Search for and select <strong>Chris Green</strong>.</p>
+</li>
+<li><p>Select <strong>Select</strong>. You'll see this user in the member list for the Developers group.</p>
+</li>
+</ol>
+<h2 id="modify-the-group-to-use-dynamic-assignment">Modify the group to use dynamic assignment</h2>
+<p>You can change the group to use dynamic assignment. Membership then depends on whether a user meets the rules you set for the group.</p>
+<p>If you didn't activate the free trial for Azure AD Premium 2, you won't be able to complete this section. That's ok. You can still see how you change the group to use dynamic assignment.</p>
+<ol>
+<li><p>In the <strong>Developer group</strong>, select <strong>Properties</strong>.</p>
+</li>
+<li><p>Change <strong>Membership type</strong> to <strong>Dynamic User</strong>. Select <strong>Save</strong>.</p>
+</li>
+<li><p>Select <strong>Add dynamic query</strong>.</p>
+<p><span>
+<img src="https://docs.microsoft.com/en-gb/learn/modules/create-users-and-groups-in-azure-active-directory/media/5-add-dynamic-query.png" alt="Screenshot that shows the Add dynamic query link." data-linktype="relative-path">
+</span>
+</p>
+</li>
+<li><p>Select the following values for the rule:</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/create-users-and-groups-in-azure-active-directory/media/5-dynamic-member.png" alt="Screenshot that shows how to assign a dynamic membership rule." data-linktype="relative-path"></p>
+
+<p>The membership of this group now depends on whether the user is in the United States.</p>
+</li>
+<li><p>Select another field to enable <strong>Save</strong>.</p>
+</li>
+<li><p>Select <strong>Save</strong>.</p>
+</li>
+<li><p>Under <strong>Manage</strong>, select <strong>Members</strong>. You see that the <strong>Add members</strong> button is now disabled.</p>
+</li>
+</ol>
+<h2 id="change-group-back-to-assigned">Change group back to assigned</h2>
+<p>You'll need to assign a guest user to the Developer group in the next exercise, so let's change the membership type back to <strong>Assigned</strong>.</p>
+<ol>
+<li><p>In the <strong>Developer group</strong>, select <strong>Properties</strong>.</p>
+</li>
+<li><p>Change <strong>Membership type</strong> to <strong>Assigned</strong>.</p>
+</li>
+<li><p>Select <strong>Save</strong>.</p>
+</li>
+</ol>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Collaborate by using guest accounts and Azure Active Directory B2B</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/create-users-and-groups-in-azure-active-directory/6-collaborate-guest-accounts-azure-ad-b2b/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div><section>
+		<p>
+Need help? See our <a id="troubleshooting-guide" data-bi-name="troubleshooting" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn.azure.create-users-and-groups-in-azure-active-directory.exercise-assign-users-azure-ad-groups&amp;documentId=1878ac97-7045-e333-903c-16cbdcd06b69&amp;versionIndependentDocumentId=10924d10-77ca-dc1f-7031-3bbac7f8c0c0&amp;contentPath=%2FMicrosoftDocs%2Flearn-pr%2Fblob%2Flive%2Flearn-pr%2Fazure%2Fcreate-users-and-groups-in-azure-active-directory%2F5-exercise-assign-users-azure-ad-groups.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fcreate-users-and-groups-in-azure-active-directory%2F5-exercise-assign-users-azure-ad-groups&amp;author=cwatson">troubleshooting guide</a> or provide specific feedback by <a id="module-unit-feedback-link" data-bi-name="feedback" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn.azure.create-users-and-groups-in-azure-active-directory.exercise-assign-users-azure-ad-groups&amp;documentId=1878ac97-7045-e333-903c-16cbdcd06b69&amp;versionIndependentDocumentId=10924d10-77ca-dc1f-7031-3bbac7f8c0c0&amp;contentPath=%2FMicrosoftDocs%2Flearn-pr%2Fblob%2Flive%2Flearn-pr%2Fazure%2Fcreate-users-and-groups-in-azure-active-directory%2F5-exercise-assign-users-azure-ad-groups.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fcreate-users-and-groups-in-azure-active-directory%2F5-exercise-assign-users-azure-ad-groups&amp;author=cwatson#report-feedback">reporting an issue</a>.		</p>
+	</section></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

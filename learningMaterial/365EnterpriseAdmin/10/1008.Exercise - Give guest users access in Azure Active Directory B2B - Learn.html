@@ -1,0 +1,289 @@
+<html dir="ltr"><head><title>Exercise - Give guest users access in Azure Active Directory B2B - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/create-users-and-groups-in-azure-active-directory/7-exercise-guest-user-access-azure-ad-b2b">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/create-users-and-groups-in-azure-active-directory/7-exercise-guest-user-access-azure-ad-b2b</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Exercise - Give guest users access in Azure Active Directory B2B - Learn</h1>
+  <div dir="auto" id="reader-credits">cwatson-cat</div>
+  <div dir="auto" id="reader-estimated-time">3-3 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="main" role="main" data-bi-name="content" lang="en-us" dir="ltr">
+		
+		
+		<ul>
+			<li>10 minutes</li>
+		</ul>
+			<p>The external and internal developer teams want to work together, so you decide to create guest user access for the external developer team.</p>
+<p>You'll use the Azure portal to invite business-to-business (B2B) collaboration users. You can invite guest users to an Azure Active Directory (Azure AD) organization, group, or application. After you invite a user, their account is added to Azure AD, with a guest user type.</p>
+<p>After you add a guest user to the organization, send them a direct link to a shared app. Have the guest user open the redemption URL in the invitation email.</p>
+<h2 id="add-guest-users-to-the-organization">Add guest users to the organization</h2>
+<ol>
+<li><p>Sign in to the <a href="https://portal.azure.com/learn.docs.microsoft.com" data-linktype="external" target="az-portal">Azure portal</a>.</p>
+</li>
+<li><p>Select <strong>Azure Active Directory</strong> &gt; <strong>Users</strong> &gt; <strong>New guest user</strong>.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/create-users-and-groups-in-azure-active-directory/media/7-new-guest-user.png" alt="Screenshot that shows the New guest user button." data-linktype="relative-path"></p>
+</li>
+<li><p><strong>Invite user</strong> should be selected.</p>
+</li>
+<li><p>Enter a name and an email address that you have access to.</p>
+</li>
+<li><p>Select <strong>Invite</strong>. An invitation is sent to the email address you provided for the guest user.</p>
+</li>
+<li><p>Notice that the user now appears in the list of users and has Guest as user type.</p>
+</li>
+</ol>
+<h2 id="add-guest-users-to-a-group">Add guest users to a group</h2>
+<ol>
+<li>In your Azure AD organization, select <strong>Groups</strong> and then select <strong>Developer group</strong> in the list of groups.</li>
+<li>Select <strong>Members</strong> &gt; <strong>Add members</strong>.</li>
+<li>Search for the guest account you added to the organization.</li>
+<li>Select the account, and click <strong>Select</strong>.</li>
+<li>You now see the user in the list of members for this group.</li>
+</ol>
+<h2 id="add-guest-users-to-an-application">Add guest users to an application</h2>
+<ol>
+<li><p>In your Azure AD organization, select <strong>Enterprise applications</strong> &gt; <strong>All applications</strong>.</p>
+</li>
+<li><p>Select <strong>New application</strong>.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/create-users-and-groups-in-azure-active-directory/media/7-enterprise-application.png" alt="Screenshot that shows the New Application button." data-linktype="relative-path"></p>
+</li>
+<li><p>Search for <strong>Twitter</strong> and select <strong>Create</strong>.</p>
+</li>
+<li><p>Select <strong>Users and groups</strong> &gt; <strong>Add user/group</strong>.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/create-users-and-groups-in-azure-active-directory/media/7-application-users-groups.png" alt="Screenshot that shows the Twitter application overview page." data-linktype="relative-path"></p>
+</li>
+<li><p>In <strong>Add Assignment</strong>, select <strong>Users and groups</strong>.</p>
+</li>
+<li><p>Select the guest user you added in the previous exercise, and click <strong>Select</strong>.</p>
+</li>
+<li><p>Select <strong>Assign</strong>. You now see the user in the list for this application.</p>
+</li>
+<li><p>To check that the correct access level is set, select the user in the list.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/create-users-and-groups-in-azure-active-directory/media/7-select-user.png" alt="Screenshot that shows a selected check box for the user." data-linktype="relative-path"></p>
+</li>
+<li><p>Select <strong>Edit</strong>.</p>
+</li>
+<li><p>Click <strong>Select Role</strong> &gt; <strong>Default Access</strong> and <strong>Select</strong> to make sure they have the correct access.</p>
+</li>
+<li><p>When the invitation arrives, the user accepts it and can then access the application.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/create-users-and-groups-in-azure-active-directory/media/7-application-visible-invitation-accepted.png" alt="Screenshot that shows the application link available after the invitation is accepted." data-linktype="relative-path"></p>
+</li>
+</ol>
+<p>You've now added a guest user to an application.</p>
+<h2 id="resend-invitations-to-guest-users">Resend invitations to guest users</h2>
+<p>If the guest user didn't receive the first email invitation, you can resend an invitation email.</p>
+<ol>
+<li><p>In your Azure AD organization, select <strong>Users</strong>.</p>
+</li>
+<li><p>Select the user.</p>
+</li>
+<li><p>Select <strong>Resend invitation</strong>.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/create-users-and-groups-in-azure-active-directory/media/7-profile-resend-invitation.png" alt="Screenshot that shows the Resend invitation button on the user's profile." data-linktype="relative-path"></p>
+</li>
+</ol>
+
+		
+	</div><section>
+		<p>
+Need help? See our <a id="troubleshooting-guide" data-bi-name="troubleshooting" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn.azure.create-users-and-groups-in-azure-active-directory.exercise-guest-user-access-azure-ad-b2b&amp;documentId=7feb1b24-d369-7c25-901c-ba17a9d2ed4b&amp;versionIndependentDocumentId=6add3221-5d0d-d22d-b67e-0f7a497ad35a&amp;contentPath=%2FMicrosoftDocs%2Flearn-pr%2Fblob%2Flive%2Flearn-pr%2Fazure%2Fcreate-users-and-groups-in-azure-active-directory%2F7-exercise-guest-user-access-azure-ad-b2b.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fcreate-users-and-groups-in-azure-active-directory%2F7-exercise-guest-user-access-azure-ad-b2b&amp;author=cwatson">troubleshooting guide</a> or provide specific feedback by <a id="module-unit-feedback-link" data-bi-name="feedback" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn.azure.create-users-and-groups-in-azure-active-directory.exercise-guest-user-access-azure-ad-b2b&amp;documentId=7feb1b24-d369-7c25-901c-ba17a9d2ed4b&amp;versionIndependentDocumentId=6add3221-5d0d-d22d-b67e-0f7a497ad35a&amp;contentPath=%2FMicrosoftDocs%2Flearn-pr%2Fblob%2Flive%2Flearn-pr%2Fazure%2Fcreate-users-and-groups-in-azure-active-directory%2F7-exercise-guest-user-access-azure-ad-b2b.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fcreate-users-and-groups-in-azure-active-directory%2F7-exercise-guest-user-access-azure-ad-b2b&amp;author=cwatson#report-feedback">reporting an issue</a>.		</p>
+	</section></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>
