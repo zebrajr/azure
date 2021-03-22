@@ -1,0 +1,8 @@
+1.A
+The Zero Trust model assumes breach and verifies each request as though it originates from an uncontrolled network.
+
+2.B
+Azure MFA, Azure AD Hybrid or Azure AD Join, Microsoft Intune, and leveraging passwordless credentials all support the 1st principle of Zero Trust.
+
+3.C
+Zero Trust controls should be implemented across 6 foundational elements: identities, devices, applications, data, infrastructure, and networks.

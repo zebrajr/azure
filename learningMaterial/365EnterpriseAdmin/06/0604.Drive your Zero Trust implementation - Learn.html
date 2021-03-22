@@ -1,0 +1,322 @@
+<html dir="ltr"><head><title>Drive your Zero Trust implementation - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/m365-identity-zero-trust/zero-trust-implementation">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/m365-identity-zero-trust/zero-trust-implementation</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Drive your Zero Trust implementation - Learn</h1>
+  <div dir="auto" id="reader-credits">AlexandraHrt</div>
+  <div dir="auto" id="reader-estimated-time">6-8 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>19 minutes</li>
+		</ul>
+			<p>A Zero Trust strategy requires that you verify explicitly, use least privileged access principles, and assume breach. Azure Active Directory can act as the policy decision point to enforce your access policies based on user, device, target resource, and environment insights.</p>
+<p>To do this, we need to put Azure Active Directory in the path of every access request—connecting every user and every app or resource through this identity control plane. In addition to productivity gains and improved user experiences from single sign-on (SSO) and consistent policy guardrails, connecting all users and apps provides Azure AD with the signal to make the best possible decisions about the authentication/authorization risk.</p>
+<h2 id="connect-your-users-groups-and-devices">Connect your users, groups, and devices</h2>
+<p>Maintaining a healthy pipeline of your employees’ identities as well as the necessary security artifacts (groups for authorization and devices for extra access policy controls) puts you in the best place to use consistent identities and controls, which your on-premises and in the cloud users already benefit from. We strongly prefer an authentication method that primarily uses Azure AD (to provide you the best brute force, DDoS, and password spray protection).</p>
+<h2 id="integrate-all-your-applications-with-azure-ad">Integrate all your applications with Azure AD</h2>
+<p>SSO is not only a convenient feature for users, but it’s also a security posture, as it prevents users from leaving copies of their credentials in various apps and helps them avoid getting used to surrendering their credentials due to excessive prompting.</p>
+
+<p>View a <a href="https://www.microsoft.com/videoplayer/embed/RE4C2jQ" data-linktype="external">video version</a> of the interactive guide (captions available in more languages).</p>
+<p><a href="https://mslearn.cloudguides.com/guides/Provide%20secure%20remote%20access%20to%20on-premises%20applications%20with%20Azure%20AD%20Application%20Proxy" data-linktype="external"><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-identity-zero-trust/media/interactive-provide-secure-remote-access-premises-apps.png" alt="Provide secure remote access to on-premises apps with Azure AD Application Proxy" data-linktype="relative-path"></a></p>
+<p>Be sure to click the full-screen option in the video player. When you're done, use the <strong>Back</strong> arrow in your browser to come back to this page.</p>
+<h2 id="automate-provisioning-to-applications">Automate provisioning to applications</h2>
+<p>Once you have your users’ identities in Azure AD, you can use Azure AD to automate provisioning those user identities into your various cloud applications.
+G</p>
+<h2 id="get-your-logging-and-reporting-in-order">Get your logging and reporting in order</h2>
+<p>Be sure to analyze the logs from Azure AD either in Azure or using a SIEM system of choice.</p>
+<h2 id="enact-zero-trust-principles">Enact Zero Trust principles</h2>
+<p>Once you have the Azure AD foundation in order, you can begin enacting the principles of Zero Trust.</p>
+<p>First principle--<em>verify explicitly</em>--provide Azure AD with a rich set of credentials and controls that it can use to verify users:</p>
+<ul>
+<li>Roll out Azure Active Directory Multi-Factor Authentication.</li>
+<li>Enable Azure AD Hybrid Join or Azure AD Join.</li>
+<li>Enable Microsoft Intune for managing users mobile devices (EMS).</li>
+<li>Start rolling out passwordless credentials.</li>
+</ul>
+<p>Second principle--<em>use least privilege access</em>--use the following tools to give the right access at the right time:</p>
+<ul>
+<li>Conditional Access to require access controls.</li>
+<li>Secure privileged access with privileged identity management.</li>
+<li>Restrict user consent to applications.</li>
+<li>Manage entitlements to streamline access request and approval.</li>
+</ul>
+<p>Third principle--<em>assume breach</em>--consider configuring the following tools to protect your organization:</p>
+<ul>
+<li>Deploy Azure AD Password Protection.</li>
+<li>Block legacy authentication.</li>
+<li>Enable identity protection.</li>
+<li>Enable restricted session to use in access decisions.</li>
+<li>Enable Conditional Access integration with Microsoft Cloud App Security.</li>
+<li>Enable Microsoft Cloud App Security integration with identity protection.</li>
+<li>Integrate Microsoft Defender for Identity with Microsoft Cloud App Security.</li>
+<li>Enable Microsoft Defender for Endpoint.</li>
+</ul>
+<p>Within your organization, consider creating a Conditional Access policy requiring Azure Active Directory Multi-Factor Authentication for administrators for quick wins in your journey towards Zero Trust. To create a Conditional Access policy:</p>
+<ol>
+<li><p>Within Azure AD, create a new Conditional Access policy with Directory roles targeted.</p>
+</li>
+<li><p>If your organization has a “break-glass” global administrator account, remember to add the account to the <strong>Exclude</strong> section. In the following screenshot, the global administrator role is selected. Consider also adding these roles:</p>
+<ul>
+<li>Authentication Administrator</li>
+<li>Billing administrator</li>
+<li>Conditional Access administrator</li>
+<li>Exchange administrator</li>
+<li>Helpdesk administrator</li>
+<li>Password administrator</li>
+<li>Security administrator</li>
+<li>SharePoint administrator</li>
+<li>User administrator</li>
+</ul>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-identity-zero-trust/media/mfa-admin-policy.png" alt="Global administrator selected in creating a conditional access policy" data-linktype="relative-path"></p>
+</li>
+<li><p>For Cloud apps or actions, select <strong>All cloud apps</strong>:</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-identity-zero-trust/media/all-cloud-apps.png" alt="For Cloud apps or actions, select All cloud apps" data-linktype="relative-path"></p>
+</li>
+<li><p>Then under <strong>Conditions &gt; Client apps (Preview)</strong>, select <strong>Yes</strong> to also target apps that don’t use Modern Authentication:</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-identity-zero-trust/media/client-apps.png" alt="Select Yes to  target apps that don’t using Modern Authentication:" data-linktype="relative-path"></p>
+</li>
+<li><p>Under <strong>Access controls</strong>, set <strong>Grant Access to Require Multi-factor authentication</strong>:</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-identity-zero-trust/media/grant.png" alt="Under Access controls, set Grant Access to Require Multi-factor authentication" data-linktype="relative-path"></p>
+</li>
+</ol>
+<p>To enable Azure AD Identity Protection User risk and Sign-in risk policies to allow access but require self-service password reset or multi-factor authentication:</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-identity-zero-trust/media/user-risk-policy.png" alt="To enable Azure AD Identity Protection User risk and Sign-in risk policies to allow access but require self-service password reset or multi-factor authentication" data-linktype="relative-path"></p>
+<p>To create an Intune Mobile Application Management (MAM) without enrollment policy to protect organization data on mobile devices:</p>
+<ol>
+<li><p>Within the Intune portal, select <strong>Client Apps -&gt; App protection policies -&gt; + Create policy -&gt; your targeted platform</strong>:</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-identity-zero-trust/media/app-protection-policies.png" alt="Within the Intune portal, select Client Apps -> App protection policies -> + Create policy -> your targeted platform:" data-linktype="relative-path"></p>
+</li>
+<li><p>After naming the policy, select from the list of available applications:</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-identity-zero-trust/media/apps.png" alt="After naming the policy, select from the list of available applications:" data-linktype="relative-path"></p>
+</li>
+<li><p>Under <strong>Data protection</strong>, select the controls you would like to implement. If the applications are already being used on mobile devices, consider limiting the amount of controls to reduce the amount of help-desk calls.</p>
+<p>For iOS devices, consider the following settings:</p>
+<ul>
+<li>Blocking backup of org data to iTunes</li>
+<li>Restricting data sharing to only policy-managed apps</li>
+<li>Preventing “save as” of org data (by restricting save as functionality to OneDrive for Business or SharePoint)</li>
+<li>Restricting cut/copy/paste to policy-managed apps with paste in.</li>
+</ul>
+<p>Policy-managed apps are the ones selected in the previous step.</p>
+<div>
+<p> Note</p>
+<p>“Encrypt org data” is set to Require by default, which will prompt a user to create a PIN (and enable TouchID/FaceID) to unlock their device if they have not done so already.</p>
+</div>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-identity-zero-trust/media/data-protection.png" alt="Policy managed apps are the ones selected in the previous step. " data-linktype="relative-path"></p>
+</li>
+<li><p>Under Access requirements, you can configure a PIN or sign-in for accessing the targeted applications, as well as a timeout to recheck for the PIN/sign-in:</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-identity-zero-trust/media/access-requirements.png" alt="Configure a PIN or sign-in for accessing the targeted applications as well as a timeout to recheck for the PIN/sign-in" data-linktype="relative-path"></p>
+</li>
+<li><p>Finally, configure conditional launch settings that further protect the data on the device. Consider leaving the default options.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-identity-zero-trust/media/conditional-launch.png" alt="Configure conditional launch settings" data-linktype="relative-path"></p>
+</li>
+</ol>
+<p>Once all of the MAM protection settings have been configured, you must target Users who will receive the policy. With MAM policies, there is no end-user configuration required. The policy will automatically be applied when a user logs in to a targeted application on their mobile device. The end user will just see a notification that the application is protected:</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-identity-zero-trust/media/ok.png" alt="End user will just see a notification that the application is protected" data-linktype="relative-path"></p>
+
+		
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>
