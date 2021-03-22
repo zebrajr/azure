@@ -1,0 +1,327 @@
+<html dir="ltr"><head><title>Create and manage users - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/manage-users-and-groups-in-aad/3-users">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/manage-users-and-groups-in-aad/3-users</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Create and manage users - Learn</h1>
+  <div dir="auto" id="reader-credits">adrianstevens</div>
+  <div dir="auto" id="reader-estimated-time">6-8 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>8 minutes</li>
+		</ul>
+			<p>Every user who needs access to Azure resources needs an Azure user account. A user account contains all the information needed to authenticate the user during the sign-on process. Once authenticated, Azure AD builds an access token to authorize the user and determine what resources they can access and what they can do with those resources.</p>
+<p>You use the <strong>Azure Active Directory</strong> dashboard in the Azure portal to work with user objects. Keep in mind that you can only work with a single directory at a time - but you can use the <strong>Directory + Subscription</strong> panel to switch directories. The dashboard also has a <strong>Switch directory</strong> button in the toolbar which makes it easy to switch to another available directory.</p>
+<h2 id="viewing-users">Viewing users</h2>
+<p>To view the Azure AD users, select the <strong>Users</strong> entry under the <strong>Manage</strong> section. The <strong>All Users</strong> view appears. Take a minute to access the portal and view your users. Notice the <strong>User type</strong> and <strong>Identity issuer</strong> columns, as the following figure depicts.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/manage-users-and-groups-in-aad/media/m1-aad-users.png" alt="Screenshot that depicts the All users pane, with the User type and Identity issuer columns noted." data-linktype="relative-path"></p>
+<p>Typically, Azure AD defines users in three ways:</p>
+<ol>
+<li><p><strong>Cloud identities</strong> - These users exist only in Azure AD. Examples are administrator accounts and users that you manage yourself. Their source is <strong>Azure Active Directory</strong> or <strong>External Azure Active Directory</strong> if the user is defined in another Azure AD instance but needs access to subscription resources controlled by this directory. When these accounts are removed from the primary directory, they are deleted.</p>
+</li>
+<li><p><strong>Directory-synchronized identities</strong> - These users exist in an on-premises Active Directory. A synchronization activity that occurs via <strong>Azure AD Connect</strong> brings these users in to Azure. Their source is <strong>Windows Server AD</strong>.</p>
+</li>
+<li><p><strong>Guest users</strong> - These users exist outside Azure. Examples are accounts from other cloud providers and Microsoft accounts, such as an Xbox LIVE account. Their source is <strong>Invited user</strong>. This type of account is useful when external vendors or contractors need access to your Azure resources. Once their help is no longer necessary, you can remove the account and all of their access.</p>
+</li>
+</ol>
+<h2 id="adding-users">Adding users</h2>
+<p>You can add cloud identities to Azure AD in multiple ways:</p>
+<ul>
+<li>Syncing an on-premises Windows Server Active Directory</li>
+<li>Using the Azure portal</li>
+<li>Using the command line</li>
+<li>Other options</li>
+</ul>
+<h3 id="syncing-an-on-premises-windows-server-active-directory">Syncing an on-premises Windows Server Active Directory</h3>
+<p>Azure AD Connect is a separate service that allows you to synchronize a traditional Active Directory with your Azure AD instance. This is how most enterprise customers add users to the directory. The advantage to this approach is users can use single sign-on (SSO) to access local and cloud-based resources.</p>
+<h3 id="use-the-azure-portal">Use the Azure portal</h3>
+<p>You can manually add new users through the Azure portal. This is the easiest way to add a small set of users. You need to be in the <strong>User Administrator</strong> role to perform this function.</p>
+<ol>
+<li><p>To add a new user with the Azure portal, select the the <strong>+ New user</strong> button in the toolbar.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/manage-users-and-groups-in-aad/media/2-new-user-all-users-pane.png" alt="Screenshot showing the New User button highlighted in the Azure AD portal" data-linktype="relative-path"></p>
+</li>
+<li><p>In addition to <strong>Name</strong> and <strong>User name</strong>, you can add profile information, like <strong>Job Title</strong> and <strong>Department</strong>.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/manage-users-and-groups-in-aad/media/2-new-user-user-pane.png" alt="Screenshot showing the New user dialog" data-linktype="relative-path"></p>
+<p>The default behavior is to create a new user in the organization. The user will have a username with the default domain name assigned to the directory such as alice@staracoustics.onmicrosoft.com.</p>
+</li>
+<li><p>You can also <em>invite</em> a user into the directory. In this case, an email is sent to a known email address and an account is created and associated with that email address if they accept the invitation.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/manage-users-and-groups-in-aad/media/3-new-user-invite.png" alt="Screenshot showing the invite screen" data-linktype="relative-path"></p>
+<p>The invited user will need to create an associated Microsoft account (MSA) if that specific email address isn't associated with one and the account will be added to the Azure AD as a guest user.</p>
+</li>
+</ol>
+<h3 id="use-the-command-line">Use the command line</h3>
+<p>If you have a lot of users to add, a better option is to use a command-line tool. You can use the <code>New-AzureADUser</code> Azure PowerShell command to add cloud-based users.</p>
+<pre tabindex="0"><code data-author-content="# Create a password object
+$PasswordProfile = New-Object -TypeName Microsoft.Open.AzureAD.Model.PasswordProfile
+
+# Assign the password
+$PasswordProfile.Password = &quot;<Password>&quot;
+
+# Create the new user
+New-AzureADUser -AccountEnabled $True -DisplayName &quot;Abby Brown&quot; -PasswordProfile $PasswordProfile -MailNickName &quot;AbbyB&quot; -UserPrincipalName &quot;AbbyB@contoso.com&quot;
+"><span><span># Create a password object</span>
+<span>$PasswordProfile</span> = <span>New-Object</span><span> -TypeName</span> Microsoft.Open.AzureAD.Model.PasswordProfile
+
+<span># Assign the password</span>
+<span>$PasswordProfile</span>.Password = <span>"&lt;Password&gt;"</span>
+
+<span># Create the new user</span>
+<span>New-AzureADUser</span><span> -AccountEnabled</span> <span>$True</span><span> -DisplayName</span> <span>"Abby Brown"</span><span> -PasswordProfile</span> <span>$PasswordProfile</span><span> -MailNickName</span> <span>"AbbyB"</span><span> -UserPrincipalName</span> <span>"AbbyB@contoso.com"</span>
+</span></code></pre>
+<p>The command will return the new user object you created.</p>
+<pre tabindex="0"><code data-author-content="ObjectId                             DisplayName UserPrincipalName UserType
+--------                             ----------- ----------------- --------
+f36634c8-8a93-4909-9248-0845548bc515 Abby Brown  AbbyB@contoso.com Member
+">ObjectId                             DisplayName UserPrincipalName UserType
+--------                             ----------- ----------------- --------
+f36634c8-8a93-4909-9248-0845548bc515 Abby Brown  AbbyB@contoso.com Member
+</code></pre>
+<p>If you prefer a more traditional command-line, you can use the Azure CLI:</p>
+<pre tabindex="0"><code data-author-content="az ad user create --display-name &quot;Abby Brown&quot; \
+                  --password &quot;<password>&quot; \
+                  --user-principal-name &quot;AbbyB@contoso.com&quot; \
+                  --force-change-password-next-login true \
+                  --mail-nickname &quot;AbbyB&quot;
+"><span><span>az ad user create </span><span>--display-name</span> <span>"Abby Brown"</span> \
+                  <span>--password</span> <span>"&lt;password&gt;"</span> \
+                  <span>--user-principal-name</span> <span>"AbbyB@contoso.com"</span> \
+                  <span>--force-change-password-next-login</span> <span>true</span> \
+                  <span>--mail-nickname</span> <span>"AbbyB"</span>
+</span></code></pre>
+<p>Command-line tools allow you to add users in bulk through scripting. The most common approach for this is to use a comma-separated values (CSV) file. You can either manually create this file or export the file from an existing data source.</p>
+<p>If you're planning to use a CSV, here are some things to think about:</p>
+<ul>
+<li><p><strong>Naming conventions</strong>. Establish or implement a naming convention for usernames, display names, and aliases. For example, a username might consist of the last name, followed by a period (.), followed by the first name—for example, Smith.John@contoso.com.</p>
+</li>
+<li><p><strong>Passwords</strong>. Implement a convention for the initial password of a newly created user. Determine how new users will receive their passwords in a security-enhanced way. A commonly used method is generating a random password and then emailing it to the new user or their manager.</p>
+</li>
+</ul>
+<p>To use a CSV with Azure PowerShell:</p>
+<ol>
+<li><p>Use <code>Connect-AzureAD</code> to create an Azure PowerShell connection to your directory. Connect with an admin account that has privileges on your directory.</p>
+</li>
+<li><p>Create new password profiles for the new users. The passwords for the new users need to conform to the password complexity rules you have set for your directory.</p>
+</li>
+<li><p>Use <code>Import-CSV</code> to import the CSV. You need to specify the path and file name of the CSV.</p>
+</li>
+<li><p>Loop through the users in the file, constructing the user parameters needed for each user. Example parameters are User Principal Name, Display Name, Given Name, Department, and Job Title.</p>
+</li>
+<li><p>Use <code>New-AzureADUser</code> to create each user. Be sure to enable each account.</p>
+</li>
+</ol>
+<h3 id="other-options">Other options</h3>
+<p>You can also add users to Azure AD programmatically using the Azure AD Graph API, or through the Microsoft 365 Admin Center and the Microsoft Intune Admin console if you are sharing the same directory.</p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Create and manage groups</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/manage-users-and-groups-in-aad/4-groups/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

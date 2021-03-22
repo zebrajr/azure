@@ -1,0 +1,261 @@
+<html dir="ltr"><head><title>Create and manage groups - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/manage-users-and-groups-in-aad/4-groups">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/manage-users-and-groups-in-aad/4-groups</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Create and manage groups - Learn</h1>
+  <div dir="auto" id="reader-credits">adrianstevens</div>
+  <div dir="auto" id="reader-estimated-time">4-5 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="main" role="main" data-bi-name="content" lang="en-us" dir="ltr">
+		
+		
+		<ul>
+			<li>8 minutes</li>
+		</ul>
+			<p>An Azure AD group helps organize users making it easier to manage permissions. Using groups lets the resource owner (or Azure AD directory owner), assign a set of access permissions to all the members of the group, instead of having to provide the rights one-by-one. Groups allow us to define a security boundary and then add and remove specific users to grant or deny access with a minimum amount of effort. Even better, Azure AD supports the ability to define membership based on rules - such as what department a user works in, or the job title they have.</p>
+<p>Azure AD allows you to define two different types of groups.</p>
+<ol>
+<li><p><strong>Security groups</strong>. These are the most common and are used to manage member and computer access to shared resources for a group of users. For example, you can create a security group for a specific security policy. By doing it this way, you can give a set of permissions to all the members at once, instead of having to add permissions to each member individually. This option requires an Azure AD administrator.</p>
+</li>
+<li><p><strong>Microsoft 365 groups</strong>. These groups provide collaboration opportunities by giving members access to a shared mailbox, calendar, files, SharePoint site, and more. This option also lets you give people outside of your organization access to the group. This option is available to users as well as admins.</p>
+</li>
+</ol>
+<h2 id="view-available-groups">View available groups</h2>
+<p>You can view all groups by selecting <strong>Groups</strong> under the <strong>Manage</strong> section from the Azure AD dashboard. A new Azure AD install won't have any groups defined.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/manage-users-and-groups-in-aad/media/m1-groups1.png" alt="Screenshot that depicts all the existing groups." data-linktype="relative-path"></p>
+<h2 id="add-groups-to-azure-ad">Add groups to Azure AD</h2>
+<p>The same options are available to create groups in Azure AD as we saw with users. The Azure portal is the easiest way to create groups. You must select the group type (Security or Microsoft 365), assign a unique group name, description and a <em>membership type</em>.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/manage-users-and-groups-in-aad/media/4-add-group-portal.png" alt="Screenshot of the Create Group feature in the Azure portal" data-linktype="relative-path"></p>
+<p>The membership type field can be one of three values:</p>
+<ol>
+<li><p><strong>Assigned (static)</strong>. The group will contain specific users or groups that you select.</p>
+</li>
+<li><p><strong>Dynamic user</strong>. You create rules based on characteristics to enable attribute-based dynamic memberships for groups. For example, if a user’s department is Sales, that user will be dynamically assigned to the Sales group. You can set up a rule for dynamic membership on security groups or on Microsoft 365 groups. If the user's department changes in the future, they are automatically removed from the group. This feature requires an Azure AD Premium P1 license.</p>
+</li>
+<li><p><strong>Dynamic device</strong>. You create rules based on characteristics to enable attribute-based dynamic memberships for groups. For example, if a user’s device is associated with the Service department, that device will be dynamically assigned to the Service group. You can set up a rule for dynamic membership on security groups or on Microsoft 365 groups. If the device's association with a particular department changes in the future, it is automatically removed from the group. This feature requires an Azure AD Premium P1 license.</p>
+</li>
+</ol>
+<p>Finally, you can select group owner(s) that can administer the group, and member(s) that will belong to the group. Both of these can contain other groups as well as individual users.</p>
+<h3 id="script-group-creation">Script group creation</h3>
+<p>You can also use Azure PowerShell to add a group using the <strong>New-AzureADGroup</strong> command as shown below.</p>
+<pre tabindex="0"><code data-author-content="New-AzureADGroup -Description &quot;Marketing&quot; -DisplayName &quot;Marketing&quot; -MailEnabled $false -SecurityEnabled $true -MailNickName &quot;Marketing&quot;
+"><span><span>New-AzureADGroup</span><span> -Description</span> <span>"Marketing"</span><span> -DisplayName</span> <span>"Marketing"</span><span> -MailEnabled</span> <span>$false</span><span> -SecurityEnabled</span> <span>$true</span><span> -MailNickName</span> <span>"Marketing"</span>
+</span></code></pre>
+<h2 id="change-membership-for-a-group">Change membership for a group</h2>
+<p>Once a group is created, you can add or remove users (or groups) from it by editing the group membership by selecting the group and using the options under the <strong>Manage</strong> section.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/manage-users-and-groups-in-aad/media/4-edit-group-membership.png" alt="Screenshot showing the group management options" data-linktype="relative-path"></p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Use roles to control resource access</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/manage-users-and-groups-in-aad/5-manage-aad-roles/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div><section>
+		<p>
+Need help? See our <a id="troubleshooting-guide" data-bi-name="troubleshooting" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn.azure-security.manage-users-and-groups-in-aad.groups&amp;documentId=c62eedd5-5821-42e3-a57e-8911b4c01205&amp;versionIndependentDocumentId=4f86227e-3ff8-7dd7-0999-612262c13eda&amp;contentPath=%2FMicrosoftDocs%2Flearn-pr%2Fblob%2Flive%2Flearn-pr%2Fazure%2Fmanage-users-and-groups-in-aad%2F4-groups.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fmanage-users-and-groups-in-aad%2F4-groups&amp;author=adsteven">troubleshooting guide</a> or provide specific feedback by <a id="module-unit-feedback-link" data-bi-name="feedback" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn.azure-security.manage-users-and-groups-in-aad.groups&amp;documentId=c62eedd5-5821-42e3-a57e-8911b4c01205&amp;versionIndependentDocumentId=4f86227e-3ff8-7dd7-0999-612262c13eda&amp;contentPath=%2FMicrosoftDocs%2Flearn-pr%2Fblob%2Flive%2Flearn-pr%2Fazure%2Fmanage-users-and-groups-in-aad%2F4-groups.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fmanage-users-and-groups-in-aad%2F4-groups&amp;author=adsteven#report-feedback">reporting an issue</a>.		</p>
+	</section></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

@@ -1,0 +1,8 @@
+1. A
+Correct. Azure subscriptions manage resources, limits, and provide the charges billed to the account owner.
+
+2. B
+Correct. Azure subscriptions can only trust a single directory, but multiple subscriptions can be associated to a single Azure AD instance.
+
+3. A
+Correct. While a single directory is created for the organization initially, more can be created to divide the security across boundaries.
