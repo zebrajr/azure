@@ -1,0 +1,265 @@
+<html dir="ltr"><head><title>Understand storage account keys - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/secure-azure-storage-account/3-storage-account-keys">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/secure-azure-storage-account/3-storage-account-keys</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Understand storage account keys - Learn</h1>
+  <div dir="auto" id="reader-credits">ctesta-oneillmsft</div>
+  <div dir="auto" id="reader-estimated-time">3-4 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="main" role="main" data-bi-name="content" lang="en-us" dir="ltr">
+		
+		
+		<ul>
+			<li>5 minutes</li>
+		</ul>
+			<p>Much of Contoso's data is generated or consumed by custom applications. The applications are written in various languages.</p>
+<p>Azure Storage accounts can create authorized apps in Active Directory to control access to the data in blobs and queues. This authentication approach is the best solution for apps that use Blob storage or Queue storage.</p>
+<p>For other storage models, clients can use a <em>shared key</em>, or shared secret. This authentication option is one of the easiest to use, and it supports blobs, files, queues, and tables. The client embeds the shared key in the HTTP <code>Authorization</code> header of every request, and the Storage account validates the key.</p>
+<p>For example, an application can issue a <code>GET</code> request against a blob resource:</p>
+<pre tabindex="0"><code data-author-content="GET http://myaccount.blob.core.windows.net/?restype=service&amp;comp=stats
+">GET http://myaccount.blob.core.windows.net/?restype=service&amp;comp=stats
+</code></pre>
+<p>HTTP headers control the version of the REST API, the date, and the encoded shared key:</p>
+<pre tabindex="0"><code data-author-content="x-ms-version: 2018-03-28  
+Date: Wed, 23 Oct 2018 21:00:44 GMT  
+Authorization: SharedKey myaccount:CY1OP3O3jGFpYFbTCBimLn0Xov0vt0khH/E5Gy0fXvg=
+">x-ms-version: 2018-03-28  
+Date: Wed, 23 Oct 2018 21:00:44 GMT  
+Authorization: SharedKey myaccount:CY1OP3O3jGFpYFbTCBimLn0Xov0vt0khH/E5Gy0fXvg=
+</code></pre>
+<h2 id="storage-account-keys">Storage account keys</h2>
+<p>In Azure Storage accounts, shared keys are called <em>storage account keys</em>. Azure creates two of these keys (primary and secondary) for each storage account you create. The keys give access to <em>everything</em> in the account.</p>
+<p>You'll find the storage account keys in the Azure portal view of the storage account. Just select <strong>Settings</strong> &gt; <strong>Access keys</strong>.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/data-ai-cert/secure-azure-storage-account/media/3-storage-keys.png" alt="Screenshot showing the access keys in the Azure portal" data-linktype="relative-path"></p>
+
+<p>The storage account has only two keys, and they provide full access to the account. Because these keys are powerful, use them only with trusted in-house applications that you control completely.</p>
+<p>If the keys are compromised, change the key values in the Azure portal. Here are several reasons to regenerate your storage account keys:</p>
+<ul>
+<li>For security reasons, you might regenerate keys periodically.</li>
+<li>If someone hacks into an application and gets the key that was hard-coded or saved in a configuration file, regenerate the key. The compromised key can give the hacker full access to your storage account.</li>
+<li>If your team is using a Storage Explorer application that keeps the storage account key, and one of the team members leaves, regenerate the key. Otherwise, the application will continue to work, giving the former team member access to your storage account.</li>
+</ul>
+<p>To refresh keys:</p>
+<ul>
+<li>Change each trusted app to use the secondary key.</li>
+<li>Refresh the primary key in the Azure portal. Consider this as the new secondary key value.</li>
+</ul>
+<div>
+<p> Important</p>
+<p>After you refresh keys, any client that attempts to use the old key value will be refused. Make sure you identify all clients that use the shared key, and update them to keep them operational.</p>
+</div>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Understand shared access signatures</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/secure-azure-storage-account/4-shared-access-signatures/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div><section>
+		<p>
+Need help? See our <a id="troubleshooting-guide" data-bi-name="troubleshooting" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn.azure.secure-azure-storage-account.storage-account-keys&amp;documentId=dd149227-3063-aaea-e739-12bc0e7120f5&amp;versionIndependentDocumentId=4c6423f5-6d88-2390-548f-b3b85c95757b&amp;contentPath=%2FMicrosoftDocs%2Flearn-pr%2Fblob%2Flive%2Flearn-pr%2Fdata-ai-cert%2Fsecure-azure-storage-account%2F3-storage-account-keys.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fsecure-azure-storage-account%2F3-storage-account-keys&amp;author=chtestao">troubleshooting guide</a> or provide specific feedback by <a id="module-unit-feedback-link" data-bi-name="feedback" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn.azure.secure-azure-storage-account.storage-account-keys&amp;documentId=dd149227-3063-aaea-e739-12bc0e7120f5&amp;versionIndependentDocumentId=4c6423f5-6d88-2390-548f-b3b85c95757b&amp;contentPath=%2FMicrosoftDocs%2Flearn-pr%2Fblob%2Flive%2Flearn-pr%2Fdata-ai-cert%2Fsecure-azure-storage-account%2F3-storage-account-keys.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fsecure-azure-storage-account%2F3-storage-account-keys&amp;author=chtestao#report-feedback">reporting an issue</a>.		</p>
+	</section></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

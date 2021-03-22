@@ -1,0 +1,266 @@
+<html dir="ltr"><head><title>Understand Advanced Threat Protection for Azure Storage - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/secure-azure-storage-account/6-advanced-threat-protection">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/secure-azure-storage-account/6-advanced-threat-protection</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Understand Advanced Threat Protection for Azure Storage - Learn</h1>
+  <div dir="auto" id="reader-credits">ctesta-oneillmsft</div>
+  <div dir="auto" id="reader-estimated-time">3-3 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="main" role="main" data-bi-name="content" lang="en-us" dir="ltr">
+		
+		
+		<ul>
+			<li>5 minutes</li>
+		</ul>
+			<p>Azure Defender for Storage provides an extra layer of security intelligence that detects unusual and potentially harmful attempts to access or exploit storage accounts. This layer of protection allows you to address threats without being a security expert or managing security monitoring systems.</p>
+<p>Security alerts are triggered when anomalies in activity occur. These security alerts are integrated with Azure Security Center, and are also sent via email to subscription administrators, with details of suspicious activity and recommendations on how to investigate and remediate threats.</p>
+<p>Azure Defender for Storage is currently available for Blob storage, Azure Files, and Azure Data Lake Storage Gen2. Account types that support Azure Defender include general-purpose v2, block blob, and Blob storage accounts. Azure Defender for Storage is available in all public clouds and US government clouds, but not in other sovereign or Azure Government cloud regions.</p>
+<p>Accounts with hierarchical namespaces enabled for Data Lake Storage support transactions using both the Azure Blob storage APIs and the Data Lake Storage APIs. Azure file shares support transactions over SMB.</p>
+<p>You can turn on Azure Defender for Storage in the Azure portal through the configuration page of the Azure Storage account, or in the advanced security section of the Azure portal. Follow these steps.</p>
+<ol>
+<li><p>Launch the Azure portal.</p>
+</li>
+<li><p>Navigate to your storage account. Under <strong>Settings</strong>, select <strong>Advanced security</strong>.</p>
+</li>
+<li><p>Select <strong>Enable Azure Defender for Storage</strong>.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/data-ai-cert/secure-azure-storage-account/media/azure-defender-for-storage.png" alt="Screenshot of Azure Defender for Storage" data-linktype="relative-path"></p>
+</li>
+</ol>
+<h2 id="explore-security-anomalies">Explore security anomalies</h2>
+<p>When storage activity anomalies occur, you receive an email notification with information about the suspicious security event. Details of the event include:</p>
+<ul>
+<li><p>Nature of the anomaly</p>
+</li>
+<li><p>Storage account name</p>
+</li>
+<li><p>Event time</p>
+</li>
+<li><p>Storage type</p>
+</li>
+<li><p>Potential causes</p>
+</li>
+<li><p>Investigation steps</p>
+</li>
+<li><p>Remediation steps</p>
+</li>
+<li><p>Email also includes details about possible causes and recommended actions to investigate and mitigate the potential threat</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/data-ai-cert/secure-azure-storage-account/media/view-security-anomolies-in-azure-defender-for-security.png" alt="Viewing security anomolies in Azure Defender for Security" data-linktype="relative-path"></p>
+</li>
+</ul>
+<p>You can review and manage your current security alerts from Azure Security Center's Security alerts tile. Selecting a specific alert provides details and actions for investigating the current threat and addressing future threats.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/data-ai-cert/secure-azure-storage-account/media/view-security-anomolies-details-in-azure-defender-for-security.png" alt="Viewing security anomolies details in Azure Defender for Security" data-linktype="relative-path"></p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Explore Azure Data Lake Storage security features</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/secure-azure-storage-account/7-adl-enterprise-security-features/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div><section>
+		<p>
+Need help? See our <a id="troubleshooting-guide" data-bi-name="troubleshooting" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn.azure.secure-azure-storage-account.advanced-threat-protection&amp;documentId=20304a01-7c7b-e540-0ade-067faccbc2ce&amp;versionIndependentDocumentId=a8188b3f-340d-856f-65d4-1753321c521a&amp;contentPath=%2FMicrosoftDocs%2Flearn-pr%2Fblob%2Flive%2Flearn-pr%2Fdata-ai-cert%2Fsecure-azure-storage-account%2F6-advanced-threat-protection.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fsecure-azure-storage-account%2F6-advanced-threat-protection&amp;author=chtestao">troubleshooting guide</a> or provide specific feedback by <a id="module-unit-feedback-link" data-bi-name="feedback" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn.azure.secure-azure-storage-account.advanced-threat-protection&amp;documentId=20304a01-7c7b-e540-0ade-067faccbc2ce&amp;versionIndependentDocumentId=a8188b3f-340d-856f-65d4-1753321c521a&amp;contentPath=%2FMicrosoftDocs%2Flearn-pr%2Fblob%2Flive%2Flearn-pr%2Fdata-ai-cert%2Fsecure-azure-storage-account%2F6-advanced-threat-protection.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fsecure-azure-storage-account%2F6-advanced-threat-protection&amp;author=chtestao#report-feedback">reporting an issue</a>.		</p>
+	</section></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

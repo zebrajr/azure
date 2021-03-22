@@ -1,0 +1,8 @@
+1.C
+Correct. A shared access signature is a string that contains a security token that can be attached to a URI. Use a shared access signature to delegate access to storage objects and specify constraints, such as the permissions and the time range of access.
+
+2.A
+Correct. The default network rule is to allow all connections from all networks.
+
+3.A
+Microsoft Defender for Storage detects anomalies in account activity. It then notifies you of potentially harmful attempts to access your account.
