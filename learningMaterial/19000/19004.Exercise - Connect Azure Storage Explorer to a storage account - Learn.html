@@ -1,0 +1,359 @@
+<html dir="ltr"><head><title>Exercise - Connect Azure Storage Explorer to a storage account - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/upload-download-and-manage-data-with-azure-storage-explorer/3-exercise-connect-storage-account">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/upload-download-and-manage-data-with-azure-storage-explorer/3-exercise-connect-storage-account</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Exercise - Connect Azure Storage Explorer to a storage account - Learn</h1>
+  <div dir="auto" id="reader-credits">jboeshart</div>
+  <div dir="auto" id="reader-estimated-time">5-6 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="main-column" data-bi-name="body">
+
+					<main id="main" role="main" data-bi-name="content" lang="en-us" dir="ltr">
+
+
+
+
+
+						
+
+
+						<!-- <content> -->
+							<div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>8 minutes</li>
+		</ul>
+			<p>It's easy to browse through the contents of an Azure storage account by using Azure Storage Explorer.</p>
+<p>Now that you have a better understanding of the features and capabilities of Storage Explorer, you can try it for yourself. Use Storage Explorer to explore some of the files that your CRM system stores in Azure Storage.</p>
+<p>Here, you'll try Storage Explorer by downloading, installing, and connecting to an Azure storage account. You'll create a blob and a queue in your storage account.</p>
+<h2 id="download-and-install-azure-storage-explorer">Download and install Azure Storage Explorer</h2>
+<p>First, you need to download and install Storage Explorer.</p>
+<ol>
+<li><p>Browse to the <a href="https://azure.microsoft.com/features/storage-explorer/?azure-sandbox=true" data-linktype="external">Azure Storage Explorer website</a>.</p>
+</li>
+<li><p>For <strong>Operating system</strong>, select your preferred operating system. The following steps will go through the Windows version of the application. Your steps will be different if you're using a different OS.</p>
+</li>
+<li><p>Select the <strong>Download now</strong> button to download the Storage Explorer installer application to your computer.</p>
+</li>
+<li><p>Locate the downloaded file and run it. For the Windows version, use the <strong>StorageExplorer.exe</strong> file.</p>
+</li>
+<li><p>Accept the license agreement, and select <strong>Install</strong>.</p>
+</li>
+<li><p>Browse to the location where you want to install Storage Explorer, or accept the default location. Then select <strong>Next</strong>.</p>
+</li>
+<li><p>For Windows installations, select the <strong>Start menu</strong> folder. Accept the default and select <strong>Next</strong>.</p>
+</li>
+<li><p>When the installation is complete, select <strong>Finish</strong>.</p>
+</li>
+</ol>
+<p>Storage Explorer automatically opens after installation.</p>
+<h2 id="connect-to-an-azure-account">Connect to an Azure account</h2>
+<p>When you first open Storage Explorer, it displays the Connect to Azure Storage wizard.</p>
+<ol>
+<li><p>First, connect to Azure. There are several <strong>Azure environment</strong> options to select from. Select <strong>Azure</strong> and then select <strong>Next</strong>.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/upload-download-and-manage-data-with-azure-storage-explorer/media/3-storage-explorer-connect.png" alt="Screenshot that shows the Connect to Azure Storage wizard" data-linktype="relative-path"></p>
+</li>
+<li><p>An Azure sign-in page appears. Use your Azure credentials to sign in.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/upload-download-and-manage-data-with-azure-storage-explorer/media/3-storage-explorer-azure-sign-in.png" alt="Screenshot that shows the Azure sign-in page" data-linktype="relative-path"></p>
+</li>
+<li><p>When you've signed in to your Azure instance, the associated Azure account and Azure subscription are displayed in the <strong>Account Management</strong> section.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/upload-download-and-manage-data-with-azure-storage-explorer/media/3-account-panel-subscriptions-apply.png" alt="Screenshot that shows the account management panel after signing in to an Azure account" data-linktype="relative-path"></p>
+<p>Confirm that the <strong>Concierge Subscription</strong> subscription is slected and account details are correct, and then select <strong>Apply</strong>.</p>
+</li>
+</ol>
+<p>You've now connected Storage Explorer to your Azure subscription. Leave Storage Explorer open while you work through the next steps.</p>
+<h2 id="create-a-storage-account-and-add-a-blob">Create a storage account and add a blob</h2>
+<ol>
+<li><p>In Azure Cloud Shell, use the following command to create a storage account:</p>
+<pre tabindex="0"><code data-author-content="az storage account create \
+--name  mslearn$RANDOM \
+--resource-group <rgn>[sandbox resource group name]</rgn> \
+--sku Standard_GRS \
+--kind StorageV2
+"><span><span>az storage account create </span>\
+<span>--name</span>  mslearn<span>$RANDOM</span> \
+<span>--resource-group</span> <rgn data-author-content="[sandbox resource group name]">[sandbox resource group name]</rgn> \
+<span>--sku</span> Standard_GRS \
+<span>--kind</span> StorageV2
+</span></code></pre>
+<p>In the output, note the name of the storage account. After the storage account is created, switch back to Storage Explorer.</p>
+</li>
+<li><p>If it isn't currently visible, toggle the <strong>EXPLORER</strong> view so that the pane is shown.</p>
+</li>
+<li><p>In the <strong>EXPLORER</strong> pane, select <strong>Refresh All</strong>, then locate and expand <strong>Concierge Subscription</strong>.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/upload-download-and-manage-data-with-azure-storage-explorer/media/3-storage-explorer-create-blob-1.png" alt="Screenshot that shows the expansion of Concierge Subscription" data-linktype="relative-path"></p>
+</li>
+<li><p>Locate and expand the storage account that you created earlier. It should be named something similar to <strong>mslearn12345</strong> and ends with a different set of numbers. It has four virtual folders: <strong>Blob Containers</strong>, <strong>File Shares</strong>, <strong>Queues</strong>, and <strong>Tables</strong>.</p>
+</li>
+<li><p>Right-click the <strong>Blob Containers</strong> virtual folder to access the shortcut menu, and then select <strong>Create Blob Container</strong>.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/upload-download-and-manage-data-with-azure-storage-explorer/media/3-storage-explorer-create-blob-context-menu.png" alt="Screenshot that shows the shortcut menu options for the Blob Containers folder" data-linktype="relative-path"></p>
+</li>
+<li><p>Name the container <strong>myblobcontainer</strong> and select <strong>Enter</strong>.</p>
+<p>Each created container appears in a tab to the right of the resource tree.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/upload-download-and-manage-data-with-azure-storage-explorer/media/3-storage-explorer-create-blob-view.png" alt="Screenshot that shows the content and details of the new myblobcontainer blob container" data-linktype="relative-path"></p>
+</li>
+<li><p>Upload a blob to the container. In the <strong>myblobcontainer</strong> pane, select <strong>Upload</strong>, and then select <strong>Upload Files</strong>.</p>
+</li>
+<li><p>For <strong>Selected files</strong>, select the ellipsis (<strong>...</strong>). Browse to a small file on your device and select <strong>Open</strong>. Then, select <strong>Upload</strong> to upload the file.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/upload-download-and-manage-data-with-azure-storage-explorer/media/3-upload-blob.png" alt="Screenshot that shows the Upload Files dialog box" data-linktype="relative-path"></p>
+<p>You should now see your file stored in your storage account.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/upload-download-and-manage-data-with-azure-storage-explorer/media/3-upload-blob-complete.png" alt="Screenshot that shows the file in the storage account" data-linktype="relative-path"></p>
+</li>
+</ol>
+<p>From here, you can upload additional files, download files, make copies, and do other administrative tasks.</p>
+<h2 id="create-a-queue-in-your-azure-storage-account">Create a queue in your Azure storage account</h2>
+<p>To create a queue in your storage account:</p>
+<ol>
+<li><p>In the resource tree, find <strong>Concierge Subscription</strong>, and expand the options.</p>
+</li>
+<li><p>Select the <strong>cloudshell</strong> storage account.</p>
+</li>
+<li><p>Right-click the <strong>Queues</strong> virtual folder to access the shortcut menu, and then select <strong>Create Queue</strong>.</p>
+</li>
+<li><p>An empty and unnamed queue is created inside the <strong>Queues</strong> folder. The queue won't be created until you give it a name.</p>
+<div>
+<p> Note</p>
+<p>Containers have specific rules that govern how they can be named. They must begin and end in either a letter or a number, must be all lowercase, and can have numbers and hyphens. The name can't contain a double hyphen.</p>
+</div>
+<p>Name this new queue <strong>myqueue</strong>, and select the <strong>Enter</strong> key to create the queue. Each created queue appears on a tab to the right of the resource tree.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/upload-download-and-manage-data-with-azure-storage-explorer/media/3-storage-explorer-create-queue-view.png" alt="Screenshot that shows the content and details of the new myblob blob container" data-linktype="relative-path"></p>
+<p>From this view, you can manage the content of the queue. If our application used this queue and experienced an issue with processing a message, you could connect to the queue and view the contents of a message to determine the issue.</p>
+</li>
+</ol>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Connect Azure Storage Explorer to Azure Cosmos DB and Data Lake</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/upload-download-and-manage-data-with-azure-storage-explorer/4-connect-cosmosdb-data-lake/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div>
+
+						<!-- </content> -->
+
+						</main>
+
+						<!-- page rating section -->
+						<!-- end page rating section -->
+
+<section>
+		<p>
+Need help? See our <a id="troubleshooting-guide" data-bi-name="troubleshooting" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn.upload-download-and-manage-data-with-azure-storage-explorer.3-exercise-connect-storage-account&amp;documentId=b9b5e35b-df2b-733e-e4f6-4d74e55664e9&amp;versionIndependentDocumentId=e95c6e47-bc52-9e2b-632e-d928eb35194f&amp;contentPath=%2FMicrosoftDocs%2Flearn-pr%2Fblob%2Flive%2Flearn-pr%2Fazure%2Fupload-download-and-manage-data-with-azure-storage-explorer%2F3-exercise-connect-storage-account.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fupload-download-and-manage-data-with-azure-storage-explorer%2F3-exercise-connect-storage-account&amp;author=jaboes">troubleshooting guide</a> or provide specific feedback by <a id="module-unit-feedback-link" data-bi-name="feedback" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn.upload-download-and-manage-data-with-azure-storage-explorer.3-exercise-connect-storage-account&amp;documentId=b9b5e35b-df2b-733e-e4f6-4d74e55664e9&amp;versionIndependentDocumentId=e95c6e47-bc52-9e2b-632e-d928eb35194f&amp;contentPath=%2FMicrosoftDocs%2Flearn-pr%2Fblob%2Flive%2Flearn-pr%2Fazure%2Fupload-download-and-manage-data-with-azure-storage-explorer%2F3-exercise-connect-storage-account.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fupload-download-and-manage-data-with-azure-storage-explorer%2F3-exercise-connect-storage-account&amp;author=jaboes#report-feedback">reporting an issue</a>.		</p>
+	</section>
+
+						<!-- recommendations section -->
+						<!-- end recommendations section -->
+
+						<!-- feedback section -->
+						<!-- end feedback section -->
+
+						<!-- feedback report section -->
+						<!-- end feedback report section -->
+
+						
+					</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

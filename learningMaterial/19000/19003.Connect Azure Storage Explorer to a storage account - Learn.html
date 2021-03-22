@@ -1,0 +1,320 @@
+<html dir="ltr"><head><title>Connect Azure Storage Explorer to a storage account - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/upload-download-and-manage-data-with-azure-storage-explorer/2-connect-storage-account">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/upload-download-and-manage-data-with-azure-storage-explorer/2-connect-storage-account</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Connect Azure Storage Explorer to a storage account - Learn</h1>
+  <div dir="auto" id="reader-credits">jboeshart</div>
+  <div dir="auto" id="reader-estimated-time">8-10 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>7 minutes</li>
+		</ul>
+			<p>Storage accounts provide a flexible solution that keeps data as files, tables, and messages. With Azure Storage Explorer, it's easy to read and manipulate this data.</p>
+<p>You want to enable your engineers to manage the data stored in Azure Storage, so they can maintain the data that your CRM application uses. You want to assess whether they can use Storage Explorer for this purpose.</p>
+<p>Here, you'll learn about Storage Explorer, and how you can use it to manage data from multiple storage accounts and subscriptions. You'll learn different ways of using Storage Explorer to connect to your data, Azure Stack, and data held in Azure Cosmos DB and Azure Data Lake.</p>
+<h2 id="what-is-storage-explorer">What is Storage Explorer?</h2>
+<p>Storage Explorer is a GUI application developed by Microsoft to simplify access to, and the management of, data stored in Azure storage accounts. Storage Explorer is available on Windows, macOS, and Linux.</p>
+<p>Some of the benefits of using Storage Explorer are:</p>
+<ul>
+<li>It's easy to connect to and manage multiple storage accounts.</li>
+<li>The interface lets you connect to Azure Cosmos DB and Data Lake.</li>
+<li>You can also use the interface to update and view entities in your storage accounts.</li>
+<li>Storage Explorer is free to download and use.</li>
+</ul>
+<p>With Storage Explorer, you can use a range of storage and data operation tasks on any of your Azure storage accounts. These tasks include edit, download, copy, and delete.</p>
+<h3 id="supported-software-versions">Supported software versions</h3>
+<p>The Azure Storage Explorer application runs on the following versions of these platforms:</p>
+
+<h3 id="azure-storage-types">Azure Storage types</h3>
+<p>Azure Storage Explorer can access many different data types from services like these:</p>
+<ul>
+<li><strong>Azure Blob Storage</strong>. Blob storage is used to store unstructured data as a binary large object (blob).</li>
+<li><strong>Azure Table Storage</strong>. Table storage is used to store NoSQL, semi-structured data.</li>
+<li><strong>Azure Queue Storage</strong>. Queue storage is used to store messages in a queue, which can then be accessed and processed by applications through HTTP(S) calls.</li>
+<li><strong>Azure Files</strong>. Azure Files is a file-sharing service that enables access through the Server Message Block protocol, similar to traditional file servers.</li>
+<li><strong>Azure Data Lake Storage</strong>. Azure Data Lake, based on Apache Hadoop, is designed for large data volumes and can store unstructured and structured data.</li>
+</ul>
+<h3 id="manage-multiple-storage-accounts-in-multiple-subscriptions">Manage multiple storage accounts in multiple subscriptions</h3>
+<p>If you have multiple storage accounts across multiple subscriptions in your Azure tenant, managing them through the Azure portal can be time-consuming. Storage Explorer gives you the ability to manage the data stored in multiple Azure storage accounts and across Azure subscriptions.</p>
+<h3 id="use-local-emulators">Use local emulators</h3>
+<p>During the development phase of your project, you might not want developers to incur additional costs by using Azure storage accounts. In those cases, you can use a locally based emulator. Storage Explorer supports two emulators: Azure Storage Emulator and Azurite.</p>
+<ul>
+<li>Azure Storage Emulator uses a local instance of Microsoft SQL Server 2012 Express LocalDB. It emulates Azure Table, Queue, and Blob storage.</li>
+<li>Azurite, which is based on Node.js, is an open-source emulator that supports most Azure Storage commands through an API.</li>
+</ul>
+<p>Storage Explorer requires the emulator to be running before you open it. Connecting to your emulator is no different from connecting to Azure storage accounts. However, you'll choose the <strong>Attach to a local emulator</strong> connection type.</p>
+<p>All locally emulated storage connection types appear in <strong>Local &amp; Attached</strong> &gt; <strong>Storage accounts</strong>.</p>
+<h2 id="connecting-storage-explorer-to-azure">Connecting Storage Explorer to Azure</h2>
+<p>There are several ways to connect your Storage Explorer application to your Azure storage accounts.</p>
+<p>You need two permissions to access your Azure storage account: management and data. However, you can use Storage Explorer with only the data-layer permission. The data layer requires the user to be granted, at a minimum, a read data role. The nature of the read/write role should be specific to the type of data stored in the storage account. The data layer is used to access blobs, containers, and other data resources.</p>
+<p>The management role grants access to see lists of your various storage accounts, containers, and service endpoints.</p>
+<h3 id="connection-types">Connection types</h3>
+<p>There are many ways to connect an Azure Storage Explorer instance to your Azure resources. For example:</p>
+<ul>
+<li>Add resources by using Azure Active Directory (Azure AD)</li>
+<li>Use a connection string</li>
+<li>Use a shared access signature URI</li>
+<li>Use a name and key</li>
+<li>Attach to a local emulator</li>
+<li>Attach to Azure Cosmos DB through a connection string</li>
+<li>Attach to Azure Data Lake by using a URI</li>
+</ul>
+<p>We'll explore a few of these connection types, and provide an overview of the required steps to set up the connection.</p>
+<h3 id="add-an-azure-account-by-using-azure-ad">Add an Azure account by using Azure AD</h3>
+<p>Use this connection type when the user can access the data layer. You can use it only to create an Azure Data Lake blob container or a standard blob container. Connecting to Azure Storage through Azure AD requires more configuration than the other methods. The account that you use to connect to Azure must have the correct permissions and authorization to access the target resources.</p>
+<p>To add a resource by using Azure AD:</p>
+<ol>
+<li>Open Storage Explorer.</li>
+<li>Select the <strong>Add an Azure Account</strong> option and sign in to Azure.</li>
+<li>Connect to your Azure storage account.</li>
+<li>Select <strong>Add a resource via Azure AD</strong>, and then choose the Azure tenant and the associated account.</li>
+<li>When you're prompted, provide the type of resource that you're connecting to.</li>
+<li>Review and verify the connection details, and then select <strong>Connect</strong>.</li>
+</ol>
+<p>It's crucial to select the correct resource type because it changes the information that you need to enter.</p>
+<p>Any connections that you create through this approach will appear in the resource tree, in this branch: <strong>Local &amp; attached</strong> &gt; <strong>Storage Accounts</strong> &gt; <strong>Attached Containers</strong> &gt; <strong>Blob</strong>.</p>
+<h3 id="connect-by-using-a-shared-access-signature-uri">Connect by using a shared access signature URI</h3>
+<p>A shared access signature (SAS) URI is an unambiguous identifier that's used to access your Azure Storage resources.</p>
+<p>With this connection method, you'll use a SAS URI for the required storage account. You'll need a SAS URI whether you want to use a file share, table, queue, or blob container. You can get a SAS URI either from the Azure portal or from Storage Explorer.</p>
+<p>To add a SAS connection:</p>
+<ol>
+<li>Open Storage Explorer.</li>
+<li>Connect to your Azure storage account.</li>
+<li>Select the connection type: <strong>shared access signature (SAS) URI</strong>.</li>
+<li>Provide a meaningful name for the connection.</li>
+<li>When you're prompted, provide the SAS URI.</li>
+<li>Review and verify the connection details, and then select <strong>Connect</strong>.</li>
+</ol>
+<p>When you've added a connection, it appears in the resource tree as a new node. You'll find the connection node in this branch: <strong>Local &amp; attached</strong> &gt; <strong>Storage Accounts</strong> &gt; <strong>Attached Container</strong> &gt; <strong>Service</strong>.</p>
+<h3 id="connect-by-using-a-storage-account-name-and-key">Connect by using a storage account name and key</h3>
+<p>To connect to a storage account on Azure quickly, you use the account key that's associated with the storage. To find the storage access keys from the Azure portal, go to the correct storage account page and select <strong>access keys</strong>.</p>
+<p>To add a connection:</p>
+<ol>
+<li>Open Storage Explorer.</li>
+<li>Connect to your Azure storage account.</li>
+<li>Select the connection type: <strong>storage account name and key</strong>.</li>
+<li>Provide a meaningful name for the connection.</li>
+<li>When you're prompted, provide the name of the storage account and either of the account keys needed to access it.</li>
+<li>From the provided list, select the storage domain that you want to use.</li>
+<li>Review and verify the connection details, and then select <strong>Connect</strong>.</li>
+</ol>
+<p>When the connection is added, it appears in the resource tree as a connection node. The connection node is in this branch: <strong>Local &amp; attached</strong> &gt; <strong>Storage Accounts</strong>.</p>
+<h3 id="manage-azure-cosmos-db-and-data-lake">Manage Azure Cosmos DB and Data Lake</h3>
+<p>You can use Storage Explorer to access and manage data stored in Azure Cosmos DB and Data Lake.</p>
+<p>To connect to an Azure Cosmos DB service, you'll need to use a connection string. You get a connection string by accessing the Azure Cosmos DB configuration through the Azure portal.</p>
+<p>To connect to a Data Lake service, you'll need the URI associated with the data lake. Using a URI allows you to access resources that aren't in your subscription. When you have the URI of the resource that you want to access, you connect to it by using the <strong>Data Lake Storage Gen1</strong> option.</p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Exercise - Connect Azure Storage Explorer to a storage account</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/upload-download-and-manage-data-with-azure-storage-explorer/3-exercise-connect-storage-account/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

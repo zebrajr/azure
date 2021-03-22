@@ -1,0 +1,450 @@
+<html dir="ltr"><head><title>Exercise - Connect Azure Storage Explorer to Azure Cosmos DB and Data Lake - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/upload-download-and-manage-data-with-azure-storage-explorer/5-exercise-connect-cosmosdb-data-lake">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/upload-download-and-manage-data-with-azure-storage-explorer/5-exercise-connect-cosmosdb-data-lake</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Exercise - Connect Azure Storage Explorer to Azure Cosmos DB and Data Lake - Learn</h1>
+  <div dir="auto" id="reader-credits">jboeshart</div>
+  <div dir="auto" id="reader-estimated-time">8-10 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>10 minutes</li>
+		</ul>
+			<p>Azure Storage Explorer isn't just about storage accounts. You can also use it to investigate and download data from Azure Cosmos DB or Azure Data Lake.</p>
+<p>You've seen how simple it is to create and manage blob and queue resources in your Azure storage account. Now you want to push your understanding further and see how the storage account connects to your developers' Cosmos DB database and data lake, which they use to store infrastructure data for the CRM system.</p>
+<p>Here, you'll learn how to create a new Storage Explorer connection to Azure Cosmos DB, create a database, and populate it with content. Finally, you'll see how to connect to an Azure Data Lake Storage Gen2 account, create a container, and upload data into it.</p>
+<div>
+<p> Note</p>
+<p>The Azure Cosmos DB integration with Storage Explorer has been deprecated. Any existing functionality will not be removed for a minimum of one year from this release. You should use the <a href="https://portal.azure.com/" data-linktype="external" target="az-portal">Azure Portal</a>, <a href="https://portal.azure.com/App/Download" data-linktype="external" target="az-portal">Azure Portal desktop app</a> or the standalone <a href="https://cosmos.azure.com/" data-linktype="external" target="az-portal">Azure Cosmos explorer</a> instead. The alternative options contain many new features that aren’t currently supported in Storage Explorer.</p>
+</div>
+<h2 id="create-a-cosmos-db-account">Create a Cosmos DB account</h2>
+<p>Before you use Storage Explorer to connect to Azure Cosmos DB with a connection string, you need to create an account.</p>
+<ol>
+<li><p>From Azure Cloud Shell, run this command:</p>
+<pre tabindex="0"><code data-author-content="export NAME=cosmos$RANDOM
+az cosmosdb create \
+    --name $NAME \
+    --kind GlobalDocumentDB \
+    --resource-group <rgn>[sandbox resource group name]</rgn>
+"><span>export NAME=cosmos<span>$RANDOM</span>
+<span>az cosmosdb create </span>\
+    <span>--name</span> <span>$NAME</span> \
+    <span>--kind</span> GlobalDocumentDB \
+    <span>--resource-group</span> <rgn data-author-content="[sandbox resource group name]">[sandbox resource group name]</rgn>
+</span></code></pre>
+<p>This command takes a few minutes to run.</p>
+</li>
+<li><p>When the command finishes, you'll see JSON structured output with the details of the Cosmos DB account. Note the value of the <strong>name</strong> of the account for use in a later step.</p>
+</li>
+</ol>
+<h2 id="obtain-your-cosmos-db-connection-string">Obtain your Cosmos DB connection string</h2>
+<p>Next, obtain the primary master key for your Cosmos DB account. You'll use that key to connect Storage Explorer to Azure Cosmos DB.</p>
+<ol>
+<li><p>In Cloud Shell, use the following command:</p>
+<pre tabindex="0"><code data-author-content="az cosmosdb keys list \
+    --name $NAME \
+    --resource-group <rgn>[Sandbox resource group]</rgn> \
+    --type connection-strings
+"><span><span>az cosmosdb keys list </span>\
+    <span>--name</span> <span>$NAME</span> \
+    <span>--resource-group</span> <rgn data-author-content="[Sandbox resource group]">[Sandbox resource group]</rgn> \
+    <span>--type</span> connection<span>-strings</span>
+</span></code></pre>
+<p>The command returns a response similar to this JSON:</p>
+<pre tabindex="0"><code data-author-content="    {
+  &quot;connectionStrings&quot;: [
+    {
+      &quot;connectionString&quot;: &quot;AccountEndpoint=https://cosmos10632.documents.azure.com:443/;AccountKey=iEMq9yqfmjvrm1yGjbMdhebv6cv6FSFr5C2qAZSHzXmAQTBmP5vvyjdR7kdR3sV054JvAS2HREdYkRXT3xuHmA==;&quot;,
+      &quot;description&quot;: &quot;Primary SQL Connection String&quot;
+    },
+    {
+      &quot;connectionString&quot;: &quot;AccountEndpoint=https://cosmos10632.documents.azure.com:443/;AccountKey=igsE0P0EJtq68X374aDXvbVS7d3ELcebxxGLMs42uSyjNpAXbnSsVT5zviC3lgre5eYmzXzcC6YqxtodNHCwAA==;&quot;,
+      &quot;description&quot;: &quot;Secondary SQL Connection String&quot;
+    },
+    {
+      &quot;connectionString&quot;: &quot;AccountEndpoint=https://cosmos10632.documents.azure.com:443/;AccountKey=iskqlnpSh9w9Vndzj8acic5KpFXot7oapHxu53HKowKtLwokpXwT2upimu2hytc8KDQ45tM2jgVWzeR1q1SOGQ==;&quot;,
+      &quot;description&quot;: &quot;Primary Read-Only SQL Connection String&quot;
+    },
+    {
+      &quot;connectionString&quot;: &quot;AccountEndpoint=https://cosmos10632.documents.azure.com:443/;AccountKey=bngJ453xU0otnkMALdbuTnKGFzL4NX4ppCEWPu5tOdmWRkipelwHa7bIf35E4VIyzvt5VLWwRRpI6Rja9bkePA==;&quot;,
+      &quot;description&quot;: &quot;Secondary Read-Only SQL Connection String&quot;
+    }
+  ]
+}
+"><span>    {
+  <span>"connectionStrings"</span>: [
+    {
+      <span>"connectionString"</span>: <span>"AccountEndpoint=https://cosmos10632.documents.azure.com:443/;AccountKey=iEMq9yqfmjvrm1yGjbMdhebv6cv6FSFr5C2qAZSHzXmAQTBmP5vvyjdR7kdR3sV054JvAS2HREdYkRXT3xuHmA==;"</span>,
+      <span>"description"</span>: <span>"Primary SQL Connection String"</span>
+    },
+    {
+      <span>"connectionString"</span>: <span>"AccountEndpoint=https://cosmos10632.documents.azure.com:443/;AccountKey=igsE0P0EJtq68X374aDXvbVS7d3ELcebxxGLMs42uSyjNpAXbnSsVT5zviC3lgre5eYmzXzcC6YqxtodNHCwAA==;"</span>,
+      <span>"description"</span>: <span>"Secondary SQL Connection String"</span>
+    },
+    {
+      <span>"connectionString"</span>: <span>"AccountEndpoint=https://cosmos10632.documents.azure.com:443/;AccountKey=iskqlnpSh9w9Vndzj8acic5KpFXot7oapHxu53HKowKtLwokpXwT2upimu2hytc8KDQ45tM2jgVWzeR1q1SOGQ==;"</span>,
+      <span>"description"</span>: <span>"Primary Read-Only SQL Connection String"</span>
+    },
+    {
+      <span>"connectionString"</span>: <span>"AccountEndpoint=https://cosmos10632.documents.azure.com:443/;AccountKey=bngJ453xU0otnkMALdbuTnKGFzL4NX4ppCEWPu5tOdmWRkipelwHa7bIf35E4VIyzvt5VLWwRRpI6Rja9bkePA==;"</span>,
+      <span>"description"</span>: <span>"Secondary Read-Only SQL Connection String"</span>
+    }
+  ]
+}
+</span></code></pre>
+<p>Make a note of the <strong>Primary SQL Connection String</strong> because you'll need it next.</p>
+</li>
+</ol>
+<h3 id="connect-to-azure-cosmos-db-by-using-a-connection-string">Connect to Azure Cosmos DB by using a connection string</h3>
+<p>Next, connect Storage Explorer to Azure Cosmos DB through a connection string.</p>
+<ol>
+<li><p>If necessary, open Storage Explorer and connect to your Azure account.</p>
+</li>
+<li><p>In the <strong>EXPLORER</strong> pane, expand <strong>Local &amp; Attached</strong>.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/upload-download-and-manage-data-with-azure-storage-explorer/media/5-cosmos-db-connect-string.png" alt="Screenshot that shows the Cosmos DB Accounts option in the Local &amp; Attached resource tree" data-linktype="relative-path"></p>
+</li>
+<li><p>You'll see a <strong>Cosmos DB Accounts</strong> item. Right-click it and select <strong>Connect to Cosmos DB</strong>.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/upload-download-and-manage-data-with-azure-storage-explorer/media/5-cosmos-db-connect-string-option.png" alt="Screenshot that shows the Connect to Cosmos DB option on the shortcut menu" data-linktype="relative-path"></p>
+</li>
+<li><p>The connection wizard needs the connection string to Azure Cosmos DB. Copy and paste the <strong>Primary SQL Connection String</strong> you generated earlier into the <strong>Connection string</strong> box.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/upload-download-and-manage-data-with-azure-storage-explorer/media/5-cosmos-db-connect-string-connect.png" alt="Screenshot that shows the Azure Cosmos DB connection wizard" data-linktype="relative-path"></p>
+</li>
+<li><p>You'll now see a <strong>Summary</strong> view that shows the <strong>Account</strong> label and name, the account endpoint, and the account key. Verify that they're correct, and then select <strong>Connect</strong>. Select <strong>Next</strong>.</p>
+</li>
+<li><p>The Azure Cosmos DB connection appears in the <strong>Cosmos DB Accounts</strong> folder, with the view displayed to the right.</p>
+</li>
+</ol>
+<p>You're now connected to your Cosmos DB account.</p>
+<h3 id="create-a-cosmos-db-database">Create a Cosmos DB database</h3>
+<p>So far, you've created an Azure Cosmos DB instance and connected to it by using Storage Explorer. Now, you'll use Storage Explorer to create a Cosmos DB database.</p>
+<ol>
+<li><p>In the <strong>EXPLORER</strong> pane, select the Cosmos DB account that you created earlier. Right-click it and select <strong>Create Database</strong>.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/upload-download-and-manage-data-with-azure-storage-explorer/media/5-cosmos-db-create-database.png" alt="Screenshot that shows the Cosmos DB shortcut menu with Create Database selected" data-linktype="relative-path"></p>
+</li>
+<li><p>Give your database the name <strong>products</strong> and select <strong>Enter</strong>.</p>
+<p><span>
+<img src="https://docs.microsoft.com/en-gb/learn/modules/upload-download-and-manage-data-with-azure-storage-explorer/media/5-cosmos-db-create-database-name.png" alt="Screenshot that shows the field where you can name your database." data-linktype="relative-path">
+</span>
+ <!-- no-loc --></p>
+</li>
+</ol>
+<p>You've now created a database called <strong>products</strong> in Azure Cosmos DB.</p>
+<h3 id="create-a-collection-in-a-cosmos-db-database">Create a collection in a Cosmos DB database</h3>
+<p>Now that you have a Cosmos DB database, it's time to create a collection. When you create a collection, you'll provide an ID or name, and the maximum storage capacity.</p>
+<ol>
+<li><p>Right-click the <strong>products</strong> database and select <strong>Create collection</strong>.</p>
+</li>
+<li><p>For <strong>Collection ID</strong>, enter an ID of <strong>regions</strong>.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/upload-download-and-manage-data-with-azure-storage-explorer/media/5-cosmos-db-collection.png" alt="Screenshot that shows the Create Collection panel and the Collection ID box" data-linktype="relative-path"></p>
+</li>
+<li><p>Next, specify whether this collection has a finite amount of storage space or whether it will grow to match the size of the collection. A fixed option gives you a maximum collection size of 10 GB.</p>
+</li>
+<li><p>The last field is <strong>Throughput</strong>. Accept the default of 400.</p>
+</li>
+<li><p>Select <strong>OK</strong>.</p>
+</li>
+</ol>
+<p>You now see that the region's collection is added under the <strong>products</strong> database. You can add as many collections as you want.</p>
+<h3 id="create-documents-in-a-cosmos-db-database-collection">Create documents in a Cosmos DB database collection</h3>
+<p>The collection can contain many items. You use Storage Explorer to manage these, including creating new documents in your collection.</p>
+<ol>
+<li><p>In the <strong>EXPLORER</strong> pane, expand the <strong>regions</strong> collection. Select <strong>Documents</strong>.</p>
+</li>
+<li><p>You now see the <strong>regions</strong> collection pane. From here, you can manage the data in your collection.</p>
+</li>
+<li><p>To add a document, select <strong>New Document</strong>. A new empty document is available in the window below.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/upload-download-and-manage-data-with-azure-storage-explorer/media/5-cosmos-db-collection-create-doc.png" alt="Screenshot that shows the New Document button and the document control panel" data-linktype="relative-path"></p>
+</li>
+<li><p>Replace the content of the document with this JSON:</p>
+<pre tabindex="0"><code data-author-content="{
+    &quot;id&quot;: &quot;66&quot;,
+    &quot;title&quot;: &quot;How to create a new document&quot;,
+    &quot;rtime&quot;: &quot;30 minutes&quot;,
+    &quot;_etag&quot;: &quot;WFFta1FHgQEtttIE1aaa&quot;
+}
+"><span>{
+    <span>"id"</span>: <span>"66"</span>,
+    <span>"title"</span>: <span>"How to create a new document"</span>,
+    <span>"rtime"</span>: <span>"30 minutes"</span>,
+    <span>"_etag"</span>: <span>"WFFta1FHgQEtttIE1aaa"</span>
+}
+</span></code></pre>
+</li>
+<li><p>Select <strong>Save</strong>.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/upload-download-and-manage-data-with-azure-storage-explorer/media/5-cosmos-db-collection-save-doc.png" alt="Screenshot that shows the Save button" data-linktype="relative-path"></p>
+</li>
+</ol>
+<p>The new document appears in the ID pane.</p>
+<h2 id="create-a-data-lake-storage-gen2-account">Create a Data Lake Storage Gen2 account</h2>
+<p>Let's now look at connecting to a Data Lake Storage Gen2 account. Before you can use Storage Explorer to manage your Data Lake Storage Gen2 account, you need to create the storage account in Azure.</p>
+<ol>
+<li><p>In Cloud Shell, install the preview extension to enable the creation of Gen2 accounts, currently in preview.</p>
+<pre tabindex="0"><code data-author-content="az extension add --name storage-preview
+"><span><span>az extension add </span><span>--name</span> storage<span>-preview</span>
+</span></code></pre>
+</li>
+<li><p>To create the Gen2 storage account, use the <strong>az storage account create</strong> command:</p>
+<pre tabindex="0"><code data-author-content="az storage account create \
+    --name dlstoragetest$RANDOM \
+    --resource-group <rgn>[Sandbox resource group]</rgn> \
+    --location westus2 \
+    --sku Standard_LRS \
+    --kind StorageV2 \
+    --hns
+"><span><span>az storage account create </span>\
+    <span>--name</span> dlstoragetest<span>$RANDOM</span> \
+    <span>--resource-group</span> <rgn data-author-content="[Sandbox resource group]">[Sandbox resource group]</rgn> \
+    <span>--location</span> westus2 \
+    <span>--sku</span> Standard_LRS \
+    <span>--kind</span> StorageV2 \
+    <span>--hns</span>
+</span></code></pre>
+</li>
+</ol>
+<h2 id="connect-to-your-data-lake-gen2-storage-account">Connect to your Data Lake Gen2 storage account</h2>
+<p>Now that you've created a Gen2 storage account, you can connect to it in Storage Explorer.</p>
+<ol>
+<li><p>In Storage Explorer, in the <strong>EXPLORER</strong> pane, locate <strong>Concierge Subscription</strong> and expand it to show all the storage accounts.</p>
+</li>
+<li><p>Right-click <strong>Storage Accounts</strong> and select <strong>Connect to Azure storage</strong>.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/upload-download-and-manage-data-with-azure-storage-explorer/media/5-connect-to-azure-storage.png" alt="Screenshot that shows the Connect to Azure storage option" data-linktype="relative-path"></p>
+</li>
+<li><p>If you're prompted, sign in with your Azure account.</p>
+</li>
+<li><p>When the connection is successful, you'll see the <strong>dlsstoragetest001 (ADLS Gen2)</strong> storage account displayed under the storage accounts. Your account will have a different number suffix.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/upload-download-and-manage-data-with-azure-storage-explorer/media/5-azure-data-lake-gen2-storage-account.png" alt="Screenshot that shows the Azure Data Lake Storage Gen2 account" data-linktype="relative-path"></p>
+</li>
+</ol>
+<h3 id="create-a-container">Create a container</h3>
+<p>All containers in an Azure Data Lake Gen2 storage account are blobs. To create a new container:</p>
+<ol>
+<li><p>Right-click the <strong>dlsstoragetest001</strong> storage account, and select <strong>Create Blob Container</strong> from the shortcut menu.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/upload-download-and-manage-data-with-azure-storage-explorer/media/5-data-lake-create-blob-container.png" alt="Screenshot that shows the shortcut menu for adding a container" data-linktype="relative-path"></p>
+</li>
+<li><p>Name the new container <strong>myfilesystem</strong>.</p>
+</li>
+<li><p>When the container is created, the pane for the container appears. There, you can manage the container contents.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/upload-download-and-manage-data-with-azure-storage-explorer/media/5-data-lake-create-blob-container-view.png" alt="Screenshot that shows the myfilesystem control ribbon and view" data-linktype="relative-path"></p>
+</li>
+</ol>
+<h3 id="upload-and-view-blob-data">Upload and view blob data</h3>
+<p>With the new <strong>myfilesystem</strong> container created, you can now upload files or folders to it.</p>
+<ol>
+<li><p>To upload a file, select the <strong>Upload</strong> option, and select <strong>Upload Files</strong>.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/upload-download-and-manage-data-with-azure-storage-explorer/media/5-data-lake-container-upload-options.png" alt="Screenshot that shows the upload options" data-linktype="relative-path"></p>
+</li>
+<li><p>In the dialog box, use the ellipsis (<strong>...</strong>) to select the file that you want to upload.</p>
+</li>
+<li><p>Select the <strong>Upload</strong> button.</p>
+</li>
+<li><p>The file is available to the <strong>myfilesystem</strong> container.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/upload-download-and-manage-data-with-azure-storage-explorer/media/5-data-lake-file-uploaded.png" alt="Screenshot that shows the uploaded file" data-linktype="relative-path"></p>
+</li>
+</ol>
+<p>You can upload as many files as you want to this folder. Also, you can create an unlimited number of folders. You can then organize and manage the content in your folders, as you do with your file system.</p>
+
+		
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

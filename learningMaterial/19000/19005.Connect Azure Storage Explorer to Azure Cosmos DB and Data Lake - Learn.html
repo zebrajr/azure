@@ -1,0 +1,272 @@
+<html dir="ltr"><head><title>Connect Azure Storage Explorer to Azure Cosmos DB and Data Lake - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/upload-download-and-manage-data-with-azure-storage-explorer/4-connect-cosmosdb-data-lake">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/upload-download-and-manage-data-with-azure-storage-explorer/4-connect-cosmosdb-data-lake</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Connect Azure Storage Explorer to Azure Cosmos DB and Data Lake - Learn</h1>
+  <div dir="auto" id="reader-credits">jboeshart</div>
+  <div dir="auto" id="reader-estimated-time">4-5 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>8 minutes</li>
+		</ul>
+			<p>Azure Storage Explorer doesn't just access Azure Storage. It can also access data in Azure Cosmos DB and Azure Data Lake.</p>
+<p>You've worked through the basics of connecting Storage Explorer to your Azure account. In the CRM system, your developers use Azure Cosmos DB for day-to-day operations, and Data Lake for big data storage. You want to use Storage Explorer to connect to both of these databases.</p>
+<div>
+<p> Note</p>
+<p>The Azure Cosmos DB integration with Storage Explorer has been deprecated. Any existing functionality will not be removed for a minimum of one year from this release. You should use the <a href="https://portal.azure.com/" data-linktype="external" target="az-portal">Azure Portal</a>, <a href="https://portal.azure.com/App/Download" data-linktype="external" target="az-portal">Azure Portal desktop app</a> or the standalone <a href="https://cosmos.azure.com/" data-linktype="external" target="az-portal">Azure Cosmos explorer</a> instead. The alternative options contain many new features that aren’t currently supported in Storage Explorer.</p>
+</div>
+<h2 id="use-storage-explorer-to-manage-azure-cosmos-db">Use Storage Explorer to manage Azure Cosmos DB</h2>
+<p>You can use Storage Explorer to connect to Azure Cosmos DB and do useful activities like creating and deleting databases, collections, documents, and graphs.</p>
+<h3 id="connect-by-using-a-connection-string">Connect by using a connection string</h3>
+<p>There are multiple ways to connect to Azure Cosmos DB from Storage Explorer. The primary method is to use a connection string. A connection string contains all the information that you need to find and connect to a particular database in Azure Cosmos DB. The connection string has a specific composition, as shown here:</p>
+<pre tabindex="0"><code data-author-content="AccountEndpoint=https://<YOUR-COSMOS-DB-NAME>.documents.azure.com:443/;AccountKey=<PRIMARY-MASTER-KEY>;
+"><span>AccountEndpoint=https://&lt;YOUR-COSMOS-DB-NAME&gt;.documents.azure.com:443/;AccountKey=&lt;PRIMARY-MASTER-KEY&gt;;
+</span></code></pre>
+<p>In this template, replace <code>&lt;YOUR-COSMOS-DB-NAME&gt;</code> with the name of your database. <code>&lt;PRIMARY-MASTER-KEY&gt;</code> is a unique key for the database.</p>
+<p>There are two ways to obtain the connection string.</p>
+<p>You can use the Azure portal to find the database that you want to connect to. Look for the <strong>Keys</strong> menu item and make a copy of the primary connection string.</p>
+<p>The other way is to use the Azure CLI. This method gives you the primary master key for the Cosmos DB database. Use this command:</p>
+<pre tabindex="0"><code data-author-content="az cosmosdb keys list \
+    --name COSMOS-DB-NAME \
+    --resource-group myresourcegroup \
+    --subscription &quot;My Subscription&quot; \
+    --type keys
+"><span><span>az cosmosdb keys list </span>\
+    <span>--name</span> COSMOS<span>-DB-NAME</span> \
+    <span>--resource-group</span> myresourcegroup \
+    <span>--subscription</span> <span>"My Subscription"</span> \
+    <span>--type</span> keys
+</span></code></pre>
+<p>By using the connection string template, add the name of the database, along with the primary master key returned from the preceding command.</p>
+<p>Now that you have a connection string, you can use Storage Explorer to connect to your database. You can create or delete a database, create or delete collections, and create or delete documents.</p>
+<ol>
+<li>Open Storage Explorer.</li>
+<li>Open the resource tree and select the branch <strong>Local &amp; Attached</strong>.</li>
+<li>Right-click <strong>Cosmos DB Accounts</strong> and select <strong>Connect to Cosmos DB</strong>.</li>
+<li>When the Azure Cosmos DB wizard opens, paste in the connection string. The name of the database appears in the <strong>Account label</strong> field.</li>
+<li>A summary of the connection information is displayed before the connection finishes.</li>
+</ol>
+<h2 id="use-storage-explorer-to-manage-data-lake">Use Storage Explorer to manage Data Lake</h2>
+<p>Azure Data Lake is a service used for storing and analyzing large data sets. It supports large data workloads. It's well suited to capture data of any type or size, and at any speed. Data Lake supports all the expected enterprise-grade capabilities like security, scalability, reliability, manageability, and availability.</p>
+<p>There are two types of Azure Data Lake: Gen1 and Gen2. Both types are supported in Storage Explorer.</p>
+<p>You can use Storage Explorer to connect to Data Lake accounts. Just like storage accounts, you can use it to:</p>
+<ul>
+<li>Create, delete, and manage containers.</li>
+<li>Upload, manage, and administer blobs.</li>
+</ul>
+<p>Let's go through creating Azure Cosmos DB and Data Lake storage, and then use Storage Explorer to connect to them.</p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Exercise - Connect Azure Storage Explorer to Azure Cosmos DB and Data Lake</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/upload-download-and-manage-data-with-azure-storage-explorer/5-exercise-connect-cosmosdb-data-lake/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>
