@@ -1,0 +1,5 @@
+1.C
+You send and receive physical disks holding your data between your on-premises location and an Azure datacenter.
+
+2.B
+Your data must be written to disk by using a specific format. The tool checks the drive and prepares a journal file that's then used by an import job.

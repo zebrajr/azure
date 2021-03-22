@@ -1,0 +1,5 @@
+1.B
+You can only export blob data with the Azure Import/Export service.
+
+2.B
+Find the encryption keys in the details for the export job in the Azure portal.
