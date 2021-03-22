@@ -1,0 +1,264 @@
+<html dir="ltr"><head><title>Learn about just-in-time privileges - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/m365-identity-secure-administrators/just-time-privileges">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/m365-identity-secure-administrators/just-time-privileges</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Learn about just-in-time privileges - Learn</h1>
+  <div dir="auto" id="reader-credits">AlexandraHrt</div>
+  <div dir="auto" id="reader-estimated-time">5-6 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>7 minutes</li>
+		</ul>
+			<p>Just in time (JIT) access is a model in which users receive temporary permissions to perform privileged tasks which prevents malicious or unauthorized users from gaining access after the permissions have expired. Access is granted only when users need it.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-identity-secure-administrators/media/pim.png" alt="Azure AD Privileged Identity Management (PIM)" data-linktype="relative-path"></p>
+<p>Azure AD Privileged Identity Management helps you manage privileged administrative roles across Azure AD, Azure resources, and other Microsoft Online Services. (For Active Directory Domain Services, use Microsoft Identity Manager's Privileged Access Manager capability). In a world where privileged identities are assigned and forgotten, Privileged Identity Management provides solutions like just-in-time access, request approval workflows, and fully integrated access reviews so you can identify, uncover, and prevent malicious activities of privileged roles in real time. Deploying Privileged Identity Management to manage your privileged roles throughout your organization greatly reduces risk while surfacing valuable insights about the activities of your privileged roles.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-identity-secure-administrators/media/quick-start.png" alt="Manage your privileged access screen" data-linktype="relative-path"></p>
+<h2 id="manage-risk">Manage risk</h2>
+<p>You can secure your organization by enforcing the principles of least privilege and just-in-time access. By minimizing the number of permanent assignments of users to privileged roles and enforcing approvals and MFA for elevation, you greatly reduce security risks related to privileged access. Enforcing least privilege and just-in-time access will also allow you to view a history of access to privileged roles so you can track down security issues as they happen.</p>
+<h2 id="address-compliance-and-governance">Address compliance and governance</h2>
+<p>Deploying Privileged Identity Management creates an environment for on-going identity governance. Just-in-time elevation of privileged identities provides a way for Privileged Identity Management to keep track of privileged access activities in your organization. You can also view and receive notifications for all assignments of permanent and eligible roles. Through access review, you can regularly audit and remove unnecessary privileged identities and make sure your organization complies with the most rigorous identity, access, and security standards.</p>
+<h2 id="steps-to-enable-privileged-identity-management">Steps to enable Privileged Identity Management</h2>
+<p>First, you need to set up Privileged Identity Management so that users are eligible for privileged roles. In the Azure portal:</p>
+<ol>
+<li><p>Open the <strong>Azure AD Privileged Identity Management</strong> blade.</p>
+</li>
+<li><p>Select <strong>Azure AD roles</strong> and then <strong>Role settings</strong>:</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-identity-secure-administrators/media/settings.png" alt="Role settings screen" data-linktype="relative-path"></p>
+</li>
+<li><p>Select the role you would like to require just in time privileges. Here, we selected the Intune Administrator role:</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-identity-secure-administrators/media/role-setting-details.png" alt="Intune administrator role selected in Role settings details screen " data-linktype="relative-path"></p>
+</li>
+<li><p>Click <strong>Edit</strong> to identify the tasks required to receive privileges. Here, we set the maximum activation duration to 8 hours, required Azure MFA for activation, and required justification. We also required an approver to activate.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-identity-secure-administrators/media/activate.png" alt="Activation screen" data-linktype="relative-path"></p>
+<p>When assigning a privileged identity-managed role, you can choose from those two assignment types – <strong>eligible</strong> and <strong>active</strong>. Eligible assignments require the member of the role to perform an action to use the role. Actions might include performing a multi-factor authentication (MFA) check, providing a business justification, or requesting approval from designated approvers. Active assignments don't require the member to perform any action to use the role. Members assigned as active have privileges assigned at all times. In the <strong>roles</strong> settings, we can configure the expiration duration for both of these assignment types.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-identity-secure-administrators/media/assignment.png" alt="Assignment screen" data-linktype="relative-path"></p>
+</li>
+<li><p>Provide notification rules, such that the appropriate members of your organization are aware of the permissions users have.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-identity-secure-administrators/media/notification.png" alt="Notification screen" data-linktype="relative-path"></p>
+</li>
+<li><p>Now that you’ve configured and updated the settings for a role, in the Privileged Identity Management pane, add a member to the role by selecting <strong>Roles -&gt; + Add Assignments</strong>. Then, select the role to be configured and members to assign.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-identity-secure-administrators/media/add-assignments.png" alt="Add assignments screen" data-linktype="relative-path"></p>
+</li>
+<li><p>Then provide the assignment type:</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-identity-secure-administrators/media/setting.png" alt="Assignment type screen" data-linktype="relative-path"></p>
+</li>
+<li><p>Click <strong>assign</strong>.</p>
+</li>
+</ol>
+<p>Now when the assigned users log in to the Privileged Identity Management blade of the Azure portal, they will be able to Activate the roles they were assigned:</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-identity-secure-administrators/media/my-roles.png" alt="Role activation screen" data-linktype="relative-path"></p>
+<p>Because of the settings we configured, to activate the Intune administrator role users need to provide a justification:</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-identity-secure-administrators/media/activate.png" alt="Intune administrator role users need to provide a justification" data-linktype="relative-path"></p>
+<p>The approver will then receive a notification and can approve the request by selecting Approve Requests in the Privileged identity Management portal:</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-identity-secure-administrators/media/approve-requests.png" alt="Request approval screen" data-linktype="relative-path"></p>
+<p>After reviewing the justification that the user provided, the approver can approve the request and also provide their own justification:</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-identity-secure-administrators/media/admin.png" alt="Approver justification screen" data-linktype="relative-path"></p>
+<p>Then the user sees the role as Active within Privileged Identity Management and can access the assigned resources.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-identity-secure-administrators/media/azure-ad-roles.png" alt="Active roles screen" data-linktype="relative-path"></p>
+
+		
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

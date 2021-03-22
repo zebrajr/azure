@@ -1,0 +1,8 @@
+1.A
+Privileged Access Workstations (PAWs) provide a dedicated operating system for sensitive tasks that is protected from Internet attacks and threat vectors
+
+2.A
+Azure AD Privileged Identity Management helps you to manage privileged administrative roles across Azure AD, Azure resources, and other Microsoft Online Services. For Active Directory Domain Services, use Microsoft Identity Manager's Privileged Access Manager capability.
+
+3.B
+Azure AD Privileged Identity Management does not seek to reduce the number of privileged users, but instead ensures that users only have administrative privileges when they are required.

@@ -1,0 +1,262 @@
+<html dir="ltr"><head><title>Understand isolated identity - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/m365-identity-secure-administrators/isolated-identity">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/m365-identity-secure-administrators/isolated-identity</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Understand isolated identity - Learn</h1>
+  <div dir="auto" id="reader-credits">AlexandraHrt</div>
+  <div dir="auto" id="reader-estimated-time">5-6 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="main" role="main" data-bi-name="content" lang="en-us" dir="ltr">
+		
+		
+		<ul>
+			<li>5 minutes</li>
+		</ul>
+			<p>Securing privileged access is a critical first step to securing business assets in a modern organization. The security of business assets in an IT organization depends on the integrity of the privileged accounts used for administration, management, and development. Privileged accounts like administrators of Active Directory Domain Services have direct or indirect access to most or all assets in an IT organization, making a compromise of these accounts a significant business risk. Cyber-attackers often target these accounts and other elements of privileged access using credential theft attacks like Pass-the-Hash and Pass-the-Ticket. An attacker that gains control of an administrative account can use those privileges to increase their impact in the target organization as depicted below:</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-identity-secure-administrators/media/attackers.png" alt="An attacker that gains control of an administrative account can use those privileges to increase their impact in the target organization." data-linktype="relative-path"></p>
+<p>Protecting privileged access against determined adversaries requires you to take a complete and thoughtful approach to isolate these systems from risks.</p>
+<p>To help separate internet risks (phishing attacks, web browsing) from privileged access account risks, create a dedicated account for all personnel with privileged access. Administrators should not be browsing the web, checking their email, or doing day to day productivity tasks with highly privileged accounts.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-identity-secure-administrators/media/active-directory-tier-model.png" alt="Active directory tier model" data-linktype="relative-path"></p>
+<p>Implementing a tiered model can prevent an escalation of privilege path for an attacker who is using stolen credentials. The tier model is defined by the following rules:</p>
+<ul>
+<li>Each administrative resource (group, account, servers, workstation, Active Directory object, or application) are classified as only one tier.</li>
+<li>Personnel with responsibilities at multiple tiers have separate administrative accounts created for each required tier. Any account that currently logs on to multiple tiers are split into multiple accounts, each of which fits within only one tier definition. These accounts are also required to have different passwords.</li>
+<li>Administrative accounts may not control higher-tier resources through administrative access such as access control lists (ACLs), application agents, or control of service accounts. Accounts that control a higher tier may not log on to lower-tier computers because logging on to such a computer might expose and inadvertently grant control of the account credentials and privileges assigned to that account. Under some specific exceptions, a feature that supports Remote Desktop Protocol (RDP) with restricted admin mode could be used without exposing credentials.</li>
+<li>Administrative accounts may control lower-tier resources as required by their role, but only through management interfaces that are at the higher tier and that do not expose credentials—for example, domain admin accounts (tier 0) managing server admin Active Directory account objects (tier 1) through Active Directory management consoles on a domain controller (tier 0).</li>
+</ul>
+<p>To further prevent the risk of escalated credentials, consider the following recommended practices:</p>
+<ul>
+<li>Do not use the same password for domain and local accounts.</li>
+<li>Limit valid lifetime of credentials. In other words, balance usability (time between entering credentials) and security (credential exposure duration).</li>
+<li>Protocol considerations including:
+<ul>
+<li>Kerberos natively expires reusable credentials (ticket granting ticket lifetime and renewal lifetime).</li>
+<li>NTLM credential (NT hash) is valid until password changes.</li>
+</ul>
+</li>
+<li>Various options grant and expire privileges, each with caveats:
+<ul>
+<li>Group membership</li>
+<li>Dynamic account creation</li>
+<li>Scripted actions</li>
+</ul>
+</li>
+</ul>
+<p>Although the previous information focuses on Active Directory environments, much of the same guidance applies to securing Azure Active Directory admin accounts. For example, Microsoft recommends creating dedicated Microsoft 365 global administrator accounts that are used only when necessary, and that those accounts be secured via multi-factor authentication. Additionally, for privileged access, Azure Active Directory admin accounts can leverage just-in-time privileges through Azure AD Privileged Identity Management to ensure administrative credentials are only being used when required.</p>
+<p>For Azure Active Directory, also consider creating emergency access--or “break glass”--accounts. Emergency access accounts help restrict privileged access within an Azure AD organization. These accounts are highly privileged and aren't assigned to specific individuals. Emergency access accounts are limited to "break glass" scenarios where normal administrative accounts can't be used (such as if a federated on-premises identity provider isn’t available). If you don't see any global admin cloud-only accounts using the *.onmicrosoft.com domain (for "break glass" emergency access), create at least two of these accounts.
+ </p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Learn about just-in-time privileges</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/m365-identity-secure-administrators/just-time-privileges/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div><section>
+		<p>
+Need help? See our <a id="troubleshooting-guide" data-bi-name="troubleshooting" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-m365-identity.m365-identity-secure-administrators.isolated-identity&amp;documentId=d4b8dedd-15de-2d11-4699-6ff5c77de25d&amp;versionIndependentDocumentId=b94b51e3-bbd7-c049-8fa8-aa634f304257&amp;contentPath=%2FMicrosoftDocs%2Flearn-m365-pr%2Fblob%2Flive%2Flearn-m365-pr%2Fm365%2Fm365-identity-secure-administrators%2Fisolated-identity.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fm365-identity-secure-administrators%2Fisolated-identity&amp;author=elizapo">troubleshooting guide</a> or provide specific feedback by <a id="module-unit-feedback-link" data-bi-name="feedback" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-m365-identity.m365-identity-secure-administrators.isolated-identity&amp;documentId=d4b8dedd-15de-2d11-4699-6ff5c77de25d&amp;versionIndependentDocumentId=b94b51e3-bbd7-c049-8fa8-aa634f304257&amp;contentPath=%2FMicrosoftDocs%2Flearn-m365-pr%2Fblob%2Flive%2Flearn-m365-pr%2Fm365%2Fm365-identity-secure-administrators%2Fisolated-identity.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fm365-identity-secure-administrators%2Fisolated-identity&amp;author=elizapo#report-feedback">reporting an issue</a>.		</p>
+	</section></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>
