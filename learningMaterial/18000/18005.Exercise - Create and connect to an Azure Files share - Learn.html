@@ -1,0 +1,358 @@
+<html dir="ltr"><head><title>Exercise - Create and connect to an Azure Files share - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/store-and-share-with-azure-files/4-exercise-create-azure-files">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/store-and-share-with-azure-files/4-exercise-create-azure-files</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Exercise - Create and connect to an Azure Files share - Learn</h1>
+  <div dir="auto" id="reader-credits">jboeshart</div>
+  <div dir="auto" id="reader-estimated-time">4-5 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="main" role="main" data-bi-name="content" lang="en-us" dir="ltr">
+		
+		
+		<ul>
+			<li>10 minutes</li>
+		</ul>
+			<p>Azure storage accounts enable organizations to replicate their on-premises file shares in a secure, resilient cloud service. Companies can then remove redundant hardware and infrastructure that support the internal SANs and NAS. At the same time, a company can reduce the risk of files being unavailable because of a hardware failure.</p>
+<p>The finance company has asked you to duplicate the two file shares that they currently have on-premises. It uses one file share for reports and the other for application data. The storage account needs to be resilient to datacenter failures. That's why you'll create it to use GRS redundancy.</p>
+<p>In this exercise, you'll first create a new storage account and two file shares for reports and application data. You'll then create a Windows VM to use as your example customer machine. You'll use the Windows VM to mount drives where you access the file shares. Finally, you'll map two drives to the new Azure file shares and copy reports to them.</p>
+<h2 id="create-a-grs-storage-account">Create a GRS storage account</h2>
+<ol>
+<li><p>Create a storage account by using the Azure CLI command.</p>
+<pre tabindex="0"><code data-author-content="export STORAGEACCT=learnazurefileshare$RANDOM
+
+az storage account create \
+    --name $STORAGEACCT \
+    --resource-group <rgn>[sandbox resource group]</rgn> \
+    --sku Standard_GRS
+"><span>export STORAGEACCT=learnazurefileshare<span>$RANDOM</span>
+
+<span>az storage account create </span>\
+    <span>--name</span> <span>$STORAGEACCT</span> \
+    <span>--resource-group</span> <rgn data-author-content="[sandbox resource group]">[sandbox resource group]</rgn> \
+    <span>--sku</span> Standard_GRS
+</span></code></pre>
+</li>
+<li><p>Using Azure CLI commands, save the storage account key in a local variable.</p>
+<pre tabindex="0"><code data-author-content="STORAGEKEY=$(az storage account keys list \
+    --resource-group <rgn>[sandbox resource group]</rgn> \
+    --account-name $STORAGEACCT \
+    --query &quot;[0].value&quot; | tr -d '&quot;')
+"><span>STORAGEKEY=$(<span>az storage account keys </span>list \
+    <span>--resource-group</span> <rgn data-author-content="[sandbox resource group]">[sandbox resource group]</rgn> \
+    <span>--account-name</span> <span>$STORAGEACCT</span> \
+    <span>--query</span> <span>"[0].value"</span> | tr <span>-d</span> <span>'"'</span>)
+</span></code></pre>
+</li>
+</ol>
+
+<ol>
+<li><p>Create a file share to store the finance company's reports.</p>
+<pre tabindex="0"><code data-author-content="az storage share create \
+    --account-name $STORAGEACCT \
+    --account-key $STORAGEKEY \
+    --name &quot;reports&quot;
+"><span><span>az storage share create </span>\
+    <span>--account-name</span> <span>$STORAGEACCT</span> \
+    <span>--account-key</span> <span>$STORAGEKEY</span> \
+    <span>--name</span> <span>"reports"</span>
+</span></code></pre>
+</li>
+<li><p>Create a file share to store the finance company's application data.</p>
+<pre tabindex="0"><code data-author-content="az storage share create \
+    --account-name $STORAGEACCT \
+    --account-key $STORAGEKEY \
+    --name &quot;data&quot;
+"><span><span>az storage share create </span>\
+    <span>--account-name</span> <span>$STORAGEACCT</span> \
+    <span>--account-key</span> <span>$STORAGEKEY</span> \
+    <span>--name</span> <span>"data"</span>
+</span></code></pre>
+</li>
+</ol>
+<h2 id="create-and-connect-to-a-windows-server">Create and connect to a Windows server</h2>
+<p>Next, create a Windows Server VM to simulate an on-premises machine running in the finance company's datacenter or branch office.</p>
+<ol>
+<li><p>Using Azure Cloud Shell, create a Windows VM with the Azure CLI. When you're prompted for a password, enter a complex password of your choice and note it for reference later.</p>
+<pre tabindex="0"><code data-author-content="az vm create \
+    --resource-group <rgn>[sandbox resource group]</rgn> \
+    --name 2019FileServer \
+    --image Win2019Datacenter \
+    --admin-username azureuser
+"><span><span>az vm create </span>\
+    <span>--resource-group</span> <rgn data-author-content="[sandbox resource group]">[sandbox resource group]</rgn> \
+    <span>--name</span> <span>2019</span>FileServer \
+    <span>--image</span> Win2019Datacenter \
+    <span>--admin-username</span> azureuser
+</span></code></pre>
+</li>
+<li><p>Sign in to the <a href="https://portal.azure.com/learn.docs.microsoft.com" data-linktype="external" target="az-portal">Azure portal</a> with the account you used to activate the sandbox. On the portal menu, select <strong>All services</strong> &gt; <strong>Virtual machines</strong>. Then select the <strong>2019FileServer</strong> VM you created.</p>
+</li>
+<li><p>On the <strong>Overview</strong> pane, select <strong>Connect</strong> &gt; <strong>RDP</strong>, and then select <strong>Download RDP File</strong>.</p>
+</li>
+<li><p>Run the RDP file, and select <strong>Connect</strong> when you're prompted.</p>
+</li>
+<li><p>On the <strong>Enter your credentials</strong> prompt, select <strong>More choices</strong>. Then select <strong>Use a different account</strong>. In the <strong>Username</strong> field, enter <strong>azureuser</strong>, and enter the password for this user.</p>
+</li>
+<li><p>Select <strong>OK</strong>, and then select <strong>Yes</strong> to connect to the server.</p>
+</li>
+</ol>
+
+<ol>
+<li><p>In the Azure portal, select or search for <strong>Storage Accounts</strong> from the portal menu.</p>
+</li>
+<li><p>Select the created storage account that should be named <strong>learnazurefileshare</strong>, followed by random numbers.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/store-and-share-with-azure-files/media/4-select-file-shares.png" alt="Screenshot of the Azure portal showing the storage account overview" data-linktype="relative-path"></p>
+</li>
+<li><p>Select <strong>File shares</strong>, and then select <strong>data</strong> (same page you just selected data).</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/store-and-share-with-azure-files/media/4-select-data.png" alt="Screenshot of the file shares in the storage account" data-linktype="relative-path"></p>
+</li>
+<li><p>Select <strong>Connect</strong>, and in the pop-up window on the right, select the <strong>F</strong> drive letter.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/store-and-share-with-azure-files/media/4-connect-share.png" alt="Screenshot of the data file share and its connection commands" data-linktype="relative-path"></p>
+</li>
+<li><p>Copy the PowerShell command.</p>
+</li>
+<li><p>On your virtual machine, right-click <strong>Start</strong> and select <strong>Windows PowerShell (Admin)</strong>.</p>
+</li>
+<li><p>In the PowerShell window, paste the copied commands.</p>
+</li>
+<li><p>Return to the Azure portal, go back to the file shares, and select the <strong>reports</strong> file share.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/store-and-share-with-azure-files/media/4-navigate-back.png" alt="Screenshot of how to go back to the file shares " data-linktype="relative-path"></p>
+</li>
+<li><p>Select <strong>Connect</strong>, and in the pop-up window on the right, select the <strong>G</strong> drive letter.</p>
+</li>
+<li><p>Copy the bottom PowerShell command.</p>
+</li>
+<li><p>In the PowerShell window, paste the copied commands.</p>
+</li>
+</ol>
+<h2 id="test-the-mounted-drive">Test the mounted drive</h2>
+<ol>
+<li><p>Open Explorer in the VM , and select <strong>This PC</strong>.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/store-and-share-with-azure-files/media/4-explorer-mapped-drives.png" alt="Explorer showing This PC" data-linktype="relative-path"></p>
+</li>
+<li><p>Select the data drive named drive <strong>F</strong>.</p>
+</li>
+<li><p>Right-click the main window, and select <strong>New</strong> &gt; <strong>Text Document</strong>.</p>
+</li>
+<li><p>Name the file <strong>test upload</strong>.</p>
+</li>
+<li><p>Return to the Azure portal in your browser, and go to the <strong>data</strong> file share. You should see the file in the portal.</p>
+</li>
+<li><p>Keep this connection open for the next exercise.</p>
+</li>
+</ol>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Secure access to files stored in Azure Files</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/store-and-share-with-azure-files/5-secure-azure-files/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div><section>
+		<p>
+Need help? See our <a id="troubleshooting-guide" data-bi-name="troubleshooting" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn.store-and-share-with-azure-files.4-exercise-create-azure-files&amp;documentId=0d6d54f3-9550-a964-95ab-eeaea3889d5b&amp;versionIndependentDocumentId=6d5ac322-bfb7-7ef4-b1da-6fde5f59a3eb&amp;contentPath=%2FMicrosoftDocs%2Flearn-pr%2Fblob%2Flive%2Flearn-pr%2Fazure%2Fstore-and-share-with-azure-files%2F4-exercise-create-azure-files.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fstore-and-share-with-azure-files%2F4-exercise-create-azure-files&amp;author=jaboes">troubleshooting guide</a> or provide specific feedback by <a id="module-unit-feedback-link" data-bi-name="feedback" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn.store-and-share-with-azure-files.4-exercise-create-azure-files&amp;documentId=0d6d54f3-9550-a964-95ab-eeaea3889d5b&amp;versionIndependentDocumentId=6d5ac322-bfb7-7ef4-b1da-6fde5f59a3eb&amp;contentPath=%2FMicrosoftDocs%2Flearn-pr%2Fblob%2Flive%2Flearn-pr%2Fazure%2Fstore-and-share-with-azure-files%2F4-exercise-create-azure-files.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fstore-and-share-with-azure-files%2F4-exercise-create-azure-files&amp;author=jaboes#report-feedback">reporting an issue</a>.		</p>
+	</section></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

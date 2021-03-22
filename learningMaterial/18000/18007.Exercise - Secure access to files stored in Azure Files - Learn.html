@@ -1,0 +1,442 @@
+<html dir="ltr"><head><title>Exercise - Secure access to files stored in Azure Files - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/store-and-share-with-azure-files/6-exercise-secure-azure-files">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/store-and-share-with-azure-files/6-exercise-secure-azure-files</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Exercise - Secure access to files stored in Azure Files - Learn</h1>
+  <div dir="auto" id="reader-credits">jboeshart</div>
+  <div dir="auto" id="reader-estimated-time">6-8 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="main-column" data-bi-name="body">
+
+					<main id="main" role="main" data-bi-name="content" lang="en-us" dir="ltr">
+
+
+
+
+
+						
+
+
+						<!-- <content> -->
+							<div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>10 minutes</li>
+		</ul>
+			<p>Azure provides several options to improve security and restrict access to file shares you've created.</p>
+<p>The finance company you're working for wants to migrate existing data files from their on-premises file shares. Before moving these files to the cloud, the company wants to ensure that only their datacenter and branch offices can access them. To ensure security is in place, you'll enable secure transfers, and then allow access only from a specific set of IP addresses.</p>
+<p>In this exercise, you'll check that secure transfers are enforced on the file shares you created previously. After checking, you'll add firewall rules to restrict access to a specific IP address, and then test that it can't be accessed from anywhere else. Finally, you'll create a snapshot of your file share that you can use to recover files.</p>
+<h2 id="enable-secure-file-transfer">Enable secure file transfer</h2>
+<ol>
+<li><p>Open your local browser to sign in to the <a href="https://portal.azure.com/" data-linktype="external" target="az-portal">Azure portal</a>.</p>
+</li>
+<li><p>In the portal menu on the left, select <strong>Storage accounts</strong>.</p>
+</li>
+<li><p>Select the created storage account that should be named <strong>learnazurefileshare</strong> followed by random numbers.</p>
+</li>
+<li><p>Under <strong>Settings</strong>, select <strong>Configuration</strong>.</p>
+<p><span>
+<img src="https://docs.microsoft.com/en-gb/learn/modules/store-and-share-with-azure-files/media/5-secure-transfer.png" alt="Screenshot of the configuration page of storage accounts." data-linktype="relative-path">
+</span>
+</p>
+</li>
+<li><p>Check that <strong>Secure transfer required</strong> is enabled.</p>
+</li>
+</ol>
+<h2 id="add-a-firewall-rule-to-restrict-access-to-an-ip-address">Add a firewall rule to restrict access to an IP address</h2>
+<ol>
+<li><p>Under <strong>Settings</strong>, select <strong>Networking</strong> &gt; <strong>Firewalls and virtual networks</strong>.</p>
+<p><span>
+<img src="https://docs.microsoft.com/en-gb/learn/modules/store-and-share-with-azure-files/media/6-add-firewall-protections.png" alt="Screenshot showing the firewalls and virtual networks options." data-linktype="relative-path">
+</span>
+</p>
+</li>
+<li><p>Under <strong>Allow access from</strong>, select the <strong>Selected networks</strong> option.</p>
+</li>
+<li><p>Under <strong>Firewall</strong>, in the address range input, note the public IP address of your VM. You can see this address in the title bar of the remote desktop connection.</p>
+</li>
+<li><p>Select <strong>Save</strong>.</p>
+</li>
+</ol>
+
+<ol>
+<li><p>On your host machine, try to mount one of the network shares.</p>
+</li>
+<li><p>In your browser, sign in to the <a href="https://portal.azure.com/" data-linktype="external" target="az-portal">Azure portal</a>.</p>
+</li>
+<li><p>In the portal menu on the left, select <strong>Storage Accounts</strong>.</p>
+</li>
+<li><p>Select the created storage account. It should be named <strong>learnazurefileshare</strong> followed by random numbers.</p>
+</li>
+<li><p>Select <strong>File shares</strong>.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/store-and-share-with-azure-files/media/4-select-file-shares.png" alt="Screenshot of the Azure portal showing the storage account overview" data-linktype="relative-path"></p>
+</li>
+<li><p>You should see <strong>Access Denied</strong>.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/store-and-share-with-azure-files/media/6-access-denied.png" alt="Screenshot showing access is denied to the share" data-linktype="relative-path"></p>
+</li>
+<li><p>Return to the <strong>Firewalls and virtual networks</strong> settings.</p>
+</li>
+<li><p>Select the <strong>Add your client IP address</strong> check box, and select <strong>Save</strong>.</p>
+</li>
+<li><p>Select <strong>Overview</strong>, and then select <strong>File shares</strong>.</p>
+</li>
+<li><p>Select the <strong>data</strong> file share. You can now browse the file share in your local browser.</p>
+<div>
+<p> Note</p>
+<p>You might need to go to the reports share because the error page could be cached for the data file share.</p>
+</div>
+</li>
+<li><p>Use the browser on your computer to download AzCopy by going to <a href="https://aka.ms/downloadazcopy-v10-windows" data-linktype="external">https://aka.ms/downloadazcopy-v10-windows</a>.</p>
+</li>
+<li><p>Connect to your VM by using the remote desktop connection.</p>
+</li>
+<li><p>Open the file share in the Azure portal, upload the azcopy.exe file so it is available on the VM. On the VM drag to the desktop for easy use.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/store-and-share-with-azure-files/media/6-unzip-azcopy.png" alt="Screenshot of expanding the AzCopy zip folder" data-linktype="relative-path"></p>
+</li>
+<li><p>Select the <strong>azcopy</strong> zip file.</p>
+</li>
+<li><p>On the menu, select <strong>Compressed Folder Tools</strong>, and then select <strong>Extract all</strong>.</p>
+</li>
+<li><p>In the Extract Compressed (Zipped) Folders window, select <strong>Extract</strong>.</p>
+</li>
+<li><p>Select <strong>Start</strong>, select the <strong>Windows PowerShell folder</strong>, and then select <strong>Windows PowerShell</strong>.</p>
+</li>
+<li><p>Move to the folder that contains <strong>AzCopy</strong>.</p>
+<pre tabindex="0"><code data-author-content="cd C:\Users\azureuser\Desktop
+"><span>cd C:\Users\azureuser\Desktop
+</span></code></pre>
+</li>
+<li><p>Run AzCopy to copy the files to Azure by first signing in to the sandbox.</p>
+<pre tabindex="0"><code data-author-content=".\azcopy.exe login
+"><span>.\azcopy.exe login
+</span></code></pre>
+<div>
+<p> Note</p>
+<p>Due to security you now need to use an external web browser.  You will need to type the URL into another device, your phone works well.  Enter the code to complete the connection.</p>
+</div>
+</li>
+</ol>
+<h2 id="copy-local-files-to-azure">Copy local files to Azure</h2>
+<ol>
+<li><p>Create some local example test files by using PowerShell.</p>
+<pre tabindex="0"><code data-author-content="1..100 | % { New-Item -Path F:\ -Name &quot;$_.txt&quot; -Value (Get-Date).toString() -ItemType file}
+"><span><span>1</span>..<span>100</span> | % { <span>New-Item</span><span> -Path</span> F:\<span> -Name</span> <span>"<span>$_</span>.txt"</span><span> -Value</span> (<span>Get-Date</span>).toString()<span> -ItemType</span> file}
+</span></code></pre>
+</li>
+<li><p>Sign in to the <a href="https://portal.azure.com/" data-linktype="external" target="az-portal">Azure portal</a>.</p>
+</li>
+<li><p>In the portal menu on the left, select <strong>Storage Accounts</strong>.</p>
+</li>
+<li><p>Select the created storage account. It should be named <strong>learnazurefileshare</strong> followed by random numbers.</p>
+</li>
+<li><p>Under <strong>Settings</strong>, select <strong>Shared access signatures</strong>.</p>
+<p><span>
+<img src="https://docs.microsoft.com/en-gb/learn/modules/store-and-share-with-azure-files/media/6-sas-connection-string.png" alt="Screenshot showing Shared access signatures." data-linktype="relative-path">
+</span>
+</p>
+<p>AzCopy requires a shared access signature (SAS) to authorize access to the share.</p>
+</li>
+<li><p>Select <strong>Generate SAS and connection string</strong>.</p>
+</li>
+<li><p>Copy the <strong>File service SAS URL</strong>.</p>
+</li>
+<li><p>Paste the connection string into Notepad, and add a path to the data share. Change the string by adding <code>data/</code> to the path from:</p>
+<p><code>https://learnazurefileshare6438.file.core.windows.net/?sv=2019-02-02&amp;ss=bfqt&amp;srt=sco&amp;sp=rwdlacup&amp;se=2019-12-05T20:46:09Z&amp;st=2019-12-05T12:46:09Z&amp;spr=https&amp;sig=TW1ZMwzksKMhKMqJxSCMBy5wFmut7yuR3vNlTSwFhKQ%3D</code></p>
+<p>to:</p>
+<p><code>https://learnazurefileshare6438.file.core.windows.net/data/?sv=2019-02-02&amp;ss=bfqt&amp;srt=sco&amp;sp=rwdlacup&amp;se=2019-12-05T20:46:09Z&amp;st=2019-12-05T12:46:09Z&amp;spr=https&amp;sig=TW1ZMwzksKMhKMqJxSCMBy5wFmut7yuR3vNlTSwFhKQ%3D</code></p>
+</li>
+<li><p>Use this new SAS connection string in the AzCopy command to copy the files to Azure. Run this command in the PowerShell window.</p>
+<pre tabindex="0"><code data-author-content=".\azcopy copy &quot;D:\*.txt&quot; &quot;https://learnazurefileshare6438.file.core.windows.net/data/?sv=2019-02-02&amp;ss=bfqt&amp;srt=sco&amp;sp=rwdlacup&amp;se=2019-12-05T20:46:09Z&amp;st=2019-12-05T12:46:09Z&amp;spr=https&amp;sig=TW1ZMwzksKMhKMqJxSCMBy5wFmut7yuR3vNlTSwFhKQ%3D&quot; --recursive=true
+"><span>.\azcopy copy <span>"D:\*.txt"</span> <span>"https://learnazurefileshare6438.file.core.windows.net/data/?sv=2019-02-02&amp;ss=bfqt&amp;srt=sco&amp;sp=rwdlacup&amp;se=2019-12-05T20:46:09Z&amp;st=2019-12-05T12:46:09Z&amp;spr=https&amp;sig=TW1ZMwzksKMhKMqJxSCMBy5wFmut7yuR3vNlTSwFhKQ%3D"</span><span> --recursive</span>=true
+</span></code></pre>
+</li>
+<li><p>You should see the following output from AzCopy.</p>
+<pre tabindex="0"><code data-author-content="INFO: Scanning...
+
+Job fadb5656-752c-0e46-6a01-703c18c6fe17 has started
+Log file is located at: C:\Users\azureuser\.azcopy\fadb5656-752c-0e46-6a01-703c18c6fe17.log
+
+99.6 %, 997 Done, 0 Failed, 4 Pending, 0 Skipped, 1001 Total, 2-sec Throughput (Mb/s): 0.0113
+
+
+Job fadb5656-752c-0e46-6a01-703c18c6fe17 summary
+Elapsed Time (Minutes): 0.1674
+Total Number Of Transfers: 1001
+Number of Transfers Completed: 1001
+Number of Transfers Failed: 0
+Number of Transfers Skipped: 0
+TotalBytesTransferred: 21650
+Final Job Status: Completed
+``` -->
+
+"><span>INFO: Scanning...
+
+Job fadb5656-<span>752</span>c-<span>0</span>e46-<span>6</span>a01-<span>703</span>c18c6fe17 has started
+Log file is located at: C:\Users\azureuser\.azcopy\fadb5656-<span>752</span>c-<span>0</span>e46-<span>6</span>a01-<span>703</span>c18c6fe17.log
+
+<span>99.6</span> %, <span>997</span> Done, <span>0</span> Failed, <span>4</span> Pending, <span>0</span> Skipped, <span>1001</span> Total, <span>2</span>-sec Throughput (Mb/s): <span>0.0113</span>
+
+
+Job fadb5656-<span>752</span>c-<span>0</span>e46-<span>6</span>a01-<span>703</span>c18c6fe17 summary
+Elapsed Time (Minutes): <span>0.1674</span>
+Total Number Of Transfers: <span>1001</span>
+Number of Transfers Completed: <span>1001</span>
+Number of Transfers Failed: <span>0</span>
+Number of Transfers Skipped: <span>0</span>
+TotalBytesTransferred: <span>21650</span>
+Final Job Status: Completed
+``` --&gt;
+
+</span></code></pre>
+</li>
+</ol>
+
+<ol>
+<li><p>In the <a href="https://portal.azure.com/" data-linktype="external" target="az-portal">Azure portal</a>, in the portal menu on the left, select <strong>Storage Accounts</strong>.</p>
+</li>
+<li><p>Select the created storage account. It should be named <strong>learnazurefileshare</strong> followed by random numbers.</p>
+</li>
+<li><p>Select <strong>File shares</strong>, and then select the <strong>data</strong> share.</p>
+</li>
+<li><p>In the <strong>Operations</strong> section, select <strong>Snapshots</strong>.</p>
+</li>
+<li><p>Select <strong>+ Add snapshot</strong>, and select <strong>OK</strong>.</p>
+</li>
+<li><p>Return to your VM, and open <strong>File Explorer</strong>.</p>
+</li>
+<li><p>Browse to the data share mounted at the <strong>F</strong> drive, right-click any of the text files, and select <strong>Properties</strong>.</p>
+</li>
+<li><p>In the File properties window, select <strong>Previous Versions</strong>, and note the listed snapshots created on the file share.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/store-and-share-with-azure-files/media/6-previous-versions.png" alt="Screenshot of the file properties window showing previous snapshots" data-linktype="relative-path"></p>
+<p>From here, you can select <strong>Open</strong> to open the previous version to browse the files at that snapshot. Otherwise, you can select <strong>Restore</strong> to restore files from a snapshot.</p>
+</li>
+</ol>
+
+		
+	</div>
+
+						<!-- </content> -->
+
+						</main>
+
+						<!-- page rating section -->
+						<!-- end page rating section -->
+
+<section>
+		<p>
+Need help? See our <a id="troubleshooting-guide" data-bi-name="troubleshooting" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn.store-and-share-with-azure-files.6-exercise-secure-azure-files&amp;documentId=dde9402a-be2e-459b-c21a-43f52bb4d601&amp;versionIndependentDocumentId=0bf41678-9b1e-af7e-06de-ccdb492cb998&amp;contentPath=%2FMicrosoftDocs%2Flearn-pr%2Fblob%2Flive%2Flearn-pr%2Fazure%2Fstore-and-share-with-azure-files%2F6-exercise-secure-azure-files.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fstore-and-share-with-azure-files%2F6-exercise-secure-azure-files&amp;author=jaboes">troubleshooting guide</a> or provide specific feedback by <a id="module-unit-feedback-link" data-bi-name="feedback" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn.store-and-share-with-azure-files.6-exercise-secure-azure-files&amp;documentId=dde9402a-be2e-459b-c21a-43f52bb4d601&amp;versionIndependentDocumentId=0bf41678-9b1e-af7e-06de-ccdb492cb998&amp;contentPath=%2FMicrosoftDocs%2Flearn-pr%2Fblob%2Flive%2Flearn-pr%2Fazure%2Fstore-and-share-with-azure-files%2F6-exercise-secure-azure-files.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fstore-and-share-with-azure-files%2F6-exercise-secure-azure-files&amp;author=jaboes#report-feedback">reporting an issue</a>.		</p>
+	</section>
+
+						<!-- recommendations section -->
+						<!-- end recommendations section -->
+
+						<!-- feedback section -->
+						<!-- end feedback section -->
+
+						<!-- feedback report section -->
+						<!-- end feedback report section -->
+
+						
+					</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>
