@@ -1,0 +1,297 @@
+<html dir="ltr"><head><title>Reduce legacy authentication flows - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/m365-identity-authentication/reduce-legacy-authentication">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/m365-identity-authentication/reduce-legacy-authentication</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Reduce legacy authentication flows - Learn</h1>
+  <div dir="auto" id="reader-credits">AlexandraHrt</div>
+  <div dir="auto" id="reader-estimated-time">5-6 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="main" role="main" data-bi-name="content" lang="en-us" dir="ltr">
+		
+		
+		<ul>
+			<li>5 minutes</li>
+		</ul>
+			<p>Before you can block legacy authentication in your directory, you need to first understand if your users have apps that use legacy authentication and how it affects your overall directory. Azure AD sign-in logs can be used to determine if you're using legacy authentication.</p>
+<ol>
+<li><p>Navigate to the <strong>Azure portal &gt; Azure Active Directory &gt; Sign-ins</strong>.</p>
+</li>
+<li><p>Add the Client App column if it is not shown by clicking on <strong>Columns &gt; Client App</strong>.</p>
+</li>
+<li><p>Filter by <strong>Client App</strong> &gt; check all the <strong>Legacy Authentication Clients</strong> options presented.</p>
+</li>
+<li><p>Filter by <strong>Status &gt; Success</strong>.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-identity-authentication/media/sign-in-log.png" alt="Azure AD Sign-in log" data-linktype="relative-path"></p>
+</li>
+</ol>
+<p>Filtering will only show you successful sign-on attempts that were made by the selected legacy authentication protocols. Clicking on each individual sign-on attempt will show you additional details. The Client App column or the Client App field under the Basic Info tab after selecting an individual row of data indicates which legacy authentication protocol was used. These logs indicate which users are still depending on legacy authentication and which applications are using legacy protocols to make authentication requests. For users that do not appear in these logs and are confirmed to be not using legacy authentication, implement a Conditional Access policy: block legacy authentication for these users only.</p>
+<p>To create a Conditional Access policy to block legacy authentication, perform the following steps:</p>
+<ol>
+<li><p>Create a new Conditional Access policy.</p>
+</li>
+<li><p>Target the users and groups who can be blocked.</p>
+</li>
+<li><p>Select <strong>All Cloud apps</strong>.</p>
+</li>
+<li><p>Under Conditions, select <strong>Client apps (preview)</strong>, set Configure to <strong>Yes</strong>, and check only the boxes <strong>Mobile apps and desktop clients &gt; Other clients</strong>.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-identity-authentication/media/new-conditional-access-policy.png" alt="Create a new Conditional Access policy" data-linktype="relative-path"></p>
+</li>
+<li><p>Finally, under Access controls, select <strong>Grant &gt; Block.</strong></p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-identity-authentication/media/access-controls-grant-block.png" alt="Select Grant > Block" data-linktype="relative-path"></p>
+</li>
+</ol>
+<p>You should enable this policy as Report-only first, so you can learn which users are using legacy authentication.</p>
+<p>Once you have a better idea who is using legacy authentication in your directory and which applications depend on it, the next step is upgrading your users to modern authentication. The following steps provide an overview of the path to modern authentication:</p>
+<ol>
+<li><p><strong>Enable modern authentication</strong>. Modern authentication is enabled by default for directories created on or after August 1, 2017. If your directory was created prior to this date, you'll need to manually enable modern authentication for your directory using PowerShell. For organizations actively using basic authentication for Exchange Online, be aware that basic authentication will be disabled for all tenants in the second half of 2021.</p>
+<p>The following PowerShell commands can be used to enable modern authentication:</p>
+<pre tabindex="0"><code data-author-content="- Exchange Online:
+  Set-OrganizationConfig -OAuth2ClientProfileEnabled $True
+- Skype for Business Online:
+  Set-CsOAuthConfiguration -ClientAdalAuthOverride Allowed
+"><span>- Exchange Online:
+  <span>Set-OrganizationConfig</span><span> -OAuth2ClientProfileEnabled</span> <span>$True</span>
+- Skype <span>for</span> Business Online:
+  <span>Set-CsOAuthConfiguration</span><span> -ClientAdalAuthOverride</span> Allowed
+</span></code></pre>
+</li>
+<li><p><strong>Update applications</strong>. Once you have enabled modern authentication in your directory, you can start updating applications by enabling modern authentication for Office clients. Office 2016 or later clients support modern authentication by default. No extra steps are required.</p>
+<p>For Office 2013, the following registry keys are required:</p>
+<ul>
+<li>HKCU\SOFTWARE\Microsoft\Office\15.0\Common\Identity\EnableADAL
+<ul>
+<li>Type REG_DWORD</li>
+<li>Value 1</li>
+</ul>
+</li>
+<li>HKCU\SOFTWARE\Microsoft\Office\15.0\Common\Identity\Version
+<ul>
+<li>Type REG_DWORD</li>
+<li>Value 1</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Enable Exchange Online modern authentication</strong>. In order for Windows-based Outlook clients to use modern authentication, Exchange Online must be modern authentication-enabled as well. If modern authentication is disabled for Exchange Online, Windows-based Outlook clients that support modern authentication (Outlook 2013 or later) will use basic authentication to connect to Exchange Online mailboxes.</p>
+<p>SharePoint Online is enabled for modern authentication default. For directories created after August 1, 2017, modern authentication is enabled by default in Exchange Online. However, if you had previously disabled modern authentication or if you are using a directory created prior to this date, you will need to manually enable modern authentication.</p>
+</li>
+<li><p><strong>Enable Skype for Business Online modern authentication</strong>. To prevent legacy authentication requests made by Skype for Business, it's necessary to enable modern authentication for Skype for Business Online. For directories created after August 1, 2017, modern authentication for Skype for Business is enabled by default. We suggest you transition to Microsoft Teams, which supports modern authentication by default.</p>
+</li>
+<li><p><strong>Block legacy authentication on your mobile device applications</strong>. Applications on your mobile device need to block legacy authentication as well. We recommend using Outlook for Mobile. Outlook for Mobile supports modern authentication by default and will satisfy other MFA baseline protection policies.</p>
+</li>
+</ol>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Explore and implement password alternatives</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/m365-identity-authentication/implement-password-alternatives/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div><section>
+		<p>
+Need help? See our <a id="troubleshooting-guide" data-bi-name="troubleshooting" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-m365-identity.m365-identity-authentication.reduce-legacy-authentication&amp;documentId=cf4379f9-2bdf-1cdd-c5f8-791f7c79d6ab&amp;versionIndependentDocumentId=1f568dfa-4f98-cbca-07db-8857be85cb39&amp;contentPath=%2FMicrosoftDocs%2Flearn-m365-pr%2Fblob%2Flive%2Flearn-m365-pr%2Fm365%2Fm365-identity-authentication%2Freduce-legacy-authentication.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fm365-identity-authentication%2Freduce-legacy-authentication&amp;author=elizapo">troubleshooting guide</a> or provide specific feedback by <a id="module-unit-feedback-link" data-bi-name="feedback" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-m365-identity.m365-identity-authentication.reduce-legacy-authentication&amp;documentId=cf4379f9-2bdf-1cdd-c5f8-791f7c79d6ab&amp;versionIndependentDocumentId=1f568dfa-4f98-cbca-07db-8857be85cb39&amp;contentPath=%2FMicrosoftDocs%2Flearn-m365-pr%2Fblob%2Flive%2Flearn-m365-pr%2Fm365%2Fm365-identity-authentication%2Freduce-legacy-authentication.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fm365-identity-authentication%2Freduce-legacy-authentication&amp;author=elizapo#report-feedback">reporting an issue</a>.		</p>
+	</section></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

@@ -1,0 +1,8 @@
+1. B
+Legacy authentication does not support multi-factor authentication.
+
+2. A
+To enforce MFA, create a Conditional Access policy and select Require multi-factor authentication under Access controls.
+
+3. B
+A biometric scan or pin via Windows Hello, phone-as-a-token from the Microsoft Authenticator app, or a FIDO2 security key are all methods of passwordless authentication.

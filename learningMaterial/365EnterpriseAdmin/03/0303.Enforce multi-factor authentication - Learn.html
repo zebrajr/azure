@@ -1,0 +1,259 @@
+<html dir="ltr"><head><title>Enforce multi-factor authentication - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/m365-identity-authentication/enforce-multi-factor-authentication">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/m365-identity-authentication/enforce-multi-factor-authentication</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Enforce multi-factor authentication - Learn</h1>
+  <div dir="auto" id="reader-credits">AlexandraHrt</div>
+  <div dir="auto" id="reader-estimated-time">3-4 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="main" role="main" data-bi-name="content" lang="en-us" dir="ltr">
+		
+		
+		<ul>
+			<li>5 minutes</li>
+		</ul>
+			<p>Multi-factor authentication (MFA) is a process where users are prompted during a sign-on event for additional forms of identification. This prompt could be to enter a code they receive on their cellphone or provide a fingerprint scan. Requiring a second form of authentication increases security since this additional authentication factor is far more difficult for an attacker to obtain or duplicate than a password.</p>
+<p>Traditionally, Azure MFA would be enabled “per user.” In a per user environment, users enabled for MFA are prompted each time they sign into an application (except on a trusted network). This results in a poor user experience, because it doesn’t consider any other factors – such as device type, sign-on behavior, or client application.</p>
+<p>A better way is to enable and use Azure MFA is with Conditional Access policies. Conditional Access lets you create and define policies that react to sign-on events and request additional actions before a user is granted access to an application or service. Azure MFA and Conditional Access policies give you the flexibility to enable MFA for users during specific sign-on events.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-identity-authentication/media/conditional-access.png" alt="Conditional access" data-linktype="relative-path"></p>
+<p>Conditional Access policies can be granular and specific, with the goal of empowering users to be productive wherever and whenever, but also protecting your organization. The following requirements are necessary to create a Conditional Access policy:</p>
+<ul>
+<li>A group of users need to be assigned to the policy.</li>
+<li>Once a group of users are assigned, you can define the cloud apps or actions that trigger the policy. These cloud apps or actions are the scenarios you decide that require additional processing, such as prompting for MFA. For example, you could decide that access to a financial application or use of management tools requires an additional verification prompt.</li>
+<li>You can also optionally specify a list of conditions, such as the device platform or location.</li>
+<li>After all the assignments are configured (Azure AD group, cloud app or actions, and/or conditions), you can select which controls are required to access the assignments. In the following example, we selected <strong>Require multi-factor authentication</strong>, which enforces MFA if a user meets our assignments.</li>
+</ul>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-identity-authentication/media/multi-factor-authentication-required.png" alt="MFA required" data-linktype="relative-path"></p>
+<p>The <strong>Require multi-factor authentication</strong> control can be resolved by:</p>
+<ul>
+<li>Presence of the following claim in a token issued by the trusted federation service:
+<ul>
+<li><a href="https://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationmethod" data-linktype="external">https://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationmethod</a> = <a href="https://schemas.microsoft.com/claims/multipleauthn" data-linktype="external">https://schemas.microsoft.com/claims/multipleauthn</a></li>
+</ul>
+</li>
+<li>Windows Hello for Business Primary Refresh Token (PRT) with strong authentication:
+<ul>
+<li>“ACR”: 2</li>
+</ul>
+</li>
+<li>Azure MFA Service</li>
+</ul>
+<p>One of the optional conditions you can configure for Conditional Access policies is <strong>Locations</strong>. For example, you can exclude a set of IP Ranges (such as your corporate network) from the MFA Required policy. Note that when you select the Locations condition in Conditional Access, there is an MFA Trusted IPs option:</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/m365/m365-identity-authentication/media/select-locations-magnify.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"> <img src="https://docs.microsoft.com/en-gb/learn/m365/m365-identity-authentication/media/select-locations.png" alt="Select locations for conditional access policy" data-linktype="relative-path"> </a></p>
+<p>This refers to the Trusted IPs options that you can configure in the per-user MFA settings:</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-identity-authentication/media/service-settings.png" alt="Trusted IP options in MFA settings" data-linktype="relative-path"></p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Reduce legacy authentication flows</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/m365-identity-authentication/reduce-legacy-authentication/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div><section>
+		<p>
+Need help? See our <a id="troubleshooting-guide" data-bi-name="troubleshooting" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-m365-identity.m365-identity-authentication.enforce-mfa&amp;documentId=7ec20eec-2088-64ad-e860-cabf50db79dc&amp;versionIndependentDocumentId=feed7611-6393-56ea-9ce4-a9f19fcb071b&amp;contentPath=%2FMicrosoftDocs%2Flearn-m365-pr%2Fblob%2Flive%2Flearn-m365-pr%2Fm365%2Fm365-identity-authentication%2Fenforce-multi-factor-authentication.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fm365-identity-authentication%2Fenforce-multi-factor-authentication&amp;author=elizapo">troubleshooting guide</a> or provide specific feedback by <a id="module-unit-feedback-link" data-bi-name="feedback" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-m365-identity.m365-identity-authentication.enforce-mfa&amp;documentId=7ec20eec-2088-64ad-e860-cabf50db79dc&amp;versionIndependentDocumentId=feed7611-6393-56ea-9ce4-a9f19fcb071b&amp;contentPath=%2FMicrosoftDocs%2Flearn-m365-pr%2Fblob%2Flive%2Flearn-m365-pr%2Fm365%2Fm365-identity-authentication%2Fenforce-multi-factor-authentication.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fm365-identity-authentication%2Fenforce-multi-factor-authentication&amp;author=elizapo#report-feedback">reporting an issue</a>.		</p>
+	</section></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>
