@@ -1,0 +1,353 @@
+<html dir="ltr"><head><title>Move large amounts of data to the cloud by using Azure Data Box family - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/move-data-with-azure-data-box/?WT.mc_id=cloudskillschallenge_40baf4ce-ff6f-4e20-a7eb-c00f4ebf8179">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/move-data-with-azure-data-box/</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Move large amounts of data to the cloud by using Azure Data Box family - Learn</h1>
+  <div dir="auto" id="reader-credits">cwatson-cat</div>
+  <div dir="auto" id="reader-estimated-time">2-2 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="main-column" data-bi-name="body">
+
+					<main id="main" role="main" data-bi-name="content" lang="en-us" dir="ltr">
+
+
+
+
+						
+
+
+						<!-- <content> -->
+							<div data-bi-name="module">
+
+					<figure>
+						<img role="presentation" src="https://docs.microsoft.com/en-us/learn/achievements/move-data-with-azure-data-box.svg" alt="" data-linktype="absolute-path">
+					</figure>
+
+					<div>
+						
+						<div>
+								
+								<ul>
+									<li>25 min</li>
+									<li>
+										Module
+									</li>
+									<li>
+										5 Units
+									</li>
+								</ul>
+									<div><div id="rating-menu" role="tooltip" data-bi-name="rating-popover">
+			<p>
+				4.7 out of 5 stars
+			</p>
+			<div>
+				
+			<p><span>5 star</span>
+				<progress value="78" max="100">78%</progress>
+				<span>78%</span>
+			</p>
+			<p><span>4 star</span>
+				<progress value="17" max="100">17%</progress>
+				<span>17%</span>
+			</p>
+			<p><span>3 star</span>
+				<progress value="3" max="100">3%</progress>
+				<span>3%</span>
+			</p>
+			<p><span>2 star</span>
+				<progress value="1" max="100">1%</progress>
+				<span>1%</span>
+			</p>
+			<p><span>1 star</span>
+				<progress value="0" max="100">0%</progress>
+				<span>0%</span>
+			</p>
+			</div>
+		</div><div id="complete-dropdown" role="tooltip" data-bi-name="rating-popover">
+			<p><!---->Complete this module and tell us what you think. Your feedback is essential to us.<!----></p>
+			</div></div>
+							</div>
+
+						<div>
+								<p>
+									Beginner
+								</p>
+								<p>
+									Administrator
+								</p>
+								<p>
+									Storage
+								</p>
+								<p>
+									Data Box Family
+								</p>
+						</div>
+
+						<p>Evaluate Azure Data Box family to import terabytes (TBs) of data from a local computer to Azure Blob storage. Order disks. Copy data to disks and return them. Verify that the data is uploaded to Azure.</p>
+
+							<h2>
+								Learning objectives
+							</h2>
+							<div>
+								<p>In this module, you will:</p>
+<ul>
+<li>Decide which Azure Data Box device to use</li>
+<li>Learn the steps to import data by using Azure Data Box Disk</li>
+</ul>
+
+							</div>
+
+						<p><a href="https://docs.microsoft.com/en-gb/learn/modules/move-data-with-azure-data-box/1-introduction/" id="start-unit" data-bi-name="start"><span>Start</span></a>
+							
+							
+						</p>
+
+							<div>
+								<h2>Prerequisites</h2>
+								<ul>
+<li>Familiarity with Azure Storage and Azure Blob storage</li>
+</ul>
+
+							</div>
+
+						
+
+						<ul id="unit-list" data-bi-name="units">
+								<li data-unit-uid="learn.azure.move-data-with-azure-data-box.introduction" data-progress-uid="learn.azure.move-data-with-azure-data-box.introduction">
+									
+								</li>
+								<li data-unit-uid="learn.azure.move-data-with-azure-data-box.what-is-azure-data-box-family" data-progress-uid="learn.azure.move-data-with-azure-data-box.what-is-azure-data-box-family">
+									
+								</li>
+								<li data-unit-uid="learn.azure.move-data-with-azure-data-box.how-azure-data-box-family-works" data-progress-uid="learn.azure.move-data-with-azure-data-box.how-azure-data-box-family-works">
+									
+								</li>
+								<li data-unit-uid="learn.azure.move-data-with-azure-data-box.when-to-use-azure-data-box-family" data-progress-uid="learn.azure.move-data-with-azure-data-box.when-to-use-azure-data-box-family">
+									
+								</li>
+								<li data-unit-uid="learn.azure.move-data-with-azure-data-box.summary" data-progress-uid="learn.azure.move-data-with-azure-data-box.summary">
+									
+								</li>
+						</ul>
+					</div>
+				</div>
+						<!-- </content> -->
+
+						</main>
+
+						<!-- page rating section -->
+						<!-- end page rating section -->
+
+
+						<!-- recommendations section -->
+						<!-- end recommendations section -->
+
+						<!-- feedback section -->
+						<!-- end feedback section -->
+
+						<!-- feedback report section -->
+						<!-- end feedback report section -->
+
+						
+					</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>
