@@ -1,0 +1,8 @@
+1. B
+Correct. The size of your organization impacts how you migrate user files and settings.
+
+2. A
+Correct. Both System Center Configuration Manager and the Microsoft Deployment Toolkit (MDT) use the User State Migration Tool (USMT) as part of their deployment process.
+
+3. A
+Correct. With OneDrive known folder move, admins target the documents, desktop, and pictures folders within a user profile.
