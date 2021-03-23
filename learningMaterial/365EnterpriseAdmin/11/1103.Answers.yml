@@ -1,0 +1,8 @@
+1. A
+OpenID Connect is an international standard for authentication that makes it easy to implement security between diverse systems.
+
+2. C
+If you want to use Azure AD as an authentication provider for an application, you must register that application in Azure AD.
+
+3. A
+OAuth 2.0 and OpenID Connect let app and site developers authenticate users without taking on the responsibility of storing and managing passwords.

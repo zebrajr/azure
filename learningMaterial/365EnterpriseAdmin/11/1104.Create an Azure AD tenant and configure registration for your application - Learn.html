@@ -1,0 +1,285 @@
+<html dir="ltr"><head><title>Create an Azure AD tenant and configure registration for your application - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/secure-app-with-oidc-and-azure-ad/3-create-aad-register-app">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/secure-app-with-oidc-and-azure-ad/3-create-aad-register-app</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Create an Azure AD tenant and configure registration for your application - Learn</h1>
+  <div dir="auto" id="reader-credits">jboeshart</div>
+  <div dir="auto" id="reader-estimated-time">5-6 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>10 minutes</li>
+		</ul>
+			<p>Suppose you have decided to use OpenID Connect with your transportation company's app to allow users to authenticate by using the same credentials they use to access Microsoft 365. These credentials are stored in Azure Active Directory (Azure AD). Let's look at the resources and configuration you'll need to set this up properly.</p>
+
+<p>A tenant is an instance of Azure AD that represents an organization. It's a dedicated instance of Azure AD that an organization or app developer receives when the organization or app developer creates a relationship with Microsoft, like signing up for Azure, Microsoft Intune, or Microsoft 365.</p>
+<p>Each Azure AD tenant is distinct and separate from other Azure AD tenants. An Azure AD tenant has its own representation of work and school identities, and app registrations. An app registration inside your tenant can allow authentication from accounts only within your tenant or across all tenants.</p>
+<p>Azure AD tenants are created in the <em>.onmicrosoft.com</em> domain by default. You can't delete or change this name, but you can add your own registered domain name, and then create users and app registrations within that domain.</p>
+<p>Azure AD tenants can be created only in the Azure portal.</p>
+<h2 id="register-a-web-app">Register a web app</h2>
+<p>Within the Azure AD tenant, you'll need a registration for the application. The registration is a record of security details for the application in Azure AD. A registration ensures that Azure AD can identify the application and the user. An app registration includes these details:</p>
+<ul>
+<li><strong>Name</strong>. This value identifies the registration and application.</li>
+<li><strong>Application type</strong>. Use the <strong>Web app/API</strong> type for websites or web APIs that are accessed through the HTTP protocol. Use the <strong>Native</strong> type for applications that are installed on a user's device or computer.</li>
+<li><strong>Sign-on URL</strong>. This value is the location of the sign-on page in the published application.</li>
+<li><strong>Application ID</strong>. This generated GUID is unique to the registration. Configure your application to send the same GUID to Azure AD whenever it authenticates a user.</li>
+</ul>
+<p>Application registrations are configured in the Azure portal. Applications are registered on the <strong>App registrations</strong> &gt; <strong>New application registration</strong> page for the Azure AD tenant.</p>
+<h2 id="configure-the-app-for-authentication">Configure the app for authentication</h2>
+<p>There's a lot of detail to ensure that the OpenID Connect protocol specifications are followed properly. To help developers use OpenID Connect in their applications, Microsoft provides middleware to facilitate this communication. This middleware consists of APIs that include methods and properties that make it easy to interact with the identity provider.</p>
+<p>The middleware is available for several different platforms. Microsoft supplies and supports middleware libraries for .NET Framework, .NET Core, and Node.js. There are also client-side libraries for JavaScript, Angular, PHP, and other platforms.</p>
+<p>For example, if you have an ASP.NET Core 2.X web app, and you need to use the OpenID Connect protocol to authenticate users using Azure AD, you can utilize the <code>Microsoft.AspNetCore.Authentication.AzureAD.UI</code> NuGet package. Then, add the following values to the <code>appsettings.json</code> file:</p>
+<ul>
+<li><code>ida:Tenant</code>. This configuration value is the identity of the Azure AD directory that contains the application registration.</li>
+<li><code>ida:ClientId</code>. This configuration value is the GUID that uniquely identifies the client registration.</li>
+</ul>
+<p>Then, configure the authentication middleware in the <code>Startup.ConfigureServices</code> method:</p>
+<pre tabindex="0"><code data-author-content="services.Configure<CookiePolicyOptions>(options =>
+    {
+        options.CheckConsentNeeded = context => true;
+        options.MinimumSameSitePolicy = SameSiteMode.None;
+    });
+
+services.AddAuthentication(AzureADDefaults.AuthenticationScheme)
+    .AddAzureAD(options => Configuration.Bind(&quot;AzureAd&quot;, options));
+
+services.Configure<OpenIdConnectOptions>(AzureADDefaults.OpenIdScheme, options =>
+    {
+        options.Authority = options.Authority + &quot;/v2.0/&quot;;
+        options.TokenValidationParameters.ValidateIssuer = false;
+    });
+"><span>services.Configure&lt;CookiePolicyOptions&gt;(options =&gt;
+    {
+        options.CheckConsentNeeded = context =&gt; <span>true</span>;
+        options.MinimumSameSitePolicy = SameSiteMode.None;
+    });
+
+services.AddAuthentication(AzureADDefaults.AuthenticationScheme)
+    .AddAzureAD(options =&gt; Configuration.Bind(<span>"AzureAd"</span>, options));
+
+services.Configure&lt;OpenIdConnectOptions&gt;(AzureADDefaults.OpenIdScheme, options =&gt;
+    {
+        options.Authority = options.Authority + <span>"/v2.0/"</span>;
+        options.TokenValidationParameters.ValidateIssuer = <span>false</span>;
+    });
+</span></code></pre>
+<p>You can use the authentication middleware to sign in users from one or more Azure AD tenants. The middleware is initialized in the Startup.Auth.cs file, by passing it the client ID of the application and the URL of the Azure AD tenant where the application is registered. The middleware then takes care of:</p>
+<ul>
+<li>Downloading the Azure AD metadata.</li>
+<li>Processing OpenID Connect authentication responses.</li>
+<li>Integration with the session cookie.</li>
+</ul>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Exercise - Create an Azure AD tenant and configure registration for your application</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/secure-app-with-oidc-and-azure-ad/4-exercise-create-aad-register-app/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>
