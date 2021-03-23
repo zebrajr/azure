@@ -1,0 +1,249 @@
+<html dir="ltr"><head><title>Upgrade to Windows 10 - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/m365-modern-os-deployment/3-upgrade-windows-10">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/m365-modern-os-deployment/3-upgrade-windows-10</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Upgrade to Windows 10 - Learn</h1>
+  <div dir="auto" id="reader-credits">lizap</div>
+  <div dir="auto" id="reader-estimated-time">4-5 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>5 minutes</li>
+		</ul>
+			<p>If you have existing computers running Windows 7, Windows 8, or Windows 8.1, x64, use one of the upgrade methods, unless your inventory and testing revealed blocking issues, like antivirus or disk encryption apps that are incompatible with the upgrade process.</p>
+<h2 id="upgrade-considerations">Upgrade considerations</h2>
+<p>When you upgrade to a new version of Windows, be aware of the following:</p>
+<p><strong>Application compatibility.</strong> Most of your applications, drivers, and add-ins will work as-is. Both Upgrade Readiness and the Readiness Toolkit help assess items in your org that might have compatibility issues. They also provide you with known information about compatibility, including where to find version updates to resolve them. Test these updates before you roll them out.</p>
+<p><strong>Multilingual Windows image upgrades.</strong> The User State Migration tool (USMT) doesn’t support cross-language upgrades. If you need to upgrade multilingual Windows devices, upgrade or migrate only the system default user interface language. For example, if English is the default but you have a Spanish language pack installed, you can upgrade only to English.</p>
+<p><strong>Errorhandler.cmd.</strong> If you want to use Errorhandler.cmd during your upgrade, copy the file into the %WINDIR%\Setup\Scripts directory on the old installation. This ensures that if there are errors during the down-level phase of Windows Setup, the commands in Errorhandler.cmd still run.</p>
+<p><strong>Data drive ACL migration.</strong> During the configuration pass of Windows Setup, the root access control list (ACL) on drives formatted for NTFS without an installed OS are changed to the default Windows XP ACL format. This change enables authenticated users to modify access on folders and files. Because this change may affect performance, you can <a href="https://docs.microsoft.com/en-us/windows/deployment/upgrade/windows-upgrade-and-migration-considerations" data-linktype="absolute-path" target="az-portal">change the relevant registry value</a> to disable this feature if needed.</p>
+<h2 id="in-place-upgrades">In-place upgrades</h2>
+<p>For existing Windows 7, Windows 8, or Windows 8.1 x64 PCs, the recommended path uses the Windows installation program (setup.exe) to perform an in-place upgrade, automatically preserving all data, settings, applications, and drivers. In-place upgrades run several small pre-installation checks to look for known compatibility issues. It also preserves the user state and applications while removing what isn’t compatible with the version of Windows 10 you're installing.</p>
+<p>The in-place upgrade process supports manually or automatically rolling back to the previous OS if you encounter issues either during or after deployment.</p>
+<p>In-place upgrades are typically faster than traditional deployments because applications don’t need to be reinstalled as part of the process.</p>
+<h2 id="in-place-upgrades-using-task-sequence-automation">In-place upgrades using task sequence automation</h2>
+<p>You can have more control over the upgrade process by using tools like Configuration Manager to completely automate the upgrade process through task sequences. When task sequences run, they run the actions of each step at the command-line level in the Local System context. This means the task sequence is fully automated with no user intervention.</p>
+<p>Previous versions of Windows didn’t require a task sequence for in-place upgrades, but we do recommend it when deploying Windows 10 at enterprise scale. And while an in-place upgrade doesn’t let you apply a custom image with applications, you can update the default install.wim by, for example, installing the latest Windows updates in your task sequence prior to performing the upgrade.</p>
+<p>You can use in-place upgrade to migrate to Windows 10 from older versions of Windows, as well as to update from previous versions of Windows 10. After Windows Setup completes the upgrade, the task sequence can continue to run and upgrade applications like Office, replace drivers, and apply personalization settings. Likewise, you can use the upgrade task sequence to perform pre-installation tasks or checks prior to carrying out the upgrade.</p>
+<p>Regardless of the deployment type you choose, automation provides predictability and repeatability.</p>
+<h2 id="learn-more">Learn more</h2>
+<ul>
+<li><a href="https://docs.microsoft.com/en-us/windows/deployment/upgrade/upgrade-to-windows-10-with-system-center-configuraton-manager" data-linktype="absolute-path" target="az-portal">Manage in-place upgrades</a></li>
+<li><a href="https://docs.microsoft.com/en-us/windows/deployment/windows-autopilot/existing-devices" data-linktype="absolute-path" target="az-portal">Windows Autopilot for existing devices</a></li>
+<li><a href="https://docs.microsoft.com/en-us/configmgr/desktop-analytics/set-up" data-linktype="absolute-path" target="az-portal">Configure a Desktop Analytics environment</a></li>
+<li><a href="https://docs.microsoft.com/en-us/configmgr/desktop-analytics/about-deployment-plans" data-linktype="absolute-path" target="az-portal">Assess which computers can be upgraded to Windows 10</a></li>
+</ul>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Migrate to Windows 10</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/m365-modern-os-deployment/4-migrate-windows-10/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

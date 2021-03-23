@@ -1,0 +1,262 @@
+<html dir="ltr"><head><title>Choose the appropriate deployment tools based on your environment - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/m365-modern-os-deployment/2-deployment-tools">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/m365-modern-os-deployment/2-deployment-tools</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Choose the appropriate deployment tools based on your environment - Learn</h1>
+  <div dir="auto" id="reader-credits">aleha</div>
+  <div dir="auto" id="reader-estimated-time">3-3 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="main" role="main" data-bi-name="content" lang="en-us" dir="ltr">
+		
+		
+		<ul>
+			<li>2 minutes</li>
+		</ul>
+			<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-modern-os-deployment/media/step-6-wheel.png" alt="step 6 highlighted on deployment wheel" data-linktype="relative-path"></p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-modern-os-deployment/media/step-6-icon.png" alt="step 6 icon" data-linktype="relative-path"></p>
+<p>To successfully deploy the Windows 10 operating system in your organization, it is important to understand the different ways that it can be deployed, especially now that there are new scenarios to consider. Choosing among these scenarios, and understanding the capabilities and limitations of each, is a key task.</p>
+<p>There are three primary deployment scenarios, each with specific tools or methodologies:</p>
+<ul>
+<li><p><strong>Modern.</strong> (Recommended) These methods are supported with existing tools (like Microsoft Deployment Toolkit (MDT) or Microsoft Endpoint Configuration Manager:</p>
+<ul>
+<li>Windows Autopilot. Customize and deploy a new system with apps and settings already configured.</li>
+<li>In-place upgrade. Use Windows Setup to update your OS and migrate apps and settings.</li>
+</ul>
+</li>
+<li><p><strong>Dynamic.</strong> Dynamic deployment methods enable you to configure applications and settings for specific use cases. Some examples are:</p>
+<ul>
+<li>Subscription activation. Switch from Windows 10 Pro to Enterprise when a subscribed user signs in.</li>
+<li>Azure Active Directory (AAD), and mobile device management (MDM). You can automatically join a device to AAD and enroll it in your management solution with no additional user interaction.</li>
+<li>Provisioning packages. Using the Windows Imaging and Configuration Designer tool, create provisioning packages, the collection of apps and settings customized for your deployment, to apply to devices.</li>
+</ul>
+</li>
+<li><p><strong>Traditional.</strong> Traditional deployment methods use existing tools to deploy operating system images. You’ll employ one of these methods:</p>
+<ul>
+<li>Bare metal - Deploy a new device or wipe an existing device and deploy with a fresh image.</li>
+<li>Refresh - Also called <em>wipe and load</em>, redeploy a device by saving the user state, wiping the disk, then restoring the user state.</li>
+<li>Replace - Replace an existing device with a new one by moving the user state from the old device and to the new device.</li>
+</ul>
+</li>
+</ul>
+<p>Modern deployment methods are recommended unless you have a specific need to use a different procedure. These methods are supported with existing tools such as Microsoft Deployment Toolkit (MDT) and Microsoft Endpoint Configuration Manager. These methods are discussed in detail on the Modern Desktop Deployment Center.</p>
+<p>Once you have deployed Windows 10 in your organization, it is important to stay up to date by creating a deployment plan for Windows 10 feature updates.</p>
+<h2 id="learn-more">Learn more</h2>
+<ul>
+<li><a href="https://docs.microsoft.com/en-us/windows/deployment/update/create-deployment-plan" data-linktype="absolute-path" target="az-portal">Create a deployment plan</a></li>
+<li><a href="https://docs.microsoft.com/en-us/microsoft-365/enterprise/desktop-deployment-center-home?view=o365-worldwide%3Fazure-portal%3Dtrue" data-linktype="absolute-path" target="az-portal">Modern Desktop Deployment Center</a></li>
+</ul>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Upgrade to Windows 10</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/m365-modern-os-deployment/3-upgrade-windows-10/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div><section>
+		<p>
+Need help? See our <a id="troubleshooting-guide" data-bi-name="troubleshooting" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-m365.modern-os-deployment.deployment-tools&amp;documentId=f77be0ec-c841-cc78-a56a-075a08c6b25e&amp;versionIndependentDocumentId=cc46214c-fa93-6176-332b-d4edabaf2dc8&amp;contentPath=%2FMicrosoftDocs%2Flearn-m365-pr%2Fblob%2Flive%2Flearn-m365-pr%2Fm365%2Fm365-modern-os-deployment%2F2-deployment-tools.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fm365-modern-os-deployment%2F2-deployment-tools&amp;author=aleha">troubleshooting guide</a> or provide specific feedback by <a id="module-unit-feedback-link" data-bi-name="feedback" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-m365.modern-os-deployment.deployment-tools&amp;documentId=f77be0ec-c841-cc78-a56a-075a08c6b25e&amp;versionIndependentDocumentId=cc46214c-fa93-6176-332b-d4edabaf2dc8&amp;contentPath=%2FMicrosoftDocs%2Flearn-m365-pr%2Fblob%2Flive%2Flearn-m365-pr%2Fm365%2Fm365-modern-os-deployment%2F2-deployment-tools.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fm365-modern-os-deployment%2F2-deployment-tools&amp;author=aleha#report-feedback">reporting an issue</a>.		</p>
+	</section></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

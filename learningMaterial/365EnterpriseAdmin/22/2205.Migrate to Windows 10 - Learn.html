@@ -1,0 +1,245 @@
+<html dir="ltr"><head><title>Migrate to Windows 10 - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/m365-modern-os-deployment/4-migrate-windows-10">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/m365-modern-os-deployment/4-migrate-windows-10</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Migrate to Windows 10 - Learn</h1>
+  <div dir="auto" id="reader-credits">lizap</div>
+  <div dir="auto" id="reader-estimated-time">3-3 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="main" role="main" data-bi-name="content" lang="en-us" dir="ltr">
+		
+		
+		<ul>
+			<li>2 minutes</li>
+		</ul>
+			<p>If you’re changing from Windows 7, Windows 8, or Windows 8.1 x86 to Windows 10 x64, you’ll be migrating to new computers. Upgrades can’t change from a 32-bit operating system to a 64-bit operating system, because of possible complications with installed applications and drivers.</p>
+
+<p>You can use the User State Migration Tool (USMT) to automate migration during large deployments of the Windows operating system. USMT uses configurable migration rule files (.xml) to control exactly which user accounts, user files, operating system settings, and application settings are migrated and how they are migrated. You can use USMT for both side-by-side migrations, where one piece of hardware is being replaced, or wipe-and-load (or refresh) migrations, when only the operating system is being upgraded.</p>
+<h2 id="migrate-with-windows-autopilot">Migrate with Windows Autopilot</h2>
+<p>Windows Autopilot is a modern migration option for devices that already have Windows 10 installed. Unlike the imaging process that wipes the PC and redeploys Windows, Autopilot enables you to customize the default Windows Out of Box Experience (OOBE) with options such as eliminating licensing agreements. By working with hardware vendors, devices can also be shipped directly to the user from the vendor, without the need for IT to physically touch the device at all, including switching from Pro to Enterprise or Education.</p>
+<p>There are no images to deploy, no drivers to inject, and no infrastructure to manage. When a user signs into the PC during setup using their Azure AD credentials, Microsoft Intune takes over the deployment process and applies applications, software update configurations, and compliance policies.</p>
+<p>Windows Autopilot is cloud-driven and based around Azure AD Premium and Microsoft Intune. Intune leverages the unique device IDs provided by the manufacturer or identified using PowerShell.</p>
+<p>Using Windows Autopilot, you can:</p>
+<ul>
+<li>Join devices to Azure AD automatically.</li>
+<li>Auto-enroll your users’ devices into MDM services.</li>
+<li>Restrict the creation of the administrator account.</li>
+<li>Customize the OOBE content specifically to your organization.</li>
+<li>Apply applications, software update configurations, and compliance policies.</li>
+<li>Reset, repurpose, or recover devices.</li>
+</ul>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Summary and knowledge check</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/m365-modern-os-deployment/5-summary-and-knowledge-check/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div><section>
+		<p>
+Need help? See our <a id="troubleshooting-guide" data-bi-name="troubleshooting" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-m365.modern-os-deployment.migrate-windows-10&amp;documentId=e9ca2d60-c248-c268-dc7b-061c02031895&amp;versionIndependentDocumentId=01c08123-fdf3-db10-6791-4b4d1e1aa826&amp;contentPath=%2FMicrosoftDocs%2Flearn-m365-pr%2Fblob%2Flive%2Flearn-m365-pr%2Fm365%2Fm365-modern-os-deployment%2F4-migrate-windows-10.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fm365-modern-os-deployment%2F4-migrate-windows-10&amp;author=elizapo">troubleshooting guide</a> or provide specific feedback by <a id="module-unit-feedback-link" data-bi-name="feedback" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-m365.modern-os-deployment.migrate-windows-10&amp;documentId=e9ca2d60-c248-c268-dc7b-061c02031895&amp;versionIndependentDocumentId=01c08123-fdf3-db10-6791-4b4d1e1aa826&amp;contentPath=%2FMicrosoftDocs%2Flearn-m365-pr%2Fblob%2Flive%2Flearn-m365-pr%2Fm365%2Fm365-modern-os-deployment%2F4-migrate-windows-10.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fm365-modern-os-deployment%2F4-migrate-windows-10&amp;author=elizapo#report-feedback">reporting an issue</a>.		</p>
+	</section></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

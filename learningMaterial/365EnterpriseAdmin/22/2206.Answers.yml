@@ -1,0 +1,8 @@
+1. C
+Correct. If you don't need to keep any of the data on a device or any of what might have been installed by the OEM, use a bare metal deployment to update a device.
+
+2. B
+Correct. You can't use an in-place upgrade to update existing images. You can update images by using offline image servicing for supported package types, but you can't use it to move between major OS versions.
+
+3. A
+Yes, this is one of the primary of Windows Autopilot. With this solution in place, a device manufacturer or seller can send devices directly to users - Windows Autopilot deploys the apps and settings.
