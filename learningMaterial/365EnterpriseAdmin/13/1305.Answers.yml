@@ -1,0 +1,5 @@
+1. C
+Any data that hasn't been accessed for one year or more is considered stale and is automatically deleted.
+
+2. A
+All applicable device data is encrypted through Azure Rights Management before synchronizing with the cloud. All stored data remains encrypted.

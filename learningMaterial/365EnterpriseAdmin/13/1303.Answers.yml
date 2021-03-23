@@ -1,0 +1,8 @@
+1. A
+The option of Azure AD registered supports devices that run Windows 10, iOS, iPadOS, Android, and macOS.
+
+2. B
+Azure AD join supports Windows 10 or Windows Server 2019 devices where users sign in by using their work account with a password or Windows Hello. Azure AD Multi-Factor Authentication is also supported.
+
+3. C
+A conditional access policy is applied after first-factor authentication has taken place.
