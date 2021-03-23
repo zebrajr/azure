@@ -1,0 +1,245 @@
+<html dir="ltr"><head><title>Introduction - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/introduction-to-modern-management-in-microsoft-365/1-introduction">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/introduction-to-modern-management-in-microsoft-365/1-introduction</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Introduction - Learn</h1>
+  <div dir="auto" id="reader-credits">dahans-msft2</div>
+  <div dir="auto" id="reader-estimated-time">3-4 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="main" role="main" data-bi-name="content" lang="en-us" dir="ltr">
+		
+		
+		<ul>
+			<li>5 minutes</li>
+		</ul>
+			<p>Throughout this module, you will learn about the key concepts and benefits of modern management with <strong>Microsoft 365</strong>.  We will explore the four key pillars to modern management, and how they can help your organization manage all their devices in a modern way that is easy to deploy, up-to-date, secure and intelligent.</p>
+<p>In this module, you will:</p>
+<ul>
+<li><p>Articulate the benefits of modern management with Microsoft 365.</p>
+</li>
+<li><p>Describe the modern device management options available to organizations with Microsoft 365.</p>
+</li>
+</ul>
+<h2 id="modern-management">Modern management</h2>
+<p>Use of personal devices for work, as well as employees working outside the office, may be changing how your organization manages devices. Certain parts of your organization might require deep, granular control over devices, while other parts might seek lighter, scenario-based management that empowers the modern workforce. <strong>Windows 10</strong> offers the flexibility to respond to these changing requirements and can easily be deployed in a mixed environment. You can increase the percentage of Windows 10 devices gradually, following the normal upgrade schedules used in your organization.</p>
+<p>Your organization may also consider bringing in Windows 10 devices and downgrading them to Windows 7 until everything is in place for a formal upgrade process. While this may appear to save costs due to standardization, greater savings can come from avoiding the downgrade and immediately taking advantage of the cost reductions Windows 10 can provide. Because Windows 10 devices can be managed using the same processes and technology as other previous Windows versions, it’s easy for different versions of Windows to coexist while you gradually transition to more modern management tools.</p>
+<p>With modern management tools, such as <strong>Microsoft Intune</strong> and <strong>System Center Configuration Manager</strong>, your organization can manage and support a wide range of device types or other third-party products. This <em>managed diversity</em> enables you to empower your users to benefit from the productivity enhancements available on their new Windows 10 devices (including rich touch and ink support), while still maintaining your standards for security and manageability. It can help you and your organization benefit from Windows 10 much faster.</p>
+<h2 id="management-options-with-windows-10">Management options with Windows 10</h2>
+<p>Windows 10 offers a range of management options, as shown in the following diagram:</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/introduction-to-modern-management-in-microsoft-365/media/windows-10-management-range-options.png" alt="Diagram of modern management options" data-linktype="relative-path"></p>
+<p>As indicated in the diagram, Microsoft continues to provide support for deep manageability and security through technologies like Group Policy, Active Directory, and System Center Configuration Manager. It also delivers a “mobile-first, cloud-first” approach of simplified, modern management using cloud-based device management solutions such as <strong>Microsoft Enterprise Mobility + Security (EMS)</strong>. Future Windows innovations, delivered through <strong>Windows as a Service</strong>, are complemented by cloud services like Microsoft Intune, Azure Active Directory, Azure Information Protection, and the Microsoft Store for Business.</p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Benefits of modern management</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/introduction-to-modern-management-in-microsoft-365/2-benefits-modern-management/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div><section>
+		<p>
+Need help? See our <a id="troubleshooting-guide" data-bi-name="troubleshooting" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-m365-pr.introduction-to-modern-management-in-microsoft-365.1-introduction&amp;documentId=bf214250-7ff0-ca14-fd71-7e64e9104284&amp;versionIndependentDocumentId=1ec99685-8d33-b5fd-7ee4-cce28887fda9&amp;contentPath=%2FMicrosoftDocs%2Flearn-m365-pr%2Fblob%2Flive%2Flearn-m365-pr%2Fm365%2Fintroduction-to-modern-management-in-microsoft-365%2F1-introduction.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fintroduction-to-modern-management-in-microsoft-365%2F1-introduction&amp;author=dahans">troubleshooting guide</a> or provide specific feedback by <a id="module-unit-feedback-link" data-bi-name="feedback" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-m365-pr.introduction-to-modern-management-in-microsoft-365.1-introduction&amp;documentId=bf214250-7ff0-ca14-fd71-7e64e9104284&amp;versionIndependentDocumentId=1ec99685-8d33-b5fd-7ee4-cce28887fda9&amp;contentPath=%2FMicrosoftDocs%2Flearn-m365-pr%2Fblob%2Flive%2Flearn-m365-pr%2Fm365%2Fintroduction-to-modern-management-in-microsoft-365%2F1-introduction.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fintroduction-to-modern-management-in-microsoft-365%2F1-introduction&amp;author=dahans#report-feedback">reporting an issue</a>.		</p>
+	</section></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>
