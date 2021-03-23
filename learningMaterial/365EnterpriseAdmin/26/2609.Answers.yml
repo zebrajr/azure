@@ -1,0 +1,17 @@
+1. C
+End-user computing are the most knowledgeable infrastructure and can carry out the work needed.
+
+2. A
+One of the first things you’ll do to prepare your infrastructure.
+
+3. C
+Your security teams should be responsible for implementing security baseline changes.
+
+4. B
+Applications that are regression tested go through full quality assurance testing. It should be done by people who know the application well and can test the core functionality.
+
+5. B
+This tool enables you to incorporate approval of updates before they’re applied.
+
+6. B
+Desktop Analytics runs on Azure, so you’ll need an Azure subscription

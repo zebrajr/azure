@@ -1,0 +1,261 @@
+<html dir="ltr"><head><title>Prepare for the deployment workstream - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/windows-prepare/outline-deployment-workstream">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/windows-prepare/outline-deployment-workstream</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Prepare for the deployment workstream - Learn</h1>
+  <div dir="auto" id="reader-credits">IanKensey</div>
+  <div dir="auto" id="reader-estimated-time">5-6 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="main" role="main" data-bi-name="content" lang="en-us" dir="ltr">
+		
+		
+		<ul>
+			<li>7 minutes</li>
+		</ul>
+			<p>Your manager wants to know how Woodgrove’s infrastructure and configuration can be prepared for the Windows 10 feature update. As the process manager, you formalize the process and work with stakeholders to identify who should be involved in the preparation.</p>
+<h2 id="infrastructure-tasks">Infrastructure tasks</h2>
+<p>Woodgrove will prepare its infrastructure for the update by implementing the changes identified in the Plan phase. To do this, you define what Woodgrove needs to do for the various components and tooling of its infrastructure, for example:</p>
+<ul>
+<li>Implement site server updates for Configuration Manager</li>
+<li>Update security tools like security agents or servers</li>
+<li>Update management tools like data loss prevention agents</li>
+</ul>
+<p>Woodgrove’s infrastructure includes many different components and tools. As the process manager responsible for the Windows 10 feature update, you need to validate that the environment won’t be affected due to changes made to various parts of the infrastructure. Woodgrove will do this by:</p>
+<ol>
+<li><strong>Reviewing all of the infrastructure changes</strong> that Woodgrove identified in the Plan phase:  It’s important to understand the changes that need to be made and to detail how to implement them. This prevents issues later on.</li>
+<li><strong>Validating changes</strong>: Woodgrove will validate the changes for the infrastructure’s components and tools to help understand how changes could affect its production environment.</li>
+<li><strong>Implementing the changes</strong>: Once the changes have been validated, Woodgrove can implement the changes across the wider infrastructure.</li>
+</ol>
+<p>As the process manager, you oversee and keep track of the status of the tasks. You use the RACI model to create an example table that your organization can use for reference when assigning tasks to roles:</p>
+
+<h2 id="configuration-tasks">Configuration tasks</h2>
+<p>Woodgrove must look at its environment’s settings and outline how it will implement any necessary changes previously identified in the Plan phase to support the update. Consider what Woodgrove will need to do for the various settings and policies that currently underpin the environment.  Woodgrove will have to do the following:</p>
+<ul>
+<li><strong>Implement new security guidance</strong>: New versions of Windows can include new features that improve your environment’s security. Woodgrove’s security teams will want to make appropriate changes to security-related settings. This is needed to keep customers and their data secure.</li>
+<li><strong>Update security baselines</strong>: Security teams understand the relevant security baselines and will have to work to make sure all baselines match the required guidance.</li>
+</ul>
+<p>However, Woodgrove's environment has many different settings and policies. It’s important to only apply changes where they are necessary, and where a clear improvement can be gained for Woodgrove. Otherwise, Woodgrove’s environment might face issues that will slow down the update process. Woodgrove needs to ensure the environment isn’t affected adversely because of changes made to the various parts settings and policies. For example, for its security-related settings Woodgrove will do this by:</p>
+<ol>
+<li><strong>Reviewing new security settings</strong>:  The security team, together with end-user computing, are responsible for validating and deploying new security settings. So they will review the security settings to understand how they can best be configured to facilitate the update.</li>
+<li><strong>Reviewing security baselines for changes</strong>: Security teams will also review all the necessary security baselines to ensure the changes can be implemented and ensure your environment remains compliant.</li>
+<li><strong>Implementing and validating security settings and baseline changes</strong>: The security teams will implement all of the security settings and baselines, having addressed any potential outstanding issues.</li>
+</ol>
+<h2 id="outputs">Outputs</h2>
+<p>As the process manager, you explain that Woodgrove will have to agree on whether its infrastructure is prepared to handle a pilot deployment of the update to a few devices. Woodgrove will do this by comparing its infrastructure against the deployment readiness criteria outlined in the Plan phase and agreeing whether it has met all the criteria (pass) or not (fail).<br>
+Once Woodgrove has implemented all the necessary configuration changes, it will also have to capture the final version of settings and policies so they can be referenced for a pilot deployment against a select few devices. You explain that Woodgrove will create the following artifacts:</p>
+
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Prepare for the compatibility workstream</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/windows-prepare/outline-compatibility-workstream/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div><section>
+		<p>
+Need help? See our <a id="troubleshooting-guide" data-bi-name="troubleshooting" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-m365.windows-prepare.outline-deployment-workstream&amp;documentId=4b13b22d-398d-911f-67d5-f03721a3cd73&amp;versionIndependentDocumentId=04b4dbbe-53ab-d16d-8629-c730ac57ed7c&amp;contentPath=%2FMicrosoftDocs%2Flearn-m365-pr%2Fblob%2Flive%2Flearn-m365-pr%2Fm365%2Fwindows-prepare%2Foutline-deployment-workstream.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fwindows-prepare%2Foutline-deployment-workstream&amp;author=v-iakens">troubleshooting guide</a> or provide specific feedback by <a id="module-unit-feedback-link" data-bi-name="feedback" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-m365.windows-prepare.outline-deployment-workstream&amp;documentId=4b13b22d-398d-911f-67d5-f03721a3cd73&amp;versionIndependentDocumentId=04b4dbbe-53ab-d16d-8629-c730ac57ed7c&amp;contentPath=%2FMicrosoftDocs%2Flearn-m365-pr%2Fblob%2Flive%2Flearn-m365-pr%2Fm365%2Fwindows-prepare%2Foutline-deployment-workstream.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fwindows-prepare%2Foutline-deployment-workstream&amp;author=v-iakens#report-feedback">reporting an issue</a>.		</p>
+	</section></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>
