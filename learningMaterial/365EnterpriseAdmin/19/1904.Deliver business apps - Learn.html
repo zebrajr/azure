@@ -1,0 +1,247 @@
+<html dir="ltr"><head><title>Deliver business apps - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/m365-office-lob-apps/3-business-app-delivery">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/m365-office-lob-apps/3-business-app-delivery</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Deliver business apps - Learn</h1>
+  <div dir="auto" id="reader-credits">lizap</div>
+  <div dir="auto" id="reader-estimated-time">3-4 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="main" role="main" data-bi-name="content" lang="en-us" dir="ltr">
+		
+		
+		<ul>
+			<li>5 minutes</li>
+		</ul>
+			<p>Several methods of delivering business apps are available.</p>
+<h2 id="msi-based-app-packages">MSI-based app packages</h2>
+<p>For business apps, Windows 10 works with MSI-based packages and installs apps as part of an OS deployment task sequence. Software deployment tools like SCCM and Microsoft Intune are also optimized to deliver MSI-packaged apps. Once you validate your apps on Windows 10, you can implement SCCM for app delivery. The company portal in Microsoft Intune can extend the choice of IT sanctioned apps available to include the latest applications, and you can self-select what you need.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-office-lob-apps/media/step-3-office-and-lob-app-delivery-media-3-50.png" alt="Microsoft Intune application management" data-linktype="relative-path"></p>
+<h2 id="pc-imaging">PC imaging</h2>
+<p>Another popular method of app delivery is <strong>PC imaging</strong> - applications are either installed with a task sequence or manually on a sample PC. Then you capture a system image with the required applications installed. The imaging approach to build and capture can save time when provisioning new PCs, but remember operating systems and apps within the image can become stale quickly. The cumulative update model in Windows 10 and Microsoft 365 Apps helps with this problem but doesn’t eliminate it completely. That’s why Microsoft recommends a thin image approach, where your applications are installed from outside the image at deployment time.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-office-lob-apps/media/step-3-office-and-lob-app-delivery-media-4.png" alt="Task Sequence Editor" data-linktype="relative-path"></p>
+<p>If you want to include Microsoft 365 Apps in your image, remember that Office employs a user-based activation and can’t be pre-activated by the system admin. Use the Office Deployment Tool to pre-install Office on the device you're imaging and skip the user login. Once the image is deployed, end users can sign in using their Microsoft 365 credentials and activate Microsoft 365 Apps.</p>
+<h2 id="sideloading-business-apps">Sideloading business apps</h2>
+<p>When you sideload an app, you deploy a signed app package to a device. You maintain the signing, hosting, and deployment of these apps. Although sideloading was also available in earlier Windows versions, it's a little different in Windows 10:</p>
+<ul>
+<li>You can unlock a device for sideloading using an enterprise policy, or through Settings.</li>
+<li>License keys aren't required.</li>
+<li>Devices don't have to be joined to a domain.</li>
+</ul>
+<h2 id="browser-based-apps">Browser-based apps</h2>
+<p>If you’re using browser-based apps, you’ll want to make sure that they continue to work as expected after the upgrade. As you learned in <strong>Analyze your device and app readiness,</strong> if you have specific websites and apps that have compatibility problems with Microsoft Edge, you can add those apps and sites to the Enterprise Mode site list in the Enterprise Mode Site List Manager. That will ensure that websites will automatically open using Internet Explorer 11.</p>
+<p>If you know that your intranet sites aren’t going to work properly with Microsoft Edge, you can set all intranet sites to open using Internet Explorer 11 automatically, using the same functionality.</p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Deploy apps with Microsoft Store for Business</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/m365-office-lob-apps/4-microsoft-store/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div><section>
+		<p>
+Need help? See our <a id="troubleshooting-guide" data-bi-name="troubleshooting" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-m365.office-lob-apps.3-business-app-delivery&amp;documentId=5fa2f532-a463-0185-742b-5a927bc7e694&amp;versionIndependentDocumentId=2ab906f3-a14f-7b19-bafe-bde728b34492&amp;contentPath=%2FMicrosoftDocs%2Flearn-m365-pr%2Fblob%2Flive%2Flearn-m365-pr%2Fm365%2Fm365-office-lob-apps%2F3-business-app-delivery.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fm365-office-lob-apps%2F3-business-app-delivery&amp;author=aleha">troubleshooting guide</a> or provide specific feedback by <a id="module-unit-feedback-link" data-bi-name="feedback" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-m365.office-lob-apps.3-business-app-delivery&amp;documentId=5fa2f532-a463-0185-742b-5a927bc7e694&amp;versionIndependentDocumentId=2ab906f3-a14f-7b19-bafe-bde728b34492&amp;contentPath=%2FMicrosoftDocs%2Flearn-m365-pr%2Fblob%2Flive%2Flearn-m365-pr%2Fm365%2Fm365-office-lob-apps%2F3-business-app-delivery.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fm365-office-lob-apps%2F3-business-app-delivery&amp;author=aleha#report-feedback">reporting an issue</a>.		</p>
+	</section></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

@@ -1,0 +1,11 @@
+1. B
+Correct. Microsoft 365 Apps is available in both 32-bit and 64-bit versions, but we recommend using the 64-bit version unless you have 32-bit dependencies.
+
+2. B
+Correct, Microsoft 365 Apps and Office 2019 clients use Click-to-Run installation technology.
+
+3. C
+Correct. The Office Deployment Tool doesn't work with MSI-based packages to deliver your business apps. It's used to install Click-to-Run packages of Office.
+
+4. A
+Yes. Use Configuration Manager to deploy your business apps.

@@ -1,0 +1,245 @@
+<html dir="ltr"><head><title>Deploy apps with Microsoft Store for Business - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/m365-office-lob-apps/4-microsoft-store">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/m365-office-lob-apps/4-microsoft-store</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Deploy apps with Microsoft Store for Business - Learn</h1>
+  <div dir="auto" id="reader-credits">aleha</div>
+  <div dir="auto" id="reader-estimated-time">3-3 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="main" role="main" data-bi-name="content" lang="en-us" dir="ltr">
+		
+		
+		<ul>
+			<li>5 minutes</li>
+		</ul>
+			<p><strong>Microsoft Store for Business</strong> provides a flexible way to discover, acquire, manage, and distribute free and paid apps to Windows 10 devices at scale. You can publish selected Microsoft Store apps and custom organizational apps to your own private store while assigning and reusing licenses as needed. End users are directed to this private store and can only find and install approved apps with online licenses.</p>
+<h2 id="package-your-business-app-for-the-microsoft-store">Package your business app for the Microsoft Store</h2>
+<p>You can build store apps as Universal Windows Platform (UWP) apps or repackage existing apps for the store and add modern experiences for Windows 10. Your apps remain unchanged and continue to run in full-trust user mode.</p>
+<p>A new option for application packaging used by the Microsoft Store is MSIX, which applies the containerization technology available in Windows. Containerization means clean uninstall and removal of packages. It also means users only need standard user credentials to install applications – you don’t have to have administrator credentials to install MSIX containers.</p>
+<p>Before you package your desktop app for the store, be sure to review any requirements for the application and address any of the issues that come up. In most cases, we recommend you use the <a href="https://docs.microsoft.com/en-us/windows/msix/packaging-tool/create-app-package-msi-vm" data-linktype="absolute-path">MSIX Packaging Tool</a>, available from the Microsoft Store, to repackage an existing desktop app to the MSIX format. It has both an interactive UI and a command line for conversions and it gives you the ability to convert an application without having the source code.</p>
+<p><strong>Distribute your apps using your private store</strong></p>
+<p>Your private store is available as a tab in the Microsoft Store app and is named for your company or organization. You can make an app available in your private store when you acquire the app, or you can do it later from your inventory. Once the app is in your private store, employees may claim and install the app.</p>
+<h2 id="learn-more">Learn more</h2>
+<ul>
+<li><a href="https://docs.microsoft.com/en-us/microsoft-store/prerequisites-microsoft-store-for-business" data-linktype="absolute-path" target="az-portal">Plan for the Microsoft Store for Business</a></li>
+<li><a href="https://docs.microsoft.com/en-us/windows/configuration/stop-employees-from-using-microsoft-store" data-linktype="absolute-path" target="az-portal">Configure access to Microsoft Store</a></li>
+<li><a href="https://docs.microsoft.com/en-us/microsoft-store/manage-apps-microsoft-store-for-business-overview" data-linktype="absolute-path" target="az-portal">Manage apps in Microsoft Store for Business</a></li>
+<li><a href="https://docs.microsoft.com/en-us/intune/apps/app-sideload-windows" data-linktype="absolute-path" target="az-portal">Windows 10 sideloading</a></li>
+<li><a href="https://docs.microsoft.com/en-us/configmgr/desktop-analytics/health-status-monitoring" data-linktype="absolute-path" target="az-portal">Plan for device and app monitoring</a></li>
+<li><a href="https://docs.microsoft.com/en-us/intune/configuration/kiosk-settings-windows" data-linktype="absolute-path" target="az-portal">Manage kiosk settings</a></li>
+</ul>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Manage or customize your apps</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/m365-office-lob-apps/5-manage-apps/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div><section>
+		<p>
+Need help? See our <a id="troubleshooting-guide" data-bi-name="troubleshooting" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-m365.office-lob-apps.4-microsoft-store&amp;documentId=9725f8f4-7150-d4a0-1b02-4a0429fae0c9&amp;versionIndependentDocumentId=517c0a9a-c45f-3081-5b41-aa79e44c7fa8&amp;contentPath=%2FMicrosoftDocs%2Flearn-m365-pr%2Fblob%2Flive%2Flearn-m365-pr%2Fm365%2Fm365-office-lob-apps%2F4-microsoft-store.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fm365-office-lob-apps%2F4-microsoft-store&amp;author=aleha">troubleshooting guide</a> or provide specific feedback by <a id="module-unit-feedback-link" data-bi-name="feedback" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-m365.office-lob-apps.4-microsoft-store&amp;documentId=9725f8f4-7150-d4a0-1b02-4a0429fae0c9&amp;versionIndependentDocumentId=517c0a9a-c45f-3081-5b41-aa79e44c7fa8&amp;contentPath=%2FMicrosoftDocs%2Flearn-m365-pr%2Fblob%2Flive%2Flearn-m365-pr%2Fm365%2Fm365-office-lob-apps%2F4-microsoft-store.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fm365-office-lob-apps%2F4-microsoft-store&amp;author=aleha#report-feedback">reporting an issue</a>.		</p>
+	</section></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>
