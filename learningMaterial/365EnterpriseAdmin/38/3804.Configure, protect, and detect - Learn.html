@@ -1,0 +1,278 @@
+<html dir="ltr"><head><title>Configure, protect, and detect - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/m365-threat-remediate/configure-protect-detect">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/m365-threat-remediate/configure-protect-detect</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Configure, protect, and detect - Learn</h1>
+  <div dir="auto" id="reader-credits">AlexandraHrt</div>
+  <div dir="auto" id="reader-estimated-time">8-10 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>28 minutes</li>
+		</ul>
+			<p>With Microsoft Defender for Office 365, your organization's security team can configure protection by defining policies in the Security and Compliance Center. The policies that are defined for your organization determine the behavior and protection level for predefined threats. Policy options are extremely flexible. For example, your organization's security team can set fine-grained threat protection at the user, organization, recipient, and domain level. It is important to review your policies regularly because new threats and challenges emerge daily.</p>
+<h2 id="safe-attachments">Safe Attachments</h2>
+<p>Microsoft Defender for Office 365 Safe Attachments protects against unknown malware and viruses, and provides zero-day protection to safeguard your messaging system. All messages and attachments that don't have a known virus/malware signature are routed to a special environment where Microsoft Defender for Office 365 uses a variety of machine learning and analysis techniques to detect malicious intent. If no suspicious activity is detected, the message is released for delivery to the mailbox.</p>
+<p>When creating a Safe Attachments policy, the following options can be selected:</p>
+<ul>
+<li>Under the <strong>Action for unknown malware</strong> in Attachments:
+<ul>
+<li><strong>Off</strong>. Attachments will not be scanned for malware.</li>
+<li><strong>Monitor</strong>. Continues delivering the message after malware is detected and track the scanning results.</li>
+<li><strong>Block</strong>. Blocks the current and future emails and attachments with detected malware.</li>
+<li><strong>Replace</strong>. Blocks the attachments with detected malware but continues to deliver the message body to the user.</li>
+<li><strong>Dynamic delivery</strong>. Immediately delivers the message body without attachments and reattaches attachments after scanning if they are found to be safe.</li>
+</ul>
+</li>
+<li>Under <strong>Redirect attachment on detection</strong> you have the ability to enable one or both of the following settings:
+<ul>
+<li>If you want to forward attachments that are blocked, replaced, or monitored to a security administrator in your organization for further investigation, check the <strong>Enable redirect</strong> checkbox and enter an email address.</li>
+<li>You can also have those attachments forwarded if the scanning process should time out by selecting the <strong>Apply the above selection if malware scanning for attachments times out or error occurs</strong> checkbox.</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-threat-remediate/media/new-safe-attachments-policy.png" alt="New Safe Attachments policy" data-linktype="relative-path"></p>
+<p>Once you’ve configured these settings, you can target users with that policy by specific domain, username, or group membership (or a combination). There are also exceptions that can be configured for this targeting, by users, groups, or domain.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-threat-remediate/media/policy-applied.png" alt="Safe Attachment policy applied" data-linktype="relative-path"></p>
+<p>Sometimes it is useful to allow mail to flow without delay from internal senders such as scans or faxes that send attachments that are known to be safe and from a trusted source. It is not generally recommended to skip filtering for all internal messages as a compromised account would be able to potentially send malicious content. You can create a transport rule, also known as a mail flow rule, in the Exchange admin center (EAC) to bypass safe attachments scanning. As part of the mail flow rule, modify the message properties to set a message header with the <strong>X-MS-Exchange-Organization-SkipSafeAttachmentProcessing</strong> as the header name to bypass the safe attachment policy.</p>
+<h2 id="safe-links">Safe Links</h2>
+<p>The Microsoft Defender for Office 365 Safe Links feature proactively protects your users from malicious URLs in a message or in an Office document. The protection remains every time they select the link, as malicious links are dynamically blocked while good links can be accessed.</p>
+<p>Safe Links is available for URLs in the following apps:</p>
+<ul>
+<li>Microsoft 365 apps for enterprise on Windows or Mac</li>
+<li>Office for the web (Word for the web, Excel for the web, PowerPoint for the web, and OneNote for the web)</li>
+<li>Word, Excel, PowerPoint, and Visio on Windows, as well as Office apps on iOS and Android devices</li>
+<li>Microsoft Teams channels and chats</li>
+</ul>
+<p>Safe links is both client and location agnostic, in that the location and device being used by the end user will not affect the behavior of wrapped links. Additionally, Safe links can be configured to support links in Office 2016 clients where the user is signed in with their Office 365 credential.</p>
+<p>Safe links includes a default policy that controls global settings such as which links to block and which links to wrap. You can’t delete this policy, but you can edit it in your environment as needed, such as blocking a malicious link specific to your environment. It is recommended that you apply Microsoft Defender for Office 365 safe links policies to ALL users in your organization.</p>
+<p>The following options can be configured as part of the Safe Links policy:</p>
+<ul>
+<li>For <strong>Select the action for unknown potentially malicious URLs in messages</strong>, selecting <strong>On</strong> will allow URLs to be rewritten and checked.</li>
+<li><strong>Use Safe Attachments to scan downloadable content</strong> will enable URL detection to scan files hosted on web sites. For example, if an email contains a link such as <a href="http://contoso.com/maliciousfile.pdf" data-linktype="external">http://contoso.com/maliciousfile.pdf</a>, the .pdf file is opened in a separate hypervisor environment and, if the file is found to be malicious, users will see a warning page if they click the link.</li>
+<li><strong>Apply safe links to messages sent within the organization</strong> will provide the same level of protection when links are sent by email within the organization.</li>
+<li><strong>Do not track user clicks</strong> will block tracking and monitoring when users click links that are determined to be malicious.</li>
+<li><strong>Do not allow users to click through to the original URL</strong> will prevent users from proceeding to the target web site if it is found to be malicious.</li>
+<li>If users frequently receive links from web sites that are known to be safe, you can enter those URLs under <strong>Do not rewrite the following URL</strong>. For example, you might add the URL to a partner’s website if users frequently receive emails from the partner that include URLs to the external organization’s website.</li>
+</ul>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-threat-remediate/media/new-safe-links-policy.png" alt="New Safe Links policy" data-linktype="relative-path"></p>
+<p>Similar to bypassing safe attachments, you can also create a transport rule to bypass safe links.  The message header for bypassing safe links is <strong>X-MS-Exchange-Organization-SkipSafeLinksProcessing</strong>.</p>
+<h2 id="anti-phishing-policies">Anti-phishing policies</h2>
+<p>Microsoft Defender for Office 365 anti-phishing checks incoming messages for indicators that a message might be a phishing attempt. When users are covered by Microsoft Defender for Office 365 policies (Safe Attachments, Safe Links, or anti-phishing), incoming messages are evaluated by multiple machine learning models that analyze messages. The appropriate action is taken, based on the configured policies.</p>
+<p>There is no default Microsoft Defender for Office 365 anti-phishing policy. When creating one, only targeting is originally configured. Impersonation settings play a large role in Microsoft Defender for Office 365 anti-phishing policies. Impersonation is where the sender or the sender's email domain in a message looks very similar to a real sender or domain:</p>
+<ul>
+<li>An example impersonation of the domain contoso.com is ćóntoso.com.</li>
+<li>An example impersonation of the user michelle@contoso.com is michele@contoso.com.</li>
+</ul>
+<p>An impersonated domain might otherwise be considered legitimate (registered domain, configured email authentication records, etc.), except its intent is to deceive recipients. In the Microsoft Defender for Office 365 anti-phishing policy, you can configure a set of users to protect, domains to protect, actions for protected users (such as redirect messages or sending to junk folders), safety tips, trusted senders and domains and more. These settings are exclusive to Microsoft Defender for Office 365 anti-phishing. Anti-spoofing settings are also included in Microsoft Defender for Office 365 anti-phishing policies.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-threat-remediate/media/anti-phishing-policy.png" alt="Anti-phishing policy" data-linktype="relative-path"></p>
+<h3 id="explore-how-to-safeguard-your-organization-with-microsoft-defender-for-office-365">Explore how to safeguard your organization with Microsoft Defender for Office 365</h3>
+<p>View a <a href="https://www.microsoft.com/videoplayer/embed/RE4GsOE" data-linktype="external">video version</a> of the interactive guide (captions available in more languages).</p>
+<p><a href="https://mslearn.cloudguides.com/guides/Safeguard%20your%20organization%20with%20Microsoft%20Defender%20for%20Office%20365" data-linktype="external"><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-threat-remediate/media/safeguard-your-organization.png" alt="Defender for Office 365" data-linktype="relative-path"></a></p>
+<p>Be sure to click the full-screen option in the video player. When you're done, use the <strong>Back</strong> arrow in your browser to come back to this page.</p>
+
+		
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

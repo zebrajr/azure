@@ -1,0 +1,252 @@
+<html dir="ltr"><head><title>Automate, investigate, and remediate - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/m365-threat-remediate/automate-investigate-remediate">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/m365-threat-remediate/automate-investigate-remediate</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Automate, investigate, and remediate - Learn</h1>
+  <div dir="auto" id="reader-credits">AlexandraHrt</div>
+  <div dir="auto" id="reader-estimated-time">3-4 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="main" role="main" data-bi-name="content" lang="en-us" dir="ltr">
+		
+		
+		<ul>
+			<li>8 minutes</li>
+		</ul>
+			<h2 id="save-time-with-automated-investigation-and-response">Save time with automated investigation and response</h2>
+<p>When you are investigating a potential cyberattack, time is of the essence. The sooner you identify and mitigate threats, the better off your organization will be. Automated investigation and response (AIR) capabilities include a set of security playbooks that can be launched automatically, such as when an alert is triggered, or manually, such as from a view in Explorer. AIR can save your security operations team time and effort in mitigating threats effectively and efficiently.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-threat-remediate/media/air-phases.png" alt="AIR phases" data-linktype="relative-path"></p>
+<p>Let’s start with a native alert generated by Office 365. These alerts are typically investigated manually today – this is where AIR comes in. Attackers frequently send through benign URLs in emails to bypass notice from security solutions, then they weaponize them after delivery to activate their attack. Notice in the following screenshot that the alert identifies that a URL that was recently weaponized was detected by Microsoft Defender for Office 365 through Safe Links URL detonation (under <strong>Details</strong> on the right-hand side).</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/m365/m365-threat-remediate/media/office-365-native-alert-magnify.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"> <img src="https://docs.microsoft.com/en-gb/learn/m365/m365-threat-remediate/media/office-365-native-alert.png" alt="Office 365 native alert" data-linktype="relative-path"> </a></p>
+<p>Microsoft Defender for Office 365 triggered an AIR playbook based on this alert and resolved the alert given the auto investigation having completed.</p>
+<p>Clicking into the investigation deep link from the alert brings us into the Office 365 Threat Intelligence Summary Investigation Graph. This graph shows all the different entities – emails, users (and their activities), and devices that have been automatically investigated as part of the triggered alert.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-threat-remediate/media/summary-investigation-graph.png" alt="Office 365 Threat Intelligence Summary Investigation Graph" data-linktype="relative-path"></p>
+<p>Specifically, note that:</p>
+<ul>
+<li>Several emails (23) that were identified as being relevant to this investigation (based on sender, IP, domain, URL and other email attributes) and a subset of them (6) were identified as being malicious, sent from an internal user in the organization which itself is a strong indicator of a compromised user.</li>
+<li>A user pivot on this investigation also identifies anomalies for 1 user (Jeff) with respect to a suspicious login and mass downloads of documents.</li>
+<li>With the compromised user, user anomalies and compromised device threats identified in this investigation, Microsoft Defender for Office 365 has also taken some auto remediations such as blocking the URL, deleting any emails in mailboxes related to this URL, and triggering the AAD workflows for password reset and MFA for the compromised user. The ability to take automatic action or drive remediations with manual approval, based on policy, are core elements of AIR.</li>
+</ul>
+<p>AIR in Microsoft Defender for Office 365 includes certain remediation actions. Whenever an automated investigation is running or has completed, you'll typically see one or more remediation actions that require approval by your security operations team to proceed. Such remediation actions include the following:</p>
+<ul>
+<li>Soft delete email messages or clusters</li>
+<li>Block URL (time-of-click)</li>
+<li>Turn off external mail forwarding</li>
+<li>Turn off delegation</li>
+</ul>
+<p>These actions can be found in the <strong>Actions</strong> tab under the selected investigation, as shown in the following screenshot:</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-threat-remediate/media/actions-tab.png" alt="Actions found under Action tab" data-linktype="relative-path"></p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Configure, protect, and detect</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/m365-threat-remediate/configure-protect-detect/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div><section>
+		<p>
+Need help? See our <a id="troubleshooting-guide" data-bi-name="troubleshooting" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-m365.m365-threat-remediate.automate-investigate-remediate&amp;documentId=1774881d-ea52-0003-093e-2dcad0866d9b&amp;versionIndependentDocumentId=898c00ef-dacc-14f8-93c6-082670535d17&amp;contentPath=%2FMicrosoftDocs%2Flearn-m365-pr%2Fblob%2Flive%2Flearn-m365-pr%2Fm365%2Fm365-threat-remediate%2Fautomate-investigate-remediate.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fm365-threat-remediate%2Fautomate-investigate-remediate&amp;author=elizapo">troubleshooting guide</a> or provide specific feedback by <a id="module-unit-feedback-link" data-bi-name="feedback" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-m365.m365-threat-remediate.automate-investigate-remediate&amp;documentId=1774881d-ea52-0003-093e-2dcad0866d9b&amp;versionIndependentDocumentId=898c00ef-dacc-14f8-93c6-082670535d17&amp;contentPath=%2FMicrosoftDocs%2Flearn-m365-pr%2Fblob%2Flive%2Flearn-m365-pr%2Fm365%2Fm365-threat-remediate%2Fautomate-investigate-remediate.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fm365-threat-remediate%2Fautomate-investigate-remediate&amp;author=elizapo#report-feedback">reporting an issue</a>.		</p>
+	</section></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

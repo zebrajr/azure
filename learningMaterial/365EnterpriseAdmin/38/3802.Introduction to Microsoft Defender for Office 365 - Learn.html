@@ -1,0 +1,245 @@
+<html dir="ltr"><head><title>Introduction to Microsoft Defender for Office 365 - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/m365-threat-remediate/introduction">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/m365-threat-remediate/introduction</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Introduction to Microsoft Defender for Office 365 - Learn</h1>
+  <div dir="auto" id="reader-credits">AlexandraHrt</div>
+  <div dir="auto" id="reader-estimated-time">3-4 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="main" role="main" data-bi-name="content" lang="en-us" dir="ltr">
+		
+		
+		<ul>
+			<li>3 minutes</li>
+		</ul>
+			<h2 id="learn-office-365-specific-terminology-threats-and-concepts">Learn Office 365 specific terminology, threats, and concepts</h2>
+<p><strong>Microsoft Defender for Office 365</strong> is a cloud-based email filtering service that helps protect your organization against unknown malware and viruses by providing robust zero-day protection. It includes features to safeguard your organization from harmful links in real time. Microsoft Defender for Office 365 has rich reporting and URL trace capabilities that give administrators insight into the kind of attacks happening in your organization.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-threat-remediate/media/office-365-advanced-threat-protection-benefits.png" alt="Microsoft Defender for Office 365 benefits" data-linktype="relative-path"></p>
+<p>Microsoft Defender for Office 365 provides the following benefits:</p>
+<ul>
+<li><strong>Industry-leading Protection.</strong> Microsoft Defender for Office 365 leverages 6.5 trillion signals daily from email alone to quickly and accurately detect threats and protect users against sophisticated attacks such as phishing and zero-day malware. Microsoft Defender for Office 365 blocked 5 billion phish emails and analyzed 300k phish campaigns in 2018 protecting 4 million unique users from advanced threats.</li>
+<li><strong>Actionable Insights</strong>. Actionable insights are presented to security administrators by correlating signals from a broad range of data to help identify, prioritize, and provide recommendations on how to address potential problems. The recommendations include remediation actions empowering administrators to proactively secure their organization.</li>
+<li><strong>Automated response</strong>. Investigation and remediation in post-breach scenarios can be difficult, expensive, and time-consuming. Most organizations lack the expertise and resources needed for rapid investigation and effective remediation. Microsoft Defender for Office 365 provides advanced automated response options that security operators can leverage saving a significant amount of time, money, and resources.</li>
+<li><strong>Training &amp; awareness</strong>. Social engineering attacks such as phishing often look legitimate and are hard to spot for busy users. It's critical to train end users to make the right decisions in the event of an attack. In-product notifications help users understand the risks of performing an action such as clicking on a suspicious link. Features such as attack simulator help administrators launch realistic threat simulations to train users to be more aware and vigilant. User reporting capabilities empower users to notify Microsoft of suspicious content.</li>
+</ul>
+<p>The following are the primary ways you can use Microsoft Defender for Office 365 for message protection:</p>
+<ul>
+<li>In an Microsoft Defender for Office 365 filtering-only scenario, Microsoft Defender for Office 365 provides cloud-based email protection for your on-premises Exchange Server environment or any other on-premises SMTP email solution.</li>
+<li>Microsoft Defender for Office 365 can be enabled to protect Exchange Online cloud-hosted mailboxes.</li>
+<li>In a hybrid deployment, Microsoft Defender for Office 365 can be configured to protect your messaging environment and control mail routing when you have a mix of on-premises and cloud mailboxes with Exchange Online Protection for inbound email filtering.</li>
+</ul>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Automate, investigate, and remediate</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/m365-threat-remediate/automate-investigate-remediate/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div><section>
+		<p>
+Need help? See our <a id="troubleshooting-guide" data-bi-name="troubleshooting" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-m365.m365-threat-remediate.introduction&amp;documentId=fc81e278-c9fd-00e0-c4ac-8f30ab2c5463&amp;versionIndependentDocumentId=87894dd3-9ca0-0ea9-967e-ceea695ae5cb&amp;contentPath=%2FMicrosoftDocs%2Flearn-m365-pr%2Fblob%2Flive%2Flearn-m365-pr%2Fm365%2Fm365-threat-remediate%2Fintroduction.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fm365-threat-remediate%2Fintroduction&amp;author=elizapo">troubleshooting guide</a> or provide specific feedback by <a id="module-unit-feedback-link" data-bi-name="feedback" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-m365.m365-threat-remediate.introduction&amp;documentId=fc81e278-c9fd-00e0-c4ac-8f30ab2c5463&amp;versionIndependentDocumentId=87894dd3-9ca0-0ea9-967e-ceea695ae5cb&amp;contentPath=%2FMicrosoftDocs%2Flearn-m365-pr%2Fblob%2Flive%2Flearn-m365-pr%2Fm365%2Fm365-threat-remediate%2Fintroduction.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fm365-threat-remediate%2Fintroduction&amp;author=elizapo#report-feedback">reporting an issue</a>.		</p>
+	</section></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>
