@@ -1,0 +1,501 @@
+<html dir="ltr"><head><title>Manage your cloud security posture with Azure Security Center - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/m365-security-azure-security-center/manage-cloud-posture">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/m365-security-azure-security-center/manage-cloud-posture</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Manage your cloud security posture with Azure Security Center - Learn</h1>
+  <div dir="auto" id="reader-credits">IanKensey</div>
+  <div dir="auto" id="reader-estimated-time">11-14 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>15 minutes</li>
+		</ul>
+			<p>It’s important to take a proactive approach to prevent security issues from happening, and to have appropriate solutions in place to handle any problems when they’re identified.</p>
+<p>To achieve this, you need to have a robust cloud security posture in place for your environment. You can then identify components and systems that don’t meet your security and compliance best practices and standards, and deal with them appropriately.</p>
+<p>Here, you’ll learn how to improve your cloud security posture with Azure Security Center.
+Azure Security Center helps you manage your cloud security posture through several measures, including:</p>
+<h2 id="secure-score">Secure score</h2>
+<p>Azure Security Center will continually look for security issues with subscriptions and resources across your organization. It will then aggregate all of its findings into a single score to give an indication of your current security situation. The higher the secure score, the lower the identified risk level for your organization. To find more details about your secure score, you can select it in the Azure Security Center overview dashboard:</p>
+<p><span>
+<img src="https://docs.microsoft.com/en-gb/learn/m365/m365-security-azure-security-center/media/3-secure-score.png" alt="Secure score" data-linktype="relative-path">
+</span>
+</p>
+<p>You can review the secure score, and then begin to work on improving it. You’ll see the overall score, and how it’s split across your subscriptions:</p>
+<p><span>
+<a href="https://docs.microsoft.com/en-gb/learn/m365/m365-security-azure-security-center/media/3-secure-score-dashboard-expanded.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog">
+<img src="https://docs.microsoft.com/en-gb/learn/m365/m365-security-azure-security-center/media/3-secure-score-dashboard-inline.png" alt="Screenshot showing the Secure score dashboard" data-linktype="relative-path">
+</a>
+</span>
+</p>
+<p>Select any subscription to find out how its score has been calculated:</p>
+<p><span>
+<a href="https://docs.microsoft.com/en-gb/learn/m365/m365-security-azure-security-center/media/3-secure-score-calculation-expanded.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog">
+<img src="https://docs.microsoft.com/en-gb/learn/m365/m365-security-azure-security-center/media/3-secure-score-calculation-inline.png" alt="Secure score calculation" data-linktype="relative-path">
+</a>
+</span>
+</p>
+<p>You’ll see a list of controls. Each control is made up of a group of related recommendations to deal with a specific risk, along with detailed instructions about how to implement them. Your secure score is calculated using these controls. The controls are prioritized for you in the top down list, so that you’re aware of which ones to take care of first. Each control will only help you increase your secure score if you get maximum points for that specific control. You only get all those points if you implement all of its associated recommendations. For example, the <strong>Manage access and permissions control</strong> has several recommendations that need to be implemented to get its maximum number of points (four):</p>
+<p><span>
+<a href="https://docs.microsoft.com/en-gb/learn/m365/m365-security-azure-security-center/media/3-control-breakdown-expanded.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog">
+<img src="https://docs.microsoft.com/en-gb/learn/m365/m365-security-azure-security-center/media/3-control-breakdown-inline.png" alt="Breakdown" data-linktype="relative-path">
+</a>
+</span>
+</p>
+<p>If a recommendation in a control has the <strong>Quick Fix</strong> option, select it to apply the recommendation automatically:</p>
+<p><span>
+<a href="https://docs.microsoft.com/en-gb/learn/m365/m365-security-azure-security-center/media/3-apply-quick-fix-secure-score-expanded.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog">
+<img src="https://docs.microsoft.com/en-gb/learn/m365/m365-security-azure-security-center/media/3-apply-quick-fix-secure-score-inline.png" alt="Apply the recommendation" data-linktype="relative-path">
+</a>
+</span>
+</p>
+<div>
+<p> Note</p>
+<p>You can also access your secure score programmatically through the Azure Security Center REST API, to query data and generate your own reports.</p>
+</div>
+<h3 id="improved-automation">Improved automation</h3>
+<p>It can be difficult to remediate issues across a large fleet of resources and subscriptions. Azure Security Center helps you manage this scenario better through automation in several ways:</p>
+<h4 id="quick-fix-recommendations">Quick Fix recommendations</h4>
+<p>You can use <strong>Quick Fix</strong> to implement certain recommendations across multiple resources. When you select <strong>Quick Fix</strong>, you can choose the resources that this recommendation should be implemented across. For example, for the <strong>Secure transfer to storage accounts should be enabled</strong> Quick Fix recommendation, you select which storage accounts should be remediated:</p>
+<p><span>
+<a href="https://docs.microsoft.com/en-gb/learn/m365/m365-security-azure-security-center/media/3-secure-transfer-storage-accounts-recommendation-expanded.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog">
+<img src="https://docs.microsoft.com/en-gb/learn/m365/m365-security-azure-security-center/media/3-secure-transfer-storage-accounts-recommendation-inline.png" alt="Secure storage accounts recommendation" data-linktype="relative-path">
+</a>
+</span>
+</p>
+<p>At the top of the pane, you’ll also see a general description and details of the remediation, and information on how to remediate it manually if you wish. When you select <strong>Remediate</strong>, a pane appears on the right for you to review what this remediation will do, and the implications. If you’re happy to go ahead, select <strong>Remediate resources</strong>:</p>
+<p><span>
+<a href="https://docs.microsoft.com/en-gb/learn/m365/m365-security-azure-security-center/media/3-select-remediate-resources-expanded.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog">
+<img src="https://docs.microsoft.com/en-gb/learn/m365/m365-security-azure-security-center/media/3-select-remediate-resources-inline.png" alt="Remediate resources" data-linktype="relative-path">
+</a>
+</span>
+</p>
+<h2 id="workflow-automation-with-logic-apps">Workflow automation with Logic Apps</h2>
+<p>Using Azure Security Center’s workflow automation feature, you can configure Logic Apps to be triggered on security alerts or recommendations, so that entire workflows are automatically carried out in response. For example, you can automate a process to ensure that a certain user is notified via email to carry out an investigation whenever a specific alert is raised by Azure Security Center.</p>
+<p>To use workflow automation with Logic Apps, you’ll have to create a Logic App and define when it should be run. For example, to trigger an email to be sent to an admin in response to alerts, you do the following steps:</p>
+<div>
+<p> Note</p>
+<p>There are specific roles and permissions that are required to complete these steps. See the link in the <strong>Learn more</strong> section.</p>
+</div>
+<ol>
+<li><p>In Azure Security Center, select <strong>Workflow automation</strong>.</p>
+</li>
+<li><p>Select <strong>Add workflow automation</strong>.</p>
+<p><span>
+<img src="https://docs.microsoft.com/en-gb/learn/m365/m365-security-azure-security-center/media/3-select-add-workflow-automation.png" alt="Add workflow automation" data-linktype="relative-path">
+</span>
+</p>
+</li>
+<li><p>In the pane that appears on the right, fill in the form, like this:</p>
+<p><span>
+<img src="https://docs.microsoft.com/en-gb/learn/m365/m365-security-azure-security-center/media/3-add-workflow-automation-form.png" alt="Add workflow automation form" data-linktype="relative-path">
+</span>
+</p>
+<ol>
+<li><p>Provide a name and description for your automation in the <strong>name</strong> and <strong>description</strong> fields.</p>
+</li>
+<li><p>Select a subscription in the <strong>subscription</strong> field then select a resource group in the <strong>resource group</strong> field.</p>
+</li>
+<li><p>Under <strong>Trigger conditions</strong>, select the trigger that will start this automated workflow.  For example, you can select <strong>Threat detection alerts</strong> in the <strong>Select Security Center data types</strong> field.</p>
+</li>
+<li><p>Select <strong>High</strong> in the <strong>Alert severity</strong> field and clear the other fields for it to be triggered only for threat detection alerts that have high alert severity.</p>
+</li>
+<li><p>Under <strong>Actions</strong>, select the <strong>visit the Logic Apps page</strong> link to create a new Logic App.</p>
+</li>
+<li><p>You’ll be taken to the Logic Apps pane. Select <strong>Add</strong>:
+<span>
+<img src="https://docs.microsoft.com/en-gb/learn/m365/m365-security-azure-security-center/media/3-select-add-logic-app.png" alt="Add logic app" data-linktype="relative-path">
+</span>
+</p>
+</li>
+</ol>
+</li>
+</ol>
+<p>Now you can configure your Logic App.</p>
+<ol>
+<li><p>In the form that appears, select your subscription and resource group. Give your Logic App a name, then select a region. When you’re done, select <strong>Review + Create,</strong> then select <strong>Create</strong>:</p>
+<p><span>
+<img src="https://docs.microsoft.com/en-gb/learn/m365/m365-security-azure-security-center/media/3-select-review-create-logic-app.png" alt="Select review and create logic app" data-linktype="relative-path">
+</span>
+</p>
+</li>
+<li><p>Wait until your Logic App has been
+created, then select <strong>Go to resource</strong>.</p>
+<p><span>
+<img src="https://docs.microsoft.com/en-gb/learn/m365/m365-security-azure-security-center/media/3-logic-app-resource.png" alt="Go to resource" data-linktype="relative-path">
+</span>
+</p>
+</li>
+<li><p>In the Logic App designer, select <strong>Security</strong> in the <strong>Category</strong> field:</p>
+<p><span>
+<img src="https://docs.microsoft.com/en-gb/learn/m365/m365-security-azure-security-center/media/3-security-category-app-designer.png" alt="App designer security category" data-linktype="relative-path">
+</span>
+</p>
+</li>
+<li><p>Select <strong>Get a notification email when Security Center detects a threat</strong>. Then select <strong>Use this template</strong>.</p>
+</li>
+<li><p>Configure an Office 365 Outlook connector by selecting the <strong>+</strong> next to the <strong>Office 365 Outlook</strong> field.</p>
+<p><span>
+<img src="https://docs.microsoft.com/en-gb/learn/m365/m365-security-azure-security-center/media/3-add-outlook-connector.png" alt="Add Outlook connector" data-linktype="relative-path">
+</span>
+</p>
+</li>
+<li><p>When you’re done, select the <strong>+</strong> next to the <strong>Security Center Alert</strong> field, then select <strong>Continue</strong>. Now you can configure the details for the emails you want to send for alerts:</p>
+<p><span>
+<a href="https://docs.microsoft.com/en-gb/learn/m365/m365-security-azure-security-center/media/3-configure-email-details-expanded.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog">
+<img src="https://docs.microsoft.com/en-gb/learn/m365/m365-security-azure-security-center/media/3-configure-email-details-inline.png" alt="Configure email details" data-linktype="relative-path">
+</a>
+</span>
+</p>
+<p>When you’re done, select <strong>Save</strong>.</p>
+</li>
+<li><p>Return to the <strong>Add workflow automation</strong> tab on your browser.</p>
+<ol>
+<li><p>Make sure to select an appropriate subscription, or subscriptions, in the <strong>Show Logic App instances from the following subscriptions</strong> field.</p>
+</li>
+<li><p>Select <strong>Refresh</strong> at the bottom of the form. You can select your Logic App in the <strong>Logic App name</strong> field. Then select <strong>Create</strong> when you're done:</p>
+</li>
+</ol>
+<p><span>
+<img src="https://docs.microsoft.com/en-gb/learn/m365/m365-security-azure-security-center/media/3-select-logic-app.png" alt="Select Logic App" data-linktype="relative-path">
+</span>
+</p>
+</li>
+</ol>
+<h2 id="continuous-export">Continuous export</h2>
+<p>You might want to export information about alerts and recommendations for reporting purposes, or to feed this information into other monitoring tools (such as a SIEM) that you might already have in your environment. Azure Security Center lets you:</p>
+<ul>
+<li><p>Continuously export data to Log Analytics workspaces.</p>
+</li>
+<li><p>Continuously export data to Azure Event Hubs, to feed into non-Microsoft solutions.</p>
+</li>
+<li><p>Export to CSV on an ad-hoc basis.</p>
+</li>
+</ul>
+<p>For example, you can configure a continuous export to a Log Analytics workspace:</p>
+<ol>
+<li><p>In Azure Security Center, select <strong>Pricing &amp; settings</strong> on the left pane.</p>
+</li>
+<li><p>Select the subscription for which you want to configure an export. Then Select <strong>Continuous export</strong> on the left. The <strong>Continuous export</strong> pane appears.</p>
+<p><span>
+<img src="https://docs.microsoft.com/en-gb/learn/m365/m365-security-azure-security-center/media/3-select-continuous-export.png" alt="Select continuous export" data-linktype="relative-path">
+</span>
+</p>
+</li>
+<li><p>Select the <strong>Log Analytics workspaces</strong> tab.</p>
+</li>
+<li><p>Set <strong>Export enabled</strong> to <strong>On</strong>.</p>
+</li>
+<li><p>You can then select the data type you want to export. For example, <strong>security alerts</strong>. You can also select the specific severity levels of alerts that you want to be exported; for example <strong>high</strong>.</p>
+</li>
+<li><p>Under the <strong>export configuration</strong> section, select the resource group where your configuration will be stored.</p>
+</li>
+<li><p>In the export target section, choose the relevant subscription that contains your workspace, and then select the target workspace. When you’re done, select <strong>Save</strong>.</p>
+</li>
+</ol>
+<h2 id="regulatory-compliance">Regulatory compliance</h2>
+<p>The regulatory compliance pane helps you to better understand and improve your
+compliance posture. Select <strong>Regulator compliance</strong> on the overview pane of the Azure Security Center dashboard to access the regulatory compliance dashboard:</p>
+<p><span>
+<img src="https://docs.microsoft.com/en-gb/learn/m365/m365-security-azure-security-center/media/3-regulatory-compliance.png" alt="Regulatory compliance" data-linktype="relative-path">
+</span>
+</p>
+<p>The regulatory compliance dashboard gives an overview of your environment’s compliance status, based on the assessments made against your environment for a particular standard and its associated controls. For example, you could use it to see how you’re matching up to the Azure Security Benchmark, based on its associated controls:</p>
+<p><span>
+<img src="https://docs.microsoft.com/en-gb/learn/m365/m365-security-azure-security-center/media/3-regulatory-compliance-breakdown.png" alt="Regulatory compliance breakdown" data-linktype="relative-path">
+</span>
+</p>
+<p>To remediate compliance issues, you expand the list of controls and select the recommendations to implement them.</p>
+<p>The Azure Security Benchmark consists of a collection of high-impact security recommendations that you can use to help secure most of your services in Azure. It’s based on well-known security benchmarks, like the Center for Internet Security (CIS) Control Framework. Most customers tend to structure their security policies around these frameworks, so the benchmark will most likely help you to understand how to best secure your resources.</p>
+<p>You can also generate reports for a standard. For example, you can download a report for the Azure Security Benchmark, by selecting <strong>Download report</strong>, and then selecting <strong>Azure Security Benchmark</strong> in the dropdown:</p>
+<p><span>
+<a href="https://docs.microsoft.com/en-gb/learn/m365/m365-security-azure-security-center/media/3-select-download-report-expanded.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog">
+<img src="https://docs.microsoft.com/en-gb/learn/m365/m365-security-azure-security-center/media/3-select-download-report-inline.png" alt="Download report" data-linktype="relative-path">
+</a>
+</span>
+</p>
+<p>Reports give a high-level summary of your compliance status against your selected standard. You can share these reports with stakeholders, and provide them for internal and external auditing.</p>
+<h3 id="create-custom-policies">Create custom policies</h3>
+<p>You can create your own policies that Azure Security Center uses to assess your environment. You’ll then receive recommendations if your environment doesn’t match up to them. You can create custom policies by using the following steps:</p>
+<ol>
+<li><p>In Azure Security Center, in the left pane, select <strong>Security policy</strong> under <strong>Policy &amp; compliance</strong>.</p>
+</li>
+<li><p>Select the subscription or management group where you want to apply your policy.</p>
+</li>
+<li><p>In the pane that appears, select <strong>Add a custom initiative</strong> under <strong>Your custom initiatives</strong>:</p>
+<p><span>
+<img src="https://docs.microsoft.com/en-gb/learn/m365/m365-security-azure-security-center/media/3-add-custom-initiative.png" alt="Add custom initiative" data-linktype="relative-path">
+</span>
+</p>
+</li>
+<li><p>The <strong>Add custom initiatives</strong> pane appears. You then select <strong>Create new</strong> at the top.</p>
+</li>
+<li><p>In the <strong>Initiative definition</strong> pane, provide the following values:</p>
+
+</li>
+<li><p>On the right, select the policy definitions you want to include in this initiative definition. Some policy definitions allow you to set parameters when you add a new policy definition.</p>
+<p><span>
+<img src="https://docs.microsoft.com/en-gb/learn/m365/m365-security-azure-security-center/media/3-add-policy-definition.png" alt="Add policy definition" data-linktype="relative-path">
+</span>
+</p>
+</li>
+<li><p>Select <strong>Save</strong> then, in the <strong>Add custom initiatives</strong> pane, select <strong>Add</strong> in the list that appears.</p>
+<p><span>
+<img src="https://docs.microsoft.com/en-gb/learn/m365/m365-security-azure-security-center/media/3-select-add-custom-initiative.png" alt="Select Add custom initiative" data-linktype="relative-path">
+</span>
+</p>
+<ol>
+<li><p>In the pane that appears, review the basic information about your custom policy. Make sure that <strong>Policy enforcement</strong> is set to <strong>Enabled</strong>. Then select <strong>Review + create</strong>.</p>
+</li>
+<li><p>Review the details one final time, then select <strong>Create</strong>.</p>
+</li>
+</ol>
+</li>
+</ol>
+<p>Your custom initiative will start to take effect. You’ll find it in your compliance dashboard, listed alongside the built-in initiatives.</p>
+<h2 id="networking-security">Networking security</h2>
+<p>Azure Security Center will continuously monitor your environment based on network security best practices. When Azure Security Center finds potential security risks, it will give alerts and recommendations to help you understand how to best deal with them. The network map is a tool in Azure Security Center to help you understand the state of your Azure network and remediate any identified issues.</p>
+<p><span>
+<img src="https://docs.microsoft.com/en-gb/learn/m365/m365-security-azure-security-center/media/3-network-map.png" alt="Network map" data-linktype="relative-path">
+</span>
+</p>
+<p>You can use the network map to see the network topology of your workloads in Azure, and the connections between your virtual machines, virtual networks, and subnets. Use the map to drill down into specific resources to get a better understanding of them, along with the recommendations for those resources. To view the network map, you:</p>
+<ol>
+<li><p>Select <strong>Networking</strong> under <strong>Resource Security Hygiene</strong>, on the left pane of the Azure Security Center.</p>
+</li>
+<li><p>In the network map pane, select <strong>See topology</strong>.</p>
+<p><span>
+<img src="https://docs.microsoft.com/en-gb/learn/m365/m365-security-azure-security-center/media/3-select-see-typology.png" alt="See typology" data-linktype="relative-path">
+</span>
+</p>
+</li>
+</ol>
+<p>You can use filters at the top of the topology to specify what you want to see. For example, you might want to see only high or medium severity security issues, or security issues of all severity.</p>
+<p>You select a specific resource to drill down into it, and view the recommendations. Details and recommendations for that specific resource will show in a pane that appears on the right:</p>
+<p><span>
+<a href="https://docs.microsoft.com/en-gb/learn/m365/m365-security-azure-security-center/media/3-network-details-expanded.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog">
+<img src="https://docs.microsoft.com/en-gb/learn/m365/m365-security-azure-security-center/media/3-network-details-inline.png" alt="View network details" data-linktype="relative-path">
+</a>
+</span>
+</p>
+<h3 id="explore-how-to-protect-your-hybrid-cloud-with-azure-security-center">Explore how to protect your hybrid cloud with Azure Security Center</h3>
+<p>View a <a href="https://www.microsoft.com/videoplayer/embed/RE4GsND" data-linktype="external">video version</a> of the interactive guide (captions available in more languages).</p>
+<p><a href="https://mslearn.cloudguides.com/guides/Protect%20your%20hybrid%20cloud%20with%20Azure%20Security%20Center" data-linktype="external"><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-security-azure-security-center/media/protect-your-hybrid-cloud.png" alt="Azure Security Center" data-linktype="relative-path"></a></p>
+<p>Be sure to click the full-screen option in the video player. When you're done, use the <strong>Back</strong> arrow in your browser to come back to this page.</p>
+<h2 id="learn-more">Learn more</h2>
+<ul>
+<li><a href="https://docs.microsoft.com/en-us/azure/security-center/workflow-automation#availability" data-linktype="absolute-path">Workflow automation required roles and permissions</a></li>
+</ul>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Protect your cloud workloads</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/m365-security-azure-security-center/protect-cloud-workloads/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

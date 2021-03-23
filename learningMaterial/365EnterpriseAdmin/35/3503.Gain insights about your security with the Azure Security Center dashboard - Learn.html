@@ -1,0 +1,259 @@
+<html dir="ltr"><head><title>Gain insights about your security with the Azure Security Center dashboard - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/m365-security-azure-security-center/gain-insights">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/m365-security-azure-security-center/gain-insights</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Gain insights about your security with the Azure Security Center dashboard - Learn</h1>
+  <div dir="auto" id="reader-credits">IanKensey</div>
+  <div dir="auto" id="reader-estimated-time">4-5 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>4 minutes</li>
+		</ul>
+			<p>Azure Security Center gives detailed information about the security of your environment, at-a-glance from one central location.</p>
+<p>As the Azure security administrator, you’ll want to ensure your organization’s systems, users, and data are protected. You also need to make sure that the company meets its compliance requirements wherever it operates.</p>
+<p>Here, you’ll see how the Azure Security Center dashboard can give you a detailed understanding of your environment’s security.</p>
+<h2 id="azure-security-center-dashboard">Azure Security Center dashboard</h2>
+<p>As a unified infrastructure security management system, Azure Security Center is designed to help you:</p>
+<ul>
+<li>Strengthen the security posture of your organization.</li>
+<li>Meet compliance requirements.</li>
+<li>Provide threat protection for your Azure and non-Azure workloads.</li>
+</ul>
+<p>Use the Azure Security Center dashboard in the Azure portal to obtain and manage an organization level overview of the company’s security posture, compliance, and any threats.</p>
+<p><span>
+<a href="https://docs.microsoft.com/en-gb/learn/m365/m365-security-azure-security-center/media/2-dashboard-expanded.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog">
+<img src="https://docs.microsoft.com/en-gb/learn/m365/m365-security-azure-security-center/media/2-dashboard-inline.png" alt="Azure Security Center dashboard" data-linktype="relative-path">
+</a>
+</span>
+</p>
+<p>The Azure Security Center dashboard consists of a few high-level sections:</p>
+<h3 id="policy--compliance">Policy &amp; compliance</h3>
+<p>Azure Security Center looks at your whole environment and provides an aggregate score to give you an idea of how secure it is. This is the Secure Score for your environment that you can find in this Policy &amp; compliance section.</p>
+<p>You can also use this section to find out if you’re meeting compliance requirements, and how to address them. For example, you’ll see if there are any storage accounts that don’t meet a particular compliance control. You can then act accordingly to implement the remediation steps that Azure Security Center recommends.</p>
+<p>Azure Security Center also enables you to set up security policies to protect different parts of your environment. This means you can also see which areas of the environment aren’t adhering to security policies, and how to address them.</p>
+<h3 id="resource-security-hygiene">Resource security hygiene</h3>
+<p>Use this section to understand which common security hygiene issues are affecting your resources. These issues will be labeled as low, medium, or high severity, based on the impact they might have on your organization’s security. For example, Azure Security Center tells you whether there are any Azure SQL Database servers that don’t have advanced data security enabled. You can then let Azure Security Center automatically remediate this situation using Quick Fix:</p>
+<p><span>
+<a href="https://docs.microsoft.com/en-gb/learn/m365/m365-security-azure-security-center/media/2-resource-hygiene-expanded.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog">
+<img src="https://docs.microsoft.com/en-gb/learn/m365/m365-security-azure-security-center/media/2-resource-hygiene-inline.png" alt="Resource hygiene" data-linktype="relative-path">
+</a>
+</span>
+</p>
+<h3 id="threat-protection">Threat protection</h3>
+<p>Azure Security Center will actively detect and help you address threats for resources inside Azure, and workloads like servers outside of Azure, on-premises, or in other clouds. Use this section in the Azure Security Center dashboard to help understand where an attack might have originated, and how it could impact your resources. You can then do better investigations and address threats more effectively.</p>
+<p>Azure Security Center also natively integrates with Microsoft Defender for Endpoint. Machines with Linux or Windows will receive security recommendations that can be used to enhance security posture. You can also use adaptive application controls to let Azure Security Center learn about the kind of apps that normally run on your machines. It then uses that intelligence to scrutinize every app running on any of your machines and alert you with steps to deal with the situation. For example, if an unapproved application is running on a machine that normally doesn’t run that kind of application.</p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Manage your cloud security posture with Azure Security Center</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/m365-security-azure-security-center/manage-cloud-posture/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

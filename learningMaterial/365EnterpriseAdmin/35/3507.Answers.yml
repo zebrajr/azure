@@ -1,0 +1,11 @@
+1. C
+When you use Quick Fix on an issue, Azure Security Center can automatically remediate the issue for you.
+
+2. A
+This way, you can export information about alerts and recommendations for reporting purposes, or feed this information into other monitoring tools that you already have in your environment.
+
+3. B
+Through adaptive application controls, you can get security alerts if an application other than the ones you’ve defined as safe ever runs on any machine.
+
+4. A
+After integration, you can have a detailed end-to-end visibility of the security of your estate. This is because you can link together all of the information available on threats from multiple sources.
