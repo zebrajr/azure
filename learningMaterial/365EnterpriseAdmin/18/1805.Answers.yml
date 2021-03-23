@@ -1,0 +1,8 @@
+1. B
+If your organization uses services like Exchange Online or SharePoint Online, you’re already using Azure AD. If you’re not currently using Azure AD but have on-premises directories, you can use the Azure AD Connect tool to integrate Azure AD with your on-premises directories.
+
+2. A
+Yes, bandwidth consumption often exceeds 20 GB when you migrate user state from an old PC or older version of Windows to a new one. When you're planning how much bandwidth you need, consider storage, the time it takes to transfer files off and back onto a PC, matching user state to the correct devices, and the steps needed to safely delete temporary files after migration.
+
+3. C
+Yes, this one of Azure AD's primary functions. Azure AD manages user accounts, authentication, and authorization.
