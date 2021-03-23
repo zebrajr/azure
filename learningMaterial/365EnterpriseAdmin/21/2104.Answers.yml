@@ -1,0 +1,8 @@
+1. A
+Correct. Antivirus app incompatibility can interrupt deployment or stop in-place upgrades.
+
+2. B
+Correct. You can configure Windows Hello to use the device itself, a PIN, or a unique biometric identifier like a face or fingerprint, which you can enforce using policy.
+
+3. C
+Correct. Windows 10 now includes built-in virtualization-based security.
