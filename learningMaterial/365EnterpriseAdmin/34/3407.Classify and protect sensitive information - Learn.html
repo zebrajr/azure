@@ -1,0 +1,280 @@
+<html dir="ltr"><head><title>Classify and protect sensitive information - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/microsoft-cloud-app-security/classify-protect-sensitive-information">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/microsoft-cloud-app-security/classify-protect-sensitive-information</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Classify and protect sensitive information - Learn</h1>
+  <div dir="auto" id="reader-credits">lizap</div>
+  <div dir="auto" id="reader-estimated-time">4-5 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>5 minutes</li>
+		</ul>
+			<p>One of the key elements of the Cloud App Security framework is protecting your sensitive information. Sensitivity is a subjective phrase, as this can vary from one organization to another.</p>
+<p>Here, you’ll understand how to find which apps are accessing your data, how to classify which information is sensitive, how to protect it from illegal access, and how to monitor and report on the overall health of your environment.</p>
+<h2 id="what-is-information-protection">What is Information Protection?</h2>
+<p>An employee might accidentally upload a file to the wrong place. Or they could send confidential information to someone who shouldn’t have it. As a result, information could be lost or made accessible to the wrong person. Any lost or wrongfully exposed information can have serious legal, financial, or reputational consequences for your organization. Information is vital to any modern organization, and you want to ensure that it’s protected at all times.</p>
+<p>To help you, Microsoft Cloud App Security natively integrates with Azure Information Protection, a cloud-based service that helps classify and protect files and emails across your organization.</p>
+<div>
+<p> Note</p>
+<p>You have to enable the app connector for Microsoft 365 to take advantage of Azure Information Protection</p>
+</div>
+<p>You enforce information protection with Microsoft Cloud App Security through phases:</p>
+<h3 id="phase-1-discover-data">Phase 1: Discover data</h3>
+<p>During this phase, you make sure apps are connected to Microsoft Cloud App Security so it can scan for and classify data, then apply policies and controls. You can do this in two different ways: use an app connector, or use Conditional Access App Control.</p>
+<h3 id="phase-2-classify-sensitive-information">Phase 2: Classify sensitive information</h3>
+<p>In this phase, you’ll do the following:</p>
+<ol>
+<li><p>Decide what counts as sensitive in the context of your organization. Microsoft Cloud App Security includes more than 100 predefined sensitive information types, and default labels in Azure Information Protection. Sensitive information types and labels define how to handle, for example, passport numbers and national identity numbers. You can also use default labels in Azure Information Protection. These labels will be used by Microsoft Cloud App Security when scanning, to classify information. The labels are:</p>
+<ul>
+<li><strong>Personal</strong>: Data for personal, nonbusiness use only.</li>
+<li><strong>Public</strong>: Data that can be shared for public consumption, such as marketing posters and  blog posts.</li>
+<li><strong>General</strong>: Data that can’t be shared for public consumption, but can be shared with external partners. For example, project timelines and organizational charts.</li>
+<li><strong>Confidential</strong>: Data that could damage the organization if it’s shared with unauthorized people. For example, sales account data and forecasts.</li>
+<li><strong>Highly confidential</strong>: Very sensitive data that will cause serious damage if shared with unauthorized people. For example, customer details, passwords and source code.</li>
+</ul>
+</li>
+<li><p>Enable Azure Information Protection integration in Microsoft Cloud App Security by selecting <strong>Automatically scan new files for Azure Information Protection classification labels</strong> in the <strong>Settings</strong> pane:</p>
+</li>
+</ol>
+<p><span>
+<img src="https://docs.microsoft.com/en-gb/learn/m365/microsoft-cloud-app-security/media/phase-2-classify-sensitive-information.png" alt="Screenshot showing how to configure Azure information protection" data-linktype="relative-path">
+</span>
+</p>
+<h3 id="phase-3-protect-data">Phase 3: Protect data</h3>
+<p>There are different types of policies you can create to detect sensitive information and act accordingly. For example, you can create a <strong>File policy</strong> to scan the content of files in your apps in real time, and for data at rest. File policies let you apply governance actions. You can then automatically:</p>
+<ul>
+<li>Trigger alerts and email notifications.</li>
+<li>Change sharing access for files.</li>
+<li>Quarantine files.</li>
+<li>Remove file or folder permissions.</li>
+<li>Move files to a trash folder.</li>
+</ul>
+<p>To create a file policy</p>
+<ol>
+<li><p>Open Microsoft Cloud App Security</p>
+</li>
+<li><p>Select the <strong>Control</strong> pane</p>
+</li>
+<li><p>Select <strong>Policies &gt; Create policy</strong></p>
+</li>
+<li><p>Select <strong>File policy</strong></p>
+<p>When the form that appears, you’ll fill in the following fields:</p>
+
+</li>
+<li><p>When you’re done, select <strong>Create</strong> to create your file policy.</p>
+</li>
+</ol>
+<h3 id="phase-4-monitor-and-report">Phase 4: Monitor and report</h3>
+<p>Check your dashboard to monitor for alerts and the overall health of your environment. For example, to review file-related alerts, go to the <strong>Alerts</strong> pane, and select <strong>DLP</strong> in the <strong>Category</strong> field.</p>
+<p><span>
+<img src="https://docs.microsoft.com/en-gb/learn/m365/microsoft-cloud-app-security/media/phase-4-alerts.png" alt="Screenshot showing how to monitor for alerts" data-linktype="relative-path">
+</span>
+</p>
+<p>You can investigate a file-related alert to better understand what caused it to be triggered. Or you can dismiss an alert that you determine could be ignored. You can also export your alerts to a CSV file for further analysis.</p>
+
+		
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

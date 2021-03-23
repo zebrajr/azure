@@ -1,0 +1,246 @@
+<html dir="ltr"><head><title>Protect your data and apps with Conditional Access App Control - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/microsoft-cloud-app-security/conditional-access-app-control">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/microsoft-cloud-app-security/conditional-access-app-control</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Protect your data and apps with Conditional Access App Control - Learn</h1>
+  <div dir="auto" id="reader-credits">lizap</div>
+  <div dir="auto" id="reader-estimated-time">5-6 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="main" role="main" data-bi-name="content" lang="en-us" dir="ltr">
+		
+		
+		<ul>
+			<li>10 minutes</li>
+		</ul>
+			<p>Cloud Discovery helps you understand what's happening in your cloud environment after the fact. While this process is important, your primary goal is to stop breaches and leaks in real time, before they put your organization at risk. You also need a way to enable users to bring their own devices to work while still protecting your organization from data leaks and data theft. Microsoft Cloud App Security integrates with identity providers (IdPs) to protect your data and devices with access and session controls through <strong>Conditional Access App Control</strong>. If you're using Azure Active Directory (Azure AD) as your IdP, these controls are integrated directly into Cloud App Security.</p>
+<p>Conditional Access App Control lets you monitor and control user app access and sessions in real time. By integrating with Azure AD Conditional Access, it's easy to configure apps to work with Conditional Access App Control. It lets you selectively enforce access and session controls on your organization's apps based on any condition in Conditional Access. You can use conditions that define who (user or group of users), what (which cloud apps), and where (which locations and networks) a Conditional Access policy is applied. After you determine the conditions, you can route users to Cloud App Security where you protect data with Conditional Access App Control by applying access and session controls.</p>
+<p>Azure AD includes built-in policies that you can configure for an easy deployment. After you configure the conditions of a Conditional Access policy in Azure AD, select <strong>Session</strong> under <strong>Access controls</strong>, and click <strong>Use Conditional Access App Control</strong>. If you choose to <strong>use custom controls</strong>, you'll define them in the Cloud App Security portal.</p>
+<p>You can use access and session policies in the Cloud App Security portal to further refine filters and set actions to be taken on a user. With the access and session policies, you can:</p>
+<ul>
+<li><strong>Prevent data exfiltration</strong>: Block the download, cut, copy, and print of sensitive documents on, for example, unmanaged devices.</li>
+<li><strong>Protect on download</strong>: Instead of blocking the download of sensitive documents, you can require them to be labeled and protected with Azure Information Protection. This action ensures that the document is protected and that user access is restricted in a potentially risky session.</li>
+<li><strong>Prevent upload of unlabeled files</strong>: Enforce the use of labeling. Before a sensitive file is uploaded, distributed, and used by others, it's important to make sure that it has the right label and protection. You can block a file upload until the content is classified.</li>
+<li><strong>Monitor user sessions for compliance</strong>: Monitor risky users when they sign in to apps and log their actions from within the session. You can investigate and analyze user behavior to understand where, and under what conditions, to apply session policies in the future.</li>
+<li><strong>Block access</strong>: You can block access for specific apps and users depending on several risk factors. For example, you can block a user if they're using a client certificate as a form of device management.</li>
+<li><strong>Block custom activities</strong>: Some apps have unique scenarios that carry risk; for example, sending messages with sensitive content in apps like Microsoft Teams or Slack. In these kinds of scenarios, you can scan messages for sensitive content and block them in real time.</li>
+</ul>
+<p>For example, let's create a session policy in Microsoft Teams that blocks IM messages containing sensitive content. Assuming we previously created a Conditional Access policy with <strong>Use custom controls</strong> set under <strong>Use Conditional Access App Control</strong>, we start by creating a new session policy in Microsoft Cloud App Security.</p>
+<p>We'll use an existing template for our new session policy. Select the <strong>Block sending of messages based on real-time content inspection</strong> policy template.</p>
+<p>Under <strong>Activity source</strong> for the session policy, select <strong>Send Teams message</strong> as the application.</p>
+<p>You then enable <strong>Content Inspection</strong>, where you'll define the sensitive information as matching a present expression, a custom expression, or any regular expression. When the expressions are defined, select <strong>Block</strong> under <strong>Actions</strong> to block the message, and to create alerts to notify administrators.</p>
+<p>Now, when a user tries to send a sensitive message in Teams, they'll see a notification.</p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Walk through discovery and access control with Microsoft Cloud App Security</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/microsoft-cloud-app-security/walkthrough/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div><section>
+		<p>
+Need help? See our <a id="troubleshooting-guide" data-bi-name="troubleshooting" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-m365.cloud-app-security.conditional-access-app-control&amp;documentId=b2b5c09f-664c-9860-8810-09e1c75e69e1&amp;versionIndependentDocumentId=479f318e-6990-a473-e261-592b7e46472e&amp;contentPath=%2FMicrosoftDocs%2Flearn-m365-pr%2Fblob%2Flive%2Flearn-m365-pr%2Fm365%2Fmicrosoft-cloud-app-security%2Fconditional-access-app-control.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fmicrosoft-cloud-app-security%2Fconditional-access-app-control&amp;author=iankensey">troubleshooting guide</a> or provide specific feedback by <a id="module-unit-feedback-link" data-bi-name="feedback" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-m365.cloud-app-security.conditional-access-app-control&amp;documentId=b2b5c09f-664c-9860-8810-09e1c75e69e1&amp;versionIndependentDocumentId=479f318e-6990-a473-e261-592b7e46472e&amp;contentPath=%2FMicrosoftDocs%2Flearn-m365-pr%2Fblob%2Flive%2Flearn-m365-pr%2Fm365%2Fmicrosoft-cloud-app-security%2Fconditional-access-app-control.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fmicrosoft-cloud-app-security%2Fconditional-access-app-control&amp;author=iankensey#report-feedback">reporting an issue</a>.		</p>
+	</section></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

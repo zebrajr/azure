@@ -1,0 +1,283 @@
+<html dir="ltr"><head><title>Detect Threats - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/microsoft-cloud-app-security/detect-threats">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/microsoft-cloud-app-security/detect-threats</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Detect Threats - Learn</h1>
+  <div dir="auto" id="reader-credits">lizap</div>
+  <div dir="auto" id="reader-estimated-time">7-8 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>5 minutes</li>
+		</ul>
+			<p>When you understand how to protect data from accidental exposure, the next thing to consider, and one of the elements of the Cloud App Security framework, is protecting against cyberthreats and anomalies.</p>
+<p>Microsoft Cloud App Security includes out-of-the-box anomaly detection policies that utilize user and entity behavioral analytics (UEBA) and machine learning to provide advanced threat detection across your cloud environment. It’s important to note that anomaly detections are non-deterministic by nature. These detections only trigger when there's behavior that deviates from the norm.</p>
+<p>Although anomaly detection policies are automatically enabled, Microsoft Cloud App Security spends the first seven days learning about your environment. It looks at the IP addresses, devices, and locations your users access, identifies which apps and services they use, and calculates the risk score of all of these activities. This process contributes to the baseline, against which your environment and any alerts are compared. The detection policies also use machine learning to profile your users. If Microsoft Cloud App Security recognizes your users and their normal sign-in patterns, it can help reduce false positive alerts.</p>
+<p>Anomalies are detected by scanning user activity and evaluating it for risk. The risk is evaluated by looking at more than 30 different indicators, grouped into the following risk factors:</p>
+<ul>
+<li>Risky IP address</li>
+<li>Login failures</li>
+<li>Admin activity</li>
+<li>Inactive accounts</li>
+<li>Location</li>
+<li>Impossible travel</li>
+<li>Device and user agent</li>
+<li>Activity rate</li>
+</ul>
+<p>Microsoft Cloud App Security looks at every user session on your cloud and alerts you when something happens that’s different from the baseline of your organization, or from the user's regular activity.</p>
+<h2 id="anomaly-detection-policy-overview">Anomaly detection policy overview</h2>
+<p>Microsoft Cloud App Security’s anomaly detection policies are configured to detect a variety of security issues. The most popular are:</p>
+<ul>
+<li><strong>Impossible travel</strong>. Activities from the same user in different locations within a period that’s shorter than the expected travel time between the two locations.</li>
+<li><strong>Activity from infrequent country</strong>. Activity from a location that was not recently or never visited by the user, or by any user in the organization.</li>
+<li><strong>Malware detection</strong>. Scans files in your cloud apps and runs suspicious files through Microsoft’s threat intelligence engine to determine whether they’re associated with known malware.</li>
+<li><strong>Ransomware activity</strong>. File uploads to the cloud that might be infected with ransomware.</li>
+<li><strong>Activity from suspicious IP addresses</strong>. Activity from an IP address that’s been identified as risky by Microsoft Threat Intelligence.</li>
+<li><strong>Suspicious inbox forwarding</strong>. Detects suspicious inbox forwarding rules set on a user's inbox.</li>
+<li><strong>Unusual multiple file download activities</strong>. Detects multiple file download activities in a single session with respect to the baseline learned, which could indicate an attempted breach.</li>
+<li><strong>Unusual administrative activities</strong>. Detects multiple administrative activities in a single session with respect to the baseline learned, which could indicate an attempted breach.</li>
+</ul>
+<h2 id="configure-an-anomaly-detection-policy">Configure an anomaly detection policy</h2>
+<p>Now that you’ve learned about the anomaly detection policies, let’s configure a discovery anomaly policy so you can see the steps to set it up and configure it for your environment. A discovery anomaly detection policy looks for unusual increases in cloud application usage. It looks at increases in downloaded data, uploaded data, transactions, and users for each cloud application. Then, each increase is compared to the baseline for the application. The most extreme increases trigger security alerts.</p>
+<p>You can set filters to customize how you monitor application usage. Filters include an application filter, selected data views, and a selected start date. You can also set the sensitivity, which enables you to set how many alerts the policy should trigger.</p>
+<p>This interactive guide walks you through the steps to configure an anomaly detection policy:</p>
+
+<h3 id="fine-tune-anomaly-detection-policies-for-suppression-or-surfacing-alerts">Fine tune anomaly detection policies for suppression or surfacing alerts</h3>
+<p>Although anomaly detections only trigger when something happens outside the norm, they're still susceptible to false positives. Too many false positives can lead to alert fatigue, and you risk missing the important alerts in the noise. To help prevent this, you can fine-tune the detection logic in each policy to include different levels of suppression to address scenarios that can trigger false positive, such as VPN activities.</p>
+<p>When creating or editing an anomaly detection policy, you determine its sensitivity according to the type of coverage you need. A higher sensitivity uses stricter detection logic algorithms. This allows you to adapt your detection strategies for each policy.</p>
+<p>Before you fine-tune your policies, it helps to understand the options for suppressing an alert. There are three types of suppression:</p>
+
+<p>The sensitivity levels affect the suppression types differently:</p>
+
+<p>You can also configure whether alerts for activity from infrequent country/region, anonymous IP addresses, suspicious IP addresses, and impossible travel should analyze failed and successful logins, or just successful logins.</p>
+<h3 id="adjust-the-anomaly-detection-scope-policy-to-users-and-groups">Adjust the anomaly detection scope policy to users and groups</h3>
+<p>Each anomaly detection policy can be independently scoped so that it applies only to the users and groups you want to include and exclude in the policy. For example, you can set the Activity from infrequent county detection to ignore a specific user who travels frequently.</p>
+<p>To scope an anomaly detection policy:</p>
+<p>Each anomaly detection policy can be independently scoped so that it applies only to the users and groups you want to include and exclude in the policy. For example, you can set activity from infrequent county detection to ignore a specific user who travels frequently.</p>
+<p>To scope an anomaly detection policy:</p>
+<ol>
+<li><p>Sign in to the Microsoft Cloud App Security Portal through your browser.</p>
+</li>
+<li><p>Select <strong>Control</strong> &gt; <strong>Policies</strong>, and set the <strong>Type</strong> filter to <strong>Anomaly detection policy</strong>.</p>
+</li>
+<li><p>Select the policy you want to scope.</p>
+</li>
+<li><p>Under <strong>Scope</strong>, change the dropdown from the default setting of <strong>All users and groups</strong>, to <strong>Specific users and groups</strong>.</p>
+</li>
+<li><p>Select <strong>Include</strong> to specify the users and groups for whom this policy will apply. Any user or group not selected here won't be considered a threat or generate an alert.</p>
+</li>
+<li><p>Select <strong>Exclude</strong> to specify users for whom this policy won't apply. Any user selected here won't be considered a threat or generate an alert, even if they're members of groups selected under <strong>Include</strong>.</p>
+<p><span>
+<img src="https://docs.microsoft.com/en-gb/learn/m365/microsoft-cloud-app-security/media/anomaly-detection-policy.png" alt="Screenshot showing how to edit an Anomaly detection policy" data-linktype="relative-path">
+</span>
+</p>
+</li>
+<li><p>When you've completed the changes to the scope, select <strong>Update</strong> to commit the change.</p>
+</li>
+</ol>
+
+		
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>
