@@ -1,0 +1,243 @@
+<html dir="ltr"><head><title>Review the servicing best practices - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/m365-modern-windows-office-servicing/3-servicing-best-practices">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/m365-modern-windows-office-servicing/3-servicing-best-practices</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Review the servicing best practices - Learn</h1>
+  <div dir="auto" id="reader-credits">lizap</div>
+  <div dir="auto" id="reader-estimated-time">3-4 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="main" role="main" data-bi-name="content" lang="en-us" dir="ltr">
+		
+		
+		<ul>
+			<li>10 minutes</li>
+		</ul>
+			<p>To align with the new method of delivering feature and quality updates in Windows 10, Microsoft uses <strong>servicing channels</strong> to let you designate how frequently your individual devices are updated. For example, you can have test devices that the IT department updates with new features as soon as possible as well as specialized devices that require a longer feature update cycle to ensure continuity.</p>
+<h2 id="use-phased-deployments-for-feature-and-security-updates">Use phased deployments for feature and security updates</h2>
+<p>For any release, we recommend at least three deployment phases for IT: validation, piloting, and broad production deployment.</p>
+<h2 id="expand-your-validation-of-security-updates">Expand your validation of security updates</h2>
+<p>Before security updates are rolled out for broad deployment, builds are released through the <strong>Insider Programs</strong> for Office and Windows. The Insider Program provides access to early update releases that you can validate on your own system before deploying them to your whole organization. Microsoft also uses the Insider Programs to gather diagnostic data and feedback prior to releasing updates broadly. This helps minimize update incompatibilities. The Insider Programs are open to everyone.</p>
+<h2 id="simplify-feature-updates-with-windows-update-for-business">Simplify feature updates with Windows Update for Business</h2>
+<p>Windows Update for Business is a free service that helps you keep Windows 10 devices up to date by directly connecting the devices to the Windows Update service. You can configure Windows Update for Business by using Group Policy or through MDM solutions, like Microsoft Intune. Windows Update for Business lets you create deployment rings to validate new builds. It’s integrated into existing management tools like Windows Server Update Services (WSUS), Configuration Manager (current branch), and Microsoft Intune. Windows Update for Business also supports peer-to-peer delivery to help optimize bandwidth efficiency and reduce network congestion.</p>
+<h2 id="employ-express-updates-for-bandwidth-management">Employ Express Updates for bandwidth management</h2>
+<p>You can significantly reduce download size by using a technology like <strong>Express Updates</strong> in Windows. In this approach, the update engines compare the PC’s current status and find only the delta needed to update it. Windows Update for Business and Windows Server Update Services have supported express updates for a long time, and Configuration Manager has been updated so that it can also use express updates.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-modern-windows-office-servicing/media/step-7-1.png" alt="Express Updates screen" data-linktype="relative-path"></p>
+<h3 id="explore-how-to-optimize-windows-10-updates">Explore how to optimize Windows 10 updates</h3>
+<p>View a <a href="https://www.microsoft.com/videoplayer/embed/RE44iA0" data-linktype="external">video version</a> of the interactive guide (captions available in more languages).</p>
+<p><a href="https://mslearn.cloudguides.com/guides/Optimize%20delivery%20of%20Windows%2010%20updates" data-linktype="external"><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-modern-windows-office-servicing/media/lab-optimize-updates.png" alt="Optimize delivery of Windows 10 updates" data-linktype="relative-path"></a></p>
+<p>Be sure to click the full-screen option in the video player. When you're done, use the <strong>Back</strong> arrow in your browser to come back to this page.</p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Summary and knowledge check</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/m365-modern-windows-office-servicing/4-summary-and-knowledge-check/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div><section>
+		<p>
+Need help? See our <a id="troubleshooting-guide" data-bi-name="troubleshooting" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-m365.modern-windows-office-servicing.3-servicing-best-practices&amp;documentId=94d7af62-8ccf-dd27-0236-27c06c1f0cea&amp;versionIndependentDocumentId=85252e3d-485f-8124-b4be-e76d8060a8fd&amp;contentPath=%2FMicrosoftDocs%2Flearn-m365-pr%2Fblob%2Flive%2Flearn-m365-pr%2Fm365%2Fm365-modern-windows-office-servicing%2F3-servicing-best-practices.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fm365-modern-windows-office-servicing%2F3-servicing-best-practices&amp;author=elizapo">troubleshooting guide</a> or provide specific feedback by <a id="module-unit-feedback-link" data-bi-name="feedback" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-m365.modern-windows-office-servicing.3-servicing-best-practices&amp;documentId=94d7af62-8ccf-dd27-0236-27c06c1f0cea&amp;versionIndependentDocumentId=85252e3d-485f-8124-b4be-e76d8060a8fd&amp;contentPath=%2FMicrosoftDocs%2Flearn-m365-pr%2Fblob%2Flive%2Flearn-m365-pr%2Fm365%2Fm365-modern-windows-office-servicing%2F3-servicing-best-practices.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fm365-modern-windows-office-servicing%2F3-servicing-best-practices&amp;author=elizapo#report-feedback">reporting an issue</a>.		</p>
+	</section></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>
