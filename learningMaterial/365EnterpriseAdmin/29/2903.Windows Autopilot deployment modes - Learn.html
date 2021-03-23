@@ -1,0 +1,263 @@
+<html dir="ltr"><head><title>Windows Autopilot deployment modes - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/automate-windows-deployments-by-using-windows-autopilot/2-windows-autopilot-deployment-modes">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/automate-windows-deployments-by-using-windows-autopilot/2-windows-autopilot-deployment-modes</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Windows Autopilot deployment modes - Learn</h1>
+  <div dir="auto" id="reader-credits">dahans-msft2</div>
+  <div dir="auto" id="reader-estimated-time">4-5 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>10 minutes</li>
+		</ul>
+			<p>Depending on your organization's needs and requirements, Windows Autopilot supports a growing list of common scenarios that make transitioning to modern management a smooth process.</p>
+
+<p><iframe src="https://www.youtube-nocookie.com/embed/7t7xaV8sm50" frameborder="0" allowfullscreen="true" data-linktype="external"></iframe></p>
+<h2 id="windows-autopilot-in-user-driven-mode">Windows Autopilot in User-driven mode</h2>
+<p>Windows Autopilot user-driven mode is designed to enable new Windows 10 devices to arrive directly from the factory, in a ready-to-use state without requiring IT personnel to ever touch the device. The process is so simple that anyone can complete it, enabling devices to be shipped to the end user with simple instructions:</p>
+<ol>
+<li><p>Unbox the device, plug it in, and turn it on.</p>
+</li>
+<li><p>Choose a language, locale, and keyboard.</p>
+</li>
+<li><p>Connect it to a wireless or wired network with internet access.</p>
+</li>
+<li><p>Specify your e-mail address and password for your organization account.</p>
+</li>
+</ol>
+<p>The remainder of the process is entirely automated, with the device being joined to the organization, enrolled in Intune, and fully configured as defined by the organization.</p>
+<h2 id="windows-autopilot-in-self-deploying-mode">Windows Autopilot in Self-deploying mode</h2>
+<p>Windows Autopilot self-deploying mode enables a shared device, such as a kiosk, digital sign, or shared workstation, to be deployed with little to no user interaction. For devices with an Ethernet connection, no user interaction is required; for devices connected via Wi-fi, no interaction is required after making the Wi-fi connection.</p>
+<p>Self-deploying mode joins the device into Azure Active Directory, enrolls the device in Intune leveraging Azure AD, and ensures that all policies, applications, certificates, and networking profiles are provisioned on the device. The enrollment status page prevents access to the desktop until the device is fully provisioned.</p>
+<h2 id="reset-devices-using-windows-autopilot">Reset devices using Windows Autopilot</h2>
+<p>During a reset, Windows Autopilot Reset removes personal files, apps, and settings from a device and then reapplies the device’s original settings. Throughout the process, the device maintains its identity connection to Azure AD and its management connection to Intune so that the device is once again ready for use. Windows Autopilot Reset takes the device back to a business-ready state, allowing the next user to sign in and get productive quickly and simply.</p>
+<p>The Windows Autopilot Reset process automatically retains information from the existing device:</p>
+<ul>
+<li><p>Set the region, language, and keyboard to the originally configured values.</p>
+</li>
+<li><p>Wi-Fi connection details.</p>
+</li>
+<li><p>Provisioning packages previously applied to the device, as well as a provisioning package present on a USB drive when the reset process is started.</p>
+</li>
+<li><p>Azure Active Directory device membership and MDM enrollment information.</p>
+</li>
+</ul>
+<p>Windows Autopilot Resets can be triggered locally or remotely by IT staff.</p>
+<h2 id="white-glove-deployments-using-windows-autopilot">White glove deployments using Windows Autopilot</h2>
+<p>White glove deployments are for devices that will be configured by the OEM or member of the IT organization before deployment. In scenarios where bandwidth is a concern during deployment or complex configurations are needed, IT can pre-install applications and configurations before final delivery. The end user only needs to personalize their settings, policies, and account information before using their device.</p>
+<h2 id="deploy-windows-10-on-existing-windows-7-or-81-devices">Deploy Windows 10 on existing Windows 7 or 8.1 devices</h2>
+<p>Windows Autopilot, along with System Center Configuration Manager, can be used to deploy Windows 10 to managed devices running Windows 7 or 8.1. Apps, policies, and settings can all be preconfigured with Intune, so the devices are business ready after being wiped and reimaged with Windows 10.</p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Administering Windows Autopilot</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/automate-windows-deployments-by-using-windows-autopilot/3-administering-windows-autopilot/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>
