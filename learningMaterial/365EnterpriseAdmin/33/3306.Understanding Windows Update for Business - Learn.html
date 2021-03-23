@@ -1,0 +1,287 @@
+<html dir="ltr"><head><title>Understanding Windows Update for Business - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/deploy-windows-update-microsoft-365/5-understanding-windows-update-business">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/deploy-windows-update-microsoft-365/5-understanding-windows-update-business</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Understanding Windows Update for Business - Learn</h1>
+  <div dir="auto" id="reader-credits">bneeb</div>
+  <div dir="auto" id="reader-estimated-time">3-4 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="main" role="main" data-bi-name="content" lang="en-us" dir="ltr">
+		
+		
+		<ul>
+			<li>9 minutes</li>
+		</ul>
+			<p>Windows Update for Business is a new service introduced with Windows 10. With Windows Update for Business, you can use Group Policy or mobile device management to configure Windows Update to control the distribution and deployment of Windows updates.</p>
+<p>Windows Update for Business provides three types of updates in Windows:</p>
+<ul>
+<li><p>Feature Updates. These updates include security and quality revisions, and feature additions and changes. They’re released approximately every 4 to 8 months.</p>
+</li>
+<li><p>Quality Updates. These operating system updates typically are released the second Tuesday of each month (though they can be released at any time). These include security, critical, and driver updates. Updates to other Microsoft products (such as those for Microsoft Office or Microsoft Visual Studio) are also treated as Quality Updates.</p>
+</li>
+<li><p>Non-deferrable updates. Antimalware and antispyware Definition Updates from Windows Update are mandatory and cannot be deferred.</p>
+</li>
+</ul>
+<p>Windows Update for Business is not a product so much as a way of providing control over updates in a business setting. As such, you can optionally integrate the Windows Update for Business approach in many scenarios using a variety of existing management technologies, including Windows Server Update Services (WSUS). The following three examples describe different scenarios for configuring Windows Update for Business.</p>
+<h2 id="scenario-1-defer-windows-update-updates-with-other-update-content-hosted-on-wsus">Scenario #1. Defer Windows Update updates with other update content hosted on WSUS</h2>
+<p>In this scenario, the following objectives apply:</p>
+<ul>
+<li><p>Device is configured to defer Windows Quality Updates with Windows Update for Business.</p>
+</li>
+<li><p>Device is managed by WSUS.</p>
+</li>
+<li><p>Device is not configured to enable Microsoft Update.</p>
+</li>
+<li><p>Office and other software apps are on WSUS.</p>
+</li>
+<li><p>Third party drivers are on WSUS.</p>
+</li>
+</ul>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/deploy-windows-update-microsoft-365/media/busn-scenario1.png" alt="Diagram showing use of WSUS to defer Windows updates with other update content hosted on WSUS." data-linktype="relative-path"></p>
+<h2 id="scenario-2-exclude-drivers-from-windows-quality-updates-using-windows-update-for-business">Scenario #2. Exclude drivers from Windows Quality Updates using Windows Update for Business</h2>
+<p>In this scenario, the following objectives apply:</p>
+<ul>
+<li><p>Device is configured to defer Windows Quality Updates and to exclude drivers from Windows Update Quality Updates.</p>
+</li>
+<li><p>Device is configured to be managed by WSUS.</p>
+</li>
+<li><p>Windows Update drivers are available on WSUS.</p>
+</li>
+</ul>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/deploy-windows-update-microsoft-365/media/busn-scenario2.png" alt="Diagram showing use of WSUS to exclude drivers from Windows Quality Updates using Windows Update for Business." data-linktype="relative-path"></p>
+<h2 id="device-configured-to-receive-microsoft-updates">Device configured to receive Microsoft updates</h2>
+<p>In this scenario, the following objectives apply:</p>
+<ul>
+<li><p>Device is configured to defer Quality Updates using Windows Update for Business.</p>
+</li>
+<li><p>Device is managed by WSUS.</p>
+</li>
+<li><p>Device is configured to receive updates for other Microsoft products at the same time as updates to Windows.</p>
+</li>
+<li><p>Microsoft Update, third-party, and locally published update content is available on the WSUS server.</p>
+</li>
+</ul>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/deploy-windows-update-microsoft-365/media/busn-scenario3.png" alt="Scenario showing using of WSUS to configure devices to receive Microsoft updates." data-linktype="relative-path"></p>
+<p>These are the three primary scenarios for using Windows Update for Business.</p>
+<h2 id="learn-more">Learn more</h2>
+<ul>
+<li><a href="https://docs.microsoft.com/en-us/windows/deployment/update/waas-manage-updates-wufb" data-linktype="absolute-path" target="az-portal">Configure Windows Update for Business</a></li>
+<li><a href="https://docs.microsoft.com/en-us/windows/deployment/update/" data-linktype="absolute-path" target="az-portal">Deploy Windows Updates</a></li>
+<li><a href="https://docs.microsoft.com/en-us/windows/deployment/update/" data-linktype="absolute-path" target="az-portal">Implement feature updates</a></li>
+<li><a href="https://docs.microsoft.com/en-us/windows/deployment/update/update-compliance-monitor" data-linktype="absolute-path" target="az-portal">Monitor Windows 10 updates</a></li>
+</ul>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Summary and knowledge check</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/deploy-windows-update-microsoft-365/6-summary-and-knowledge-check/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div><section>
+		<p>
+Need help? See our <a id="troubleshooting-guide" data-bi-name="troubleshooting" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-wwl.deploy-windows-update-in-microsoft-365.5-understanding-windows-update-business&amp;documentId=bcc32cb2-1afb-3fbe-16c3-b578b5d38c45&amp;versionIndependentDocumentId=aebfe976-3c9c-2667-6894-5693dd6719e2&amp;contentPath=%2FMicrosoftDocs%2Flearn-m365-pr%2Fblob%2Flive%2Flearn-m365-pr%2Fm365%2Fdeploy-windows-update-microsoft-365%2F5-understanding-windows-update-business.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fdeploy-windows-update-microsoft-365%2F5-understanding-windows-update-business&amp;author=bneeb">troubleshooting guide</a> or provide specific feedback by <a id="module-unit-feedback-link" data-bi-name="feedback" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-wwl.deploy-windows-update-in-microsoft-365.5-understanding-windows-update-business&amp;documentId=bcc32cb2-1afb-3fbe-16c3-b578b5d38c45&amp;versionIndependentDocumentId=aebfe976-3c9c-2667-6894-5693dd6719e2&amp;contentPath=%2FMicrosoftDocs%2Flearn-m365-pr%2Fblob%2Flive%2Flearn-m365-pr%2Fm365%2Fdeploy-windows-update-microsoft-365%2F5-understanding-windows-update-business.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fdeploy-windows-update-microsoft-365%2F5-understanding-windows-update-business&amp;author=bneeb#report-feedback">reporting an issue</a>.		</p>
+	</section></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>
