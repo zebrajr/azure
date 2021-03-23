@@ -1,0 +1,273 @@
+<html dir="ltr"><head><title>Plan for infrastructure and configuration - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/windows-plan/cover-infrastructure">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/windows-plan/cover-infrastructure</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Plan for infrastructure and configuration - Learn</h1>
+  <div dir="auto" id="reader-credits">IanKensey</div>
+  <div dir="auto" id="reader-estimated-time">6-8 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>8 minutes</li>
+		</ul>
+			<p>Your manager isn’t sure about how to approach infrastructure and configuration readiness to support Windows servicing. You’ve been asked to investigate how Woodgrove can define a repeatable process to ensure the environment’s infrastructure and configuration can support future Windows updates.</p>
+<h2 id="inputs">Inputs</h2>
+<p>Previous deployments can help you understand what types of activities you’ll need to do to support the new update.</p>
+<h3 id="infrastructure-updates">Infrastructure updates</h3>
+<p>Assess the infrastructure used to deploy and manage Windows 10. Confirm the support of the new Windows 10 feature update with your infrastructure management tooling, and determine the effort needed to update the infrastructure.</p>
+<ul>
+<li>Microsoft Endpoint Configuration Manager Current Branch – the latest release of Configuration Manager provides support for all serviced versions of Windows 10, and support for the next Windows 10 feature update. The Configuration Manager update is serviced for 18 months after release</li>
+<li>For those customers that use cloud-based infrastructure management tooling such as Microsoft Intune, supportability challenges will be reduced as no on-premises or client-side products need to be updated.</li>
+<li>For non-Microsoft on premises infrastructure tooling, confirm supportability and next steps with product support.</li>
+</ul>
+<p>It is recommended to use data from previous deployments to get an idea of how long infrastructure changes take, previous challenges encountered when upgrading infrastructure, and the resources that need to be consulted, or informed about the update.</p>
+<h3 id="configuration-updates">Configuration updates</h3>
+<p>Before you can apply the Windows 10 feature update to your environment, you’ll need to assess and update required configuration to ensure security and capabilities are configured appropriately, to support production devices. Organizations typically perform the following tasks:</p>
+<p><strong>Plan for Security baseline updates</strong></p>
+<p>Security baselines are designed to help you ensure your devices are configured with Microsoft recommended guidance. Security risks and threats are constantly changing, and updating security baselines helps to secure your environment and ensure new security features delivered as part of the Windows 10 feature update are configured accordingly. There are different security baselines your organization will in all likelihood need to implement. Plan to review the following:</p>
+<ul>
+<li><strong>Microsoft security baselines</strong>: It is highly recommended that you implement security baselines from Microsoft. You can find them included with Microsoft’s <a href="https://www.microsoft.com/download/details.aspx?id=55319" data-linktype="external">Security Compliance Toolkit</a>, which will also provide you with tools to help manage your security baselines.</li>
+<li><strong>Industry or region-specific baselines</strong>: Your industry or region may have its own security baselines that you need to adhere to for compliance or regulatory reasons. For example, if Woodgrove is a financial organization, it may have additional required security configuration in the region it operates than a retail organization. Check to ensure any new baselines implemented support the version of Windows 10 you are deploying.</li>
+</ul>
+<p><strong>Plan for configuration updates</strong></p>
+<p>Review and configure policies that will help your devices take advantage of any new Windows 10 features, and ensure devices are set to apply updates when they are ready. The following items should be assessed ahead of implementation in the Prepare phase:</p>
+<ul>
+<li><strong>Windows 10 Administrative Templates</strong> – Every Windows 10 feature update has a supporting administrative template, which can be imported into a customer environment to support new features of the operating system.</li>
+<li><strong>Optimize Windows 10 update adoption</strong> – review the <a href="https://aka.ms/UpdateVelocity" data-linktype="external">set of policies</a> to assist with setting your devices to take updates, and keep them online while the update process is happening. This approach helps devices with low activity stay online to download and install updates, ensuring they have a serviced version of Windows 10.</li>
+</ul>
+<h3 id="define-operational-readiness-criteria">Define operational readiness criteria</h3>
+<p>When you’ve deployed an update, you’ll need to make sure the update isn’t introducing new operational issues. And you’ll also ensure that if incidents arise, the needed documentation and processes are available. To achieve this, work with your operations and support team to define acceptable trends and what documents or processes require updating:</p>
+<ul>
+<li><strong>Call trend</strong>: Define what percentage increase in calls relating to Windows 10 feature updates are acceptable or can be supported.</li>
+<li><strong>Incident trend</strong>: Define what percentage of increase in calls asking for support relating to Windows 10 feature updates are acceptable or can be supported.</li>
+<li><strong>Support documentation</strong>: Review supporting documentation that requires an update to support new infrastructure tooling or configuration as part of the Windows 10 feature update.</li>
+<li><strong>Process changes</strong>: Define and update any processes that will change as a result of the Windows 10 feature update.</li>
+</ul>
+<p>Operations or support can help you determine if the appropriate information is being tracked at the moment, and if it’s not being tracked, work out how to get a hold of it so you can gain the right insight.</p>
+<h2 id="tasks">Tasks</h2>
+<p>Finally, you can begin to carry out the work needed to ensure your infrastructure and configuration can support the update. To help you keep track, you can classify the work into the following overarching tasks:</p>
+<ul>
+<li><strong>Review infrastructure requirements</strong>: Go over the details of requirements to support the update, and ensure they’ve all been defined.</li>
+<li><strong>Validate infrastructure against requirements:</strong> Compare your infrastructure against the requirements that have been identified for the update.</li>
+<li><strong>Define infrastructure update plan</strong>: Detail how your infrastructure will need to be changed to support the update.</li>
+<li><strong>Review current support volume:</strong> Understand the current support volume to understand how much of an effect the update has when it’s been deployed.</li>
+<li><strong>Identify gaps that require attention:</strong> Identify issues that will need to be addressed to successfully deploy the update. For example, will your infrastructure engineer have to research how a new feature that comes with the update might affect the infrastructure?</li>
+<li><strong>Define operational update plan:</strong> Detail how your operational services and processes will need to be changed to support the update.</li>
+</ul>
+<h2 id="outputs">Outputs</h2>
+<p>You will now be able to create the following updates artifacts that you can use for the next phase in the workstream:</p>
+
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Modernize your production environment</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/windows-plan/modernize-production-environment/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>
