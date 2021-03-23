@@ -1,0 +1,258 @@
+<html dir="ltr"><head><title>Understanding the Microsoft Intune application lifecycle - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/manage-applications-by-using-microsoft-intune/3-understanding-the-microsoft-intune-application-lifecycle">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/manage-applications-by-using-microsoft-intune/3-understanding-the-microsoft-intune-application-lifecycle</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Understanding the Microsoft Intune application lifecycle - Learn</h1>
+  <div dir="auto" id="reader-credits">bneeb</div>
+  <div dir="auto" id="reader-estimated-time">3-4 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="main" role="main" data-bi-name="content" lang="en-us" dir="ltr">
+		
+		
+		<ul>
+			<li>4 minutes</li>
+		</ul>
+			<p>The Microsoft Intune app lifecycle begins when an app is added and progresses through additional phases until you remove the app. By understanding these phases, you will have the details you need to get started with app management in Intune.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/manage-applications-by-using-microsoft-intune/media/app-lifecycle.png" alt="Diagram showing application lifecycle." data-linktype="relative-path"></p>
+<h3 id="add">Add</h3>
+<p>The first step in app deployment is to identify the apps you want to manage and assign and add them to Intune. You can work with many different app types; the basic procedures are the same. With Intune you can add apps written in-house (line-of-business), apps from the store, apps that are built-in, and apps on the web.</p>
+<h3 id="deploy">Deploy</h3>
+<p>After you have added the app to Intune, you can then assign it to users and devices that you manage. Intune makes this process easy, and after the app is deployed, you can monitor the success of the deployment from Intune within the Azure portal. Additionally, in some app stores, such as the Apple and Windows app stores, you can purchase app licenses in bulk for your company. Intune can synchronize data with these stores so that you can deploy and track license usage for these types of apps right from the Intune administration console.</p>
+<h3 id="configure">Configure</h3>
+<p>As part of the app lifecycle, new versions of apps are regularly released. Intune provides tools to easily update apps that you have deployed to a newer version. Additionally, you can configure extra functionality for some apps, for example:</p>
+<ul>
+<li><p>iOS app configuration policies supply settings for compatible iOS apps that are used when the app is run. For example, an app might require specific branding settings or the name of a server to which it must connect.</p>
+</li>
+<li><p>Managed browser policies help you to configure settings for the Intune managed browser, which replaces the default device browser and lets you restrict the websites that your users can visit.</p>
+</li>
+</ul>
+<h3 id="protect">Protect</h3>
+<p>Intune gives you many ways to help protect the data in your apps. The main methods are:</p>
+<ul>
+<li><p>Conditional access, which controls access to email and other services based on conditions that you specify. Conditions include device types of compliance with a device compliance policy that you deployed.</p>
+</li>
+<li><p>App protection policies that work with individual apps to help protect the company data that they use. For example, you can restrict copying data between unmanaged apps and managed apps, or you can prevent apps from running on devices that have been jailbroken or rooted.</p>
+</li>
+</ul>
+<h3 id="retire">Retire</h3>
+<p>Eventually, the apps that you deployed will likely become outdated and need to be removed. Intune makes it easy to retire apps from service.</p>
+<h2 id="learn-more">Learn more</h2>
+<ul>
+<li><a href="https://docs.microsoft.com/en-us/microsoft-store/distribute-apps-with-management-tool" data-linktype="absolute-path" target="az-portal">Plan for Mobile Application Management</a></li>
+<li><a href="https://docs.microsoft.com/en-us/mem/intune/apps/app-protection-policy" data-linktype="absolute-path" target="az-portal">App protection policies</a></li>
+</ul>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Administering applications</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/manage-applications-by-using-microsoft-intune/4-administering-applications/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div><section>
+		<p>
+Need help? See our <a id="troubleshooting-guide" data-bi-name="troubleshooting" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-wwl.manage-applications-by-using-microsoft-intune.3-understanding-the-microsoft-intune-application-lifecycle&amp;documentId=6513607f-e545-3e8f-c819-3767fc4c78c4&amp;versionIndependentDocumentId=6efb1935-4037-421e-c670-7bf26f940996&amp;contentPath=%2FMicrosoftDocs%2Flearn-m365-pr%2Fblob%2Flive%2Flearn-m365-pr%2Fm365%2Fmanage-applications-by-using-microsoft-intune%2F3-understanding-the-microsoft-intune-application-lifecycle.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fmanage-applications-by-using-microsoft-intune%2F3-understanding-the-microsoft-intune-application-lifecycle&amp;author=Bneeb">troubleshooting guide</a> or provide specific feedback by <a id="module-unit-feedback-link" data-bi-name="feedback" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-wwl.manage-applications-by-using-microsoft-intune.3-understanding-the-microsoft-intune-application-lifecycle&amp;documentId=6513607f-e545-3e8f-c819-3767fc4c78c4&amp;versionIndependentDocumentId=6efb1935-4037-421e-c670-7bf26f940996&amp;contentPath=%2FMicrosoftDocs%2Flearn-m365-pr%2Fblob%2Flive%2Flearn-m365-pr%2Fm365%2Fmanage-applications-by-using-microsoft-intune%2F3-understanding-the-microsoft-intune-application-lifecycle.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fmanage-applications-by-using-microsoft-intune%2F3-understanding-the-microsoft-intune-application-lifecycle&amp;author=Bneeb#report-feedback">reporting an issue</a>.		</p>
+	</section></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

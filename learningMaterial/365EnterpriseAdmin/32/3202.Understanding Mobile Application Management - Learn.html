@@ -1,0 +1,240 @@
+<html dir="ltr"><head><title>Understanding Mobile Application Management - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/manage-applications-by-using-microsoft-intune/1-understanding-mobile-application-management">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/manage-applications-by-using-microsoft-intune/1-understanding-mobile-application-management</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Understanding Mobile Application Management - Learn</h1>
+  <div dir="auto" id="reader-credits">bneeb</div>
+  <div dir="auto" id="reader-estimated-time">3-4 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="main" role="main" data-bi-name="content" lang="en-us" dir="ltr">
+		
+		
+		<ul>
+			<li>5 minutes</li>
+		</ul>
+			<p>Intune Mobile Application Management (MAM) refers to the suite of Intune management features you can use to publish, push, configure, secure, monitor, and update mobile apps for your users on mobile devices such as Windows, Android and iOS platforms. MAM protects an organization's data within an application by using Microsoft Intune app protection policies that help protect your company data and prevent data loss.</p>
+<p>If you use MAM without enrollment (MAM-WE), a work or school-related app that contains sensitive data can still be managed on almost any device, including personal devices in bring-your-own-device (BYOD) scenarios. Many productivity apps, such as the Microsoft Office apps, can be managed by Intune MAM.</p>
+<p>Your employees use mobile devices for both personal and work tasks. While making sure your employees can be productive, you want to prevent data loss, intentional and unintentional. You will also want to protect company data that is accessed from devices that are not managed by you. You can use Intune app protection policies independent of any mobile-device management (MDM) solution. This independence helps you protect your company’s data with or without enrolling devices in a device management solution. By implementing app-level policies, you can restrict access to company resources and keep data within the purview of your IT department.</p>
+<p>Intune MAM supports two configurations:</p>
+<ul>
+<li><p><strong>Intune MDM + MAM:</strong> IT administrators can only manage apps using MAM and app protection policies on devices that are enrolled with Intune MDM. To manage apps using MDM + MAM, you should use the Intune console in the Azure portal at <a href="https://portal.azure.com/" data-linktype="external">https://portal.azure.com</a></p>
+</li>
+<li><p><strong>MAM without device enrollment:</strong> MAM without device enrollment (MAM-WE) allows IT administrators to manage apps using MAM and app protection policies on devices not enrolled with Intune MDM. This means apps can be managed by Intune on devices enrolled with third-party Enterprise Mobility Management (EMM) providers. To manage apps using MAM-WE, you should use the Intune console in the Azure portal at <a href="https://portal.azure.com/" data-linktype="external">https://portal.azure.com</a> . Also, apps can be managed by Intune on devices enrolled with third-party EMM providers or not enrolled with an MDM at all.</p>
+</li>
+</ul>
+<p>The MAM-WE configuration is for organizations that have decided to allow devices, not managed by Intune, to access organization data but still want to manage data on those devices through MAM app protection policies. The Intune MDM + MAM configuration is for organizations using Intune for device management and MAM for application management.</p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Deploying and updating applications</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/manage-applications-by-using-microsoft-intune/2-deploying-and-updating-applications/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div><section>
+		<p>
+Need help? See our <a id="troubleshooting-guide" data-bi-name="troubleshooting" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-wwl.manage-applications-by-using-microsoft-intune.1-understanding-mobile-application-management&amp;documentId=e9626375-a540-a2fd-42a7-3f78217886bd&amp;versionIndependentDocumentId=04470da2-4308-49e5-c20a-ba775d6f4c1a&amp;contentPath=%2FMicrosoftDocs%2Flearn-m365-pr%2Fblob%2Flive%2Flearn-m365-pr%2Fm365%2Fmanage-applications-by-using-microsoft-intune%2F1-understanding-mobile-application-management.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fmanage-applications-by-using-microsoft-intune%2F1-understanding-mobile-application-management&amp;author=Bneeb">troubleshooting guide</a> or provide specific feedback by <a id="module-unit-feedback-link" data-bi-name="feedback" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-wwl.manage-applications-by-using-microsoft-intune.1-understanding-mobile-application-management&amp;documentId=e9626375-a540-a2fd-42a7-3f78217886bd&amp;versionIndependentDocumentId=04470da2-4308-49e5-c20a-ba775d6f4c1a&amp;contentPath=%2FMicrosoftDocs%2Flearn-m365-pr%2Fblob%2Flive%2Flearn-m365-pr%2Fm365%2Fmanage-applications-by-using-microsoft-intune%2F1-understanding-mobile-application-management.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fmanage-applications-by-using-microsoft-intune%2F1-understanding-mobile-application-management&amp;author=Bneeb#report-feedback">reporting an issue</a>.		</p>
+	</section></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>
