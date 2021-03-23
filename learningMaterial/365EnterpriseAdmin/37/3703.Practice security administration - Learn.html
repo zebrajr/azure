@@ -1,0 +1,296 @@
+<html dir="ltr"><head><title>Practice security administration - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/m365-security-threat-protect/practice-security-administration">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/m365-security-threat-protect/practice-security-administration</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Practice security administration - Learn</h1>
+  <div dir="auto" id="reader-credits">AlexandraHrt</div>
+  <div dir="auto" id="reader-estimated-time">7-9 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>30 minutes</li>
+		</ul>
+			<h2 id="threat-and-vulnerability-management">Threat and vulnerability management</h2>
+<p><a href="https://docs.microsoft.com/en-gb/learn/m365/m365-security-threat-protect/media/threat-vulnerability-management-dashboard-magnify.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"> <img src="https://docs.microsoft.com/en-gb/learn/m365/m365-security-threat-protect/media/threat-vulnerability-management-dashboard.png" alt="Threat and Vulnerability Management dashboard" data-linktype="relative-path"> </a></p>
+<p>Effectively identifying, assessing, and remediating endpoint weaknesses is pivotal to running a healthy security program and reducing organizational risk. Threat and vulnerability management serves as an infrastructure for reducing organizational exposure, hardening endpoint surface area, and increasing organizational resilience.</p>
+<p>This infrastructure helps organizations discover vulnerabilities and misconfigurations in real time, based on sensors, without the need of agents or periodic scans. It prioritizes issues based on a number of factors. Those factors include the threat landscape, detections in your organization, sensitive information on vulnerable devices, and business context.</p>
+<p>Threat and vulnerability management is built-in, real-time, cloud-powered, fully integrated with the Microsoft endpoint security stack, the Microsoft Intelligent Security Graph, and the application analytics knowledge base. It can create a security task or ticket through integration with Microsoft Intune and Microsoft Endpoint Manager.</p>
+<p>It provides the following solutions to gaps across security operations, security administration, and IT administration:</p>
+<ul>
+<li>Real-time endpoint detection and response (EDR) insights correlated with endpoint vulnerabilities</li>
+<li>Linked machine vulnerability and security configuration assessment data in the context of exposure discovery</li>
+<li>Built-in remediation processes through Microsoft Intune and Microsoft Endpoint Manager</li>
+</ul>
+<p>For example, using the security recommendations present in the portal, an administrator could request that an application be updated, which would then notify the Intune team to remediate the request.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/m365/m365-security-threat-protect/media/security-recommendations-magnify.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"> <img src="https://docs.microsoft.com/en-gb/learn/m365/m365-security-threat-protect/media/security-recommendations.png" alt="Security recommendations" data-linktype="relative-path"> </a></p>
+<blockquote>
+</blockquote>
+
+<h2 id="attack-surface-reduction">Attack surface reduction</h2>
+<p>The attack surface reduction set of capabilities provides the first line of defense in the stack by ensuring configuration settings are properly set and exploit mitigation techniques are applied.</p>
+<ul>
+<li><strong>Hardware-based isolation</strong> protects and maintains the integrity of the system as it starts and while it's running, and validates system integrity through local and remote attestation. Container isolation for Microsoft Edge helps protect the host operating system from malicious websites.</li>
+<li><strong>Application control</strong> moves away from the traditional application trust model where all applications are assumed trustworthy by default to one where applications must earn trust in order to run.</li>
+<li><strong>Exploit protection</strong> applies mitigation techniques to apps your organization uses, both individually and organization-wide.</li>
+<li><strong>Network protection</strong> extends the malware and social engineering protection offered by Microsoft Defender SmartScreen in Microsoft Edge to cover network traffic and connectivity on your organization's devices.</li>
+<li><strong>Controlled folder access</strong> helps protect files in key system folders from changes made by malicious and suspicious apps, including file-encrypting ransomware malware.</li>
+<li><strong>Attack surface reduction</strong> reduces the attack surface of your applications with intelligent rules that stop the vectors used by Office-, script- and mail-based malware.</li>
+<li><strong>Network firewall</strong> uses host-based, two-way network traffic filtering that blocks unauthorized network traffic flowing into or out of the local device.</li>
+</ul>
+<p>The  below screenshot shows a chart of detections against an attack surface reduction rule that is protecting office applications:</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/m365/m365-security-threat-protect/media/attack-surface-reduction-rules-magnify.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"> <img src="https://docs.microsoft.com/en-gb/learn/m365/m365-security-threat-protect/media/attack-surface-reduction-rules.png" alt="Attack surface reduction rules" data-linktype="relative-path"> </a></p>
+<blockquote>
+</blockquote>
+
+<h2 id="next-generation-protection">Next generation protection</h2>
+<p>Microsoft Defender Antivirus is a built-in antimalware solution that provides next generation protection for desktops, portable computers, and servers. Microsoft Defender Antivirus includes:</p>
+<ul>
+<li>Cloud-delivered protection for near-instant detection and blocking of new and emerging threats. Along with machine learning and the Intelligent Security Graph, cloud-delivered protection is part of the next-gen technologies that power Microsoft Defender Antivirus.</li>
+<li>Always-on scanning, using advanced file and process behavior monitoring and other heuristics (also known as "real-time protection").</li>
+<li>Dedicated protection updates based on machine-learning, human and automated big-data analysis, and in-depth threat resistance research.</li>
+</ul>
+<p>The following proxy and network settings should be considered:</p>
+<ul>
+<li>The Microsoft Defender for Endpoint sensor requires Microsoft Windows HTTP (WinHTTP) to report sensor data and communicate with the Microsoft Defender for Endpoint service.</li>
+<li>The embedded Microsoft Defender for Endpoint sensor runs in system context using the LocalSystem account. The sensor uses Microsoft Windows HTTP Services (WinHTTP) to enable communication with the Microsoft Defender for Endpoint cloud service.</li>
+<li>The WinHTTP configuration setting is independent of the Windows Internet (WinINet) internet browsing proxy settings and can only discover a proxy server by using the following auto discovery methods:
+<ul>
+<li>Transparent proxy</li>
+<li>Web Proxy Auto-discovery Protocol (WPAD)</li>
+</ul>
+</li>
+</ul>
+<h2 id="endpoint-detection-and-response">Endpoint detection and response</h2>
+<p>Microsoft Defender for Endpoint endpoint detection and response capabilities provide advanced attack detections that are near real-time and actionable. Security analysts can prioritize alerts effectively, gain visibility into the full scope of a breach, and take response actions to remediate threats.</p>
+<p>When a threat is detected, alerts are created in the system for an analyst to investigate. Alerts with the same attack techniques or attributed to the same attacker are aggregated into an entity called an <strong>incident</strong>. Aggregating alerts in this manner makes it easy for analysts to collectively investigate and respond to threats.</p>
+<p>Inspired by the "assume breach" mindset, Microsoft Defender for Endpoint continuously collects behavioral cyber telemetry. This includes process information, network activities, deep optics into the kernel and memory manager, user login activities, registry and file system changes, and others. The information is stored for six months, enabling an analyst to travel back in time to the start of an attack. The analyst can then pivot using various views and approach an investigation through multiple vectors.</p>
+<p>The Security operations dashboard (below) is where the endpoint detection and response capabilities are surfaced. It provides a high-level overview of where detections were seen and highlights where response actions are needed.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/m365/m365-security-threat-protect/media/security-operations-dashboard-magnify.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"> <img src="https://docs.microsoft.com/en-gb/learn/m365/m365-security-threat-protect/media/security-operations-dashboard.png" alt="Security operations dashboard" data-linktype="relative-path"> </a></p>
+
+<p>Microsoft Defender for Endpoint offers a wide breadth of visibility on multiple machines. With this kind of optics, the service generates a multitude of alerts. The volume of alerts generated can be challenging for a typical security operations team to individually address. To address this challenge, Microsoft Defender for Endpoint uses automated investigation and remediation capabilities to significantly reduce the volume of alerts that must be investigated individually.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/m365/m365-security-threat-protect/media/automated-investigations-magnify.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"> <img src="https://docs.microsoft.com/en-gb/learn/m365/m365-security-threat-protect/media/automated-investigations.png" alt="Automated investigations" data-linktype="relative-path"> </a></p>
+<p>The automated investigation feature uses various inspection algorithms, and processes used by analysts (such as playbooks) to examine alerts and take immediate remediation action to resolve breaches. This significantly reduces alert volume, allowing security operations experts to focus on more sophisticated threats and other high value initiatives. In the following investigation screenshot, we can see that malware was detected, as well as automatically remediated:</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/m365/m365-security-threat-protect/media/malware-detected-remediated-magnify.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"> <img src="https://docs.microsoft.com/en-gb/learn/m365/m365-security-threat-protect/media/malware-detected-remediated.png" alt="Malware detected and remediated" data-linktype="relative-path"> </a></p>
+<blockquote>
+</blockquote>
+
+<blockquote>
+</blockquote>
+<h3 id="explore-how-to-reduce-organizational-risk-with-threat-and-vulnerability-management">Explore how to reduce organizational risk with Threat and Vulnerability Management</h3>
+<p>View a <a href="https://www.microsoft.com/videoplayer/embed/RE4AFt9" data-linktype="external">video version</a> of the interactive guide (captions available in more languages).</p>
+<p><a href="https://mslearn.cloudguides.com/guides/Reduce%20organizational%20risk%20with%20Threat%20and%20Vulnerability%20Management" data-linktype="external"><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-security-threat-protect/media/reduce-organizational-risk.png" alt="Reduce organizational risk with Threat and Vulnerability Management" data-linktype="relative-path"></a></p>
+<p>Be sure to click the full-screen option in the video player. When you're done, use the <strong>Back</strong> arrow in your browser to come back to this page.</p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Hunt threats within your network</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/m365-security-threat-protect/hunt-threats-within-network/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

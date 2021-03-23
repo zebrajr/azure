@@ -1,0 +1,290 @@
+<html dir="ltr"><head><title>Hunt threats within your network - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/m365-security-threat-protect/hunt-threats-within-network">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/m365-security-threat-protect/hunt-threats-within-network</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Hunt threats within your network - Learn</h1>
+  <div dir="auto" id="reader-credits">AlexandraHrt</div>
+  <div dir="auto" id="reader-estimated-time">3-4 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="main" role="main" data-bi-name="content" lang="en-us" dir="ltr">
+		
+		
+		<ul>
+			<li>23 minutes</li>
+		</ul>
+			<p>Advanced hunting within Microsoft Defender for Endpoint allows you to hunt for possible threats across your organization using a powerful search and query tool. You can proactively inspect events in your network in order to locate interesting indicators and entities. The flexible access to data aids unconstrained hunting for both known and potential threats.</p>
+<h3 id="explore-how-to-investigate-and-remediate-threats-with-microsoft-defender-for-endpoint">Explore how to investigate and remediate threats with Microsoft Defender for Endpoint</h3>
+<p>View a <a href="https://www.microsoft.com/videoplayer/embed/RE4GfeG" data-linktype="external">video version</a> of the interactive guide (captions available in more languages).</p>
+<p><a href="https://mslearn.cloudguides.com/guides/Investigate%20and%20remediate%20threats%20with%20Microsoft%20Defender%20for%20Endpoint" data-linktype="external"><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-security-threat-protect/media/investigate-remediate.png" alt="Microsoft Defender for Endpoint" data-linktype="relative-path"></a></p>
+<p>Be sure to click the full-screen option in the video player. When you're done, use the <strong>Back</strong> arrow in your browser to come back to this page.</p>
+<p>You can use the same threat-hunting queries to build custom detection rules. These rules run automatically to check for and respond to various events and system states, including suspected breach activity and misconfigured machines.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-security-threat-protect/media/threat-hunting-query.png" alt="Use threat hunting queries" data-linktype="relative-path"></p>
+<p>Advanced hunting is based on the Kusto query language. The following operators are allowed:</p>
+<ul>
+<li><strong>where</strong>. Filter a table to the subset of rows that satisfy a predicate.</li>
+<li><strong>summarize</strong>. Produce a table that aggregates the content of the input table.</li>
+<li><strong>join</strong> Merge the rows of two tables to form a new table by matching values of the specified column(s) from each table.</li>
+<li><strong>count</strong>. Return the number of records in the input record set.</li>
+<li><strong>top</strong>. Return the first N records sorted by the specified columns.</li>
+<li><strong>limit</strong>. Return up to the specified number of rows.</li>
+<li><strong>project</strong>. Select the columns to include, rename or drop, and insert new computed columns.</li>
+<li><strong>extend</strong>. Create calculated columns and append them to the result set.</li>
+<li><strong>makeset()</strong>. Return a dynamic (JSON) array of the set of distinct values that Expr takes in the group.</li>
+<li><strong>find</strong>. Find rows that match a predicate across a set of tables.</li>
+</ul>
+<p>In the screenshot above, the following filters have been written:</p>
+<ul>
+<li>Time filter to review only records from the previous seven days.</li>
+<li>Filter on the FileName to contain only instances of powershell.exe.</li>
+<li>Filter on the ProcessCommandLine.</li>
+<li>Project only the columns you're interested in exploring and limit the results to 100.</li>
+</ul>
+<h3 id="best-practices">Best practices</h3>
+<p>The following best practices can be followed to ensure query performance:</p>
+<ul>
+<li>Apply filters first - Azure Kusto is highly optimized to utilize time filters.</li>
+<li>Use the <strong>has</strong> keyword over <strong>contains</strong> when looking for full tokens.</li>
+<li>Use <strong>looking in specific column</strong> rather than using full text search across all columns.</li>
+<li>When joining between two tables, choose the table with less rows to be the first one (left-most).</li>
+<li>When joining between two tables, project only needed columns from both sides of the join.</li>
+</ul>
+<p>Here's an example of a Kusto query for process creation with suspicious file endings:</p>
+<pre tabindex="0"><code data-author-content="ProcessCreationEvents 
+| where EventTime > ago(7d)
+| where FileName endswith &quot;.pdf.exe&quot;
+    or FileName endswith &quot;.doc.exe&quot;
+    or FileName endswith &quot;.docx.exe&quot;
+    or FileName endswith &quot;.jpg.exe&quot;
+    or FileName endswith &quot;.jpeg.exe&quot;
+| project EventTime, ComputerName, FileName, AccountSid, AccountName, AccountDomain
+| top 100 by EventTime
+
+"><span>ProcessCreationEvents 
+| <span>where</span> EventTime &gt; <span>ago</span>(<span>7</span>d)
+| <span>where</span> FileName <span>endswith</span> <span>".pdf.exe"</span>
+    <span>or</span> FileName <span>endswith</span> <span>".doc.exe"</span>
+    <span>or</span> FileName <span>endswith</span> <span>".docx.exe"</span>
+    <span>or</span> FileName <span>endswith</span> <span>".jpg.exe"</span>
+    <span>or</span> FileName <span>endswith</span> <span>".jpeg.exe"</span>
+| <span>project</span> EventTime, ComputerName, FileName, AccountSid, AccountName, AccountDomain
+| <span>top</span> <span>100</span> <span>by</span> EventTime
+
+</span></code></pre>
+<blockquote>
+</blockquote>
+
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Summary and knowledge check</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/m365-security-threat-protect/summary-knowledge-check/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div><section>
+		<p>
+Need help? See our <a id="troubleshooting-guide" data-bi-name="troubleshooting" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-m365.m365-security-threat-protect.hunt-threats-within-network&amp;documentId=52e5f1e5-17dd-928b-b8d5-d3806940faa4&amp;versionIndependentDocumentId=a787ddca-bbdc-a07c-8a38-a107ec02f7d2&amp;contentPath=%2FMicrosoftDocs%2Flearn-m365-pr%2Fblob%2Flive%2Flearn-m365-pr%2Fm365%2Fm365-security-threat-protect%2Fhunt-threats-within-network.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fm365-security-threat-protect%2Fhunt-threats-within-network&amp;author=elizapo">troubleshooting guide</a> or provide specific feedback by <a id="module-unit-feedback-link" data-bi-name="feedback" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-m365.m365-security-threat-protect.hunt-threats-within-network&amp;documentId=52e5f1e5-17dd-928b-b8d5-d3806940faa4&amp;versionIndependentDocumentId=a787ddca-bbdc-a07c-8a38-a107ec02f7d2&amp;contentPath=%2FMicrosoftDocs%2Flearn-m365-pr%2Fblob%2Flive%2Flearn-m365-pr%2Fm365%2Fm365-security-threat-protect%2Fhunt-threats-within-network.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fm365-security-threat-protect%2Fhunt-threats-within-network&amp;author=elizapo#report-feedback">reporting an issue</a>.		</p>
+	</section></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>
