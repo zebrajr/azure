@@ -1,0 +1,243 @@
+<html dir="ltr"><head><title>Integrate with other Microsoft tools - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/m365-threat-safeguard/integrate-microsoft-tools">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/m365-threat-safeguard/integrate-microsoft-tools</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Integrate with other Microsoft tools - Learn</h1>
+  <div dir="auto" id="reader-credits">AlexandraHrt</div>
+  <div dir="auto" id="reader-estimated-time">2-3 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="main" role="main" data-bi-name="content" lang="en-us" dir="ltr">
+		
+		
+		<ul>
+			<li>10 minutes</li>
+		</ul>
+			<p><a href="https://docs.microsoft.com/en-gb/learn/m365/m365-threat-safeguard/media/integration-architecture-magnify.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"> <img src="https://docs.microsoft.com/en-gb/learn/m365/m365-threat-safeguard/media/integration-architecture.png" alt="Integration architecture" data-linktype="relative-path"> </a></p>
+<p>The Microsoft Defender for Identity cloud service runs on Azure infrastructure and is currently deployed in the US, Europe, and Asia. Microsoft Defender for Identity cloud service is connected to Microsoft's intelligent security graph. This enables Microsoft Defender for Identity to integrate with Microsoft Cloud App Security, as part of a Microsoft 365 Defender monitoring strategy.</p>
+<p>Once integrated into Microsoft Cloud App Security, you'll be able to see on-premises activities for all the users in your organization. You will also get advanced insights on your users that combine alerts and suspicious activities across your cloud and on-premises environments. Additionally, policies from Microsoft Defender for Identity will appear on the Cloud App Security policies page. The following screenshot shows Microsoft Defender for Identity reporting within Cloud App Security.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/m365/m365-threat-safeguard/media/azure-reporting-cloud-app-security-magnify.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"> <img src="https://docs.microsoft.com/en-gb/learn/m365/m365-threat-safeguard/media/azure-reporting-cloud-app-security.png" alt="Microsoft Defender for Identity reporting within Microsoft Cloud App Security" data-linktype="relative-path"> </a></p>
+<blockquote>
+</blockquote>
+
+<p>Microsoft Defender for Identity also enables you to integrate Microsoft Defender for Identity with Microsoft Defender for Endpoint, for an even more complete threat protection solution. While Microsoft Defender for Identity monitors the traffic on your domain controllers, Microsoft Defender for Endpoint monitors your endpoints, together providing a single interface from which you can protect your environment.
+Once Microsoft Defender for Endpoint and Microsoft Defender for Identity are integrated, you can click on an endpoint to view Microsoft Defender for Identity alerts in the Microsoft Defender for Endpoint portal.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/m365/m365-threat-safeguard/media/windows-defender-security-center-magnify.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"> <img src="https://docs.microsoft.com/en-gb/learn/m365/m365-threat-safeguard/media/windows-defender-security-center.png" alt="Windows Defender Security Center" data-linktype="relative-path"> </a></p>
+<p>Having this level of insight into system running processes allows an analyst to locate event sequences leading to a compromise of the network. In the screenshot below, there are high severity alerts pointing to malware being installed on the system.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/m365/m365-threat-safeguard/media/high-severity-malware-alert-magnify.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"> <img src="https://docs.microsoft.com/en-gb/learn/m365/m365-threat-safeguard/media/high-severity-malware-alert.png" alt="High severity malware alert" data-linktype="relative-path"> </a></p>
+<p>Clicking into the alert verifies that a Pass-The-Hash (PtH) attack occurred using the tool Mimikatz. Under actions for the alert, we can also review a timeline of events surrounding the credential theft.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/m365/m365-threat-safeguard/media/event-timeline-magnify.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"> <img src="https://docs.microsoft.com/en-gb/learn/m365/m365-threat-safeguard/media/event-timeline.png" alt="Review a timeline of events surrounding the credential theft" data-linktype="relative-path"> </a></p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Summary and knowledge check</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/m365-threat-safeguard/summary-knowledge-check/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div><section>
+		<p>
+Need help? See our <a id="troubleshooting-guide" data-bi-name="troubleshooting" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-m365.m365-threat-safeguard.integrate-microsoft-tools&amp;documentId=549f3e2c-ccca-7910-1e75-2fa5d5807ac4&amp;versionIndependentDocumentId=31b70071-9c6b-cff6-78db-ff279e2ec9dc&amp;contentPath=%2FMicrosoftDocs%2Flearn-m365-pr%2Fblob%2Flive%2Flearn-m365-pr%2Fm365%2Fm365-threat-safeguard%2Fintegrate-microsoft-tools.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fm365-threat-safeguard%2Fintegrate-microsoft-tools&amp;author=elizapo">troubleshooting guide</a> or provide specific feedback by <a id="module-unit-feedback-link" data-bi-name="feedback" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-m365.m365-threat-safeguard.integrate-microsoft-tools&amp;documentId=549f3e2c-ccca-7910-1e75-2fa5d5807ac4&amp;versionIndependentDocumentId=31b70071-9c6b-cff6-78db-ff279e2ec9dc&amp;contentPath=%2FMicrosoftDocs%2Flearn-m365-pr%2Fblob%2Flive%2Flearn-m365-pr%2Fm365%2Fm365-threat-safeguard%2Fintegrate-microsoft-tools.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fm365-threat-safeguard%2Fintegrate-microsoft-tools&amp;author=elizapo#report-feedback">reporting an issue</a>.		</p>
+	</section></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

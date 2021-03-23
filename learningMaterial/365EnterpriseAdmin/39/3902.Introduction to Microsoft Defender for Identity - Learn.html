@@ -1,0 +1,253 @@
+<html dir="ltr"><head><title>Introduction to Microsoft Defender for Identity - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/m365-threat-safeguard/introduction">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/m365-threat-safeguard/introduction</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Introduction to Microsoft Defender for Identity - Learn</h1>
+  <div dir="auto" id="reader-credits">AlexandraHrt</div>
+  <div dir="auto" id="reader-estimated-time">5-6 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>7 minutes</li>
+		</ul>
+			<p><strong>Microsoft Defender for Identity</strong> is a cloud-based security solution that leverages your on-premises Active Directory signals to identify, detect, and investigate advanced threats, compromised identities, and malicious insider actions directed at your organization.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-threat-safeguard/media/azure-benefits.png" alt="The benefits of Microsoft Defender for Identity" data-linktype="relative-path"></p>
+<p>Microsoft Defender for Identity provides the following benefits:</p>
+<ul>
+<li>Monitor users, entity behavior, and activities with learning-based analytics</li>
+<li>Protect user identities and credentials stored in Active Directory</li>
+<li>Identify and investigate suspicious user activities and advanced attacks throughout the kill chain</li>
+<li>Provide clear incident information on a simple timeline for fast triage</li>
+</ul>
+<h2 id="monitor-and-profile-user-behavior-and-activities">Monitor and profile user behavior and activities</h2>
+<p>Microsoft Defender for Identity monitors and analyzes user activities and information across your network, such as permissions and group membership. It then creates a behavioral baseline for each user. Microsoft Defender for Identity then identifies anomalies with adaptive built-in intelligence, giving you insights into suspicious activities and events, revealing the advanced threats, compromised users, and insider threats facing your organization. Microsoft Defender for Identity's proprietary sensors monitor organizational domain controllers, providing a comprehensive view for all user activities from every device.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/m365/m365-threat-safeguard/media/user-activities-view-magnify.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"> <img src="https://docs.microsoft.com/en-gb/learn/m365/m365-threat-safeguard/media/user-activities-view.png" alt="Overview of user activities" data-linktype="relative-path"> </a></p>
+<h2 id="protect-user-identities-and-reduce-the-attack-surface">Protect user identities and reduce the attack surface</h2>
+<p>Microsoft Defender for Identity provides you invaluable insights on identity configurations and suggested security best-practices. Through security reports and user profile analytics, Microsoft Defender for Identity helps dramatically reduce your organizational attack surface, making it harder to compromise user credentials and advance an attack. Microsoft Defender for Identity's visual Lateral Movement Paths help you quickly understand exactly how an attacker can move laterally inside your organization to compromise sensitive accounts and assists in preventing those risks in advance. Microsoft Defender for Identity security reports help you identify users and devices that authenticate using clear-text passwords and provide additional insights to improve your organizational security posture and policies.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-threat-safeguard/media/security-report-improvement-action-cropped.png" alt="Security Report user improvement suggestions" data-linktype="relative-path"></p>
+<h2 id="identify-suspicious-activities-and-advanced-attacks-across-the-cyber-attack-kill-chain">Identify suspicious activities and advanced attacks across the cyber-attack kill-chain</h2>
+<p>Typically, attacks are launched against any accessible entity, such as a low-privileged user, and then quickly move laterally until the attacker gains access to valuable assets – such as sensitive accounts, domain administrators, and highly sensitive data. Microsoft Defender for Identity has a large range of detections across the Kill-chain from <strong>reconnaissance</strong> through to <strong>compromised credentials</strong> to <strong>lateral movements</strong> and <strong>domain dominance</strong>.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-threat-safeguard/media/lateral-movement-across-kill-chain.png" alt="Lateral movement across the kill chain" data-linktype="relative-path"></p>
+<p>For example, in the reconnaissance stage, LDAP reconnaissance is used by attackers to gain critical information about the domain environment. Information that helps attackers map the domain structure, as well as identify privileged accounts for use later. This detection is triggered based on computers performing suspicious LDAP enumeration queries or queries targeting sensitive groups.</p>
+<p>Brute force attacks are a common way to compromise credentials. This is when an attacker attempts to authenticate with multiple passwords on different accounts until a correct password is found or by using one password in a large-scale password spray that works for at least one account. Once found, the attacker logs in using the authenticated account. Microsoft Defender for Identity can detect this when it notices multiple authentication failures occurring using Kerberos, NTLM, or use of a password spray.</p>
+<p>The next stage is when attackers attempt to move laterally through your environment, using pass-the-ticket, for example. Pass-the-ticket is a lateral movement technique in which attackers steal a Kerberos ticket from one computer and use it to gain access to another computer by reusing the stolen ticket. In this detection, a Kerberos ticket is being used on two (or more) different computers.</p>
+<p>Ultimately, attackers want to establish domain dominance. One method, for example is the DCShadow attack. This attack is designed to change directory objects using malicious replication. This attack can be performed from any machine by creating a rogue domain controller using a replication process. If this occurs, Microsoft Defender for Identity triggers an alert when a machine in the network tries to register as a rogue domain controller.</p>
+<p>This is not the complete set of detections, but it shows the breadth of detections Microsoft Defender for Identity covers.</p>
+<h3 id="explore-how-to-detect-suspicious-activities-and-potential-attacks-with-microsoft-defender-for-identity">Explore how to detect suspicious activities and potential attacks with Microsoft Defender for Identity</h3>
+<p>View a <a href="https://www.microsoft.com/videoplayer/embed/RE4Gq4n" data-linktype="external">video version</a> of the interactive guide (captions available in more languages).</p>
+<p><a href="https://mslearn.cloudguides.com/guides/Detect%20suspicious%20activities%20and%20potential%20attacks%20with%20Microsoft%20Defender%20for%20Identity" data-linktype="external"><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-threat-safeguard/media/detect-suspicious-activities.png" alt="Detect suspicious activities and potential attacks with Microsoft Defender for Identity" data-linktype="relative-path"></a></p>
+<p>Be sure to click the full-screen option in the video player. When you're done, use the <strong>Back</strong> arrow in your browser to come back to this page.</p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Configure Microsoft Defender for Identity sensors</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/m365-threat-safeguard/configure-sensors/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

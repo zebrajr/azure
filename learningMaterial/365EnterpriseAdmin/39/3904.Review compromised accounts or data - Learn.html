@@ -1,0 +1,276 @@
+<html dir="ltr"><head><title>Review compromised accounts or data - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/m365-threat-safeguard/review-compromised-accounts">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/m365-threat-safeguard/review-compromised-accounts</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Review compromised accounts or data - Learn</h1>
+  <div dir="auto" id="reader-credits">AlexandraHrt</div>
+  <div dir="auto" id="reader-estimated-time">4-5 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>30 minutes</li>
+		</ul>
+			<p>Microsoft Defender for Identity security alerts explain the suspicious activities detected by Microsoft Defender for Identity sensors on your network, and the actors and computers involved in each threat. Alert evidence lists contain direct links to the involved users and computers, to help make your investigations easy and direct.</p>
+<p>Microsoft Defender for Identity security alerts are divided into the following categories or phases, like the phases seen in a typical cyber-attack kill chain:</p>
+<ul>
+<li>Reconnaissance phase alerts</li>
+<li>Compromised credential phase alerts</li>
+<li>Lateral movement phase alerts</li>
+<li>Domain dominance phase alerts</li>
+<li>Exfiltration phase alerts</li>
+</ul>
+<p>Each Microsoft Defender for Identity security alert includes:</p>
+<ul>
+<li><strong>Alert title.</strong> Official Microsoft Defender for Identity name of the alert.</li>
+<li><strong>Description.</strong> Brief explanation of what happened.</li>
+<li><strong>Evidence.</strong> Additional relevant information and related data about what happened to help in the investigation process.</li>
+<li><strong>Excel download.</strong> Detailed Excel download report for analysis</li>
+</ul>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-threat-safeguard/media/security-alert.png" alt="Microsoft Defender for Identity security alert" data-linktype="relative-path"></p>
+<p>Alerts can also be viewed within Microsoft Cloud App Security:</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/m365/m365-threat-safeguard/media/cloud-app-security-alerts-magnify.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"> <img src="https://docs.microsoft.com/en-gb/learn/m365/m365-threat-safeguard/media/cloud-app-security-alerts.png" alt="Microsoft Cloud App Security alert" data-linktype="relative-path"> </a></p>
+<p>The following scenario describes an investigation into an attacker gaining administrator access to the domain controller and compromising the Active Directory domain and forest.</p>
+<p>The first alert we notice in the Cloud App Security portal shows <strong>User and IP address reconnaissance</strong> (SMB). Clicking into this alert, we see (under Description) that a user was able to learn the IP addresses of 2 accounts by enumerating SMB sessions on the domain controller.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/m365/m365-threat-safeguard/media/user-ip-address-reconnaissance-magnify.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"> <img src="https://docs.microsoft.com/en-gb/learn/m365/m365-threat-safeguard/media/user-ip-address-reconnaissance.png" alt="User and IP address reconnaissance" data-linktype="relative-path"> </a></p>
+<p>Within the alert, we can also find the activity log, which shows more information about the command that was run.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/m365/m365-threat-safeguard/media/activity-log-magnify.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"> <img src="https://docs.microsoft.com/en-gb/learn/m365/m365-threat-safeguard/media/activity-log.png" alt="Activity log" data-linktype="relative-path"> </a></p>
+<p>Back in the Alerts overview, we can see a more recent alert pointing to an <strong>overpass-the-hash attack</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/m365/m365-threat-safeguard/media/overpass-hash-attack-magnify.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"> <img src="https://docs.microsoft.com/en-gb/learn/m365/m365-threat-safeguard/media/overpass-hash-attack.png" alt="Alert: Overpass-the-hash-attack" data-linktype="relative-path"> </a></p>
+<p>Opening the suspected overpass-the-hash-attack (Kerberos) alert, we see evidence that the user account was part of a lateral movement path.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/m365/m365-threat-safeguard/media/open-suspected-attack-magnify.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"> <img src="https://docs.microsoft.com/en-gb/learn/m365/m365-threat-safeguard/media/open-suspected-attack.png" alt="Open the suspected attack alert" data-linktype="relative-path"> </a></p>
+<p>The next alert shows a <strong>Suspected identity theft (pass-the-ticket)</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/m365/m365-threat-safeguard/media/pass-ticket-alert-magnify.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"> <img src="https://docs.microsoft.com/en-gb/learn/m365/m365-threat-safeguard/media/pass-ticket-alert.png" alt="Pass-the-ticket alert" data-linktype="relative-path"> </a></p>
+<p>Microsoft Defender for Identity has detected theft of a ticket from a domain administrator to the infiltrated PC. The Cloud App Security portal shows exactly which resources were accessed using the stolen tickets.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/m365/m365-threat-safeguard/media/alert-pass-ticket-magnify.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"> <img src="https://docs.microsoft.com/en-gb/learn/m365/m365-threat-safeguard/media/alert-pass-ticket.png" alt="More information on the pass-the-ticket alert" data-linktype="relative-path"> </a></p>
+<p>In the next alert, we see that the stolen credentials were used to run a remote command on the domain controller.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/m365/m365-threat-safeguard/media/alert-remote-code-execution-magnify.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"> <img src="https://docs.microsoft.com/en-gb/learn/m365/m365-threat-safeguard/media/alert-remote-code-execution.png" alt="Alert showing remote code execution attemptl" data-linktype="relative-path"> </a></p>
+<p>Looking into the Activity Log for the alert, we see that the command was to create a new user within the Administrators group.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/m365/m365-threat-safeguard/media/create-new-user-magnify.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"> <img src="https://docs.microsoft.com/en-gb/learn/m365/m365-threat-safeguard/media/create-new-user.png" alt="Command used to create a new user" data-linktype="relative-path"> </a></p>
+<p>From all the previous alerts, we suspect that an attacker has:</p>
+<ul>
+<li>Infiltrated a PC.</li>
+<li>Used the PC to determine IP addresses of other users’ PCs, one of which belongs to a domain administrator.</li>
+<li>Performed an overpass-the-hash attack by stealing the NTLM hash from another user who previously authenticated to the infiltrated PC to access any resource the user has permissions for. (In this case, local admin rights to IP addresses previously exposed)</li>
+<li>Used the newly stolen credentials to gain access to the domain administrator's PC.</li>
+<li>Leveraged their access to the domain administrator's PC to steal the identity of the domain administrator.</li>
+<li>Used the domain administrator's identity to access the domain controller, and created a new user account with domain administrative permissions.</li>
+</ul>
+<p>With domain administrative permissions, the attacker has effectively compromised the environment. Now they are free to perform any number of attacks, such as a Skeleton Key attack.</p>
+<h3 id="explore-how-to-investigate-and-respond-to-attacks-with-microsoft-defender-for-identity">Explore how to investigate and respond to attacks with Microsoft Defender for Identity</h3>
+<p>View a <a href="https://www.microsoft.com/videoplayer/embed/RE4GiZJ" data-linktype="external">video version</a> of the interactive guide (captions available in more languages).</p>
+<p><a href="https://mslearn.cloudguides.com/guides/Investigate%20and%20respond%20to%20attacks%20with%20Microsoft%20Defender%20for%20Identity" data-linktype="external"><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-threat-safeguard/media/investigate-respond.png" alt="Microsoft Defender for Identity" data-linktype="relative-path"></a></p>
+<p>Be sure to click the full-screen option in the video player. When you're done, use the <strong>Back</strong> arrow in your browser to come back to this page.</p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Integrate with other Microsoft tools</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/m365-threat-safeguard/integrate-microsoft-tools/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

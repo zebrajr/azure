@@ -1,0 +1,322 @@
+<html dir="ltr"><head><title>Configure Microsoft Defender for Identity sensors - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/m365-threat-safeguard/configure-sensors">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/m365-threat-safeguard/configure-sensors</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Configure Microsoft Defender for Identity sensors - Learn</h1>
+  <div dir="auto" id="reader-credits">AlexandraHrt</div>
+  <div dir="auto" id="reader-estimated-time">6-8 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="main" role="main" data-bi-name="content" lang="en-us" dir="ltr">
+		
+		
+		<ul>
+			<li>10 minutes</li>
+		</ul>
+			<p>At a high level, the following steps are required to enable Microsoft Defender for Identity:</p>
+<ol>
+<li>Create an instance on Microsoft Defender for Identity management portal.</li>
+<li>Specify an on-premises AD service account in the Microsoft Defender for Identity portal.</li>
+<li>Download and install the sensor package.</li>
+<li>Install the Microsoft Defender for Identity sensor on all domain controllers.</li>
+<li>Integrate your VPN solution (optional).</li>
+<li>Exclude the sensitive accounts you’ve listed during the design process.</li>
+<li>Configure the required permissions for the sensor to make SAM-R calls.</li>
+<li>Configure integration with Microsoft Cloud App Security.</li>
+<li>Configure integration with Microsoft 365 Defender (optional).</li>
+</ol>
+<p>The following diagram shows the Microsoft Defender for Identity architecture. In this unit, we will discuss how to configure the Microsoft Defender for Identity Sensor.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-threat-safeguard/media/azure-architecture.png" alt="Microsoft Defender for Identity architecture" data-linktype="relative-path"></p>
+<p>Installed directly on your domain controllers, the Microsoft Defender for Identity sensor accesses the event logs it requires directly from the domain controller. After the logs and network traffic are parsed by the sensor, Microsoft Defender for Identity sends only the parsed information to the Microsoft Defender for Identity cloud service (only a percentage of the logs are sent).</p>
+<p>The Microsoft Defender for Identity sensor has the following core functionality:</p>
+<ul>
+<li>Capture and inspect domain controller network traffic (local traffic of the domain controller)</li>
+<li>Receive Windows events directly from the domain controllers</li>
+<li>Receive RADIUS accounting information from your VPN provider</li>
+<li>Retrieve data about users and computers from the Active Directory domain</li>
+<li>Perform resolution of network entities (users, groups, and computers)</li>
+<li>Transfer relevant data to the Microsoft Defender for Identity cloud service</li>
+</ul>
+<p>The Microsoft Defender for Identity sensor has the following requirements:</p>
+<ul>
+<li>KB4487044 is installed on Server 2019. Microsoft Defender for Identity sensors already installed on 2019 servers without this update will be automatically stopped.</li>
+<li>The Microsoft Defender for Identity sensor supported domain controller OS list:
+<ul>
+<li>Windows Server 2008 R2 SP1 (not including Server Core)</li>
+<li>Windows Server 2012</li>
+<li>Windows Server 2012 R2</li>
+<li>Windows Server 2016 (including Windows Server Core but not Windows Nano Server)</li>
+<li>Windows Server 2019 (including Windows Core but not Windows Nano Server)</li>
+</ul>
+</li>
+<li>The domain controller can be a read-only domain controller (RODC).</li>
+<li>10 GB of disk space is recommended. This includes space needed for the Microsoft Defender for Identity binaries, Microsoft Defender for Identity logs, and performance logs.</li>
+<li>The Microsoft Defender for Identity sensor requires a minimum of 2 cores and 6 GB of RAM installed on the domain controller.</li>
+<li>Power option of the Microsoft Defender for Identity sensor to high performance.</li>
+<li>Microsoft Defender for Identity sensors can be deployed on domain controllers of various loads and sizes, depending on the amount of network traffic to and from the domain controllers, and the amount of resources installed.</li>
+<li>When running as a virtual machine, dynamic memory or any other memory ballooning feature is not supported.</li>
+</ul>
+<h3 id="to-install-the-microsoft-defender-for-identity-sensor">To install the Microsoft Defender for Identity sensor:</h3>
+<ol>
+<li><p>Download and extract the sensor file. Run <strong>Microsoft Defender for Identity sensor setup.exe</strong> and follow the setup wizard.</p>
+</li>
+<li><p>On the Welcome page, select your language and click <strong>Next</strong>.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-threat-safeguard/media/install-choose-language.png" alt="Install steps: Choose Language" data-linktype="relative-path"></p>
+</li>
+<li><p>The installation wizard automatically checks if the server is a domain controller or a dedicated server. If it's a domain controller, the Microsoft Defender for Identity sensor is installed. If it's a dedicated server, the Microsoft Defender for Identity standalone sensor is installed. For example, for an Microsoft Defender for Identity sensor, the following screen is displayed to let you know that an Microsoft Defender for Identity sensor is installed on your dedicated server:</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-threat-safeguard/media/install-server-type.png" alt="Install steps: Determine server type" data-linktype="relative-path"></p>
+</li>
+<li><p>Under <strong>Configure the sensor</strong>, enter the installation path and the access key, based on your environment:</p>
+<ul>
+<li><strong>Installation path</strong>: The location where the Microsoft Defender for Identity sensor is installed. By default, the path is <strong>%programfiles%\Microsoft Defender for Identity sensor</strong>. Leave the default value.</li>
+<li><strong>Access key</strong>: Retrieved from the Microsoft Defender for Identity portal.</li>
+</ul>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-threat-safeguard/media/install-configure-sensor.png" alt="Install steps: Configure the sensor" data-linktype="relative-path"></p>
+</li>
+<li><p>Click <strong>Install</strong>.</p>
+</li>
+</ol>
+<p>After the Microsoft Defender for Identity sensor is installed, do the following to configure Microsoft Defender for Identity sensor settings:</p>
+<ol>
+<li><p>Click <strong>Launch</strong> to open your browser and sign into the Microsoft Defender for Identity portal.</p>
+</li>
+<li><p>In the Microsoft Defender for Identity portal, go to <strong>Configuration</strong>. Under the System section, select <strong>Sensors</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/m365/m365-threat-safeguard/media/install-select-sensors-magnify.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"> <img src="https://docs.microsoft.com/en-gb/learn/m365/m365-threat-safeguard/media/install-select-sensors.png" alt="Install steps: Select sensors in Microsoft Defender for Office 365 portal" data-linktype="relative-path"> </a></p>
+</li>
+<li><p>Click on the sensor you want to configure and enter the following information:</p>
+<ul>
+<li><p><strong>Description</strong>: Enter a description for the Microsoft Defender for Identity sensor (optional).</p>
+</li>
+<li><p><strong>Domain Controllers</strong> (FQDN) (required for the Microsoft Defender for Identity standalone sensor, this can't be changed for the Microsoft Defender for Identity sensor): Enter the complete FQDN of your domain controller and click the <strong>plus sign</strong> to add it to the list. For example, dc01.contoso.com.</p>
+<p>The following information applies to the servers you enter in the Domain Controllers list:</p>
+<ul>
+<li>All domain controllers whose traffic is being monitored via port mirroring by the Microsoft Defender for Identity standalone sensor must be listed in the Domain Controllers list. If a domain controller isn't listed in the Domain Controllers list, detection of suspicious activities might not function as expected.</li>
+<li>At least one domain controller in the list should be a global catalog. This enables Microsoft Defender for Identity to resolve computer and user objects in other domains in the forest.</li>
+</ul>
+</li>
+<li><p><strong>Capture Network adapters</strong> (required):</p>
+<ul>
+<li>For Microsoft Defender for Identity sensors, all network adapters that are used for communication with other computers in your organization.</li>
+<li>For Microsoft Defender for Identity standalone sensor on a dedicated server, select the network adapters that are configured as the destination mirror port. These network adapters receive the mirrored domain controller traffic.</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-threat-safeguard/media/install-configure-sensor-info.png" alt="Install steps: Enter information to configure sensor" data-linktype="relative-path"></p>
+</li>
+<li><p>Click <strong>Save</strong>.</p>
+</li>
+</ol>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Review compromised accounts or data</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/m365-threat-safeguard/review-compromised-accounts/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div><section>
+		<p>
+Need help? See our <a id="troubleshooting-guide" data-bi-name="troubleshooting" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-m365.m365-threat-safeguard.configure-sensors&amp;documentId=a463f8bc-4cbb-de5c-95a2-383ab53e47fd&amp;versionIndependentDocumentId=f18dc9fb-c3c6-cf5b-c550-2ded30ec5c35&amp;contentPath=%2FMicrosoftDocs%2Flearn-m365-pr%2Fblob%2Flive%2Flearn-m365-pr%2Fm365%2Fm365-threat-safeguard%2Fconfigure-sensors.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fm365-threat-safeguard%2Fconfigure-sensors&amp;author=elizapo">troubleshooting guide</a> or provide specific feedback by <a id="module-unit-feedback-link" data-bi-name="feedback" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-m365.m365-threat-safeguard.configure-sensors&amp;documentId=a463f8bc-4cbb-de5c-95a2-383ab53e47fd&amp;versionIndependentDocumentId=f18dc9fb-c3c6-cf5b-c550-2ded30ec5c35&amp;contentPath=%2FMicrosoftDocs%2Flearn-m365-pr%2Fblob%2Flive%2Flearn-m365-pr%2Fm365%2Fm365-threat-safeguard%2Fconfigure-sensors.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fm365-threat-safeguard%2Fconfigure-sensors&amp;author=elizapo#report-feedback">reporting an issue</a>.		</p>
+	</section></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>
