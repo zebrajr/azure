@@ -1,0 +1,296 @@
+<html dir="ltr"><head><title>What is Azure AD Multi-Factor Authentication? - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/secure-aad-users-with-mfa/2-azure-multi-factor-authentication">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/secure-aad-users-with-mfa/2-azure-multi-factor-authentication</span>
+  </a>
+  <h1 dir="auto" id="reader-title">What is Azure AD Multi-Factor Authentication? - Learn</h1>
+  <div dir="auto" id="reader-credits">adrianstevens</div>
+  <div dir="auto" id="reader-estimated-time">6-8 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>10 minutes</li>
+		</ul>
+			<p>Protecting your cloud assets is one of the primary goals for security group. One of the primary ways unauthorized users get access to systems is by obtaining a valid username/password combination. Azure can help mitigate this with several features of Azure Active Directory including:</p>
+<ul>
+<li><p><strong>Password complexity rules</strong>. This will force users to generate hard(er)-to-guess passwords.</p>
+</li>
+<li><p><strong>Password expiration rules</strong>. You can force users to change their passwords on a periodic basis (and avoid using previous-used passwords).</p>
+</li>
+<li><p><strong>Self-service password reset (SSPR)</strong>. This allows users to self-serve and reset their password if they have forgotten it without involving an IT department.</p>
+</li>
+<li><p><strong>Azure AD Identity Protection</strong>. To help protect your organization's identities, you can configure risk-based policies that automatically respond to risky behaviors. These policies can either automatically block the behaviors or initiate remediation, including requiring password changes.</p>
+</li>
+<li><p><strong>Azure AD password protection</strong>. You can block commonly used and compromised passwords via a globally banned-password list.</p>
+</li>
+<li><p><strong>Azure AD smart lockout</strong>. Smart lockout helps lock out malicious hackers who are trying to guess your users’ passwords or use brute-force methods to get in. It recognizes sign-ins coming from valid users and treats them differently than the ones of malicious hackers and other unknown sources.</p>
+</li>
+<li><p><strong>Azure AD Application Proxy</strong>. You can provision security-enhanced remote access to on-premises web applications.</p>
+</li>
+<li><p><strong>Single sign-on (SSO)</strong> access to your applications. This includes thousands of pre-integrated SaaS apps.</p>
+</li>
+<li><p><strong>Azure AD Connect</strong>. Create and manage a single identity for each user across your hybrid enterprise, keeping users, groups, and devices in sync.</p>
+</li>
+</ul>
+<p>These are all great options which deter someone <em>guessing</em> or brute-forcing a password. However, sometimes passwords are obtained through social engineering, or poor physical security practices (like putting your password on a sticky note under your keyboard!). In these cases, the above features won't stop an intrusion. Instead, security administrators will want to turn to <strong>Azure AD Multi-Factor Authentication (MFA)</strong>.</p>
+
+<p>Azure AD Multi-Factor Authentication (MFA) supplies added security for your identities by requiring two or more elements for full authentication.</p>
+<p>These elements fall into three categories:</p>
+<ul>
+<li><strong>Something you know</strong> - which might be a password or the answer to a security question.</li>
+<li><strong>Something you possess</strong> - which might be a mobile app that receives a notification or a token-generating device.</li>
+<li><strong>Something you are</strong> - which typically is a biometric property, such as a fingerprint or face scan used on many mobile devices.</li>
+</ul>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/secure-aad-users-with-mfa/media/2-mfa-example.png" alt="Conceptual art showing the pieces of MFA" data-linktype="relative-path"></p>
+<p>Using Azure AD MFA increases identity security by limiting the impact of credential exposure. To fully authenticate, a malicious hacker who has a user's password would also need their phone or their fingerprint. Authentication with only a single factor is insufficient, and without authentication from Azure AD MFA, a malicious hacker is unable to use those credentials to authenticate. You should enable Azure AD MFA wherever possible, because it adds enormous benefits to security.</p>
+<p>Azure AD MFA is the Microsoft two-step verification solution. Azure AD MFA helps safeguard access to data and applications while meeting user demand for a simple sign-in process. It delivers strong authentication via a range of verification methods, including phone call, text message, or mobile app verification. The security of Azure AD MFA lies in its layered approach. Compromising multiple authentication factors presents a significant challenge for malicious hackers. Even if a malicious hacker manages to learn the user's password, it is useless without also possessing the trusted device. If the user loses the device, a person who finds it won't be able to use it without the user's password.</p>
+<h2 id="how-multi-factor-authentication-works">How Multi-Factor Authentication works</h2>
+<p>Here’s what happens when someone tries to connect to a resource that’s security enhanced by Azure AD MFA, and the service is on-premises:</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/secure-aad-users-with-mfa/media/2-how-mfa-works.jpg" alt="Diagram that depicts how Multi-Factor Authentication, or MFA, works and all the components involved." data-linktype="relative-path"></p>
+<ol>
+<li><p>The local Azure AD MFA service validates the initial sign-in request by passing the authentication request to on-premises Active Directory.</p>
+</li>
+<li><p>If the correct credentials were entered and validated, the service sends the request to <strong>Azure AD Multi-Factor Authentication Server</strong>.</p>
+</li>
+<li><p>The Azure AD Multi-Factor Authentication Server sends an additional verification challenge to the user. The methods you can easily configure are:</p>
+<ul>
+<li><strong>Phone call</strong>. Azure AD Multi-Factor Authentication Server places a call to the user’s registered phone.</li>
+<li><strong>Text message</strong>. Azure AD Multi-Factor Authentication Server sends a six-digit code to the user’s mobile phone.</li>
+<li><strong>Mobile app notification</strong>. Azure AD Multi-Factor Authentication Server sends a verification request to a user’s smartphone, which asks them to complete the verification by selecting Verify in the mobile app.</li>
+<li><strong>Mobile app verification code</strong>. Azure AD Multi-Factor Authentication Server sends a six-digit code to the user’s mobile app. The user then enters this code on the sign-in page.</li>
+<li><strong>Initiative for Open Authentication (OATH) compliant tokens</strong>. You can use these as a verification method.</li>
+</ul>
+</li>
+</ol>
+<p>If the service is running in Azure:</p>
+<ol>
+<li><p>The service sends the sign-in request first to Azure AD for the initial validation and then to Azure AD Multi-Factor Authentication Server.</p>
+</li>
+<li><p>Azure AD Multi-Factor Authentication Server sends an additional verification challenge to the user, as just described.</p>
+</li>
+</ol>
+<p>Azure AD MFA allows the provider of the request service to validate that users are real people and not bots, that they have their devices with them, and that they can provide any additional information.</p>
+<p>Azure AD MFA improves security for the requesting users, because someone can’t easily impersonate them. You should require Azure AD MFA on all services, especially on mobile services.</p>
+<h2 id="how-to-get-multi-factor-authentication">How to get Multi-Factor Authentication?</h2>
+<p>Multi-Factor Authentication comes as part of the following offerings:</p>
+<ul>
+<li><p><strong>Azure Active Directory Premium</strong> or <strong>Microsoft 365 Business</strong> - Both of these offerings support Azure AD Multi-Factor Authentication using <a href="https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/concept-fundamentals-security-defaults" data-linktype="absolute-path">security defaults</a> to require multi-factor authentication.</p>
+</li>
+<li><p><strong>Azure AD Free</strong> or standalone <strong>Microsoft 365</strong> licenses - Use <a href="https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/concept-fundamentals-security-defaults" data-linktype="absolute-path">security defaults</a> that require multi-factor authentication for your users and administrators.</p>
+</li>
+<li><p><strong>Azure Active Directory Global Administrators</strong> - A subset of Azure AD Multi-Factor Authentication capabilities are available as a means to protect global administrator accounts.</p>
+</li>
+</ul>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Plan your multi-factor authentication deployment</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/secure-aad-users-with-mfa/3-planning-mfa/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

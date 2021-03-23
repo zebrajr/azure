@@ -1,0 +1,8 @@
+1. C
+Correct. Security questions can only be used with Self-Service Password Reset.
+
+2. B
+Correct. Passwords are always usable as an authentication method and cannot be disabled.
+
+3. A
+Correct. MFA can be enabled for a subset of your users; this is actually a recommendation - start small to ensure you don't lock someone out of your systems.

@@ -1,0 +1,305 @@
+<html dir="ltr"><head><title>Exercise - Enable Azure AD Multi-Factor Authentication - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/secure-aad-users-with-mfa/4-exercise-mfa">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/secure-aad-users-with-mfa/4-exercise-mfa</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Exercise - Enable Azure AD Multi-Factor Authentication - Learn</h1>
+  <div dir="auto" id="reader-credits">adrianstevens</div>
+  <div dir="auto" id="reader-estimated-time">4-4 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="main" role="main" data-bi-name="content" lang="en-us" dir="ltr">
+		
+		
+		<ul>
+			<li>8 minutes</li>
+		</ul>
+			
+<p>Let's walk through the basic steps necessary to configure and enable Azure AD Multi-Factor Authentication using Conditional policies. <strong>Keep in mind that a real deployment requires significant thought and planning</strong>. Make sure you review the documentation links at the end of this module before you enable MFA for your environments.</p>
+<div>
+<p> Important</p>
+<p>Azure AD Premium is need for this exercise. You can use a <a href="https://azure.microsoft.com/trial/get-started-active-directory/" data-linktype="external">30-day free trial</a> to try this feature out, or just read through the instructions below to understand the flow.</p>
+</div>
+<h2 id="configure-multi-factor-authentication-options">Configure Multi-Factor Authentication options</h2>
+<ol>
+<li><p>Sign in to the <a href="https://portal.azure.com/" data-linktype="external">Azure portal</a> using a Global administrator account.</p>
+</li>
+<li><p>Navigate to the Azure Active Directory dashboard using the <strong>Azure Active Directory</strong> option in the sidebar.</p>
+</li>
+<li><p>Select <strong>MFA</strong> under the <strong>Security</strong> group. Here you will find options for Multi-Factor authentication.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/secure-aad-users-with-mfa/media/4-mfa-options.png" alt="Screenshot showing MFA options in the dashboard" data-linktype="relative-path"></p>
+</li>
+<li><p>Select the <strong>Additional cloud-based MFA settings</strong> link under <strong>Configure</strong>. A new browser page will open, where you can see all the MFA options for Azure.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/secure-aad-users-with-mfa/media/4-set-mfa.png" alt="Screenshot showing MFA configuration" data-linktype="relative-path"></p>
+<p>This is where you would select the supported authentication methods, in the screen above, all of them are selected.</p>
+<p>You can also enable or disable <em>app passwords</em> here, which allow users to create unique account passwords for apps that don't support multi-factor authentication. This feature lets the user authenticate with their Azure AD identity using a different password specific to that app.</p>
+</li>
+</ol>
+<h2 id="setup-conditional-access-rules-for-mfa">Setup conditional access rules for MFA</h2>
+<p>Next let's examine how to set up Conditional Access policy rules that would enforce MFA for guest users accessing specific apps on your network.</p>
+<ol>
+<li><p>Switch back to the Azure portal and select <strong>Azure Active Directory &gt; Security &gt; Conditional access</strong>.</p>
+</li>
+<li><p>Select <strong>New policy</strong> from the top menu.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/secure-aad-users-with-mfa/media/4-new-policy.png" alt="Screenshot highlighting the New Policy button in the Azure portal" data-linktype="relative-path"></p>
+</li>
+<li><p>Name your policy, for example "All guests"</p>
+</li>
+<li><p>Select <strong>Users and groups</strong> to open the panel.</p>
+<ul>
+<li>Select <strong>Select users and groups</strong></li>
+<li>Check the <strong>All guest and external users</strong> checkbox to apply this to all guests</li>
+<li>Select <strong>Done</strong> to close the panel.</li>
+</ul>
+</li>
+<li><p>Select <strong>Cloud apps or actions</strong>.</p>
+<ul>
+<li>Select <strong>Select apps</strong> and press the <strong>Select</strong> group</li>
+<li>Choose an app where you want to enable Azure AD MFA such as <strong>Visual Studio App Center</strong></li>
+<li>Select <strong>Select</strong> and then <strong>Done</strong> to close the panel.</li>
+</ul>
+</li>
+<li><p>Review the <strong>Conditions</strong> section.</p>
+<ul>
+<li>Select <strong>Locations</strong> and then configure it for <strong>Any location</strong>.</li>
+</ul>
+</li>
+<li><p>Under Access Controls select <strong>Grant</strong> and make sure that <strong>Grant access</strong> is selected, select the <strong>Require multi-factor authentication</strong> check box - this is what enforces MFA.</p>
+</li>
+<li><p>Select <strong>Select</strong> to close the window.</p>
+</li>
+<li><p>Set <strong>Enable policy</strong> to <strong>On</strong>.</p>
+</li>
+<li><p>Select <strong>Create</strong> to create the policy.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/secure-aad-users-with-mfa/media/4-create-policy.png" alt="Screenshot showing the complete Add Policy dialog" data-linktype="relative-path"></p>
+</li>
+</ol>
+<p>MFA is now enabled for your selected application(s). The next time a guest tries to sign into that app they will be prompted to register for MFA.</p>
+
+<p>Finally, let's look at how to configure MFA for user accounts. This is another way to get to the multi-factor auth settings.</p>
+<ol>
+<li><p>Navigate back to the <strong>Azure Active Directory</strong> dashboard in the Azure portal.</p>
+</li>
+<li><p>Select <strong>Users</strong>.</p>
+</li>
+<li><p>At the top of the <strong>Users</strong> pane, select <strong>Multi-Factor Authentication</strong>.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/secure-aad-users-with-mfa/media/4-user-mfa.png" alt="Screenshot showing the MFA option" data-linktype="relative-path"></p>
+</li>
+<li><p>You can enable or disable MFA on a user basis by selecting a user and then using the quick steps on the right side.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/secure-aad-users-with-mfa/media/4-enable-user-mfa.png" alt="Screenshot showing the MFA options" data-linktype="relative-path"></p>
+</li>
+</ol>
+<p>Finally, select <strong>service settings</strong>. This displays the same global MFA options we saw earlier. Let's explore these in a bit more detail.</p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Configure multi-factor authentication methods</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/secure-aad-users-with-mfa/5-configure-authentication-methods/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div><section>
+		<p>
+Need help? See our <a id="troubleshooting-guide" data-bi-name="troubleshooting" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn.azure-security.secure-aad-users-with-mfa.exercise-mfa&amp;documentId=70d70dbc-f827-c451-57ca-ca990986bfcc&amp;versionIndependentDocumentId=acc81aa4-7801-b04b-51c0-2e2d80716ec8&amp;contentPath=%2FMicrosoftDocs%2Flearn-pr%2Fblob%2Flive%2Flearn-pr%2Fazure%2Fsecure-aad-users-with-mfa%2F4-exercise-mfa.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fsecure-aad-users-with-mfa%2F4-exercise-mfa&amp;author=adsteven">troubleshooting guide</a> or provide specific feedback by <a id="module-unit-feedback-link" data-bi-name="feedback" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn.azure-security.secure-aad-users-with-mfa.exercise-mfa&amp;documentId=70d70dbc-f827-c451-57ca-ca990986bfcc&amp;versionIndependentDocumentId=acc81aa4-7801-b04b-51c0-2e2d80716ec8&amp;contentPath=%2FMicrosoftDocs%2Flearn-pr%2Fblob%2Flive%2Flearn-pr%2Fazure%2Fsecure-aad-users-with-mfa%2F4-exercise-mfa.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fsecure-aad-users-with-mfa%2F4-exercise-mfa&amp;author=adsteven#report-feedback">reporting an issue</a>.		</p>
+	</section></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>
