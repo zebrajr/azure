@@ -1,0 +1,254 @@
+<html dir="ltr"><head><title>Implement broad deployment - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/windows-deploy/implement-broad-deployment">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/windows-deploy/implement-broad-deployment</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Implement broad deployment - Learn</h1>
+  <div dir="auto" id="reader-credits">IanKensey</div>
+  <div dir="auto" id="reader-estimated-time">4-4 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="main" role="main" data-bi-name="content" lang="en-us" dir="ltr">
+		
+		
+		<ul>
+			<li>8 minutes</li>
+		</ul>
+			<p>You're ready to deploy the update across the wider production environment. As the process manager, you’ll outline what your team needs to do to successfully deploy the update to users and their devices.</p>
+<h2 id="inputs">Inputs</h2>
+<p>In the previous phase, you helped your organization prepare outputs that it can use for broad deployment. These are:</p>
+<ul>
+<li>A list of apps and devices not ready for broad deployment</li>
+<li>Validate security and baseline settings</li>
+</ul>
+<p>You'll use these artifacts to make decisions and carry out tasks for broad deployment of the Windows 10 feature update.</p>
+<h2 id="decisions-and-tasks">Decisions and tasks</h2>
+<p>You can take advantage of deployment rings to roll out the update across the environment. A deployment ring is a selection of devices that receive an update at the same time. For each ring, your team agrees on criteria that must be met before the update can be applied to the next ring. There are no set rules for the number of deployment rings available. You could decide to create deployment rings based on the geographic locations of your organization's offices. It could also create deployment rings based on how critical devices are for the organization.</p>
+<p>You can use Desktop Analytics to identify that are devices ready for deployment. Your team will then be able to create a single deployment ring, where devices identified as ready to receive the update go into a device collection in Configuration Manager, and it can use that collection as a target for deployment of the update.</p>
+<p>Alternatively, your team can also use the list of devices provided by Desktop Analytics, and perform additional administrative efforts to create multiple deployment rings based on its organization's unique requirements. For example, your team can create four deployment rings:</p>
+
+<p>Each deployment ring contains a quarter of the devices in your organization's total estate. Deployment would only continue to the next ring if no issues remain unresolved.</p>
+<p>Different roles will complete different tasks during this part of the Deploy phase. These tasks are categorized into broader, high-level sections. The tasks should be assigned to the various roles in the process. You use the RACI model to create an example mapping, so your team can use it as a reference for assigned tasks:</p>
+
+<p>With Desktop Analytics, your team can use the same deployment plan it created during pilot testing to deploy to the rest of its devices. Here’s how the process works in the Desktop Analytics portal:</p>
+<ol>
+<li>Review any apps that need to be approved for production deployment by marking them as "Ready".</li>
+<li>Each device will automatically be moved to a production collection when all of its installed applications have been marked as "Ready".</li>
+<li>Configuration Manager will then automatically deploy to production devices if the team has set a default automatic two-phase deployment.</li>
+</ol>
+<h2 id="outputs">Outputs</h2>
+<p>You'll have to ensure that your team generates multiple artifacts that it can use for the next deployment cycle. This will help reduce cost, time, and effort involved in the deployment of future updates. Later, you'll see that you can use these artifacts to map tools and practices against any issues noted during broad deployment.</p>
+
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Outline the deployment experience</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/windows-deploy/outline-deployment-experience/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div><section>
+		<p>
+Need help? See our <a id="troubleshooting-guide" data-bi-name="troubleshooting" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-m365.windows-deploy.implement-broad-deployment&amp;documentId=d7c9e8df-ffe3-0096-9ec1-11a072464342&amp;versionIndependentDocumentId=e25f05a8-f82f-ff67-4f6e-7e97f9b7c9fd&amp;contentPath=%2FMicrosoftDocs%2Flearn-m365-pr%2Fblob%2Flive%2Flearn-m365-pr%2Fm365%2Fwindows-deploy%2Fimplement-broad-deployment.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fwindows-deploy%2Fimplement-broad-deployment&amp;author=v-iakens">troubleshooting guide</a> or provide specific feedback by <a id="module-unit-feedback-link" data-bi-name="feedback" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-m365.windows-deploy.implement-broad-deployment&amp;documentId=d7c9e8df-ffe3-0096-9ec1-11a072464342&amp;versionIndependentDocumentId=e25f05a8-f82f-ff67-4f6e-7e97f9b7c9fd&amp;contentPath=%2FMicrosoftDocs%2Flearn-m365-pr%2Fblob%2Flive%2Flearn-m365-pr%2Fm365%2Fwindows-deploy%2Fimplement-broad-deployment.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fwindows-deploy%2Fimplement-broad-deployment&amp;author=v-iakens#report-feedback">reporting an issue</a>.		</p>
+	</section></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

@@ -1,0 +1,260 @@
+<html dir="ltr"><head><title>Outline the deployment experience - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/windows-deploy/outline-deployment-experience">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/windows-deploy/outline-deployment-experience</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Outline the deployment experience - Learn</h1>
+  <div dir="auto" id="reader-credits">IanKensey</div>
+  <div dir="auto" id="reader-estimated-time">5-6 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>9 minutes</li>
+		</ul>
+			<p>Deployment requires downtime for users’ devices and must be monitored efficiently. As your organization's process manager, you’ll explain how your team might ensure updates are communicated in the best way, how updates can be applied across devices in a timely manner, and how deployment is monitored.</p>
+<h2 id="inform-users-in-a-timely-manner">Inform users in a timely manner</h2>
+<p>Having the right approach to communication will help your organization ensure its users are ready for Windows feature updates, so these can be rolled out seamlessly. Updates provide continuous innovation and improvements to the product, in the same way that users’ personal devices, such as smartphones, receive updates. Ideally, users should feel excited about the update and its value, while understanding the importance of keeping devices secure. You explain that there are several measures that your team can employ to achieve this. For example by:</p>
+<ul>
+<li>Sending organization-wide overview emails about the update and how it will be deployed</li>
+<li>Sending personalized emails to users with specific details about the update</li>
+<li>Setting an opt-out deadline for employees who need to remain on the current version for a little longer, due to a business need</li>
+<li>Providing the ability to voluntarily update at users’ convenience (Configuration Manager only)</li>
+<li>Informing users of an install date where the update could, or will, be deployed to all devices</li>
+</ul>
+<p>You can combine all of these measures and match them with its deployment timeline, to ensure all users are informed and covered by the update in a timely manner. For example:</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/windows-deploy/media/5-timeline.png" alt="Communication timeline" data-linktype="relative-path">
+</p>
+<p>As the process manager, you highlight that having an open and easy to understand communication process for updates will ensure that users see this as work that’s undertaken regularly. Over time, it will help familiarize them with the update process.</p>
+<h2 id="communicate-the-benefits-of-the-update">Communicate the benefits of the update</h2>
+<p>Your organization's users will have varied technical ability and IT experience. Depending on their role, users will also vary in where and when they use their devices and applications. You explain that the organization’s communications about updates should be appropriate for users. Your team can prepare a communication package and trial it with pilot users to see how effective the message lands. Pilot users tend to be more technically savvy, so less technically capable individuals should also be included to help understand how effective the message really is.</p>
+<p>Details about benefits, along with when, and how the update will be rolled out, should be clear and easy to understand from communications. User notification about the update can correlate with the deployment rings. For example, each time deployment moves to the next deployment ring, an accompanying communication can be sent to users, to guide, and inform them about the update. This way, there would be staggered communication that’s in line with the deployment processes. You explain that the team might share emails like this:</p>
+<p><span>
+<img src="https://docs.microsoft.com/en-gb/learn/m365/windows-deploy/media/5-email.png" alt="Informative email about the update" data-linktype="relative-path">
+</span>
+</p>
+<p>You suggest that communications, such as emails, should point to resources and places where users can find more information, help, and support on the update. This way, users will have a good understanding of the update, and know how to get support if they need it.</p>
+<h2 id="monitor-deployment">Monitor deployment</h2>
+<p>Monitor the deployment process. Monitoring will help identify issues during deployment and fix them when they occur. Your team can use Desktop Analytics to monitor the deployment process when deploying to devices.</p>
+<p>Desktop Analytics will show deployment progress. For example, your team can use it to see how many devices have been deployed to successfully and how many have issues needing further attention. This information is used to find patterns of issues across devices. For example, problems with disk space availability, or a device that might have failed while downloading the update. Desktop Analytics gives your team a better idea of issues across deployment devices, so they can quickly fix them.</p>
+<p><span>
+<img src="https://docs.microsoft.com/en-gb/learn/m365/windows-deploy/media/5-deployment-status.png" alt="Deployment status in Desktop Analytics" data-linktype="relative-path">
+</span>
+</p>
+<p>Desktop Analytics also gives a health status overview of deployment devices. You can review this on an ongoing basis to help better understand and learn how to prevent and resolve issues in the future. For example, the organization will see the percentage of devices with crashes before and after the update. This helps you understand whether the stability of applications has decreased or increased in the newly deployed version of Windows, and helps improve for future deployments.</p>
+<p><span>
+<img src="https://docs.microsoft.com/en-gb/learn/m365/windows-deploy/media/5-health-status.png" alt="Health status factors in Desktop Analytics" data-linktype="relative-path">
+</span>
+</p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Accelerate deployment velocity</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/windows-deploy/accelerate-deployment-velocity/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>
