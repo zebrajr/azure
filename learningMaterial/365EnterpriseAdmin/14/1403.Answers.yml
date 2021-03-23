@@ -1,0 +1,5 @@
+1. B
+A user is considered registered for SSPR when they've registered at least the number of methods that you've required to reset a password. You can set this number in the Azure portal.
+
+2. C
+If the user passes the authentication tests, then they can reset their password.

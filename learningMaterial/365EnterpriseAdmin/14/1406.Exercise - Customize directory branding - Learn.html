@@ -1,0 +1,257 @@
+<html dir="ltr"><head><title>Exercise - Customize directory branding - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/allow-users-reset-their-password/5-exercise-customize-directory-branding">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/allow-users-reset-their-password/5-exercise-customize-directory-branding</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Exercise - Customize directory branding - Learn</h1>
+  <div dir="auto" id="reader-credits">cwatson-cat</div>
+  <div dir="auto" id="reader-estimated-time">2-2 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="main" role="main" data-bi-name="content" lang="en-us" dir="ltr">
+		
+		
+		<ul>
+			<li>5 minutes</li>
+		</ul>
+			<p>Suppose you've been asked to display your retail organization's branding on the Azure sign-in page to reassure users that they're passing credentials to a legitimate system.</p>
+<p>Here, you'll learn how to configure this custom branding.</p>
+<p>To complete this exercise, you must have two image files:</p>
+<ul>
+<li>A page background image. This must be a PNG or JPG file, 1920 x 1080 pixels, and smaller than 300 KB.</li>
+<li>A company logo image. This must be a PNG or JPG file, 280 x 60 pixels, and smaller than 10 KB.</li>
+</ul>
+
+<p>Let's use Azure Active Directory (Azure AD) to set up the custom branding.</p>
+<ol>
+<li><p>Sign in to the <a href="https://portal.azure.com/learn.docs.microsoft.com" data-linktype="external" target="az-portal">Azure portal</a> with the same account you used to activate the sandbox.</p>
+</li>
+<li><p>Go to your Azure AD organization by selecting <strong>Azure Active Directory</strong>. If you're not in the right Azure AD organization, go to your Azure profile in the upper-right corner and select <strong>Switch directory</strong> to find your organization.</p>
+</li>
+<li><p>Under <strong>Manage</strong>, select <strong>Company branding</strong> &gt; <strong>Configure</strong>.</p>
+</li>
+<li><p>Next to <strong>Sign-in page background image</strong>, select <strong>Browse</strong>. Select your page background image.</p>
+</li>
+<li><p>Next to <strong>Banner logo</strong>, select <strong>Browse</strong>. Select your logo image.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/allow-users-reset-their-password/media/5-customize-ui.png" alt="Screenshot that shows the configure company branding form." data-linktype="relative-path"></p>
+</li>
+<li><p>Select <strong>Save</strong>.</p>
+</li>
+</ol>
+<h2 id="test-the-organizations-branding">Test the organization's branding</h2>
+<p>Now, let's use the account that we created in the last exercise to test the branding.</p>
+<ol>
+<li><p>In a new browser window, go to <a href="https://login.microsoft.com/" data-linktype="external">https://login.microsoft.com</a>.</p>
+</li>
+<li><p>Select the account for <strong>Bala Sandhu</strong>. Your custom branding is displayed.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/allow-users-reset-their-password/media/5-custom-login-page.png" alt="Screenshot that shows the customized sign-in page." data-linktype="relative-path"></p>
+</li>
+<li><p>Select <strong>Forgot my password</strong>.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/allow-users-reset-their-password/media/5-forgot-password-branding.png" alt="Screenshot that shows organization logo on password reset page." data-linktype="relative-path"></p>
+</li>
+</ol>
+
+		
+	</div><section>
+		<p>
+Need help? See our <a id="troubleshooting-guide" data-bi-name="troubleshooting" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn.azure.allow-users-to-reset-their-password.exercise-customize-directory-branding&amp;documentId=b0e2fb5b-4f59-8d6d-a9f6-8a9b720fad03&amp;versionIndependentDocumentId=d323f896-f3b7-8eac-a5f1-deed3d74272a&amp;contentPath=%2FMicrosoftDocs%2Flearn-pr%2Fblob%2Flive%2Flearn-pr%2Fazure%2Fallow-users-reset-their-password%2F5-exercise-customize-directory-branding.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fallow-users-reset-their-password%2F5-exercise-customize-directory-branding&amp;author=cwatson">troubleshooting guide</a> or provide specific feedback by <a id="module-unit-feedback-link" data-bi-name="feedback" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn.azure.allow-users-to-reset-their-password.exercise-customize-directory-branding&amp;documentId=b0e2fb5b-4f59-8d6d-a9f6-8a9b720fad03&amp;versionIndependentDocumentId=d323f896-f3b7-8eac-a5f1-deed3d74272a&amp;contentPath=%2FMicrosoftDocs%2Flearn-pr%2Fblob%2Flive%2Flearn-pr%2Fazure%2Fallow-users-reset-their-password%2F5-exercise-customize-directory-branding.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fallow-users-reset-their-password%2F5-exercise-customize-directory-branding&amp;author=cwatson#report-feedback">reporting an issue</a>.		</p>
+	</section></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>
