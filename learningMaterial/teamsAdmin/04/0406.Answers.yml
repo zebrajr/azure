@@ -1,0 +1,8 @@
+1. C
+You would sideload your add-in (that is, install it locally) so you can test and debug it on your machine.
+
+2. B
+You can debug custom functions in Visual Studio Code.
+
+3. A
+You should verify that your add-in works in the expected browsers, Office hosts, and operating system to ease the AppSource validation process.

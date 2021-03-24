@@ -1,0 +1,8 @@
+1. A
+CustomProperties can be used to store Outlook item data. RoamingSettings is another object you can use.
+
+2. C
+Your add-in can look like a natural extension of Office when you use Fabric elements and components.
+
+3. B
+The add-in needs to use the Dialog API to display the Azure AD login form in a dialog.
