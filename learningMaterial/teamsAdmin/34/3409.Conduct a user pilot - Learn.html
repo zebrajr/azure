@@ -1,0 +1,265 @@
+<html dir="ltr"><head><title>Conduct a user pilot - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/m365-teams-upgrade-plan-upgrade/user-pilot">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/m365-teams-upgrade-plan-upgrade/user-pilot</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Conduct a user pilot - Learn</h1>
+  <div dir="auto" id="reader-credits">AlexandraHrt</div>
+  <div dir="auto" id="reader-estimated-time">5-7 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>10 minutes</li>
+		</ul>
+			<p>Deploying new technologies can affect your users’ productivity and your network. Just like you’d paint a small patch of color on a wall before painting the whole room, you should test a broad rollout on a smaller scale. Conduct a pilot to validate technical and user readiness, identify and mitigate issues, and help ensure a successful organization-wide implementation.</p>
+<p>To achieve the most realistic results, a Teams pilot should involve actual users, mimic how they communicate and collaborate, and verify both technical and user experiences. Whether your organization is considering running Skype for Business and Teams side by side, upgrading to Teams in the future, or deploying new functionality such as calling or conferencing, a pilot can help identify the right path forward for your organization.</p>
+<h2 id="1-outline-pilot-logistics">1. Outline pilot logistics</h2>
+<p>A successful pilot has defined start and end dates and clearly defined goals for measuring success. These goals should align with the scope of your broader project and will be used to inform your path forward after your pilot is over. You should ensure that you’ve included the right stakeholders and you’ll want to allow enough time to run the pilot and assess its impact: we recommend a minimum of 30 days.</p>
+<p>Start small and add to your pilot as appropriate—whether by adding workloads or features, or additional users—allowing time to assess results and adjust your pilot as you iterate. You might even opt to run subsequent pilots as new Teams features are released.</p>
+<h2 id="2-select-your-pilot-participants-and-test-scenarios">2. Select your pilot participants and test scenarios</h2>
+<p>When it comes to participant selection, remember that Teams is collaboration and communications technology, so be sure to select pilot participants based not on roles or personas but on their project and cross-team work. A great place to start is asking your stakeholders and department managers for real projects that you can validate in Teams. Examples include using Teams:</p>
+<ul>
+<li>With your sales organization to ensure that field reps can easily access the resources they need and share insights with other field members.</li>
+<li>To coordinate a product launch event with the marketing, training, public relations, and event planning teams.</li>
+</ul>
+<p>Whichever scenarios you select, the pilot should extend to key people in IT, training, and your helpdesk, so you can thoroughly validate the solution while fully optimizing project management resources.</p>
+<p>When selecting your Teams pilot group participants, be sure to include top users of Skype for Business. Check with those users to understand how they use Skype for Business today; then build out a test plan to verify that Teams can meet their current needs.</p>
+<h2 id="3-design-your-test-plan-and-feedback-survey">3. Design your test plan and feedback survey</h2>
+<p>A successful pilot will give your participants clearly defined tasks to complete and a way for them to share their feedback. Combine tasks together to offer real-world scenarios, demonstrating relevancy to users’ daily activities.</p>
+<p>Your organization might choose to pilot all functionality at once or use a gradual approach. Ensure that you have an open feedback channel to track progress and measure outcomes. Define your survey in advance as an easy way to capture and assess pilot results.</p>
+<h2 id="4-create-your-communications-plan">4. Create your communications plan</h2>
+<p>It’s crucial that you educate pilot participants on what’s happening, when, and why, and what’s expected of them. To drive excitement and maximum participation, be sure to include user value messaging in addition to links to training and support where users can get additional information as they progress through the pilot.</p>
+<h2 id="5-conduct-your-pilot">5. Conduct your pilot</h2>
+<p>Conducting your pilot includes communicating with your users, monitoring your network and usage to ensure your network performance and call quality remain healthy, gathering feedback from participants, and reviewing helpdesk tickets for questions related to Teams.</p>
+<h3 id="suggested-timeline">Suggested timeline</h3>
+<p>For a 30-day pilot, we suggest:</p>
+<ul>
+<li>One week before the pilot kickoff: Send initial communication to pilot users.</li>
+<li>Day 1: Send kickoff communication to pilot users.</li>
+<li>Day 7: Hold the first weekly project team checkpoint meeting.</li>
+<li>Day 14: Send mid-point communication to your pilot users; hold weekly project team checkpoint meeting.</li>
+<li>Day 21: Hold weekly project team checkpoint meeting.</li>
+<li>Day 30: Send final communication to your pilot users.</li>
+<li>Days 31–45: Assess pilot results, and plan for next steps.</li>
+</ul>
+<h2 id="6-assess-learnings-and-evaluate-your-go-forward-plan">6. Assess learnings and evaluate your go-forward plan</h2>
+<p>After your pilot is complete, it’s time to gather all feedback surveys, final network stats, and support tickets for analysis against your goals and determine whether you’ll implement your go-forward plan. You might find that your organization is ready for a broad deployment. Or you may want to extend your pilot to more users or revisit the pilot at a later date after any concerns have been mitigated. Remember that your pilot is a great way to predict technical and user outcomes in a controlled environment; be thoughtful about jumping ahead too quickly.</p>
+<p>If the results meet your pilot goals, proceed with the next phase of your rollout. If your results indicate that your pilot didn’t achieve the outcomes you wanted, take time to make the appropriate adjustments to your plan and revisit your pilot.</p>
+<h2 id="learn-more">Learn more</h2>
+<p>When you're done with a link, use the <strong>Back</strong> arrow in your browser to come back to this page.</p>
+<ul>
+<li><a href="https://docs.microsoft.com/en-us/MicrosoftTeams/pilot-essentials" data-linktype="absolute-path">Conduct a user pilot</a></li>
+</ul>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Summary and knowledge check</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/m365-teams-upgrade-plan-upgrade/summary-knowledge-check/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>
