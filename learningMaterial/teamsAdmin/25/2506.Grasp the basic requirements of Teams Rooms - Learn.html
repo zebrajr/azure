@@ -1,0 +1,250 @@
+<html dir="ltr"><head><title>Grasp the basic requirements of Teams Rooms - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/m365-teams-rooms-get-started/basic-requirements">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/m365-teams-rooms-get-started/basic-requirements</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Grasp the basic requirements of Teams Rooms - Learn</h1>
+  <div dir="auto" id="reader-credits">AlexandraHrt</div>
+  <div dir="auto" id="reader-estimated-time">4-5 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>5 minutes</li>
+		</ul>
+			<p>Teams rooms has several requirements to assure a great meeting room experience. Below is a summary of things you need to keep in mind before deploying Teams Rooms.</p>
+<h2 id="what-are-the-hardware-requirements">What are the hardware requirements?</h2>
+<p>Teams Rooms is only available as a Microsoft  certified system. You can’t build your own Teams Rooms. This is done to be certain that Teams Rooms will provide an excellent experience for in-room and remote attendees.</p>
+<p>You can have up to two 1080p displays with HDMI connections connected to Teams Rooms. Teams Rooms does support 4K monitors but will only send a 1080p image.</p>
+<p>It's recommended that you use a USB keyboard and mouse for initial configuration of Teams Rooms. Once the room is in production, you can safely remove the keyboard and mouse. Attendees in Teams Rooms meetings never need to use a USB keyboard and mouse as all interaction is handled by the center of table console.</p>
+<p>A wired network connection is also required. Microsoft doesn't support wireless networking with Teams Rooms. Proxy bypass is strongly encouraged.</p>
+<h2 id="what-are-the-software-requirements">What are the software requirements?</h2>
+<p>On the software side, you will need to have a Microsoft Teams license and/or Skype for Business license. If you’re using on-premises Skype for Business, be sure to install the enterprise trusted root certificate onto the compute module.</p>
+<p>You will also need Exchange Online or Exchange on-premises. Note that an Exchange license is not required if the Teams Rooms account is configured as an Exchange resource account.</p>
+<h2 id="what-are-the-configuration-requirements">What are the configuration requirements?</h2>
+<p>For initial configuration, Teams Rooms requires DHCP. However, once you have configured the device, you can switch from DHCP to a static IP address.
+When using Teams or Skype for Business, be sure that all the proper ports and protocols are enabled for access via your firewalls or proxy servers.</p>
+<h2 id="what-about-licensing">What about licensing?</h2>
+<p>You should use either the Microsoft Teams Rooms Standard or Microsoft Teams Rooms Premium license. These are Microsoft 365 licenses that contain all the required licensing components for Microsoft Teams Rooms.  Every Teams Rooms has a unique resource account, and it is this resource account that will need the license. Using a meeting room license assures that you have everything correctly configured on the licensing side.</p>
+<p>The Teams Rooms Premium license adds a managed service component to the Teams Rooms Standard license. This managed service is run by Microsoft and will help you manage, monitor, and maintain Teams Rooms across your organization. It will help you have an optimal experience with Teams Rooms.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-rooms-get-started/media/standard-premium-license.png" alt="Standard versus premium licensing" data-linktype="relative-path"></p>
+<h2 id="what-deployment-roles-are-needed">What deployment roles are needed?</h2>
+<p>Finally, when rolling out Teams Rooms, there are several roles that will be needed within the deployment.</p>
+<ul>
+<li>A System Integrator can help to design conference rooms and meeting rooms and help with the assessment, validation, and equipment ordering. They can make sure the project moves along in a timely manner and they can help install the devices. They can also  help provide training and support for both end users and administrators.</li>
+<li>You’re going to need somebody who is familiar with audio and video. You’ll  need Microsoft Teams or Skype for Business experts who understand how your environment is configured.</li>
+<li>If you will be enabling dial-in calling, you will need to add the telecommunications department to help assign telephone numbers.</li>
+<li>You'll need someone familiar with the network to make sure switch ports are set up correctly and firewalls and proxies are properly configured. You'll need someone with rights to create an Exchange mailbox, change passwords, and perform end-user management.</li>
+<li>Finally, you'll need to make sure you work with your facilities group so that everything you’re adding to the building is compliant and meets local laws.</li>
+</ul>
+<h2 id="learn-more">Learn more</h2>
+<ul>
+<li><a href="https://docs.microsoft.com/en-us/microsoftteams/office-365-urls-ip-address-ranges" data-linktype="absolute-path" target="az-portal">Microsoft 365 and Office 365 URLs and IP address ranges</a></li>
+<li><a href="https://www.microsoft.com/microsoft-365/microsoft-teams/across-devices/devices/category?devicetype=20%3Fazure-portal%3Dtrue" data-linktype="external" target="az-portal">Microsoft Teams devices</a></li>
+<li><a href="https://docs.microsoft.com/en-us/microsoftteams/rooms/rooms-licensing" data-linktype="absolute-path" target="az-portal">Microsoft Teams licensing</a></li>
+<li><a href="https://rooms.microsoft.com/" data-linktype="external" target="az-portal">Teams Rooms Premium</a></li>
+</ul>
+
+		
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>
