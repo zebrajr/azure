@@ -1,0 +1,11 @@
+1. A
+That's correct. A hosted SBC solution is suitable for organizations that either do not have in-house skills or would prefer to delegate the management of the service to a specialist vendor.
+
+2. B
+That's correct. A tenant dial plan uses normalization rules to convert a familiar dialing pattern to the international E.164 dialing standard.
+
+3. B
+That's correct. When paired with a Proxy SBC, the Downstream SBC doesn't have a public IP address.
+
+4. C
+That's correct. A voice routing policy is required for users to make calls in all scenarios using Direct Routing.

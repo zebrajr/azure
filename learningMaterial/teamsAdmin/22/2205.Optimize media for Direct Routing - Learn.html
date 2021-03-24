@@ -1,0 +1,256 @@
+<html dir="ltr"><head><title>Optimize media for Direct Routing - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/m365-teams-plan-direct-routing/4-optimize-media-flow">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/m365-teams-plan-direct-routing/4-optimize-media-flow</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Optimize media for Direct Routing - Learn</h1>
+  <div dir="auto" id="reader-credits">lizap</div>
+  <div dir="auto" id="reader-estimated-time">3-4 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>4 minutes</li>
+		</ul>
+			<p>Direct Routing handles two types of traffic: media and signaling. In this unit, let's examine media bypass, where media flow is optimized for users who are in the same building and on the same network as the SBC.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-plan-direct-routing/media/1-direct-routing-planning-steps.png" alt="Direct Routing planning steps" data-linktype="relative-path">
+</p>
+
+<p>The following diagrams show two scenarios. The diagram on the left shows call flow without media bypass, using Phone Service and the internet. The diagram on the right shows call flow with media bypass, where media flows directly to the SBC.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-plan-direct-routing/media/4-media-bypass.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog">
+<img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-plan-direct-routing/media/4-media-bypass.png" alt="Media Bypass Overview" data-linktype="relative-path">
+</a>
+</p>
+<p>For media bypass to work, it must be enabled on the SBC; there's an on/off toggle. Also, the Teams user must have access to the public IP address of the SBC, whether or not they're on the same network, unless you're using Local Media Optimization.</p>
+<div>
+<p> Note</p>
+<p>The signaling path using SIP/TLS doesn't change; it's always through the Microsoft Cloud.</p>
+</div>
+<p>Media bypass is supported on Teams desktop clients and Teams phone devices. For endpoints that don't support media bypass, such as Skype for Business 3PIP phones and Teams web clients, the call automatically falls back to a non-bypass call. No configuration is needed, it happens automatically.</p>
+
+<p>When media bypass is implemented, there are additional considerations for setting IP address ranges and port numbers.</p>
+<p>First, users inside the network need access to the public IP address of the SBC. The administrator has to configure a "hairpin", with the connection going out from the Teams client and back into the SBC's public IP address. If this isn't possible for any reason, the alternative is <strong>local media optimization</strong>, covered later in this unit.</p>
+<p>Second, media processors are still required for voice apps and web clients, in the same way as they are for non-bypass traffic. You must also configure IP addresses for them.
+Finally, with media bypass, SBCs need to communicate with transport relays, so the relevant ports must be open, and the IP address ranges set.</p>
+<p>This diagram summarizes the requirements for IP address ranges and ports for media bypass.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-plan-direct-routing/media/4-media-bypass-ips.png" alt="IP ranges and ports with media bypass" data-linktype="relative-path">
+</p>
+
+<p>Local Media Optimization controls how media traffic flows between the Teams client and the SBCs.</p>
+<p>When Local Media Optimization is configured, the internal IP address of the SBC is used, rather than the external IP address. This means that SBCs can be behind a firewall, and not necessarily seen by Teams.</p>
+<p><span>
+<img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-plan-direct-routing/media/4-local-media-optimization.png" alt="Local Media Optimization" data-linktype="relative-path">
+</span>
+</p>
+<p>To configure Local Media Optimization, you need to create a <strong>proxy SBC</strong>, with a public IP address, to communicate with Phone Service. It's deployed and configured in the same way as any other SBC for direct routing. This proxy SBC is the target for online voice routes.</p>
+<p>In addition, a <strong>downstream SBC</strong> is required. This SBC doesn't have a public IP address and is paired to the Phone Service  by association to the upstream or <strong>proxy SBC</strong>.</p>
+<h2 id="learn-more">Learn more</h2>
+<ul>
+<li><a href="https://docs.microsoft.com/en-us/MicrosoftTeams/direct-routing-media-optimization" data-linktype="absolute-path">Local Media Optimization for Direct Routing</a></li>
+<li><a href="https://docs.microsoft.com/en-us/MicrosoftTeams/direct-routing-border-controllers" data-linktype="absolute-path">List of Session Border Controllers certified for Direct Routing</a></li>
+<li><a href="https://docs.microsoft.com/en-us/microsoftteams/direct-routing-plan-media-bypass" data-linktype="absolute-path">Plan for media bypass with Direct Routing</a></li>
+</ul>
+
+		
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

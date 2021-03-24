@@ -1,0 +1,291 @@
+<html dir="ltr"><head><title>Configure voice routing options - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/m365-teams-plan-direct-routing/3-configure-voice-routing-options">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/m365-teams-plan-direct-routing/3-configure-voice-routing-options</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Configure voice routing options - Learn</h1>
+  <div dir="auto" id="reader-credits">lizap</div>
+  <div dir="auto" id="reader-estimated-time">6-7 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>8 minutes</li>
+		</ul>
+			<p>In the previous unit, we identified the voice configuration objects that interact with each other to allow users to place calls. In this unit, let's consider how to configure these voice routing objects.  The objects include <strong>PSTN usage records</strong>, a <strong>Voice Routing Policy</strong>, the <strong>Voice Route</strong>, <strong>Dial Plan</strong>, and <strong>Gateway</strong>.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-plan-direct-routing/media/1-direct-routing-planning-steps.png" alt="Direct Routing planning steps" data-linktype="relative-path">
+</p>
+<h2 id="voice-routing-objects">Voice routing objects</h2>
+<p>There are three objects that work together to specify the class of service and class of restriction for calls. They determine the type of calls that groups of users can make, and how they're handled. This unit looks at each one in a little more detail. They are:</p>
+<ul>
+<li>Voice routing policy</li>
+<li>PSTN usage record</li>
+<li>Voice route</li>
+</ul>
+<p>A <strong>PSTN usage record</strong> specifies a class of call, such as internal, local, or international. The PSTN record is assigned to both a <strong>Voice Routing Policy</strong> and a <strong>Voice Route</strong>. If you have more than one PSTN usage record, the order is important. PSTN usage records are evaluated in order. If the first record matches a user's number, then no other PSTN usage record is evaluated. In summary:</p>
+<ul>
+<li>The PSTN usage record is associated with a voice routing policy.</li>
+<li>The voice routing policy is assigned to users.</li>
+<li>The PSTN usage record is assigned to a voice route that specifies the gateway and the SBC to be used.</li>
+</ul>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-plan-direct-routing/media/3-pstn-usage-associations.png" alt="PSTN usage record associations" data-linktype="relative-path">
+</p>
+<div>
+<p> Note</p>
+<p>Ensure the hierarchy of PSTN usage records is correct. If a number matches the first record, the rest are ignored. If the number doesn't match, it then looks at the next record, and so on. PSTN usage records in the wrong order could result in calls being assigned to a gateway you didn't intend.</p>
+</div>
+<p>A <strong>Voice Routing Policy</strong> is assigned to a group of users and a PSTN usage record. If a valid PSTN usage record can't be found for the user or a voice routing policy can't be found, the call fails.</p>
+<p>The <strong>Voice Route</strong> specifies the <strong>number patterns</strong> that it will handle, the priority for them, and the gateway and SBCs assigned to it. The voice route is associated with a voice routing policy and therefore a group of users. Like PSTN usage records, the order of voice routes matters with the first one matching, and the others not evaluated. So when a user dials a number, it will match to a PSTN usage record, a voice routing policy and a specific voice route, then a gateway and SBC. If it doesn't match at any point, the call fails.</p>
+<p>This diagram summarizes how the different components work together.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-plan-direct-routing/media/3-routing-example.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog">
+<img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-plan-direct-routing/media/3-routing-example.png" alt="Routing components" data-linktype="relative-path">
+</a>
+</p>
+<h2 id="dial-plans">Dial plans</h2>
+<p>A <strong>dial plan</strong> translates a shortened version of a number into one that adheres to the international dialing standard E.164. This standard ensures all numbers are globally unique. As an example, users might regularly dial a three-digit extension number that must be a globally unique number before it can be placed. You can create a dial plan for any pattern number that you use within your organization.</p>
+<p>Dial plans are implemented as a set of normalization rules, using regular expressions. The normalization rules translate the user's familiar number into an internationally unique number.</p>
+<p>The benefit of a dial plan is that you can migrate to Teams without changing users' habits. Alternatively, you might consider that it's more beneficial to train users in the new way of working, rather than encouraging them to keep legacy habits.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-plan-direct-routing/media/3-legacy-teams.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog">
+<img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-plan-direct-routing/media/3-legacy-teams.png" alt="Legacy habits" data-linktype="relative-path">
+</a>
+</p>
+<p>You're limited to a maximum of 1,000 dial plans per tenant and 500 normalization rules per dial plan. There are three types of dial plan:</p>
+<h3 id="service-dial-plan">Service dial plan</h3>
+<p>The Service dial plan can't be changed and is the same for everyone in a specific country. The country is the same as that assigned when the user record is created in the Microsoft 365 Admin Portal. The Service dial plan includes a number of common normalization rules. For many organizations, the Service dial plan fits their needs without creating any additional dial plans.</p>
+<h3 id="tenant-global-dial-plan">Tenant global dial plan</h3>
+<p>The tenant global dial plan can be customized. As the name suggests, it affects all users in your organization.</p>
+<h3 id="tenant-user-dial-plan">Tenant user dial plan</h3>
+<p>The tenant user dial plan can also be customized. You can operate the tenant user dial plan for a group of users.</p>
+<p>There is a <strong>Dial Plan Hierarchy</strong>:</p>
+<ul>
+<li>If you haven't modified any dial plan, then the service dial plan for the relevant country will be used.</li>
+<li>If you have modified the tenant global dial plan, this will be merged with the Service dial plan for the relevant country. The combination of the two will be used.</li>
+<li>If you have created  one or more tenant user dial plans, these will be merged with the Service country dial plan. The combination of the two will be used.</li>
+</ul>
+<p>This diagram helps you to plan whether or not you need to create dial plans for your organization, and if so, what type.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-plan-direct-routing/media/3-dial-plans-planning.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog">
+<img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-plan-direct-routing/media/3-dial-plans-planning.png" alt="Dial plans planning steps" data-linktype="relative-path">
+</a>
+</p>
+<h2 id="gateway">Gateway</h2>
+<p>The gateway is the representation of the SBC within the telephony service. It's sometimes referred to as a trunk. The gateway can also be configured to handle translations of numbers, dynamic emergency calling, and location-based routing.</p>
+<h2 id="multiple-sbcs">Multiple SBCs</h2>
+<p>Your organization might require more than one SBC to handle a high volume of calls. You'll use different strategies depending on your objectives:</p>
+<h3 id="load-distribution-and-high-availability">Load distribution and high availability</h3>
+<p>To manage high loads, you group multiple SBCs in a single voice route. Depending on the SBC vendor, multiple SBCs can also be combined into a cluster. To Teams, a cluster looks like a single SBC.</p>
+<h3 id="high-availability-with-back-up-routes">High availability with back-up routes</h3>
+<p>For high availability, you configure voice routes so they are assigned a priority level. A specific voice route can be configured so it's only used when a higher priority route isn't available.</p>
+<h3 id="disaster-recovery">Disaster recovery</h3>
+<p>Voice routing policies can be configured to allow certain users to use specific routes. For example, if SBCs in the US aren't available, users would use SBCs in Europe.</p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Optimize media for Direct Routing</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/m365-teams-plan-direct-routing/4-optimize-media-flow/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>
