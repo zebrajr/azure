@@ -1,0 +1,288 @@
+<html dir="ltr"><head><title>Configure voice routing - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/m365-teams-configure-manage-direct-routing/3-configure-voice-routing">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/m365-teams-configure-manage-direct-routing/3-configure-voice-routing</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Configure voice routing - Learn</h1>
+  <div dir="auto" id="reader-credits">lizap</div>
+  <div dir="auto" id="reader-estimated-time">4-6 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>6 minutes</li>
+		</ul>
+			<p>Voice routing helps you dictate how calls are routed through your Session Border Controller (SBC) or multiple SBCs.</p>
+<p>In your clothing retailer, you've installed and configured the SBC. Now, you want to ensure that voice calls are routed to the right destination, as they are received from the public switched telephone network (PSTN).</p>
+<p>Here, you'll learn how to manage routing in Direct Routing.</p>
+<h2 id="configure-simple-voice-routing">Configure simple voice routing</h2>
+<p>To set up voice routing, you create a combination of elements including voice routing policies, routes, and usages. You set up voice routing using the Microsoft Teams admin center or PowerShell. Let's look at a basic voice routing configuration set up through PowerShell.</p>
+<h3 id="create-a-new-usage">Create a new usage</h3>
+<p>You create a new usage by using the <strong>Set-CsOnlinePstnUsage</strong> command in PowerShell, with the following parameters:</p>
+
+<p>To create a new usage, you would run:</p>
+<pre tabindex="0"><code data-author-content="Set-CsOnlinePstnUsage -Identity Global -Usage @{Add=&quot;Unrestricted&quot;}
+"><span><span>Set-CsOnlinePstnUsage</span><span> -Identity</span> Global<span> -Usage</span> @{Add=<span>"Unrestricted"</span>}
+</span></code></pre>
+<h3 id="create-a-voice-route">Create a voice route</h3>
+<p>After you've created a usage, you associate it with a voice route. You create a voice route using the <strong>New-CsOnlineVoiceRoute</strong> command in PowerShell, with the following parameters:</p>
+
+<p>For example, to create a new voice route and associate it with the usage you created earlier, run the following command:</p>
+<pre tabindex="0"><code data-author-content="New-CsOnlineVoiceRoute -Identity &quot;Unrestricted&quot; -NumberPattern &quot;.*&quot; -OnlinePstnGatewayList sbc1.contoso.com -Priority 1 -OnlinePstnUsages &quot;Unrestricted&quot;
+"><span><span>New-CsOnlineVoiceRoute</span><span> -Identity</span> <span>"Unrestricted"</span><span> -NumberPattern</span> <span>".*"</span><span> -OnlinePstnGatewayList</span> sbc1.contoso.com<span> -Priority</span> <span>1</span><span> -OnlinePstnUsages</span> <span>"Unrestricted"</span>
+</span></code></pre>
+<h3 id="create-a-voice-routing-policy">Create a voice routing policy</h3>
+<p>You create the voice routing policy using the <strong>New-CsOnlineVoiceRoutingPolicy</strong> command and associate it with the usage you created. Run the following command:</p>
+<pre tabindex="0"><code data-author-content="New-CsOnlineVoiceRoutingPolicy &quot;MyVoiceRoutingPolicy&quot; -OnlinePstnUsages &quot;Unrestricted&quot;
+"><span><span>New-CsOnlineVoiceRoutingPolicy</span> <span>"MyVoiceRoutingPolicy"</span><span> -OnlinePstnUsages</span> <span>"Unrestricted"</span>
+</span></code></pre>
+<p>"MyVoiceRoutingPolicy" is the name of your policy, and <code>-OnlinePstnUsages "Unrestricted"</code> links it with the usage you created earlier.</p>
+<p>After completing this final step, you've configured basic voice routing.</p>
+<h2 id="configure-advanced-voice-routing">Configure advanced voice routing</h2>
+<p>For additional redundancy and availability, you can configure more advanced voice routing, using the following process:</p>
+<h3 id="set-up-multiple-sbcs">Set up multiple SBCs</h3>
+<p>Suppose that your organization has offices in the US and Canada. You could set up multiple SBCs as outlined below.</p>
+<ol>
+<li>An SBC for making calls to the US offices (<code>sbc1.contoso.com</code>).</li>
+<li>A backup SBC in case <code>sbc1</code> becomes unresponsive (<code>sbc1a.contoso.com</code>).</li>
+<li>An additional SBC for making calls to all other US and Canada numbers (<code>sbc2.contoso.com</code>).</li>
+</ol>
+<p>To set up all three SBCs, you run the following commands:</p>
+<pre tabindex="0"><code data-author-content="New-CsOnlinePSTNGateway -Fqdn sbc1.contoso.com -SipSignallingPort 5068 -Enabled $True
+New-CsOnlinePSTNGateway -Fqdn sbc1a.contoso.com -SipSignallingPort 5068 -Enabled $True
+New-CsOnlinePSTNGateway -Fqdn sbc2.contoso.com -SipSignallingPort 5068 -Enabled $True
+"><span><span>New-CsOnlinePSTNGateway</span><span> -Fqdn</span> sbc1.contoso.com<span> -SipSignallingPort</span> <span>5068</span><span> -Enabled</span> <span>$True</span>
+<span>New-CsOnlinePSTNGateway</span><span> -Fqdn</span> sbc1a.contoso.com<span> -SipSignallingPort</span> <span>5068</span><span> -Enabled</span> <span>$True</span>
+<span>New-CsOnlinePSTNGateway</span><span> -Fqdn</span> sbc2.contoso.com<span> -SipSignallingPort</span> <span>5068</span><span> -Enabled</span> <span>$True</span>
+</span></code></pre>
+<h3 id="configure-a-usage">Configure a usage</h3>
+<p>You configure a single usage to cover all your US and Canada call routing by running the following command:</p>
+<pre tabindex="0"><code data-author-content="Set-CsOnlinePstnUsage -Identity Global -Usage @{Add=&quot;US and Canada&quot;}
+"><span><span>Set-CsOnlinePstnUsage</span><span> -Identity</span> Global<span> -Usage</span> @{Add=<span>"US and Canada"</span>}
+</span></code></pre>
+<p>With this command, you've configured a usage called "US and Canada".</p>
+<h3 id="create-multiple-voice-routes">Create multiple voice routes</h3>
+<p>You then create multiple voice routes and associate them with your US and Canada usage. You create a voice route for making calls to the US offices. Use <code>sbc1.contoso.com</code> for the SBC and set the route to priority one.</p>
+<pre tabindex="0"><code data-author-content="New-CsOnlineVoiceRoute -Identity &quot;US Offices 1&quot; -NumberPattern &quot;^\+1(425|206)(\d{7})%content%quot; -OnlinePstnGatewayList sbc1.contoso.com -Priority 1 -OnlinePstnUsages &quot;US and Canada&quot;
+"><span><span>New-CsOnlineVoiceRoute</span><span> -Identity</span> <span>"US Offices 1"</span><span> -NumberPattern</span> <span>"^\+1(425|206)(\d{7})$"</span><span> -OnlinePstnGatewayList</span> sbc1.contoso.com<span> -Priority</span> <span>1</span><span> -OnlinePstnUsages</span> <span>"US and Canada"</span>
+</span></code></pre>
+<p>You create a backup route using backup SBC (<code>sbc1a</code>), but set its priority to two:</p>
+<pre tabindex="0"><code data-author-content="New-CsOnlineVoiceRoute -Identity &quot;US Offices 1a&quot; -NumberPattern &quot;^\+1(425|206)(\d{7})%content%quot; -OnlinePstnGatewayList sbc1a.contoso.com -Priority 2 -OnlinePstnUsages &quot;US and Canada&quot;
+"><span><span>New-CsOnlineVoiceRoute</span><span> -Identity</span> <span>"US Offices 1a"</span><span> -NumberPattern</span> <span>"^\+1(425|206)(\d{7})$"</span><span> -OnlinePstnGatewayList</span> sbc1a.contoso.com<span> -Priority</span> <span>2</span><span> -OnlinePstnUsages</span> <span>"US and Canada"</span>
+</span></code></pre>
+<p>The backup route will be used if the first SBC becomes unavailable.
+Finally, you create a route for all other US and Canada numbers:</p>
+<pre tabindex="0"><code data-author-content="New-CsOnlineVoiceRoute -Identity &quot;Other US and Canada numbers&quot; -NumberPattern &quot;^\+1(\d{10})%content%quot; -OnlinePstnGatewayList sbc2.contoso.com  -OnlinePstnUsages &quot;US and Canada&quot;
+"><span><span>New-CsOnlineVoiceRoute</span><span> -Identity</span> <span>"Other US and Canada numbers"</span><span> -NumberPattern</span> <span>"^\+1(\d{10})$"</span><span> -OnlinePstnGatewayList</span> sbc2.contoso.com <span> -OnlinePstnUsages</span> <span>"US and Canada"</span>
+</span></code></pre>
+<p>You'll notice that priority doesn't have to be added here because it's the only route that matches the number pattern specified.</p>
+<h3 id="create-a-voice-routing-policy-1">Create a voice routing policy</h3>
+<p>For the final step, you create a voice routing policy and link it with your usage:</p>
+<pre tabindex="0"><code data-author-content="New-CsOnlineVoiceRoutingPolicy &quot;US and Canada only&quot; -OnlinePstnUsages &quot;US and Canada&quot;
+"><span><span>New-CsOnlineVoiceRoutingPolicy</span> <span>"US and Canada only"</span><span> -OnlinePstnUsages</span> <span>"US and Canada"</span>
+</span></code></pre>
+<p>When you're done, you've successfully configured advanced voice routing.</p>
+
+		
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

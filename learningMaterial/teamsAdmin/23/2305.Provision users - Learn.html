@@ -1,0 +1,380 @@
+<html dir="ltr"><head><title>Provision users - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/m365-teams-configure-manage-direct-routing/4-provision-users">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/m365-teams-configure-manage-direct-routing/4-provision-users</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Provision users - Learn</h1>
+  <div dir="auto" id="reader-credits">lizap</div>
+  <div dir="auto" id="reader-estimated-time">11-13 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>10 minutes</li>
+		</ul>
+			<p>The next step is to set up and configure users for Microsoft Teams Direct Routing.</p>
+<p>Suppose, in your clothing retailer, that you've configured your voice routing. Now you need to assign routes to your users. There are a few things to consider, including how you'll handle calls originating from your existing private branch exchange (PBX) system into Microsoft Teams, and the other way around. You'll also need to look at any specific rules and permissions around user access and the types of calls they're permitted to make.</p>
+<p>Here, you'll learn how to create telephony routes for users in Direct Routing.</p>
+<h2 id="number-translation">Number translation</h2>
+<p>Number translation is an optional step you might consider when communicating with Session Border Controllers (SBCs). It's used to bring together a legacy PBX and the Microsoft Phone System, by converting the inbound or outbound dialed phone number to the correct format for either system. Number translation rules can be applied either at the gateway or at the SBC level. The rules apply to both inbound and outbound traffic, which covers calls coming from the public switched telephone network (PSTN) endpoint into the Microsoft Teams client (inbound), and from the Microsoft Teams client to the PSTN endpoint (outbound).</p>
+<p>In the following examples, there are two users, Alice and Bob. Alice is a Microsoft Teams user whose number is +1 206 555 0100. Bob is a PSTN user whose number is +1 425 555 0100.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-configure-manage-direct-routing/media/4-number-translation-inbound.png" alt="Diagram showing a typical session border controller requiring number translation" data-linktype="relative-path">
+</p>
+<p>The management of all number translation processing is done through the tenant remote PowerShell (TRPS) command line, using the <strong>-CsTeamsTranslationRule</strong> cmdlets, prefixed with either <strong>New</strong>, <strong>Set</strong>, <strong>Get</strong>, or <strong>Remove</strong>. For example, <strong>New-CsTeamsTranslationRule</strong>.</p>
+<h3 id="the-e164-format">The E.164 format</h3>
+<p>E.164 is an international standard numbering plan that ensures each device on a data network or PSTN has a globally unique identified number. In Microsoft Teams, we use the E.164 format to represent a user's phone number, and also for caller ID purposes. It means that any non-Microsoft Teams phone numbers (typically from an existing PBX) need to be converted into E.164. The diagram below shows how Bob's extension (from an existing PBX) x2814 is translated to the E.164.  In this case, Bob's number is 9495552814.  To conform to the E.164 standard, it needs to be prefixed with a +1 (plus one).  So you'd create a translation rule to manage it automatically.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-configure-manage-direct-routing/media/4-number-translation-inbound-translation-table.png" alt="A diagram showing how number translation modifies the RequestURI to and from elements" data-linktype="relative-path">
+</p>
+<h3 id="policy-rules">Policy rules</h3>
+<p>Each rule needs to be assigned to a policy that resides on the SBC. Each policy can have multiple rules assigned, but has an upper limit of 400. Each rule will affect the <em>to</em> and <em>from</em> headers in the RequestURI. The rules are processed in the order that they appear when you list them using PowerShell.  You can also adjust the execution order of the rules in any policy.</p>
+<div>
+<p> Note</p>
+<p>You need to decide where you want the policy rules to run, either from the SBC, or in Microsoft Teams. You don't want to do both.</p>
+</div>
+<p>To assign, configure, and list number translation rules on SBCs, you use the <strong>New-CSOnlinePSTNGateway</strong> and <strong>Set-CSOnlinePSTNGateway</strong> cmdlets together with the following parameters:</p>
+<ul>
+<li><strong>InboundTeamsNumberTranslationRules</strong></li>
+<li><strong>InboundPSTNNumberTranslationRules</strong></li>
+<li><strong>OutboundTeamsNumberTranslationRules</strong></li>
+<li><strong>OutboundPSTNNumberTranslationRules</strong></li>
+</ul>
+<p>For more information about these cmdlets, see the links in the <strong>Learn more</strong> section below.</p>
+<h3 id="create-number-translation-rules-for-users">Create number translation rules for users</h3>
+<p>For this scenario, you could run the <strong>New-CsOnlinePSTNGateway</strong> cmdlet to create the following configuration:</p>
+<pre tabindex="0"><code data-author-content="New-CSOnlinePSTNGateway -Identity sbc1.contoso.com -SipSignalingPort 5061 –InboundTeamsNumberTranslationRules 'AddPlus1' -InboundPSTNNumberTranslationRules 'AddPlus1' -OnboundPSTNNumberTranslationRules 'AddSeattleAreaCode'  -OutboundTeamsNumberTranslationRules 'StripPlus1'
+"><span><span>New-CSOnlinePSTNGateway</span><span> -Identity</span> sbc1.contoso.com<span> -SipSignalingPort</span> <span>5061</span> –InboundTeamsNumberTranslationRules <span>'AddPlus1'</span><span> -InboundPSTNNumberTranslationRules</span> <span>'AddPlus1'</span><span> -OnboundPSTNNumberTranslationRules</span> <span>'AddSeattleAreaCode'</span> <span> -OutboundTeamsNumberTranslationRules</span> <span>'StripPlus1'</span>
+</span></code></pre>
+<p>The translation rules assigned to the SBC are summarized in the following table:</p>
+
+<h2 id="provision-direct-routing-users">Provision Direct Routing users</h2>
+<p>Before people use Direct Routing, you'll need to provision them. There are two options available: <strong>Direct Routing only</strong>, or <strong>Direct Routing with a Microsoft Calling Plan</strong>.</p>
+<h3 id="direct-routing-only">Direct Routing only</h3>
+<p>You connect your organization's telecom voice trunks directly to Microsoft Teams so staff can make and receive calls. Your organization can still use their local telecommunications provider to connect their voice trunks via a certified SBC to Microsoft Teams and the Phone System.</p>
+<h3 id="microsoft-calling-plan-and-direct-routing">Microsoft Calling Plan and Direct Routing</h3>
+<p>A Calling Plan is an add-on telephone service that, when combined with Phone System in Microsoft Teams, can become the voice solution for your entire organization. A Calling Plan provides staff with a primary phone number and lets them make and receive calls.</p>
+<h3 id="considerations-when-provisioning-users">Considerations when provisioning users</h3>
+<p>Whether you're provisioning for Direct Routing only or using Microsoft Calling Plan and Direct Routing, there are five steps to consider:</p>
+<ul>
+<li>What licenses are required? Typically, you'll need a minimum of:
+<ul>
+<li>Microsoft Phone System</li>
+<li>Microsoft Teams</li>
+<li>Audio Conferencing (for scheduled meeting dial in/out)</li>
+<li>Microsoft Calling Plan (only applicable if you choose that provisioning type)</li>
+</ul>
+</li>
+<li>Number provisioned - where will the number come from?
+<ul>
+<li>Direct Routing - the number will come from Azure Active Directory</li>
+<li>Microsoft Calling Plan and Direct Routing - the number will come from Microsoft as part of the service</li>
+</ul>
+</li>
+<li>Enabled the user - what mechanism will you use to enable provisioning? Will it be through a PowerShell cmdlet, or the Microsoft Teams Admin Center?</li>
+<li>Assign routing - What voice routing will be used?  This is where you'll assign one or more routing policies.</li>
+<li>Routing behavior - How will the routing be evaluated and what are the outcomes?</li>
+</ul>
+<p>The table below provides an at-a-glance example of the type of settings you might use:</p>
+
+<h2 id="dial-plans">Dial plans</h2>
+<p>A dial plan consists of one or more normalization rules that define how phone numbers expressed in various formats are translated to an alternate format. The same dial string might be interpreted and translated differently in different dial plans. Depending on which dial plan is assigned to a given user, the same dialed number might be translated and routed differently. There can be a maximum of 1,000 tenant dial plans.
+A dial plan's scope determines the hierarchical level at which it can be applied. Clients get the appropriate dial plan through provisioning settings that are automatically provided when users sign in to Microsoft Teams. As an admin, you can manage and assign dial plan scope levels by using the Microsoft Teams admin center or PowerShell.</p>
+<p>The following are the possible effective dial plans:</p>
+<ul>
+<li><strong>Service country</strong>. If no tenant scoped dial plan is defined and no tenant user scoped dial plan is assigned to the provisioned user, the user receives an effective dial plan mapped to the service country associated with their usage location.</li>
+<li><strong>Tenant global - service country</strong>. If a tenant user dial plan is defined but not assigned to a user, the provisioned user receives an effective dial plan consisting of a merged tenant dial plan and the service country dial plan associated with their usage location.</li>
+<li><strong>Tenant user - service country</strong>. If a tenant user dial plan is defined and assigned to a user, the provisioned user will receive an effective dial plan consisting of the merged tenant user dial plan and the service country dial plan associated with their usage location.</li>
+</ul>
+<p>Here's how to manage existing tenant dial plans in PowerShell:</p>
+<h3 id="start-a-remote-powershell-session">Start a remote PowerShell session</h3>
+<p>Use PowerShell to connect to Microsoft 365 by running:</p>
+<pre tabindex="0"><code data-author-content="$credential = Get-Credential
+$session = New-CsOnlineSession -Credential $credential
+Import-PSSession $session
+"><span><span>$credential</span> = <span>Get-Credential</span>
+<span>$session</span> = <span>New-CsOnlineSession</span><span> -Credential</span> <span>$credential</span>
+<span>Import-PSSession</span> <span>$session</span>
+</span></code></pre>
+<div>
+<p> Note</p>
+<p>Make sure that you're running Windows PowerShell version 3.0 or later.</p>
+</div>
+<p>Now that you have a remote PowerShell session running, you can use the following cmdlets to investigate and review any assigned dial plans:</p>
+<h3 id="edit-the-settings-of-an-existing-dial-plan">Edit the settings of an existing dial plan</h3>
+<p>Use the <strong>Set-CsTenantDialPlan</strong> command to edit the settings of any existing dial plan. For example:</p>
+<pre tabindex="0"><code data-author-content="Set-CsTenantDialPlan -Identity RedmondDialPlan  -NormalizationRules <pslistmodifier> -ExternalAccessPrefix 9 -SimpleName &quot;Dial-Plan-for-Redmond&quot;
+"><span><span>Set-CsTenantDialPlan</span><span> -Identity</span> RedmondDialPlan <span> -NormalizationRules</span> &lt;pslistmodifier&gt;<span> -ExternalAccessPrefix</span> <span>9</span><span> -SimpleName</span> <span>"Dial-Plan-for-Redmond"</span>
+</span></code></pre>
+<h3 id="add-users-to-a-dial-plan">Add users to a dial plan</h3>
+<p>You can use the <strong>Grant-CsTenantDialPlan</strong> to add users to a dial plan. For example:</p>
+<pre tabindex="0"><code data-author-content="Grant-CsTenantDialPlan -Identity jenny.brown@contoso.com -PolicyName RedmondDialPlan
+"><span><span>Grant-CsTenantDialPlan</span><span> -Identity</span> jenny.brown@contoso.com<span> -PolicyName</span> RedmondDialPlan
+</span></code></pre>
+<h3 id="view-the-settings-on-a-dial-plan">View the settings on a dial plan</h3>
+<p>You check the settings for your dial plan by using the <strong>Get-CsTenantDialPlan</strong> command. For example:</p>
+<pre tabindex="0"><code data-author-content="Get-CsTenantDialPlan -Identity RedmondDialPlan
+"><span><span>Get-CsTenantDialPlan</span><span> -Identity</span> RedmondDialPlan
+</span></code></pre>
+<h3 id="view-the-settings-of-the-effective-dial-plan">View the settings of the effective dial plan</h3>
+<p>To check the settings of an effective dial plan, you run the <strong>Get-CsEffectiveTenantDialPlan</strong> command:</p>
+<pre tabindex="0"><code data-author-content="Get-CsEffectiveTenantDialPlan -Identity amos.marble@contoso.com
+"><span><span>Get-CsEffectiveTenantDialPlan</span><span> -Identity</span> amos.marble@contoso.com
+</span></code></pre>
+<h3 id="use-microsoft-teams-admin-center-to-create-a-dial-plan">Use Microsoft Teams admin center to create a dial plan</h3>
+<p>You can also use the Microsoft Teams admin center to create a dial plan.</p>
+<ol>
+<li><p>In the left navigation of the Microsoft Teams admin center, go to <strong>Voice</strong> &gt; <strong>Dial plan</strong>.</p>
+</li>
+<li><p>Select <strong>Add</strong>, and then enter a name and description for the dial plan.</p>
+<p><span>
+<img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-configure-manage-direct-routing/media/4-add-dial-plan-admin-center.png" alt="Screenshot showing the Add page for creating a dial plan" data-linktype="relative-path">
+</span>
+</p>
+</li>
+<li><p>Under <strong>Dial plan details</strong>, specify an external dialing prefix if users need to dial one or more additional leading digits (for example, 9) to get an external line:</p>
+<ol>
+<li>In the <strong>External dialing prefix</strong> box, enter an external dialing prefix. The prefix can be up to four characters (#,*, and 0-9).</li>
+<li>Turn on <strong>Optimized device dialing</strong>. If you specify an external dialing prefix, you must also turn on this setting to apply the prefix so calls can be made outside your organization.</li>
+</ol>
+</li>
+<li><p>Under <strong>Normalization rules</strong>, configure and associate one or more normalization rules for the dial plan. Each dial plan must have at least one normalization rule associated with it. Do one or more of the following actions:</p>
+<ul>
+<li>To create a new normalization rule and associate it with the dial plan, select <strong>Add</strong>, and then define the rule.</li>
+<li>To edit a normalization rule that's already associated with the dial plan, select the rule to the left of the rule name. Select <strong>Edit</strong>, make the changes you want, and then select <strong>Save</strong>.</li>
+<li>To remove a normalization rule from the dial plan, click to the left of the rule name, and then select <strong>Remove</strong>.</li>
+</ul>
+</li>
+<li><p>Arrange the normalization rules in the order that you want. Select <strong>Move up</strong> or <strong>Move down</strong> to change the position of rules in the list.</p>
+<div>
+<p> Note</p>
+<p>Microsoft Teams traverses the list of normalization rules from the top down, using the first rule that matches the dialed number. If you set up a dial plan so that a dialed number can match more than one normalization rule, make sure the more restrictive rules are sorted above the less restrictive ones.</p>
+</div>
+</li>
+<li><p>Select <strong>Save</strong>.</p>
+</li>
+<li><p>If you want to test the dial plan, under <strong>Test dial plan</strong>, enter a phone number, and then select <strong>Test</strong>.</p>
+</li>
+</ol>
+<h3 id="assign-a-dial-plan-to-users">Assign a dial plan to users</h3>
+<p>You assign a dial plan in the same way you assign policies. You can assign a policy directly to users, either individually or at scale through a batch assignment, if supported for the policy type, or to a group that the users are members of, if supported for the policy type.</p>
+<h2 id="learn-more">Learn more</h2>
+<ul>
+<li><a href="https://docs.microsoft.com/en-us/powershell/module/skype/new-csonlinepstngateway" data-linktype="absolute-path">New-CSOnlinePSTNGateway</a></li>
+<li><a href="https://docs.microsoft.com/en-us/powershell/module/skype/set-csonlinepstngateway" data-linktype="absolute-path">Set-CSOnlinePSTNGateway</a></li>
+<li><a href="https://docs.microsoft.com/en-us/powershell/module/skype/set-cstenantdialplan" data-linktype="absolute-path">Set-CsTenantDialPlan</a></li>
+<li><a href="https://docs.microsoft.com/en-us/powershell/module/skype/grant-cstenantdialplan" data-linktype="absolute-path">Grant-CsTenantDialPlan</a></li>
+<li><a href="https://docs.microsoft.com/en-us/powershell/module/skype/get-cstenantdialplan?view=skype-ps" data-linktype="absolute-path">Get-CsTenantDialPlan</a></li>
+<li><a href="https://docs.microsoft.com/en-us/powershell/module/skype/get-cseffectivetenantdialplan" data-linktype="absolute-path">Get-CsEffectiveTenantDialPlan</a></li>
+<li><a href="https://docs.microsoft.com/en-us/microsoftteams/what-are-dial-plans#normalization-rules" data-linktype="absolute-path">Normalization rules</a></li>
+</ul>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Configure Local Media Optimization</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/m365-teams-configure-manage-direct-routing/5-configure-local-media-optimization/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

@@ -1,0 +1,286 @@
+<html dir="ltr"><head><title>Configure and connect the Session Border Controller (SBC) - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/m365-teams-configure-manage-direct-routing/2-configure-connect-session-border-controller">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/m365-teams-configure-manage-direct-routing/2-configure-connect-session-border-controller</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Configure and connect the Session Border Controller (SBC) - Learn</h1>
+  <div dir="auto" id="reader-credits">lizap</div>
+  <div dir="auto" id="reader-estimated-time">3-4 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="main" role="main" data-bi-name="content" lang="en-us" dir="ltr">
+		
+		
+		<ul>
+			<li>4 minutes</li>
+		</ul>
+			<p>In Microsoft Teams Direct Routing, Session Border Controllers (SBCs) route calls from the public switched telephone network (PSTN) to Teams.</p>
+<p>In your clothing retailer, you're ready to begin to configure Direct Routing. To start, you'll need to configure your Session Border Controller (SBC) and connect it to the Microsoft Phone System.</p>
+<p>Here, you'll learn how to configure SBCs.</p>
+<h2 id="configure-the-sbc">Configure the SBC</h2>
+<p>The specific steps you take to configure the Session Border Controller depend on your SBC vendor, which  provides the specific documentation. In the <strong>Learn more</strong> section below, the <strong>Configure Direct Routing</strong> links includes information about SBC from specific manufacturers.</p>
+<p>At a high level, configuration of the SBC will generally require you to:</p>
+<ol>
+<li>Configure the SBC license.</li>
+<li>Configure LAN and WAN IP interfaces.</li>
+<li>Configure the certificate used on the device itself.</li>
+<li>Configure the ports to use for signaling and media.</li>
+<li>Configure the Session Initiation Protocol (SIP) options and secure real-time transport protocol (SRTP).</li>
+<li>Configure the codecs to be used.</li>
+<li>Configure the routing needed for routing calls from Microsoft Teams to PSTN and from PSTN to Microsoft Teams, and any other telephony components you want to connect with the SBC.</li>
+</ol>
+<h2 id="connect-the-sbc">Connect the SBC</h2>
+<p>After the SBC is configured, you connect it with the Microsoft Phone System, using either the Microsoft Teams admin center, or PowerShell. For example, you can connect it through PowerShell by running the <strong>New-CsOnlinePSTNGateway</strong> command, using the following basic minimum parameters:</p>
+
+<p>For example, you can run the command like this:</p>
+<pre tabindex="0"><code data-author-content="New-CsOnlinePSTNGateway -Fqdn sbc1.contoso.com -SipSignallingPort 5068 -MaxConcurrentSessions 50 -Enabled $True
+"><span><span>New-CsOnlinePSTNGateway</span><span> -Fqdn</span> sbc1.contoso.com<span> -SipSignallingPort</span> <span>5068</span><span> -MaxConcurrentSessions</span> <span>50</span><span> -Enabled</span> <span>$True</span>
+</span></code></pre>
+<p>Here are some more common parameters to use when connecting your SBC:</p>
+
+<p>After connecting your SBC, you can verify the connection by checking whether it's in the list of paired SBCs. Run the <strong>Get-CsOnlinePSTNGateway</strong> command with the <strong>Identity</strong> parameter, specifying the fully qualified domain name of your SBC, like this:</p>
+<pre tabindex="0"><code data-author-content="Get-CsOnlinePSTNGateway -Identity sbc1.contoso.com
+"><span><span>Get-CsOnlinePSTNGateway</span><span> -Identity</span> sbc1.contoso.com
+</span></code></pre>
+<p>You'll see output similar to this:</p>
+<pre tabindex="0"><code data-author-content="Identity              : sbc1.contoso.com  
+Fqdn                  : sbc1.contoso.com
+SipSignalingPort      : 5067
+CodecPriority         : SILKWB,SILKNB,PCMU,PCMA
+ExcludedCodecs        :  
+FailoverTimeSeconds   : 10
+ForwardCallHistory    : False
+ForwardPai            : False
+SendSipOptions        : True
+MaxConcurrentSessions : 100
+Enabled               : True
+"><span>Identity              : sbc1.contoso.com  
+Fqdn                  : sbc1.contoso.com
+SipSignalingPort      : <span>5067</span>
+CodecPriority         : SILKWB,SILKNB,PCMU,PCMA
+ExcludedCodecs        :  
+FailoverTimeSeconds   : <span>10</span>
+ForwardCallHistory    : False
+ForwardPai            : False
+SendSipOptions        : True
+MaxConcurrentSessions : <span>100</span>
+Enabled               : True
+</span></code></pre>
+<p>Your SBC is now connected.</p>
+<h2 id="learn-more">Learn more</h2>
+<ul>
+<li><a href="https://docs.microsoft.com/en-us/microsoftteams/direct-routing-configure" data-linktype="absolute-path">Configure Direct Routing</a></li>
+</ul>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Configure voice routing</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/m365-teams-configure-manage-direct-routing/3-configure-voice-routing/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div><section>
+		<p>
+Need help? See our <a id="troubleshooting-guide" data-bi-name="troubleshooting" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-m365.teams.configure-manage-direct-routing.2-configure-connect-session-border-controller&amp;documentId=c6aee3ff-9d93-5486-726d-a52a355129b8&amp;versionIndependentDocumentId=e4030512-5637-288b-a21e-9266b59b1cd4&amp;contentPath=%2FMicrosoftDocs%2Flearn-m365-pr%2Fblob%2Flive%2Flearn-m365-pr%2Fm365%2Fm365-teams-configure-manage-direct-routing%2F2-configure-connect-session-border-controller.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fm365-teams-configure-manage-direct-routing%2F2-configure-connect-session-border-controller&amp;author=elizapo">troubleshooting guide</a> or provide specific feedback by <a id="module-unit-feedback-link" data-bi-name="feedback" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-m365.teams.configure-manage-direct-routing.2-configure-connect-session-border-controller&amp;documentId=c6aee3ff-9d93-5486-726d-a52a355129b8&amp;versionIndependentDocumentId=e4030512-5637-288b-a21e-9266b59b1cd4&amp;contentPath=%2FMicrosoftDocs%2Flearn-m365-pr%2Fblob%2Flive%2Flearn-m365-pr%2Fm365%2Fm365-teams-configure-manage-direct-routing%2F2-configure-connect-session-border-controller.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fm365-teams-configure-manage-direct-routing%2F2-configure-connect-session-border-controller&amp;author=elizapo#report-feedback">reporting an issue</a>.		</p>
+	</section></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

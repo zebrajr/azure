@@ -1,0 +1,353 @@
+<html dir="ltr"><head><title>Configure Local Media Optimization - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/m365-teams-configure-manage-direct-routing/5-configure-local-media-optimization">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/m365-teams-configure-manage-direct-routing/5-configure-local-media-optimization</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Configure Local Media Optimization - Learn</h1>
+  <div dir="auto" id="reader-credits">lizap</div>
+  <div dir="auto" id="reader-estimated-time">5-6 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>7 minutes</li>
+		</ul>
+			<p>Voice quality is a key requirement for most organization's telephony system. You need to ensure that the move to Direct Routing doesn't cause a drop in call quality so that productivity is improved.</p>
+<p>Suppose that your clothing retailer has multiple sites in Singapore, Vietnam, and Indonesia. All three sites have Session Border Controllers (SBCs). You'd like to configure Local Media Optimization for better performance and voice quality.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-configure-manage-direct-routing/media/5-diagram.png" alt="Multiple SBC network diagram" data-linktype="relative-path">
+</p>
+<p>You're also aware of the following information when it comes to wide area network (WAN) connectivity:</p>
+<ul>
+<li>Connectivity between Vietnam and the Singapore site is good.</li>
+<li>Connectivity between Indonesia and the Singapore site is good.</li>
+<li>Connectivity between Vietnam and Indonesia isn't so good.</li>
+</ul>
+<p>To configure media optimization, you:</p>
+<ol>
+<li>Configure trusted IP addresses.</li>
+<li>Configure the network elements.</li>
+<li>Define the virtual typology.</li>
+<li>Configure your SBCs and voice routing.</li>
+</ol>
+<h2 id="configure-trusted-ip-addresses">Configure trusted IP addresses</h2>
+<p>Your first step is to configure trusted IP addresses. Each of your sites has an IP address that people use to connect to the internet or use their Microsoft Teams clients to connect to the service. You'll configure these as trusted IP addresses.</p>
+<p>You can configure trusted IP addresses using either PowerShell or the Microsoft Teams admin center. To configure trusted IP address using PowerShell, run the following commands for each site:</p>
+<pre tabindex="0"><code data-author-content="# Configure Vietnam site address
+New-CsTenantTrustedIPAddress -IPAddress 192.0.2.110 -MaskBits 32 -Description &quot;Vietnam site trusted IP&quot;
+
+# Configure Indonesia site address
+New-CsTenantTrustedIPAddress -IPAddress 192.0.2.120 -MaskBits 32 -Description &quot;Indonesia site trusted IP&quot;
+
+# Configure Singapore site address
+New-CsTenantTrustedIPAddress -IPAddress 192.0.2.130 -MaskBits 32 -Description &quot;Singapore site trusted IP&quot;
+"><span><span># Configure Vietnam site address</span>
+<span>New-CsTenantTrustedIPAddress</span><span> -IPAddress</span> <span>192.0</span>.<span>2.110</span><span> -MaskBits</span> <span>32</span><span> -Description</span> <span>"Vietnam site trusted IP"</span>
+
+<span># Configure Indonesia site address</span>
+<span>New-CsTenantTrustedIPAddress</span><span> -IPAddress</span> <span>192.0</span>.<span>2.120</span><span> -MaskBits</span> <span>32</span><span> -Description</span> <span>"Indonesia site trusted IP"</span>
+
+<span># Configure Singapore site address</span>
+<span>New-CsTenantTrustedIPAddress</span><span> -IPAddress</span> <span>192.0</span>.<span>2.130</span><span> -MaskBits</span> <span>32</span><span> -Description</span> <span>"Singapore site trusted IP"</span>
+</span></code></pre>
+
+<h2 id="configure-the-network-elements">Configure the network elements</h2>
+<p>Now you're ready to define your regions, sites, and subnets.
+The region you're working with is Asia. You need to define your region by giving it the "Asia" ID. To assign this ID, you run the <strong>New-CsTenantNetworkRegion</strong> command in PowerShell:</p>
+<pre tabindex="0"><code data-author-content="# Define the Asia region
+New-CsTenantNetworkRegion -NetworkRegionID &quot;Asia&quot;
+"><span><span># Define the Asia region</span>
+<span>New-CsTenantNetworkRegion</span><span> -NetworkRegionID</span> <span>"Asia"</span>
+</span></code></pre>
+<p>After defining the region, you can define the sites for it. Run the <strong>New-CsTenantNetworkSite</strong> command to define your sites, and specify the <strong>NetworkRegionID</strong> as "Asia" for each site:</p>
+<pre tabindex="0"><code data-author-content="# Define the Vietnam site
+New-CsTenantNetworkSite -NetworkSiteID &quot;Vietnam&quot; -NetworkRegionID &quot;Asia&quot;
+
+# Define the Indonesia site
+New-CsTenantNetworkSite -NetworkSiteID &quot;Indonesia&quot; -NetworkRegionID &quot;Asia&quot;
+
+# Define the Singapore site
+New-CsTenantNetworkSite -NetworkSiteID &quot;Singapore&quot; -NetworkRegionID &quot;Asia&quot;
+"><span><span># Define the Vietnam site</span>
+<span>New-CsTenantNetworkSite</span><span> -NetworkSiteID</span> <span>"Vietnam"</span><span> -NetworkRegionID</span> <span>"Asia"</span>
+
+<span># Define the Indonesia site</span>
+<span>New-CsTenantNetworkSite</span><span> -NetworkSiteID</span> <span>"Indonesia"</span><span> -NetworkRegionID</span> <span>"Asia"</span>
+
+<span># Define the Singapore site</span>
+<span>New-CsTenantNetworkSite</span><span> -NetworkSiteID</span> <span>"Singapore"</span><span> -NetworkRegionID</span> <span>"Asia"</span>
+</span></code></pre>
+<div>
+<p> Note</p>
+<p>In these PowerShell commands, site names are case sensitive.</p>
+</div>
+<p>Next, define your subnets. You run the <strong>New-CsTenantNetworkSubnet</strong> command for each subnet and specify the <strong>NetworkSiteID</strong> for its associated site:</p>
+<pre tabindex="0"><code data-author-content="# Define the subnet for Vietnam
+New-CsTenantNetworkSubnet -SubnetID 192.168.1.0 -MaskBits 24 -NetworkSiteID &quot;Vietnam&quot;
+
+# Define the subnet for Indonesia
+New-CsTenantNetworkSubnet -SubnetID 192.168.2.0 -MaskBits 24 -NetworkSiteID &quot;Indonesia&quot;
+
+# Define the subnet for Singapore
+New-CsTenantNetworkSubnet -SubnetID 192.168.3.0 -MaskBits 24 -NetworkSiteID &quot;Singapore&quot;
+
+"><span><span># Define the subnet for Vietnam</span>
+<span>New-CsTenantNetworkSubnet</span><span> -SubnetID</span> <span>192.168</span>.<span>1.0</span><span> -MaskBits</span> <span>24</span><span> -NetworkSiteID</span> <span>"Vietnam"</span>
+
+<span># Define the subnet for Indonesia</span>
+<span>New-CsTenantNetworkSubnet</span><span> -SubnetID</span> <span>192.168</span>.<span>2.0</span><span> -MaskBits</span> <span>24</span><span> -NetworkSiteID</span> <span>"Indonesia"</span>
+
+<span># Define the subnet for Singapore</span>
+<span>New-CsTenantNetworkSubnet</span><span> -SubnetID</span> <span>192.168</span>.<span>3.0</span><span> -MaskBits</span> <span>24</span><span> -NetworkSiteID</span> <span>"Singapore"</span>
+
+</span></code></pre>
+
+<div>
+<p> Note</p>
+<p>Your new tenant network configuration settings, like trusted IPs, subnets, and network sites, could take around two hours to be available.</p>
+</div>
+<h2 id="define-the-virtual-typology">Define the virtual typology</h2>
+<p>Now you can create gateways for your proxy SBC and the downstream SBCs. You're working with the following SBCs:</p>
+<ul>
+<li>Singapore SBC (proxy SBC).</li>
+<li>Indonesia SBC (downstream SBC).</li>
+<li>Vietnam SBC (downstream SBC).</li>
+</ul>
+<p>You use the <strong>New-CsOnlinePSTNGateway</strong> to create the gateways. For your proxy SBC, do the following:</p>
+<pre tabindex="0"><code data-author-content="# Create a gateway for the proxy SBC (Singapore)
+New-CsOnlinePSTNGateway -Fqdn proxysbc.contoso.com -SipSignallingPort 5067 -MaxConcurentSessions 100 –GatewaySiteID Singapore –MediaBypass $true –BypassMode Always -Enabled $true
+"><span><span># Create a gateway for the proxy SBC (Singapore)</span>
+<span>New-CsOnlinePSTNGateway</span><span> -Fqdn</span> proxysbc.contoso.com<span> -SipSignallingPort</span> <span>5067</span><span> -MaxConcurentSessions</span> <span>100</span> –GatewaySiteID Singapore –MediaBypass <span>$true</span> –BypassMode Always<span> -Enabled</span> <span>$true</span>
+</span></code></pre>
+<p>For your downstream SBCs, run the following commands:</p>
+<pre tabindex="0"><code data-author-content="# Create a gateway for the Vietnam downstream SBC
+New-CsOnlinePSTNGateway –Identity VNsbc.contoso.com –SipSignalingPort 5061 –ProxySBC proxysbc.contoso.com –GatewaySiteID Vietnam –MediaBypass $true –BypassMode OnlyForLocalUsers –Enabled $true
+
+# Create a gateway for the Indonesia downstream SBC
+New-CsOnlinePSTNGateway –Identity IDsbc.contoso.com –SipSignalingPort 5061 –ProxySBC proxysbc.contoso.com –GatewaySiteID Indonesia –MediaBypass $true –BypassMode OnlyForLocalUsers –Enabled $true
+"><span><span># Create a gateway for the Vietnam downstream SBC</span>
+<span>New-CsOnlinePSTNGateway</span> –Identity VNsbc.contoso.com –SipSignalingPort <span>5061</span> –ProxySBC proxysbc.contoso.com –GatewaySiteID Vietnam –MediaBypass <span>$true</span> –BypassMode OnlyForLocalUsers –Enabled <span>$true</span>
+
+<span># Create a gateway for the Indonesia downstream SBC</span>
+<span>New-CsOnlinePSTNGateway</span> –Identity IDsbc.contoso.com –SipSignalingPort <span>5061</span> –ProxySBC proxysbc.contoso.com –GatewaySiteID Indonesia –MediaBypass <span>$true</span> –BypassMode OnlyForLocalUsers –Enabled <span>$true</span>
+</span></code></pre>
+
+<h2 id="configure-the-sbc-and-voice-routing">Configure the SBC and voice routing</h2>
+<p>The final task is for you to configure the SBCs. You'll need to configure your SBCs for Local Media Optimization, based on your SBC vendor's documentation and guidance.</p>
+<p>Not all SBCs support Local Media Optimization. You can use link in the <strong>Learn more</strong> section below to find out if your SBC supports Local Media Optimization by looking up your vendor and product  specifications.</p>
+<p>After you've configured your SBCs, you can configure voice routing as outlined in the voice routing configuration unit.</p>
+<h2 id="learn-more">Learn more</h2>
+<ul>
+<li><a href="https://docs.microsoft.com/en-us/microsoftteams/direct-routing-media-optimization-configure#configure-sbcs-for-local-media-optimization-according-to-the-sbc-vendor-specification" data-linktype="absolute-path">Configure SBC(s) for Local Media Optimization according to the SBC vendor specification</a></li>
+</ul>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Manage Direct Routing</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/m365-teams-configure-manage-direct-routing/6-manage-direct-routing/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>
