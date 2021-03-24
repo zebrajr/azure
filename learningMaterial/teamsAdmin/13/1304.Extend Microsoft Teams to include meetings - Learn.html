@@ -1,0 +1,254 @@
+<html dir="ltr"><head><title>Extend Microsoft Teams to include meetings - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/m365-teams-plan-meeeting-deployment/3-meetings-conferencing-deployment-decisions">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/m365-teams-plan-meeeting-deployment/3-meetings-conferencing-deployment-decisions</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Extend Microsoft Teams to include meetings - Learn</h1>
+  <div dir="auto" id="reader-credits">lizap</div>
+  <div dir="auto" id="reader-estimated-time">3-4 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="main" role="main" data-bi-name="content" lang="en-us" dir="ltr">
+		
+		
+		<ul>
+			<li>4 minutes</li>
+		</ul>
+			<p>Microsoft Teams gives you fine-grained control of which features are available to your users, for instance, the ability for the meetings organizer to record a meeting for later review. These features are controlled through Microsoft Teams policies and settings.</p>
+<p>In our scenario, you've now rolled out meetings capabilities for all your staff.  Using policies and settings you want to explore how to enable your users to get more from their Microsoft Teams meetings.</p>
+<h2 id="configure-meeting-policies-and-settings-in-microsoft-teams">Configure meeting policies and settings in Microsoft Teams</h2>
+<p>Meeting policies are used to control the features that are available to meeting participants for meetings that are scheduled by users in your organization. You can use the global (Org-wide default) policy that's automatically created or create and assign custom policies. You manage meeting policies in the Microsoft Teams admin center or by using PowerShell.
+You can implement policies in the following ways, which affect the meeting experience for users before a meeting starts, during a meeting, or after a meeting.</p>
+
+<p>You can edit the settings in the global policy or create and assign one or more custom policies. Users will get the global policy unless you create and assign a custom policy.</p>
+<h2 id="explore-cloud-meeting-recordings-in-microsoft-teams">Explore cloud meeting recordings in Microsoft Teams</h2>
+<p>In Microsoft Teams, users can record their Teams meetings and group calls to capture audio, video, and screen sharing activity. There is also an option for recordings to have automatic transcription, so that users can play back meeting recordings with closed captions and search for important discussion items in the transcript. The recording happens in the cloud and is saved to Microsoft Stream, so users can share it securely across their organization.</p>
+<p>For a Teams user's meetings to be recorded, Microsoft Stream must be enabled for the tenant. In addition, the following prerequisites are required for both the meeting organizer and the person who is initiating the recording:</p>
+<ul>
+<li>User has Office 365 E1, E3, E5, A1, A3, A5, M365 Business Premium, M365 Business Standard, or M365 Business Basic.</li>
+<li>User needs to be licensed for Microsoft Stream.</li>
+<li>User has Microsoft Stream upload video permissions.</li>
+<li>User has consented to the company guidelines, if set up by the admin.</li>
+<li>User has sufficient storage in Microsoft Stream for recordings to be saved.</li>
+<li>User has <strong>TeamsMeetingPolicy-AllowCloudRecording</strong> set to true.</li>
+<li>User is not an anonymous, guest, or federated user in the meeting.</li>
+<li>To enable transcription for a user's meeting, the Teams meeting policy they're assigned to must have the <strong>-AllowTranscription</strong> setting set to true.</li>
+</ul>
+<h2 id="learn-more">Learn more</h2>
+<ul>
+<li><a href="https://docs.microsoft.com/en-us/MicrosoftTeams/cloud-recording" data-linktype="absolute-path">Microsoft Teams cloud meeting recording</a></li>
+<li><a href="https://docs.microsoft.com/en-us/MicrosoftTeams/meeting-policies-in-teams" data-linktype="absolute-path">Manage meeting policies in Teams</a></li>
+</ul>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Select devices for Microsoft Teams meetings</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/m365-teams-plan-meeeting-deployment/4-device-selection/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div><section>
+		<p>
+Need help? See our <a id="troubleshooting-guide" data-bi-name="troubleshooting" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-m365.teams.plan-meeting-deployment.3-meetings-conferencing-deployment-decisions&amp;documentId=487c75cf-eb93-c5f7-2ef7-50188240b29e&amp;versionIndependentDocumentId=193f4e4b-9a99-0e13-9a22-a651e59e8ca2&amp;contentPath=%2FMicrosoftDocs%2Flearn-m365-pr%2Fblob%2Flive%2Flearn-m365-pr%2Fm365%2Fm365-teams-plan-meeeting-deployment%2F3-meetings-conferencing-deployment-decisions.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fm365-teams-plan-meeeting-deployment%2F3-meetings-conferencing-deployment-decisions&amp;author=elizapo">troubleshooting guide</a> or provide specific feedback by <a id="module-unit-feedback-link" data-bi-name="feedback" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-m365.teams.plan-meeting-deployment.3-meetings-conferencing-deployment-decisions&amp;documentId=487c75cf-eb93-c5f7-2ef7-50188240b29e&amp;versionIndependentDocumentId=193f4e4b-9a99-0e13-9a22-a651e59e8ca2&amp;contentPath=%2FMicrosoftDocs%2Flearn-m365-pr%2Fblob%2Flive%2Flearn-m365-pr%2Fm365%2Fm365-teams-plan-meeeting-deployment%2F3-meetings-conferencing-deployment-decisions.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fm365-teams-plan-meeeting-deployment%2F3-meetings-conferencing-deployment-decisions&amp;author=elizapo#report-feedback">reporting an issue</a>.		</p>
+	</section></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>
