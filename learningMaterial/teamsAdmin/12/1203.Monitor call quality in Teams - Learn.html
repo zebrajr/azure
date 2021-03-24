@@ -1,0 +1,271 @@
+<html dir="ltr"><head><title>Monitor call quality in Teams - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/m365-teams-monitor-troubleshoot-investigate/2-monitor-call-quality">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/m365-teams-monitor-troubleshoot-investigate/2-monitor-call-quality</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Monitor call quality in Teams - Learn</h1>
+  <div dir="auto" id="reader-credits">lizap</div>
+  <div dir="auto" id="reader-estimated-time">5-6 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>5 minutes</li>
+		</ul>
+			<p>Microsoft Teams has three tools you can use to troubleshoot and improve call quality: Call analytics, Call Quality Dashboard, and Quality of Service.</p>
+<p>Suppose you're the Teams administrator for your company, and you've been asked to investigate a problem with call quality in Teams. You'd like to be able to research how Teams is performing in your organization.</p>
+<h2 id="call-analytics">Call analytics</h2>
+<p>Call analytics is a tool to help administrators investigate and troubleshoot poor call quality.</p>
+<p>Call analytics shows detailed information about Teams calls and meetings for each user in your Microsoft 365 tenant. It includes information about devices, networks, connectivity, and call quality. If you upload building, site, and tenant information, you can also see data for location. Use call analytics to help you figure out why a user had a poor call or meeting experience.</p>
+<p>Call analytics shows you each leg of a call or meeting; for example, from one participant to another. By analyzing these details, a Teams admin can isolate problem areas and identify the root cause of poor quality.</p>
+<p>Follow these steps to view a user's call analytics:</p>
+<ol>
+<li>Sign into <a href="https://admin.teams.microsoft.com/" data-linktype="external">Microsoft Teams admin center</a>.</li>
+<li>From the left navigation, select <strong>Users</strong>, and then select a user.</li>
+<li>On the <strong>User</strong> page, select <strong>Call History</strong>.</li>
+</ol>
+<p>Call analytics displays all calls and meetings for that user for the past 30 days.</p>
+<p><span>
+<img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-monitor-troubleshoot-investigate/media/2-call-analytics.png" alt="Teams call analytics" data-linktype="relative-path">
+</span>
+</p>
+<p>To get additional information about a given session, including detailed media and networking statistics, select a session to view details.</p>
+<p><span>
+<img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-monitor-troubleshoot-investigate/media/2-call-analytics-detail.png" alt="Teams call analytics detail" data-linktype="relative-path">
+</span>
+</p>
+<p>When you set up call analytics, consider:</p>
+<ul>
+<li>Although Teams administrators have full access to call analytics information, it's best practice to assign the specialized Azure Active Directory roles. Assign the Teams communications support specialist role to users who should have a limited view of per-user call analytics. Assign the Teams communications support engineer role to users who need full access to per-user call analytics. Neither role has access to the rest of the Teams admin center.</li>
+<li>Add building, site, and tenant information to per-user call analytics by uploading a .tsv or .csv data file. This process allows call analytics to map IP addresses to physical locations. You can use this information to help spot trends in call problems, such as if users in the same building all have similar call quality problems.</li>
+</ul>
+<h2 id="call-quality-dashboard">Call Quality Dashboard</h2>
+<p>The Call Quality Dashboard (CQD) shows call and meeting quality at an organization level. CQD has a near-time data feed providing data within 30 minutes of the end of a call. Use CQD to help optimize your network, to investigate call quality for a specific user, and in conjunction with per-user call analytics. As with call analytics, you can also upload location data.</p>
+<p><span>
+<img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-monitor-troubleshoot-investigate/media/2-call-quality-dashboard.png" alt="Call Quality Dashboard" data-linktype="relative-path">
+</span>
+</p>
+<p>From the Teams admin center, select Call Quality Dashboard from the left menu bar. You can upload your buildings data, and select to view data for Microsoft Teams, Skype for Business, or both.
+With CQD, overall patterns might become apparent, so network engineers can make informed assessments of call quality. CQD provides reports of call quality metrics that give you insight into overall call quality, server-client streams, client-client streams, and voice quality service level agreements (SLAs). Data is presented visually, with additional filters available, depending on your selection.</p>
+<h2 id="quality-of-service">Quality of Service</h2>
+<p>Quality of Service (QoS) in Microsoft Teams enables real-time network traffic that's sensitive to network delays to have higher priority than less sensitive traffic. QoS allows you to prioritize voice or video stream traffic, over downloading a new app, for example, which is less time-critical.</p>
+<p>QoS identifies and marks all packets in real-time streams. It uses Windows Group Policy Objects and a routing feature called Port-based Access Control Lists, to give voice, video, and screen-share streams a dedicated portion of the network bandwidth.</p>
+<p>Without QoS, you might see quality issues in voice and video, such as:</p>
+<ul>
+<li>Jitter. Media packets arriving at different rates, which can result in missing words or syllables in calls.</li>
+<li>Packet loss. Packets dropped, which can also result in lower voice quality and speech that's hard to understand.</li>
+<li>Delayed Round Trip Time (RTT). Media packets taking a long time to reach their destinations, which results in noticeable delays causing people to talk over each other.</li>
+</ul>
+<p>For QoS to be effective, you must apply consistent QoS settings throughout your organization. Any part of the path that fails to support your QoS priorities can degrade the quality of calls, video, and screen sharing. This includes applying settings to all user PCs or devices, network switches, routers to the internet, and the Teams service.</p>
+<h2 id="learn-more">Learn more</h2>
+<ul>
+<li><a href="https://docs.microsoft.com/en-us/microsoftteams/use-call-analytics-to-troubleshoot-poor-call-quality" data-linktype="absolute-path">Use call analytics to troubleshoot poor call quality</a></li>
+<li><a href="https://docs.microsoft.com/en-us/microsoftteams/set-up-call-analytics" data-linktype="absolute-path">Set up call analytics for Microsoft Teams</a></li>
+<li><a href="https://docs.microsoft.com/en-us/microsoftteams/monitor-call-quality-qos" data-linktype="absolute-path">Monitor and improve call quality for Microsoft Teams</a></li>
+<li><a href="https://docs.microsoft.com/en-us/microsoftteams/cqd-what-is-call-quality-dashboard" data-linktype="absolute-path">What is Call Quality Dashboard (CQD)?</a></li>
+<li><a href="https://docs.microsoft.com/en-us/microsoftteams/cqd-upload-tenant-building-data" data-linktype="absolute-path">Upload tenant and building data in Call Quality Dashboard (CQD)</a></li>
+</ul>
+
+		
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

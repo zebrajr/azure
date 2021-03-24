@@ -1,0 +1,278 @@
+<html dir="ltr"><head><title>Troubleshoot Teams - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/m365-teams-monitor-troubleshoot-investigate/3-troubleshooting-teams">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/m365-teams-monitor-troubleshoot-investigate/3-troubleshooting-teams</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Troubleshoot Teams - Learn</h1>
+  <div dir="auto" id="reader-credits">lizap</div>
+  <div dir="auto" id="reader-estimated-time">4-4 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="main" role="main" data-bi-name="content" lang="en-us" dir="ltr">
+		
+		
+		<ul>
+			<li>4 minutes</li>
+		</ul>
+			<p>When users experience problems, you need to diagnose and fix the causes fast. In Microsoft Teams, those problems are often caused by wrongly configured firewalls or proxy servers that block communications. Other issues can be investigated in the log files that Teams creates.</p>
+<h2 id="client-connectivity">Client connectivity</h2>
+<p>If you're experiencing connectivity issues with the Teams client, the most likely causes are firewall or proxy settings. Verify that the necessary URLs, IP addresses, and ports are opened in your firewall or proxy server. For information on the URLs and IPs required for Microsoft Teams, see the support articles Office 365 URLs and IP address ranges and Prepare your organization's network for Microsoft Teams, in the Learn more section below.
+The following services require specific URLs and ports to be opened in the firewall:</p>
+<ul>
+<li>Authentication</li>
+<li>Microsoft Teams client connectivity</li>
+<li>Collaboration</li>
+<li>Media</li>
+<li>Shared services</li>
+<li>Third-party integration</li>
+<li>Skype for Business interoperability</li>
+<li>Skype for Business client interoperability</li>
+</ul>
+<h2 id="using-logs">Using logs</h2>
+<p>Log files are created automatically and provide information to help you troubleshoot specific issues.</p>
+<p>There are three types of log files: debug, media, and desktop. The debug log is used most often. Media and desktop logs are used by Microsoft for specific support cases. If you create a Microsoft support request, the support engineer will require the debug log.</p>
+<p>Debug log records are produced by the Windows and Mac desktop clients, and browser-based clients. The logs are text files and can be read using any text-based editor. Logs are read from the bottom up and new log records are created when logging into the client. Debug logs show the following data flows:</p>
+<ul>
+<li>Login</li>
+<li>Connection requests to middle tier services</li>
+<li>Call/conversation</li>
+</ul>
+<p>The debug logs are produced using the following OS-specific methods:</p>
+<ul>
+<li>Windows: keyboard shortcut: <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>1</kbd></li>
+<li>Mac OSX: keyboard shortcut: <kbd>Option</kbd> + <kbd>Command</kbd> + <kbd>Shift</kbd> + <kbd>1</kbd></li>
+<li>Linux: keyboard shortcut: <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>1</kbd></li>
+</ul>
+<p>These logs are automatically downloaded to the following folders:</p>
+<ul>
+<li>Windows: %userprofile%\Downloads</li>
+<li>Mac OSX: Downloads</li>
+<li>Linux: ~/Downloads</li>
+<li>Browser: You'll be prompted to save the debug log to a default save location</li>
+</ul>
+<p>Media logs contain diagnostic data about audio, video, and screen sharing. These logs are required for support cases only when requested and can only be inspected by Microsoft.</p>
+<p>Desktop logs, also known as bootstrapper logs, contain log data about events that occur between the desktop client and the browser. Like media logs, these logs are only needed if requested by Microsoft. The logs are text-based and can be read using any text-based editor in a top down format.</p>
+<h2 id="common-problems">Common problems</h2>
+<p>Common problems are documented in the Teams Troubleshooting section of the Microsoft Teams documentation. If there's a problem, refer to this documentation for details of symptoms, causes, and how it can be resolved.</p>
+<h2 id="learn-more">Learn more</h2>
+<p>For more information about the topics covered in this unit, see:</p>
+<ul>
+<li><a href="https://docs.microsoft.com/en-us/microsoft-365/enterprise/urls-and-ip-address-ranges" data-linktype="absolute-path">Office 365 URLs and IP address ranges</a></li>
+<li><a href="https://docs.microsoft.com/en-us/microsoftteams/prepare-network" data-linktype="absolute-path">Prepare your organization's network for Microsoft Teams</a></li>
+<li><a href="https://docs.microsoft.com/en-us/MicrosoftTeams/troubleshoot/teams-welcome" data-linktype="absolute-path">Teams troubleshooting</a></li>
+<li><a href="https://docs.microsoft.com/en-us/microsoftteams/connectivity-issues" data-linktype="absolute-path">Troubleshoot connectivity issues with the Microsoft Teams client</a></li>
+<li><a href="https://docs.microsoft.com/en-us/microsoftteams/log-files" data-linktype="absolute-path">Use log files in troubleshooting Microsoft Teams</a></li>
+</ul>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Investigate Teams usage with reports</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/m365-teams-monitor-troubleshoot-investigate/4-investigate-teams-usage/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div><section>
+		<p>
+Need help? See our <a id="troubleshooting-guide" data-bi-name="troubleshooting" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-m365.teams.monitor-troubleshoot-investigate.3-troubleshooting-teams&amp;documentId=dfee4753-eac5-c417-8553-cf324d20c58b&amp;versionIndependentDocumentId=db6d3a3a-f991-fd11-93a0-fa975e80298e&amp;contentPath=%2FMicrosoftDocs%2Flearn-m365-pr%2Fblob%2Flive%2Flearn-m365-pr%2Fm365%2Fm365-teams-monitor-troubleshoot-investigate%2F3-troubleshooting-teams.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fm365-teams-monitor-troubleshoot-investigate%2F3-troubleshooting-teams&amp;author=elizapo">troubleshooting guide</a> or provide specific feedback by <a id="module-unit-feedback-link" data-bi-name="feedback" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-m365.teams.monitor-troubleshoot-investigate.3-troubleshooting-teams&amp;documentId=dfee4753-eac5-c417-8553-cf324d20c58b&amp;versionIndependentDocumentId=db6d3a3a-f991-fd11-93a0-fa975e80298e&amp;contentPath=%2FMicrosoftDocs%2Flearn-m365-pr%2Fblob%2Flive%2Flearn-m365-pr%2Fm365%2Fm365-teams-monitor-troubleshoot-investigate%2F3-troubleshooting-teams.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fm365-teams-monitor-troubleshoot-investigate%2F3-troubleshooting-teams&amp;author=elizapo#report-feedback">reporting an issue</a>.		</p>
+	</section></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

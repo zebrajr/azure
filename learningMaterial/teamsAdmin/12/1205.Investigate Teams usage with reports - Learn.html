@@ -1,0 +1,265 @@
+<html dir="ltr"><head><title>Investigate Teams usage with reports - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/m365-teams-monitor-troubleshoot-investigate/4-investigate-teams-usage">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/m365-teams-monitor-troubleshoot-investigate/4-investigate-teams-usage</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Investigate Teams usage with reports - Learn</h1>
+  <div dir="auto" id="reader-credits">lizap</div>
+  <div dir="auto" id="reader-estimated-time">4-4 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>4 minutes</li>
+		</ul>
+			<p>Currently, Microsoft Teams usage reports are available from both the Microsoft 365 admin center, and the Teams admin center. The reports are similar, but not the same. Use the activity reports to identify users who haven't started to use Teams or are using only a limited number of features. By monitoring activity reports, you can better understand what training or communication is required.</p>
+<h2 id="microsoft-365-admin-center-reports">Microsoft 365 admin center reports</h2>
+<p>To view usage reports in the Microsoft 365 admin center, you must have global administrator permissions. There are two types of usage reports: <strong>Teams user activity</strong> and <strong>Teams device usage</strong>. To access both Teams usage reports:</p>
+<ol>
+<li>Sign into the <a href="https://admin.microsoft.com/" data-linktype="external">Microsoft 365 admin center</a>.</li>
+<li>Select <strong>Show all</strong> &gt; <strong>Reports</strong>.</li>
+<li>Expand <strong>Reports</strong> &gt; <strong>Usage</strong>.</li>
+<li>From <strong>Select a report</strong>, select <strong>Microsoft Teams</strong>.</li>
+<li>Select <strong>Device usage</strong> or <strong>User activity</strong>.</li>
+</ol>
+<p>The reports display a line chart and a detailed table view for 7, 30, 90, or 180 days. In the <strong>detailed view</strong>, select the three bars to change the sort order, filter the data, or choose which columns are displayed. To export data to Microsoft Excel, select <strong>Export</strong>.</p>
+<h2 id="teams-admin-center-reports">Teams admin center reports</h2>
+<p>You can view various reports from the Teams admin center, including live event usage and public switched telephone network (PSTN) reports. To access reports from Teams admin center:</p>
+<ol>
+<li>Sign into the <a href="https://admin.teams.microsoft.com/" data-linktype="external">Teams admin center</a>, select <strong>Analytics &amp; reports</strong> &gt; <strong>Usage reports</strong>.</li>
+<li>On the <strong>View reports</strong> tab, under <strong>Report</strong>, select the relevant report.</li>
+<li>Select the date period if applicable. Reports that require a date period also allow you to select a custom date range up to a year in the past, or six months before and after the current date.</li>
+<li>For the Teams live event usage report under <strong>Organizer</strong>, you can optionally add a user name. When you start typing, a list of potential matches is displayed.</li>
+<li>Select <strong>Run report</strong>.</li>
+</ol>
+<p>The reports available from the Teams admin center are:</p>
+<ul>
+<li>Apps usage</li>
+<li>PSTN blocked users</li>
+<li>PSTN and SMS (preview)</li>
+<li>Teams device usage</li>
+<li>Teams live event usage</li>
+<li>Teams usage</li>
+<li>Teams user activity</li>
+</ul>
+<p>The Teams live event usage report includes event status, start time, views, and production type for each event. You'll gain insight into usage trends and see who in your organization schedules, presents, and produces live events.</p>
+<p><span>
+<img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-monitor-troubleshoot-investigate/media/4-user-activity.png" alt="Teams user activity" data-linktype="relative-path">
+</span>
+</p>
+<p>The PSTN blocked users report displays the users in your organization who are blocked from making PSTN calls in Teams. You can view more information about each blocked user, including their assigned phone number and the reason they were blocked from making calls.</p>
+<p>The PSTN minute pools report shows an overview of audio conferencing and calling activity in your organization by displaying the number of minutes consumed during the current month. You can see a breakdown of activity including the license used for calls, total minutes available, used minutes, and license usage by location.</p>
+<p>The PSTN usage report displays an overview of calling and audio-conferencing activity in your organization. You can view detailed calling activity for Calling Plans if you use Microsoft as your telephony carrier, or for Direct Routing if you use your own telephony carrier.</p>
+<p>More reports are being added, including the ones already in preview. See the Teams documentation for details.</p>
+<h2 id="learn-more">Learn more</h2>
+<ul>
+<li><a href="https://docs.microsoft.com/en-us/microsoftteams/get-started-with-teams-monitor-usage-and-feedback" data-linktype="absolute-path">Monitor usage and feedback in Microsoft Teams</a></li>
+<li><a href="https://docs.microsoft.com/en-us/microsoftteams/teams-analytics-and-reports/teams-reporting-reference" data-linktype="absolute-path">Microsoft Teams analytics and reporting</a></li>
+<li><a href="https://docs.microsoft.com/en-us/microsoftteams/teams-activity-reports" data-linktype="absolute-path">Use activity reports for Microsoft Teams</a></li>
+<li><a href="https://docs.microsoft.com/en-us/microsoftteams/teams-analytics-and-reports/teams-live-event-usage-report" data-linktype="absolute-path">Microsoft Teams live event usage report</a></li>
+<li><a href="https://docs.microsoft.com/en-us/microsoftteams/teams-analytics-and-reports/pstn-usage-report" data-linktype="absolute-path">Microsoft Teams PSTN usage report</a></li>
+</ul>
+
+		
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>
