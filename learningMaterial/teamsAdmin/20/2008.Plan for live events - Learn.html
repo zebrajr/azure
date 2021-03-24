@@ -1,0 +1,266 @@
+<html dir="ltr"><head><title>Plan for live events - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/m365-teams-collab-manage-meetings/live-events">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/m365-teams-collab-manage-meetings/live-events</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Plan for live events - Learn</h1>
+  <div dir="auto" id="reader-credits">AlexandraHrt</div>
+  <div dir="auto" id="reader-estimated-time">3-4 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="main" role="main" data-bi-name="content" lang="en-us" dir="ltr">
+		
+		
+		<ul>
+			<li>5 minutes</li>
+		</ul>
+			<p>With Teams live events, users in your organization can broadcast video and meeting content to large online audiences. You can create live events wherever your audience, team, or community resides, using Microsoft Stream, Teams, or Yammer.</p>
+<p>Live events are available in most areas. See the link below under <strong>Learn more</strong> for details on areas covered.</p>
+<h2 id="what-are-live-events">What are live events?</h2>
+<p>With Teams live events, users in your organization can broadcast video and meeting content to large online audiences. Live events are intended for one-to-many communications with a host leading the interactions. Attendees can watch the live or recorded event in Yammer, Teams, and/or Stream, and can interact with the presenters using moderated Q &amp; A or a Yammer conversation.</p>
+<p>Live events can be scaled up to 10,000 participants and can include all-hands meetings and public webcasts.</p>
+<h2 id="who-can-create-and-schedule-live-events">Who can create and schedule live events?</h2>
+<p>Teams provides the ability for organizers to create an event with the appropriate attendee permissions, designate event team members, select a production method, and invite attendees.</p>
+<p>To do this, the organizer chooses who to add as a Presenter and sets the appropriate permissions. The Presenter then joins the inner Teams meeting that makes up the live event (similar to presenting in a regular Teams meeting).</p>
+<p>If the live event was created from within a Yammer group, the live event attendees will be able to use Yammer conversation for interacting with people in the event.</p>
+<p>To schedule a live event, users must have:</p>
+<ul>
+<li>An Exchange Online mailbox.</li>
+<li>An Office 365 Enterprise E1, E3, or E5 license or a Microsoft 365 A3 or A5 license.</li>
+<li>A Microsoft Teams license.</li>
+<li>A Microsoft Stream license.</li>
+</ul>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-collab-manage-meetings/media/new-live-event.png" alt="New live event screen" data-linktype="relative-path"></p>
+<p>A license is required to participate in a live event as an authenticated user, but this requirement depends on the production method used:</p>
+<ul>
+<li>For events produced in Teams, the user must be assigned a Teams license.</li>
+<li>For events produced with an external app or device, the user must be assigned a Stream license.</li>
+</ul>
+<p>There are specific policy settings that need to be turned on before a user can create or schedule a live event. These settings are detailed in the <a href="#learn-more" data-linktype="self-bookmark">Learn more</a> links below.</p>
+<h2 id="who-can-attend-live-events">Who can attend live events?</h2>
+<p>Depending on whether the event is public or private, attendees in live events may include:</p>
+<ul>
+<li>Specific groups of people.</li>
+<li>All employees of a company.</li>
+<li>Public anonymous users.</li>
+</ul>
+<h2 id="learn-more">Learn more</h2>
+<ul>
+<li><a href="https://docs.microsoft.com/en-us/MicrosoftTeams/teams-live-events/what-are-teams-live-events" data-linktype="absolute-path" target="az-portal">What are Microsoft Teams live events?</a></li>
+<li><a href="https://docs.microsoft.com/en-us/MicrosoftTeams/teams-live-events/plan-for-teams-live-events" data-linktype="absolute-path" target="az-portal">Plan for live events in Microsoft Teams</a></li>
+<li><a href="https://docs.microsoft.com/en-us/microsoftteams/teams-live-events/configure-teams-live-events" data-linktype="absolute-path" target="az-portal">Configure settings for live events</a></li>
+<li><a href="https://docs.microsoft.com/en-us/microsoftteams/teams-live-events/set-up-for-teams-live-events#step-3-set-up-live-events-policies?azure-portal=true" data-linktype="absolute-path" target="az-portal">Create and manage policies for live events</a></li>
+</ul>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Monitor call quality</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/m365-teams-collab-manage-meetings/monitor-call-quality/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div><section>
+		<p>
+Need help? See our <a id="troubleshooting-guide" data-bi-name="troubleshooting" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-m365.m365-teams-collab-manage-meetings.live-events&amp;documentId=74d8dfa6-7dbe-8c11-82aa-2ec672285621&amp;versionIndependentDocumentId=4a4903c3-ad44-10a3-6cd9-274a93d902ef&amp;contentPath=%2FMicrosoftDocs%2Flearn-m365-pr%2Fblob%2Flive%2Flearn-m365-pr%2Fm365%2Fm365-teams-collab-manage-meetings%2Flive-events.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fm365-teams-collab-manage-meetings%2Flive-events&amp;author=v-aleha">troubleshooting guide</a> or provide specific feedback by <a id="module-unit-feedback-link" data-bi-name="feedback" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-m365.m365-teams-collab-manage-meetings.live-events&amp;documentId=74d8dfa6-7dbe-8c11-82aa-2ec672285621&amp;versionIndependentDocumentId=4a4903c3-ad44-10a3-6cd9-274a93d902ef&amp;contentPath=%2FMicrosoftDocs%2Flearn-m365-pr%2Fblob%2Flive%2Flearn-m365-pr%2Fm365%2Fm365-teams-collab-manage-meetings%2Flive-events.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fm365-teams-collab-manage-meetings%2Flive-events&amp;author=v-aleha#report-feedback">reporting an issue</a>.		</p>
+	</section></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>
