@@ -1,0 +1,11 @@
+1. B
+With a per-organizer policy, the meeting participants inherit the policy from the organizer.
+
+2. A
+The user must be assigned a policy with the meeting recording option set to On, and be a user in the same organization as the meeting organizer.
+
+3. B
+A customer meeting policy allows you to create a policy that's assigned to certain users.
+
+4. C
+If your organization doesn't have a license for Microsoft Stream, recordings are stored in Azure Media Services for 20 days, then they're deleted.
