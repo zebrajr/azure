@@ -1,0 +1,8 @@
+1. B
+A team owner manages team membership and settings. A team can have multiple owners.
+
+2. A
+An organization-wide Microsoft Teams team can contain as many as 5,000 users.
+
+3. A
+In Microsoft Teams, dynamic membership enables the membership of a team to be defined by rules that check for certain user attributes in Azure Active Directory.
