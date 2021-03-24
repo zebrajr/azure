@@ -1,0 +1,269 @@
+<html dir="ltr"><head><title>What is the Teams Rooms out-of-box experience? - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/m365-teams-rooms-start-configure/out-of-box-experience">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/m365-teams-rooms-start-configure/out-of-box-experience</span>
+  </a>
+  <h1 dir="auto" id="reader-title">What is the Teams Rooms out-of-box experience? - Learn</h1>
+  <div dir="auto" id="reader-credits">AlexandraHrt</div>
+  <div dir="auto" id="reader-estimated-time">3-4 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="main" role="main" data-bi-name="content" lang="en-us" dir="ltr">
+		
+		
+		<ul>
+			<li>10 minutes</li>
+		</ul>
+			<p>When you first power on Teams Rooms, the first screens you see are the out-of-box experience (OOBE) ones. Microsoft Windows is initially installed, and you’ll be asked a few questions during the install.</p>
+<ol>
+<li><p>Select your region from the list and choose <strong>Yes</strong>. In the example here, Teams Rooms is being installed in the United States, so United States is selected and then <strong>Yes</strong> is chosen.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-rooms-start-configure/media/out-of-box-region.png" alt="Initial Windows install region verification screen" data-linktype="relative-path"></p>
+</li>
+<li><p>Select the correct keyboard layout. Scroll through the list to find the right keyboard for you and choose <strong>Yes</strong>.</p>
+</li>
+<li><p>You'll be asked if you need a second keyboard layout. Make a choice if you need to.</p>
+</li>
+<li><p>The Windows install proceeds for about another half-hour and reboots once or twice. When the Windows installation completes, you're brought to the Teams Rooms out-of-box experience.</p>
+</li>
+<li><p>Read through and accept the end-user license agreement.</p>
+</li>
+<li><p>Provide the resource account you want to use with this installation.</p>
+</li>
+<li><p>Enter the e-mail address of the resource account and the password.</p>
+</li>
+<li><p>Select a supported meeting mode.  There are three available options:</p>
+<ul>
+<li>Skype for Business (default) and Microsoft Teams</li>
+<li>Skype for Business and Microsoft Teams (default)</li>
+<li>Skype for Business</li>
+</ul>
+<p>When you create a meeting on the Teams Rooms console, whichever one is set as default dictates what kind of meeting is created. If you have Skype for Business (default) and Microsoft Teams set, then when you create a new meeting on the console, it will be a Skype for Business meeting.</p>
+<p>If you have Skype for Business and Microsoft Teams(default) set, when you choose <strong>New Meeting</strong> on the console, it will be a Microsoft Teams meeting.</p>
+<p>The third option only supports joining Skype for Business meetings. With this option set, if someone sends a Teams meeting invite to this room, it will not be able to join that meeting. You will also not be able to manage this Teams Rooms in Teams admin center.</p>
+</li>
+<li><p>You can also enable Modern Authentication.</p>
+</li>
+<li><p>After entering and setting the necessary values choose <strong>Next</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-rooms-start-configure/media/out-of-box-initial-setup-options-lightbox.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"> <img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-rooms-start-configure/media/out-of-box-initial-setup-options.png" alt="Choose Next after setting values" data-linktype="relative-path"> </a></p>
+</li>
+<li><p>The Advanced screen is meant for advanced Skype for Business configurations. Check with a Skype for Business expert if you need to fill out these values. In most cases, you can just skip this screen by choosing <strong>Next</strong>.</p>
+</li>
+<li><p>If you have Microsoft certified Teams Rooms equipment connected, you'll see the congratulations message. If not, you'll need to connect the center of room console to the compute module.</p>
+</li>
+<li><p>Choose <strong>Finish</strong> to complete the out-of-box experience for both Windows and Microsoft Teams Rooms.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-rooms-start-configure/media/out-of-box-finish-lightbox.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"> <img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-rooms-start-configure/media/out-of-box-finish.png" alt="Choose Finish to complete the out-of-box experience" data-linktype="relative-path"> </a></p>
+</li>
+</ol>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Take key actions with Teams Rooms</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/m365-teams-rooms-start-configure/take-key-actions/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div><section>
+		<p>
+Need help? See our <a id="troubleshooting-guide" data-bi-name="troubleshooting" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-m365.m365-teams-rooms-start-configure.out-of-box-experience&amp;documentId=3a7b581c-b063-1289-8eae-673ebec77d7b&amp;versionIndependentDocumentId=2a5f95b4-716f-08d0-911d-8acf8225da2b&amp;contentPath=%2FMicrosoftDocs%2Flearn-m365-pr%2Fblob%2Flive%2Flearn-m365-pr%2Fm365%2Fm365-teams-rooms-start-configure%2Fout-of-box-experience.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fm365-teams-rooms-start-configure%2Fout-of-box-experience&amp;author=elizapo">troubleshooting guide</a> or provide specific feedback by <a id="module-unit-feedback-link" data-bi-name="feedback" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-m365.m365-teams-rooms-start-configure.out-of-box-experience&amp;documentId=3a7b581c-b063-1289-8eae-673ebec77d7b&amp;versionIndependentDocumentId=2a5f95b4-716f-08d0-911d-8acf8225da2b&amp;contentPath=%2FMicrosoftDocs%2Flearn-m365-pr%2Fblob%2Flive%2Flearn-m365-pr%2Fm365%2Fm365-teams-rooms-start-configure%2Fout-of-box-experience.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fm365-teams-rooms-start-configure%2Fout-of-box-experience&amp;author=elizapo#report-feedback">reporting an issue</a>.		</p>
+	</section></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

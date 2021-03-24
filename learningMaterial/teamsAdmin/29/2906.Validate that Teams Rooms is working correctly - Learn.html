@@ -1,0 +1,301 @@
+<html dir="ltr"><head><title>Validate that Teams Rooms is working correctly - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/m365-teams-rooms-start-configure/validate">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/m365-teams-rooms-start-configure/validate</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Validate that Teams Rooms is working correctly - Learn</h1>
+  <div dir="auto" id="reader-credits">AlexandraHrt</div>
+  <div dir="auto" id="reader-estimated-time">5-6 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="main" role="main" data-bi-name="content" lang="en-us" dir="ltr">
+		
+		
+		<ul>
+			<li>10 minutes</li>
+		</ul>
+			<p>You're now ready to validate and test Teams Rooms to make sure all's working properly. The steps here will help you test all  the major features.</p>
+<h2 id="conduct-feature-tests">Conduct feature tests</h2>
+<h3 id="test-meeting-join">Test meeting join</h3>
+<ol>
+<li><p>Create a new meeting. Select <strong>New Meeting</strong> on the console.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-rooms-start-configure/media/new-meeting.png" alt="Select New Meeting" data-linktype="relative-path"></p>
+</li>
+<li><p>Type in the name of someone in your organization. In the following examples, we'll use Sara Perez. After typing Sara’s  name, you’d select her account from the list of results and then choose <strong>Invite</strong> to invite her to the meeting.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-rooms-start-configure/media/meeting-invite.png" alt="Invite someone to the meeting" data-linktype="relative-path"></p>
+</li>
+<li><p>We see that Sara has joined the meeting. At this point, you would work with Sara to make sure the camera and audio are working correctly and that you can see each other. You should also share a laptop into the meeting via the HDMI cable connected to the console.</p>
+</li>
+<li><p>When you're finished, select the <strong>Hang up</strong> icon.</p>
+<div>
+<p> Note</p>
+<p>On the bottom left of the screen you can see <strong>Report a problem</strong>. This would be chosen by users if they had an issue to report. You need to set up an e-mail address in the Device sections of Teams Rooms settings for this option to appear.</p>
+</div>
+</li>
+</ol>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-rooms-start-configure/media/report-problem.png" alt="Hang up or Report a problem" data-linktype="relative-path"></p>
+<h3 id="test-dial-out-calling">Test dial-out calling</h3>
+<p>If your resource account is configured with a telephone number, you can test dial-out calling.</p>
+<ol>
+<li><p>Select the <strong>Dial pad</strong> button. This brings up a new screen with a dial pad. You can type in the phone number you're trying to reach and then hit the <strong>Dial</strong> icon.</p>
+</li>
+<li><p>Test the audio to make sure you can reach the remote attendee and that you can hear each other clearly.</p>
+</li>
+<li><p>Once you've validated that the audio and the phone call works, you can hang up and move on to the next test.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-rooms-start-configure/media/place-test-call.png" alt="Place a test call" data-linktype="relative-path"></p>
+</li>
+</ol>
+<h3 id="test-dial-in-calling">Test dial-in calling</h3>
+<p>In the dial-in test, you dial the phone number of the resource account.</p>
+<ol>
+<li><p>Using your mobile device, call the room, and you'll see a prompt on the console.</p>
+</li>
+<li><p>Choose to answer with audio only, as video won't work on a public telephone call. Make sure that you can successfully answer the call and validate that audio works just as in the dial-out test.</p>
+</li>
+<li><p>After you verify that the call worked as expected, you can hang up and move on to the next test.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-rooms-start-configure/media/dial-in-test.png" alt="Test dialing in" data-linktype="relative-path"></p>
+</li>
+</ol>
+<h3 id="test-hdmi-ingest">Test HDMI ingest</h3>
+<p>The next test validates the HDMI ingest feature.</p>
+<ol>
+<li><p>Using a laptop, connect an HDMI cable to it and to the console.</p>
+</li>
+<li><p>If auto-sharing is enabled, the screen will change to show the <strong>Stop presenting</strong> icon. The front-of-room display will show the same thing that's being shown on the laptop. If auto-sharing is not enabled, you'll have to click the <strong>Present</strong> icon on the console.</p>
+</li>
+<li><p>When you're done with this test, click <strong>Stop Presenting.</strong></p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-rooms-start-configure/media/stop-presenting.png" alt="Stop presenting" data-linktype="relative-path"></p>
+</li>
+</ol>
+<h3 id="test-joining-a-scheduled-meeting">Test joining a scheduled meeting</h3>
+<p>The next test validates joining a scheduled meeting.</p>
+<ol>
+<li><p>In the example below, a meeting is being scheduled from the Teams client. You can see the location of Teams Room has been added into the meeting invite. As a reminder, this is the resource account. This resource account will auto-accept the invite and then the console will update to show the meeting.</p>
+<div>
+<p> Note</p>
+<p>Learn about resource accounts and how to add one to a meeting in the module <strong>Deploy Microsoft Teams Rooms</strong>.</p>
+</div>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-rooms-start-configure/media/validate-joining-scheduled.png" alt="Validate setting up a scheduled meeting" data-linktype="relative-path"></p>
+</li>
+<li><p>Click the <strong>Join</strong> button to test the meeting.</p>
+</li>
+<li><p>Teams Rooms joins the meeting and then you can test with another remote attendee (Sara in this example) to make sure audio, video, and sharing work correctly.</p>
+</li>
+<li><p>After validating that the meeting join worked, you can hang up and leave the meeting.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-rooms-start-configure/media/testing-join.png" alt="Validate joining a scheduled meeting" data-linktype="relative-path"></p>
+</li>
+</ol>
+<p>After you've completed those initial tests, there may be some additional things that need to be validated.</p>
+<ul>
+<li>Make sure that the resource account name and phone number are shown correctly in the upper right of the console.</li>
+<li>Make sure that cameras are functional and positioned optimally. If the camera supports pan, tilt, and zoom features, make sure they are working correctly.</li>
+<li>When conducting your test meetings, be sure to walk around the room and make sure you can be heard in all areas where attendees are expected to speak. Be sure that you can hear the other person well throughout the room. This will validate that speaker and microphone placements are correct.</li>
+<li>For the console, make sure cables are secure and not pinched. They should be secure to avoid accidents.</li>
+<li>If the console can swivel or move around the desk, make sure it can do so freely without pinching any cables.</li>
+<li>Make sure the display brightness on the console and front of room displays is acceptable for the environment. No one wants to sit in a very dark room with a super bright console. Conversely, it's difficult to read a console when you're in a very bright room and the brightness is turned down too low on the console.</li>
+</ul>
+
+		
+	</div><section>
+		<p>
+Need help? See our <a id="troubleshooting-guide" data-bi-name="troubleshooting" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-m365.m365-teams-rooms-start-configure.validate&amp;documentId=7e3bc806-4dbb-f613-ce55-ef131f1b3d70&amp;versionIndependentDocumentId=2639dea9-3172-77c9-7738-51e1bba1e00a&amp;contentPath=%2FMicrosoftDocs%2Flearn-m365-pr%2Fblob%2Flive%2Flearn-m365-pr%2Fm365%2Fm365-teams-rooms-start-configure%2Fvalidate.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fm365-teams-rooms-start-configure%2Fvalidate&amp;author=elizapo">troubleshooting guide</a> or provide specific feedback by <a id="module-unit-feedback-link" data-bi-name="feedback" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-m365.m365-teams-rooms-start-configure.validate&amp;documentId=7e3bc806-4dbb-f613-ce55-ef131f1b3d70&amp;versionIndependentDocumentId=2639dea9-3172-77c9-7738-51e1bba1e00a&amp;contentPath=%2FMicrosoftDocs%2Flearn-m365-pr%2Fblob%2Flive%2Flearn-m365-pr%2Fm365%2Fm365-teams-rooms-start-configure%2Fvalidate.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fm365-teams-rooms-start-configure%2Fvalidate&amp;author=elizapo#report-feedback">reporting an issue</a>.		</p>
+	</section></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>
