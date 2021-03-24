@@ -1,0 +1,8 @@
+1. B
+The default mode when upgrading from Skype for Business to Teams is to run Teams alongside Skype for Business with the capabilities overlap.
+
+2. C
+Interoperability allows Teams and Skype for Business to run simultaneously with overlapping functionality.
+
+3. B
+TeamsUpgradePolicy is the setting where you change coexistence mode and whether to notify Skype for Business users of the change.

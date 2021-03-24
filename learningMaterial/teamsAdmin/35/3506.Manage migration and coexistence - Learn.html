@@ -1,0 +1,260 @@
+<html dir="ltr"><head><title>Manage migration and coexistence - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/m365-teams-upgrade-coexistence-interoperability/migration-coexistence">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/m365-teams-upgrade-coexistence-interoperability/migration-coexistence</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Manage migration and coexistence - Learn</h1>
+  <div dir="auto" id="reader-credits">AlexandraHrt</div>
+  <div dir="auto" id="reader-estimated-time">4-4 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="main" role="main" data-bi-name="content" lang="en-us" dir="ltr">
+		
+		
+		<ul>
+			<li>3 minutes</li>
+		</ul>
+			<p>Coexistence mode is a property of TeamsUpgradePolicy. Using coexistence mode, you manage interoperability and migration during the transition from Skype for Business to Teams.</p>
+<p>TeamsUpgradePolicy exposes two key properties: Mode and NotifySfbUsers. Mode indicates the mode the client should run in. NotifySfbUsers indicates whether to show a banner in the Skype for Business client informing the user that Teams will soon replace Skype for Business. This cannot be true if Mode=TeamsOnly.</p>
+<p>Teams provides all relevant instances of TeamsUpgradePolicy via built-in, read-only policies. Therefore, only Get and Grant cmdlets are available.</p>
+<p>These policy instances can be granted either to individual users or on a tenant-wide basis. For example:</p>
+<ul>
+<li><p>To upgrade a user ($SipAddress) to Teams, grant the “UpgradeToTeams” instance:</p>
+<p><code>Grant-CsTeamsUpgradePolicy -PolicyName UpgradeToTeams -Identity $SipAddress</code></p>
+</li>
+<li><p>To upgrade the entire tenant, omit the identity parameter from the grant command:</p>
+<p><code>Grant-CsTeamsUpgradePolicy -PolicyName UpgradeToTeams</code></p>
+</li>
+</ul>
+<h2 id="federation-considerations">Federation considerations</h2>
+<p>Federation from Teams to another user using Skype for Business requires the Teams user be homed online in Skype for Business. Eventually, Teams users homed in Skype for Business on-premises will be able to federate with Teams only users.</p>
+<p>TeamsUpgradePolicy governs routing for incoming federated chats and calls. Federated routing behavior is the same as for same-tenant scenarios, except in Islands mode. When recipients are in Islands mode:</p>
+<ul>
+<li>Chats and calls initiated from Teams land in SfB if the recipient is in a federated tenant.</li>
+<li>Chats and calls initiated from Teams land in Teams if the recipient is in the same tenant.</li>
+<li>Chats and calls initiated from SfB always land in Skype for Business.</li>
+</ul>
+<h2 id="the-teams-client-user-experience-when-using-sfb-modes">The Teams client user experience when using SfB modes</h2>
+<p>When a user is in any of the Skype for Business modes (SfBOnly, SfBWithTeamsCollab, SfBWithTeamsCollabAndMeetings), all incoming chats and calls are routed to the user’s Skype for Business client. To avoid end-user confusion and ensure proper routing, calling and chat functionality in the Teams client is automatically disabled when a user is in any Skype for Business mode. Similarly, meeting scheduling in Teams is automatically disabled when users are in the SfBOnly or SfBWithTeamsCollab modes, and automatically enabled when a user is in the SfBWithTeamsCollabAndMeetings mode.</p>
+<h2 id="setting-your-coexistence-and-upgrade-settings">Setting your coexistence and upgrade settings</h2>
+<p>When you upgrade your Skype for Business users to use Teams, you have several options to help you make it a seamless process for your users. You can change coexistence and upgrade settings for all the users in your organization at once or you can change settings for a single or set of users in your organization. Older versions of Skype for Business clients may not honor these settings.</p>
+<p>You change coexistence and upgrade settings in the Teams admin center or by using PowerShell.</p>
+<h2 id="learn-more">Learn more</h2>
+<p>When you're done with a link, use the <strong>Back</strong> arrow in your browser to come back to this page.</p>
+<ul>
+<li><a href="https://docs.microsoft.com/en-us/MicrosoftTeams/migration-interop-guidance-for-teams-with-skype" data-linktype="absolute-path">Migration and interoperability guidance for organizations using Teams together with Skype for Business</a></li>
+<li><a href="https://aka.ms/SkypeToTeams-SetCoexistence" data-linktype="external">Setting your coexistence and upgrade settings</a></li>
+</ul>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Summary and knowledge check</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/m365-teams-upgrade-coexistence-interoperability/summary-knowledge-check/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div><section>
+		<p>
+Need help? See our <a id="troubleshooting-guide" data-bi-name="troubleshooting" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-m365.m365-teams-upgrade-coexistence-interoperability.migration-coexistence&amp;documentId=63f77b65-2421-7d67-5277-85c856f0d93e&amp;versionIndependentDocumentId=fc80f1ab-2e45-2d60-a4ab-a07f46c2c058&amp;contentPath=%2FMicrosoftDocs%2Flearn-m365-pr%2Fblob%2Flive%2Flearn-m365-pr%2Fm365%2Fm365-teams-upgrade-coexistence-interoperability%2Fmigration-coexistence.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fm365-teams-upgrade-coexistence-interoperability%2Fmigration-coexistence&amp;author=elizapo">troubleshooting guide</a> or provide specific feedback by <a id="module-unit-feedback-link" data-bi-name="feedback" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-m365.m365-teams-upgrade-coexistence-interoperability.migration-coexistence&amp;documentId=63f77b65-2421-7d67-5277-85c856f0d93e&amp;versionIndependentDocumentId=fc80f1ab-2e45-2d60-a4ab-a07f46c2c058&amp;contentPath=%2FMicrosoftDocs%2Flearn-m365-pr%2Fblob%2Flive%2Flearn-m365-pr%2Fm365%2Fm365-teams-upgrade-coexistence-interoperability%2Fmigration-coexistence.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fm365-teams-upgrade-coexistence-interoperability%2Fmigration-coexistence&amp;author=elizapo#report-feedback">reporting an issue</a>.		</p>
+	</section></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

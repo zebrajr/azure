@@ -1,0 +1,248 @@
+<html dir="ltr"><head><title>How the available functionality in Teams client changes based on mode - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/m365-teams-upgrade-coexistence-interoperability/functionality-changes-mode">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/m365-teams-upgrade-coexistence-interoperability/functionality-changes-mode</span>
+  </a>
+  <h1 dir="auto" id="reader-title">How the available functionality in Teams client changes based on mode - Learn</h1>
+  <div dir="auto" id="reader-credits">AlexandraHrt</div>
+  <div dir="auto" id="reader-estimated-time">2-3 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="main" role="main" data-bi-name="content" lang="en-us" dir="ltr">
+		
+		
+		<ul>
+			<li>5 minutes</li>
+		</ul>
+			<p>The available functionality in Teams depends on the user's coexistence mode, as set by <strong>TeamsUpgradePolicy.</strong> The following table summarizes the behavior:</p>
+
+<p>The following screenshots illustrate the difference between TeamsOnly or Islands mode and all other modes. Note that the chat and calling icons are available by default with TeamsOnly or Islands mode (left screenshot), but not with the other modes (right screenshot):</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-upgrade-coexistence-interoperability/media/teams-mode-comparison.png" alt="Side-by-side screenshots showing Teams Only and Islands modes" data-linktype="relative-path"></p>
+<p>In addition, self-presence is not available in the other modes, as shown here.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-upgrade-coexistence-interoperability/media/no-self-presence.png" alt="Screenshot that shows that self-presence isn't available" data-linktype="relative-path"></p>
+<p>From a technical perspective, a user’s mode governs several aspects of the user's experience:</p>
+<ul>
+<li><strong>Incoming routing.</strong> This governs in which client (Teams or Skype for Business) incoming chats and calls land.</li>
+<li><strong>Presence publishing.</strong> This governs whether the user's presence that is shown to other users based on their activity is shown.</li>
+<li><strong>Meeting scheduling.</strong> This governs which service is used for scheduling new meetings and ensuring that the proper add-in is present in Outlook. Note users can always join any meeting, whether it be a Skype for Business meeting or a Teams meeting.</li>
+<li><strong>Client experience.</strong> This governs the functionality available in Teams and/or Skype for Business to initiate calls and chats in Teams, Skype for Business or both. This also governs whether Teams &amp; Channels experience is available.</li>
+</ul>
+<p>For more details on routing and presence behavior based on mode, see <strong>Coexistence with Skype for Business.</strong></p>
+<h2 id="learn-more">Learn more</h2>
+<p>When you're done with a link, use the <strong>Back</strong> arrow in your browser to come back to this page.</p>
+<ul>
+<li><a href="https://docs.microsoft.com/en-us/MicrosoftTeams/teams-client-experience-and-conformance-to-coexistence-modes" data-linktype="absolute-path">Teams client experience and conformance to coexistence modes </a></li>
+</ul>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Interoperability of Teams and Skype for Business</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/m365-teams-upgrade-coexistence-interoperability/interoperability/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div><section>
+		<p>
+Need help? See our <a id="troubleshooting-guide" data-bi-name="troubleshooting" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-m365.m365-teams-upgrade-coexistence-interoperability.functionality-changes-mode&amp;documentId=6a4186bb-4b87-3ce3-aa37-7eda50725d3d&amp;versionIndependentDocumentId=2ca6fd2d-40a9-6077-2e7f-5470e8827525&amp;contentPath=%2FMicrosoftDocs%2Flearn-m365-pr%2Fblob%2Flive%2Flearn-m365-pr%2Fm365%2Fm365-teams-upgrade-coexistence-interoperability%2Ffunctionality-changes-mode.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fm365-teams-upgrade-coexistence-interoperability%2Ffunctionality-changes-mode&amp;author=elizapo">troubleshooting guide</a> or provide specific feedback by <a id="module-unit-feedback-link" data-bi-name="feedback" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-m365.m365-teams-upgrade-coexistence-interoperability.functionality-changes-mode&amp;documentId=6a4186bb-4b87-3ce3-aa37-7eda50725d3d&amp;versionIndependentDocumentId=2ca6fd2d-40a9-6077-2e7f-5470e8827525&amp;contentPath=%2FMicrosoftDocs%2Flearn-m365-pr%2Fblob%2Flive%2Flearn-m365-pr%2Fm365%2Fm365-teams-upgrade-coexistence-interoperability%2Ffunctionality-changes-mode.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fm365-teams-upgrade-coexistence-interoperability%2Ffunctionality-changes-mode&amp;author=elizapo#report-feedback">reporting an issue</a>.		</p>
+	</section></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

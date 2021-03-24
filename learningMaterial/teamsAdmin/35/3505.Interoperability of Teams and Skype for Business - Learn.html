@@ -1,0 +1,290 @@
+<html dir="ltr"><head><title>Interoperability of Teams and Skype for Business - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/m365-teams-upgrade-coexistence-interoperability/interoperability">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/m365-teams-upgrade-coexistence-interoperability/interoperability</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Interoperability of Teams and Skype for Business - Learn</h1>
+  <div dir="auto" id="reader-credits">AlexandraHrt</div>
+  <div dir="auto" id="reader-estimated-time">9-11 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>10 minutes</li>
+		</ul>
+			<p>Interoperability is the ability for Teams and Skype for Business users in the same organization to communicate across Teams and Skype for Business.</p>
+<p>Interoperability is governed by the coexistence mode (also known as upgrade mode) of the receiver. There is no interoperability when the receiver is in Islands mode.</p>
+<h2 id="native-interoperability-and-interoperability-escalation">Native interoperability and interoperability escalation</h2>
+<p>There are two types of interoperability experiences: native interoperability and interoperability escalation.</p>
+<ul>
+<li>A native interoperability experience occurs in the client that the user is currently using. One user will be in the Skype for Business client, the other in Teams. A native interoperability experience won’t take them to another client to communicate, the users will be able to conduct their conversation in the client they’re currently using. The native interoperability experiences are one-to-one chat and calling.</li>
+<li>An interoperability escalation experience means that as part of helping users perform an advanced action (such as sharing their desktop), the client facilitates the creation of a meeting which users can join to continue the experience in that meeting. The meeting is created on the platform of the initiator of the action. The user or users who aren’t on that platform receive a meeting join link. As they click this link, they are joined to the meeting in a compatible client (browser, web app, or full client, depending on configuration). Interoperability escalation from Skype for Business requires a recent client. Interoperability escalation from Teams is now available. Both are supported in interoperability experiences in-tenant, and for federated communication cross-tenants.</li>
+</ul>
+<h2 id="native-interoperability-experiences">Native interoperability experiences</h2>
+<p>Depending on the coexistence modes assigned to users (as previously described), the following native interoperability experiences are available:</p>
+<ul>
+<li><p>Skype for Business users can chat one-on-one with Teams users, and vice versa. An interoperability chat needs to go through an interoperability gateway that’s part of Teams cloud services (and therefore only exists online). Interoperability chats are plain text: rich text and emoticons aren’t supported. Users in Teams and in Skype for Business are notified that the conversation is an interoperability conversation.</p>
+</li>
+<li><p>Skype for Business users can make one-on-one voice and video calls to Teams users, and vice versa.</p>
+<div>
+<p> Important</p>
+<p>Interoperability experiences with an on-premises deployment of Skype for Business require that the on-premises environment is in hybrid mode with Microsoft 365 Skype for Business.</p>
+</div>
+</li>
+</ul>
+<p>These interoperability experiences are available to and between users who have one of the following coexistence modes assigned:</p>
+<ul>
+<li>Skype for Business with Teams Collaboration</li>
+<li>Skype for Business with Teams Collaboration and meetings</li>
+<li>Skype for Business Only</li>
+<li>TeamsOnly</li>
+</ul>
+<p>There is no interoperability for users in Islands mode.</p>
+<h2 id="native-interoperability-experience-limitations">Native interoperability experience limitations</h2>
+<p>Because of the difference in protocols and technology, it is not possible to support all capabilities natively. Specifically, the following capabilities are not available:</p>
+<ul>
+<li>Markdown, rich text, and the full emoticon set aren’t supported either from Teams or Skype for Business. Other native features of the compose box in Teams chats aren’t supported.</li>
+<li>Screen sharing (desktop or app sharing) between Teams and Skype for Business isn’t supported natively. However, it is supported through interoperability escalation.</li>
+<li>Group chats (multiple-party conversations) in Teams can only include participants who are using Teams.</li>
+<li>Multiple-party IM conversations (group chats) in Skype for Business can only include participants who are using Skype for Business. However, interoperability escalation to multiple-party is available from Skype for Business.</li>
+<li>Escalating an ongoing peer-to-peer voice or video call to a multiple-party call involving both Teams and Skype for Business users isn’t supported.</li>
+<li>File transfer for two-party chats, or file attachment in group chats, from Teams to Skype for Business—and vice versa—aren’t supported.</li>
+<li>There is no interoperability with Skype for Business Persistent Chat.</li>
+</ul>
+<p>For all these limitations (except for Persistent Chat), one possible workaround is for one user to start a meeting and invite the other users to join it.</p>
+<p>This workaround is the basis for interoperability escalation. In particular, screen sharing and escalation to multiparty are not achievable natively but they are supported via interoperability escalation.</p>
+<h2 id="interoperability-escalation-experiences">Interoperability escalation experiences</h2>
+<p>Interoperability escalation consists in supplementing the native interoperability capabilities with managed escalations to meetings. Meetings offer rich experiences available to anyone, regardless of which client they have.</p>
+<p>When interoperability escalation is triggered by the Teams user, a Teams meeting is created. When it is triggered by the Skype for Business user, a Skype for Business meeting is created. In both cases, the meeting created is a Meet now meeting, which is not reflected on the user’s calendar.</p>
+<p>The other party receives the meeting join link through interoperability chat and joins by clicking that link. If the Skype for Business user has a Teams account and is invited by the Teams user, they will join the meeting authenticated. Otherwise, they will join as an anonymous participant. Conversely, Teams users almost always have a Skype for Business account and a Skype for Business client they can use to join a Skype for Business meeting as an authenticated participant, but they might also join as an anonymous participant, for example using the Skype Meeting App.</p>
+<p>Once the parties have joined the meeting, they can conduct any activity supported in meetings, such as desktop or content sharing, file sharing or transfer, adding other participants, and so on.</p>
+<h2 id="interoperability-escalation-from-skype-for-business">Interoperability escalation from Skype for Business</h2>
+<p>Interoperability and interoperability escalation from Skype for Business were updated in the July 2019 build of monthly C2R. Previously, Skype for Business did not have advance awareness that the remote party was using Teams. It only surmised that from the signaling received after a session was established.</p>
+<p>When the signaling indicated that the response came from (or through) the interoperability gateway, it would display the yellow business bar (banner) indicating the other party was not using Skype for Business. With the evolution of our service, this resulted in false positives where Skype for Business users would see the business bar when they were connected to the Cloud Voicemail Service or other cloud voice services, rather than to an actual TeamsOnly user.</p>
+<p>To prevent these false positives, the presence service is now informing the Skype for Business client when the other party is a TeamsOnly actual user. This allows Skype for Business to be aware that it needs to create an interoperability conversation ahead of it having been created, and the conversation window is specific to interoperability.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-upgrade-coexistence-interoperability/media/interop-create-conversation.png" alt="Skype for Business creates an interoperability conversation" data-linktype="relative-path"></p>
+<p>If the Skype for Business user wanted to share their desktop, they would be informed that a meeting will start and guided through the steps.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-upgrade-coexistence-interoperability/media/start-meeting-with-teams-user.png" alt="A Skype for Business users starts a meeting" data-linktype="relative-path"></p>
+<p>Meanwhile, the Teams user receives an incoming chat message with the link to the meeting and is guided to join.</p>
+<p>This escalation to a Skype for Business meeting is available for both in-tenant interoperability and cross-tenant federated calls and chats. It is on by default and there is no setting the administrator has to provision.</p>
+<h2 id="interoperability-escalation-from-teams">Interoperability escalation from Teams</h2>
+<p>Interoperability escalation from Teams to a Teams meeting is now available when the Teams user selects the desktop sharing button in an in-tenant interoperability thread with a Skype for Business user or in a cross-tenant interoperability federation thread. Interoperability escalation is supported from a 1:1 chat conversation or from a 1:1 call.</p>
+<p>The capability is supported in the Teams desktop client for Windows, in the Teams desktop client for Mac, and in the Teams web client on browsers where content sharing is supported, while in communication with any Skype for Business client version.</p>
+<p>In interoperability threads, and in federation interoperability threads, the Teams user now has the controls (button) to start content sharing. When the Teams user selects the button, they are presented with an additional menu that informs them that to share content, they will need to start a Teams meeting.</p>
+<p>If the users were in a call, the menu also warns them that their current call between Teams and Skype for Business will be terminated as they are put into a Teams meeting. If they so choose, they can warn the Skype for Business user prior to accepting.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-upgrade-coexistence-interoperability/media/meeting-with-skype-user.png" alt="Warning the Skype for Business user" data-linktype="relative-path"></p>
+<p>Upon acceptance, they are put in the Teams meeting; they must start sharing from the sharing tray in the meeting.</p>
+<p>Meanwhile, the Skype for Business user receives an incoming chat message with the link to the meeting and is guided to join.</p>
+<p>This escalation to a Teams meeting is available for both in-tenant interoperability and cross-tenant federated calls and chats. It is on by default and there is no setting the administrator has to provision. However, it is turned off for the user if the administrator sets <code>-AllowPrivateMeetNow</code> in `CsTeamsMeetingPolicy to $false.</p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Manage migration and coexistence</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/m365-teams-upgrade-coexistence-interoperability/migration-coexistence/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>
