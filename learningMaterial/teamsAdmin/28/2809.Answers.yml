@@ -1,0 +1,17 @@
+1. C
+Correct. This isn’t a consideration in standardization. You cannot control the lighting in every room as there are many variables that affect lighting, such as sunlight, the type of lightbulbs in the room, and the reflectivity of surfaces in the room.
+
+2. B
+Correct! The console is what attendees in the room use to manage meetings.
+
+3. C
+Correct. The resource account is an Exchange mailbox that accepts meeting invites. Any accepted meeting will show up on the console allowing attendees to one-touch join their meetings.
+
+4. A
+That's right. Teams Rooms resource accounts are created in the Rooms & equipment section of Microsoft 365 admin center.
+
+5. C
+That's right. These two modules are required to create a Teams Rooms account in PowerShell.
+
+6. A
+That's right. You can also set parameters such as the meeting room floor and the room capacity.

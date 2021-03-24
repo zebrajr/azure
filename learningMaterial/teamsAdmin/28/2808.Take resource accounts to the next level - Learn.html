@@ -1,0 +1,321 @@
+<html dir="ltr"><head><title>Take resource accounts to the next level - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/m365-teams-rooms-deploy/resource-accounts-next-level">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/m365-teams-rooms-deploy/resource-accounts-next-level</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Take resource accounts to the next level - Learn</h1>
+  <div dir="auto" id="reader-credits">AlexandraHrt</div>
+  <div dir="auto" id="reader-estimated-time">6-8 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>10 minutes</li>
+		</ul>
+			<p>There are some additional options you can set for your resource accounts.</p>
+<ol>
+<li>Open the Exchange admin center in Microsoft 365.</li>
+<li>Click on <strong>recipients</strong> &gt; <strong>resources</strong>.</li>
+<li>Select the room to edit and click the <strong>edit</strong> icon (or double click the room name).</li>
+</ol>
+<h2 id="add-a-mailtip">Add a MailTip</h2>
+<p>Once inside the setting, you can add a <em>MailTip</em>. By adding a MailTip, when somebody enters this conference room name into Outlook, a tip pops up informing your users about this room. In this example, the MailTip is set to read: “This room is equipped to support Teams and Skype for Business meetings.”</p>
+<p>You can also set the MailTip using PowerShell using the <strong>Set-Mailbox cmdlet</strong> and the MailTip parameter.</p>
+<pre tabindex="0"><code data-author-content="Set-Mailbox -Identity $MailBoxAlias -MailTip &quot;This room is equipped to support Teams and Skype Meetings&quot;
+"><span><span>Set-Mailbox</span><span> -Identity</span> <span>$MailBoxAlias</span><span> -MailTip</span> <span>"This room is equipped to support Teams and Skype Meetings"</span>
+</span></code></pre>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-rooms-deploy/media/set-mailbox-mailtip.png" alt="Set a mailbox MailTip" data-linktype="relative-path"></p>
+<p>When the resource account auto-accepts a meeting, it sends an e-mail back confirming that it accepted or rejected the meeting request.</p>
+<p>By using HTML in the <strong>booking options</strong> setting, you can add graphics or links to videos, and then send a helpful message back such as a reminder to make this a Teams meeting. You could also add end-user training links or corporate logos to this response.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-rooms-deploy/media/html-booking-options.png" alt="Set HTML booking options" data-linktype="relative-path"></p>
+<p>If you use additional responses, you can create a much more interesting e-mail back to the meeting organizer.</p>
+<p>Here's how you can do this using PowerShell. The first thing to do is to create a variable that holds the HTML you want to put into the response. This sample shows only part of the HTML because it can get a bit lengthy, but you should get the idea how this gets done.</p>
+<pre tabindex="0"><code data-author-content="$AdditionalResponse=@&quot;
+<hr style=&quot;font-family: Calibri, Arial, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);&quot;><p align=&quot;center&quot;><img width=&quot;291&quot; height=&quot;137&quot;
+
+…
+
+<img style=&quot;margin-right: auto; margin-left: auto; float: none; display: block;&quot; src=&quot;https://contoso.com/images/contoso-icon.png&quot;>
+&quot;@
+"><span>$AdditionalResponse=@"
+<span>&lt;<span>hr</span> <span>style</span>=<span>"font-family: Calibri, Arial, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);"</span>&gt;</span><span>&lt;<span>p</span> <span>align</span>=<span>"center"</span>&gt;</span><span>&lt;<span>img</span> <span>width</span>=<span>"291"</span> <span>height</span>=<span>"137"</span>
+
+…
+
+&lt;<span>img</span> <span>style</span>=<span>"margin-right: auto; margin-left: auto; float: none; display: block;"</span> <span>src</span>=<span>"https://contoso.com/images/contoso-icon.png"</span>&gt;</span>
+"@
+</span></code></pre>
+<p>Now we can use the <em>$AdditionalResponse</em> variable with the <strong>Set-CalendarProcssing</strong> cmdlet to configure our custom additional response.</p>
+<pre tabindex="0"><code data-author-content="Set-CalendarProcessing -Identity mtr-stp-avanti-1@contoso.com -AddAdditionalResponse $true -AdditionalResponse $AdditionalResponse
+"><span><span>Set-CalendarProcessing</span><span> -Identity</span> <span>mtr-stp</span>-avanti-<span>1</span>@contoso.com<span> -AddAdditionalResponse</span> <span>$true</span><span> -AdditionalResponse</span> <span>$AdditionalResponse</span>
+</span></code></pre>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-rooms-deploy/media/request-accepted.png" alt="Additional responses for request accepted" data-linktype="relative-path"></p>
+<p>By default, only members of your domain can schedule a meeting room. If you are contoso.com, your Teams Rooms resource accounts will not accept a meeting invite from nwtraders.com. However, if you enable <strong>ProcessExternalMeetingMessages</strong>, that resource account will now accept meeting invites from external domains.</p>
+<div>
+<p> Important</p>
+<p>This value is required to be enabled if you want to use third party meetings with Teams Rooms (i.e. the ability of Teams Rooms to join meetings hosted by Cisco, Zoom, etc.)</p>
+</div>
+<pre tabindex="0"><code data-author-content="Set-CalendarProcessing -identity mtr-stp-avanti-1@contoso.com ‐ProcessExternalMeetingMessages $true
+"><span><span>Set-CalendarProcessing</span><span> -identity</span> <span>mtr-stp</span>-avanti-<span>1</span>@contoso.com ‐ProcessExternalMeetingMessages <span>$true</span>
+</span></code></pre>
+<h2 id="add-some-security-mailbox-settings">Add some security mailbox settings</h2>
+<p>There are some mailbox settings you may want to enable to add some security. For example, there may be an agenda discussing sensitive information added to a meeting invite. You want to make sure the Exchange or Teams Rooms administrators cannot sign in to Outlook and read the agenda.</p>
+<p>The following <strong>Set-CalendarProcessing</strong> command will remove sensitive information that is stored in the mailbox from being seen by those who shouldn’t have access to confidential information.</p>
+<pre tabindex="0"><code data-author-content="Set-CalendarProcessing -identity $MailBoxAlias
+‐ProcessExternalMeetingMessages $false
+-DeleteSubject $true
+-DeleteComments $true
+‐RemovePrivateProperty $false
+-DeleteNonCalendarItems $true
+-RemoveForwardedMeetingNotifications $true
+-RemoveOldMeetingMessages $true
+"><span><span>Set-CalendarProcessing</span><span> -identity</span> <span>$MailBoxAlias</span>
+‐ProcessExternalMeetingMessages <span>$false</span><span>
+-DeleteSubject</span> <span>$true</span><span>
+-DeleteComments</span> <span>$true</span>
+‐RemovePrivateProperty <span>$false</span><span>
+-DeleteNonCalendarItems</span> <span>$true</span><span>
+-RemoveForwardedMeetingNotifications</span> <span>$true</span><span>
+-RemoveOldMeetingMessages</span> <span>$true</span>
+</span></code></pre>
+<ul>
+<li><strong>ProcessExternalMeetingMessages</strong>: Only permit internal users to schedule a meeting. Note: This must be enabled if you intend to join third party meetings.</li>
+<li><strong>DeleteSubject</strong>: Remove the meeting subject. Now when the meeting appears on the console, it will only show the name of the organizer, not the topic of the meeting.</li>
+<li><strong>DeleteComments</strong>: Remove the body of the e-mail. Note that this must be enabled if you want to join third party meetings.</li>
+<li><strong>RemovePrivateProperty</strong>: The private flag for incoming meeting requests is preserved.</li>
+<li><strong>DeleteNonCalendarItems</strong>: Any e-mails forwarded to the mailbox should be deleted.</li>
+<li><strong>RemoveForwardedMeetingNotifications</strong>: Processed forwarded meeting notifications are deleted (moved to the Deleted Items folder).</li>
+<li><strong>RemoveOldMeetingMessages</strong>: Outdated and redundant meeting messages are deleted.</li>
+</ul>
+<h2 id="what-are-room-lists">What are Room Lists?</h2>
+<p>Room Lists help you organize all your meeting rooms. Instead of having a flat list of hundreds of meeting rooms, you can organize them by location. That location can be a building, a campus, a city, or even a country. It's up to you to decide the organization.</p>
+<p>In this example, a room list has been created. If  Tampa Bay is clicked, it then filters and shows the three meeting rooms available in the Tampa Bay area.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-rooms-deploy/media/room-list.png" alt="Room Lists" data-linktype="relative-path"></p>
+<p>How do you create room lists? It must be done via PowerShell, but it's pretty simple. Type <strong>New-DistributionGroup</strong> and give it a name.  Then make sure you flag it as a special distribution group called a <strong>RoomList</strong>.</p>
+<pre tabindex="0"><code data-author-content="`New-DistributionGroup -Name &quot;Tampa Bay&quot; -Roomlist`
+"><span>`N<span>ew-DistributionGroup</span><span> -Name</span> <span>"Tampa Bay"</span><span> -Roomlist</span>`
+</span></code></pre>
+<p>You then add members to that distribution group using the <strong>Add-DistributionGroup</strong> cmdlet.</p>
+<p>In this example, resource accounts MTR-STP-Avanti-1 and MTR-STP-Avanti-2 are added to the Room List.</p>
+<pre tabindex="0"><code data-author-content="Add-DistributionGroupMember -Identity &quot;Tampa Bay&quot; -Member &quot;MTR-STP-Avanti-1&quot;
+Add-DistributionGroupMember -Identity &quot;Tampa Bay&quot; -Member &quot;MTR-STP-Avanti-2&quot;
+"><span><span>Add-DistributionGroupMember</span><span> -Identity</span> <span>"Tampa Bay"</span><span> -Member</span> <span>"MTR-STP-Avanti-1"</span>
+<span>Add-DistributionGroupMember</span><span> -Identity</span> <span>"Tampa Bay"</span><span> -Member</span> <span>"MTR-STP-Avanti-2"</span>
+</span></code></pre>
+<h2 id="what-is-places">What is Places?</h2>
+<p>Instead of just naming the location of where rooms are, you can add additional criteria, such as wheelchair accessibility, room hardware, or the floor in a given building. This feature is called <em>Places</em>.</p>
+<p>Here's an example of Places for Tampa Bay. When filtering on Tampa Bay, you can see there are three rooms that are available. Clicking <strong>Filters</strong> brings up a new menu. Now you can filter on rooms that have at least a 10-person capacity, that have a video camera, and are wheelchair accessible. Click the <strong>Apply button</strong> and you'll see one room that matches the criteria.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-rooms-deploy/media/places-feature.png" alt="Places feature to filter on room criteria" data-linktype="relative-path"></p>
+<p>Creating Places must be done via PowerShell using the <strong>Set-Place</strong> cmdlet. In this example, the place is the meeting room MTR-STP-Avanti-1. This room will be listed as wheelchair accessible, with a 12-person capacity, and a video display.</p>
+<pre tabindex="0"><code data-author-content="`Set-Place MTR-STP-Avanti-1  IsWheelChairAccessible $true  Capacity 12  DisplayDeviceName $True`
+"><span>`S<span>et-Place</span> <span>MTR-STP</span>-Avanti-<span>1</span>  IsWheelChairAccessible <span>$true</span>  Capacity <span>12</span>  DisplayDeviceName <span>$True</span>`
+</span></code></pre>
+<h2 id="learn-more">Learn more</h2>
+<ul>
+<li><a href="https://docs.microsoft.com/en-us/exchange/recipients-in-exchange-online/manage-room-mailboxes" data-linktype="absolute-path" target="az-portal">Create and manage Room mailboxes</a></li>
+<li><a href="https://docs.microsoft.com/en-us/powershell/module/" data-linktype="absolute-path" target="az-portal">PowerShell module browser</a></li>
+</ul>
+
+		
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

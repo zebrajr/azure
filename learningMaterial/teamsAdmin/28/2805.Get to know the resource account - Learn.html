@@ -1,0 +1,272 @@
+<html dir="ltr"><head><title>Get to know the resource account - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/m365-teams-rooms-deploy/resource-account">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/m365-teams-rooms-deploy/resource-account</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Get to know the resource account - Learn</h1>
+  <div dir="auto" id="reader-credits">AlexandraHrt</div>
+  <div dir="auto" id="reader-estimated-time">4-5 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="main" role="main" data-bi-name="content" lang="en-us" dir="ltr">
+		
+		
+		<ul>
+			<li>6 minutes</li>
+		</ul>
+			<p>The resource account is a Microsoft Exchange resource mailbox.</p>
+<p>When people schedule a room, it is this resource mailbox that they invite to their meeting. This mailbox will - on behalf of the room - accept or decline the meeting invite. This resource account is also the account that signs into the Microsoft Teams Rooms app. It must be enabled for Skype for Business and/or Microsoft Teams.</p>
+<p>Try to establish a naming convention, particularly when you move to Azure Active Directory (Azure AD) and the concept of dynamic groups. A resource account can automatically be added to Azure AD groups based on the naming convention. It's recommended that you assign the Teams Rooms Standard or Teams Rooms Premium license to all Teams Rooms resource accounts. The Teams Rooms Standard license is a cost-effective license that includes all the core components needed for Teams Rooms.</p>
+<p>The Teams Rooms Premium license adds additional features such as a Microsoft-managed service that will help with everything from planning your rooms to monitoring and troubleshooting them. This license also includes everything in the Standard license. You can find more information about licensing on the <a href="https://docs.microsoft.com/en-us/MicrosoftTeams/rooms/rooms-licensing" data-linktype="absolute-path" target="az-portal">Teams Meeting Room Licensing Update</a> page.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-rooms-deploy/media/standard-premium-license.png" alt="Standard versus Premium licenses" data-linktype="relative-path"></p>
+<div>
+<p> Important</p>
+<p>Every Teams Rooms compute module requires its own unique resource account. You cannot share a resource account across multiple rooms. If you do, only one of those accounts will be able to join a meeting and other rooms with the same account will not be able to join any meetings at the same time.</p>
+</div>
+<ul>
+<li>If you use Skype for Business on-premises, you'll need to assign an Enterprise Client Access license, and if you intend to use Enterprise Voice features of Skype for Business, you'll need to add a Plus Client Access license.</li>
+<li>It's recommended that you create the account well in advance of hardware installation. This is because you may need to open tickets within your IT organization to have them created. You also need to test and review to make sure the accounts were set up correctly.</li>
+<li>If your environment is configured to use modern authentication, Microsoft recommends that you enable it for the resource account. You can use Intune conditional access policies to help control and limit what the resource account has access to. For example, you can limit the account to only sign in on a given subnet.</li>
+</ul>
+<div>
+<p> Important</p>
+<p>All credentials are secured on the device through a physical TPM chip and are stored in the Windows Vault. Physical TPM chips are required on all compute modules used by Teams Rooms.</p>
+</div>
+<h2 id="what-is-the-workflow-for-creating-a-resource-account">What is the workflow for creating a resource account?</h2>
+<ol>
+<li><p>First identify what room you are going to use with Teams Rooms. Does a resource already exist? It's very possible that a resource account for this room was created previously for other purposes.</p>
+<ul>
+<li>If that is the case, you can then move forward with configuring auto accept.</li>
+<li>If there is not an existing resource, create a new Exchange resource and then configure auto accept within Exchange.</li>
+</ul>
+</li>
+<li><p>Once the auto-accept parameters for the Exchange mailbox have been configured, you will need to set the password to never expire. <em>Resource accounts must have their password set to not expire</em>. Otherwise, the account will not be able to sign in to Teams Rooms when it’s password has expired and no one will be able to join meetings in that room until someone physically changes the password on the Teams Rooms application.</p>
+</li>
+<li><p>Will you enable this account for Skype for Business?</p>
+<ul>
+<li>If yes, enable the account for Skype.</li>
+<li>If not, assign a Teams license.</li>
+</ul>
+</li>
+<li><p>If you have enabled the account for Skype, will you enable it for Teams as well as for Skype? If yes, assign a Teams license.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-rooms-deploy/media/resource-account-flow.png" alt="Resource account workflow" data-linktype="relative-path"></p>
+</li>
+</ol>
+<h2 id="learn-more">Learn more</h2>
+<ul>
+<li><a href="https://docs.microsoft.com/en-us/MicrosoftTeams/rooms/rooms-configure-accounts" data-linktype="absolute-path" target="az-portal">Configure accounts for Microsoft Teams Rooms</a></li>
+<li><a href="https://docs.microsoft.com/en-us/MicrosoftTeams/rooms/rooms-licensing" data-linktype="absolute-path" target="az-portal">Teams Room licensing update</a></li>
+</ul>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Create a resource account using Microsoft 365 admin center</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/m365-teams-rooms-deploy/create-resource-account-admin-center/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div><section>
+		<p>
+Need help? See our <a id="troubleshooting-guide" data-bi-name="troubleshooting" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-m365.m365-teams-rooms-deploy.resource-account&amp;documentId=1aeef444-a338-fc2f-6924-fd93fd880cc9&amp;versionIndependentDocumentId=8962c140-f160-c91f-96e3-f20739d43049&amp;contentPath=%2FMicrosoftDocs%2Flearn-m365-pr%2Fblob%2Flive%2Flearn-m365-pr%2Fm365%2Fm365-teams-rooms-deploy%2Fresource-account.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fm365-teams-rooms-deploy%2Fresource-account&amp;author=elizapo">troubleshooting guide</a> or provide specific feedback by <a id="module-unit-feedback-link" data-bi-name="feedback" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-m365.m365-teams-rooms-deploy.resource-account&amp;documentId=1aeef444-a338-fc2f-6924-fd93fd880cc9&amp;versionIndependentDocumentId=8962c140-f160-c91f-96e3-f20739d43049&amp;contentPath=%2FMicrosoftDocs%2Flearn-m365-pr%2Fblob%2Flive%2Flearn-m365-pr%2Fm365%2Fm365-teams-rooms-deploy%2Fresource-account.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fm365-teams-rooms-deploy%2Fresource-account&amp;author=elizapo#report-feedback">reporting an issue</a>.		</p>
+	</section></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>
