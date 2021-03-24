@@ -1,0 +1,8 @@
+1. B
+True. You can move users all at once if you're upgrading from either Skype for Business Online or Skype for Business on-premises.
+
+2. B
+Yes, this is the recommended path for Skype for Business Online customers when upgrading to Microsoft Teams.
+
+3. C
+Azure AD Connect is required to synchronize on-premises and online directories. It’s required for hybrid environments only.
