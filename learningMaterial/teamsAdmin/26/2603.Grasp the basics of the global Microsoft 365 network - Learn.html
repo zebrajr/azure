@@ -1,0 +1,268 @@
+<html dir="ltr"><head><title>Grasp the basics of the global Microsoft 365 network - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/m365-teams-rooms-optimize-network/global-microsoft-365-network">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/m365-teams-rooms-optimize-network/global-microsoft-365-network</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Grasp the basics of the global Microsoft 365 network - Learn</h1>
+  <div dir="auto" id="reader-credits">AlexandraHrt</div>
+  <div dir="auto" id="reader-estimated-time">6-8 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>6 minutes</li>
+		</ul>
+			<p>You may be surprised to read that Microsoft operates one of the largest networks on the planet. Microsoft has datacenters across the globe and we need to get them all connected at super high speed with super-low latency. To accomplish this, Microsoft has hundreds of thousands of route miles of privately owned fiber. Microsoft’s fiber optic network could stretch to the moon and back, three times over!</p>
+<p>The Microsoft network is optimized for media. Optimization is done in several ways, including using fiber connections between regions, prioritizing media traffic throughout the Microsoft global network, and placing edge sites (entry points to the Microsoft network) close to users to reduce latency. Unlike the general internet, or even corporate networks, the Microsoft network knows what media to expect and acts accordingly to prioritize things like Microsoft Teams media.</p>
+<p>In the image below, you can see how you generally connect to a website such as LinkedIn or MSN. You have full control and full responsibility for your network until you route to the internet.  The internet offers limited control. You can only choose your Internet Service Provider (ISP) and maybe a DNS provider. Even though the internet can be a little wild, it works pretty well. Your users can get to LinkedIn or MSN just fine.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-rooms-optimize-network/media/corporate-internet-data-flow.png" alt="Corporate network to internet data flow" data-linktype="relative-path"></p>
+<p>However, when you go to Microsoft 365 things change in a very meaningful way. The reliance on the internet shrinks, and the Microsoft network picks up much of the connection. You still start your connection on your corporate network and you're still going to Microsoft 365.</p>
+<p>But because the way the Microsoft network is designed, placing edge sites as close as possible to users around the world, the time you spend on the internet is greatly reduced. By reducing the amount of time your traffic spends on the open internet, you minimize things like jitter, latency, and packet loss, all of which can impact Microsoft Teams meeting quality. The Microsoft network has been designed to focus on Microsoft specific technologies and not the general-purpose internet.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-rooms-optimize-network/media/corporate-internet-microsoft-data-flow.png" alt="Corporate network to internet to Microsoft network data flow" data-linktype="relative-path"></p>
+<p>What if you could reduce the corporate network traffic and get your traffic onto that low jitter, low loss, low latency Microsoft network even faster?</p>
+<p>Historically, corporate networks were designed with one or two centralized datacenters that housed all the servers and firewalls for the corporation. This connectivity made perfect sense when the overwhelming majority of network traffic was destined for corporate servers housed in those datacenters. But with the emergence of Software as a Service (SaaS) and Platform as a Service (PaaS) offerings, a lot of traffic is now headed to the internet and not as much traffic is headed to corporate datacenters.</p>
+<p>When you add internet-bound, real-time media into the mix, does it still make sense to have corporate internet connectivity only located at centralized datacenters? Is there a way to optimize a corporate network to improve Microsoft 365 performance?</p>
+<p>Local Internet breakouts and local DNS resolution are key to optimizing corporate network connectivity to Microsoft 365.</p>
+<p>What does this mean? If you have DNS configured so all DNS requests get forwarded to the corporate headquarters datacenter, the Microsoft DNS servers will see the DNS requests as coming from the corporate headquarters and not the local branch. Thus, Microsoft DNS servers will return an accurate DNS response for the corporate headquarters, but not one for the local branch.</p>
+<p>The local branch needs local DNS so the Microsoft DNS servers can realize where they are located and give them the optimal DNS response.</p>
+<p>You also want to minimize your time transmitting data on the internet. The internet doesn't support Quality of Service. On the internet, there are things you can’t control:</p>
+<ul>
+<li>You can't control the routing.</li>
+<li>You can't control what other network traffic is there.</li>
+<li>You can’t control bandwidth.</li>
+<li>You can’t control much!</li>
+</ul>
+<p>The less time you spend on the internet connecting to Microsoft 365, the better your performance will be. Similarly, the more time you spend on the Microsoft network, the better your performance will be.</p>
+<p>The way to do that is to introduce local internet breakouts where it makes sense. Local internet breakouts, also known as internet egress points, are locations where your local network traffic exits to the internet. There's a lot to discuss and a lot to decide regarding where you should have local internet breakouts.</p>
+<ul>
+<li>Where should you place your local internet breakouts?</li>
+<li>How many people are going to be using that internet breakout?</li>
+<li>What kind of bandwidth is available at the breakout locations?</li>
+</ul>
+<p>You'll need to decide if every office or every location needs to have a local internet breakout. But if you're a regional, national, or global corporation, you should certainly consider local breakouts. Passing your traffic halfway across the country or across the globe just to get to the internet doesn't make sense when dealing with Microsoft 365 in general and Microsoft Teams media specifically.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-rooms-optimize-network/media/local-internet-breakout.png" alt="Local internet breakouts" data-linktype="relative-path"></p>
+<h2 id="what-is-a-peering-point">What is a peering point?</h2>
+<p>Microsoft has thousands of peering points across the globe. What is a peering point? Good question!</p>
+<p>A peering point is a network location where two or more networks meet. When your ISP passes your traffic from their network to the Microsoft network, that is a peering point. The more peering points Microsoft has, the faster your ISP can  pass the traffic over to Microsoft.</p>
+<p>If you have the choice, choose an ISP that peers directly with Microsoft. This helps assure that the traffic takes a direct, optimal path from the corporate network (or even from your home) to Microsoft. Microsoft is peered with over 2700 ISPs globally in 190 locations and 38 countries.</p>
+<p>Do you need to increase bandwidth when implementing Microsoft 365? To help you answer that question, there is a network planner in the Teams admin center. It gives you estimates of how much bandwidth is going to be needed at any given location and helps guide you to make sure you have enough bandwidth for Microsoft Teams.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-rooms-optimize-network/media/bandwidth-impact.png" alt="Bandwidth impact" data-linktype="relative-path"></p>
+<h2 id="learn-more">Learn more</h2>
+<ul>
+<li><a href="https://www.peeringdb.com/asn/8075" data-linktype="external" target="az-portal">Microsoft peering locations</a></li>
+<li><a href="https://docs.microsoft.com/en-us/microsoftteams/office-365-urls-ip-address-ranges" data-linktype="absolute-path" target="az-portal">Microsoft 365 and Office 365 URLs and IP address ranges</a></li>
+<li><a href="https://docs.microsoft.com/en-us/microsoft-365/enterprise/microsoft-365-network-connectivity-principles?view=o365-worldwide%3Fazure-portal%3Dtrue" data-linktype="absolute-path" target="az-portal">Microsoft 365 network connectivity principles</a></li>
+<li><a href="https://docs.microsoft.com/en-us/microsoft-365/solutions/networking-design-principles?view=o365-worldwide%3Fazure-portal%3Dtrue" data-linktype="absolute-path" target="az-portal">Networking up (to the cloud) — One architect’s viewpoint</a></li>
+</ul>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Learn how media flows in Microsoft Teams</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/m365-teams-rooms-optimize-network/media-flow/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>
