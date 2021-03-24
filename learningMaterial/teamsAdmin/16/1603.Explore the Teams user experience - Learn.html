@@ -1,0 +1,244 @@
+<html dir="ltr"><head><title>Explore the Teams user experience - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/m365-teams-collab-prepare-deployment/explore-user-experience">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/m365-teams-collab-prepare-deployment/explore-user-experience</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Explore the Teams user experience - Learn</h1>
+  <div dir="auto" id="reader-credits">AlexandraHrt</div>
+  <div dir="auto" id="reader-estimated-time">3-3 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>4 minutes</li>
+		</ul>
+			<p>Microsoft Teams lets you quickly pull together a team with people inside and outside your organization, chat with others to drive fast and inclusive conversations, securely share and coauthor documents, and iterate on projects. Let’s look at some of the key elements of the Teams user experience.</p>
+<h2 id="what-are-teams">What are teams?</h2>
+<p>A <em>team</em> is a collection of people, content, and tools surrounding different projects and outcomes within an organization. Teams can be created to be private to only invited users. Teams can also be created to be public and open and anyone within the organization can join (up to 5,000 members). You can then designate one or more of these members to be team owners with administrative privileges.</p>
+<p>Teams can be dynamic for project-based work (for example, launching a product), as well as ongoing, to reflect the internal structure of your organization (for example, departments and office locations). Conversations, files, and notes across team channels are only visible to members of the team.</p>
+<h2 id="what-are-channels">What are channels?</h2>
+<p><em>Channels</em> are dedicated sections within a team that keep conversations organized by specific topics, projects, or disciplines. Files that you share in a channel (on the <strong>Files</strong> tab) are stored in SharePoint.</p>
+<p>Team channels are places where everyone on the team can openly have conversations. Channels are most valuable when extended with apps that include tabs, connectors, and bots that increase their value to the members of the team, as described in the module <strong>Manage apps, bots, and connectors.</strong></p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-collab-prepare-deployment/media/user-exp-channels.png" alt="Example of a team created to align with organizational structure" data-linktype="relative-path"></p>
+<h2 id="what-is-chat">What is chat?</h2>
+<p>While channel conversations are public, <em>chats</em> are just between you and someone else (or a group of people). Think of them like instant messages in other messaging apps. Private chats are only visible to the chat participants.</p>
+<p>You start one-on-one and group chats the same way: by selecting <strong>New chat</strong> at the top of Teams. Once in a chat, you’ll be able to send messages that include files, links, emojis, stickers, and gifs. There are many formatting options for chat messages, including options for highlighting, font size, lists, and more.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-collab-prepare-deployment/media/user-exp-chat.png" alt="Chat window" data-linktype="relative-path"></p>
+<p>Teams saves your whole chat history, all the way back to the first message you sent—this is known as <em>persistent</em> chat. If someone leaves your organization, that person’s chat responses will remain in your chat history.</p>
+<h2 id="learn-more">Learn more</h2>
+<p>When you're done with a link, use the <strong>Back</strong> arrow in your browser to come back to this page.</p>
+<ul>
+<li><a href="https://docs.microsoft.com/en-us/microsoftteams/teams-overview" data-linktype="absolute-path">Welcome to Microsoft Teams</a></li>
+</ul>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Survey the Teams architecture</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/m365-teams-collab-prepare-deployment/survey-architecture/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

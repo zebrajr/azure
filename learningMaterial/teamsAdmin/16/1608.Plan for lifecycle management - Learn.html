@@ -1,0 +1,274 @@
+<html dir="ltr"><head><title>Plan for lifecycle management - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/m365-teams-collab-prepare-deployment/plan-lifecycle-management">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/m365-teams-collab-prepare-deployment/plan-lifecycle-management</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Plan for lifecycle management - Learn</h1>
+  <div dir="auto" id="reader-credits">AlexandraHrt</div>
+  <div dir="auto" id="reader-estimated-time">4-5 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>2 minutes</li>
+		</ul>
+			<p>Planning for lifecycle management is essential if your organization is to get the most benefit out of Microsoft Teams. Like most projects, creation and management of teams passes through beginning, middle, and end stages. However, Teams has such a variety of uses that it may not always be obvious which stage a project is in. Having a plan for lifecycle management will help you track your organization’s projects as they go through these stages.</p>
+<h2 id="teams-lifecycle">Teams lifecycle</h2>
+<p>In Teams, each individual team has its own lifecycle with the following sequence:</p>
+<ol>
+<li><p>Initiate</p>
+</li>
+<li><p>Active</p>
+</li>
+<li><p>Sunset</p>
+</li>
+</ol>
+<p>Broadly speaking, the lifecycle of a Teams team encompasses both configuration—<em>static</em> settings and policies—and management, which is dynamic per team during the lifecycle.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-collab-prepare-deployment/media/lifecycle.png" alt="Teams lifecycle sequence" data-linktype="relative-path"></p>
+<p>The Teams lifecycle is configured by the team owner. Lifecycle configuration differs from Teams configuration because the latter is concerned with global settings and user-specific configurations that rarely change once they’ve been defined.</p>
+<p>Proactive administrator activities include initiating creation of teams (including owners, members, channels and so on), and sunsetting of teams as required by the business. Reactive administrator activities include changing team settings on behalf of the owner and adding team owners for orphaned teams.</p>
+<h2 id="teams-lifecycle-stages">Teams lifecycle stages</h2>
+<p>Typically, the stages of each team’s lifecycle include a beginning, middle, and end, when the team has completed its purpose and reached the end of its useful life.</p>
+<p>The <strong>beginning stage</strong> involves defining the team’s goal and membership; creating the team and its channels; inviting team members; and setting permissions for individual members. Key decision points to consider in the beginning stage include:</p>
+<ul>
+<li>What is the team’s purpose?</li>
+<li>Who belongs on the team?</li>
+<li>Will the team be private or public?</li>
+<li>Can new members add themselves or do team owners add them?</li>
+<li>Who will have permissions to create channels or add tabs, bots, and connectors?</li>
+<li>What initial channels will be added to the team?</li>
+</ul>
+<p>In the <strong>middle stage</strong>, collaboration takes place according to an established workflow, with team members interacting toward common goals within team channels. Decision points you should consider in this stage include:</p>
+<ul>
+<li>Who will monitor usage to identify problems?</li>
+<li>What metrics will be used to determine team health?</li>
+<li>Identifying any teams that have reached the end of their useful life.</li>
+<li>Identifying unhealthy teams that still serve a purpose but need revitalizing.</li>
+</ul>
+<p>The <strong>end stage</strong> occurs when a team has concluded its useful lifecycle, normally for a finite project. In this stage, you formally acknowledge the closing of the team and delete teams you no longer need; note that this is a <em>soft delete</em> that IT can reverse for up to 21 days (30 days for Microsoft 365 Groups). Deleting teams doesn’t affect any chats or content that were retained in accordance with compliance policies. Important decision points related to the end stage include:</p>
+<ul>
+<li>Defining what the end of a team’s life looks like.</li>
+<li>Deciding whether to keep a team’s stored content available, and for how long.</li>
+<li>Documenting best practices and lessons learned.</li>
+<li>Archiving data, if necessary.</li>
+</ul>
+<h2 id="automation-throughout-the-lifecycle">Automation throughout the lifecycle</h2>
+<p>This diagram visualizes a team lifecycle using PowerShell and Graph API automation tools.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-collab-prepare-deployment/media/lifecycle-automation-tools.png" alt="Lifecycle stages using PowerShell and Graph API automation tools" data-linktype="relative-path"></p>
+<h2 id="learn-more">Learn more</h2>
+<p>When you're done with a link, use the <strong>Back</strong> arrow in your browser to come back to this page.</p>
+<ul>
+<li><a href="https://docs.microsoft.com/en-us/microsoftteams/plan-teams-lifecycle" data-linktype="absolute-path">Plan for lifecycle management in Teams</a></li>
+</ul>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Review Teams networking requirements</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/m365-teams-collab-prepare-deployment/review-networking-requirements/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>
