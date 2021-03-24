@@ -1,0 +1,253 @@
+<html dir="ltr"><head><title>Configure and manage apps - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/m365-teams-collab-apps-bots-connectors/configure-manage-apps">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/m365-teams-collab-apps-bots-connectors/configure-manage-apps</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Configure and manage apps - Learn</h1>
+  <div dir="auto" id="reader-credits">AlexandraHrt</div>
+  <div dir="auto" id="reader-estimated-time">4-4 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="main" role="main" data-bi-name="content" lang="en-us" dir="ltr">
+		
+		
+		<ul>
+			<li>4 minutes</li>
+		</ul>
+			<p>In <strong>Teams apps</strong> in the Microsoft Teams admin center, you can set policies to manage apps for your organization. For example, you can set policies to customize Teams by pinning the apps that are most important to your users.</p>
+<h2 id="configure-app-policies">Configure app policies</h2>
+<p>As an administrator, you can use app setup policies in the Teams admin center to customize the app experience for your users. You choose the apps that you want to pin to the app bar in the Teams clients and the order in which they appear, on web, desktop, and mobile clients. App setup policies let you showcase apps that users in your organization need, including those built by third parties or by developers in your organization. You can also use app setup policies to manage how built-in features appear.</p>
+<p>Apps are pinned to the app bar. This is the bar on the side of the Teams desktop client and at the bottom of the Teams mobile clients (iOS and Android).</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-collab-apps-bots-connectors/media/app-policies.png" alt="App policies" data-linktype="relative-path"></p>
+<p>Here are some examples of how you can use app policies:</p>
+<ul>
+<li>Drive awareness and adoption of core apps. For example, pin a custom recruiting and talent management app for users on your HR team.</li>
+<li>Selectively pin core Teams features, such as Chat, Teams, and Calling. Doing so can help ensure users are engaged in specific activities within Teams.</li>
+</ul>
+<h2 id="customize-app-availability-and-prominence">Customize app availability and prominence</h2>
+<p>You manage app setup policies in the Microsoft Teams admin center. You can use the global (org-wide default) policy or create custom policies and assign them to users. Users in your organization will automatically get the global policy unless you create and assign a custom policy.</p>
+<p>You can edit the settings in the global policy to include the apps that you want. If you want to customize Teams for different groups of users in your organization, you can create and assign one or more custom policies. If a user is assigned a custom policy, that policy applies to the user. If a user isn't assigned a custom policy, the global policy applies. You can also assign a custom setup policy to multiple users that you’ve already identified, such as all users in a security group.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-collab-apps-bots-connectors/media/app-setup-policies.png" alt="App setup policies" data-linktype="relative-path"></p>
+<h2 id="customize-tabs">Customize tabs</h2>
+<p>Tabs allow team members to access services and content in a dedicated space within a channel or in a chat. This lets the team work directly with, and have conversations about, tools and data, all within the context of the channel or chat. Owners and team members can add tabs to a channel, private chat, and group chat to help integrate their cloud services. Tabs can be added to help users easily access and manage the data they need or interact with the most.</p>
+<p>In addition to the built-in tabs, you can design and develop your own tabs to integrate into Teams or share with the rest of the community. You can control access to your custom tabs by configuring the appropriate Microsoft 365 Groups.</p>
+<p>The Microsoft Developer Network provides sample tabs developed by Microsoft that you can download, and detailed instructions for designing and building your own tabs.</p>
+<h2 id="learn-more">Learn more</h2>
+<p>When you're done with a link, use the <strong>Back</strong> arrow in your browser to come back to this page.</p>
+<ul>
+<li><a href="https://docs.microsoft.com/en-us/microsoftteams/admin-settings" data-linktype="absolute-path">Admin settings for apps in Microsoft Teams</a></li>
+<li><a href="https://docs.microsoft.com/en-us/microsoftteams/built-in-custom-tabs" data-linktype="absolute-path">Use built-in and custom tabs in Microsoft Teams</a></li>
+</ul>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Configure and manage bots for private chats and channels</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/m365-teams-collab-apps-bots-connectors/configure-manage-bots/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div><section>
+		<p>
+Need help? See our <a id="troubleshooting-guide" data-bi-name="troubleshooting" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-m365.m365-teams-collab-apps-bots-connectors.configure-manage-apps&amp;documentId=17b1ab5c-cf33-7803-ecc1-1c56f6f3a6c5&amp;versionIndependentDocumentId=b9cbf5bf-bbe9-5466-e7c1-799e213d6a66&amp;contentPath=%2FMicrosoftDocs%2Flearn-m365-pr%2Fblob%2Flive%2Flearn-m365-pr%2Fm365%2Fm365-teams-collab-apps-bots-connectors%2Fconfigure-manage-apps.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fm365-teams-collab-apps-bots-connectors%2Fconfigure-manage-apps&amp;author=v-aleha">troubleshooting guide</a> or provide specific feedback by <a id="module-unit-feedback-link" data-bi-name="feedback" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-m365.m365-teams-collab-apps-bots-connectors.configure-manage-apps&amp;documentId=17b1ab5c-cf33-7803-ecc1-1c56f6f3a6c5&amp;versionIndependentDocumentId=b9cbf5bf-bbe9-5466-e7c1-799e213d6a66&amp;contentPath=%2FMicrosoftDocs%2Flearn-m365-pr%2Fblob%2Flive%2Flearn-m365-pr%2Fm365%2Fm365-teams-collab-apps-bots-connectors%2Fconfigure-manage-apps.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fm365-teams-collab-apps-bots-connectors%2Fconfigure-manage-apps&amp;author=v-aleha#report-feedback">reporting an issue</a>.		</p>
+	</section></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>
