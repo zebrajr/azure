@@ -1,0 +1,258 @@
+<html dir="ltr"><head><title>Manage Teams Rooms with Teams admin center - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/m365-teams-rooms-manage/admin-center">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/m365-teams-rooms-manage/admin-center</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Manage Teams Rooms with Teams admin center - Learn</h1>
+  <div dir="auto" id="reader-credits">AlexandraHrt</div>
+  <div dir="auto" id="reader-estimated-time">3-4 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="main" role="main" data-bi-name="content" lang="en-us" dir="ltr">
+		
+		
+		<ul>
+			<li>5 minutes</li>
+		</ul>
+			<p>Here are some of the tasks you can do in the Teams admin center:</p>
+<ul>
+<li>See an inventory of all your rooms, their status, and performance statistics.</li>
+<li>Remotely restart Teams Rooms.</li>
+<li>Collect logs.</li>
+</ul>
+<p>You can see below that all the rooms are listed in the left-hand column. You can also quickly see that there's one unhealthy room and there's one that’s offline.  You can also see a healthy meetings metric. 99% of the meetings have not had any quality issues.</p>
+<p>From this overview page, you can also select several Team Rooms and change their settings. This is an easier approach than having to manually create a SkypeSettings.xml file and copying it to each one.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-rooms-manage/media/teams-admin-center-overview-lightbox.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"> <img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-rooms-manage/media/teams-admin-center-overview.png" alt="Teams admin center overview page" data-linktype="relative-path"> </a></p>
+<p>You can click directly on a device to get more information.</p>
+<p>After you click on a Teams Room, you’ll see call metrics and the status of connected peripherals scoped to that room. You can download device logs via Teams admin center.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-rooms-manage/media/call-metrics-peripheral-status.png" alt="Call metrics and peripherals status for a room" data-linktype="relative-path"></p>
+<p>You can also see actions that have been taken via Teams admin center against your Teams Rooms. In this example, Teams Rooms was remotely restarted and logs were downloaded.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-rooms-manage/media/teams-admin-actions-history.png" alt="See Teams admin center actions history" data-linktype="relative-path"></p>
+<p>You can see every call and every meeting that has happened in that room. You can also see the quality of the call and troubleshoot it from here. To troubleshoot the call in the image below, you would click on the value in the Start time (UTC) column of the row marked <strong>Poor</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-rooms-manage/media/troubleshoot-call-quality-1-lightbox.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"> <img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-rooms-manage/media/troubleshoot-call-quality-1.png" alt="Click on the value in the Start time column of the row marked Poor" data-linktype="relative-path"> </a></p>
+<p>After you click on the date and time, you get summary information on the call as well as a list of participants. You can see which participant had poor audio quality. Clicking on the Session start time column for that call lets you see diagnostic info for that participant.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-rooms-manage/media/troubleshoot-call-quality-2-lightbox.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"> <img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-rooms-manage/media/troubleshoot-call-quality-2.png" alt="You can see summary information on the call and a list of participants" data-linktype="relative-path"> </a></p>
+<p>You can see that the poor call was caused by the network.  Below the message are a few options to see more data on this call, such as Device and System. In this case, you should click on <strong>Network</strong> as that is what the error message is referencing.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-rooms-manage/media/troubleshoot-call-quality-3-lightbox.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"> <img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-rooms-manage/media/troubleshoot-call-quality-3.png" alt="Click on Network as the poor call quality cause" data-linktype="relative-path"> </a></p>
+<p>After clicking on <strong>Network,</strong> you can see that the average round-trip time was 784 milliseconds and the maximum round-trip time was almost two seconds.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-rooms-manage/media/troubleshoot-call-quality-4-lightbox.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"> <img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-rooms-manage/media/troubleshoot-call-quality-4.png" alt="View the round-trip time" data-linktype="relative-path"> </a></p>
+<p>Almost 55 percent of all the packets were lost. This is well below Microsoft’s recommended metrics for media. How can you determine what the cause was for this poor network performance?</p>
+<p>Click on the <strong>System</strong> icon to learn more about what hardware the participant was using. In the image below, you can see that it was an Android phone. You can now presume that the participant was either traveling and driving through tunnels or a parking garage, took the call and went into an elevator, or was just in a poor coverage area. It seems likely that the issue was not with Teams Rooms or with your network, but with the participant and their device.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-rooms-manage/media/troubleshoot-call-quality-5-lightbox.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"> <img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-rooms-manage/media/troubleshoot-call-quality-5.png" alt="See what hardware the participant was using from the System icon" data-linktype="relative-path"> </a></p>
+<h2 id="learn-more">Learn more</h2>
+<ul>
+<li><a href="https://docs.microsoft.com/en-us/skypeforbusiness/optimizing-your-network/media-quality-and-network-connectivity-performance#network-performance-requirements-from-a-skype-for-business-client-to-microsoft-network-edge" data-linktype="absolute-path">Network performance requirements from a Skype for Business client to Microsoft network Edge</a></li>
+</ul>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Explore basic tools for managing Teams Rooms</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/m365-teams-rooms-manage/basic-tools/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div><section>
+		<p>
+Need help? See our <a id="troubleshooting-guide" data-bi-name="troubleshooting" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-m365.m365-teams-rooms-manage.admin-center&amp;documentId=3e86e6a3-35a2-ccf7-f754-1f8c8e49ae72&amp;versionIndependentDocumentId=3c353fdc-9ca8-d281-4213-bbde7f2623b2&amp;contentPath=%2FMicrosoftDocs%2Flearn-m365-pr%2Fblob%2Flive%2Flearn-m365-pr%2Fm365%2Fm365-teams-rooms-manage%2Fadmin-center.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fm365-teams-rooms-manage%2Fadmin-center&amp;author=elizapo">troubleshooting guide</a> or provide specific feedback by <a id="module-unit-feedback-link" data-bi-name="feedback" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-m365.m365-teams-rooms-manage.admin-center&amp;documentId=3e86e6a3-35a2-ccf7-f754-1f8c8e49ae72&amp;versionIndependentDocumentId=3c353fdc-9ca8-d281-4213-bbde7f2623b2&amp;contentPath=%2FMicrosoftDocs%2Flearn-m365-pr%2Fblob%2Flive%2Flearn-m365-pr%2Fm365%2Fm365-teams-rooms-manage%2Fadmin-center.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fm365-teams-rooms-manage%2Fadmin-center&amp;author=elizapo#report-feedback">reporting an issue</a>.		</p>
+	</section></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

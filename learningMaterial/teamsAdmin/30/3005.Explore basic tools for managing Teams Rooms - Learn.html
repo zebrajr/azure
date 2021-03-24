@@ -1,0 +1,250 @@
+<html dir="ltr"><head><title>Explore basic tools for managing Teams Rooms - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/m365-teams-rooms-manage/basic-tools">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/m365-teams-rooms-manage/basic-tools</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Explore basic tools for managing Teams Rooms - Learn</h1>
+  <div dir="auto" id="reader-credits">AlexandraHrt</div>
+  <div dir="auto" id="reader-estimated-time">4-4 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>5 minutes</li>
+		</ul>
+			<p><em>PowerShell</em> and the xml file <em>skypesettings.xml</em> are two basic tools for managing Teams Rooms.</p>
+<h2 id="use-powershell">Use PowerShell</h2>
+<p>PowerShell is a command line interface which lets you manage not just Windows, but many other Microsoft services as well. You can use Windows PowerShell to create scripts to easily automate many tasks, such as creating Teams Rooms resource accounts.</p>
+<p>Within Teams Rooms, PowerShell features are limited as the Teams Rooms app does not provide a PowerShell interface. You can, however, use PowerShell to display attached devices,  the app status, and to gather detailed logs to help troubleshoot Teams Rooms.</p>
+<p>If you want to use PowerShell with Teams Rooms, you'll have to enable remote PowerShell. Open PowerShell as an Administrator on Teams Rooms and run the following:</p>
+<pre tabindex="0"><code data-author-content="Enable-PSRemoting -SkipNetworkProfileCheck -force
+"><span><span>Enable-PSRemoting</span><span> -SkipNetworkProfileCheck</span><span> -force</span>
+</span></code></pre>
+<p>If your Teams Rooms is not joined to a domain, you’ll also need to run this command on your PC to configure remote PowerShell support:</p>
+<pre tabindex="0"><code data-author-content="Set-item wsman:localhost\client\trustedhosts -value *
+"><span><span>Set-item</span> wsman:localhost\client\trustedhosts<span> -value</span> *
+</span></code></pre>
+<p>The PowerShell examples shown here are from the <a href="https://docs.microsoft.com/en-us/MicrosoftTeams/rooms" data-linktype="absolute-path" target="az-portal">Microsoft Teams Rooms overview page</a>. As such, only one will be shown to give you the idea of what it looks like.</p>
+<p>The output below was generated using the following PowerShell, where you would customize the <code>Device FQDN</code> value at the very end:</p>
+<pre tabindex="0"><code data-author-content="invoke-command { $package = get-appxpackage -User Skype -Name Microsoft.SkypeRoomSystem; if ($package -eq $null) {Write-host &quot;SkypeRoomSystems not installed.&quot;} else {write-host &quot;SkypeRoomSystem Version : &quot; $package.Version}; $process = Get-Process -Name &quot;Microsoft.SkypeRoomSystem&quot; -ErrorAction SilentlyContinue; if ($process -eq $null) {write-host &quot;App not running.&quot;} else {$process | format-list StartTime,Responding}}  -ComputerName <Device FQDN>
+"><span><span>invoke-command</span> { <span>$package</span> = <span>get-appxpackage</span><span> -User</span> Skype<span> -Name</span> Microsoft.SkypeRoomSystem; <span>if</span> (<span>$package</span><span> -eq</span> <span>$null</span>) {<span>Write-host</span> <span>"SkypeRoomSystems not installed."</span>} <span>else</span> {<span>write-host</span> <span>"SkypeRoomSystem Version : "</span> <span>$package</span>.Version}; <span>$process</span> = <span>Get-Process</span><span> -Name</span> <span>"Microsoft.SkypeRoomSystem"</span><span> -ErrorAction</span> SilentlyContinue; <span>if</span> (<span>$process</span><span> -eq</span> <span>$null</span>) {<span>write-host</span> <span>"App not running."</span>} <span>else</span> {<span>$process</span> | <span>format-list</span> StartTime,Responding}} <span> -ComputerName</span> &lt;Device FQDN&gt;
+</span></code></pre>
+<p>Teams Rooms reboots at about 2:30 every morning. We can see in this example that <strong>StartTime</strong> on this Teams Rooms was at 2:33:57 AM. We can also see that the installed version of the Teams Rooms app is 4.3.33.0. Internally, the Teams Rooms app is called <strong>SkypeRoomSystem</strong>.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-rooms-manage/media/skype-room-system.png" alt="The Teams Room app is called the SkypeRoomSystem" data-linktype="relative-path"></p>
+<h2 id="use-skypesettingsxml">Use SkypeSettings.xml</h2>
+<p>To change the actual configuration of the Teams Rooms app, you can use the <em>SkypeSettings.xml</em> file. This xml file can set all the values that you see via the console as well as some that are only available via this file.</p>
+<p>Below is an example of a SkypeSettings.xml file. The example shows only a subset of the supported values. Near the bottom of the sample, you will see a <code>Theming</code> section. This lets you set a custom background on the front-of-room displays. Microsoft provides a template to help you with creating your own custom graphic.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-rooms-manage/media/skype-setting-xml-output.png" alt="Skype settings output" data-linktype="relative-path"></p>
+<p>Once you have created your XML file, it must be copied to a specific directory:</p>
+<p><strong>C:\Users\Skype\AppData\Local\Packages\Microsoft.SkypeRoomSystem_8wekyb3d8bbwe\LocalState</strong></p>
+<p>By default, you cannot access that path. Using File Explorer to navigate to that path, Windows will ask you if you want to grant yourself rights. Choose <strong>Yes</strong> to accept the assignment of rights.</p>
+<p>For making changes on a single Teams Rooms, you can manually copy the file to that directory. If you need to make bulk changes, you could use Group Policy or a PowerShell script to copy the xml file to many Teams Rooms. Once it's been copied to the machine, the file is not read until the next reboot. Upon reboot, the xml file gets read, the settings are applied, and the file is deleted.</p>
+<h2 id="learn-more">Learn more</h2>
+<ul>
+<li><a href="https://docs.microsoft.com/en-us/MicrosoftTeams/room-systems/xml-config-file#create-an-xml-configuration-file" data-linktype="absolute-path">SkypeSettings.xml on Docs</a></li>
+<li><a href="https://docs.microsoft.com/en-us/MicrosoftTeams/downloads/ThemingTemplateMicrosoftTeamsRooms_v2.1.psd" data-linktype="absolute-path">Downloadable template to create your own background</a></li>
+</ul>
+
+		
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>
