@@ -1,0 +1,313 @@
+<html dir="ltr"><head><title>SharePoint Framework overview & extensibility options - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/intro-sharepoint-framework/2-overview-options">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/intro-sharepoint-framework/2-overview-options</span>
+  </a>
+  <h1 dir="auto" id="reader-title">SharePoint Framework overview &amp; extensibility options - Learn</h1>
+  <div dir="auto" id="reader-credits">andrewconnell</div>
+  <div dir="auto" id="reader-estimated-time">9-12 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>15 minutes</li>
+		</ul>
+			<p>Microsoft introduced the SharePoint Framework as the recommended way to customize and extend SharePoint Online in 2017. On-premises SharePoint customers that have deployed SharePoint Server 2016 and SharePoint Server 2019 can also use the SharePoint Framework to customize and extend their client-side solutions as well.</p>
+<p>In this unit, you'll learn what the SharePoint Framework is and the extensibility options that enable developers to customize SharePoint environments.</p>
+
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365-developer/intro-sharepoint-framework/media/02-extensibility-principles.png" alt="Screenshot of the SharePoint Framework extensibility principles" data-linktype="relative-path"></p>
+<p>Over the past several years, with the evolution of Office 365, development of SharePoint solutions has a new set of challenges: while on one hand IT and Tenant administrators require a new set of tools to control how data get accessed and consumed in their tenancies, developers want to programmatically control the whole lifecycle, experience, and data access capabilities of a Site.</p>
+<p>Unfortunately, developers today find themselves constraint around building app parts because of iFrames, a reduced set of APIs, and no integration with cross Office 365 workloads. This in turn limits their ability to develop powerful portals that extend SharePoint.</p>
+<p>The client-side development framework will deliver capabilities that will help both first party and third-party developers build powerful, rich applications and provide an enjoyable web experience in Office 365 for end users that are both intuitive and simple to consume.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365-developer/intro-sharepoint-framework/media/02-sharepoint-framework.png" alt="Screenshot overview of the SharePoint Framework" data-linktype="relative-path"></p>
+
+<p>SharePoint Framework is modern client-side development. All the customizations you create and build are deployed and run in the browser. There's no server-side component in a SharePoint Framework component.</p>
+<p>You can create server-side components, but you're going to host that yourself in a location other than SharePoint.</p>
+<p>SharePoint Framework components are lightweight and run in both web and mobile experiences because they're client-side solutions. We're relying on JavaScript, HTML, CSS, and images. This means they run the exact same way in the browser as it does in the mobile experiences.</p>
+<p>The SharePoint Framework is backwards compatible meaning that it works not just the modern pages, but also on classic and publishing pages as well.</p>
+<p>The development tools and platform used in the SharePoint Framework is implemented with open-source tools and common JavaScript web frameworks like React.</p>
+<h2 id="supported-custom-component-types">Supported custom component types</h2>
+<p>The SharePoint Framework enables developers to create different types of custom components that are used to customize and extend SharePoint sites. The custom component types are:</p>
+<ul>
+<li>Client-side web parts</li>
+<li>Extensions</li>
+<li>Libraries</li>
+</ul>
+<h3 id="client-side-web-parts">Client-side web parts</h3>
+<p>Client-side web parts, built using the SharePoint Framework, are the cornerstone of the vision for innovating, extending, and customizing the SharePoint modern experience.</p>
+<p>They're configurable, reusable, and purpose-built components that page designers and site owners can use to create unique experiences for their users.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365-developer/intro-sharepoint-framework/media/02-client-side-web-parts.png" alt="Screenshot of client-side web parts" data-linktype="relative-path"></p>
+<p>Client-side web parts are build using the SharePoint Framework that provides extra capabilities, including access to Microsoft Graph for incorporating personal and organizational information into page experiences.</p>
+<p>Web parts are also context aware, in the sense that they have access to contextual information about the current page. For instance, at runtime, the web part can get information about the current user and the current page and site the web part is currently running in.</p>
+<p>Client-side web parts are flexible as well! Developers can use them to create single page applications (SPAs) as single page app pages, the basis for Microsoft Teams tabs and personal apps, and even as the host for Office Add-ins.</p>
+<p>Experienced SharePoint developers who are familiar with server-side web parts developed and deployed using SharePoint features and solutions will find client-side web parts to be familiar. They're just web parts!</p>
+<p>The only difference from a server-side web part is client-side web parts are rendered in the browser, not on the server.</p>
+<p>Client-side web parts are build for the modern, JavaScript-driven web just as the modern SharePoint experience.</p>
+<div>
+<p> Note</p>
+<p>Client-side web parts are supported in all environments supported by the SharePoint Framework, including SharePoint Server 2016, SharePoint Server 2019 and SharePoint Online.</p>
+</div>
+<h4 id="adding-spfx-web-parts-to-pages">Adding SPFx web parts to pages</h4>
+<p>Adding a SPFx client-side web part to a page works in very much the same way as adding server-side web parts. However, there are a few things that make working with client-side web parts a bit easier.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365-developer/intro-sharepoint-framework/media/02-add-web-parts-to-pages.png" alt="Screenshot of the edit web part experience" data-linktype="relative-path"></p>
+<p>Unlike classic pages, when a page is in edit mode, any web parts on the page are also in edit mode. Compared to classic pages where the web part has a different edit mode from the page's edit mode.</p>
+<p>To add a web part to a modern page, first put the page in edit mode and then select the <strong>+</strong> icon to open the toolbox. Select a web part from the toolbox to add it to the page.</p>
+<p>You can edit the web part by opening the property pane with the edit icon to the left of the web part. By default, any changes made in the property page are immediately reflected in the web part.</p>
+<h3 id="sharepoint-framework-extensions">SharePoint Framework extensions</h3>
+<p>SharePoint Framework extensions enable developers to customize and extend the SharePoint user experience. You can use them to customize notification areas, list toolbars, list menus, and list data views.</p>
+<p>Microsoft introduced extensions in the SharePoint Framework to allow customers to implement some of the same customization options available in classic sites. Extensions will only work in the modern SharePoint experience and are intended to serve as the modern option for the following options in the classic experience:</p>
+<ul>
+<li>Delegate controls and <code>ScriptLink</code></li>
+<li>Client-side rendering (CSR) and <code>JSLink</code></li>
+<li>Custom actions</li>
+</ul>
+<p>Because they only run in the modern experience, you can only use SharePoint Framework extensions in SharePoint Server 2019 and SharePoint Online.</p>
+<div>
+<p> Note</p>
+<p>Extensions are supported in all environments supported by the SharePoint Framework that also support the modern page experience, including SharePoint Server 2019 and SharePoint Online.</p>
+</div>
+<h4 id="application-customizers">Application customizers</h4>
+<p>Let's look at the first type of extension: the application customizer. This extension is intended to be the modern replacement to the legacy delegate controls and <code>ScriptLink</code> property.</p>
+<p>Application customizers enable you to do two things:</p>
+<ul>
+<li>Add script to all pages in a site collection</li>
+<li>Set the HTML on two well known <code>&lt;div&gt;</code> elements on the page that serve as headers and footers</li>
+</ul>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365-developer/intro-sharepoint-framework/media/02-application-customizers-preview.png" alt="Screenshot of application customizer placeholders" data-linktype="relative-path"></p>
+<h4 id="field-customizer">Field customizer</h4>
+<p>The next type of extension is the field customizer. This extension is intended to be the modern replacement to the legacy client-side rendering (CSR) framework and <strong>JSLink</strong>.</p>
+<p>Field customizers enable you to define the HTML within a cell in the list display form. In the following screenshot, notice the <strong>Percent Complete</strong> column is rendered with custom colored bars instead of plain text:</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365-developer/intro-sharepoint-framework/media/02-field-customizer-preview.png" alt="Screenshot of the field customizer" data-linktype="relative-path"></p>
+<h4 id="command-sets">Command sets</h4>
+<p>The last type of extension is the command set. This extension is intended to be the modern replacement to the legacy custom actions.</p>
+<p>Command sets enable you to add buttons to list and library toolbars or to the context menu of items within a list.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365-developer/intro-sharepoint-framework/media/02-command-sets-preview.png" alt="Screenshot of the command set" data-linktype="relative-path"></p>
+<h3 id="library-components">Library components</h3>
+<p>The other two types of components previously covered, web parts and extensions, enable developers to extend and customize the SharePoint user experience. This third option, the library component, differs from those other types in that it's used to share code across multiple components projects.</p>
+<p>The library component is developer tool that enables developers to create a single package of reusable code that's independency versioned &amp; deployed from your other components. These reusable code packages are deployed a single time to SharePoint Online tenant app catalog ad served automatically for SharePoint Framework components.</p>
+<p>Library components give developers an alternative option to create shared code, which can be then used and referenced cross all the components in the tenant.</p>
+<div>
+<p> Note</p>
+<p>Library components are only supported in SharePoint Online.</p>
+</div>
+
+<p>The SharePoint Framework was introduced in 2017 to SharePoint Online. Microsoft is continuously updating and improving the SharePoint Framework in SharePoint Online. Developers can build custom components that use the most recent version of the SharePoint Framework.</p>
+<p>SharePoint Online contains not only the latest version of the SharePoint Framework, but it will also load any previously published version of the SharePoint Framework if a component on the page uses an older version. This capability ensures that developers aren't required to always update previously deployed components every time a new version of the SharePoint Framework is released.</p>
+<h3 id="sharepoint-framework-and-sharepoint-on-premises-deployments">SharePoint Framework and SharePoint on-premises deployments</h3>
+<p>The SharePoint Framework is supported in both SharePoint Server 2016 and SharePoint Server 2019. Unlike SharePoint Online that is always updated to use the latest version of the SharePoint Framework, the on-premises SharePoint versions only support specific versions.</p>
+<p>SharePoint Server 2016 supports the SharePoint Framework v1.1.0, which is the initial version that introduced client-side web parts to SharePoint. This version of SharePoint doesn't support the extensions component type because extensions have a dependency on the modern experience. The modern experience wasn't added to SharePoint Server until SharePoint Server 2019.</p>
+<p>SharePoint Server 2019 supports the SharePoint Framework v1.4.0 and all previous versions. This version includes support for client-side web parts and extensions.</p>
+<h2 id="summary">Summary</h2>
+<p>In this unit, you learned what the SharePoint Framework is and the extensibility options that enable developers to customize SharePoint environments.</p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Create and deploy SharePoint Framework solutions</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/intro-sharepoint-framework/3-create-deploy/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

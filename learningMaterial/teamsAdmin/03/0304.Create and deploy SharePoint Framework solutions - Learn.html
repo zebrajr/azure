@@ -1,0 +1,334 @@
+<html dir="ltr"><head><title>Create and deploy SharePoint Framework solutions - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/intro-sharepoint-framework/3-create-deploy">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/intro-sharepoint-framework/3-create-deploy</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Create and deploy SharePoint Framework solutions - Learn</h1>
+  <div dir="auto" id="reader-credits">andrewconnell</div>
+  <div dir="auto" id="reader-estimated-time">15-18 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>17 minutes</li>
+		</ul>
+			<p>In this unit, you'll learn what developers will need and how to create custom SharePoint Framework solutions. Once you've created the custom solution, you'll then learn how to deploy your components into different environments and various hosting options for your components.</p>
+
+<p>Microsoft has adopted the open-source tooling for the foundation of SharePoint Framework development. Three categories to explore when it comes to open-source tooling and libraries related to the SharePoint Framework are as follows:</p>
+<ul>
+<li>Build process and tooling</li>
+<li>Web frameworks</li>
+<li>Code editors</li>
+</ul>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365-developer/intro-sharepoint-framework/media/03-open-source-tooling.png" alt="Screenshot of the open-source tooling for the SharePoint Framework" data-linktype="relative-path"></p>
+<h3 id="build-process-and-tooling">Build process and tooling</h3>
+<p>Let's look at the build process and tooling first. Yeoman is used to replace the new project experience that traditional server-side SharePoint developers are familiar with in Visual Studio.</p>
+<p>Gulp is a task runner that replaces the tool MSBuild used in .NET solutions. This is used to run various tasks, like transpiling TypeScript to JavaScript, creating JavaScript bundles and SharePoint packages.</p>
+<p>Node.js is the underlying runtime used by all applications. The tools we're covering in this section are all built on top of Node.js. Node.js is required to run them, just like the .NET Framework is required to run .NET apps.</p>
+<p>NPM is used as the package manager and you'll use it to install global tools and reusable code in your projects.</p>
+<p>Webpack is used to combine all the JavaScript and CSS files in your project into a single JavaScript bundle. Bundles are the recommended way to deploy client-side applications for performance reasons.</p>
+<p>These are tools that aren't built and provided by Microsoft, rather they're maintained by the community and are all open-source tools. One benefit of using these tools is that they're cross platform, so the same tools can be used even if your development environment is Windows, macOS, or Linux.</p>
+<h3 id="web-frameworks">Web frameworks</h3>
+<p>When building client-side applications, developers commonly use web frameworks. The SharePoint Framework doesn't limit you to any specific framework. You can use any of the popular web frameworks in your projects including React, Angular, Knockout, or Vue.js. You can even use the popular jQuery library in your custom apps.</p>
+<h3 id="code-editors">Code editors</h3>
+<p>You'll also want to get a code editor to develop your project. Most developers are use Visual Studio Code by Microsoft. It's a lightweight version of Visual Studio and is just a text editor that understands TypeScript and can be customized using extensions.</p>
+<p>However, you aren't limited to Visual Studio Code. You can choose a different editor if you wanted to. Something as simple as notepad, Atom, Sublime, or WebStorm will work as well. It doesn't matter what you use as all development is done though text editors.</p>
+
+<p>The SharePoint Framework development toolchain is a significant change from the traditional server-side SharePoint development experience. Let's look at the two development toolchains to see how they're compare and contrast</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365-developer/intro-sharepoint-framework/media/03-server-side-tooling-comparison.png" alt="Screenshot of the server-side tool comparison" data-linktype="relative-path"></p>
+<p>In the previous image, the top row is the server-side tool comparison, starting with the Microsoft IIS web server. This includes the .NET Framework, NuGet used for package management, MSBuild used for running build and packaging tasks, C# as the development language and Visual Studio for the development experience.</p>
+<p>The bottom row represents the SharePoint Framework tools. Notice the lines drawn between the tools so you can see how the two compare.</p>
+
+<p>Let's look at each of the tools used in the SharePoint Framework development and build toolchain.</p>
+<h3 id="nodejs">Node.js</h3>
+<p>Node.js is a JavaScript runtime for running JavaScript on devices outside of the browser. It's a wrapper to the V8 JavaScript engine from the Chromium open-source browser project with some extra APIs that allow the V8 engine to run outside of the browser. This enables JavaScript to run on desktops, laptops, servers, and other devices.</p>
+<div>
+<p> Note</p>
+<p>Chromium is the project both of the browsers Google Chrome and Microsoft Edge are based on.</p>
+</div>
+<p>In the context of the SharePoint Framework, Node.js is needed as it's the runtime for the development and build tools previously covered. The SharePoint Framework doesn't require you to become a Node.js developer, but you need to install it so the apps in the development and build toolchain will run.</p>
+<p>When compared to the server-side toolchain, Node.js serves the same role as the .NET Framework.</p>
+<h3 id="npm-node-package-manager">NPM: Node Package Manager</h3>
+<p>NPM is a package manager for Node.js-based projects and is included with the Node.js installation. It's one of many package managers that can download and install packages from the npmjs.org registry.</p>
+<p>When compared to the server-side toolchain, NPM serves the same role as NuGet.</p>
+<h3 id="yeoman">Yeoman</h3>
+<p>When building server-side SharePoint components using the Add-in model or as features or solutions, developers used Visual Studio to create and develop the project. The first step in these models is to create a project using the <em>New Project</em> wizard experience. This wizard collects information about the project and then scaffolds the project by creating folders, files, and customizing the files based on the responses to the questions.</p>
+<p>Visual Studio Code doesn't have this <em>New Project</em> wizard experience. To simplify project creation, Yeoman is used to create the project.</p>
+<p>Yeoman is a scaffolding engine that runs generators. A generator defines the set of questions and understands how to scaffold a new project or modify existing projects.</p>
+<p>Microsoft provides a generator to scaffold SharePoint Framework projects, both new projects and to add components to existing projects.</p>
+<h3 id="gulp">Gulp</h3>
+<p>Gulp is the task runner we use to do different tasks in our development and build process. Gulp executes tasks that are written in JavaScript. You'll use gulp to do things like building your project and transpiling the SAAS files to CSS and TypeScript to JavaScript. You'll use other tasks to combine the resulting files into bundles and package the resulting files into a SharePoint package file used for deployment.</p>
+<p>When compared to the server-side toolchain, Gulp serves the same role as MSBuild.</p>
+<h3 id="typescript">TypeScript</h3>
+<p>TypeScript is the language that you're going to write your SharePoint Framework projects with. Its super set of JavaScript with extra capabilities it to make JavaScript development easier to manage.</p>
+<p>If you aren't familiar with JavaScript or you're not familiar with TypeScript, think of it as like a C# flavor to JavaScript. TypeScript's most popular features are type checking, the ability to use classes, and future features coming to JavaScript but not yet implemented or available except in preview.</p>
+<p>Similar to C# based projects, you don't deploy TypeScript to production. Rather it's used to create intermediate files. The output of TypeScript is JavaScript, similar to how the output of C# is intermediate language (IL).</p>
+<p>When compared to the server-side toolchain, TypeScript serves the same role as C#.</p>
+
+<p>The Yeoman generator for the SharePoint Framework creates the scaffolding (<em>folders and files</em>) for a new SharePoint Framework project. After building the project the first time, you'll see even more folders and files present. Just like a .NET Framework project, some of the generated files are temporary and shouldn't be kept in source control.</p>
+<p>Let's look at the folders in a newly created and built SharePoint Framework project:</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365-developer/intro-sharepoint-framework/media/03-project-structure.png" alt="Screenshot of a SharePoint Framework project in VS Code" data-linktype="relative-path"></p>
+<ul>
+<li><strong>.vscode</strong>: This folder contains Visual Studio Code specific files.</li>
+<li><strong>config</strong>: This folder contains configuration files used by the project's various build tasks. You'll edit these files as necessary depending on the types of components you're creating and for specific situations, such as the site to test extensions or adding references to external libraries.</li>
+<li><strong>dist</strong>: This folder, created automatically when you bundle the project, contains the JavaScript bundle and manifest created by the build process that will be used in deployment.</li>
+<li><strong>lib</strong>: This folder, created automatically when you build the project, contains the temporary files generated from the compilation and transpilation of TypeScript to JavaScript and SCSS to CSS files.</li>
+<li><strong>node_modules</strong>: This folder is created automatically when installing package dependencies using the <code>npm install</code> command.</li>
+<li><strong>src</strong>: This folder contains all the source code for your project.</li>
+<li><strong>temp</strong>: This folder, created automatically when you test the project, contains files used by the local development web server.</li>
+</ul>
+<h2 id="developing-and-testing-solutions">Developing and testing solutions</h2>
+<p>Microsoft provides developers two options to test SharePoint Framework projects. The <em>workbench</em> is a special SharePoint page that contains a single canvas that developers can add their web parts to. There are two different workbench options: local and hosted.</p>
+<h3 id="local-workbench">Local workbench</h3>
+<p>The local workbench is served up from a local web server included in each project. It runs on https://localhost that has no SharePoint context. It's simply an HTML page that loads the SharePoint Framework in the browser.</p>
+<p>The local workbench is a great option for developers develop and test web parts that don't require an instance of SharePoint. For web parts that need SharePoint context or work with live SharePoint data, you'll need to mock data requests to test your web part in the local workbench.</p>
+<h3 id="sharepoint-hosted-workbench">SharePoint-hosted workbench</h3>
+<p>The SharePoint-hosted workbench is hosted by a real SharePoint site, located at <strong>https://{your-sharepoint-site}/_layouts/workbench.aspx</strong>. The hosted workbench is unlike the local workbench in that because it's hosted by a real SharePoint site, it has SharePoint context. This means that your web part can access data in SharePoint lists and libraries in the same site as the hosted workbench.</p>
+<h3 id="sharepoint-framework-deployment-artifacts">SharePoint Framework deployment artifacts</h3>
+<p>Let's start by looking at the SharePoint Framework deployment artifacts to understand the different things required for SharePoint Framework solutions to work in production.</p>
+<p>There are two different kinds of files:</p>
+<ul>
+<li><p><strong>Installation and registration</strong>: The installation and registration files are included in SharePoint packages deployed to the SharePoint App Catalogs. These files make SharePoint aware of the components included in the packages.</p>
+<p>These files include an app manifest file, feature framework files, and other files that SharePoint needs to provision the components. It doesn't include files that make the application run.</p>
+</li>
+<li><p><strong>Component runtime files and dependencies</strong>: These are the files that are needed to run the SharePoint Framework component once it's been deployed and installed in a SharePoint environment. Any dependencies your component uses, such as third-party web framework libraries, can optionally be included in the component's bundle or loaded at runtime from an external CDN. The component's manifest file defines all dependencies the component requires to be present on the page before it's loaded and runs.</p>
+<p>These files include JavaScript bundles of your components, images, CSS files, and JavaScript libraries or assets your component depends on.</p>
+</li>
+</ul>
+<h3 id="deploy-sharepoint-assets">Deploy SharePoint assets</h3>
+<p>After creating the SharePoint package, the next step is to deploy it to a SharePoint environment. There are two ways to deploy SharePoint packages. Both options are SharePoint App Catalogs.</p>
+<p>Now that you've created the package, the next step is to upload the package to one of the SharePoint App Catalogs. Part of this process is to also trust the package, indicating to SharePoint the app within the SharePoint package are safe to run in your environment.</p>
+<p>This step makes the components available for installation and use within your SharePoint environment.</p>
+<h4 id="tenant-scoped-app-catalog">Tenant-scoped App Catalog</h4>
+<p>The tenant-scoped App Catalog was initially introduced to SharePoint in the SharePoint Server 2013 release. It's available in all later on-premises SharePoint Server releases and SharePoint Online.</p>
+<p>The tenant App Catalog is managed by the SharePoint tenant administrators. All SharePoint packages deployed to the tenant's App Catalog are available to all site collections throughout the entire tenant.</p>
+<h4 id="site-collection-scoped-app-catalog">Site collection-scoped App Catalog</h4>
+<p>The site collection App Catalog is only available in SharePoint Online. The site collection App Catalog works just like the tenant-scoped App Catalog, except SharePoint packages deployed to it are only available to that specific site collection.</p>
+<p>The site collection App Catalog is a good option when you have a component that intended for a subset of site collections and not your entire tenant.</p>
+<h3 id="install-the-app-from-the-site-collections-site-contents-page">Install the app from the site collection's Site Contents page</h3>
+<p>The last step is to install the app from the package into a site collection. This is done from the <strong>New &gt; App</strong> menu in the <strong>Site Contents</strong> library in a site collection.</p>
+<h2 id="single-part-app-pages">Single part app pages</h2>
+<p>Single part app pages provide a capability to host SharePoint Framework web parts or Teams applications in SharePoint Online with a locked layout. End users can't modify or configure the page, which is using the Single Part App Page layout.</p>
+<p>These single part app pages differ from traditional SharePoint web part pages in that these pages can't be edited by end users using the browser.</p>
+<p>App pages are exposed as an option in the modern page creation capability when you chose the used page layout for your page. All web parts, which have been configured to be available also as an app page are available on the Create page capability.</p>
+<h2 id="isolated-web-parts">Isolated web parts</h2>
+<p>To allow your SharePoint Framework solutions to securely access APIs secured with Azure AD, you can use the API management to specify which APIs can be accessed by scripts in your tenant and with which permissions. Next, using the SharePoint Framework, you can easily retrieve an access token for the specific API.</p>
+<p>While this simplifies communicating with APIs secured with Azure AD, it allows all scripts in the tenant to obtain an access token for any of the approved APIs, not just specific SharePoint Framework solutions. If one of the scripts you use in your tenant was exploited, then it could access any of the approved APIs for the current user.</p>
+<p>Isolated web parts introduce a new way to isolate access to APIs secured with Azure AD and ensure that only specific SharePoint Framework web parts are allowed to obtain an access token for the particular API.</p>
+<p>When deploying an isolated web part to the app catalog, all API permission requests are specified as isolated. Once the isolated API permission request is approved, SharePoint will create a separate Azure AD application in the tenant associated with the Office 365 tenant. The Azure AD application is specific to the SharePoint Framework solution that requested API permissions and will have set OAuth permissions as requested by that solution.</p>
+<p>The return URL of that Azure AD application, which is used by the OAuth implicit flow, will be set to a unique domain that is tied to that specific SharePoint Framework application. All web parts from solutions using isolated permissions, when added to a page, will be rendered in an Iframe that points to the unique domain tied to the particular SharePoint Framework solution.</p>
+<p>This way, SharePoint Framework can enforce unique API permissions and ensure that no other solution or script in the tenant can obtain an access token to these APIs.</p>
+<h2 id="summary">Summary</h2>
+<p>In this unit, you'll learn what developers will need and how to create custom SharePoint Framework solutions. Once you've created the custom solution, you'll then learn how to deploy your components into different environments and various hosting options for your components.</p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Extend custom solutions with UI components, APIs, and additional surface areas</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/intro-sharepoint-framework/4-ui-components-apis-surface-areas/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

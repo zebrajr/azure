@@ -1,0 +1,8 @@
+1. D
+Correct!
+
+2. B
+If a web part is deployed as an isolated web part, it will render in an Iframe from unique domain, enabling SharePoint to scope permissions to just that application.
+
+3. E
+Correct!
