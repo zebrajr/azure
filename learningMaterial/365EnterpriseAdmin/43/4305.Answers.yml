@@ -1,0 +1,8 @@
+1. D
+Correct. Attack surface reduction rules help to prevent malware from infecting computers with malicious code, including executable files and scripts used in Office apps or webmai
+
+2. C
+Correct. This solution would protect all end users from running executables in both the webmail and desktop email client but create an exception for the R&D department to run these executables under an audit tracking.
+
+3. C
+Correct. Credential Guard uses virtualization-based security protecting NTLM password hashes, Kerberos Ticket Granting Tickets, and credentials stored by applications as domain credentials so that only privileged system software can access them.
