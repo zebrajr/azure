@@ -1,0 +1,251 @@
+<html dir="ltr"><head><title>Understand registration for Actionable Messages in Outlook - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/understand-actionable-messages/4-registration">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/understand-actionable-messages/4-registration</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Understand registration for Actionable Messages in Outlook - Learn</h1>
+  <div dir="auto" id="reader-credits">jasonjoh</div>
+  <div dir="auto" id="reader-estimated-time">3-3 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="main" role="main" data-bi-name="content" lang="en-us" dir="ltr">
+		
+		
+		<ul>
+			<li>3 minutes</li>
+		</ul>
+			<!-- markdownlint-disable MD041 -->
+<p>Actionable Messages in Outlook provide a powerful set of capabilities and typically send information outside of the Microsoft 365 service. Because of this, services must register their sender and web API endpoints.</p>
+<h2 id="actionable-email-developer-dashboard">Actionable Email Developer Dashboard</h2>
+<p>Developers register their solution in the Actionable Email Developer Dashboard. The developer provides the following information.</p>
+<ul>
+<li>One or more static email addresses that will be used as the sender for Actionable Messages.</li>
+<li>One or more HTTPS URLs that will be invoked by the actions in the message.</li>
+<li>The scope of the submission. Scope dictates the set of recipients that can receive Actionable Messages from the solution.</li>
+<li>Optionally, the developer can provide a logo for their provider.</li>
+</ul>
+<p>Once the registration is created, the developer obtains a provider ID, which is included in the Adaptive Card markup in every message sent by the solution.</p>
+<h3 id="scope-of-submission">Scope of submission</h3>
+<p>Next steps for the registration process depends on the desired scope of submission.</p>
+<h4 id="test-users">Test Users</h4>
+<p>With this scope, the solution is only allowed to send to the specified users. These users must be in the same Microsoft 365 organization as the user creating the registration. This scope is typically used in later stages of development, for more formal testing or beta testing.</p>
+<p>This scope requires a list of one or more test user email addresses, and is auto-approved.</p>
+<h4 id="organization">Organization</h4>
+<p>With this scope, the solution is allowed to send to any user in the same Microsoft 365 organization as the user creating the registration. This scope is typically used by line-of-business applications, such as internal expense reporting solutions.</p>
+<p>This scope optionally accepts one or more email addresses of users to add to the new registration notification, along with a comment field. The request is sent to the organization's Exchange administrators for approval.</p>
+<h4 id="global">Global</h4>
+<p>With this scope, the solution is allowed to send to any Microsoft 365 user. This scope is typically used by ISVs or websites that provide services to multiple customers.</p>
+<p>This scope requires additional information, including company information, point of contact, a description of the scenario and actions, and detailed instructions for testing and verifying the solution. The request is sent to Microsoft for testing, validation, and approval.</p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Understand security requirements for Actionable Messages in Outlook</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/understand-actionable-messages/5-security-requirements/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div><section>
+		<p>
+Need help? See our <a id="troubleshooting-guide" data-bi-name="troubleshooting" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-m365-pr.understand-actionable-messages.4-registration&amp;documentId=a55be060-cc0f-0662-1de1-e573c6d7cfb7&amp;versionIndependentDocumentId=a844f5ae-f04c-2c78-42d4-58c24fcfcf9c&amp;contentPath=%2FMicrosoftDocs%2Flearn-m365-pr%2Fblob%2Flive%2Flearn-m365-pr%2Fm365-developer%2Funderstand-actionable-messages%2F4-registration.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Funderstand-actionable-messages%2F4-registration&amp;author=jasonjoh">troubleshooting guide</a> or provide specific feedback by <a id="module-unit-feedback-link" data-bi-name="feedback" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-m365-pr.understand-actionable-messages.4-registration&amp;documentId=a55be060-cc0f-0662-1de1-e573c6d7cfb7&amp;versionIndependentDocumentId=a844f5ae-f04c-2c78-42d4-58c24fcfcf9c&amp;contentPath=%2FMicrosoftDocs%2Flearn-m365-pr%2Fblob%2Flive%2Flearn-m365-pr%2Fm365-developer%2Funderstand-actionable-messages%2F4-registration.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Funderstand-actionable-messages%2F4-registration&amp;author=jasonjoh#report-feedback">reporting an issue</a>.		</p>
+	</section></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

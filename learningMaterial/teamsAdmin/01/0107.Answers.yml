@@ -1,0 +1,8 @@
+1. B
+Actionable Messages in Outlook do not require any additional software on the recipients device.
+
+2. A
+An Action.Http action can be configured to execute when the user opens the message, calling your web API to get an updated message card.
+
+3. B
+Validating the bearer token ensure that the request originated from Microsoft 365, and allows you to determine the identity of the user that took the action.

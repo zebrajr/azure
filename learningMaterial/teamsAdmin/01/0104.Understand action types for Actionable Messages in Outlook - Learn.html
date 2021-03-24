@@ -1,0 +1,314 @@
+<html dir="ltr"><head><title>Understand action types for Actionable Messages in Outlook - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/understand-actionable-messages/3-actions">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/understand-actionable-messages/3-actions</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Understand action types for Actionable Messages in Outlook - Learn</h1>
+  <div dir="auto" id="reader-credits">jasonjoh</div>
+  <div dir="auto" id="reader-estimated-time">3-4 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>4 minutes</li>
+		</ul>
+			<p>Actionable Messages in Outlook are built on the Adaptive Card format. Outlook extends the standard Adaptive Card schema to define additional actions to support Actionable Message scenarios.</p>
+<p>In this unit, we take a look at the following Outlook-specific actions.</p>
+<ul>
+<li><code>Action.Http</code></li>
+<li><code>Action.InvokeAddInCommand</code></li>
+<li><code>Action.DisplayMessageForm</code></li>
+<li><code>Action.DisplayAppointmentForm</code></li>
+<li><code>Action.ToggleVisibility</code></li>
+</ul>
+<h2 id="actionhttp">Action.Http</h2>
+<p>The <code>Action.Http</code> action is the core action used to make an Actionable Message interact with your service. This action sends an HTTP POST to your service, and can include user input.</p>
+<p>Your service can provide a new card in response to this action, referred to as a refresh card. The refresh card will permanently replace the card on that email message. Refresh cards are typically used to report back status of the action. For example, when a recipient responds to a survey Actionable Message, your service could send back a card thanking the recipient for responding.</p>
+<p>An <code>Action.Http</code> action can also be set to automatically execute when the user opens the message. The result of the action contains a new card, updated with the latest information. For example, if an expense report tool sends an approval request to multiple approvers, the card could auto-invoke an action to query the service to see if someone has already approved the report. In that case, it could replace the card asking the recipient to approve with a card informing them who approved it and when.</p>
+<pre tabindex="0"><code data-author-content="{
+  &quot;type&quot;: &quot;Action.Http&quot;,
+  &quot;title&quot;: &quot;Send Feedback&quot;,
+  &quot;method&quot;: &quot;POST&quot;,
+  &quot;url&quot;: &quot;https://...&quot;,
+  &quot;body&quot;: &quot;{{feedbackText.value}}&quot;
+}
+"><span>{
+  <span>"type"</span>: <span>"Action.Http"</span>,
+  <span>"title"</span>: <span>"Send Feedback"</span>,
+  <span>"method"</span>: <span>"POST"</span>,
+  <span>"url"</span>: <span>"https://..."</span>,
+  <span>"body"</span>: <span>"{{feedbackText.value}}"</span>
+}
+</span></code></pre>
+<h2 id="actioninvokeaddincommand">Action.InvokeAddInCommand</h2>
+<p>The <code>Action.InvokeAddInCommand</code> action invokes a task pane Outlook add-in. It supports one-click installation of the add-in, so it isn't required that the recipient have the add-in already installed.</p>
+<p>This action can be used to:</p>
+<ul>
+<li>Enable scenarios that require more complex user interactions that aren't well suited to the Actionable Message schema, but still keep the user in Outlook by invoking an add-in.</li>
+<li>Help drive adoption of your Outlook add-in by giving recipients the option to install your add-in with a single click, and use the add-in to respond to a request for action.</li>
+</ul>
+<pre tabindex="0"><code data-author-content="{
+  &quot;type&quot;: &quot;Action.InvokeAddInCommand&quot;,
+  &quot;title&quot;: &quot;Create Support Ticket with Contoso Support&quot;,
+  &quot;addInId&quot;: &quot;527104a1-f1a5-475a-9199-7a968161c870&quot;,
+  &quot;desktopCommandId&quot;: &quot;openTicketPane&quot;,
+  &quot;initializationContext&quot;: {
+    &quot;referenceNumber&quot;: &quot;REF039420&quot;,
+    &quot;bucketId&quot;: 2,
+    &quot;priority&quot;: &quot;normal&quot;
+  }
+}
+"><span>{
+  <span>"type"</span>: <span>"Action.InvokeAddInCommand"</span>,
+  <span>"title"</span>: <span>"Create Support Ticket with Contoso Support"</span>,
+  <span>"addInId"</span>: <span>"527104a1-f1a5-475a-9199-7a968161c870"</span>,
+  <span>"desktopCommandId"</span>: <span>"openTicketPane"</span>,
+  <span>"initializationContext"</span>: {
+    <span>"referenceNumber"</span>: <span>"REF039420"</span>,
+    <span>"bucketId"</span>: <span>2</span>,
+    <span>"priority"</span>: <span>"normal"</span>
+  }
+}
+</span></code></pre>
+<h2 id="actiondisplaymessageform-and-actiondisplayappointmentform">Action.DisplayMessageForm and Action.DisplayAppointmentForm</h2>
+<p>The <code>Action.DisplayMessageForm</code> and <code>Action.DisplayAppointmentForm</code> actions are used to open an existing email message or appointment in the recipient's mailbox.</p>
+<pre tabindex="0"><code data-author-content="{
+  &quot;type&quot;: &quot;Action.DisplayMessageForm&quot;,
+  &quot;title&quot;: &quot;Show me the message&quot;,
+  &quot;itemId&quot;: &quot;AAMkAGUy...g3BZAAA=&quot;
+}
+"><span>{
+  <span>"type"</span>: <span>"Action.DisplayMessageForm"</span>,
+  <span>"title"</span>: <span>"Show me the message"</span>,
+  <span>"itemId"</span>: <span>"AAMkAGUy...g3BZAAA="</span>
+}
+</span></code></pre>
+<h2 id="actiontogglevisibility">Action.ToggleVisibility</h2>
+<p>The <code>Action.ToggleVisibility</code> action makes it possible to show and/or hide specific elements of a card as a result of a user clicking on a button or other actionable element.</p>
+<pre tabindex="0"><code data-author-content="{
+  &quot;type&quot;: &quot;Action.ToggleVisibility&quot;,
+  &quot;title&quot;: &quot;Show only unassigned issues&quot;,
+  &quot;targetElements&quot;: [
+    &quot;assignedIssues&quot;
+  ]
+}
+"><span>{
+  <span>"type"</span>: <span>"Action.ToggleVisibility"</span>,
+  <span>"title"</span>: <span>"Show only unassigned issues"</span>,
+  <span>"targetElements"</span>: [
+    <span>"assignedIssues"</span>
+  ]
+}
+</span></code></pre>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Understand registration for Actionable Messages in Outlook</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/understand-actionable-messages/4-registration/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>
