@@ -1,0 +1,11 @@
+1. C
+Correct! Teams Rooms shouldn’t be treated like typical workstations or servers. Teams Rooms has unique requirements that most servers and workstations don’t have.
+
+2. A
+Correct. If you have a consistent naming standard for Teams Rooms, they will automatically join an Azure AD dynamic group. You could then send down Intune Policies tied to this group to, for example, simplify the initial configuration of Teams Rooms.
+
+3. B
+Correct! Power Automate is used to easily create automated workflows to improve productivity with business process automation.
+
+4. C
+Correct! Teams Rooms is designed to update itself. It will always be running the latest Windows security updates and the latest version of the Teams rooms app.
