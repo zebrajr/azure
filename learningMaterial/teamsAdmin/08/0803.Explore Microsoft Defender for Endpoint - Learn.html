@@ -1,0 +1,264 @@
+<html dir="ltr"><head><title>Explore Microsoft Defender for Endpoint - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/m365-teams-defend-against-threats/2-advanced-threat-protection">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/m365-teams-defend-against-threats/2-advanced-threat-protection</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Explore Microsoft Defender for Endpoint - Learn</h1>
+  <div dir="auto" id="reader-credits">lizap</div>
+  <div dir="auto" id="reader-estimated-time">5-6 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="main" role="main" data-bi-name="content" lang="en-us" dir="ltr">
+		
+		
+		<ul>
+			<li>4 minutes</li>
+		</ul>
+			<p>As systems such as Microsoft Teams become easier to use and more flexible, the extra complexity can result in greater opportunities for malicious attacks. Microsoft continually guards against such problems by providing industry-leading security features. Microsoft 365 Defender is a sophisticated security tool you can use in Teams.</p>
+<h2 id="what-is-microsoft-365-defender">What is Microsoft 365 Defender?</h2>
+<p>Microsoft Defender is a unified platform for detecting and blocking files that have been identified as malicious. Microsoft 365 Defender protects endpoints from cyber threats, detects advanced attacks and data breaches, and automates the handling of security incidents. It's available for Microsoft Teams, and SharePoint and OneDrive, which are used by Teams for content management. Microsoft 365 Defender allows you to identify malicious content in any of these applications and block it from user access.</p>
+<p>After a problem is detected, how the content is managed depends on the settings in Microsoft 365. Microsoft recommends that you configure Microsoft 365 Defender for all applications.</p>
+<h2 id="microsoft-defender-for-endpoint">Microsoft Defender for Endpoint</h2>
+<p>Microsoft Defender for Endpoint is an enterprise endpoint security platform designed to help prevent, detect, investigate, and respond to advanced threats.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-defend-against-threats/media/2-defender-advanced-threat-protection.png" alt="Microsoft Defender for Endpoint" data-linktype="relative-path">
+</p>
+<p>Microsoft Defender for Endpoint uses a combination of technologies:</p>
+<ul>
+<li><p><strong>Threat and vulnerability management</strong>. A risk-based approach that works in real time. Reduces vulnerability exposure and improves the discovery, threat detection, business prioritization, and automated compensation and remediation of endpoint threats.</p>
+</li>
+<li><p><strong>Attack surface reduction</strong>. Reduces the places that are open to attack, without limiting productivity. It does this using a collection of capabilities including hardware isolation, application control, ransomware protection, controlled folder access, network protection based on reputation, web protection, exploit protection, and device control.</p>
+</li>
+<li><p><strong>Next generation antivirus</strong>. Protects devices using a combination of machine learning, big data analysis, in-depth threat research, and the Microsoft cloud infrastructure. It uses behavior monitoring and heuristics to block existing, new, and emerging threats almost instantly.</p>
+</li>
+<li><p><strong>Endpoint detection and response</strong>. Identifies and alerts you to suspicious activity by continually collecting and processing behavioral signals on endpoints. It provides security teams with visual feedback to allow them to understand and react appropriately to security breaches.</p>
+</li>
+<li><p><strong>Automated investigation and remediation</strong>. AI capabilities include automated investigation when threats are detected. Remediation actions then await approval, allowing security admins to respond appropriately to threats. This approach allows organizations to provide security at scale, duplicating the actions that security professionals would take.</p>
+</li>
+<li><p><strong>Microsoft threat experts</strong>. This feature is a managed threat hunting service that has two components. First, targeted attack notifications give you insight and analysis to allow threats to be dealt with quickly and accurately. Second, <strong>Experts on Demand</strong> gives you access to Microsoft's threat experts, who provide consultation on threat detection and adversaries.</p>
+</li>
+<li><p><strong>Management and APIs</strong>. This feature allows you to integrate with other solutions by using Microsoft's APIs, providing full flexibility and allowing you to keep your existing security infrastructure. Use Microsoft Endpoint Manager to configure a baseline and manage the security settings of your endpoints.</p>
+</li>
+</ul>
+<h2 id="activate-microsoft-defender-for-teams">Activate Microsoft Defender for Teams</h2>
+<p>Microsoft Defender for Office 365 is available for Microsoft Teams, along with SharePoint and OneDrive, which integrate with it to manage content. Microsoft Defender for Office 365 allows you to determine if content in these applications is malicious in nature and block it from user access.</p>
+<p>How the affected content is managed after detection is determined by your settings in Microsoft 365. Don't consider Teams in isolation when you configure Microsoft Defender for Office 365. It's best practice to configure all applications together.</p>
+<p><strong>Safe attachments</strong> is an Microsoft Defender for Office 365 feature that's designed to enhance security by checking and identifying malicious attachments. Global Admins or Security Admins create policies to prevent malicious attachments from being sent to users, clicked, or acted on. Safe attachment protection is available in SharePoint, OneDrive, and Microsoft Teams. Microsoft Defender for Endpoint Plan 1 and 2 have this capability.</p>
+<h2 id="learn-more">Learn more</h2>
+<ul>
+<li><a href="https://docs.microsoft.com/en-us/microsoft-365/security/office-365-security/atp-for-spo-odb-and-teams?view=o365-worldwide" data-linktype="absolute-path">Microsoft Defender for SharePoint, OneDrive, and Microsoft Teams</a></li>
+<li><a href="https://docs.microsoft.com/en-us/microsoft-365/security/office-365-security/atp-safe-attachments?view=o365-worldwide" data-linktype="absolute-path">Safe Attachments</a></li>
+<li><a href="https://docs.microsoft.com/en-us/microsoft-365/security/office-365-security/office-365-atp" data-linktype="absolute-path">Microsoft Defender for Endpoint</a></li>
+</ul>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Examine the Cloud App Security</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/m365-teams-defend-against-threats/3-cloud-app-security/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div><section>
+		<p>
+Need help? See our <a id="troubleshooting-guide" data-bi-name="troubleshooting" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-m365.teams.defends-against-threats.2-advanced-threat-protection&amp;documentId=57b4f3c7-c5d4-1df7-4c60-b7489624cb8e&amp;versionIndependentDocumentId=327e7acd-e9f6-2219-dc03-75f5222dfd40&amp;contentPath=%2FMicrosoftDocs%2Flearn-m365-pr%2Fblob%2Flive%2Flearn-m365-pr%2Fm365%2Fm365-teams-defend-against-threats%2F2-advanced-threat-protection.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fm365-teams-defend-against-threats%2F2-advanced-threat-protection&amp;author=elizapo">troubleshooting guide</a> or provide specific feedback by <a id="module-unit-feedback-link" data-bi-name="feedback" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-m365.teams.defends-against-threats.2-advanced-threat-protection&amp;documentId=57b4f3c7-c5d4-1df7-4c60-b7489624cb8e&amp;versionIndependentDocumentId=327e7acd-e9f6-2219-dc03-75f5222dfd40&amp;contentPath=%2FMicrosoftDocs%2Flearn-m365-pr%2Fblob%2Flive%2Flearn-m365-pr%2Fm365%2Fm365-teams-defend-against-threats%2F2-advanced-threat-protection.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fm365-teams-defend-against-threats%2F2-advanced-threat-protection&amp;author=elizapo#report-feedback">reporting an issue</a>.		</p>
+	</section></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

@@ -1,0 +1,252 @@
+<html dir="ltr"><head><title>Implement Conditional Access in Teams - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/m365-teams-defend-against-threats/4-conditional-access">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/m365-teams-defend-against-threats/4-conditional-access</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Implement Conditional Access in Teams - Learn</h1>
+  <div dir="auto" id="reader-credits">lizap</div>
+  <div dir="auto" id="reader-estimated-time">4-5 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="main" role="main" data-bi-name="content" lang="en-us" dir="ltr">
+		
+		
+		<ul>
+			<li>3 minutes</li>
+		</ul>
+			<p>When users connect to your Teams system using their device, they may inadvertently introduce security loopholes because of the apps and configurations present on that device. One approach to prevent such loopholes is to set policies that test devices and users, then decide on their level of access based on the results. You can implement such an approach by using Conditional Access in Microsoft Teams.</p>
+<h2 id="teams-and-conditional-access">Teams and Conditional Access</h2>
+<p>Conditional Access is a security feature of Azure Active Directory. Conditional Access uses multiple signals to determine whether a user or device is trustworthy.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-defend-against-threats/media/4-conditional-access.png" alt="Conditional access" data-linktype="relative-path">
+</p>
+<p>Conditional Access, like multi-factor authentication, is part of the Zero Trust security model. You use Conditional Access policies to determine how trustworthy something is. There are two types:</p>
+<ul>
+<li><strong>Baseline</strong> policies are preset. You choose if you want to use them but they're recommended for all customers.</li>
+<li><strong>Custom</strong> policies are created for specific security concerns.</li>
+</ul>
+<p>Conditional Access policies are if-then statements that allow security professionals to provide defense-in-depth and are enforced after the first-factor authentication has been completed. Microsoft Teams is supported separately as a cloud app in Azure Active Directory Conditional Access policies.
+A Conditional Access policy is made of if-then statements of <strong>Assignments</strong> and <strong>Access controls</strong>. The assignment part of the policy controls the who, what, and where of the Conditional Access policy. The access part of the policy controls how it's enforced. Based on the assignments, it may <strong>grant access</strong>, <strong>block access</strong>, or grant access provided one or more <strong>additional conditions</strong> is met. See the screenshot below for the details required:</p>
+<p><span>
+<img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-defend-against-threats/media/4-conditional-access-policy.png" alt="Conditional access policy" data-linktype="relative-path">
+</span>
+</p>
+<p>Conditional Access policies can be set for Teams. However, Teams is integrated with other Microsoft apps to implement features such as meetings, calendars, interop chats, and file sharing. Conditional Access policies can also be set for these apps. When a user signs in to Microsoft Teams, on any client, the Conditional Access policies that are set for both Teams, and any of the integrated cloud apps, are applied. It's important to note that even though Conditional Access policies may be set up for Teams, without the correct policies on other apps like Exchange Online and SharePoint, users might still be able to access resources directly.
+If you have a service dependency configured, the policy might be applied using early-bound or late-bound enforcement:</p>
+<ul>
+<li><strong>Early-bound</strong> policy enforcement means a user must satisfy the dependent service policy before accessing the calling app. For example, a user must satisfy SharePoint policy before signing into Teams.</li>
+<li><strong>Late-bound</strong> policy enforcement occurs after the user signs in to the calling app. Enforcement is deferred when the calling app requests a token for the downstream service, such as Teams accessing Planner or SharePoint.</li>
+</ul>
+<p>The diagram below illustrates Teams service dependencies. Solid arrows indicate early-bound enforcement; the dashed arrow for Planner indicates late-bound enforcement.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-defend-against-threats/media/4-early-late-bound-enforcement.png" alt="Early or late-bound policy enforcement" data-linktype="relative-path">
+</p>
+<p>Whenever possible, you should set common policies across related apps and services. Setting a common policy across Exchange Online, SharePoint Online, Microsoft Teams, and Skype for Business significantly reduces unexpected prompts that might arise from different policies being applied to downstream services.</p>
+<h2 id="learn-more">Learn more</h2>
+<ul>
+<li><a href="https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/concept-conditional-access-policies" data-linktype="absolute-path">Building a Conditional Access policy</a></li>
+<li><a href="https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/service-dependencies" data-linktype="absolute-path">What are service dependencies in Azure Active Directory Conditional Access?</a></li>
+</ul>
+
+		
+	</div><section>
+		<p>
+Need help? See our <a id="troubleshooting-guide" data-bi-name="troubleshooting" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-m365.teams.defends-against-threats.4-conditional-access&amp;documentId=ddf06a6e-dc42-5396-e21a-ddebab037e14&amp;versionIndependentDocumentId=5bc349f2-cf76-29a8-5d77-4f3fb26cc87b&amp;contentPath=%2FMicrosoftDocs%2Flearn-m365-pr%2Fblob%2Flive%2Flearn-m365-pr%2Fm365%2Fm365-teams-defend-against-threats%2F4-conditional-access.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fm365-teams-defend-against-threats%2F4-conditional-access&amp;author=elizapo">troubleshooting guide</a> or provide specific feedback by <a id="module-unit-feedback-link" data-bi-name="feedback" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-m365.teams.defends-against-threats.4-conditional-access&amp;documentId=ddf06a6e-dc42-5396-e21a-ddebab037e14&amp;versionIndependentDocumentId=5bc349f2-cf76-29a8-5d77-4f3fb26cc87b&amp;contentPath=%2FMicrosoftDocs%2Flearn-m365-pr%2Fblob%2Flive%2Flearn-m365-pr%2Fm365%2Fm365-teams-defend-against-threats%2F4-conditional-access.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fm365-teams-defend-against-threats%2F4-conditional-access&amp;author=elizapo#report-feedback">reporting an issue</a>.		</p>
+	</section></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

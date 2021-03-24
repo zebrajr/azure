@@ -1,0 +1,274 @@
+<html dir="ltr"><head><title>Examine the Cloud App Security - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/m365-teams-defend-against-threats/3-cloud-app-security">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/m365-teams-defend-against-threats/3-cloud-app-security</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Examine the Cloud App Security - Learn</h1>
+  <div dir="auto" id="reader-credits">lizap</div>
+  <div dir="auto" id="reader-estimated-time">5-6 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="main" role="main" data-bi-name="content" lang="en-us" dir="ltr">
+		
+		
+		<ul>
+			<li>4 minutes</li>
+		</ul>
+			<p>In the modern business environment, users often want to use their own devices to access your systems. They might download and use apps from app stores and other locations that you can't control directly. You need to ensure that such practices don't put your sensitive and business-critical data at risk. Cloud App Security can assist with this task.</p>
+<h2 id="what-is-cloud-app-security">What is Cloud App Security?</h2>
+<p>Microsoft Cloud App Security is a Cloud Access Security Broker. It's a layer between cloud applications and cloud application users. Microsoft Cloud App Security is designed for security professionals who need to monitor activity centrally and enforce security policies.</p>
+<p>Microsoft Cloud App Security natively integrates with leading Microsoft solutions. It provides visibility into the apps being used, control over data travel, and analytics to identify and combat cyber threats.</p>
+<h2 id="the-cloud-app-security-framework">The Cloud App Security framework</h2>
+<p>Cloud App Security uses a four-stage framework: discover, protect, detect, and control.</p>
+<ul>
+<li><strong>Discover</strong> and control the use of Shadow IT. Identify the cloud apps, IaaS, and PaaS services used by your organization. Investigate usage patterns, assess the risk levels and business readiness of more than 16,000 SaaS apps and more than 80 risks.</li>
+<li><strong>Protect</strong> your sensitive information. Understand, classify, and protect the exposure of sensitive information at rest. Use security policies and automated processes to apply controls in real time across all your cloud apps.</li>
+<li><strong>Detect</strong> cyber threats and anomalies. Detect unusual behavior across cloud apps to identify ransomware, compromised users, or rogue applications. Analyze high-risk usage and remediate automatically to limit the risk to your organization.</li>
+<li><strong>Control</strong> the compliance of your cloud apps. Assess if these cloud apps meet relevant requirements, including regulatory compliance and industry standards. Prevent data leaks to noncompliant apps, and limit access to regulated data.</li>
+</ul>
+<h2 id="architecture">Architecture</h2>
+<p>Cloud App Security provides:</p>
+<ul>
+<li><strong>Cloud Discovery</strong> analyzes your traffic logs against the Cloud App Security catalog of more than 16,000 cloud apps. Using more than 80 risk factors, the apps are ranked and scored to provide risk assessment reports.</li>
+<li><strong>Sanction</strong> or <strong>unsanction</strong> apps after you've reviewed the list of discovered apps in your environment. Secure your environment by approving or sanctioning safe apps or prohibiting or unsanctioning unwanted apps.</li>
+<li>Deploy <strong>App connectors</strong> that use the APIs of app providers to give visibility and control by Cloud App Security over the apps you connect to.</li>
+<li><strong>Conditional Access App Control</strong> provides real-time protection, visibility, and control over access and activities within your cloud apps. Session controls in Cloud App Security work with the featured apps.</li>
+<li><strong>Policies</strong> allow you to define the way you want users to behave in the cloud. You detect risky behavior, violations, or suspicious data points and activities in your cloud environment. If necessary, you can integrate remediation workflows to achieve complete risk mitigation.</li>
+</ul>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-defend-against-threats/media/3-cloud-app-security.png" alt="Diagram showing the Cloud App Security being used in an organization." data-linktype="relative-path">
+</p>
+<h2 id="conditional-access-app-control">Conditional Access App Control</h2>
+<p>To allow featured apps to be controlled by Microsoft Cloud App Security Conditional Access App Control, there are four steps:</p>
+<ol>
+<li><strong>Configure your identity provider (IdP)</strong> to work with Cloud App Security.</li>
+<li><strong>Sign into each app</strong> with a user scoped to the policy.</li>
+<li><strong>Verify the apps are configured</strong> to use access and session controls.</li>
+<li><strong>Test</strong> the deployment.</li>
+</ol>
+<p>You must also have Azure Active Directory (Azure AD) Premium P1 or higher, or the license required by your identity provider (IdP) solution, and licenses for Microsoft App Security.</p>
+<h2 id="policy-control">Policy control</h2>
+<p>You use policies to define the way you want users to behave in the cloud. Policies enable you to detect risky behavior, violations, or suspicious data points and activities in your cloud environment. You can integrate remediation workflows to mitigate risks. There are multiple types of policies that correlate to the different types of information you want to gather about your cloud environment, and the types of remediation actions you might take. Examples include:</p>
+<ul>
+<li>Quarantine a data violation threat.</li>
+<li>Block a risky cloud app from being used by your organization.</li>
+</ul>
+<h2 id="learn-more">Learn more</h2>
+<ul>
+<li><a href="https://docs.microsoft.com/en-us/cloud-app-security/proxy-intro-aad#featured-apps" data-linktype="absolute-path">Protect apps with Cloud App Security Conditional Access App Control</a></li>
+<li><a href="https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/license-users-groups" data-linktype="absolute-path">Assign or remove licenses in the Azure Active Directory portal</a></li>
+<li><a href="https://docs.microsoft.com/en-us/cloud-app-security/what-is-cloud-app-security" data-linktype="absolute-path">Microsoft Cloud App Security overview</a></li>
+<li><a href="https://docs.microsoft.com/en-us/cloud-app-security/best-practices" data-linktype="absolute-path">Cloud App Security best practices</a></li>
+</ul>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Implement Conditional Access in Teams</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/m365-teams-defend-against-threats/4-conditional-access/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div><section>
+		<p>
+Need help? See our <a id="troubleshooting-guide" data-bi-name="troubleshooting" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-m365.teams.defends-against-threats.3-cloud-app-security&amp;documentId=e3728df9-4fb8-2380-8bba-c588273ec121&amp;versionIndependentDocumentId=e1c789ab-991b-f666-e047-737e155c2caa&amp;contentPath=%2FMicrosoftDocs%2Flearn-m365-pr%2Fblob%2Flive%2Flearn-m365-pr%2Fm365%2Fm365-teams-defend-against-threats%2F3-cloud-app-security.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fm365-teams-defend-against-threats%2F3-cloud-app-security&amp;author=elizapo">troubleshooting guide</a> or provide specific feedback by <a id="module-unit-feedback-link" data-bi-name="feedback" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-m365.teams.defends-against-threats.3-cloud-app-security&amp;documentId=e3728df9-4fb8-2380-8bba-c588273ec121&amp;versionIndependentDocumentId=e1c789ab-991b-f666-e047-737e155c2caa&amp;contentPath=%2FMicrosoftDocs%2Flearn-m365-pr%2Fblob%2Flive%2Flearn-m365-pr%2Fm365%2Fm365-teams-defend-against-threats%2F3-cloud-app-security.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fm365-teams-defend-against-threats%2F3-cloud-app-security&amp;author=elizapo#report-feedback">reporting an issue</a>.		</p>
+	</section></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>
