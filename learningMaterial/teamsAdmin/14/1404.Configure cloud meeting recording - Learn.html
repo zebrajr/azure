@@ -1,0 +1,261 @@
+<html dir="ltr"><head><title>Configure cloud meeting recording - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/m365-teams-deploy-meetings/3-configure-cloud-meeting-recording">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/m365-teams-deploy-meetings/3-configure-cloud-meeting-recording</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Configure cloud meeting recording - Learn</h1>
+  <div dir="auto" id="reader-credits">lizap</div>
+  <div dir="auto" id="reader-estimated-time">3-4 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="main" role="main" data-bi-name="content" lang="en-us" dir="ltr">
+		
+		
+		<ul>
+			<li>2 minutes</li>
+		</ul>
+			<p>Recording a meeting is often useful for, as an example, keeping a legal record of what was said or  enabling absentees to review a meeting later.</p>
+<p>In your software development company, it's your policy to record every meeting with a customer to ensure there's a record of what is said. You want to ensure that this requirement is met as you move to Microsoft Teams from your third-party conferencing solution.</p>
+<p>Here, you'll learn how to administer Teams meeting recordings.</p>
+<h2 id="prerequisites-for-teams-cloud-meeting-recording">Prerequisites for Teams cloud meeting recording</h2>
+<p>For  Teams meetings to be recorded, Microsoft Stream must be enabled for the tenant. The following prerequisites are also required for both the meeting organizer and the person who is starting the recording:</p>
+<ul>
+<li>User has Office 365 E1, E3, E5, A1, A3, A5, M365 Business Premium, M365 Business Standard, or M365 Business Basic.</li>
+<li>User needs to be licensed for Microsoft Stream.</li>
+<li>User has Microsoft Stream upload video permissions.</li>
+<li>User has consented to the company guidelines, if set up by the admin.</li>
+<li>User has sufficient storage in Microsoft Stream for recordings to be saved.</li>
+<li>User has <strong>TeamsMeetingPolicy-AllowCloudRecording</strong> set to true.</li>
+<li>User isn't an anonymous, guest, or federated user in the meeting.</li>
+<li>To enable transcription for a user's meeting, the Teams meeting policy they're assigned to must have the <strong>-AllowTranscription</strong> set to true.</li>
+</ul>
+<h2 id="set-up-teams-cloud-meeting-recording-for-your-users">Set up Teams cloud meeting recording for your users</h2>
+<p>To set up Teams cloud meeting recording for your users, complete the following steps:</p>
+<ol>
+<li>Turn on <strong>Microsoft Stream</strong> for users in the organization.</li>
+<li>Make sure users have <strong>upload video</strong> permissions in Microsoft Stream.</li>
+<li>Notify employees to consent to company guidelines in Microsoft Stream.</li>
+<li>Turn on or turn off cloud recording.</li>
+</ol>
+<p>You can use the Microsoft Teams admin center or PowerShell to set a Teams meeting policy that controls whether a user's meetings can be recorded.</p>
+<p>In the Microsoft Teams admin center, turn on or turn off the <strong>Allow cloud recording</strong> setting in the meeting policy.</p>
+<p>Using PowerShell, you configure the <strong>AllowCloudRecording</strong> setting in <strong>TeamsMeetingPolicy</strong>.</p>
+<h2 id="compliance-and-e-discovery-for-meeting-recordings">Compliance and e-discovery for meeting recordings</h2>
+<p>The meeting recordings are stored in Microsoft Stream, which is Microsoft 365 and Office 365 Tier-C compliant. To support e-discovery requests for compliance admins who are interested in meeting or call recordings for Microsoft Streams, the "recording completed" message is available in the compliance content search functionality for Microsoft Teams. Compliance admins can look for the keyword "recording" in the subject line of the item in compliance content search preview and discover meeting and call recordings in the organization. A prerequisite for them to view all recordings is that they'll need to be set up in Microsoft Stream with admin access.</p>
+<h2 id="learn-more">Learn more</h2>
+<ul>
+<li><a href="https://docs.microsoft.com/en-us/microsoftteams/cloud-recording" data-linktype="absolute-path">Teams cloud meeting recording</a></li>
+</ul>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Set up shared meeting rooms</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/m365-teams-deploy-meetings/4-set-up-shared-meeting-rooms/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div><section>
+		<p>
+Need help? See our <a id="troubleshooting-guide" data-bi-name="troubleshooting" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-m365.teams.deploy-meetings.3-configure-cloud-meeting-recording&amp;documentId=c3bd3761-d5fb-e97b-be1b-b9732333b59f&amp;versionIndependentDocumentId=89add637-6ce3-6cf9-a51a-c391f2e8cebe&amp;contentPath=%2FMicrosoftDocs%2Flearn-m365-pr%2Fblob%2Flive%2Flearn-m365-pr%2Fm365%2Fm365-teams-deploy-meetings%2F3-configure-cloud-meeting-recording.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fm365-teams-deploy-meetings%2F3-configure-cloud-meeting-recording&amp;author=elizapo">troubleshooting guide</a> or provide specific feedback by <a id="module-unit-feedback-link" data-bi-name="feedback" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-m365.teams.deploy-meetings.3-configure-cloud-meeting-recording&amp;documentId=c3bd3761-d5fb-e97b-be1b-b9732333b59f&amp;versionIndependentDocumentId=89add637-6ce3-6cf9-a51a-c391f2e8cebe&amp;contentPath=%2FMicrosoftDocs%2Flearn-m365-pr%2Fblob%2Flive%2Flearn-m365-pr%2Fm365%2Fm365-teams-deploy-meetings%2F3-configure-cloud-meeting-recording.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fm365-teams-deploy-meetings%2F3-configure-cloud-meeting-recording&amp;author=elizapo#report-feedback">reporting an issue</a>.		</p>
+	</section></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

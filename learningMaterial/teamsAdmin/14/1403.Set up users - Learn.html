@@ -1,0 +1,337 @@
+<html dir="ltr"><head><title>Set up users - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/m365-teams-deploy-meetings/2-set-up-users">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/m365-teams-deploy-meetings/2-set-up-users</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Set up users - Learn</h1>
+  <div dir="auto" id="reader-credits">lizap</div>
+  <div dir="auto" id="reader-estimated-time">7-8 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>6 minutes</li>
+		</ul>
+			<p>Teams offers a great deal of functionality that can be customized by each customer. Your company will have to decide which features it's appropriate to deploy.</p>
+<p>In our scenario of a software development company, audio and video conferences are used for daily stand-up meetings, customer communication, and other parts of the Agile software development process. You want to start planning for Microsoft Teams meetings by learning how you can manage user access.</p>
+<p>Here, you learn how to set users up on Teams meetings by using the Microsoft 365 admin center, PowerShell, or Teams meetings policies.</p>
+<h2 id="manage-user-access-to-teams">Manage user access to Teams</h2>
+<p>You manage access to Teams at the user level by assigning or removing a Microsoft Teams product license. You complete this operation by using either the Microsoft 365 admin center or PowerShell.</p>
+<div>
+<p> Note</p>
+<p>By default, when a licensing plan (for example, Microsoft 365 Enterprise E3 or Microsoft 365 Business Premium) is assigned to a user, a Teams license is automatically assigned. The user is then enabled for Teams. You can disable or enable Teams for a user by removing or assigning a license at any time.</p>
+</div>
+<h3 id="using-the-microsoft-365-admin-center">Using the Microsoft 365 admin center</h3>
+<p>Teams user-level licenses are managed directly through the Microsoft 365 admin center user management interfaces. An administrator can assign licenses to new users when those accounts are created or to users with existing accounts.
+The steps are different depending on whether you use the Licenses page or Active Users page. For step-by-step instructions, see <strong>Assign licenses to users</strong> in the <strong>Learn more</strong> section below.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-deploy-meetings/media/2-office-365.png" alt="Assign licenses" data-linktype="relative-path">
+</p>
+<h3 id="using-powershell">Using PowerShell</h3>
+<p>Run the following command to display all available licensing plans in your organization:</p>
+<pre tabindex="0"><code data-author-content="Get-MsolAccountSku
+"><span><span>Get-MsolAccountSku</span>
+</span></code></pre>
+<p>Run the following commands to disable Teams, where <strong>CompanyName:License</strong> is your organization name and the identifier for the licensing plan that you retrieved in the earlier step. For example, <strong>ContosoSchool:ENTERPRISEPACK_STUDENT</strong>:</p>
+<pre tabindex="0"><code data-author-content="$acctSKU=&quot;<CompanyName:License>
+$x = New-MsolLicenseOptions -AccountSkuId $acctSKU -DisabledPlans &quot;TEAMS1&quot;
+"><span><span>$acctSKU</span>=<span>"&lt;CompanyName:License&gt;
+<span>$x</span> = New-MsolLicenseOptions -AccountSkuId <span>$acctSKU</span> -DisabledPlans "</span>TEAMS1<span>"
+</span></span></code></pre>
+<h2 id="manage-user-meeting-policies-and-settings-in-teams">Manage user meeting policies and settings in Teams</h2>
+<p>Meeting policies are used to control the features that are available to participants for meetings scheduled by users in your organization. You can use the global, organization-wide, default policy that's automatically produced or create and assign custom policies. You manage meeting policies in the Microsoft Teams admin center or by using PowerShell.</p>
+<h3 id="let-anonymous-people-start-a-meeting">Let anonymous people start a meeting</h3>
+<p>This policy is per-organizer and allows for leaderless dial-in conferencing meetings. This setting controls whether dial-in users can join the meeting without an authenticated user from the organization in attendance. The default value is <strong>False</strong>, which means dial-in users will wait in the lobby until an authenticated user joins the meeting.</p>
+<p><span>
+<img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-deploy-meetings/media/2-waiting-in-lobby.png" alt="User waiting in lobby" data-linktype="relative-path">
+</span>
+</p>
+<h3 id="automatically-admit-people">Automatically admit people</h3>
+<p>This policy is per-organizer. The setting controls whether people join a meeting directly or wait in the lobby until they're admitted by an authenticated user. This setting doesn't apply to dial-in users.</p>
+<h3 id="allow-dial-in-users-to-bypass-the-lobby">Allow dial-in users to bypass the lobby</h3>
+<p>This policy is per-organizer. The setting controls whether people who dial in by phone join the meeting directly or wait in the lobby, whatever the <strong>Automatically admit people</strong> setting fixes. The default value is <strong>False</strong>. When it's <strong>False</strong>, dial-in users will wait in the lobby until an organization user joins the meeting with a Teams client and admits them. If it's <strong>True</strong>, dial-in users will automatically join the meeting when an organization user arrives.</p>
+<h3 id="configure-desktop-sharing-in-microsoft-teams">Configure desktop sharing in Microsoft Teams</h3>
+<p>Desktop sharing lets users present a screen or app during a meeting or chat. Administrators configure screen sharing in Microsoft Teams to let users share an entire screen, an app, or a file. You let users give or request control, allow PowerPoint sharing, add a whiteboard, and allow shared notes. You also configure whether anonymous or external users can request control of the shared screen.</p>
+<p>To configure screen sharing, you create a new meetings policy, and then assign it to the users you want to manage.</p>
+<ol>
+<li><p>Sign into the <a href="https://admin.teams.microsoft.com/" data-linktype="external">Microsoft Teams admin center</a>.</p>
+</li>
+<li><p>Select <strong>Meetings</strong> &gt; <strong>Meeting policies</strong>.</p>
+<p><span>
+<img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-deploy-meetings/media/2-meeting-policies.png" alt="Meeting policies" data-linktype="relative-path">
+</span>
+</p>
+</li>
+<li><p>On the <strong>Meeting policies</strong> page, select <strong>+ Add</strong>.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-deploy-meetings/media/2-new-policy.png" alt="New policy link" data-linktype="relative-path">
+</p>
+</li>
+<li><p>Give your policy a unique title and enter a brief description.</p>
+</li>
+<li><p>Under <strong>Content sharing</strong>, choose a screen sharing mode from the drop-down list:</p>
+<ul>
+<li><strong>Entire screen</strong>: lets users share their entire desktop.</li>
+<li><strong>Single application</strong>: lets users limit screen sharing to a single active application.</li>
+<li><strong>Disabled</strong>: turns off screen sharing.</li>
+</ul>
+<p><span>
+<img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-deploy-meetings/media/2-content-sharing.png" alt="Content sharing" data-linktype="relative-path">
+</span>
+</p>
+</li>
+<li><p>Turn the following settings on or off:</p>
+<ul>
+<li><strong>Allow a participant to give or request control</strong>. Lets members of the team give or request control of the presenter's desktop or application.</li>
+<li><strong>Allow an external participant to give or request control</strong>. This policy is per-user. Whether an organization has this policy set for a user doesn't control what external participants can do, whatever the meeting organizer has set. This parameter controls whether external participants can be given control or request control of the sharer's screen, depending on what the sharer has set within their organization's meeting policies.</li>
+<li><strong>Allow PowerPoint sharing</strong>. Lets users create meetings that allow PowerPoint presentations to be uploaded and shared.</li>
+<li><strong>Allow whiteboard</strong>. Lets users share a whiteboard.</li>
+<li><strong>Allow shared notes</strong>. Lets users take shared notes.</li>
+</ul>
+</li>
+<li><p>Select <strong>Save</strong>.</p>
+</li>
+</ol>
+<h3 id="use-powershell-to-configure-shared-desktop">Use PowerShell to configure shared desktop</h3>
+<p>You can also use the <strong>Set-CsTeamsMeetingPolicy</strong> cmdlet to control desktop sharing.</p>
+<h3 id="customize-meeting-invitations">Customize meeting invitations</h3>
+<p>You can customize Teams meeting invitations to satisfy your organization's needs. Add your organization's logo and include helpful information, such as links to your support website and legal disclaimer, and a text-only footer.</p>
+<ol>
+<li><p>Sign into the <a href="https://admin.teams.microsoft.com/" data-linktype="external">Microsoft Teams admin center</a>.</p>
+</li>
+<li><p>In the left navigation, go to <strong>Meetings</strong> &gt; <strong>Meeting settings</strong>.</p>
+</li>
+<li><p>Under <strong>Email invitation</strong>, do the following:</p>
+<p><span>
+<img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-deploy-meetings/media/2-email-invitation.png" alt="Configure the email invitation" data-linktype="relative-path">
+</span>
+</p>
+<ul>
+<li><strong>Logo URL</strong>. Enter the URL where your logo is stored. The URL must be reachable inside and outside your organization.</li>
+<li><strong>Legal URL</strong>. If your organization has a website where you want people to go for any legal concerns, enter the URL here.</li>
+<li><strong>Help URL</strong>. If your organization has a support website where you want people to go if they run into issues, enter the URL here.</li>
+<li><strong>Footer</strong>. Enter text that you want to include as a footer.</li>
+</ul>
+</li>
+<li><p>Select <strong>Preview invite</strong> to see a preview of your meeting invitation.</p>
+</li>
+<li><p>When you're done, select <strong>Save</strong>.</p>
+</li>
+<li><p>Wait an hour or so for the changes to propagate. Then schedule a Teams meeting to see what the invitation looks like.</p>
+</li>
+</ol>
+<h2 id="learn-more">Learn more</h2>
+<ul>
+<li><a href="https://docs.microsoft.com/en-us/microsoft-365/admin/manage/assign-licenses-to-users" data-linktype="absolute-path">Assign licenses to users</a></li>
+<li><a href="https://docs.microsoft.com/en-us/microsoftteams/meeting-settings-in-teams" data-linktype="absolute-path">Manage meeting settings in Microsoft Teams</a></li>
+</ul>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Configure cloud meeting recording</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/m365-teams-deploy-meetings/3-configure-cloud-meeting-recording/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>
