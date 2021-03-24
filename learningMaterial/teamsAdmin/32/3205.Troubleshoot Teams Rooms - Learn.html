@@ -1,0 +1,277 @@
+<html dir="ltr"><head><title>Troubleshoot Teams Rooms - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/m365-teams-rooms-troubleshooting/troubleshoot">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/m365-teams-rooms-troubleshooting/troubleshoot</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Troubleshoot Teams Rooms - Learn</h1>
+  <div dir="auto" id="reader-credits">AlexandraHrt</div>
+  <div dir="auto" id="reader-estimated-time">5-6 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="main" role="main" data-bi-name="content" lang="en-us" dir="ltr">
+		
+		
+		<ul>
+			<li>10 minutes</li>
+		</ul>
+			<p>Despite being a reliable, self-managed system, issues can pop up in Teams Rooms. Here's some common scenarios and how to troubleshoot them.</p>
+<h2 id="what-are-common-teams-rooms-app-issues">What are common Teams Rooms app issues?</h2>
+<h3 id="issue-the-teams-room-app-is-not-up-to-date">Issue: The Teams Room app is not up to date.</h3>
+<ul>
+<li>Sign into Windows Settings as admin, and manually update the app via the Microsoft Store. If the app won't update, you can use the Microsoft Teams recovery tool.</li>
+</ul>
+<h3 id="issue-the-resource-account-cant-sign-into-microsoft-teams">Issue: The resource account can’t sign into Microsoft Teams.</h3>
+<ul>
+<li>Sign into Windows Settings as admin and attempt to sign into Microsoft Teams through the web browser. If you can’t, then it's a sign that the account either has a wrong password or there's a typo in the username.</li>
+<li>If you're able to sign into Teams via the web browser and you signed into the Teams Rooms device using a domain account, it's possible proxy authentication is the issue. Teams Rooms devices sign in with a local Skype user account that is not a domain account. It's possible that a proxy server is looking for an Active Directory domain account in order to authenticate proxy server access. Make sure that Teams Rooms are approved for proxy authentication bypass.</li>
+<li>If you're in Teams-only mode, make sure you have the Skype for Business Online DNS records configured. Teams still leverages many Skype for Business Online features and if DNS settings are missing, those features could prevent proper operation.</li>
+<li>For a Skype for Business on-premises environment, make sure that you've imported the enterprise root certificate from your certificate authority.</li>
+</ul>
+<h3 id="issue-the-local-skype-account-doesnt-automatically-sign-in">Issue: The local Skype account doesn’t automatically sign in.</h3>
+<ul>
+<li>Make sure that a policy isn't applied that disables auto login.  Teams Rooms devices should be put in their own custom groups, whether Active Directory, Group Policy, or Intune. It's possible a Group Policy setting was applied to your Teams Rooms device that’s preventing the Skype account from logging in automatically.</li>
+<li>Make sure that the password is still blank.</li>
+<li>Make sure that a password expiration policy hasn't been applied.</li>
+</ul>
+<h2 id="what-are-common-video-display-issues">What are common video display issues?</h2>
+<h3 id="issue-video-image-is-blurry-colors-arent-accurate-or-it-just-doesnt-look-right">Issue: Video image is blurry, colors aren’t accurate, or it just doesn’t look right.</h3>
+<ul>
+<li>Make sure you’re using the correct cabling as required by the manufacturer.</li>
+<li>Make sure you're using high-quality HDMI cables.</li>
+<li>Verify that cables are tightly connected and that the cable hasn't come loose. Inspect the cable to make sure that it isn't broken or damaged in any way.</li>
+<li>You may need to update firmware on the compute module or update the video driver.</li>
+<li>Verify that the front of room displays don't have burn-in or they're simply old and don't show a strong image anymore.</li>
+</ul>
+<h3 id="issue-displays-dont-turn-on-automatically">Issue: Displays don’t turn on automatically.</h3>
+<ul>
+<li>All displays should support either HDMI Consumer Electronic Control (CEC) or PC Power On commands. Teams Rooms supports HDMI CEC, but many of the compute modules Don't, meaning the HDMI ports on compute modules are not pinned correctly to send the CEC signal. In this case, you may need to add a CEC injector.</li>
+</ul>
+<h2 id="what-are-common-network-issues">What are common network issues?</h2>
+<h3 id="issues-video-is-choppy-or-low-resolution-the-resource-account-keeps-signing-in-and-out-or-audio-has-echoes-stutters-or-drops">Issues: Video is choppy or low resolution, the resource account keeps signing in and out, or audio has echoes, stutters, or drops.</h3>
+<ul>
+<li>Bypass the proxy server. Don’t perform break or inspect analysis on Teams media. Verify that appropriate firewall ports are open for Microsoft Teams.</li>
+<li>Don't use wireless networking. It's unsupported with Teams Rooms. If you are using wireless networking, switch to a physical ethernet cable.</li>
+<li>Make sure that your network is configured for local internet and DNS access.</li>
+<li>When signed into Windows Settings as admin, go to connectivity.office.com from the web browser and validate that the results don't show any network issues with connecting to Microsoft 365.</li>
+<li>For Skype for Business on-premises, check if you have call quality diagnostics installed and enabled. If so, check the values there to see if you can get any additional information for what's happening.</li>
+<li>Check the cabling and switch port and other networking components, making sure that the network cable isn't loose or damaged.</li>
+<li>Validate that the network switch port hasn't been misconfigured.</li>
+<li>If necessary, enable Quality of Service (QoS) on your network for Teams media.</li>
+</ul>
+<h2 id="what-are-some-possible-general-issues">What are some possible general Issues?</h2>
+<h3 id="issue-performance-is-poor">Issue: Performance is poor.</h3>
+<ul>
+<li>This usually has to do with unnecessary Intune or Group Policy Objects (GPO) being applied to Teams Rooms. Be sure that the Teams Rooms computer account and resource account are in dedicated Organizational Units and block inheritance of other GPO’s.</li>
+<li>Uninstall unnecessary or redundant antivirus and malware software, VPN clients, and additional security agents which are not required on Teams Rooms.</li>
+<li>Be sure Teams Rooms is restarting every night</li>
+<li>Update the BIOS and firmware on the compute module to make sure that there aren't any core hardware issues.</li>
+</ul>
+<h2 id="learn-more">Learn more</h2>
+<ul>
+<li><a href="https://docs.microsoft.com/en-us/MicrosoftTeams/rooms/recovery-tool" data-linktype="absolute-path" target="az-portal">Microsoft Teams Rooms recovery tool</a></li>
+</ul>
+
+		
+	</div><section>
+		<p>
+Need help? See our <a id="troubleshooting-guide" data-bi-name="troubleshooting" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-m365.m365-teams-rooms-troubleshooting.troubleshoot&amp;documentId=b49c9afc-864e-9a2b-967d-380c9de274cd&amp;versionIndependentDocumentId=8624478c-c221-4cd6-f896-fa8b34c7d49e&amp;contentPath=%2FMicrosoftDocs%2Flearn-m365-pr%2Fblob%2Flive%2Flearn-m365-pr%2Fm365%2Fm365-teams-rooms-troubleshooting%2Ftroubleshoot.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fm365-teams-rooms-troubleshooting%2Ftroubleshoot&amp;author=elizapo">troubleshooting guide</a> or provide specific feedback by <a id="module-unit-feedback-link" data-bi-name="feedback" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-m365.m365-teams-rooms-troubleshooting.troubleshoot&amp;documentId=b49c9afc-864e-9a2b-967d-380c9de274cd&amp;versionIndependentDocumentId=8624478c-c221-4cd6-f896-fa8b34c7d49e&amp;contentPath=%2FMicrosoftDocs%2Flearn-m365-pr%2Fblob%2Flive%2Flearn-m365-pr%2Fm365%2Fm365-teams-rooms-troubleshooting%2Ftroubleshoot.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fm365-teams-rooms-troubleshooting%2Ftroubleshoot&amp;author=elizapo#report-feedback">reporting an issue</a>.		</p>
+	</section></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>
