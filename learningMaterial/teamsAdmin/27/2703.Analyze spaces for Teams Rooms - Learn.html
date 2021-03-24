@@ -1,0 +1,274 @@
+<html dir="ltr"><head><title>Analyze spaces for Teams Rooms - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/m365-teams-rooms-right-device-space/analyze-spaces">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/m365-teams-rooms-right-device-space/analyze-spaces</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Analyze spaces for Teams Rooms - Learn</h1>
+  <div dir="auto" id="reader-credits">AlexandraHrt</div>
+  <div dir="auto" id="reader-estimated-time">7-9 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>5 minutes</li>
+		</ul>
+			<p>Here’s a partial list of questions that need to be asked when designing meeting spaces for Teams Rooms.</p>
+<ul>
+<li>What type of furniture is in the room?</li>
+<li>What sort of materials are on the walls in the room?</li>
+<li>Are the walls made of glass?</li>
+<li>How bright or dark is the room?</li>
+<li>How large is the room?</li>
+<li>What kind of field of view should the camera have?</li>
+<li>How are you going to run cables to the table microphones, cameras, and displays?</li>
+</ul>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-rooms-right-device-space/media/room-size-considerations.png" alt="Room size considerations" data-linktype="relative-path"></p>
+<p>In the below left image, we see a small focus room. This is a great place for Teams Rooms, be it a collaboration bar for Microsoft Teams or the full Windows-based Teams Rooms.</p>
+<p>On the right is a different situation. This is the type of environment that is great for Surface Hub, an all-in-one digital whiteboard, meetings platform, and collaborative computing device that brings the power of Windows 10 to teamwork. As there's no table in front of any of the chairs, people can get up and walk directly to the Surface Hub to interact with it. By putting tables in front of the chairs, people may feel hesitant to walk around the table to get to the Surface Hub. When going with Surface Hub, be sure that the room is designed to encourage interactivity with the device.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-rooms-right-device-space/media/meeting-space-sizes.png" alt="Meeting space sizes" data-linktype="relative-path"></p>
+<p>As you analyze your meeting spaces, decide if Teams Rooms is the right device for the space or if Surface Hub makes more sense. In some cases, it makes sense to put both Teams Rooms and Surface Hub in the same room and configure Coordinated Meeting Join between the two.</p>
+<p>Here's some  things you’ll want to consider when selecting equipment for your meeting spaces:</p>
+<ul>
+<li><strong>The camera</strong> is obviously important in a meeting space. You must decide how well the camera you choose can handle the lighting in the room.  Do you need pan, tilt, and zoom, or can it be a static camera? The camera’s field of view is important. The wider the field of view, the less depth the camera can focus on accurately.  The narrower the field of view, the deeper into the room the camera can look.</li>
+<li><strong>The microphone array</strong> is important in picking up the voices of the attendees. You can decide if you want the microphones to be on a table or in the ceiling. One advantage of ceiling-based microphones is they don’t pick up vibrations as people bump into the table.</li>
+<li><strong>Cable management</strong> should not be overlooked. You don't want people to move the center of table console and pull cables loose. You also need to be able to run cables discreetly in walls or through floor covers, underneath tables, and to various other locations in the room where you need to put Teams Rooms equipment.</li>
+<li><strong>The sound profile</strong>. The more glass and plastic in a room, the more vibrations there will be. You may need to add sound dampening to a room.</li>
+<li><strong>The light profile</strong>. You want to make sure that the remote attendees get a good clear view of the attendees inside the meeting space. If the room is too dark, the camera will not be able to properly capture the in-room attendees. If the room is too bright, it can be difficult to read the front of room displays.</li>
+</ul>
+<p><strong>The touchscreen console</strong>. The center of table touchscreen console is the device that users interact with when joining and managing a meeting. There are many different form factors. Some have compute modules built-in and some can swivel the display. Some consoles have a high tilt angle and some lay a little more flat.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-rooms-right-device-space/media/touchscreen-consoles.png" alt="Touchscreen consoles" data-linktype="relative-path"></p>
+<p><strong>The compute module</strong>. Teams Rooms support compute modules from several vendors. The compute modules have been designed to match with the correct Teams Rooms configuration so that they have enough USB, HDMI, and other required ports. The compute module runs Windows 10 Enterprise IoT.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-rooms-right-device-space/media/compute-modules.png" alt="Compute modules" data-linktype="relative-path"></p>
+<p><strong>The camera</strong>. Cameras are an important part of the Teams Rooms environment, and there are many different options. Some cameras are housed in a console that also contains the microphone and speakers, such as the camera on the left. The camera on the right is a traditional pan/tilt/zoom camera that works well in larger meeting spaces.
+You'll need to consider the field of view and if other features like automatic speaker framing are needed.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-rooms-right-device-space/media/cameras.png" alt="Cameras" data-linktype="relative-path"></p>
+<p><strong>The content camera</strong>. There are specific certified cameras that support the content camera feature. You can see examples of two of them below.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-rooms-right-device-space/media/content-cameras.png" alt="Content cameras" data-linktype="relative-path"></p>
+<p>The ideal size of the capture area of an analog whiteboard is between 1.8m-2.7m/6-9 ft. wide. Whiteboards larger than 3.6m/12ft will not be picked up by the camera. Note that the whiteboard should be white and not another color. If you have a whiteboard that is the entire length of the wall, the camera will not be able to show the whole thing. The recommendation is to take colored tape and tape an outline of the camera’s field of view directly on the whiteboard.</p>
+<p>This provides two advantages. First, it helps the content camera frame the whiteboard as it can detect a border. Perhaps more importantly, it will let someone who's drawing on the whiteboard know if they're about to draw outside of what the camera can see. If they were to draw outside the taped area, the camera won't show it, and they'll be encouraged to continue diagramming inside the frame.</p>
+<p><strong>Audio considerations</strong>. Audio is crucial so everyone can hear what's going on. On the left is a sound bar that hangs below the front of room display. The sound bar includes both the speakers and the microphone. On the right is a speaker-only sound bar. There are also microphones that can be placed throughout the room.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-rooms-right-device-space/media/audio-sound-bars.png" alt="Audio sound bars" data-linktype="relative-path"></p>
+<p><strong>Display options</strong>. There are many different display options. You can use displays hanging on a wall or a projector. Make sure that the displays are sized properly for the space. 4K displays are supported, but Teams will only show up to a 1080p image.
+When should you use a single monitor versus dual monitors? A single monitor is good primarily for small rooms, while dual monitors are great for large rooms. Note that in either single or dual monitor scenarios, a monitor can be touch-enabled to support interactive inking.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-rooms-right-device-space/media/touchscreen-monitor.png" alt="Touchscreen monitor" data-linktype="relative-path"></p>
+<p><em>What are the requirements for a touchscreen?</em> Any touch-enabled monitor that works with Windows 10 will work with Teams Rooms. You may need to go into Windows Settings and verify that tablet PC settings are configured correctly to enable the monitors touch features.</p>
+<p><em>Are all the walls in the meeting space glass?</em> In that case, you can't mount on the wall and you'll have to get creative, opting for a projector and screen or purchasing a stand to hold the display.</p>
+<p><strong>Use the right cables and connectors</strong>. If the room already has existing displays, make note of the make and model, and make sure the connectors on the existing displays will work with Teams Rooms.</p>
+<ul>
+<li>Always be certain you're using cables and extenders that work to the vendor’s specifications. If the vendor dictates a category 6 cable should be used to connect components, use only category 6 cabling. If you use something like category 5 or 5E, you can expect that there will be issues with the system. The OEM manufacturers have specified the cabling requirements, and it is in your best interest to match the requirements.</li>
+<li>Make sure that the cable lengths needed for a room are within specifications of a given cable type. If not, you'll have to use an extender. Not all technologies support extenders, such as USB 3.0.</li>
+<li>When buying cables, make sure that the connector will fit into the compute module or the console display. Some cables have large connectors and putting two connectors next to each other won't physically fit.</li>
+<li>Connection locking capabilities are a nice feature. First, it can help prevent cable theft. But more importantly, it'll help cables from accidentally being pulled loose. Some HDMI cables have been engineered to require extra force to pull the cable loose.</li>
+</ul>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Document your meeting spaces</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/m365-teams-rooms-right-device-space/document-meeting-spaces/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>
