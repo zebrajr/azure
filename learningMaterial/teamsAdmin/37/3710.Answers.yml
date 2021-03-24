@@ -1,0 +1,8 @@
+1. B
+Depending on their needs, users must be assigned a Skype for Business Online license and/or Teams and Microsoft 365 licenses.
+
+2. B
+Microsoft supports both resource forest topology and multiple deployments of Skype for Business Server in multiple forests.
+
+3. A
+Homing some users on-premises in Skype for Business Server and others in Teams or Skype for Business Online relies on shared SIP address space functionality.
