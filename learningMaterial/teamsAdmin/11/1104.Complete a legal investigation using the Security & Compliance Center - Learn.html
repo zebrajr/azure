@@ -1,0 +1,317 @@
+<html dir="ltr"><head><title>Complete a legal investigation using the Security & Compliance Center - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/m365-teams-implement-compliance/3-legal-investigations">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/m365-teams-implement-compliance/3-legal-investigations</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Complete a legal investigation using the Security &amp; Compliance Center - Learn</h1>
+  <div dir="auto" id="reader-credits">lizap</div>
+  <div dir="auto" id="reader-estimated-time">4-5 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>5 minutes</li>
+		</ul>
+			<p>Large corporations are sometimes required to submit all electronically stored information (ESI) as part of legal proceedings. The process by which you identify and locate information that pertains to a case is called eDiscovery. eDiscovery investigations in Microsoft 365 can include content generated in Microsoft Teams.</p>
+<p>Suppose that Contoso has been taken to court by a disgruntled employee who claims harassment. You suspect that the content of Teams chats and meeting recordings can exonerate the company. You want to find out how to locate this data and place a hold on it to prevent any tampering.
+Here, you will learn how to execute eDiscovery searches and holds on Teams content.</p>
+<h2 id="ediscovery-in-teams">eDiscovery in Teams</h2>
+<p>The discovery of ESI in Teams is accomplished in the following ways:</p>
+<ul>
+<li>Teams journals chat messages to each user's mailboxes.</li>
+<li>Teams journals standard channel messages to the group mailbox representing the team.</li>
+<li>Files uploaded in standard channels are covered for eDiscovery by SharePoint Online and OneDrive for Business.</li>
+</ul>
+<p>Not all Teams content is eDiscoverable. The following table shows the content types that can be located through eDiscovery.</p>
+
+<h2 id="audit-log-and-content-search">Audit log and content search</h2>
+<p>Audit logs record specific activities in Teams, including:</p>
+<ul>
+<li>Team creation</li>
+<li>Team deletion</li>
+<li>Added channel</li>
+<li>Changed setting</li>
+</ul>
+<p>These logs can help during an investigation and can be located during eDiscovery. To be able to look at audit data, you must turn on auditing in the Security and Compliance Center. For help with this action, read Turn audit log search on or off in the Learn more section below.</p>
+<h3 id="retrieve-teams-data-from-the-audit-log">Retrieve Teams data from the audit log</h3>
+<p>To locate information from audit logs during eDiscovery, follow these steps:</p>
+<ol>
+<li>Sign into the <a href="https://protection.office.com/" data-linktype="external">Security and Compliance Center</a>.</li>
+<li>Under <strong>Search</strong>, select <strong>Audit log search</strong>.</li>
+<li>Use <strong>Search</strong> to filter by the activities, dates, and users you want to audit.</li>
+<li>Export your results to Excel for further analysis.</li>
+</ol>
+<h3 id="content-search">Content Search</h3>
+<p>Content Search is an eDiscovery tool in Microsoft 365 that you can use to locate information, relevant to a legal action, in:</p>
+<ul>
+<li>Microsoft Teams</li>
+<li>Exchange Online mailboxes</li>
+<li>Exchange Online public folders</li>
+<li>SharePoint Online sites</li>
+<li>OneDrive for Business</li>
+<li>Skype for Business conversations</li>
+<li>Microsoft 365 groups</li>
+<li>Yammer groups</li>
+</ul>
+<p>Using this tool, you can run single queries that locate information in multiple Microsoft 365 systems in one action. For example, you could search for "New Factory specifications" and retrieve results from:</p>
+<ul>
+<li>A Teams channel conversation</li>
+<li>A file uploaded to a SharePoint site</li>
+<li>A user's OneDrive for Business account</li>
+<li>A conversation in Yammer</li>
+</ul>
+<p>You have a large degree of control over the queries you use, which enables you to narrow the range of results you discover and to drill down into only those items that relate to the legal action you are investigating.</p>
+<h2 id="place-a-microsoft-teams-user-or-team-on-legal-hold">Place a Microsoft Teams user or team on legal hold</h2>
+<p>If there is a chance of litigation, you must preserve electronically stored information (ESI) and protect it from tampering. This includes Teams messages and other items that are relevant to the case.</p>
+<p>To put a user or a team on legal hold:</p>
+<ol>
+<li><p>To create a case, in the Security and Compliance Center go to <strong>eDiscovery</strong> or <strong>Advanced eDiscovery</strong> and select <strong>+ Create a case</strong>. When the case is created, open it.</p>
+<p><span>
+<img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-implement-compliance/media/3-legal-hold-1.png" alt="Create a case" data-linktype="relative-path">
+</span>
+</p>
+</li>
+<li><p>To create a hold, select the <strong>Holds</strong> tab, and then select <strong>+ Create</strong> to create a hold.</p>
+<p><span>
+<img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-implement-compliance/media/3-legal-hold-2.png" alt="Holds section" data-linktype="relative-path">
+</span>
+</p>
+</li>
+<li><p>In the <strong>Name</strong> textbox, type a descriptive name for your hold. If you need to provide extra information, use the <strong>Description</strong> textbox.</p>
+<p><span>
+<img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-implement-compliance/media/3-legal-hold-3.png" alt="Name your hold" data-linktype="relative-path">
+</span>
+</p>
+</li>
+<li><p>Choose a <strong>Location</strong> for the hold.</p>
+<p><span>
+<img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-implement-compliance/media/3-legal-hold-4.png" alt="Choose location" data-linktype="relative-path">
+</span>
+</p>
+</li>
+<li><p>Create the query to target specific content.</p>
+</li>
+</ol>
+<div>
+<p> Note</p>
+<p>If a user is on hold, all their messages are also on hold, including whatever they sent in a one-on-one, one-to-many, or group chats, or channel conversations, including private channels.</p>
+</div>
+<h2 id="learn-more">Learn more</h2>
+<ul>
+<li><a href="https://docs.microsoft.com/en-us/microsoftteams/ediscovery-investigation#ediscovery-of-private-channels" data-linktype="absolute-path">eDiscovery of private channels</a></li>
+<li><a href="https://docs.microsoft.com/en-us/microsoftteams/content-search" data-linktype="absolute-path">Use Content Search in Microsoft Teams</a>)</li>
+<li><a href="https://docs.microsoft.com/en-us/microsoft-365/compliance/turn-audit-log-search-on-or-off" data-linktype="absolute-path">Turn audit log search on or off</a></li>
+<li><a href="https://docs.microsoft.com/en-us/microsoftteams/legal-hold" data-linktype="absolute-path">Place a Microsoft Teams user or team on legal hold</a></li>
+</ul>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Manage and secure Teams using AppLocker</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/m365-teams-implement-compliance/4-applocker-manage-secure-teams/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>
