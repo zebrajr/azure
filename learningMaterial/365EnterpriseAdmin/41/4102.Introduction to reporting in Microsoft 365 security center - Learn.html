@@ -1,0 +1,268 @@
+<html dir="ltr"><head><title>Introduction to reporting in Microsoft 365 security center - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/m365-security-management-secure-score/introduction">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/m365-security-management-secure-score/introduction</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Introduction to reporting in Microsoft 365 security center - Learn</h1>
+  <div dir="auto" id="reader-credits">AlexandraHrt</div>
+  <div dir="auto" id="reader-estimated-time">2-3 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="main" role="main" data-bi-name="content" lang="en-us" dir="ltr">
+		
+		
+		<ul>
+			<li>4 minutes</li>
+		</ul>
+			<p>Reporting in Microsoft 365 security center is split up into four categories:</p>
+<ul>
+<li><strong>Identities</strong> – user accounts and credentials</li>
+<li><strong>Data</strong> – email and document contents</li>
+<li><strong>Devices</strong> – computers, mobile phones, and other devices</li>
+<li><strong>Apps</strong> – programs and attached online services</li>
+</ul>
+<p>In the <strong>Identities</strong> category of Reports, you can track:</p>
+<ul>
+<li>Users with the most detected anomalies</li>
+<li>How many users are reported at risk by conditional access policies</li>
+<li>The number of global admins in your org</li>
+</ul>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-security-management-secure-score/media/identities.png" alt="Identities reports" data-linktype="relative-path"></p>
+<p>The <strong>Data</strong> category helps track user activity that could lead to unauthorized data disclosure. You can see:</p>
+<ul>
+<li>Users who share the most files from cloud apps</li>
+<li>How many Data Loss Prevention (DLP) policy matches occurred</li>
+<li>How many DLP policies overrides or false positives are reported</li>
+<li>How many DLP policy matches happened in 3rd-party cloud services via Microsoft Cloud App Security</li>
+</ul>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-security-management-secure-score/media/data.png" alt="Data reports" data-linktype="relative-path"></p>
+<p>The <strong>Device</strong> category ensures devices are secure, up-to-date, and that you can spot potential threats. You can see:</p>
+<ul>
+<li>Microsoft Defender for Endpoint alerts, which may require an immediate response</li>
+<li>Intune enrolled device data such as: device compliance, devices with active malware, and types of malware on devices</li>
+<li>Attack Surface Reduction rules, which help prevent actions that are used by exploit-seeking malware</li>
+</ul>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-security-management-secure-score/media/device-reports.png" alt="Device compliance and malware detection reports" data-linktype="relative-path"></p>
+<p>The <strong>App</strong> category provides more insight into how cloud apps are being used in your organization, including what kinds of apps, their level of risk, and alerts.</p>
+<p>This includes:</p>
+<ul>
+<li>Monitor email accounts at risk</li>
+<li>Apps discovered by <strong>Cloud App Security</strong> that have been granted permissions by users</li>
+<li>Cloud Discovery reporting to show what kind of apps are being used</li>
+<li>Cloud app activity locations</li>
+<li><strong>Azure Security Center</strong> alerts signaling infrastructure health</li>
+</ul>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-security-management-secure-score/media/app-reports.png" alt="Cloud Security and Discovered Cloud Apps reports" data-linktype="relative-path"></p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Understand how Microsoft Secure Score works</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/m365-security-management-secure-score/how-secure-score-works/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div><section>
+		<p>
+Need help? See our <a id="troubleshooting-guide" data-bi-name="troubleshooting" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-m365.m365-security-management-secure-score.introduction&amp;documentId=5d274010-3df8-794d-f4d3-0c60f7fb1d01&amp;versionIndependentDocumentId=dd026204-9d2a-2cc8-325a-868a007e2beb&amp;contentPath=%2FMicrosoftDocs%2Flearn-m365-pr%2Fblob%2Flive%2Flearn-m365-pr%2Fm365%2Fm365-security-management-secure-score%2Fintroduction.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fm365-security-management-secure-score%2Fintroduction&amp;author=elizapo">troubleshooting guide</a> or provide specific feedback by <a id="module-unit-feedback-link" data-bi-name="feedback" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-m365.m365-security-management-secure-score.introduction&amp;documentId=5d274010-3df8-794d-f4d3-0c60f7fb1d01&amp;versionIndependentDocumentId=dd026204-9d2a-2cc8-325a-868a007e2beb&amp;contentPath=%2FMicrosoftDocs%2Flearn-m365-pr%2Fblob%2Flive%2Flearn-m365-pr%2Fm365%2Fm365-security-management-secure-score%2Fintroduction.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fm365-security-management-secure-score%2Fintroduction&amp;author=elizapo#report-feedback">reporting an issue</a>.		</p>
+	</section></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

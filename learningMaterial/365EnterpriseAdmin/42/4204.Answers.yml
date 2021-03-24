@@ -1,0 +1,8 @@
+1. D
+Correct. Malicious attachments and hyperlinks are two of the most common phishing attacks. Microsoft Defender for Office 365 protects against both with Safe Links and Safe Attachments.
+
+2. D
+Correct. Since the Microsoft Defender for Office 365 anti-phishing policies were only applied to the finance department, the rest of Contoso won't receive that protection until the policies are applied to the organization.
+
+3. B
+Correct. This ensures that mail from outside your organization isn't an impersonation of one of the users on the protected list of users. The protected users list is different from the list of people to which the policy is enforced, which is set in the 'Applied to' section of the policy options.
