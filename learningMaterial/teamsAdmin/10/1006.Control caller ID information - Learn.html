@@ -1,0 +1,328 @@
+<html dir="ltr"><head><title>Control caller ID information - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/m365-teams-secure-teams-voice-functionality/5-configure-caller-id-policies">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/m365-teams-secure-teams-voice-functionality/5-configure-caller-id-policies</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Control caller ID information - Learn</h1>
+  <div dir="auto" id="reader-credits">lizap</div>
+  <div dir="auto" id="reader-estimated-time">6-7 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>9 minutes</li>
+		</ul>
+			<p>The Phone System in Microsoft 365 provides a default caller ID that is the user's assigned telephone number. You can either change or block the caller ID (also called a Calling Line ID) for a user. You can learn more about how to use caller ID in your organization by going to the How can caller ID be used in your organization link in the <strong>Learn more</strong> section below.</p>
+<div>
+<p> Tip</p>
+<p>You can't block incoming calls currently in Skype for Business Online.</p>
+</div>
+<p>There are settings that you can change:</p>
+<div>
+<p> Note</p>
+<p>This <strong>is not</strong> for on-premises organizations with Lync or Skype for Business Server.</p>
+</div>
+<ul>
+<li><p><strong>Change their outgoing caller ID</strong> You can replace a user's Caller ID, which by default is their telephone number, with another phone number. For example, you could change the user's Caller ID from their phone number to a main phone number for your business or change the user's Calling Line ID from their phone number to a main phone number for the legal department. You can change the Calling ID number to any Online service number (toll or toll-free).</p>
+<div>
+<p> Note</p>
+<p>If you want to use the Service parameter, you must specify a valid service number.</p>
+</div>
+</li>
+<li><p><strong>Block their outbound caller ID</strong> You can block the outgoing Caller ID from being sent on a user's outgoing PSTN calls. Doing this will block their phone number from being displayed on the phone of a person being called.</p>
+</li>
+<li><p><strong>Block their incoming caller ID</strong> You can block a user from receiving Caller ID on any incoming PSTN calls.</p>
+<div>
+<p> Important</p>
+<p>Emergency calls will always send the user's telephone number (caller ID).</p>
+</div>
+</li>
+</ul>
+<p>By default, all of these caller ID settings are turned off. This means that the Skype for Business Online user's phone number can be seen when that user makes a call to a PSTN phone.
+To learn more about these settings see <strong>How can caller ID be used in your organization</strong> link in the <strong>Learn more</strong> section below.</p>
+<h2 id="set-your-caller-id-policy-settings">Set your caller ID policy settings</h2>
+<div>
+<p> Note</p>
+<p>For all of the Caller ID settings in Skype for Business Online, you must use Windows PowerShell and you can't use the Skype for Business admin center.</p>
+</div>
+<h3 id="verify-and-start-windows-powershell">Verify and start Windows PowerShell</h3>
+<p>Ensure that you're running Windows PowerShell version 3.0 or higher:</p>
+<ol>
+<li>Select <strong>Start Menu</strong> &gt; <strong>Windows PowerShell</strong>.</li>
+<li>Check the version by typing <strong>Get-Host</strong> in the Windows PowerShell window.</li>
+<li>If you don't have version 3.0 or higher, you need to download and install updates to Windows PowerShell. For Windows 10 1607 and up, Windows PowerShell 5.1 is installed by default. It's highly recommended that you upgrade Windows 10 to the latest version.</li>
+<li>You'll also need to install the Windows PowerShell module for Skype for Business Online that enables you to create a remote Windows PowerShell session that connects to Skype for Business Online. This module, which is supported only on 64-bit computers, can be downloaded from the Microsoft Download Center at Windows PowerShell Module for Skype for Business Online, a link for which is in the <strong>Learn more</strong> section below. Restart your computer if you're prompted.</li>
+</ol>
+<p>If you need to know more, see Connect to all Microsoft 365 services in a single Windows PowerShell window, a link to which is in the <strong>Learn more</strong> section below.</p>
+<h3 id="start-a-windows-powershell-session">Start a Windows PowerShell session</h3>
+<ol>
+<li>From the <strong>Start Menu</strong> &gt; <strong>Windows PowerShell</strong>.</li>
+<li>In the <strong>Windows PowerShell</strong> window, connect to your Microsoft 365 by running:</li>
+</ol>
+<div>
+<p> Note</p>
+<p>You only have to run the <strong>Import-Module</strong> command the first time you use the Skype for Business Online Windows PowerShell module.</p>
+</div>
+<pre tabindex="0"><code data-author-content=" Import-Module -Name SkypeOnlineConnector
+ $credential = Get-Credential
+ $session = New-CsOnlineSession -Credential $credential
+ Import-PSSession $session
+"><span> <span>Import-Module</span><span> -Name</span> SkypeOnlineConnector
+ <span>$credential</span> = <span>Get-Credential</span>
+ <span>$session</span> = <span>New-CsOnlineSession</span><span> -Credential</span> <span>$credential</span>
+ <span>Import-PSSession</span> <span>$session</span>
+</span></code></pre>
+<p>If you want more information about starting Windows PowerShell, see Connect to all Microsoft 365 services in a single Windows PowerShell window or Set up your computer for Windows PowerShell.</p>
+<h3 id="see-all-of-the-caller-id-policy-settings-in-your-organization">See all of the caller ID policy settings in your organization</h3>
+<p>To view all of the caller ID policy settings in your organization, run:</p>
+<pre tabindex="0"><code data-author-content="Get-CsCallingLineIdentity |fl
+"><span><span>Get-CsCallingLineIdentity</span> |fl
+</span></code></pre>
+<p>For more examples and details see the link in the <strong>Learn more</strong> section below for <strong>Get-CsCallingLineIdentity</strong> .</p>
+<h3 id="create-a-new-caller-id-policy-for-your-organization">Create a new caller ID policy for your organization</h3>
+<p>To create a new caller ID policy that sets the caller ID to anonymous, run:</p>
+<pre tabindex="0"><code data-author-content="New-CsCallingLineIdentity  -Identity Anonymous -Description &quot;Anonymous policy&quot; -CallingIDSubstitute Anonymous -EnableUserOverride $false
+"><span><span>New-CsCallingLineIdentity</span> <span> -Identity</span> Anonymous<span> -Description</span> <span>"Anonymous policy"</span><span> -CallingIDSubstitute</span> Anonymous<span> -EnableUserOverride</span> <span>$false</span>
+</span></code></pre>
+<div>
+<p> Note</p>
+<p>In all cases, the "Service Number" field should not include an initial "+".</p>
+</div>
+<p>See more examples and details for <strong>New-CsCallingLineIdentity</strong> located in the <strong>Learn more</strong> section below.
+To apply the new policy you created to Amos Marble, run:</p>
+<pre tabindex="0"><code data-author-content="Grant-CsCallingLineIdentity -Identity &quot;amos.marble@contoso.com&quot; -PolicyName Anonymous
+"><span><span>Grant-CsCallingLineIdentity</span><span> -Identity</span> <span>"amos.marble@contoso.com"</span><span> -PolicyName</span> Anonymous
+</span></code></pre>
+<p>See more on the <strong>Grant-CsCallingLineIdentity</strong> cmdlet in the <strong>Learn more</strong> section below.</p>
+<p>If you've already created a policy, you can use the <strong>Set-CsCallingLineIdentity</strong> cmdlet to make changes to the existing policy, and then use the <strong>Grant-CsCallingLineIdentity</strong> cmdlet to apply the settings to your users.</p>
+<h3 id="set-it-so-the-incoming-caller-id-is-blocked">Set it so the incoming caller ID is blocked</h3>
+<p>To block the incoming caller ID, run:</p>
+<pre tabindex="0"><code data-author-content="Set-CsCallingLineIdentity  -Identity &quot;Block Incoming&quot; -BlockIncomingPstnCallerID $true -EnableUserOverride $true
+"><span><span>Set-CsCallingLineIdentity</span> <span> -Identity</span> <span>"Block Incoming"</span><span> -BlockIncomingPstnCallerID</span> <span>$true</span><span> -EnableUserOverride</span> <span>$true</span>
+</span></code></pre>
+<p>See more examples and details for <strong>Set-CsCallingLineIdentity</strong> in the Learn more section below.</p>
+<p>To apply the policy setting you created to a user in your organization, run:</p>
+<pre tabindex="0"><code data-author-content="Grant-CsCallingLineIdentity -Identity &quot;amos.marble@contoso.com&quot; -PolicyName &quot;Block Incoming&quot;
+"><span><span>Grant-CsCallingLineIdentity</span><span> -Identity</span> <span>"amos.marble@contoso.com"</span><span> -PolicyName</span> <span>"Block Incoming"</span>
+</span></code></pre>
+<p>See more on the <strong>Grant-CsCallingLineIdentity</strong> cmdlet in the <strong>Learn more</strong> section below.</p>
+<h3 id="remove-a-caller-id-policy">Remove a caller ID policy</h3>
+<p>To remove a policy from your organization, run:</p>
+<pre tabindex="0"><code data-author-content="Remove-CsCallingLineIdentity -Identity &quot;My Caller ID Policy&quot;
+"><span><span>Remove-CsCallingLineIdentity</span><span> -Identity</span> <span>"My Caller ID Policy"</span>
+</span></code></pre>
+<p>To remove a policy from a user, run:</p>
+<pre tabindex="0"><code data-author-content="Grant-CsCallingLineIdentity -Identity &quot;amos.marble@contoso.com&quot; -PolicyName $null
+"><span><span>Grant-CsCallingLineIdentity</span><span> -Identity</span> <span>"amos.marble@contoso.com"</span><span> -PolicyName</span> <span>$null</span>
+</span></code></pre>
+<h2 id="learn-more">Learn more</h2>
+<ul>
+<li><a href="https://docs.microsoft.com/en-us/microsoftteams/how-can-caller-id-be-used-in-your-organization" data-linktype="absolute-path">How can caller ID be used in your organization</a></li>
+<li><a href="https://docs.microsoft.com/en-us/skypeforbusiness/what-are-calling-plans-in-office-365/more-about-calling-line-ID-and-calling-party-name" data-linktype="absolute-path">More about Calling Line ID and Calling Party Name</a></li>
+<li><a href="https://docs.microsoft.com/en-us/microsoftteams/emergency-calling-terms-and-conditions" data-linktype="absolute-path">Emergency calling terms and conditions</a></li>
+<li><a href="https://github.com/MicrosoftDocs/OfficeDocs-SkypeForBusiness/blob/live/Teams/downloads/emergency-calling/emergency-calling-label-(en-us)-(v.1.0).zip?raw=true" data-linktype="external">Skype for Business Online: Emergency Calling disclaimer label</a></li>
+</ul>
+
+		
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

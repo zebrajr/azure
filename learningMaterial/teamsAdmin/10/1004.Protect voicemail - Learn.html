@@ -1,0 +1,303 @@
+<html dir="ltr"><head><title>Protect voicemail - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/m365-teams-secure-teams-voice-functionality/3-protect-voicemail">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/m365-teams-secure-teams-voice-functionality/3-protect-voicemail</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Protect voicemail - Learn</h1>
+  <div dir="auto" id="reader-credits">lizap</div>
+  <div dir="auto" id="reader-estimated-time">6-8 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>6 minutes</li>
+		</ul>
+			<p>As administrators it's impossible to control what information a caller may divulge in a voicemail message. If you're worried that such messages may include confidential or business-critical information, you can consider encrypting messages or disabling their transcription into text.</p>
+<p>Suppose, in your firm of financial advisors, you know clients often discuss highly sensitive information during phone calls with their advisor. You've been told they sometimes include such information in voicemail messages. You have a legal responsibility to protect this information, so you want to investigate how to protect it, without disabling the voicemail service.</p>
+<p>Here, you'll learn about protected voicemail, voicemail policies, and how to control transcription for voice messages.</p>
+<h2 id="protect-voicemail-with-encryption">Protect voicemail with encryption</h2>
+<p>When someone leaves a voicemail message for a user in your organization, the voicemail is delivered to the user's mailbox as an email message attachment. Using mail flow rules to apply message encryption, you can prevent those voicemail messages from being forwarded to other recipients. When you enable protected voicemail, users can listen to protected voicemail messages by calling into their voicemail mailbox or by opening the message in Outlook, Outlook on the web, or in Outlook for Android or iOS. Protected voicemail messages can't be opened in Skype for Business.</p>
+<div>
+<p> Important</p>
+<p>For users who are online for Phone System but have their mailbox on Exchange Server, Voicemail messages are delivered to users' Exchange mailbox via SMTP routed through Exchange Online Protection. To enable successful delivery of these messages, please be sure that Exchange Connectors are configured correctly between your Exchange servers and Exchange Online Protection. See <strong>Use Connectors to Configure Mail Flow</strong>, a link is in <strong>Learn more</strong> section below.</p>
+</div>
+<p>To set up protected voicemail, do the following:</p>
+<ol>
+<li>Sign into the <a href="https://admin.teams.microsoft.com/" data-linktype="external">Teams admin center</a> using an account with global administrator permissions.</li>
+<li>Select <strong>Show all</strong> and then go to <strong>Admin centers</strong> &gt; <strong>Exchange</strong>.</li>
+<li>In the Exchange Admin Center, select <strong>Mail flow</strong> &gt; <strong>Rules</strong>.</li>
+<li>Select <strong>+ Add</strong>, and then select <strong>Apply Office 365 Message Encryption and rights protection to messages</strong>.</li>
+<li>Provide a name for the new mail flow rule and then under <strong>Apply this rule if</strong>, select <strong>The message properties</strong> &gt; <strong>Include the message type</strong> &gt;<strong>Voice mail</strong>. Select <strong>OK</strong>.</li>
+<li>Under <strong>Do the following</strong>, select <strong>Apply Office 365 Message Encryption and rights protection to the message with</strong> and then select <strong>Select one</strong>. Under <strong>RMS template</strong>, select <strong>Do not forward</strong>. Select <strong>OK</strong> and then <strong>Save</strong>.</li>
+</ol>
+<div>
+<p> Note</p>
+<p>If the <strong>RMS template</strong> list is empty, you need to set up Message Encryption. For more information about setting up Message Encryption, see the following articles. Links can be found in the <strong>Learn more</strong> section below:</p>
+<ul>
+<li><strong>Set up new Message Encryption capabilities</strong></li>
+<li><strong>Configuring and managing templates for Azure Information Protection</strong></li>
+<li><strong>Do Not Forward option for emails</strong></li>
+</ul>
+</div>
+<h2 id="setting-voicemail-policies-in-your-organization">Setting voicemail policies in your organization</h2>
+<div>
+<p> Warning</p>
+<p>For Skype for Business customers, disabling voicemail through a Microsoft Teams calling policy might also disable the voicemail service for your Skype for Business users.</p>
+</div>
+<p>Voicemail transcription is enabled by default and transcription profanity masking is disabled by default for all organizations and users; however, you can control them by using the <strong>Set-CsOnlineVoicemailPolicy</strong> and <strong>Grant-CsOnlineVoicemailPolicy</strong> cmdlets.</p>
+<p>Voicemail messages received by users in your organization are transcribed in the region where your Microsoft 365 organization is hosted. The region where your tenant is hosted might not be the same region where the user receiving the voicemail message is located. To view the region where your tenant is hosted, go to the Organization profile page and then select <strong>View details</strong> next to Data location.</p>
+<div>
+<p> Important</p>
+<p>You can't create a new policy instance for transcription and transcription profanity masking using the <strong>New-CsOnlineVoiceMailPolicy</strong> cmdlet, and you can't remove an existing policy instance using the <strong>Remove-CsOnlineVoiceMailPolicy</strong> cmdlet.</p>
+</div>
+<p>You can manage the transcription settings for your users using voicemail policies. To see all available voicemail policy instances, you can use the <strong>Get-CsOnlineVoicemailPolicy</strong> cmdlet.</p>
+<p><span>
+<img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-secure-teams-voice-functionality/media/3-get-csonlinevoicemailpolicy.png" alt="Screenshot showing the results of the Get-CsOnlineVoiceMailPolicy cmdlet" data-linktype="relative-path">
+</span>
+</p>
+<h2 id="turning-off-transcription-for-your-organization">Turning off transcription for your organization</h2>
+<p>Because the default setting for transcription is on for your organization, you may want to disable it by using <strong>Set-CsOnlineVoicemailPolicy</strong>. To do this, run:</p>
+<pre tabindex="0"><code data-author-content="Set-CsOnlineVoicemailPolicy -EnableTranscription $false
+"><span><span>Set-CsOnlineVoicemailPolicy</span><span> -EnableTranscription</span> <span>$false</span>
+</span></code></pre>
+<h2 id="turning-on-transcription-profanity-masking-for-your-organization">Turning on transcription profanity masking for your organization</h2>
+<p>Transcription profanity masking is disabled by default for your organization. If there's a business requirement to enable it, you can enable transcription profanity masking by using <strong>Set-CsOnlineVoicemailPolicy</strong>. To do this, run:</p>
+<pre tabindex="0"><code data-author-content="Set-CsOnlineVoicemailPolicy -EnableTranscriptionProfanityMasking $true
+"><span><span>Set-CsOnlineVoicemailPolicy</span><span> -EnableTranscriptionProfanityMasking</span> <span>$true</span>
+</span></code></pre>
+<h2 id="turning-off-transcription-for-a-user">Turning off transcription for a user</h2>
+<p>User policies take precedence over the organizational default settings. For example, if voicemail transcription is enabled for all of your users, you can assign a policy to disable transcription for a specific user by using the <strong>Grant-CsOnlineVoicemailPolicy</strong> cmdlet.</p>
+<p>To disable transcription for a single user, run:</p>
+<pre tabindex="0"><code data-author-content="Grant-CsOnlineVoicemailPolicy -PolicyName TranscriptionDisabled -Identity sip:amosmar@contoso.com
+"><span><span>Grant-CsOnlineVoicemailPolicy</span><span> -PolicyName</span> TranscriptionDisabled<span> -Identity</span> sip:amosmar@contoso.com
+</span></code></pre>
+<h2 id="turning-on-transcription-profanity-masking-for-a-user">Turning on transcription profanity masking for a user</h2>
+<p>To enable transcription profanity masking for a specific user, you can assign a policy to enable transcription profanity masking for a specific user by using the <strong>Grant-CsOnlineVoicemailPolicy</strong> cmdlet.</p>
+<p>To enable transcription profanity masking for a single user, run:</p>
+<pre tabindex="0"><code data-author-content="Grant-CsOnlineVoicemailPolicy -PolicyName TranscriptionProfanityMaskingEnabled -Identity sip:amosmar@contoso.com
+"><span><span>Grant-CsOnlineVoicemailPolicy</span><span> -PolicyName</span> TranscriptionProfanityMaskingEnabled<span> -Identity</span> sip:amosmar@contoso.com
+</span></code></pre>
+<div>
+<p> Important</p>
+<p>The voicemail service in Microsoft 365 and Office 365 caches voicemail policies and updates the cache every 4 hours. Policy changes that you make can take up to 4 hours to be applied.</p>
+</div>
+<h2 id="learn-more">Learn more</h2>
+<ul>
+<li><a href="https://docs.microsoft.com/en-us/exchange/mail-flow-best-practices/use-connectors-to-configure-mail-flow/use-connectors-to-configure-mail-flow" data-linktype="absolute-path">Use Connectors to Configure Mail Flow</a></li>
+<li><a href="https://docs.microsoft.com/en-us/microsoft-365/compliance/email-encryption?view=o365-worldwide" data-linktype="absolute-path">Email encryption</a></li>
+<li><a href="https://docs.microsoft.com/en-us/microsoft-365/compliance/set-up-new-message-encryption-capabilities?view=o365-worldwide" data-linktype="absolute-path">Set up new Message Encryption capabilities</a></li>
+<li><a href="https://docs.microsoft.com/en-us/information-protection/deploy-use/configure-policy-templates" data-linktype="absolute-path">Configuring and managing templates for Azure Information Protection</a></li>
+<li><a href="https://docs.microsoft.com/en-us/information-protection/deploy-use/configure-usage-rights#do-not-forward-option-for-emails" data-linktype="absolute-path">Do Not Forward option for emails</a></li>
+</ul>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Control inbound calls</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/m365-teams-secure-teams-voice-functionality/4-block-inbound-calls/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

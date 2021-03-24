@@ -1,0 +1,330 @@
+<html dir="ltr"><head><title>Control inbound calls - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/m365-teams-secure-teams-voice-functionality/4-block-inbound-calls">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/m365-teams-secure-teams-voice-functionality/4-block-inbound-calls</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Control inbound calls - Learn</h1>
+  <div dir="auto" id="reader-credits">lizap</div>
+  <div dir="auto" id="reader-estimated-time">8-10 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>8 minutes</li>
+		</ul>
+			<p>Call blocking is often used to reduce the number of nuisance calls a company receives.</p>
+<p>Suppose, in your firm of financial advisors, you've investigated the scam voicemails and found that they always originate from five numbers. You want to prevent these callers from reaching your users or their mailboxes.</p>
+<p>Here, you'll learn how to use Calling Plans to block inbound calls from distrusted numbers.</p>
+<h2 id="block-calls-in-teams">Block calls in Teams</h2>
+<p>Phone System Direct Routing and Calling Plans support blocking inbound calls from the public switched telephone network (PSTN). This feature allows a tenant global list of number patterns to be defined so that the caller ID of every incoming PSTN call to the tenant can be checked against the list for a match. If a match is made, an incoming call is rejected.</p>
+<p>This inbound call blocking feature only works on inbound calls that originate from the PSTN and only works on a tenant-global basis. It's not available on a per-user basis.</p>
+<div>
+<p> Note</p>
+<p>Blocked callers may experience slightly different behaviors when they've been blocked. The behavior is based on how the blocked caller's carrier handles the notification that the call isn't allowed to be successfully completed. Examples may include a carrier message stating the call can't be completed as dialed, or simply dropping the call.</p>
+</div>
+<h2 id="call-blocking-admin-controls-and-information">Call blocking admin controls and information</h2>
+<p>Admin controls for blocking numbers are provided only using PowerShell. Number block patterns are defined as regular expression patterns. The order of the expressions is unimportant – the first pattern matched in the list results in the call being blocked. A new number or pattern that's added or removed in the blocked callers list may take up to 24 hours for the pattern to become active.</p>
+<h2 id="call-blocking-powershell-commands">Call blocking PowerShell commands</h2>
+<p>You manage number patterns by using the <strong>New, Get, Set, Remove -CsInboundBlockedNumberPattern</strong> cmdlets. You can manage a given pattern by using these cmdlets, including the ability to toggle the activation of a given pattern. In the <strong>Learn more</strong> section you'll finds links for the following cmdlets:</p>
+<ul>
+<li><strong>Get-CsInboundBlockedNumberPattern</strong> returns a list of all blocked number patterns added to the tenant list including Name, Description, Enabled (True/False), and Pattern for each.</li>
+<li><strong>New-CsInboundBlockedNumberPattern</strong> adds a blocked number pattern to the tenant list.</li>
+<li><strong>Remove-CsInboundBlockedNumberPattern</strong> removes a blocked number pattern from the tenant list.</li>
+<li><strong>Set-CsInboundBlockedNumberPattern</strong> modifies one or more parameters of a blocked number pattern in the tenant list.</li>
+</ul>
+<p>Viewing and activating the entire call blocking feature is managed through the <strong>Get, Set -CsTenantBlockingCallingNumbers</strong> cmdlets:</p>
+<ul>
+<li><strong>Get-CsTenantBlockedCallingNumbers</strong> returns the parameters for the global blocked number list including Enabled (True/False). There's a single global tenant policy that can't be modified manually other than to turn the feature on or off.</li>
+<li><strong>Set-CsTenantBlockedCallingNumbers</strong> allows modifying the global tenant blocked calls to be turned on and off at the tenant level.</li>
+</ul>
+<h2 id="examples">Examples</h2>
+<p>Let's examine some example PowerShell commands that block callers.</p>
+<h3 id="block-a-number">Block a number</h3>
+<p>In this example, the <strong>Enabled</strong> and <strong>Description</strong> parameters are optional:</p>
+<pre tabindex="0"><code data-author-content="New-CsInboundBlockedNumberPattern -Name &quot;<name>&quot; -Enabled $True -Description &quot;<description>&quot; -Pattern &quot;^[+]?13125550000&quot;
+"><span><span>New-CsInboundBlockedNumberPattern</span><span> -Name</span> <span>"&lt;name&gt;"</span><span> -Enabled</span> <span>$True</span><span> -Description</span> <span>"&lt;description&gt;"</span><span> -Pattern</span> <span>"^[+]?13125550000"</span>
+</span></code></pre>
+<p>Creating a new pattern adds the pattern as enabled by default. The description is an optional field to provide more information.
+We recommend that you provide a meaningful name to easily understand why the pattern was added. When you're blocking spam numbers, consider naming the rule the same as the number pattern that's being matched and add additional information in the description as required.</p>
+<p>Patterns are matched using Regular Expressions (Regex). Allow time for replication before you test and validate.</p>
+<h3 id="allow-a-number">Allow a number</h3>
+<p>In this example, the <strong>Identity</strong> parameter is required:</p>
+<pre tabindex="0"><code data-author-content="Remove-CsInboundBlockedNumberPattern -Identity &quot;<identity>&quot;
+"><span><span>Remove-CsInboundBlockedNumberPattern</span><span> -Identity</span> <span>"&lt;identity&gt;"</span>
+</span></code></pre>
+<p>If the identity isn't known, use the <strong>Get-CsInboundBlockedNumberPattern</strong> cmdlet to first locate the proper pattern and note the identity. Then, run the <strong>Remove-CsTenantBlockedNumberPattern</strong> cmdlet and pass the appropriate identity value.
+Allow time for replication before you test and validate.</p>
+<h3 id="view-all-number-patterns">View all number patterns</h3>
+<p>Running this cmdlet returns a list of all blocked numbers that are entered for a tenant:</p>
+<pre tabindex="0"><code data-author-content="Get-CsInboundBlockedNumberPattern
+"><span><span>Get-CsInboundBlockedNumberPattern</span>
+</span></code></pre>
+<p>Use built-in PowerShell filtering abilities to parse the returned values as required.</p>
+<h2 id="add-number-exceptions">Add number exceptions</h2>
+<p>You can add exceptions to blocked number patterns by using the <strong>New, Get, Set, Remove -CsTenantBlockNumberExceptionPattern</strong> cmdlets.</p>
+<p><strong>New-CsTenantBlockedNumberExceptionPattern</strong> adds a number exception pattern to the tenant list.
+<strong>Get-CsTenantBlockedNumberExceptionPattern</strong> returns a list of all number exception patterns added to the tenant list.
+<strong>Set-CsTenantBlockedNumberExceptionPattern</strong> modifies one or more parameters to a number exception pattern in the tenant list.
+<strong>Remove-CsTenantBlockedNumberExceptionPattern</strong> removes a number exception pattern from the tenant list.</p>
+<h3 id="add-a-number-exception">Add a number exception</h3>
+<p>In this example, a new number exception pattern is created and will by default add the pattern as enabled. The <strong>Enabled</strong> and <strong>Description</strong> parameters are optional.</p>
+<pre tabindex="0"><code data-author-content="New-CsTenantBlockedNumberExceptionPattern -Identity <XdsGlobalRelativeIdentity> -Tenant <GUID> -Pattern <String> -Enabled <bool> -Description <string>
+"><span><span>New-CsTenantBlockedNumberExceptionPattern</span><span> -Identity</span> &lt;XdsGlobalRelativeIdentity&gt;<span> -Tenant</span> &lt;GUID&gt;<span> -Pattern</span> &lt;String&gt;<span> -Enabled</span> &lt;bool&gt;<span> -Description</span> &lt;string&gt;
+</span></code></pre>
+<pre tabindex="0"><code data-author-content="New-CsTenantBlockedNumberExceptionPattern -Identity InternationalPrefix -Tenant daacb588-18ef-4f77-8c83-955af9615930 -Pattern &quot;^011(\d*)%content%quot; -Description &quot;Allow international prefix in US&quot;
+
+"><span><span>New-CsTenantBlockedNumberExceptionPattern</span><span> -Identity</span> InternationalPrefix<span> -Tenant</span> daacb588-<span>18</span>ef-<span>4</span>f77-<span>8</span>c83-<span>955</span>af9615930<span> -Pattern</span> <span>"^011(\d*)$"</span><span> -Description</span> <span>"Allow international prefix in US"</span>
+
+</span></code></pre>
+<h3 id="view-all-number-exceptions">View all number exceptions</h3>
+<p>In this example, the <strong>Identity</strong> parameter is optional. If the <strong>Identity</strong> parameter isn't specified, this cmdlet returns a list of all number exception patterns entered for a tenant:</p>
+<pre tabindex="0"><code data-author-content="Get-CsTenantBlockedNumberExceptionPattern -Identity <XdsGlobalRelativeIdentity> -Tenant <GUID>
+"><span><span>Get-CsTenantBlockedNumberExceptionPattern</span><span> -Identity</span> &lt;XdsGlobalRelativeIdentity&gt;<span> -Tenant</span> &lt;GUID&gt;
+</span></code></pre>
+<pre tabindex="0"><code data-author-content="Get-CsTenantBlockedNumberExceptionPattern -Tenant daacb588-18ef-4f77-8c83-955af9615930
+"><span><span>Get-CsTenantBlockedNumberExceptionPattern</span><span> -Tenant</span> daacb588-<span>18</span>ef-<span>4</span>f77-<span>8</span>c83-<span>955</span>af9615930
+</span></code></pre>
+<h3 id="modify-a-number-exception">Modify a number exception</h3>
+<p>In this example, the <strong>Identity</strong> parameter is mandatory. The <strong>Set-CsTenantBlockedNumberExceptionPattern</strong> cmdlet lets you modify one or more parameters for a given number pattern identity:</p>
+<pre tabindex="0"><code data-author-content="Set-CsTenantBlockedNumberExceptionPattern -Identity <XdsGlobalRelativeIdentity> -Tenant <GUID> -Enabled <bool> -Description <string> -Pattern <string>
+"><span><span>Set-CsTenantBlockedNumberExceptionPattern</span><span> -Identity</span> &lt;XdsGlobalRelativeIdentity&gt;<span> -Tenant</span> &lt;GUID&gt;<span> -Enabled</span> &lt;bool&gt;<span> -Description</span> &lt;string&gt;<span> -Pattern</span> &lt;string&gt;
+</span></code></pre>
+<pre tabindex="0"><code data-author-content="Set-CsTenantBlockedNumberExceptionPattern -Identity InternationalPrefix -Tenant daacb588-18ef-4f77-8c83-955af9615930  -Pattern &quot;^022(\d*)%content%quot;
+"><span><span>Set-CsTenantBlockedNumberExceptionPattern</span><span> -Identity</span> InternationalPrefix<span> -Tenant</span> daacb588-<span>18</span>ef-<span>4</span>f77-<span>8</span>c83-<span>955</span>af9615930 <span> -Pattern</span> <span>"^022(\d*)$"</span>
+</span></code></pre>
+<h3 id="remove-a-number-exception">Remove a number exception</h3>
+<p>In this example, the <strong>Identity</strong> parameter is required. This cmdlet will remove the given number pattern from the tenant list. If the identity isn't known, use the <strong>Get-CsInboundBlockedNumberPattern</strong> cmdlet to first locate the proper pattern and note the identity. Then, run the <strong>Remove-CsTenantBlockedNumberExceptionPattern</strong> cmdlet and pass the appropriate identity value. Allow time for replication before you test and validate.</p>
+<pre tabindex="0"><code data-author-content="Remove-CsTenantBlockedNumberExceptionPattern -Identity <XdsGlobalRelativeIdentity> -Tenant <GUID>
+"><span><span>Remove-CsTenantBlockedNumberExceptionPattern</span><span> -Identity</span> &lt;XdsGlobalRelativeIdentity&gt;<span> -Tenant</span> &lt;GUID&gt;
+</span></code></pre>
+<pre tabindex="0"><code data-author-content="Remove-CsTenantBlockedNumberExceptionPattern -Identity InternationalPrefix -Tenant daacb588-18ef-4f77-8c83-955af9615930
+"><span><span>Remove-CsTenantBlockedNumberExceptionPattern</span><span> -Identity</span> InternationalPrefix<span> -Tenant</span> daacb588-<span>18</span>ef-<span>4</span>f77-<span>8</span>c83-<span>955</span>af9615930
+</span></code></pre>
+<h3 id="test-whether-a-number-is-blocked">Test whether a number is blocked</h3>
+<p>Use the <strong>Test-CsInboundBlockedNumberPattern</strong> cmdlet to verify whether a number is blocked in the tenant.
+In this example, the <strong>PhoneNumber</strong> and <strong>Tenant</strong> parameters are required. The <strong>PhoneNumber</strong> parameter should be a numeric string without any additional characters such as + or -. In TRPS, the <strong>Tenant parameter</strong> is optional. The resulting <strong>isNumberBlocked</strong> parameter returns a value of True if the number is blocked in the tenant and False if it's not blocked:</p>
+<pre tabindex="0"><code data-author-content="Test-CsInboundBlockedNumberPattern –Tenant <GUID> -PhoneNumber <String>
+"><span><span>Test-CsInboundBlockedNumberPattern</span> –Tenant &lt;GUID&gt;<span> -PhoneNumber</span> &lt;String&gt;
+</span></code></pre>
+<pre tabindex="0"><code data-author-content="Test-CsInboundBlockedNumberPattern -Tenant e09ad6bc-1d3c-4650-8cae-02f6c5a04b45 -PhoneNumber 4255550101
+"><span><span>Test-CsInboundBlockedNumberPattern</span><span> -Tenant</span> e09ad6bc-<span>1</span>d3c-<span>4650</span>-<span>8</span>cae-<span>02</span>f6c5a04b45<span> -PhoneNumber</span> <span>4255550101</span>
+</span></code></pre>
+
+<pre tabindex="0"><code data-author-content="Test-CsInboundBlockedNumberPattern -Tenant e09ad6bc-1d3c-4650-8cae-02f6c5a04b45 -PhoneNumber 6045550188
+"><span><span>Test-CsInboundBlockedNumberPattern</span><span> -Tenant</span> e09ad6bc-<span>1</span>d3c-<span>4650</span>-<span>8</span>cae-<span>02</span>f6c5a04b45<span> -PhoneNumber</span> <span>6045550188</span>
+</span></code></pre>
+
+<h3 id="a-note-about-regex">A note about Regex</h3>
+<p>As stated earlier, the pattern matching for blocking callers is done by using Regex. Multiple tools are available online to help validate a Regex pattern match. If you aren't familiar with Regex patterns, we recommend that you take some time to familiarize yourself with the basics. To make sure you get expected results, use a tool for validating pattern matches before you add new blocked number matches to your tenant.</p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Control caller ID information</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/m365-teams-secure-teams-voice-functionality/5-configure-caller-id-policies/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>
