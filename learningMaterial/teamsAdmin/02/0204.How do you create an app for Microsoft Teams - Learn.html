@@ -1,0 +1,271 @@
+<html dir="ltr"><head><title>How do you create an app for Microsoft Teams? - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/intro-microsoft-teams-apps/3-create-app-teams">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/intro-microsoft-teams-apps/3-create-app-teams</span>
+  </a>
+  <h1 dir="auto" id="reader-title">How do you create an app for Microsoft Teams? - Learn</h1>
+  <div dir="auto" id="reader-credits">andrewconnell</div>
+  <div dir="auto" id="reader-estimated-time">10-12 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>10 minutes</li>
+		</ul>
+			<p>Creating and distributing an app built on the Microsoft Teams Platform involves deciding what to build, building your web services, creating an app package, and distributing that package to your target end users. It will be up to an organization's administrators to decide who can access and install your app, and it will be up to your users to install your app in any particular context. Let's look at each of those steps in a bit more detail.</p>
+<h2 id="design-your-app">Design your app</h2>
+<p>The most important step in creating a successful app for Microsoft Teams is choosing the right combination extensibility points and UI elements to take advantage of. You should spend a good deal of time understanding the problem you're trying to solve with your app and mapping your solution across the various ways users can interact with your app in the Microsoft Teams client. Don't underestimate the importance of context and scope! A conversational bot that works well in a one-to-one chat may not work at all as part of a group chat or channel conversation.</p>
+<p>Here's a recap of what's available for you, and some scenarios they're best suited for. You can accomplish many tasks in more than one way; choosing the right tool for the job will make for a much better user experience.</p>
+<ul>
+<li><strong>Messaging Extensions - search commands</strong> are useful for allowing your users to search an external system and then share the results of that search within Teams. With cards and card actions, you can richly format the results of that search, and allow users to do actions on the result without leaving the Microsoft Teams client.</li>
+<li><strong>Messaging Extensions - action commands</strong> are great for collecting information from your user in a single place, then sending that information to your web services. They excel in scenarios where you need to create a record of some kind, or collect more than a few pieces of information as part of a single transaction.</li>
+<li><strong>Tabs - in groups and channels</strong> provide a shared canvas for multiple people to collaborate. You should add this to your app if you've got information or services that are applicable to a group of people. Keep in mind that everyone is working from the same canvas, your page should be stateless and operate as a single-page app.</li>
+<li><strong>Tabs - in personal apps</strong> allow for a personal web-like experience. They're typically best for "hub" scenarios - "items assigned to me", or "things I've created". They can also be useful for static content like help or about pages.</li>
+<li><strong>Conversational bots - in groups and channels</strong> help add additional information to a conversation that is useful for everyone (or at least most) involved. They can be used to proactively add relevant information to the conversation, or respond to user requests ("hey bot, create a poll for where we should go to lunch"). Typically they shouldn't be used for multi-turn conversations - use a task module to collect the information or move the conversation to a one-to-one chat instead, then insert the results back into the original conversation.</li>
+<li><strong>Conversational bots - in personal apps</strong> can enable incredibly diverse workloads. Q&amp;A bots, bots that start workflows in other systems, bots that tell jokes and bots that take notes are just a few examples. Just remember to consider if a conversation-based interface is the best way to present your functionality.</li>
+<li><strong>Webhooks &amp; Connectors</strong> are useful to allow users to subscribe a channel to notification messages from an external system.</li>
+</ul>
+<p>The best apps will typically take advantage of more than one extension point. For example, let's say your organization wants to allow people to submit suggestions for improvements. You could create an app with a messaging extension search command to find and share existing suggestions, add an action command to allow users to create and update suggestions, a channel tab so a team can see all suggestions assigned to them, and a personal tab so a user can see all the suggestions they've submitted in the past. Add a conversational bot powered by natural language processing and machine learning allowing users to do complex queries across the suggestions and you've got a fully featured, fully integrated Teams app!</p>
+<h2 id="prepare-your-development-environment">Prepare your development environment</h2>
+<p>At a minimum, you'll need access to an Office 365 organization with custom app uploading enabled. If you don't have one, you can obtain a development organization by signing up for the <a href="https://developer.microsoft.com/office/dev-program" data-linktype="external">Office 365 developer program</a>. You'll also need a way to deploy and host your web services. For local development you can use a tunneling service like <a href="https://ngrok.com/" data-linktype="external">ngrok</a>, but for production you'll want to deploy your services, probably to a cloud service provider like Azure. You can use on-premises infrastructure to host your web services, but they must be publicly accessible (not behind a firewall).</p>
+<h2 id="select-your-development-environment">Select your development environment</h2>
+<p>Developers have multiple options when building Microsoft Teams apps.</p>
+<p>The community-based <strong>Yeoman Generator for Microsoft Teams</strong> (<em>also known as: "yo teams"</em>) scaffolds a project once the developer has answered a few questions for the type of Microsoft Teams app they're building. You can learn more about the Yeoman Generator for Microsoft Teams here: <a href="https://docs.microsoft.com/en-us/microsoftteams/platform/tutorials/get-started-yeoman" data-linktype="absolute-path">Create your First Microsoft Teams App</a>.</p>
+<p>The <strong>Microsoft Teams Toolkit</strong> enables you to create custom Teams apps directly within the <strong>Visual Studio Code</strong> environment. The toolkit guides you through the process and provides everything you need to build, debug, and launch your Teams app. You can learn more about the Microsoft Teams Toolkit for Visual Studio Code here: <a href="https://docs.microsoft.com/en-us/microsoftteams/platform/toolkit/visual-studio-code-overview" data-linktype="absolute-path">Build apps with the Microsoft Teams Toolkit and Visual Studio Code</a>.</p>
+<p>The <strong>Microsoft Teams Toolkit</strong> enables you to create custom Teams apps directly within the <strong>Visual Studio</strong> integrated development environment (IDE). The Microsoft Teams toolkit guides you through the process and provides everything you need to build, debug, and launch your Teams app. You can learn more about the Microsoft Teams Toolkit for Visual Studio Code here: <a href="https://docs.microsoft.com/en-us/microsoftteams/platform/toolkit/visual-studio-overview" data-linktype="absolute-path">Build apps with the Microsoft Teams Toolkit and Visual Studio</a></p>
+<h2 id="build-your-web-services">Build your web services</h2>
+<p>Once you've decided how users are going to interact with your app, its time to build the web services to power it. Depending on what you're creating, Teams provides various SDKs, templates, code samples, and generators to help you get started, including:</p>
+<ul>
+<li>Bot Framework SDK for messaging extensions and conversational bots</li>
+<li>Teams JavaScript client SDK for tabs and other content pages</li>
+<li>A Yeoman generator for building apps in Node.js</li>
+<li>A set of open-source controls for your web content pages, Fluent UI</li>
+<li>Ready-for-production App Templates</li>
+</ul>
+<p>For the complete list of tools and samples available to help you get started, see <a href="https://docs.microsoft.com/en-us/microsoftteams/platform/" data-linktype="absolute-path">the complete documentation</a>.</p>
+<p>Remember, you'll need to host your web services in a way that makes them publicly accessible over the internet (typically in a cloud service provider like Azure), and serve up your content over HTTPS.</p>
+<h2 id="create-your-app-package">Create your app package</h2>
+<p>Web services up and running, you'll need to create an app package that can be distributed and installed in Microsoft Teams. The app package contains two icons and a JSON manifest file describing the metadata for your app, the extension points your app is using, and pointers to the services powering those extension points.</p>
+<p>When creating your app package you can choose to create it manually, or use App Studio, which is an app inside Teams that helps you make Teams apps (we know, meta). App Studio will guide you through creating your app manifest, and can help you register your bot with the Bot Framework. It also contains a card designer to help you visually create cards and card actions, and send examples to yourself in Teams.</p>
+<h2 id="distribute-your-app">Distribute your app</h2>
+<p>You have three options for distributing your custom Microsoft Teams app, depending on your target audience.</p>
+<ul>
+<li><strong>Share your app package directly.</strong> You can choose to share your app package directly with users. This is useful if your app is directed towards a limited audience (just a couple of teams or individuals), and during development and testing of your app.</li>
+<li><strong>Publish your app to your organizational app catalog.</strong> If your app applies to a specific organization (or if you've customized your app to meet an organization's specific needs), a tenant administrator can upload your app to the organization's app catalog. This makes your app available for anyone in the organization to install (but doesn't automatically install it).</li>
+<li><strong>Publish your app to the public App Store.</strong> If your app is intended for all Teams users everywhere, you can submit your app for publication in the public app store. You'll need to go through a rigorous review process, so make sure you've dotted your i's and crossed your t's.</li>
+</ul>
+<p>When distributing your app you need to take into consideration not just your wanted audience, but the IT policies in place in the organization you want to share your app with. Each organization has complete control over determining which apps will be uploaded to their organizational app catalog, and which apps are available to install from the app store.</p>
+<h2 id="installing-apps">Installing apps</h2>
+<p>Installing apps in Microsoft Teams is <em>context-specific</em>. Installing the personal app portion of your app (things that are scoped for an individual user), doesn't install your app in any particular team, and vice-versa. Installing your app in a particular team doesn't install your app in any other teams. This means you shouldn't ever assume your app is installed in all possible contexts - it probably isn't. An organization's IT administrators have complete control over who can install which apps in which context, so you also shouldn't assume the user your app is currently interacting with has the permission to install your app in a different context. For better or worse, installing an app directly from an app package tends to be heavily restricted, so if you choose to distribute your app by sharing your app package directly you'll want to make sure your users can install it.</p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: When should you choose to build a custom Microsoft Teams app?</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/intro-microsoft-teams-apps/4-when-use-teams-apps/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

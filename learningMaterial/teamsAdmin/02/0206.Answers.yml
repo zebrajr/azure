@@ -1,0 +1,8 @@
+1. B
+This is a good scenario for a messaging extension with a search command.
+
+2. B
+Metadata for your app is included in your app manifest, in JSON format.
+
+3. C
+Apps in an organization app catalog can be installed by any user in that company with the correct permissions.
