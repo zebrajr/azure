@@ -1,0 +1,300 @@
+<html dir="ltr"><head><title>Configure data loss prevention - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/m365-teams-protect-information/2-configure-data-loss-prevention">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/m365-teams-protect-information/2-configure-data-loss-prevention</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Configure data loss prevention - Learn</h1>
+  <div dir="auto" id="reader-credits">lizap</div>
+  <div dir="auto" id="reader-estimated-time">7-9 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>7 minutes</li>
+		</ul>
+			<p>To comply with business standards and industry regulations, organizations must protect sensitive information and prevent its inadvertent disclosure. Sensitive information includes financial data or personal identity data, such as credit card numbers, social security numbers, or health records.</p>
+<p>With a data loss prevention (DLP) policy, you can identify, monitor, and automatically protect sensitive information across all Microsoft 365 services.</p>
+<h2 id="how-dlp-policies-work">How DLP policies work</h2>
+<p>When a DLP policy looks for a sensitive information type, such as a credit card number, it doesn't just identify a 16-digit number. Each sensitive information type is defined and detected by using a combination of:</p>
+<ul>
+<li>Keywords</li>
+<li>Internal functions to validate checksums or composition</li>
+<li>Regular expressions to find pattern matches</li>
+<li>Other content examination techniques</li>
+</ul>
+<p>These methods help DLP detection achieve a high degree of accuracy while reducing the number of false positives that can interrupt people's work.</p>
+<h2 id="what-dlp-policies-do">What DLP policies do</h2>
+<p>With a DLP policy, you can:</p>
+<ul>
+<li><strong>Identify sensitive information</strong> in locations such as Exchange Online, SharePoint Online, OneDrive for Business, and Microsoft Teams. For example, you can identify documents containing a credit card number that's stored in any OneDrive for Business site.</li>
+<li><strong>Prevent the accidental sharing of sensitive information</strong>. For example, you can identify any document or email containing a health record that's shared with people outside your organization, and then automatically block access to that document, or block the email from being sent.</li>
+<li><strong>Monitor and protect sensitive information in the desktop versions of Excel, PowerPoint, and Word</strong>. Just like in Exchange Online, SharePoint Online, and OneDrive for Business, these Office desktop programs include the same capabilities to identify sensitive information and apply DLP policies. DLP provides continuous monitoring when people share content in these Office programs.</li>
+<li><strong>Help users to stay compliant</strong>. You can educate users about DLP policies and help them remain compliant without blocking their work. If a user tries to share a document containing sensitive information, a DLP policy can both send them an email notification, and display a policy tip that allows them to override the policy if there's a business justification. The same policy tips also appear in Outlook on the web, Outlook, Excel, PowerPoint, and Word.</li>
+<li><strong>View DLP reports</strong> showing content that matches your organization's DLP policies. To assess how your business is complying with a DLP policy, you'll see how many matches each policy and rule has over time. If a DLP policy allows users to override a policy tip and report a false positive, you can also view what users have reported.</li>
+</ul>
+<p>You create and manage DLP policies on the <strong>Data loss prevention</strong> page in the Microsoft 365 Security &amp; Compliance Center.</p>
+<h2 id="dlp-policies-for-microsoft-teams">DLP policies for Microsoft Teams</h2>
+<p>If your organization has DLP, you can define policies to prevent people from sharing sensitive information in a Microsoft Teams channel or chat session. A DLP policy can also prevent sensitive information being shared with external users. To create a new DLP policy, you must be assigned a role that has permissions to edit DLP them.</p>
+<ol>
+<li>Sign into the <a href="https://protection.office.com/" data-linktype="external">Security &amp; Compliance Center</a>.</li>
+<li>Choose <strong>Data loss prevention</strong> &gt; <strong>Policy</strong> &gt; <strong>+ Create a policy</strong>.</li>
+<li>Choose a <strong>template</strong> &gt; <strong>Next</strong>.</li>
+<li>On the <strong>Name your policy tab</strong>, enter a name and description, and choose <strong>Next</strong>.</li>
+<li>On the <strong>Choose locations</strong> tab, keep the default setting of all locations, or select <strong>Let me choose specific locations</strong>, add specific locations, and choose <strong>Next</strong>.</li>
+<li>Choose <strong>Next</strong>.</li>
+<li>On the <strong>Policy settings</strong> tab, under <strong>Customize the type of content you want to protect</strong>, keep the default <strong>Simple settings</strong>, or choose <strong>Use advanced settings</strong>, and then select <strong>Next</strong>.</li>
+</ol>
+<p>Simple settings are designed for the most common requirements of a DLP policy. Advanced settings give you complete control to change each setting.</p>
+<ol>
+<li>On the <strong>Policy settings</strong> tab, under <strong>What do you want to do if we detect sensitive info?</strong> either keep the default policy tips and email notifications or customize them.</li>
+<li>When you've finished reviewing or editing settings, choose <strong>Next</strong>.</li>
+<li>On the <strong>Policy settings</strong> tab, under <strong>Do you want to turn on the policy or test things out first?</strong> choose a setting. Then select <strong>Next</strong>.</li>
+<li>Choose the <strong>Review your settings</strong> tab. Select <strong>Edit</strong> to make changes or select <strong>Create</strong>.</li>
+</ol>
+<p>Allow approximately one hour for your new policy to work its way through your datacenter and sync to user accounts.</p>
+<div>
+<p> Note</p>
+<p>To make sure documents that contain sensitive information aren't shared inappropriately in Teams, turn on SharePoint sites and OneDrive accounts, and Teams chat and channel messages.</p>
+</div>
+<h2 id="sensitive-information-in-messages">Sensitive information in messages</h2>
+<p>If someone attempts to share sensitive information in a Teams chat or channel with guests (external users) and you have a DLP policy defined to prevent this occurring, the message is deleted. This deletion happens automatically, and within seconds, according to how your DLP policy is configured.
+DLP for Microsoft Teams blocks sensitive content when shared with users who have either:</p>
+<ul>
+<li><strong>Guest access</strong> in teams and channels.</li>
+<li><strong>External access</strong> in meetings and chat sessions.</li>
+</ul>
+<p>DLP for external chat sessions only works if both the sender and the receiver are in Teams Only mode and using Microsoft Teams native federation. DLP for Teams doesn't block messages in interop with Skype for Business or non-native federated chat sessions.</p>
+<h2 id="sensitive-information-in-documents">Sensitive information in documents</h2>
+<p>If a Microsoft Teams user attempts to share sensitive information in a document with guests, either in a Teams channel or chat, and a DLP policy is defined to prevent this happening, the document won't open for those users. The DLP policy must include SharePoint and OneDrive because they're used by Teams to share the document.
+Users must have a license for Microsoft 365 DLP, which is included in Microsoft 365 E3. However, users don't require a license for Microsoft 365 Advanced Compliance.</p>
+<h2 id="policy-tips">Policy tips</h2>
+<p>Policy tips help to educate and explain to users when an action conflicts with a DLP policy, such as if a message is blocked. If someone attempts to share a social security number in a Microsoft Teams channel, for example, the <strong>What can I do?</strong> link opens a dialog box. The sender then has options to resolve the issue. There might be an option to override the policy or notify an admin to review and resolve it. You can customize policy tips, providing you have permission to edit DLP policies.</p>
+<h2 id="add-microsoft-teams-to-existing-dlp-policies">Add Microsoft Teams to existing DLP policies</h2>
+<p>To add Microsoft Teams as a location to existing DLP policies, you must have permissions to edit them.</p>
+<ol>
+<li>Sign into the <a href="https://protection.office.com/" data-linktype="external">Security &amp; Compliance Center</a>.</li>
+<li>Choose <strong>Data loss prevention</strong> &gt; <strong>Policy</strong>.</li>
+<li>Select a policy and review the <strong>Locations</strong> section. If <strong>Teams chat and channel messages</strong> is listed, you don't need to do anything. If it isn't listed, select <strong>Edit</strong>.</li>
+<li>In the <strong>Status</strong> column, turn on the policy for Teams chat and channel messages.</li>
+<li>Keep the default settings of all accounts or specify which accounts to include or exclude.</li>
+<li>Select <strong>Save</strong>.</li>
+</ol>
+<p>Allow approximately one hour for the changes to work their way through your datacenter and sync to user accounts.</p>
+<h2 id="learn-more">Learn more</h2>
+<ul>
+<li><a href="https://docs.microsoft.com/en-us/microsoft-365/compliance/data-loss-prevention-policies" data-linktype="absolute-path">Overview of data loss prevention</a></li>
+<li><a href="https://docs.microsoft.com/en-us/microsoft-365/compliance/dlp-microsoft-teams" data-linktype="absolute-path">Data loss prevention and Microsoft Teams</a></li>
+<li><a href="https://docs.microsoft.com/en-us/microsoft-365/compliance/data-loss-prevention-policies" data-linktype="absolute-path">Permissions</a></li>
+</ul>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Determine data residency</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/m365-teams-protect-information/3-determine-data-residency/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

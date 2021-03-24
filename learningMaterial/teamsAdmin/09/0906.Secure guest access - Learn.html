@@ -1,0 +1,300 @@
+<html dir="ltr"><head><title>Secure guest access - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/m365-teams-protect-information/5-secure-guest-access">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/m365-teams-protect-information/5-secure-guest-access</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Secure guest access - Learn</h1>
+  <div dir="auto" id="reader-credits">lizap</div>
+  <div dir="auto" id="reader-estimated-time">4-5 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="main" role="main" data-bi-name="content" lang="en-us" dir="ltr">
+		
+		
+		<ul>
+			<li>5 minutes</li>
+		</ul>
+			<p>Microsoft Teams allows you to collaborate with people both inside and outside your organization. The people outside your organization must have <strong>guest access</strong>. Many organizations find this guest access vital, but you must take care to ensure that it doesn't introduce vulnerabilities into your system.</p>
+<h2 id="how-to-secure-guest-access">How to secure guest access</h2>
+<p>There are seven steps. You'll find a link to a troubleshooting guide in the <strong>Learn more</strong> section.</p>
+<ol>
+<li>Enable <strong>Guest access in Teams</strong>.</li>
+<li>Configure <strong>Azure AD</strong> to allow guests in Teams.</li>
+<li>Configure <strong>Microsoft 365 groups</strong>.</li>
+<li>Configure <strong>Sharing in Microsoft 365</strong>.</li>
+<li>Verify <strong>Sharing settings in SharePoint</strong>.</li>
+<li>Set up <strong>Guest permissions in Teams</strong>.</li>
+<li>Turn on <strong>Anonymous users can join a meeting</strong> if necessary.</li>
+</ol>
+<p>Let's examine these steps in more detail.</p>
+<h2 id="enable-guest-access-in-teams">Enable guest access in Teams</h2>
+<p>To allow or disallow guest access for the whole organization, you must be a Teams service administrator.</p>
+<ol>
+<li>Sign into the <a href="https://admin.teams.microsoft.com/" data-linktype="external">Teams admin center</a>.</li>
+<li>Select <strong>Org-Wide settings</strong> &gt; <strong>Guest access</strong>.</li>
+<li>Set the <strong>Allow guest access in Microsoft Teams</strong> switch to <strong>On</strong>.</li>
+<li>On the same page, you enable or disable guests, or turn off <strong>Calling</strong>, <strong>Meeting</strong>, and <strong>Messaging</strong> settings for guests.</li>
+<li>Select <strong>Save</strong>. Each Team can then choose whether to allow guess access.</li>
+</ol>
+<p><span>
+<img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-protect-information/media/6-guest-access.png" alt="Screenshot of the Guest access screen in the admin center" data-linktype="relative-path">
+</span>
+</p>
+<h2 id="configure-azure-ad">Configure Azure AD</h2>
+<p>Before you collaborate with guests in Teams, you must configure your Azure AD settings.</p>
+<ol>
+<li>Sign into the <a href="https://portal.azure.com/" data-linktype="external">Azure portal</a> as a tenant administrator.</li>
+<li>Select <strong>Azure Active Directory</strong> &gt; <strong>Users</strong> &gt; <strong>User settings</strong>.</li>
+<li>Under <strong>External users</strong>, select <strong>Manage external collaboration settings</strong>. You can also access the same settings from <strong>Manage</strong> &gt; <strong>Organizational relationships</strong> &gt; <strong>Settings</strong>.</li>
+<li>On the <strong>External collaboration settings</strong> page, choose the policies you want to enable.</li>
+</ol>
+<p>The following table gives details of these settings:</p>
+
+<h2 id="configure-microsoft-365-groups">Configure Microsoft 365 Groups</h2>
+<p>If you want guest users to access group content, you must specifically enable them.</p>
+<ol>
+<li>In the <a href="https://admin.microsoft.com/" data-linktype="external">Microsoft 365 admin center</a>, go to <strong>Settings</strong> &gt; <strong>Org Settings</strong>.</li>
+<li>Select <strong>Services</strong>, and then select <strong>Microsoft 365 Groups</strong>.</li>
+<li>Select the check box <strong>Let group members outside the organization access group content</strong> to allow guests to access group content.</li>
+<li>Select the check box <strong>Let group owners add people outside the organization to groups</strong> to allow team owners to add new guests. This setting must be turned on to support guest access.</li>
+</ol>
+<h2 id="configure-sharing-in-microsoft-365">Configure sharing in Microsoft 365</h2>
+<p>You can enable ordinary users to add guests:</p>
+<ol>
+<li>In the <a href="https://admin.microsoft.com/" data-linktype="external">Microsoft 365 admin center</a>, go to <strong>Settings</strong> &gt; <strong>Org Settings</strong>.</li>
+<li>Select <strong>Security &amp; privacy</strong> &gt; <strong>Sharing</strong>.</li>
+<li>Select the check box <strong>Let users add new guests to this organization</strong> &gt; <strong>Save changes</strong>.</li>
+</ol>
+
+<p>Because Teams uses SharePoint sites for storage, verify the guest settings for those sites:</p>
+<ol>
+<li>In the <a href="https://admin.microsoft.com/" data-linktype="external">Microsoft 365 admin center</a>, under <strong>Admin centers</strong>, select <strong>SharePoint</strong>.</li>
+<li>Under <strong>Sites</strong>, select <strong>Active sites</strong>.</li>
+<li>Select the site, select <strong>Sharing</strong>, and then select either <strong>Anyone</strong> or <strong>New and existing guests</strong>.</li>
+</ol>
+<h2 id="set-guest-permissions-in-teams">Set guest permissions in Teams</h2>
+<p>In the Teams application, at the individual team level, configure guest permissions that control whether guests can create, update, or delete channels. Teams administrators and team owners can configure these settings.</p>
+<p><span>
+<img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-protect-information/media/6-teams-guest-permissions.png" alt="Screenshot of the Teams guest permissions options" data-linktype="relative-path">
+</span>
+</p>
+<h2 id="anonymous-users-can-join-a-meeting">Anonymous users can join a meeting</h2>
+<p>If you want guests to join meetings, you must turn on the <strong>Anonymous users can join a meeting</strong> setting in Microsoft Teams.</p>
+<ol>
+<li>In the <a href="https://admin.teams.microsoft.com/" data-linktype="external">Teams admin center</a>, go to <strong>Meetings</strong> &gt; <strong>Meeting settings</strong>.</li>
+<li>Under <strong>Participants</strong>, select <strong>Anonymous users can join a meeting</strong>.</li>
+</ol>
+<h2 id="learn-more">Learn more</h2>
+<ul>
+<li><a href="https://docs.microsoft.com/en-us/azure/active-directory/external-identities/allow-deny-list" data-linktype="absolute-path">Allow or block invitations to B2B users from specific organizations</a></li>
+<li><a href="https://docs.microsoft.com/en-us/microsoftteams/using-admin-roles" data-linktype="absolute-path">Use Teams administrator roles to manage Teams</a></li>
+<li><a href="https://docs.microsoft.com/en-us/microsoft-365/admin/create-groups/manage-guest-access-in-groups" data-linktype="absolute-path">Manage guest access in Microsoft 365 Groups</a></li>
+<li><a href="https://docs.microsoft.com/en-us/microsoftteams/teams-dependencies" data-linktype="absolute-path">Control guest access in Microsoft 365 Groups</a></li>
+<li><a href="https://docs.microsoft.com/en-us/microsoftteams/meeting-settings-in-teams" data-linktype="absolute-path">Manage meeting settings in Teams</a></li>
+<li><a href="https://docs.microsoft.com/en-us/microsoftteams/troubleshoot-guest-access" data-linktype="absolute-path">Troubleshoot problems with guest access in Microsoft Teams</a></li>
+</ul>
+
+		
+	</div><section>
+		<p>
+Need help? See our <a id="troubleshooting-guide" data-bi-name="troubleshooting" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-m365.teams.protect-information.5-secure-guest-access&amp;documentId=06171937-21bc-68ef-b3b5-935b503ecdd1&amp;versionIndependentDocumentId=0444484d-f68b-3685-3236-289ca3a20e66&amp;contentPath=%2FMicrosoftDocs%2Flearn-m365-pr%2Fblob%2Flive%2Flearn-m365-pr%2Fm365%2Fm365-teams-protect-information%2F5-secure-guest-access.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fm365-teams-protect-information%2F5-secure-guest-access&amp;author=elizapo">troubleshooting guide</a> or provide specific feedback by <a id="module-unit-feedback-link" data-bi-name="feedback" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-m365.teams.protect-information.5-secure-guest-access&amp;documentId=06171937-21bc-68ef-b3b5-935b503ecdd1&amp;versionIndependentDocumentId=0444484d-f68b-3685-3236-289ca3a20e66&amp;contentPath=%2FMicrosoftDocs%2Flearn-m365-pr%2Fblob%2Flive%2Flearn-m365-pr%2Fm365%2Fm365-teams-protect-information%2F5-secure-guest-access.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fm365-teams-protect-information%2F5-secure-guest-access&amp;author=elizapo#report-feedback">reporting an issue</a>.		</p>
+	</section></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>
