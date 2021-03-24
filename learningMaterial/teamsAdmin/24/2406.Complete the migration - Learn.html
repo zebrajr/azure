@@ -1,0 +1,351 @@
+<html dir="ltr"><head><title>Complete the migration - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/m365-teams-migrate-direct-routing/5-complete-migration">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/m365-teams-migrate-direct-routing/5-complete-migration</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Complete the migration - Learn</h1>
+  <div dir="auto" id="reader-credits">lizap</div>
+  <div dir="auto" id="reader-estimated-time">11-13 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>12 minutes</li>
+		</ul>
+			<p>There are some clean-up items you must consider after migrating your users onto Microsoft Teams Direct Routing for telephony. You might need to consider delegation, call forwarding, and Team calls. You will also need to plan for the possibility of new users coming into the organization in the middle of your migration.</p>
+<p>Suppose as an administrator you have finished migration. During the migration new employees were hired and you need to consolidate them into the Teams migration.  You will want disable hybrid (split domains). You want to update the DNS entries.</p>
+<p>In this module, you will learn about the steps necessary to complete the migration process.</p>
+<h2 id="additional-considerations-and-next-steps">Additional considerations and next steps</h2>
+<p>Here are some things you should consider when migrating to Direct Routing from on-premises Skype for Business. We'll look at some additional voice components as part of the overall migration from on-premises Skype for Business to Teams, especially with Enterprise Voice.</p>
+<p>Consider delegation (Enterprise Voice), call forwarding, and Team calls. You'll need to reconfigure these items in Teams after you've made the migration to Teams-only mode. When you look at Enterprise Voice delegation, make sure that the delegator and the delegate migrate at the same time. You don't want to try to deal with a delegate that's in Teams-only mode and a delegator that's not. If you're still running a full on-premises auto attendants, you'll want to migrate them into cloud-based auto attendants. Under <strong>Learn more</strong> below, you'll find a link to <strong>What are Cloud auto attendants?</strong>.</p>
+<p>Next, you deal with response groups. There's no automated way to move response groups into teams call queues. You should recreate them as call queues. Under <strong>Learn more</strong>, you'll find a link to <strong>Create a Cloud call queue</strong>.</p>
+<p>The service numbers used with the call queues, and the resource accounts used with call queues, can be applied through Direct Routing. You bring the phone number in and assign it to a resource account that's used with a call queue then introduce that through Direct Routing. Note that, with on-premises Skype for Business, there's the concept of a Role Based Access Control (RBAC) role for a response group administrator. Currently, there's no equivalent in Teams.</p>
+<p>If you're using common area phones, they can be reconfigured to Teams. Under <strong>Learn more</strong> below, you'll find a link to <strong>Set up the Common Area Phone license for Microsoft Teams</strong>.</p>
+<p>The analog devices that are currently configured in Skype for Business can be reconfigured to work in Teams. It's not the same approach as for Skype for Business. When you configure analog devices connected to Direct Routing in Teams, all of the routing logic and configuration is handled through the SBCs. If a user wants to call the analog device, they'll have to manually enter the phone number that's associated it. Under <strong>Learn more</strong> below, you'll find a link to <strong>How to use analog devices with Phone System Direct Routing</strong>.</p>
+<p>Lastly, there's a couple of features that currently aren't supported in Teams: vacant number announcements and private lines. Be aware of this situation as you're staging the rest of the migration from on-premises.</p>
+<h2 id="handle-new-users-during-migration">Handle new users during migration</h2>
+<p>During migration, it's possible that new hires will come on board. There are two ways to approach this scenario. You either create the new users in Skype for Business then move them to Teams or create them directly in Teams.</p>
+<h3 id="option-1-create-the-user-in-skype-for-business-then-move-them-to-teams">Option 1: Create the user in Skype for Business then move them to Teams</h3>
+<ol>
+<li>Create the user account in an on-premises Active Directory.</li>
+<li>Enable the user in Skype for Business Server.</li>
+<li>Enable the user for Enterprise Voice in Skype for Business.</li>
+<li>Ensure the user is synced to Azure Active Directory.</li>
+<li>Migrate the user to Teams as you saw earlier.</li>
+</ol>
+<h3 id="option-2-create-the-new-user-in-teams">Option 2: Create the new user in Teams</h3>
+<ol>
+<li>Create the user account in an on-premises Active Directory.</li>
+<li>Sync the user to Azure Active Directory.</li>
+<li>License the user.</li>
+<li>Ensure the user is Teams Only (tenant mode or user policy).</li>
+<li>In on-premises Skype Management Shell, run the following:
+<ul>
+<li>Run <strong>Enable-CsUser</strong> to register the Teams user in Skype on-premises.</li>
+<li>Run <strong>Set-CsUser</strong> to enable for Enterprise Voice.</li>
+</ul>
+</li>
+<li>Complete and verify the Direct Routing configuration.</li>
+</ol>
+<p>In option 2, the <strong>Enable-CsUser</strong> and <strong>Set-CsUser</strong> commands help users in Skype, who have yet to migrate, to find the new users in Teams. You do this by creating a representation in the on-premises Skype environment. The following is a screenshot of what it looks like to run those two commands and <strong>Get-CsUser</strong> to view the results:</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-migrate-direct-routing/media/5-user-representation.png" alt="User Representation in Skype" data-linktype="relative-path">
+</p>
+<p>The <strong>Enable-CsUser</strong> command is run with the following switches:</p>
+<ul>
+<li><strong>-Identity</strong> followed by the UPN for the user</li>
+<li><strong>-SipAddress</strong> followed by the sip address for the user</li>
+<li><strong>-HostingProviderProxyFqdn sipfed.online.lync.com</strong> creates a representation of the user in the on-premises Skype for Business.</li>
+</ul>
+<p>The <strong>Set-CsUser</strong> command, together with the username, is run with the following switches:</p>
+<ul>
+<li><strong>-EnterpriseVoiceEnabled $true</strong> enables EnterpriseVoice for this user</li>
+<li><strong>-LineURI</strong> followed by the telephone number defines the phone number for that user</li>
+</ul>
+<p>This user is created as a representation of the online user in the Skype for Business Server environment. When you run <strong>Get-CsUser</strong>, you see that <strong>OnPremHostingProvider</strong> is set to <strong>sipfed.online.lync.com</strong>, which indicates that the user is online. Looking at <strong>LineURI</strong>, you see that they have a phone number, and checking with <strong>EnterpriseVoiceEnabled</strong> tells you they're  Enterprise Voice enabled. Now anyone still on Skype for Business could dial this user by their phone number. The system will match it via reverse number lookup and send to their Teams client.</p>
+<p>Run the <strong>Get-CsOnlineUser</strong> PowerShell cmdlet to view the configuration as shown here.</p>
+<p><span>
+<img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-migrate-direct-routing/media/5-get-csonlineuser.png" alt="Get-CsOnLineUser" data-linktype="relative-path">
+</span>
+</p>
+<h2 id="migration-complete-now-what">Migration complete: now what</h2>
+<p>Now that all of the users have been migrated, your next step is to disable hybrid (split domains), effectively decommissioning their online environment. You want to update the DNS entries to point to the Office 365 service and not the on-premises Edge pool(s). This includes various SRV and CNAME records as shown in the following example:</p>
+<p><span>
+<img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-migrate-direct-routing/media/5-edit-srv-records.png" alt="Update DNS Entries" data-linktype="relative-path">
+</span>
+</p>
+<p>You'll also want to disable the split domain in the tenant. You do this with a cmdlet that you'll run in the Skype for Business Online PowerShell.</p>
+<pre tabindex="0"><code data-author-content="Set-CsTenantFederationConfiguration - SharedSipAddressSpace $false
+"><span><span>Set-CsTenantFederationConfiguration</span> - SharedSipAddressSpace <span>$false</span>
+</span></code></pre>
+<p>Finally, you want to stop on-premises communication with Office 365. That's basically turning off the hosted provider. You do this by getting the output of <strong>Get-CsHostingProvider</strong> and piping it to <strong>Set-CsHostingProvider</strong>, setting <strong>Enabled</strong> to false as shown below:</p>
+<pre tabindex="0"><code data-author-content="Get-CsHostingProvider | Set-CsHostingProvider -Enabled $False
+"><span><span>Get-CsHostingProvider</span> | <span>Set-CsHostingProvider</span><span> -Enabled</span> <span>$False</span>
+</span></code></pre>
+<h2 id="handle-phone-numbers">Handle phone numbers</h2>
+<p>You need to know where to edit a user's phone number after decommissioning the Skype for Business on-premises environment.</p>
+<p>It's important to know where the user was enabled for voice before migration to Teams. If this took place on-premises, then the <strong>msRTCSIP-Line</strong> attribute was populated in the on-premises Active Directory. When that value is populated in an on-premises Active Directory, it syncs into Azure Active Directory and the <strong>OnPremLineURI</strong> becomes the <strong>LineURI</strong>.</p>
+<p>The following is a screenshot showing an <strong>OnPremLineURI</strong>.</p>
+<p><span>
+<img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-migrate-direct-routing/media/5-phone-number-before-teams.png" alt="OnPremLineURI" data-linktype="relative-path">
+</span>
+</p>
+<p>The line <strong>OnPremLineURIManuallySet = False</strong> indicates that the owner of this <strong>LineURI</strong> is located on an on-premises Active Directory. That means if you decommission the on-premises Skype environment, this user's phone number changes. If you try to change the number in the service, you'll get the error shown at the bottom of the screenshot above. This situation occurs because, effectively, on-premises AD is authoritative for this user's phone number. You need to continue to manage this user's phone number through the on-premises <strong>msRTCSIP-Line</strong> attribute as shown here:</p>
+<p><span>
+<img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-migrate-direct-routing/media/5-msrtcsip-line-attribute.png" alt="Manage msRTCSIP-Line Attribute" data-linktype="relative-path">
+</span>
+</p>
+<p>The screenshot above is from Active Directory Users and Computers; you're looking at the attribute editor for the user.</p>
+<p>Consider a user who wasn't enabled for voice before their move to Teams. This is what that user's configuration looks like:</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-migrate-direct-routing/media/5-user-not-enabled-before-migration.png" alt="User Not Enabled Before Migration" data-linktype="relative-path">
+</p>
+<p>In the previous example, <strong>OnPremLineURIManuallySet</strong> was false but, in this case, it's set to true. This means that the user isn't located on an on-premises Active Directory. This user was enabled in the service, and wasn't set in on-premises and synced to the service. You can modify the user as shown below:</p>
+<pre tabindex="0"><code data-author-content="Set-CsUser <user> -OnPremLineURI <value>
+"><span><span>Set-CsUser</span> &lt;user&gt;<span> -OnPremLineURI</span> &lt;value&gt;
+</span></code></pre>
+<h2 id="remove-skype-for-business-server">Remove Skype for Business Server</h2>
+<p>Make sure there are no more users, and no more apps, or service accounts remaining.</p>
+<p>From there, you can go into Topology Builder and effectively remove the deployment. You'll publish that, wait for CMS replication to occur, and then you can start removing the Skype for Business Server environment.</p>
+<p>You'll want to remove all remaining conference directories with the following two commands:</p>
+<pre tabindex="0"><code data-author-content="Get-CsConferenceDirectory | Remove-CsConferenceDirectory
+Publish-CsTopology -FinalizeUninstall
+"><span><span>Get-CsConferenceDirectory</span> | <span>Remove-CsConferenceDirectory</span>
+<span>Publish-CsTopology</span><span> -FinalizeUninstall</span>
+</span></code></pre>
+<p>The <strong>Publish-CsTopology</strong> command will publish an empty topology allowing you to continue.
+Then you'll remove the configuration store location from AD.</p>
+<pre tabindex="0"><code data-author-content="Remove-CsConfigurationStoreLocation
+"><span><span>Remove-CsConfigurationStoreLocation</span>
+</span></code></pre>
+<p>Finally, you undo the domain and forest preparation tasks.</p>
+<pre tabindex="0"><code data-author-content="Disable-CsAdDomain -Domain contoso.com
+Disable-CsAdForest -Domain contoso.com
+"><span><span>Disable-CsAdDomain</span><span> -Domain</span> contoso.com
+<span>Disable-CsAdForest</span><span> -Domain</span> contoso.com
+</span></code></pre>
+<h2 id="disable-users-before-decommissioning">Disable users before decommissioning</h2>
+<p>There are some caveats to think about when disabling users. Consider the following bullet points:</p>
+<ul>
+<li><strong>Disable-CsUser</strong> removes <strong>all</strong> Skype for Business attributes.</li>
+<li>This includes removing <strong>msRTCSIP-Line</strong>.
+<ul>
+<li>This is a critical attribute if the user was enabled for Enterprise Voice on-premises.</li>
+</ul>
+</li>
+</ul>
+<p>If this user was enabled for Enterprise Voice on-premises, then <strong>msRTCSIP-Line</strong> is an attribute that you still need if an on-premises Active Directory is authoritative for that phone number. If you run <strong>Disable-CsUser</strong>, you're going to blank that out and the number is removed from Azure Active Directory the next time a sync is run. The user's <strong>LineURI</strong> has been removed for Direct Routing. On the plus side, this action also removes the restriction from being able to manage the phone number online. You can now run a <strong>Set-CsUser</strong> command. To correct this, you assign a phone number back by going into a Tenant Remote or Skype Remote PowerShell, and running the following command:</p>
+<pre tabindex="0"><code data-author-content="Set-CsUser <user> -OnPremLineURI tel:+19495552319
+"><span><span>Set-CsUser</span> &lt;user&gt;<span> -OnPremLineURI</span> tel:+<span>19495552319</span>
+</span></code></pre>
+<p>You have some choices here. You can completely decommission the on-premises environment, not run <strong>Disable-CsUser</strong>, and continue managing the <strong>LineURI</strong> attribute through on-premises Active Directory. You can provision new users and always set the <strong>LineURI</strong> on-premises, let it sync into the service, and do all of your management of the <strong>LineURI</strong> from an on-premises Active Directory.</p>
+<p>Or you could use this demarcation so that, from this point forward, you don't manage it with on-premises Active Directory, and instead use Azure Active Directory. That means any user before this point would be managed through on-premises Active Directory; anybody after that point would be managed with Azure Active Directory.</p>
+<h2 id="learn-more">Learn more</h2>
+<ul>
+<li><a href="https://aka.ms/teams-aa" data-linktype="external">What are Cloud auto attendants</a></li>
+<li><a href="https://aka.ms/teams-cq" data-linktype="external">Create a Cloud call queue</a></li>
+<li><a href="https://aka.ms/teams-cap" data-linktype="external">Set up the Common Area Phone license for Microsoft Teams</a></li>
+<li><a href="https://aka.ms/teams-analog" data-linktype="external">How to use analog devices with Phone System Direct Routing</a></li>
+</ul>
+
+		
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

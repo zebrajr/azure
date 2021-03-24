@@ -1,0 +1,361 @@
+<html dir="ltr"><head><title>Migrate to Direct Routing - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/m365-teams-migrate-direct-routing/3-migrate-direct-routing">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/m365-teams-migrate-direct-routing/3-migrate-direct-routing</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Migrate to Direct Routing - Learn</h1>
+  <div dir="auto" id="reader-credits">lizap</div>
+  <div dir="auto" id="reader-estimated-time">13-16 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>15 minutes</li>
+		</ul>
+			<p>Once you've completed preparations, it's time to start reconfiguring your system to use Direct Routing. Some of these reconfiguration steps don't affect users, so they should be completed ahead of time. For example, make sure that the user is licensed for Direct Routing. On migration day, you can then move the user's phone number across to Teams Direct Routing and verify functionality.</p>
+<p>Suppose that as the administrator you are ready to migrate from your existing Skype for Business server to Teams Direct Routing. You also need to take the necessary step to stage the migration, configure licensing, and verify user provisioning.</p>
+<p>Here you will see how to setup staging for the migration.</p>
+<h2 id="migrate-from-skype-for-business-server-to-teams-direct-routing">Migrate from Skype for Business Server to Teams Direct Routing</h2>
+<p>Let's start with a scenario as shown in the following diagram:</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-migrate-direct-routing/media/3-skype-to-teams-direct-routing.png" alt="Skype for Business to Teams Direct Routing" data-linktype="relative-path">
+</p>
+<p>You'll see we have our connection from the PSTN. It's a telco-provided Session Initiation Protocol (SIP) trunk. This connection is currently coming into an existing SBC. The SBC is configured with a SIP trunk that routes calls into the Skype for Business Server environment. There's a mediation server and enterprise pool on the right. There are two users, Alice and Bob. The Skype for Business Server environment is deployed on-premises. Alice and Bob are using Enterprise Voice feature sets to make inbound and outbound PSTN calls.</p>
+<h2 id="plan-and-configure-direct-routing">Plan and configure Direct Routing</h2>
+<p>We want to add Direct Routing as shown here:</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-migrate-direct-routing/media/3-microsoft-phone-system.png" alt="Direct Routing Path" data-linktype="relative-path">
+</p>
+<p>Assume that you've already set up the foundational pieces for Direct Routing. Now you want to migrate Alice and  Bob from Skype for Business to Teams. Some prerequisites need to be met before you begin the migration.</p>
+<p>First, you have to synchronize on-premises users to Azure Active Directory. Under <strong>Learn more</strong> below, you'll find a link to <strong>Configure Azure AD Connect for Teams and Skype for Business</strong>. This document shows how to set up the synchronization between your on-premises Active Directory and Azure Active Directory. As you read through the documentation, pay close attention to the proper attributes you need to synchronize. From a Skype standpoint, attributes that start with <strong>msRTCSIP</strong> are critical and need to be synchronized into the service. This action helps the service to properly understand where users are in your environment, and if you have an on-premises Skype for Business deployment.</p>
+<p>Next, you need to have configured a split domain, often referred to as hybrid. In the <strong>Learn more</strong> section, there's a link to <strong>Plan hybrid connectivity between Skype for Business Server and Microsoft 365 or Office 365</strong>. This document contains information on how to configure a split domain. You'll need it to move the user from an on-premises Skype for Business environment directly into the Teams environment. If you don't have hybrid configured, you can't run the proper cmdlets or use the correct admin tools.</p>
+<p>Finally, the tenant coexistence mode mustn't be set to <strong>Teams only</strong>. If you still have on-premises people using Skype for Business Server, you can't set the tenant to <strong>Teams only</strong> mode because the on-premises users haven't been migrated to Teams yet.</p>
+<h2 id="stage-the-migration">Stage the migration</h2>
+<p>There's a series of steps to do ahead of the actual date when you're going to migrate the users and their phone numbers from the existing Skype for Business environment to Teams. These steps include:</p>
+<ul>
+<li>Make sure that you've applied the correct licenses to the users and that they're appropriate to voice routing policies for the Direct Routing environment.</li>
+<li>If applicable in your environment, grant the users their associated dial plan.</li>
+<li>Verify and enable users for hosted voicemail.</li>
+<li>Prepare user communications adoption change management strategy for these users.</li>
+</ul>
+<p>All of these items can be completed before user migration. This action ensures that enough time has passed for these changes to take effect and allows for a much smoother transition on migration day.</p>
+<h3 id="license-the-user-properly">License the user properly</h3>
+<p>Assign the following licenses that are required for a Teams user to use Direct Routing:</p>
+<ul>
+<li>Phone System</li>
+<li>Teams + Skype for Business Plan 2, if that's included with the SKU that you're using</li>
+<li>Audio Conferencing license</li>
+</ul>
+<p>These licenses could be part of an Enterprise Service Plan; for example, E1, E3, or E5.</p>
+<p>The location you assign to the user is critically important. Location defines the assigned service country dial plan and must be where the user lives.</p>
+<h3 id="verify-user-provisioning">Verify user provisioning</h3>
+<p>Next, use the <strong>Get-CsOnlineUser</strong> PowerShell command to check and verify the state of your user provisioning. When you assign these licenses to users, ensure that they're properly provisioned in the service, so that the service knows what features and capabilities they have available. Here's an example of using the command <strong>Get-CsOnlineUser</strong> for the user "testuser01":</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-migrate-direct-routing/media/3-verify-user-provisioning.png" alt="Verify User Provisioning" data-linktype="relative-path">
+</p>
+<p>In this example, there's a couple of key attributes to look at, starting with <strong>OnPremHostingProvider</strong>. This attribute lets you and the service know where this particular account is homed, or where it lives. This account lives on Skype for Business Server on-premises. We know that because the value here is <strong>SRV:</strong>.</p>
+<p>The second attribute to look at is <strong>InterpretedUserType</strong>. Run the <strong>Get-CsOnlineUser</strong> command every time you provision a user to see if they're in a state of provisioning or not. The state <strong>HybridOnpremSfBUserNeedsProvisioning</strong> tells you that a license was assigned this user and that provisioning needs to take place. On completion of provisioning, the state changes to <strong>HybridOnpremSfBUser</strong>. Now you know that the user is configured as part of hybrid, meaning they're synchronized with Azure AD. <strong>OnpremSfBUser</strong> means that the user or account is homed on-premises in the Skype for Business environment.</p>
+<p>The next step as part of staging is to enable the user. When you assign the various licenses, many of these features will automatically be turned on for you. Ensure that Enterprise Voice and Hosted Voicemail are enabled.  To enable Hosted Voicemail use the PowerShell command:</p>
+<pre tabindex="0"><code data-author-content="Set-CsUser -Identity TestUser01@contoso.com -HostedVoiceMail $true
+"><span><span>Set-CsUser</span><span> -Identity</span> TestUser01@contoso.com<span> -HostedVoiceMail</span> <span>$true</span>
+</span></code></pre>
+<p>Also at this time, from a user configuration perspective, you can grant the <strong>OnlineVoiceRoutingPolicy</strong> and <strong>TenantDialPlan</strong> with the following two PowerShell commands:</p>
+<ul>
+<li><strong>Grant-CsOnlineVoiceRoutingPolicy</strong></li>
+<li><strong>Grant-CsTenantDialPlan</strong></li>
+</ul>
+<p>To view all the changes for the user "testuser01", use the following PowerShell command:</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-migrate-direct-routing/media/3-voice-routing-policy.png" alt="Dial Plans" data-linktype="relative-path">
+</p>
+<p>Up to this point, these steps aren't disruptive to the user, who won't be aware of any changes. The behavior won't change in their Skype for Business client or Teams client. Generally, you should do these steps five days or so ahead of the actual migration. When you upgrade or cut over from Skype for Business to Teams with Direct Routing, the user will suffer a minimal delay in service.</p>
+<h3 id="readiness-plan">Readiness plan</h3>
+<p>Take some time to explain to users why they should use Teams, how to get started, and where to go for support. The following tips can help with the transition to Teams:</p>
+<ul>
+<li>Communicate early and often to avoid the "rumor mill."</li>
+<li>To help acceptance, express the value of Teams.</li>
+<li>Accommodate different learning styles to accelerate onboarding.</li>
+<li>Sustain excitement and momentum to drive adoption and realize ROI.</li>
+</ul>
+<p>In the <strong>Learn more</strong> section below, you'll find a link to an Upgrade Success Kit that contains a suite of tools, such as posters and email templates. There's also a link to our upgrade workshops, which include live on-demand training you can use to help build an appropriate adoption and change management strategy.</p>
+<h2 id="migration-day">Migration day</h2>
+<p>You can now move users from Skype for Business on-premises with Enterprise Voice to Teams with Direct Routing. Two specific items are addressed:</p>
+<ul>
+<li>Redirect the user's inbound phone number.</li>
+<li>Move the user from Skype for Business Server to Teams.</li>
+</ul>
+<h3 id="redirect-the-user">Redirect the user</h3>
+<p>Redirect the user's inbound phone number to go from Skype for Business to Teams. This action generally involves changing the routing rules on your SBC. It's assumed that the SBC is at the front of the line, next to the PSTN.</p>
+<p>You can do this one by one for select telephone numbers, which is great for testing. It would also apply for all numbers coming into the SBC, where you could route everyone to Teams. A third option is to dynamically route calls using Active Directory lookups, which will be covered in the next unit.</p>
+<h3 id="move-the-user-from-skype-for-business-into-teams">Move the user from Skype for Business into Teams</h3>
+<p>You move users into Teams by using the PowerShell command <strong>Move-CsUser</strong> with the <strong>-MoveToTeams</strong> parameter. The <strong>-MoveToTeams</strong> parameter is only available in Server 2019 and Server 2015 CU8 and higher. At the least, make sure you have an administrative workstation that has these versions of the administrative tools installed. For Server 2015 CU8 and above, you also need to use the <strong>-UseOAuth</strong> parameter. OAuth is always assumed in Server 2019, so you don't need to specify the parameter.</p>
+<p>As an example, you want to move the user <strong>testuser01</strong> on Server 2015 CU8+.</p>
+<div>
+<p> Note</p>
+<p>Run the <strong>Move-CsUser</strong> command from within the Skype for Business Server management shell.</p>
+</div>
+<pre tabindex="0"><code data-author-content="Move-CsUser -Identity testuser01 -Target sipfed.online.lync.com -MoveToTeams -Credential $cred -UseOAuth
+"><span><span>Move-CsUser</span><span> -Identity</span> testuser01<span> -Target</span> sipfed.online.lync.com<span> -MoveToTeams</span><span> -Credential</span> <span>$cred</span><span> -UseOAuth</span>
+</span></code></pre>
+<p>In the example above, the <strong>-Target</strong> parameter, followed by <strong>sipfed.online.lync.com</strong>, specifies that you want to move this account into Teams.</p>
+<p>During the staging process, you made sure that some of the proper licenses were assigned to users. When you move a user, the system will do two additional license checks, for Audio Conferencing and Enterprise Voice. These checks ensure that if a user is licensed on-premises they'll also be licensed online. Take a look at the following image:</p>
+<p><span>
+<img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-migrate-direct-routing/media/3-license-checks.png" alt="License Check" data-linktype="relative-path">
+</span>
+</p>
+<p>In this example, the user was enabled for both Audio Conferencing and Enterprise Voice on-premises. During the staging process, the option for Audio Conferencing wasn't selected so, when you attempt to move the user to Teams, you'll be presented with the warning above. This warning says that the user will experience a loss of service on Teams. Assume that, for this user, you don't want Audio Conferencing to carry over to Teams. To prevent this user from being able to use Audio Conferencing on Teams, add the <strong>BypassAudioConferencingCheck</strong> switch to the <strong>Move-CsUser</strong> command. You can use the <strong>BypassEnterpriseVoiceCheck</strong> switch to do the same action for Enterprise Voice.</p>
+<p>You check the status of the move by using the PowerShell command <strong>Get-CsOnlineUser</strong> as shown below:</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-migrate-direct-routing/media/3-verify-move-status.png" alt="Check Move Status" data-linktype="relative-path">
+</p>
+<p>Here you can see that the <strong>InterpretedUserType</strong> is <strong>HybridOnlineSfBUserNeedsProvisioning</strong>. Remember, before we moved to this user, it started with <strong>HybridOnpremSfBUser</strong>. The Onprem part has changed to Online, telling you that the user account has been moved. If you wait a few minutes while provisioning takes place and then run the <strong>Get-CsOnlineUser</strong> command again, the <strong>InterpretedUserType</strong> will change to <strong>HybridOnlineSfBUser</strong> as shown in the diagram below:</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-migrate-direct-routing/media/3-provisioning-complete.png" alt="Provisioning Complete" data-linktype="relative-path">
+</p>
+<p>The <strong>-MoveToTeams</strong> option sets the coexistence mode for this account to <strong>TeamsOnly</strong>. This action means that the account will move from on-premises Skype for Business straight to Teams. The result is that this user is now on Teams only with Enterprise Voice and Direct Routing configured.</p>
+<h3 id="verify-outbound-dialing">Verify outbound dialing</h3>
+<p>The next step is to verify that outbound dialing works from the Teams client. Remember that you've done two things. You reconfigured the SBC for the inbound calls and moved the user to enable them for Teams Direct Routing. Now you need to make sure that the user can properly dial out from the Teams client. Start by opening the Teams client for the user and select <strong>Calls</strong>. Under calls, ensure that a dial pad is shown.</p>
+<p><span>
+<img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-migrate-direct-routing/media/3-dial-pad.png" alt="Dial Pad" data-linktype="relative-path">
+</span>
+</p>
+<p>If the dial pad isn't displayed, start by checking for the proper licensing and configuration. Look for:</p>
+<ul>
+<li>Skype for Business Online Plan 2 License</li>
+<li>User Homed Online (<strong>Hosting Provider = sipfed.online.lync.com</strong>)</li>
+<li>Phone System License</li>
+<li>Call plan and/or <strong>CsOnlineVoiceRoutingPolicy</strong> is assigned to the user</li>
+<li><strong>AllowPrivateCalling = True</strong> in <strong>CsTeamsCallingPolicy</strong></li>
+<li>Supported client (desktop, mobile, Edge, Chrome)</li>
+</ul>
+<p>It might take some time for the dial pad to appear. Have the user sign out then sign back in. If that doesn't resolve the issue, check the weblogs in Teams Diagnostics.</p>
+<p>To obtain the log files, do one of the following from within the Teams client:</p>
+<ul>
+<li>On a PC, press CTRL+ALT+SHIFT+1.</li>
+<li>On a Mac, press Command+Option+SHIFT+1.</li>
+</ul>
+<p>You can find a file named MSTeams Diagnostics Log (time stamp).txt in the %userprofile%\Downloads folder. Open the log and search for <strong>Calculated isPSTNCallingAllowed</strong> as shown in the following diagram:</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-migrate-direct-routing/media/3-weblogs.png" alt="Weblogs" data-linktype="relative-path">
+</p>
+<p>There are four items in this log that are of particular interest:</p>
+<ul>
+<li><strong>isCallingAllowed</strong> was configured when you set <strong>AllowPrivateCalling = True</strong> in <strong>CsTeamsCallingPolicy</strong>.</li>
+<li><strong>isEvEnabled</strong> references Enterprise Voice that should have been done as part of staging.</li>
+<li><strong>isBusinessVoicePath</strong> will be true if the user has a calling plan assigned.</li>
+<li><strong>isByotEnabled</strong> is true when the user is enabled for Direct Routing and was confirmed when <strong>CsOnlineVoiceRoutingPolicy</strong> was set for this user.</li>
+</ul>
+<p>Either <strong>isBusinessVoicePath</strong> or <strong>isByotEnabled</strong> must be set to true, otherwise the dial pad won't appear.</p>
+<h2 id="learn-more">Learn more</h2>
+<ul>
+<li><a href="https://aka.ms/TeamsAADConnect" data-linktype="external">Configure Azure AD Connect for Teams and Skype for Business</a></li>
+<li><a href="https://aka.ms/TeamsSFBHybrid" data-linktype="external">Plan hybrid connectivity between Skype for Business Server and Microsoft 365 or Office 365</a></li>
+<li><a href="https://aka.ms/SkypeToTeamsPlanning" data-linktype="external">Teams Upgrade Planning Workshops</a></li>
+<li><a href="https://aka.ms/UpgradeSuccessKit" data-linktype="external">Upgrade Success Kit</a></li>
+<li><a href="https://aka.ms/UpgradeWorkshops" data-linktype="external">Upgrade workshops</a></li>
+</ul>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Configure dynamic routing</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/m365-teams-migrate-direct-routing/4-configure-dynamic-routing/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

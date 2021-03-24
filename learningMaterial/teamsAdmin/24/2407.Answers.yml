@@ -1,0 +1,11 @@
+1. B
+That's correct. This action ensures that call are no longer being passed over to the old PBX or the old Skype for Business environment, but to the new Teams environment.
+
+2. C
+That's correct. The sipfed.online.lync.com value is only shown when the user has been cut over to Teams Direct Routing.
+
+3. A
+That's correct. To configure dynamic routing, set your SBC to look up properties about each user in Active Directory before each call is routed.
+
+4. B
+That's correct. You can only use the Set-CsUser cmdlet to configure a user's phone number when OnPremLineURIManuallySet is true.

@@ -1,0 +1,265 @@
+<html dir="ltr"><head><title>Configure dynamic routing - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/m365-teams-migrate-direct-routing/4-configure-dynamic-routing">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/m365-teams-migrate-direct-routing/4-configure-dynamic-routing</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Configure dynamic routing - Learn</h1>
+  <div dir="auto" id="reader-credits">lizap</div>
+  <div dir="auto" id="reader-estimated-time">5-6 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>6 minutes</li>
+		</ul>
+			<p>Direct Routing in Microsoft Teams supports conditional routing, which is when the Session Border Controller (SBC) looks up a user in a directory before connecting an incoming call. It allows you to make routing decisions based on dynamic rules. For example, if a user is on-premises, send the call to Skype for Business Server. If the user is online, send the call to Teams. The advantage is that you don't need to use an individual telephone number. Dynamic routing provides a much more flexible way to connect calls, based on the result of a particular query.</p>
+<p>Suppose you have been tasked with configuring dynamic routing in your organization. You need to configure an LDAP connection on the SBC and build the rules to query the respective attributes that you want from Active Directory.</p>
+<p>Here, you'll see what dynamic routing looks like, how to configure an LDAP connection, and see an example of how to configure a specific SBC.</p>
+<h2 id="sbc-dynamic-routing">SBC dynamic routing</h2>
+<p>SBC dynamic, or conditional, routing involves a directory lookup. The system does conditional routing based on an LDAP query against the local Active Directory. The following diagram shows how directory lookup works:</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-migrate-direct-routing/media/4-directory-lookup-flow.png" alt="Directory Lookup Flow" data-linktype="relative-path">
+</p>
+<p>In this example, we start with the telco-provided connection that could be a SIP trunk or a PRI line. The SBC is configured with a SIP trunk to the Skype for Business Server and to Teams with Direct Routing.</p>
+<p>The SBC makes routing decisions because of an LDAP connection to a Domain Controller, in which there's a set of attributes that can be queried. The attributes in question are:</p>
+<ul>
+<li><strong>msRTCSIP-Line</strong></li>
+<li><strong>msRTCSIP-DeploymentLocator</strong></li>
+<li><strong>msRTCSIP-OptionsFlags</strong></li>
+<li><strong>extensionAttribute1</strong></li>
+</ul>
+<p>The last two attributes are optional. For example, you can use the <strong>msRTCSIP-OptionalFlags</strong> to ensure the account is enabled for Enterprise Voice (value 385).</p>
+<p>If Exchange is deployed, you could use <strong>extensionAttribute1</strong> to flag when a user has been migrated or to differentiate between Skype for Business Online and Teams.</p>
+<p>The <strong>msRTCSIP-Line</strong> attribute can be considered as the anchor. It's used to match a user with an incoming call. For example, a call is coming in for Bob (949-555-2832) that reaches the SBC. The SBC makes an LDAP query to see if there's a user with this phone number. Because Bob has been enabled for Enterprise Voice, a match will be found. If the phone number wasn't assigned to a user, the call can be rejected. The system looks at the <strong>mcRTCSIP-line</strong> attribute because that's where the user's phone number is stored when they're enabled for Enterprise Voice in Skype for Business Server.</p>
+<p>Next, the system looks at the <strong>msRTCSIP-DeploymentLocator</strong> attribute. If <strong>msRTCSIP-DeploymentLocator</strong> contains <strong>SRV:</strong>, it indicates the account is on-premises and the call will be routed to Skype for Business Server. Or, if <strong>msRTCSIP-DeploymentLocator</strong> contains <strong>sipfed.online.lync.com</strong>, the call is sent to Teams.</p>
+<h2 id="configure-dynamic-routing-on-an-sbc">Configure dynamic routing on an SBC</h2>
+<p>Configurations are specific to each vendor. In this discussion, we'll reference SBCs from AudioCodes.</p>
+<p>The first step is to configure the LDAP connection, which is often disabled by default. You set up the connection by configuring an LDAP server group that contains an LDAP server.</p>
+<p>Next you build the rules to query the respective attributes that you want from Active Directory; it's where you start building logic. If the user is on-premises, send the call to Skype; if the user is online, send it to Teams. These rules are the ones you're going to query. With AudioCodes, these are referred to as <strong>Call Setup Rules</strong>. The following sample shows what it looks like:</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-migrate-direct-routing/media/4-audiocodes-left.png" alt="Configuring Call Setup Rule" data-linktype="relative-path">
+</p>
+<p>Here's how to configure the Call Setup Rule:</p>
+<ol>
+<li>Start with the <strong>Rule Set ID</strong>, which is an arbitrary number. In this example, it's <strong>1</strong>.</li>
+<li>Set the <strong>Request Type</strong> to <strong>LDAP</strong>.</li>
+<li>Set the <strong>Request Target</strong> to your Domain Controller Group.</li>
+<li>Set the <strong>Request Key</strong> to your anchor attribute that, as you'll recall, is the <strong>msRTCSIP-Line</strong> attribute.</li>
+<li><strong>Attributes To Get</strong> is the attribute you want to have after you've found the user. In this example, it's the deployment locator <strong>msRTCSIP-DeploymentLocator</strong>. As we discussed earlier, the deployment locator will be either <strong>SRV:</strong> or <strong>sipfed.online.lync.com</strong>.</li>
+<li>Finally, set <strong>Condition</strong> to be equal to <strong>sipfed.online.lync.com</strong>.</li>
+</ol>
+<p>Now look at the routing in this diagram:</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-migrate-direct-routing/media/4-audiocodes-right.png" alt="IP-to-IP Routing" data-linktype="relative-path">
+</p>
+<p>On the routing, the first field you'll fill in is <strong>Source IP Group</strong>. This field is for the call received from the PSTN Trunk. The next field is <strong>Destination IP Group</strong> that you want to set for Teams. Next is <strong>Call Setup Rules Set ID</strong> that, as you recall from earlier, is <strong>1</strong>. You're telling the SBC that, before the call gets routed, to look up Call Setup Rule number 1. If it doesn't match, the SBC will go on to the next one that does match, which would be the Skype for Business rule.</p>
+<p>Remember that, when you configured the Call Setup Rule, you defined two attributes to read: <strong>msRTCSIP-Line</strong> and <strong>msRTCSIP-DeploymentLocator</strong>. On some SBCs, you can optionally cache these attributes. It means that you don't impact the performance of having to query the local domain controllers all the time.</p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Complete the migration</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/m365-teams-migrate-direct-routing/5-complete-migration/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>
