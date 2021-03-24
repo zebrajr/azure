@@ -1,0 +1,8 @@
+1. B
+That's correct. Teams authenticates users with Active Directory Authentication Library (ADAL), once they have logged in those credentials can be reused by Teams.
+
+2. C
+That's correct. Certificate-based authentication uses certificates instead of username and password.
+
+3. A
+That's correct. MDM allows you to enforce a device PIN.

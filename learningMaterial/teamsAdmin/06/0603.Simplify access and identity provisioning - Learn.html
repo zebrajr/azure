@@ -1,0 +1,298 @@
+<html dir="ltr"><head><title>Simplify access and identity provisioning - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/m365-teams-protect-identity-access/2-simplify-access-and-identity-provisioning">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/m365-teams-protect-identity-access/2-simplify-access-and-identity-provisioning</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Simplify access and identity provisioning - Learn</h1>
+  <div dir="auto" id="reader-credits">lizap</div>
+  <div dir="auto" id="reader-estimated-time">7-9 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>7 minutes</li>
+		</ul>
+			<p>Microsoft Teams uses Azure Active Directory (Azure AD) features to support advanced methods for positively identifying users. Let's examine some of the ways you can fortify authentication.</p>
+<h2 id="what-is-modern-authentication">What is modern authentication</h2>
+<p>Modern authentication is a method of identity management that offers more secure user authentication and authorization between client and server. Modern authentication brings Active Directory Authentication Library (ADAL)-based sign-in to Office client applications like Microsoft Teams. This method enables sign-in features such as multi-factor authentication, SAML-based third-party identity providers, and smart card and certificate-based authentication. Modern authentication is the default sign-in protocol for Teams.</p>
+<h2 id="how-modern-authentication-works-in-teams">How modern authentication works in Teams</h2>
+<p>Modern authentication is a process where users who have already entered their credentials (such as email and password) elsewhere on the computer won't need to do so again in Teams. The experience will vary depending on whether users are working in Windows or on a Mac and whether your organization has enabled single-factor authentication or multi-factor authentication. Multi-factor authentication usually involves verifying credentials via a phone, providing a unique code, entering a PIN, or presenting a thumbprint. The following is a rundown of each modern authentication scenario.</p>
+<h3 id="windows-users">Windows users</h3>
+<ul>
+<li><p>If users have already signed into Windows or other Office apps with their work or school account, they're taken directly to the app when they start Teams. There's no need to enter their credentials.</p>
+</li>
+<li><p>Microsoft recommends using Windows 10 version 1903 or later for the best single sign-on (SSO) experience.</p>
+</li>
+<li><p>If users aren't signed in to their Microsoft work or school account anywhere else, and they then start Teams, they're asked to provide either single-factor or multi-factor authentication, depending on what your organization decides.</p>
+</li>
+<li><p>If users are signed into a domain-joined computer when they start Teams, they might be asked to go through one more authentication step. It depends on whether your organization opted to require multi-factor authentication, or if the computer already needs multi-factor authentication to sign in. If the user's computer has already asked for multi-factor authentication to sign in, the Teams app starts automatically when they open it.</p>
+</li>
+<li><p>On domain-joined PCs, when SSO isn't possible, Teams may prefill its login screen with the user principal name (UPN). There are times when you might not want this, especially if your organization uses different UPNs on-premises and in Azure Active Directory. If that's the case, you can use the following Windows registry key to turn off prepopulation of the UPN:</p>
+<p><strong>Computer\HKEY_CURRENT_USER\Software\Microsoft\Office\Teams
+SkipUpnPrefill(REG_DWORD)
+0x00000001 (1)</strong></p>
+</li>
+</ul>
+<div>
+<p> Note</p>
+<p>Skipping or ignoring username prefill for usernames that end in ".local" or ".corp" is on by default. You don't need to set a registry key to turn these off.</p>
+</div>
+<h3 id="mac-users">Mac users</h3>
+<p>On macOS, Teams will prompt users to enter their username credentials and might request multi-factor authentication, depending on your organization's settings. After users enter their credentials, they won't be required to provide them again. From that point, Teams automatically starts whenever they're working on the same computer.</p>
+<h3 id="teams-for-ios-and-android-users">Teams for iOS and Android users</h3>
+<p>On sign-in, mobile users will see a list of all the Microsoft 365 accounts that are either currently signed in or were previously signed in on their device. Users can tap on any of the accounts to sign in. There are two scenarios for mobile sign-in:</p>
+<ul>
+<li>If the selected account is currently signed into other Office 365 or Microsoft 365 apps, then the user will be taken straight to Teams. There's no need to enter credentials.</li>
+<li>If the user isn't signed in to their Microsoft 365 account anywhere else, they'll be asked to provide single-factor or multi-factor authentication, depending on what your organization has configured for mobile sign-in policies.</li>
+</ul>
+<div>
+<p> Note</p>
+<p>For users to have the sign-in experience as described in this section, their devices must be running Teams for iOS version 2.0.13 (build 2020061704) or later, or Teams for Android version 1416/1.0.0.2020061702 or later.</p>
+</div>
+<h2 id="adding-multiple-accounts-to-teams">Adding multiple accounts to Teams</h2>
+<p>Teams for iOS and Android supports adding multiple accounts from a single device, as shown in the following images:</p>
+<p><span>
+<img src="https://docs.microsoft.com/en-gb/learn/m365/m365-teams-protect-identity-access/media/2-add-multiple-accounts.png" alt="Adding multiple accounts" data-linktype="relative-path">
+</span>
+</p>
+<h2 id="use-enterprise-mobility-management-to-control-which-accounts-can-sign-in-to-teams">Use enterprise mobility management to control which accounts can sign in to Teams</h2>
+<p>IT administrators need the ability to push configurations to Microsoft 365 accounts for iOS and Android users. This capability works with any mobile device management (MDM) provider who uses the Managed App Configuration channel for iOS or the Android Enterprise channel for Android. For more information, see <strong>Managed App Configuration channel for iOS and Android Enterprise channel for Android</strong> in the <strong>Learn more</strong> section below.
+For users enrolled in Microsoft Intune, you can deploy the account configuration settings using Intune in the Azure portal.
+The account setup is configured in the MDM provider, and the user enrolls their device. Then, on the login page, Teams for iOS and Android will only show the allowed accounts that the user can tap to sign in.
+Set the following configuration parameters in the Azure Intune portal for managed devices.</p>
+
+<p>When the account setup configuration has been set, Teams will restrict the ability to sign in so that only allowed accounts on enrolled devices will be granted access.</p>
+<h2 id="switching-accounts-after-completing-modern-authentication">Switching accounts after completing modern authentication</h2>
+<p>If users are working on a domain-joined computer (for example, if their tenant has enabled Kerberos), they can't switch user accounts after completing modern authentication. Users who aren't working on a domain-joined computer can switch accounts.</p>
+<h2 id="signing-out-of-teams-after-completing-modern-authentication">Signing out of Teams after completing modern authentication</h2>
+<p>To sign out of Teams, users select their profile picture at the top of the app, and then select <strong>Sign out</strong>. Users can also select and hold the app icon in their taskbar, and then select <strong>Sign out</strong>. After signing out of Teams, users must enter their credentials again to launch the app.</p>
+<h2 id="signing-out-of-teams-for-ios-and-android">Signing out of Teams for iOS and Android</h2>
+<p>Mobile users sign out of Teams by going to the <strong>applications menu</strong> &gt; <strong>Settings</strong> &gt; <strong>Sign out</strong>. After signing out, users will need to reenter their credentials the next time they launch the app.</p>
+<div>
+<p> Note</p>
+<p>Teams for Android uses single sign-on (SSO) to simplify the sign-in experience. Users should log out of all Microsoft apps and Teams to log out of the Android platform.</p>
+</div>
+<h2 id="urls-and-ip-address-ranges">URLs and IP address ranges</h2>
+<p>Teams requires an internet connection. To understand endpoints that should be reachable for customers using Teams in Office 365 plans, government and other clouds, read <strong>Office 365 URLs and IP address ranges</strong>, in the <strong>Learn more</strong> section below.</p>
+<h2 id="troubleshooting-modern-authentication">Troubleshooting modern authentication</h2>
+<p>Modern authentication is available for every organization that uses Teams. If users can't complete the process, there might be something wrong with your domain or your organization's Microsoft work or school account. For troubleshooting information, see <strong>Why am I having trouble signing in to Microsoft Teams?</strong> in the <strong>Learn more</strong> section below.</p>
+<h2 id="learn-more">Learn more</h2>
+<ul>
+<li><a href="https://developer.apple.com/library/archive/samplecode/sc2279/Introduction/Intro.html" data-linktype="external">Managed App Configuration channel for iOS</a></li>
+<li><a href="https://docs.microsoft.com/en-us/mem/intune/apps/app-configuration-policies-use-ios" data-linktype="absolute-path">Add app configuration policies for managed iOS/iPadOS devices</a></li>
+<li><a href="https://docs.microsoft.com/en-us/mem/intune/apps/app-configuration-policies-use-android" data-linktype="absolute-path">Add app configuration policies for managed Android devices</a></li>
+<li><a href="https://docs.microsoft.com/en-us/office365/enterprise/urls-and-ip-address-ranges" data-linktype="absolute-path">Office 365 URLs and IP address ranges</a></li>
+<li><a href="https://support.office.com/article/why-am-i-having-trouble-signing-in-to-microsoft-teams-a02f683b-61a3-4008-9447-ee60c5593b0f" data-linktype="external">Why am I having trouble signing in to Microsoft Teams?</a></li>
+</ul>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Strengthen authentication when using Teams</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/m365-teams-protect-identity-access/3-strengthen-authentication/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

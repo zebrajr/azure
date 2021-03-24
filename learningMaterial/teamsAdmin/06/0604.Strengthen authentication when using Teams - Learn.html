@@ -1,0 +1,425 @@
+<html dir="ltr"><head><title>Strengthen authentication when using Teams - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/m365-teams-protect-identity-access/3-strengthen-authentication">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/m365-teams-protect-identity-access/3-strengthen-authentication</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Strengthen authentication when using Teams - Learn</h1>
+  <div dir="auto" id="reader-credits">lizap</div>
+  <div dir="auto" id="reader-estimated-time">9-12 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>9 minutes</li>
+		</ul>
+			<p>To ensure that common attacks can't compromise your user accounts, you need users to provide more credentials, such as user certificates or time-limited codes. Let's examine how to configure these methods.</p>
+<h2 id="multi-factor-authentication">Multi-factor authentication</h2>
+<p>Microsoft 365 plans support multi-factor authentication to increase the security of user logins to services. Users have to acknowledge a phone call, text message, or an app notification on their smartphone after correctly entering their password. Only after this second authentication factor has been satisfied, can a user sign in.
+Multi-factor authentication is supported with any Microsoft 365 plan that includes Microsoft Teams.
+The next time a user signs in after enrolling for multi-factor authentication, they'll see a message asking them to set up a second authentication factor. Supported authentication methods are:</p>
+
+<h2 id="certificate-based-authentication">Certificate-based authentication</h2>
+<p>With a client certificate on a Windows, Android, or iOS device, certificate-based authentication enables you to be authenticated by Azure Active Directory when connecting your Exchange online account to:</p>
+<ul>
+<li>Mobile applications such as Microsoft Outlook and Microsoft Word</li>
+<li>Exchange ActiveSync (EAS) clients</li>
+</ul>
+<p>Configuring this feature means you don't need to enter a username and password combination into certain mail and Microsoft Office applications on your mobile device.</p>
+<p>This topic:</p>
+<ul>
+<li>Provides the steps to configure and use certificate-based authentication for users of tenants in Microsoft 365 Enterprise, Business, Education, and US Government plans. This feature is available in preview in Microsoft 365 China, US Government Defense, and US Government Federal plans.</li>
+<li>Assumes that you already have a public key infrastructure (PKI) and AD FS configured.</li>
+</ul>
+<h3 id="requirements">Requirements</h3>
+<p>To configure certificate-based authentication, the following statements must be true:</p>
+<ul>
+<li>Certificate-based authentication (CBA) is only supported for federated environments for browser applications, native clients using modern authentication (ADAL), or MSAL libraries. The one exception is Exchange Active Sync (EAS) for Exchange Online (EXO), which can be used for federated and managed accounts.</li>
+<li>The root certificate authority and any intermediate certificate authorities must be configured in Azure Active Directory.</li>
+<li>Each certificate authority must have a certificate revocation list (CRL) that can be referenced via an internet-facing URL.</li>
+<li>You must have at least one certificate authority configured in Azure Active Directory.</li>
+<li>For Exchange ActiveSync clients, the client certificate must have the user's routable email address in Exchange online, in either the Principal Name or the RFC822 Name value of the Subject Alternative Name field. Azure Active Directory maps the RFC822 value to the Proxy Address attribute in the directory.</li>
+<li>Your client device must have access to at least one certificate authority that issues client certificates.</li>
+<li>A client certificate for client authentication must have been issued.</li>
+</ul>
+<div>
+<p> Important</p>
+<p>The maximum size of a CRL for Azure Active Directory to successfully download and cache is 20 MB, and the time required to download it must not exceed 10 seconds. If Azure Active Directory can't download a CRL, certificate-based authentications using certificates issued by the corresponding CA will fail. To ensure CRL files are within size constraints, best practice is to keep certificate lifetimes to within reasonable limits, and to clean up expired certificates.</p>
+</div>
+<h3 id="step-1-select-your-device-platform">Step 1: Select your device platform</h3>
+<p>As a first step, for the device platform you're working with, you need to review the following items:</p>
+<ul>
+<li>The Office mobile applications support</li>
+<li>The specific implementation requirements</li>
+</ul>
+<p>For information about Android and iOS devices, check out the following topics in the <strong>Learn more</strong> section below:</p>
+<ul>
+<li><strong>Azure Active Directory certificate-based authentication on Android</strong></li>
+<li><strong>Azure Active Directory certificate-based authentication on iOS</strong></li>
+</ul>
+
+<p>To configure your certificate authorities in Azure Active Directory, upload the following items for each one:</p>
+<ul>
+<li>The public portion of the certificate in a .cer format</li>
+<li>The internet-facing URLs where the CRLs reside</li>
+</ul>
+<p>This is how the schema for a certificate authority looks:</p>
+<pre tabindex="0"><code data-author-content="class TrustedCAsForPasswordlessAuth
+{
+    CertificateAuthorityInformation[] certificateAuthorities;
+}
+
+class CertificateAuthorityInformation
+
+{
+    CertAuthorityType authorityType;
+    X509Certificate trustedCertificate;
+    string crlDistributionPoint;
+    string deltaCrlDistributionPoint;
+    string trustedIssuer;
+    string trustedIssuerSKI;
+}
+
+enum CertAuthorityType
+{
+    RootAuthority = 0,
+    IntermediateAuthority = 1
+}
+"><span><span>class</span> <span>TrustedCAsForPasswordlessAuth</span>
+{
+    CertificateAuthorityInformation[] certificateAuthorities;
+}
+
+<span>class</span> <span>CertificateAuthorityInformation</span>
+
+{
+    CertAuthorityType authorityType;
+    X509Certificate trustedCertificate;
+    <span>string</span> crlDistributionPoint;
+    <span>string</span> deltaCrlDistributionPoint;
+    <span>string</span> trustedIssuer;
+    <span>string</span> trustedIssuerSKI;
+}
+
+<span>enum</span> CertAuthorityType
+{
+    RootAuthority = <span>0</span>,
+    IntermediateAuthority = <span>1</span>
+}
+</span></code></pre>
+<p>For the configuration, you can use Azure Active Directory PowerShell Version 2:</p>
+<ol>
+<li>Start Windows PowerShell with administrator privileges.</li>
+<li>Install the Azure AD module version 2.0.0.33 or higher.</li>
+</ol>
+<pre tabindex="0"><code data-author-content="   Install-Module -Name AzureAD –RequiredVersion 2.0.0.33
+"><span>   <span>Install-Module</span><span> -Name</span> AzureAD –RequiredVersion <span>2.0</span>.<span>0.33</span>
+</span></code></pre>
+<p>You need to establish a connection with your tenant. As soon as that connection exists, you can review, add, delete, and modify the trusted certificate authorities that are defined in your directory.</p>
+<p>To establish a connection with your tenant, use the <strong>Connect-AzureAD</strong> cmdlet:</p>
+<pre tabindex="0"><code data-author-content="Connect-AzureAD
+"><span><span>Connect-AzureAD</span>
+</span></code></pre>
+<p>To retrieve the trusted certificate authorities defined in your directory, use the <strong>Get-AzureADTrustedCertificateAuthority</strong> cmdlet:</p>
+<pre tabindex="0"><code data-author-content="Get-AzureADTrustedCertificateAuthority
+"><span><span>Get-AzureADTrustedCertificateAuthority</span>
+</span></code></pre>
+<p>To create a trusted certificate authority, use the <strong>New-AzureADTrustedCertificateAuthority</strong> cmdlet and set the <strong>crlDistributionPoint</strong> attribute to a correct value:</p>
+<pre tabindex="0"><code data-author-content="$cert=Get-Content -Encoding byte &quot;[LOCATION OF THE CER FILE]&quot;
+$new_ca=New-Object -TypeName Microsoft.Open.AzureAD.Model.CertificateAuthorityInformation
+$new_ca.AuthorityType=0
+$new_ca.TrustedCertificate=$cert
+$new_ca.crlDistributionPoint=&quot;<CRL Distribution URL>&quot;
+New-AzureADTrustedCertificateAuthority -CertificateAuthorityInformation $new_ca
+"><span><span>$cert</span>=<span>Get-Content</span><span> -Encoding</span> byte <span>"[LOCATION OF THE CER FILE]"</span>
+<span>$new_ca</span>=<span>New-Object</span><span> -TypeName</span> Microsoft.Open.AzureAD.Model.CertificateAuthorityInformation
+<span>$new_ca</span>.AuthorityType=<span>0</span>
+<span>$new_ca</span>.TrustedCertificate=<span>$cert</span>
+<span>$new_ca</span>.crlDistributionPoint=<span>"&lt;CRL Distribution URL&gt;"</span>
+<span>New-AzureADTrustedCertificateAuthority</span><span> -CertificateAuthorityInformation</span> <span>$new_ca</span>
+</span></code></pre>
+<p>To remove a trusted certificate authority, use the <strong>Remove-AzureADTrustedCertificateAuthority</strong> cmdlet:</p>
+<pre tabindex="0"><code data-author-content="$c=Get-AzureADTrustedCertificateAuthority
+Remove-AzureADTrustedCertificateAuthority -CertificateAuthorityInformation $c[2]
+"><span><span>$c</span>=<span>Get-AzureADTrustedCertificateAuthority</span>
+<span>Remove-AzureADTrustedCertificateAuthority</span><span> -CertificateAuthorityInformation</span> <span>$c</span>[<span>2</span>]
+</span></code></pre>
+<p>To modify a trusted certificate authority, use the <strong>Set-AzureADTrustedCertificateAuthority</strong> cmdlet:</p>
+<pre tabindex="0"><code data-author-content="$c = Get-AzureADTrustedCertificateAuthority
+$c[0].AuthorityType = 1
+Set-AzureADTrustedCertificateAuthority -CertificateAuthorityInformation $c[0]
+"><span><span>$c</span> = <span>Get-AzureADTrustedCertificateAuthority</span>
+<span>$c</span>[<span>0</span>].AuthorityType = <span>1</span>
+<span>Set-AzureADTrustedCertificateAuthority</span><span> -CertificateAuthorityInformation</span> <span>$c</span>[<span>0</span>]
+</span></code></pre>
+<h3 id="step-3-configure-revocation">Step 3: Configure revocation</h3>
+<p>To revoke a client certificate, Azure Active Directory fetches the CRL from the URLs uploaded as part of the certificate authority information and caches it. The last publish timestamp (<strong>Effective Date</strong> property) in the CRL is used to ensure it's still valid. The CRL is periodically referenced to revoke access to certificates that are part of the list.
+If a more instant revocation is required (for example, if a user loses a device), the user's authorization token can be invalidated. To invalidate the authorization token, you use Windows PowerShell to set the <strong>StsRefreshTokenValidFrom</strong> field for this user. You must update the <strong>StsRefreshTokenValidFrom</strong> field for each user for whom you want to revoke access.</p>
+<p>To ensure that the revocation persists, you must set the <strong>Effective Date</strong> of the CRL to a date after the value set by <strong>StsRefreshTokenValidFrom</strong>, and ensure the certificate in question is in the CRL.</p>
+<p>The following steps outline the process for updating and invalidating the authorization token by setting the <strong>StsRefreshTokenValidFrom</strong> field.</p>
+<ol>
+<li><p>To configure revocation, use admin credentials to connect to the MSOL service:</p>
+<pre tabindex="0"><code data-author-content="$msolcred = get-credential
+connect-msolservice -credential $msolcred
+"><span><span>$msolcred</span> = <span>get-credential</span>
+<span>connect-msolservice</span><span> -credential</span> <span>$msolcred</span>
+</span></code></pre>
+</li>
+<li><p>Retrieve the current <strong>StsRefreshTokensValidFrom</strong> value for a user:</p>
+<pre tabindex="0"><code data-author-content="$user = Get-MsolUser -UserPrincipalName test@yourdomain.com`
+$user.StsRefreshTokensValidFrom
+"><span><span>$user</span> = <span>Get-MsolUser</span><span> -UserPrincipalName</span> test@yourdomain.com`
+<span>$user</span>.StsRefreshTokensValidFrom
+</span></code></pre>
+</li>
+<li><p>Configure a new <strong>StsRefreshTokensValidFrom</strong> value for the user equal to the current timestamp:</p>
+<pre tabindex="0"><code data-author-content="Set-MsolUser -UserPrincipalName test@yourdomain.com -StsRefreshTokensValidFrom (&quot;03/05/2016&quot;)
+"><span><span>Set-MsolUser</span><span> -UserPrincipalName</span> test@yourdomain.com<span> -StsRefreshTokensValidFrom</span> (<span>"03/05/2016"</span>)
+</span></code></pre>
+</li>
+</ol>
+<p>The date you set must be in the future. If that isn't the case, the <strong>StsRefreshTokensValidFrom</strong> property isn't set. If the date is in the future, <strong>StsRefreshTokensValidFrom</strong> is set to the current time, not the date indicated by <code>Set-MsolUser</code> command.</p>
+<h3 id="step-4-test-your-configuration">Step 4: Test your configuration</h3>
+<p>As a first configuration test, try to sign in to Outlook Web Access or SharePoint Online using your <strong>on-device browser</strong>.</p>
+<p>If the sign-in succeeds, then you know that:</p>
+<ul>
+<li>The user certificate has been provisioned to your test device.</li>
+<li>AD FS is configured correctly.</li>
+</ul>
+<p>To test certificate-based authentication on your mobile Office application:</p>
+<ol>
+<li>On your test device, install an Office mobile application such as OneDrive.</li>
+<li>Launch the application.</li>
+<li>Enter your username, and then select the user certificate you want to use.</li>
+</ol>
+<p>You should be successfully signed in.</p>
+<p>To access Exchange ActiveSync (EAS) through certificate-based authentication, an EAS profile containing the client certificate must be available to the application.</p>
+<p>The EAS profile should contain the following information:</p>
+<ul>
+<li>The user certificate to be used for authentication.</li>
+<li>The EAS endpoint (for example, outlook.office365.com).</li>
+</ul>
+<p>An EAS profile can be configured and placed on the device using mobile device management (MDM) such as Intune or by manually placing the certificate in the EAS profile on the device.</p>
+<p>To test certificate authentication in Android:</p>
+<ol>
+<li>Configure an EAS profile in the application that satisfies the requirements in the prior section.</li>
+<li>Open the application and verify that mail is synchronizing.</li>
+</ol>
+<h2 id="learn-more">Learn more</h2>
+<ul>
+<li><a href="https://docs.microsoft.com/en-us/azure/active-directory/authentication/active-directory-certificate-based-authentication-android" data-linktype="absolute-path">Azure Active Directory certificate-based authentication on Android</a></li>
+<li><a href="https://docs.microsoft.com/en-us/azure/active-directory/authentication/active-directory-certificate-based-authentication-ios" data-linktype="absolute-path">Azure Active Directory certificate-based authentication on iOS</a></li>
+<li><a href="https://docs.microsoft.com/en-us/azure/active-directory/authentication/active-directory-certificate-based-authentication-android" data-linktype="absolute-path">Additional information about certificate-based authentication on Android devices</a></li>
+<li><a href="https://docs.microsoft.com/en-us/azure/active-directory/" data-linktype="absolute-path">Additional information about certificate-based authentication on iOS devices</a></li>
+</ul>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Manage endpoints in Microsoft Teams</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/m365-teams-protect-identity-access/4-manage-endpoints-for-microsoft-teams/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

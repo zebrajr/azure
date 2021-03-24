@@ -1,0 +1,271 @@
+<html dir="ltr"><head><title>Manage endpoints in Microsoft Teams - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/m365-teams-protect-identity-access/4-manage-endpoints-for-microsoft-teams">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/m365-teams-protect-identity-access/4-manage-endpoints-for-microsoft-teams</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Manage endpoints in Microsoft Teams - Learn</h1>
+  <div dir="auto" id="reader-credits">lizap</div>
+  <div dir="auto" id="reader-estimated-time">8-10 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>9 minutes</li>
+		</ul>
+			<p>Microsoft Teams endpoints can be defined as any PC, Mac, tablet, or mobile device running the Teams client. The term endpoint not only encompasses the device itself, but also how a user connects to the device. For example, by using the device's built-in mic or speaker, earbuds, or an optimized headset. After they're deployed, endpoints mustn't be forgotten. The Teams endpoints require ongoing care and maintenance.</p>
+<h2 id="endpoint-requirements">Endpoint requirements</h2>
+<p>One of the key benefits of Teams is that the client is kept up to date automatically. The clients on the PC and Mac are updated by using a background process that checks for new builds and downloads the new client when the app is idle. The Teams mobile apps are kept current through their respective app stores.
+The Teams client has minimum requirements for its underlying software platform. These requirements might change over time, so it's important that you monitor for changes. For example, the Teams client has a minimum iOS version. If the client uses an internet browser, that also needs to be kept current. You'll find a link to a list of supported platforms in <strong>Get clients for Microsoft Teams</strong>, located in the <strong>Learn more</strong> section below.</p>
+<h2 id="endpoint-firewalls">Endpoint firewalls</h2>
+<p>Client-side firewalls can have a significant impact on the user experience. Client-side firewalls might affect call quality and even prevent a call from being established. After the appropriate exclusions on the client firewall have been configured, they need to be kept up to date. Your third-party vendor will have specific guidance for how to update the exclusions.</p>
+<h2 id="wi-fi-drivers">Wi-Fi drivers</h2>
+<p>Wi-Fi drivers could be problematic. For example, a driver might have aggressive roaming behaviors between access points that can induce unnecessary access-point switching, leading to poor call quality. A poorly performing Wi-Fi driver might be discovered through a Quality of Experience review. See <strong>Monitor and improve call quality for Teams</strong> located in the <strong>Learn more</strong> section below. It's essential to implement a quality-driven process that monitors new Wi-Fi drivers and ensures that they're tested before being deployed to the general user population.</p>
+<h2 id="endpoint-management">Endpoint management</h2>
+<p>A catalog of supported endpoints and interface devices, such as headsets, should be available and maintained. This catalog will include a list of approved devices that were selected and validated as part of the Envision and Onboard phases. Typically, specific devices are selected for each persona type in your organization, to meet the needs of that persona's attributes. All endpoints have a lifecycle, and you need to manage the vendor contracts, warranty, replacement, distribution, and repair policies associated with these devices.</p>
+<h2 id="endpoint-troubleshooting">Endpoint troubleshooting</h2>
+<p>Even if you've followed the previous guidance, users in your organization might still run into issues with Teams. Although the problem might not be with the endpoint itself, the symptoms are typically surfaced through the client to the user. The following guidance is intended to provide general steps you can take to resolve the issue; it's not meant to be a comprehensive troubleshooting guide. The steps are provided in a specific order, but they don't have to be followed explicitly and might not be applicable, depending on the nature of the issue.</p>
+<ol>
+<li><strong>Validate service health</strong>: The issue a user might be experiencing can be related to an event that negatively affects the Teams service or its dependent services. As a first step, we recommend that you confirm there are no active service issues. Consult <strong>How to check Office 365 service health</strong>, located in the <strong>Learn more</strong> section below. Remember to check for the status of dependent services (for example, Exchange, SharePoint, OneDrive for Business).</li>
+<li><strong>Validate client connectivity</strong>: Connectivity issues cause functionality or sign-in problems in Teams. We recommend (especially for new sites or locations) that you validate connectivity to the service. Ensure the following Microsoft 365 URLs and IP address range guidance is followed for each site. Use the Microsoft Network Assessment Tool to do a connectivity test to validate that the media ports have been opened correctly for cloud voice capabilities. Detailed steps on how to run the connectivity tests are provided in the network readiness guidance.</li>
+<li><strong>Check the known issues list</strong>: Consult Teams Troubleshooting to determine whether the user has been negatively affected by one of these issues. Follow the workaround provided (if there is one) to resolve the issue.</li>
+<li><strong>Visit the Microsoft Teams community</strong>: The Microsoft Teams community offers dedicated spaces for Teams. The Teams community provides a discussion list, blog posts, and announcements centered around Teams. You can post a question or search previous discussions for solutions to your issue.</li>
+<li><strong>Contact Microsoft Support</strong>: You can contact Microsoft Support, online or by phone, to deal with Teams issues. For information, see Contact support for business products. For Premier customers, support requests can be started by following the guidance at Contact support for Microsoft Teams (Premier customers).</li>
+</ol>
+<h2 id="maintenance-tasks">Maintenance tasks</h2>
+<p>To maintain good service to your users, try to execute these tasks on a regular or semi-regular basis:</p>
+
+<h2 id="mobile-device-management-mdm">Mobile device management (MDM)</h2>
+<p>Your corporate IT department can manage the entire device. With MDM, you can:</p>
+<ul>
+<li>Enforce the use of a device-level PIN and specific OS versions.</li>
+<li>Push device configurations, such as VPN settings, to the device.</li>
+<li>Deploy specific applications to the device so that all of your line of business apps are automatically deployed.</li>
+<li>Enforce device encryptions and, if necessary, wipe corporate data from the device.</li>
+</ul>
+<p>MDM is ideal for company owned devices.</p>
+<h2 id="mobile-app-management-mam">Mobile app management (MAM)</h2>
+<p>Only specific applications on Android and iOS devices are managed by the IT department. These applications need to support management via MAM. Teams is one of the applications that supports MAM. With MAM, you can enforce an application-specific PIN. For example, the user is prompted for a PIN when launching Teams. As with MDM, you can enforce compliant devices such as the OS version.
+You can implement data loss preventions to stop copy and paste from managed apps to unmanaged apps. For example, a user couldn't copy data from Teams and paste it into their private email account. You could also prevent a user from saving files to a private store.
+You can enforce application-level encryption and wipe application data.
+MAM is ideal for bring your own device (BYOD) scenarios.</p>
+<h2 id="windows-information-protection-wip">Windows Information Protection (WIP)</h2>
+<p>WIP allows specific applications on Windows 10 to be managed by corporate IT. These applications need to be written to support management via WIP. WIP is a policy that IT admins create to protect data from accidentally being copied to the wrong place. WIP tags content as "work" and allows the user to copy and paste across work-related apps. For example, copying from Excel into PowerPoint. If the user attempts to copy work documents into their private email account, a warning will be displayed.</p>
+<h2 id="conditional-access-ca">Conditional Access (CA)</h2>
+<p>Conditional Access allows only specific services to be accessed under certain conditions. CA allows you to define how people use an application and how they authenticate. For example, you can define how specific users and groups sign in, the platform they're using based on subnets, or the state of the device. You can require access to Teams, for example, only with multi-factor authentication, only if the device is compliant, and if it's joined to Azure Active Directory. Teams will apply any SharePoint and Exchange Conditional Access policies because it's using SharePoint and Exchange in the backend. Any policies you configure for SharePoint and Exchange will apply to a user in Teams.</p>
+<div>
+<p> Note</p>
+<p>CA policies are independent from any MDM/MAM configurations.</p>
+</div>
+<h2 id="learn-more">Learn more</h2>
+<ul>
+<li><a href="https://docs.microsoft.com/en-us/MicrosoftTeams/get-clients" data-linktype="absolute-path">Get clients for Microsoft Teams</a></li>
+<li><a href="https://docs.microsoft.com/en-us/office365/enterprise/urls-and-ip-address-ranges" data-linktype="absolute-path">Office 365 URLs and IP address ranges</a></li>
+<li><a href="https://docs.microsoft.com/en-us/microsoftteams/monitor-call-quality-qos" data-linktype="absolute-path">Monitor and improve call quality for Teams</a></li>
+<li><a href="https://docs.microsoft.com/en-us/office365/enterprise/view-service-health" data-linktype="absolute-path">How to check Microsoft 365 service health</a></li>
+<li><a href="https://docs.microsoft.com/en-us/windows/security/information-protection/windows-information-protection/protect-enterprise-data-using-wip" data-linktype="absolute-path">Protect your enterprise data using Windows Information Protection (WIP)</a></li>
+<li><a href="https://support.microsoft.com/premier/contacts" data-linktype="external">Contact support for Microsoft Teams (Premier customers)</a></li>
+</ul>
+
+		
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>
