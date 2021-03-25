@@ -1,0 +1,693 @@
+<html dir="ltr"><head><title>Lab - Create DAX calculations in Power BI Desktop, Part 2 - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/8-lab">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/create-measures-dax-power-bi/8-lab</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Lab - Create DAX calculations in Power BI Desktop, Part 2 - Learn</h1>
+  <div dir="auto" id="reader-credits">heyrob</div>
+  <div dir="auto" id="reader-estimated-time">14-17 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="main-column" data-bi-name="body">
+
+					<main id="main" role="main" data-bi-name="content" lang="en-us" dir="ltr">
+
+
+
+
+
+						
+
+
+						<!-- <content> -->
+							<div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>45 minutes</li>
+		</ul>
+			<h2 id="access-your-environment">Access your environment</h2>
+<p>Before you start this lab, select <strong>Launch lab</strong> above.</p>
+<p>To log in to your lab environment:</p>
+<ol>
+<li>Click anywhere on the Windows desktop in the lab window.</li>
+<li>On the <strong>Resources</strong> tab on the lab side bar, select the <strong>T</strong> icon next to <strong>Password</strong>. The machine password is automatically entered for you. You can log in with the Student profile.</li>
+<li>Press <strong>Enter</strong>.</li>
+</ol>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/includes/vm-login.png" alt="Image of the lab password on the Resources tab." data-linktype="relative-path"></p>
+<p>You can now begin your work on this lab.</p>
+<p><strong>The estimated time to complete the lab is 45 minutes</strong></p>
+<p>In this lab you will create measures with DAX expressions involving filter context manipulation.</p>
+<p>In this lab you learn how to:</p>
+<ul>
+<li><p>Use the CALCULATE() function to manipulate filter context</p>
+</li>
+<li><p>Use Time Intelligence functions</p>
+</li>
+</ul>
+<h3 id="lab-story"><strong>Lab story</strong></h3>
+<p>This lab is one of many in a series of labs that was designed as a complete story from data preparation to publication as reports and dashboards. You can complete the labs in any order. However, if you intend to work through multiple labs, for the first 10 labs, we suggest you do them in the following order:</p>
+<ol>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/get-data/lab-prepare/" data-linktype="absolute-path" target="az-portal">Prepare data in Power BI Desktop</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/clean-data-power-bi/8-lab/" data-linktype="absolute-path" target="az-portal">Load data in Power BI Desktop</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/design-model-power-bi/8-lab/" data-linktype="absolute-path" target="az-portal">Model data in Power BI Desktop, part 1</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/design-model-power-bi/9-lab/" data-linktype="absolute-path" target="az-portal">Model data in Power BI Desktop, part 2</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/create-measures-dax-power-bi/6-lab/" data-linktype="absolute-path" target="az-portal">Create DAX calculations in Power BI Desktop, part 1</a></p>
+</li>
+<li><p><strong>Create DAX calculations in Power BI Desktop, Part 2</strong></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/visuals-power-bi/8-lab/" data-linktype="absolute-path" target="az-portal">Design a report in Power BI Desktop, part 1</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/data-driven-story-power-bi/13-lab/" data-linktype="absolute-path" target="az-portal">Design a report in Power BI Desktop, part 2</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/create-dashboards-power-bi/9-lab/" data-linktype="absolute-path" target="az-portal">Create a Power BI dashboard</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/ai-visuals-power-bi/5-lab/" data-linktype="absolute-path" target="az-portal">Perform data analysis in Power BI Desktop</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/create-paginated-reports-power-bi/6-lab/" data-linktype="absolute-path" target="az-portal">Create a Power BI paginated report</a></p>
+</li>
+</ol>
+<h2 id="exercise-1-work-with-filter-context"><strong>Exercise 1: Work with Filter Context</strong></h2>
+<p>In this exercise you will create measures with DAX expressions involving filter context manipulation.</p>
+<h3 id="task-1-get-started"><strong>Task 1: Get started</strong></h3>
+<p>In this task you'll set up the environment for the lab.</p>
+<div>
+<p> Important</p>
+<p>If you're continuing on from the previous lab (and you completed that lab successfully), do not complete this task. Instead, continue from the next task.</p>
+</div>
+<ol>
+<li><p>To open the Power BI Desktop, on the taskbar, select the Microsoft Power BI Desktop shortcut.</p>
+</li>
+<li><p>To close the getting started window, at the top-left of the window, select <strong>X</strong>.</p>
+</li>
+<li><p>To open the starter Power BI Desktop file, select the <strong>File</strong> ribbon tab to open the backstage view.</p>
+</li>
+<li><p>Select <strong>Open Report</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-6-5-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-6-5-ssm.png" alt="Screenshot of the File menu expanded with the Open report option highlighted." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Select <strong>Browse Reports</strong>.</p>
+</li>
+<li><p>In the <strong>Open</strong> window, navigate to the <strong>D:\DA100\Labs\create-dax-calculations-in-power-bi-desktop-advanced\Starter</strong> folder.</p>
+</li>
+<li><p>Select the <strong>Sales Analysis</strong> file.</p>
+</li>
+<li><p>Select <strong>Open</strong>.</p>
+</li>
+<li><p>Close any informational windows that may open.</p>
+</li>
+<li><p>To create a copy of the file, select the <strong>File</strong> ribbon tab to open the backstage view.</p>
+</li>
+<li><p>Select <strong>Save As</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-6-5-a-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-6-5-a-ssm.png" alt="Screenshot of the File menu expanded with the Save as option highlighted." data-linktype="relative-path"></a></p>
+</li>
+<li><p>If prompted to apply changes, select <strong>Apply</strong>.</p>
+</li>
+<li><p>In the <strong>Save As</strong> window, navigate to the <strong>D:\DA100\MySolution</strong> folder.</p>
+</li>
+<li><p>Select <strong>Save</strong>.</p>
+</li>
+</ol>
+<h3 id="task-2-create-a-matrix-visual"><strong>Task 2: Create a matrix visual</strong></h3>
+<p>In this task, you will create a matrix visual to support testing your new measures.</p>
+<ol>
+<li><p>In Power BI Desktop, in Report view, create a new report page.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-8-1-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-8-1-ssm.png" alt="Screenshot of the create new report feature icon." data-linktype="relative-path"></a></p>
+</li>
+<li><p>On <strong>Page 3</strong>, add a matrix visual.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-8-2-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-8-2-ssm.png" alt="Screenshot of the matrix visual on the Visualizations tab." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Resize the matrix visual to fill the entire page.</p>
+</li>
+<li><p>To configure the matrix visual fields, from the <strong>Fields</strong> pane, drag the <strong>Region | Regions</strong> hierarchy, and drop it inside the visual.</p>
+<p>The labs use a shorthand notation to reference a field or hierarchy. It will look like this: <strong>Region | Regions</strong>. In this example, <strong>Region</strong> is the table name and <strong>Regions</strong> is the hierarchy name.</p>
+</li>
+<li><p>Add also the <strong>Sales | Sales</strong> field.</p>
+</li>
+<li><p>To expand the entire hierarchy, at the top-right of the matrix visual, select the forked-double arrow icon twice.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-8-3-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-8-3-ssm.png" alt="Screenshot of the forked double arrow icon." data-linktype="relative-path"></a></p>
+<p>Recall that the <strong>Regions</strong> hierarchy has the levels <strong>Group</strong>, <strong>Country</strong>, and <strong>Region</strong>.</p>
+</li>
+<li><p>To format the visual, beneath the <strong>Visualizations</strong> pane, select the <strong>Format</strong> pane.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-8-4-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-8-4-ssm.png" alt="Screenshot of the Format pane button beneath the Visualizations pane." data-linktype="relative-path"></a></p>
+</li>
+<li><p>In the <strong>Search</strong> box, enter <strong>Stepped</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-8-4-a-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-8-4-a-ssm.png" alt="Screenshot of the Format pane Search box." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Set the <strong>Stepped Layout</strong> property to <strong>Off</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-8-5-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-8-5-ssm.png" alt="Screenshot of the stepped layout set to off." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Verify that the matrix visual has four column headers.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-8-6-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-8-6-ss.png" alt="Screenshot of the matrix with four column headers." data-linktype="relative-path"></a></p>
+<p>At Adventure Works, the sales regions are organized into groups,  countries, and regions. All countries except the United States have just one region, which is named after the country. As the United States is such a large sales territory, it is divided into five regions.</p>
+<p>You’ll create several measures in this exercise, and then test them by adding them to the matrix visual.</p>
+</li>
+</ol>
+<h3 id="task-3-manipulate-filter-context">Task 3: Manipulate filter context</h3>
+<p>In this task, you will create several measures with DAX expressions that use the CALCULATE() function to manipulate filter context.</p>
+<ol>
+<li><p>In Report view, on the <strong>Modeling</strong> ribbon, from inside the <strong>Calculations</strong> group, select <strong>New measure</strong> to add a measure “Sales All Region” to the <strong>Sales</strong> table.</p>
+</li>
+<li><p>Use the following expression to create the measure:</p>
+<p>For your convenience, all DAX definitions in this lab can be copied from the <strong>D:\DA100\Labs\create-dax-calculations-in-power-bi-desktop-advanced\Assets\Snippets.txt</strong> file.</p>
+<pre tabindex="0"><code data-author-content="Sales All Region =
+CALCULATE(SUM(Sales[Sales]), REMOVEFILTERS(Region))
+"><span>Sales <span>All</span> Region =
+<span>CALCULATE</span>(<span>SUM</span>(Sales[Sales]), REMOVEFILTERS(Region))
+</span></code></pre>
+<p>The CALCULATE() function is a powerful function used to manipulate the filter context. The first argument takes an expression or a measure (a measure is just a named expression). Subsequent arguments allow you to modify the filter context.</p>
+<p>The REMOVEFILTERS() function removes active filters. It can take either no arguments, or a table, a column, or multiple columns as its argument.</p>
+<p>In this formula, the measure evaluates the sum of the <strong>Sales</strong> column in a modified filter context, which removes any filters applied to the <strong>Region</strong> table.</p>
+</li>
+<li><p>In the formula bar copy and paste the expression from the Snippets.txt file, and press <strong>Enter</strong>. This creates the measure in the <strong>Sales</strong> table. Review the field list in the <strong>Fields</strong> pane under the <strong>Sales</strong> table, and you'll see the <strong>Sales All Region</strong> measure.</p>
+</li>
+<li><p>Select the <strong>Sales All Region</strong> measure in the <strong>Fields</strong> pane to add the measure to the matrix visual.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-8-7-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-8-7-ssm.png" alt="Screenshot of the sales all region measure added." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Notice that the <strong>Sales All Region</strong> measure computes the total of all region sales for each region, country (subtotal) and group (subtotal).</p>
+<p>This measure is yet to deliver a useful result. When the sales for a group, country, or region is divided by this value it produces a useful ratio known as “percent of grand total”.</p>
+</li>
+<li><p>In the <strong>Fields</strong> pane, ensure that the <strong>Sales All Region</strong> measure is selected (when selected, it has a dark grey background), and then in the formula bar, replace the measure name and formula with the following formula:</p>
+<div>
+<p> Tip</p>
+<p>To replace the existing formula, first copy the snippet. Then click inside the formula bar and press <strong>Ctrl+A</strong> to select all text. Next, press <strong>Ctrl+V</strong> to paste the snippet to overwrite the selected text. Press <strong>Enter</strong>.</p>
+</div>
+<pre tabindex="0"><code data-author-content="Sales % All Region =
+DIVIDE(
+   SUM(Sales[Sales]),
+   CALCULATE(
+        SUM(Sales[Sales]),
+        REMOVEFILTERS(Region)
+   )
+)
+"><span>Sales % <span>All</span> Region =
+<span>DIVIDE</span>(
+   <span>SUM</span>(Sales[Sales]),
+   <span>CALCULATE</span>(
+        <span>SUM</span>(Sales[Sales]),
+        REMOVEFILTERS(Region)
+   )
+)
+</span></code></pre>
+<p>The measure has been renamed to accurately reflect the updated formula. The <strong>DIVIDE()</strong> function divides the <strong>Sales</strong> measure (not modified by filter context) by the <strong>Sales</strong> measure in a modified context which removes any filters applied to the <strong>Region</strong> table.</p>
+</li>
+<li><p>In the matrix visual, notice that the measure has been renamed and that different values now appear for each group, country, and region.</p>
+</li>
+<li><p>Format the <strong>Sales % All Region</strong> measure as a percentage with two decimal places.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-8-7b-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-8-7b-ssm.png" alt="Screenshot of the measure set to a percentage with two decimal places." data-linktype="relative-path"></a></p>
+</li>
+<li><p>In the matrix visual, review the <strong>Sales % All Region</strong> measure values.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-8-8-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-8-8-ssm.png" alt="Screenshot of the Sales % All Region values." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Add another measure to the <strong>Sales</strong> table, based on the following expression, and format as a percentage:</p>
+<pre tabindex="0"><code data-author-content="Sales % Country =
+DIVIDE(
+   SUM(Sales[Sales]),
+   CALCULATE(
+       SUM(Sales[Sales]),
+       REMOVEFILTERS(Region[Region])
+   )
+)
+"><span>Sales % Country =
+<span>DIVIDE</span>(
+   <span>SUM</span>(Sales[Sales]),
+   <span>CALCULATE</span>(
+       <span>SUM</span>(Sales[Sales]),
+       REMOVEFILTERS(Region[Region])
+   )
+)
+</span></code></pre>
+</li>
+<li><p>Notice that the <strong>Sales % Country</strong> measure formula differs slightly from the <strong>Sales % All Region</strong> measure formula.</p>
+<p>The difference is that the denominator modifies the filter context by removing filters on the <strong>Region</strong> column of the <strong>Region</strong> table, not all columns of the <strong>Region</strong> table. It means that any filters applied to the group or country columns are preserved. It'll achieve a result that represents the sales as a percentage of country.</p>
+</li>
+<li><p>Add the <strong>Sales % Country</strong> measure to the matrix visual.</p>
+</li>
+<li><p>Notice that only the United States’ regions produce a value which is not 100%.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-8-9-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-8-9-ssm.png" alt="Screenshot of the United States region with a value not 100%." data-linktype="relative-path"></a></p>
+<p>Recall that only the United States has multiple regions. All other countries have a single region which explains why they are all 100%.</p>
+</li>
+<li><p>To improve the readability of this measure in the visual, overwrite the <strong>Sales % Country</strong> measure with this improved formula.</p>
+<pre tabindex="0"><code data-author-content="Sales % Country =
+IF(
+    ISINSCOPE(Region[Region]),
+    DIVIDE(
+        SUM(Sales[Sales]),
+        CALCULATE(
+            SUM(Sales[Sales]),
+            REMOVEFILTERS(Region[Region]
+        )
+    )
+)
+"><span>Sales % Country =
+<span>IF</span>(
+    ISINSCOPE(Region[Region]),
+    <span>DIVIDE</span>(
+        <span>SUM</span>(Sales[Sales]),
+        <span>CALCULATE</span>(
+            <span>SUM</span>(Sales[Sales]),
+            REMOVEFILTERS(Region[Region]
+        )
+    )
+)
+</span></code></pre>
+<p>Embedded within the IF() function, the ISINSCOPE() function is used to test whether the region column is the level in a hierarchy of levels. When true, the DIVIDE() function is evaluated. The absence of a false part means that blank is returned when the region column is not in scope.</p>
+</li>
+<li><p>Notice that the <strong>Sales % Country</strong> measure now only returns a value when a region is in scope.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-8-10-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-8-10-ssm.png" alt="Screenshot of the measure value returned only when a region is in scope." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Add another measure to the <strong>Sales</strong> table, based on the following expression, and format as a percentage:</p>
+<pre tabindex="0"><code data-author-content="Sales % Group =
+DIVIDE(
+    SUM(Sales[Sales]),
+    CALCULATE(
+         SUM(Sales[Sales]),
+         REMOVEFILTERS(
+             Region[Region],
+             Region[Country]
+         )
+    )
+)
+"><span>Sales % Group =
+<span>DIVIDE</span>(
+    <span>SUM</span>(Sales[Sales]),
+    <span>CALCULATE</span>(
+         <span>SUM</span>(Sales[Sales]),
+         REMOVEFILTERS(
+             Region[Region],
+             Region[Country]
+         )
+    )
+)
+</span></code></pre>
+<p>To achieve sales as a percentage of group, two filters can be applied to effectively remove the filters on two columns.</p>
+</li>
+<li><p>Add the <strong>Sales % Group</strong> measure to the matrix visual.</p>
+</li>
+<li><p>To improve the readability of this measure in the visual, overwrite the <strong>Sales % Group</strong> measure with this improved formula.</p>
+<pre tabindex="0"><code data-author-content="Sales % Group =
+IF(
+    ISINSCOPE(Region[Region])
+         || ISINSCOPE(Region[Country]),
+    DIVIDE(
+        SUM(Sales[Sales]),
+        CALCULATE(
+            SUM(Sales[Sales]),
+            REMOVEFILTERS(
+                 Region[Region],
+                 Region[Country]
+            )
+        )
+    )
+)
+"><span>Sales % Group =
+<span>IF</span>(
+    ISINSCOPE(Region[Region])
+         || ISINSCOPE(Region[Country]),
+    <span>DIVIDE</span>(
+        <span>SUM</span>(Sales[Sales]),
+        <span>CALCULATE</span>(
+            <span>SUM</span>(Sales[Sales]),
+            REMOVEFILTERS(
+                 Region[Region],
+                 Region[Country]
+            )
+        )
+    )
+)
+</span></code></pre>
+</li>
+<li><p>Notice that the <strong>Sales % Group</strong> measure now only returns a value when a region or country is in scope.</p>
+</li>
+<li><p>In Model view, place the three new measures into a display folder named <strong>Ratios</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-8-11-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-8-11-ss.png" alt="Screenshot of the three new measures in a ratios folder." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Save the Power BI Desktop file.</p>
+<p>The measures added to the <strong>Sales</strong> table have modified filter context to achieve hierarchical navigation. Notice that the pattern to achieve the calculation of a subtotal requires removing some columns from the filter context, and to arrive at a grand total, all columns must be removed.</p>
+</li>
+</ol>
+<h2 id="exercise-2-work-with-time-intelligence">Exercise 2: Work with Time Intelligence</h2>
+<p>In this exercise, you will create a sales year-to-date (YTD) measure and sales year-over-year (YoY) growth measure.</p>
+<h3 id="task-1-create-a-ytd-measure">Task 1: Create a YTD measure</h3>
+<p>In this task, you will create a sales YTD measure.</p>
+<ol>
+<li><p>In Report view, on <strong>Page 2</strong>, notice the matrix visual which displays various measures with years and months grouped on the rows.</p>
+</li>
+<li><p>Add a measure to the <strong>Sales</strong> table based on the following expression, and formatted to zero decimal places:</p>
+<pre tabindex="0"><code data-author-content="Sales YTD =
+TOTALYTD(SUM(Sales[Sales]), 'Date'[Date], &quot;6-30&quot;)
+"><span>Sales YTD =
+<span>TOTALYTD</span>(<span>SUM</span>(Sales[Sales]), 'Date'[Date], <span>"6-30"</span>)
+</span></code></pre>
+<p>The TOTALYTD() function evaluates an expression, in this case the sum of the <strong>Sales</strong> column, over a given date column. The date column must belong to a date table marked as a date table, as was done in the <strong>Create DAX calculations in Power BI Desktop, Part 1</strong> lab.</p>
+<p>The function can also take a third optional argument representing the last date of a year. The absence of this date means that December 31 is the last date of the year. For Adventure Works, June in the last month of their year, and so “6-30” is used.</p>
+</li>
+<li><p>Add the <strong>Sales</strong> field and the <strong>Sales YTD</strong> measure to the matrix visual.</p>
+</li>
+<li><p>Notice the accumulation of sales values within the year.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-8-12-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-8-12-ss.png" alt="Screenshot of the accumulation of sales values." data-linktype="relative-path"></a></p>
+<p>The TOTALYTD() function performs filter manipulation, specifically time filter manipulation. For example, to compute YTD sales for September 2017 (the third month of the fiscal year), all filters on the <strong>Date</strong> table are removed and replaced with a new filter of dates commencing at the beginning of the year (July 1, 2017) and extending through to the last date of the in-context date period (September 30, 2017).</p>
+<div>
+<p> Note</p>
+<p>Many Time Intelligence functions are available in DAX to support common time filter manipulations.</p>
+</div>
+</li>
+</ol>
+<h3 id="task-2-create-a-yoy-growth-measure">Task 2: Create a YoY growth measure</h3>
+<p>In this task, you will create a sales YoY growth measure.</p>
+<ol>
+<li><p>Add an additional measure to the <strong>Sales</strong> table, based on the following expression:</p>
+<pre tabindex="0"><code data-author-content="Sales YoY Growth =
+VAR SalesPriorYear =
+    CALCULATE(
+        SUM(Sales[Sales]),
+        PARALLELPERIOD(
+            'Date'[Date],
+            -12,
+            MONTH
+           )
+    )
+RETURN
+    SalesPriorYear
+"><span>Sales YoY Growth =
+<span>VAR</span> SalesPriorYear =
+    <span>CALCULATE</span>(
+        <span>SUM</span>(Sales[Sales]),
+        <span>PARALLELPERIOD</span>(
+            'Date'[Date],
+            -<span>12</span>,
+            <span>MONTH</span>
+           )
+    )
+<span>RETURN</span>
+    SalesPriorYear
+</span></code></pre>
+<p>The <strong>Sales YoY Growth</strong> measure formula declares a variable. Variables can be useful for simplifying the formula logic, and more efficient when an expression needs to be evaluated multiple times within the formula (which will be the case for the YoY growth logic). Variables are declared by a unique name, and the measure expression must then be output after the <strong>RETURN</strong> keyword.</p>
+<p>The <strong>SalesPriorYear</strong> variable is assigned an expression which calculates the sum of the <strong>Sales</strong> column in a modified context that uses the PARALLELPERIOD() function to shift 12 months back from each date in filter context.</p>
+</li>
+<li><p>Add the <strong>Sales YoY Growth</strong> measure to the matrix visual.</p>
+</li>
+<li><p>Notice that the new measure returns blank for the first 12 months (there were no sales recorded before fiscal year 2017).</p>
+</li>
+<li><p>Notice that the <strong>Sales YoY Growth</strong> measure value for <strong>2017 Jul</strong> is the <strong>Sales</strong> value for <strong>2016 Jan</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-8-13-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-8-13-ssm.png" alt="Screenshot of the Sales YoY Growth for 2017 July and 2016 January are the same." data-linktype="relative-path"></a></p>
+<p>Now that the “difficult” part of the formula has been tested, you can overwrite the measure with the final formula which computes the growth result.</p>
+</li>
+<li><p>To complete the measure, overwrite the <strong>Sales YoY Growth</strong> measure with this formula, formatting it as a percentage with two decimal places:</p>
+<pre tabindex="0"><code data-author-content="Sales YoY Growth =
+VAR SalesPriorYear =
+    CALCULATE(
+          SUM(Sales[Sales]),
+          PARALLELPERIOD(
+          'Date'[Date],
+          -12,
+          MONTH
+        )
+)
+RETURN
+   DIVIDE(
+       (SUM(Sales[Sales]) - SalesPriorYear),
+       SalesPriorYear
+   )
+"><span>Sales YoY Growth =
+<span>VAR</span> SalesPriorYear =
+    <span>CALCULATE</span>(
+          <span>SUM</span>(Sales[Sales]),
+          <span>PARALLELPERIOD</span>(
+          'Date'[Date],
+          -<span>12</span>,
+          <span>MONTH</span>
+        )
+)
+<span>RETURN</span>
+   <span>DIVIDE</span>(
+       (<span>SUM</span>(Sales[Sales]) - SalesPriorYear),
+       SalesPriorYear
+   )
+</span></code></pre>
+</li>
+<li><p>In the formula, in the <strong>RETURN</strong> clause, notice that the variable is referenced twice.</p>
+</li>
+<li><p>Verify that the YoY growth for <strong>2018 Jul</strong> is <strong>392.83%</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-8-14-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-8-14-ssm.png" alt="Screenshot of the YoY growth for 2018 July." data-linktype="relative-path"></a></p>
+<p>This means that July 2018 sales ($2,411,559) represents a nearly 400% (almost 4x) improvement over the sales achieved for the prior year ($489,328).</p>
+</li>
+<li><p>In Model view, place the two new measures into a display folder named <strong>Time Intelligence</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-8-15-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-8-15-ss.png" alt="Screenshot of the new measures in a Time Intelligence folder." data-linktype="relative-path"></a></p>
+</li>
+</ol>
+<h3 id="task-3-finish-up">Task 3: Finish up</h3>
+<p>In this task, you will complete the lab.</p>
+<ol>
+<li><p>To clean up the solution ready for report development, at the bottom-left, right-click the <strong>Page 2</strong> tab, and then select <strong>Delete Page</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-8-17-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-8-17-ssm.png" alt="Screenshot of the Sales Analysis workspace as the destination." data-linktype="relative-path"></a></p>
+</li>
+<li><p>When prompted to delete the page, click <strong>Delete</strong>.</p>
+</li>
+<li><p>Delete <strong>Page 3</strong> also.</p>
+</li>
+<li><p>On the remaining page, to clear the page, select the table visual, and the press the <strong>Delete</strong> key.</p>
+</li>
+<li><p>Save the Power BI Desktop file.</p>
+</li>
+<li><p>If you intend to start the next lab, leave Power BI Desktop open.</p>
+<p>You’ll create a report based on the data model in the <strong>Design a report in Power BI Desktop, Part 1</strong> lab.</p>
+</li>
+</ol>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Check your knowledge</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/9-check/" data-bi-name="continue" target="_top">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div>
+
+						<!-- </content> -->
+
+						</main>
+
+						<!-- page rating section -->
+						<!-- end page rating section -->
+
+<section>
+		<p>
+Need help? See our <a id="troubleshooting-guide" data-bi-name="troubleshooting" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-bizapps.create-measures-dax-power-bi.8-lab&amp;documentId=274dec1c-a928-8411-f2fe-46edbc3883c5&amp;versionIndependentDocumentId=6518ef20-316b-6c9a-33fd-2cfa7912715d&amp;contentPath=%2FMicrosoftDocs%2Flearn-bizapps-pr%2Fblob%2Flive%2Flearn-bizapps-pr%2Fpower-bi%2Fcreate-measures-dax-power-bi%2F8-lab.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fcreate-measures-dax-power-bi%2F8-lab&amp;author=robde">troubleshooting guide</a> or provide specific feedback by <a id="module-unit-feedback-link" data-bi-name="feedback" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-bizapps.create-measures-dax-power-bi.8-lab&amp;documentId=274dec1c-a928-8411-f2fe-46edbc3883c5&amp;versionIndependentDocumentId=6518ef20-316b-6c9a-33fd-2cfa7912715d&amp;contentPath=%2FMicrosoftDocs%2Flearn-bizapps-pr%2Fblob%2Flive%2Flearn-bizapps-pr%2Fpower-bi%2Fcreate-measures-dax-power-bi%2F8-lab.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fcreate-measures-dax-power-bi%2F8-lab&amp;author=robde#report-feedback">reporting an issue</a>.		</p>
+	</section>
+
+						<!-- recommendations section -->
+						<!-- end recommendations section -->
+
+						<!-- feedback section -->
+						<!-- end feedback section -->
+
+						<!-- feedback report section -->
+						<!-- end feedback report section -->
+
+						
+					</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

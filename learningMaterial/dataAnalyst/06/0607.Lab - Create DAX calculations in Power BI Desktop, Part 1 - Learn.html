@@ -1,0 +1,736 @@
+<html dir="ltr"><head><title>Lab - Create DAX calculations in Power BI Desktop, Part 1 - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/6-lab">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/create-measures-dax-power-bi/6-lab</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Lab - Create DAX calculations in Power BI Desktop, Part 1 - Learn</h1>
+  <div dir="auto" id="reader-credits">heyrob</div>
+  <div dir="auto" id="reader-estimated-time">17-21 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="main-column" data-bi-name="body">
+
+					<main id="main" role="main" data-bi-name="content" lang="en-us" dir="ltr">
+
+
+
+
+
+						
+
+
+						<!-- <content> -->
+							<div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>45 minutes</li>
+		</ul>
+			<h2 id="access-your-environment">Access your environment</h2>
+<p>Before you start this lab, select <strong>Launch lab</strong> above.</p>
+<p>To log in to your lab environment:</p>
+<ol>
+<li>Click anywhere on the Windows desktop in the lab window.</li>
+<li>On the <strong>Resources</strong> tab on the lab side bar, select the <strong>T</strong> icon next to <strong>Password</strong>. The machine password is automatically entered for you. You can log in with the Student profile.</li>
+<li>Press <strong>Enter</strong>.</li>
+</ol>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/includes/vm-login.png" alt="Image of the lab password on the Resources tab." data-linktype="relative-path"></p>
+<p>You can now begin your work on this lab.</p>
+<p><strong>The estimated time to complete the lab is 45 minutes</strong></p>
+<p>In this lab you will create calculated tables, calculated columns, and simple measures using Data Analysis Expressions (DAX).</p>
+<p>In this lab you learn how to:</p>
+<ul>
+<li><p>Create calculated tables</p>
+</li>
+<li><p>Create calculated columns</p>
+</li>
+<li><p>Create measures</p>
+</li>
+</ul>
+<h3 id="lab-story">Lab story</h3>
+<p>This lab is one of many in a series of labs that was designed as a complete story from data preparation to publication as reports and dashboards. You can complete the labs in any order. However, if you intend to work through multiple labs, for the first 10 labs, we suggest you do them in the following order:</p>
+<ol>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/get-data/lab-prepare/" data-linktype="absolute-path" target="az-portal">Prepare data in Power BI Desktop</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/clean-data-power-bi/8-lab/" data-linktype="absolute-path" target="az-portal">Load data in Power BI Desktop</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/design-model-power-bi/8-lab/" data-linktype="absolute-path" target="az-portal">Model data in Power BI Desktop, part 1</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/design-model-power-bi/9-lab/" data-linktype="absolute-path" target="az-portal">Model data in Power BI Desktop, part 2</a></p>
+</li>
+<li><p><strong>Create DAX calculations in Power BI Desktop, Part 1</strong></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/create-measures-dax-power-bi/8-lab/" data-linktype="absolute-path" target="az-portal">Create DAX calculations in Power BI Desktop, part 2</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/visuals-power-bi/8-lab/" data-linktype="absolute-path" target="az-portal">Design a report in Power BI Desktop, part 1</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/data-driven-story-power-bi/13-lab/" data-linktype="absolute-path" target="az-portal">Design a report in Power BI Desktop, part 2</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/create-dashboards-power-bi/9-lab/" data-linktype="absolute-path" target="az-portal">Create a Power BI dashboard</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/ai-visuals-power-bi/5-lab/" data-linktype="absolute-path" target="az-portal">Perform data analysis in Power BI Desktop</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/create-paginated-reports-power-bi/6-lab/" data-linktype="absolute-path" target="az-portal">Create a Power BI paginated report</a></p>
+</li>
+</ol>
+<h2 id="exercise-1-create-calculated-tables">Exercise 1: Create Calculated Tables</h2>
+<p>In this exercise you will create two calculated tables. The first will be the <strong>Salesperson</strong> table, to allow a direct relationship between it and the <strong>Sales</strong> table. The second will be the <strong>Date</strong> table.</p>
+<h3 id="task-1-get-started">Task 1: Get started</h3>
+<p>In this task you'll set up the environment for the lab.</p>
+<div>
+<p> Important</p>
+<p>If you are continuing on from the previous lab (and you completed that lab successfully), do not complete this task. Instead, continue from the next task.</p>
+</div>
+<ol>
+<li><p>To open the Power BI Desktop, on the taskbar, select the Microsoft Power BI Desktop shortcut.</p>
+</li>
+<li><p>To close the getting started window, at the top-left of the window, select <strong>X</strong>.</p>
+</li>
+<li><p>To open the starter Power BI Desktop file, select the <strong>File</strong> ribbon tab to open the backstage view.</p>
+</li>
+<li><p>Select <strong>Open Report</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-6-5-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-6-5-ssm.png" alt="Screenshot of the File menu expanded with the Open report option highlighted." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Select <strong>Browse Reports</strong>.</p>
+</li>
+<li><p>In the <strong>Open</strong> window, navigate to the <strong>D:\DA100\Labs\create-dax-calculations-in-power-bi-desktop\Starter</strong> folder.</p>
+</li>
+<li><p>Select the <strong>Sales Analysis</strong> file.</p>
+</li>
+<li><p>Select <strong>Open</strong>.</p>
+</li>
+<li><p>Close any informational windows that may open.</p>
+</li>
+<li><p>To create a copy of the file, select the <strong>File</strong> ribbon tab to open the backstage view.</p>
+</li>
+<li><p>Select <strong>Save As</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-6-5-a-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-6-5-a-ssm.png" alt="Screenshot of the File menu expanded with the Save as option highlighted." data-linktype="relative-path"></a></p>
+</li>
+<li><p>If prompted to apply changes, select <strong>Apply</strong>.</p>
+</li>
+<li><p>In the <strong>Save As</strong> window, navigate to the <strong>D:\DA100\MySolution</strong> folder.</p>
+</li>
+<li><p>Select <strong>Save</strong>.</p>
+</li>
+</ol>
+<h3 id="task-2-create-the-salesperson-table">Task 2: Create the Salesperson table</h3>
+<p>In this task, you'll create the <strong>Salesperson</strong> table (direct relationship to <strong>Sales</strong>).</p>
+<ol>
+<li><p>In Power BI Desktop, in Report view, on the <strong>Modeling</strong> ribbon, from inside the <strong>Calculations</strong> group, select <strong>New Table</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-6-1-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-6-1-ssm.png" alt="Screenshot of the New Table feature in the Modeling ribbon." data-linktype="relative-path"></a></p>
+</li>
+<li><p>In the formula bar (which opens directly beneath the ribbon when creating or editing calculations), type <strong>Salesperson =</strong>, press <strong>Shift+Enter</strong>, type <strong>'Salesperson (Performance)'</strong>, and then press <strong>Enter</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-6-2-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-6-2-ssm.png" alt="Screenshot of the formula entered in the formula bar." data-linktype="relative-path"></a></p>
+<p>For your convenience, all DAX definitions in this lab can be copied from the <strong>D:\DA100\Labs\create-dax-calculations-in-power-bi-desktop\Assets\Snippets.txt</strong> file.</p>
+<p>A calculated table is created by first entering the table name, followed by the equals symbol (=), followed by a DAX formula that returns a table. Note that the table name cannot already exist in the data model.</p>
+<p>The formula bar supports entering a valid DAX formula. It includes features like auto-complete, Intellisense and color-coding, enabling you to quickly and accurately enter the formula.</p>
+<p>This table definition creates a copy of the <strong>Salesperson (Performance)</strong> table. It copies the data only, however properties like visibility, formatting, etc. are not copied.</p>
+<div>
+<p> Tip</p>
+<p>You are encouraged to enter “white space” (such as carriage returns and tabs) to lay out formulas in an intuitive and easy-to-read format, especially when formulas are long and complex. To enter a carriage return, press <strong>Shift+Enter</strong>. White space is optional.</p>
+</div>
+</li>
+<li><p>In the <strong>Fields</strong> pane, notice that the table icon is a shade of blue (denoting a calculated table).</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-6-3-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-6-3-ssm.png" alt="Screenshot of the table icon shaded blue." data-linktype="relative-path"></a></p>
+<p>Calculated tables are defined by using a DAX formula which returns a table. It is important to understand that calculated tables increase the size of the data model because they materialize and store values. They're recomputed whenever formula dependencies are refreshed, as will be the case in this data model when new (future) date values are loaded into tables.</p>
+<p>Unlike Power Query-sourced tables, calculated tables cannot be used to load data from external data sources. They can only transform data based on what has already been loaded into the data model.</p>
+</li>
+<li><p>Switch to Model view.</p>
+</li>
+<li><p>Notice that the <strong>Salesperson</strong> table is available (take care, it might be hidden from view—scroll horizontally to locate it).</p>
+</li>
+<li><p>Create a relationship from the <strong>Salesperson | EmployeeKey</strong> column to the <strong>Sales | EmployeeKey</strong> column.</p>
+</li>
+<li><p>Right-click the inactive relationship between the <strong>Salesperson (Performance)</strong> and <strong>Sales</strong> tables, and then select <strong>Delete</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-6-4-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-6-4-ssm.png" alt="Screenshot of the delete inactive relationship button." data-linktype="relative-path"></a></p>
+</li>
+<li><p>When prompted to confirm the deletion, select <strong>Delete</strong>.</p>
+</li>
+<li><p>In the Salesperson table, multi-select the following columns, and then hide them:</p>
+<ul>
+<li><p>EmployeeID</p>
+</li>
+<li><p>EmployeeKey</p>
+</li>
+<li><p>UPN</p>
+</li>
+</ul>
+</li>
+<li><p>In the diagram, select the <strong>Salesperson</strong> table.</p>
+</li>
+<li><p>In the <strong>Properties</strong> pane, in the <strong>Description</strong> box, enter: <strong>Salesperson related to a sale</strong>.</p>
+<p>Descriptions appear as tooltips in the <strong>Fields</strong> pane when the user hovers their cursor over a table or field.</p>
+</li>
+<li><p>For the <strong>Salesperson (Performance)</strong> table, set the description to: <strong>Salesperson related to region(s)</strong>.</p>
+<p>The data model now provides two alternatives when analyzing salespeople. The <strong>Salesperson</strong> table allows you to analyze sales made by a salesperson, while the <strong>Salesperson (Performance)</strong> table allows you to analyze sales made in the sales region(s) assigned to the salesperson.</p>
+</li>
+</ol>
+<h3 id="task-2-create-the-date-table">Task 2: Create the Date table</h3>
+<p>In this task, you will create the <strong>Date</strong> table.</p>
+<ol>
+<li><p>Switch to Data view.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-6-6-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-6-6-ssm.png" alt="Screenshot of the switch to data view icon." data-linktype="relative-path"></a></p>
+</li>
+<li><p>On the <strong>Home</strong> ribbon tab, from inside the <strong>Calculations</strong> group, select <strong>New Table</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-6-7-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-6-7-ssm.png" alt="Screenshot of the New table feature on the Home ribbon." data-linktype="relative-path"></a></p>
+</li>
+<li><p>In the formula bar, enter the following, and then press Enter:</p>
+<pre tabindex="0"><code data-author-content="Date =  
+‎CALENDARAUTO(6)
+"><span><span>Date</span> =  
+‎<span>CALENDARAUTO</span>(<span>6</span>)
+</span></code></pre>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-6-8-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-6-8-ss.png" alt="Screenshot of the formula entered on the formula bar." data-linktype="relative-path"></a></p>
+<p>The CALENDARAUTO() function returns a single-column table consisting of date values. The “auto” behavior scans all data model date columns to determine the earliest and latest date values stored in the data model. It then creates one row for each date within this range, extending the range in either direction to ensure a full year of data is stored.</p>
+<p>This function can take a single optional argument which is the last month number of a year. When omitted, the value is 12, meaning that December is the last month of the year. In this case 6 is entered, meaning that June is the last month of the year.</p>
+</li>
+<li><p>Notice the column of date values.</p>
+<p>If the column does not appear, in the <strong>Fields</strong> pane, select a different table, and then select the <strong>Date</strong> table.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-6-9-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-6-9-ss.png" alt="Screenshot of the date table in the Fields pane." data-linktype="relative-path"></a></p>
+<p>The dates shown are formatted using US regional settings (mm/dd/yyyy).</p>
+</li>
+<li><p>At the bottom-left corner, in the status bar, notice the table statistics, confirming that 1826 rows of data have been generated, which represents five full years’ data.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-6-10-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-6-10-ss.png" alt="Screenshot of the 1826 rows of data generated message." data-linktype="relative-path"></a></p>
+</li>
+</ol>
+<h3 id="task-4-create-calculated-columns">Task 4: Create calculated columns</h3>
+<p>In this task, you will add additional columns to enable filtering and grouping by different time periods. You will also create a calculated column to control the sort order of other columns.</p>
+<ol>
+<li><p>On the <strong>Table Tools</strong> contextual ribbon, from inside the <strong>Calculations</strong> group, select <strong>New Column</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-6-11-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-6-11-ssm.png" alt="Screenshot of the New column feature on the Table tools ribbon." data-linktype="relative-path"></a></p>
+</li>
+<li><p>In the formula bar, type the following, and then press <strong>Enter</strong>.</p>
+<pre tabindex="0"><code data-author-content="Year =
+
+&quot;FY&quot; &amp; YEAR('Date'[Date]) + IF(MONTH('Date'[Date]) > 6, 1)
+"><span><span>Year</span> =
+
+<span>"FY"</span> &amp; <span>YEAR</span>('Date'[Date]) + <span>IF</span>(<span>MONTH</span>('Date'[Date]) &gt; <span>6</span>, <span>1</span>)
+</span></code></pre>
+<p>A calculated column is created by first entering the column name, followed by the equals symbol (=), followed by a DAX formula that returns a single-value result. The column name cannot already exist in the table.</p>
+<p>The formula uses the date’s year value but adds one to the year value when the month is after June. This is how fiscal years at Adventure Works are calculated.</p>
+</li>
+<li><p>Verify that the new column was added.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-6-12-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-6-12-ssm.png" alt="Screenshot of the Year column added." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Use the snippets file definitions to create the following two calculated columns for the <strong>Date</strong> table:</p>
+<ul>
+<li>Quarter</li>
+<li>Month</li>
+</ul>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-6-13-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-6-13-ssm.png" alt="Screenshot of the quarter and month columns." data-linktype="relative-path"></a></p>
+</li>
+<li><p>To validate the calculations, switch to Report view.</p>
+</li>
+<li><p>To create a new report page, at the bottom-left, select the plus icon.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-6-14-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-6-14-ssm.png" alt="Screenshot of the create new report page button." data-linktype="relative-path"></a></p>
+</li>
+<li><p>To add a matrix visual to the new report page, in the <strong>Visualizations</strong> pane, select the matrix visual type.</p>
+<div>
+<p> Tip</p>
+<p>You can hover the cursor over each icon to reveal a tooltip describing the visual type.</p>
+</div>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-6-15-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-6-15-ssm.png" alt="Screenshot of an icon on the Visualizations tab." data-linktype="relative-path"></a></p>
+</li>
+<li><p>In the <strong>Fields</strong> pane, from inside the <strong>Date</strong> table, drag the <strong>Year</strong> field into the <strong>Rows</strong> well.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-6-16-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-6-16-ssm.png" alt="Screenshot of the year to rows drag action." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Drag the <strong>Month</strong> field into the <strong>Rows</strong> well, directly beneath the <strong>Year</strong> field.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-6-17-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-6-17-ssm.png" alt="Screenshot of the month in rows directly below year." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Next to the matrix visual, select the forked-double arrow icon (which will expand all years down one level).</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-6-18-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-6-18-ssm.png" alt="Screenshot of the forked double arrow to expand all years down one level." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Notice that the years expand to months, and that the months are sorted alphabetically rather than chronologically.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-6-19-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-6-19-ss.png" alt="Screenshot of the months sorted alphabetically." data-linktype="relative-path"></a></p>
+<p>By default, text values sort alphabetically, numbers sort from smallest to largest, and dates sort from earliest to latest.</p>
+</li>
+<li><p>To customize the <strong>Month</strong> field sort order, switch to Data view.</p>
+</li>
+<li><p>Add the <strong>MonthKey</strong> column to the <strong>Date</strong> table.</p>
+<pre tabindex="0"><code data-author-content="MonthKey =
+
+(YEAR('Date'[Date]) * 100) + MONTH('Date'[Date])
+"><span>MonthKey =
+
+(<span>YEAR</span>('Date'[Date]) * <span>100</span>) + <span>MONTH</span>('Date'[Date])
+</span></code></pre>
+<p>This formula computes a numeric value for each year and month combination.</p>
+</li>
+<li><p>In Data view, verify that the new column contains numeric values (e.g. 201707 for July 2017, etc.).</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-6-20-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-6-20-ssm.png" alt="Screenshot of the MonthKey column containing numeric values." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Switch back to Report view.</p>
+</li>
+<li><p>In the <strong>Fields</strong> pane, ensure that the <strong>Month</strong> field is selected (when selected, it will have a dark gray background).</p>
+</li>
+<li><p>On the <strong>Column Tools</strong> contextual ribbon, from inside the <strong>Sort</strong> group, select <strong>Sort by Column</strong>, and then select <strong>MonthKey</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-6-21-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-6-21-ssm.png" alt="Screenshot of the Sort by Column with MonthKey selected." data-linktype="relative-path"></a></p>
+</li>
+<li><p>In the matrix visual, notice that the months are now chronologically sorted.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-6-22-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-6-22-ss.png" alt="Screenshot of the months chronologically sorted." data-linktype="relative-path"></a></p>
+</li>
+</ol>
+<h3 id="task-5-complete-the-date-table">Task 5: Complete the Date table</h3>
+<p>In this task, you will complete the design of the <strong>Date</strong> table by hiding a column and creating a hierarchy. You will then create relationships to the <strong>Sales</strong> and <strong>Targets</strong> tables.</p>
+<ol>
+<li><p>Switch to Model view.</p>
+</li>
+<li><p>In the <strong>Date</strong> table, hide the <strong>MonthKey</strong> column.</p>
+</li>
+<li><p>In the <strong>Date</strong> table, create a hierarchy named <strong>Fiscal</strong>, with the following three levels:</p>
+<ul>
+<li>Year</li>
+<li>Quarter</li>
+<li>Month</li>
+</ul>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-6-23-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-6-23-ssm.png" alt="Screenshot of the Date table with year, quarter, month levels." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Create the follow two model relationships:</p>
+<ul>
+<li><strong>Date | Date</strong> to <strong>Sales | OrderDate</strong></li>
+<li><strong>Date | Date</strong> to <strong>Targets | TargetMonth</strong></li>
+</ul>
+</li>
+<li><p>Hide the following two columns:</p>
+<ul>
+<li>Sales | OrderDate</li>
+<li>Targets | TargetMonth</li>
+</ul>
+</li>
+</ol>
+<h3 id="task-6-mark-the-date-table">Task 6: Mark the Date table</h3>
+<p>In this task, you will mark the <strong>Date</strong> table as a date table.</p>
+<ol>
+<li><p>Switch to Report view.</p>
+</li>
+<li><p>In the <strong>Fields</strong> pane, select the <strong>Date</strong> table (not the <strong>Date</strong> field).</p>
+</li>
+<li><p>On the <strong>Table Tools</strong> contextual ribbon, from inside the <strong>Calendars</strong> group, select <strong>Mark as Date Table</strong>, and then select <strong>Mark as Date Table</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-6-24-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-6-24-ssm.png" alt="Screenshot of the Mark as Data Table option." data-linktype="relative-path"></a></p>
+</li>
+<li><p>In the <strong>Mark as Date Table</strong> window, in the <strong>Date Column</strong> dropdown list, select <strong>Date</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-6-25-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-6-25-ssm.png" alt="Screenshot of the Date column field." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Select <strong>OK</strong>.</p>
+</li>
+<li><p>Save the Power BI Desktop file.</p>
+<p>Power BI Desktop now understands that this table defines dates (time). This is important when relying on time intelligence calculations. You’ll work with time intelligence calculations in the <strong>Create DAX calculations in Power BI Desktop, Part 2</strong> lab.</p>
+<div>
+<p> Note</p>
+<p>This design approach for a date table is suitable when you don’t have a date table in your data source. If you have access to a data warehouse, it would be appropriate to load date data from its date dimension table rather than “redefining” date logic in your data model.</p>
+</div>
+</li>
+</ol>
+<h2 id="exercise-2-create-measures">Exercise 2: Create Measures</h2>
+<p>In this exercise, you'll create and format several measures.</p>
+<h3 id="task-1-create-simple-measures">Task 1: Create simple measures</h3>
+<p>In this task, you will create simple measures. Simple measures aggregate a single column or table.</p>
+<ol>
+<li><p>In Report view, on <strong>Page 2</strong>, in the <strong>Fields</strong> pane, drag the <strong>Sales | Unit Price</strong> field into the <strong>Values</strong> section in matrix visual.</p>
+<p>The labs use a shorthand notation to reference a field. It will look like this: <strong>Sales | Unit Price</strong>. In this example, <strong>Sales</strong> is the table name and <strong>Unit Price</strong> is the field name.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-6-27-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-6-27-ss.png" alt="Screenshot of the Unit Price on the matrix visual." data-linktype="relative-path"></a></p>
+<p>In the <strong>Model data in Power BI Desktop, Part 2</strong> lab, you set the <strong>Unit Price</strong> column to summarize by <strong>Average</strong>. The result you see in the matrix visual is the monthly average unit price (sum of unit price values divided by the count of unit prices).</p>
+</li>
+<li><p>In the visual fields pane (located beneath the <strong>Visualizations</strong> pane), in the <strong>Values</strong> well, notice that <strong>Unit Price</strong> is listed.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-6-28-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-6-28-ssm.png" alt="Screenshot of the Unit Price listed in the Values well." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Select the down-arrow for <strong>Unit Price</strong>, and then notice the available menu options.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-6-29-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-6-29-ssm.png" alt="Screenshot of the available menu options for Unit price." data-linktype="relative-path"></a></p>
+<p>Visible numeric columns allow report authors to decide at report design time how a column will summarize (or not). This can result in inappropriate reporting. Some data modelers don't like leaving things to chance, however, and choose to hide these columns and instead expose aggregation logic defined by measures. This is the approach you will now take in this lab.</p>
+</li>
+<li><p>To create a measure, in the <strong>Fields</strong> pane, right-click the <strong>Sales</strong> table, and then select <strong>New Measure</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-6-30-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-6-30-ssm.png" alt="Screenshot of the New Measure feature in the Sales table." data-linktype="relative-path"></a></p>
+</li>
+<li><p>In the formula bar, add the following measure definition:</p>
+<pre tabindex="0"><code data-author-content="Avg Price = AVERAGE(Sales[Unit Price])
+"><span>Avg Price = <span>AVERAGE</span>(Sales[Unit Price])
+</span></code></pre>
+</li>
+<li><p>Add the <strong>Avg Price</strong> measure to the <strong>Values</strong> section in the matrix visual.</p>
+</li>
+<li><p>Notice that it produces the same result as the <strong>Unit Price</strong> column (but with different formatting).</p>
+</li>
+<li><p>In the <strong>Values</strong> well, open the context menu for the <strong>Avg Price</strong> field, and notice that it is not possible to change the aggregation technique.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-6-31-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-6-31-ssm.png" alt="Screenshot of the context menu for the Average Price field." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Use the snippets file definitions to create the following five measures for the <strong>Sales</strong> table:</p>
+<ul>
+<li>Median Price</li>
+<li>Min Price</li>
+<li>Max Price</li>
+<li>Orders</li>
+<li>Order Lines</li>
+</ul>
+<p>The DISTINCTCOUNT() function used in the <strong>Orders</strong> measure will count orders only once (ignoring duplicates). The COUNTROWS() function used in the <strong>Order Lines</strong> measure operates over a table.</p>
+<p>In this case, the number of orders is calculated by counting the distinct <strong>SalesOrderNumber</strong> column values, while the number of order lines is the number of table rows (each row is a line of an order).</p>
+</li>
+<li><p>Switch to Model view, and then multi-select the four price measures: <strong>Avg Price</strong>, <strong>Max Price</strong>, <strong>Median Price</strong>, and <strong>Min Price</strong>.</p>
+</li>
+<li><p>For the multi-selection of measures, configure the following requirements:</p>
+<ul>
+<li>Set the format to two decimal places</li>
+<li>Assign to a display folder named <strong>Pricing</strong></li>
+</ul>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-6-32-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-6-32-ssm.png" alt="Screenshot of the Pricing folder with Average Price, Maximum Price, Median Price, and Minimum Price." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Hide the <strong>Unit Price</strong> column.</p>
+<p>The <strong>Unit Price</strong> column is now unavailable to report authors. They must use the measure you’ve added to the model. This design approach ensures that report authors won’t inappropriately aggregate prices, for example, by summing them.</p>
+</li>
+<li><p>Multi-select the <strong>Orders</strong> and <strong>Order Lines</strong> measures, and configure the following requirements:</p>
+<ul>
+<li>Set the format use the thousands separator</li>
+<li>Assign to a display folder named <strong>Counts</strong></li>
+</ul>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-6-33-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-6-33-ssm.png" alt="Screenshot of the Counts folder with Order lines and Orders." data-linktype="relative-path"></a></p>
+</li>
+<li><p>In Report view, in the <strong>Values</strong> well of the matrix visual, for the <strong>Unit Price</strong> field, select <strong>X</strong> to remove it.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-6-34-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-6-34-ssm.png" alt="Screenshot of the X to remove the Unit Price field." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Increase the size of the matrix visual to fill the page width and height.</p>
+</li>
+<li><p>Add the following five new measures to the matrix visual:</p>
+<ul>
+<li>Median Price</li>
+<li>Min Price</li>
+<li>Max Price</li>
+<li>Orders</li>
+<li>Order Lines</li>
+</ul>
+</li>
+<li><p>Verify that the results looks sensible and are correctly formatted.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-6-35-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-6-35-ss.png" alt="Screenshot of the results correctly formatted." data-linktype="relative-path"></a></p>
+</li>
+</ol>
+<h3 id="task-2-create-additional-measures">Task 2: Create additional measures</h3>
+<p>In this task, you will create additional measures that use more complex expressions.</p>
+<ol>
+<li><p>In Report view, select <strong>Page 1</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-6-36-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-6-36-ssm.png" alt="Screenshot of the Page 1 report view." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Review the table visual, noticing the total for the <strong>Target</strong> column.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-6-37-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-6-37-ssm.png" alt="Screenshot of the Total Target column value." data-linktype="relative-path"></a></p>
+<p>In a previous lab we learned that there’s a many-to-many relationship between salespeople and regions. Summing the target values together doesn’t make sense because salespeople targets are set for each salesperson based on their sales region assignments. A target value should only be shown when a single salesperson is filtered. You will implement a measure now to do just that.</p>
+</li>
+<li><p>Select the table visual, and then in the <strong>Visualizations</strong> pane,  remove the <strong>Target</strong> field.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-6-38-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-6-38-ssm.png" alt="Screenshot of the X to remove the Target field." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Rename the <strong>Targets | Target</strong> column as <strong>Targets | TargetAmount</strong>.</p>
+<div>
+<p> Tip</p>
+<p>There are several ways to rename the column in Report view:</p>
+<ul>
+<li>In the <strong>Fields</strong> pane, you can right-click the column and then select <strong>Rename</strong></li>
+<li>Double-click the column</li>
+<li>Select it and press <strong>F2</strong></li>
+</ul>
+</div>
+<p>You’re about to create a measure named <strong>Target</strong>. It’s not possible to have a column and measure in the same table, with the same name.</p>
+</li>
+<li><p>Create the following measure on the <strong>Targets</strong> table:</p>
+<pre tabindex="0"><code data-author-content="Target =
+
+IF(
+
+HASONEVALUE('Salesperson (Performance)'[Salesperson]),
+
+SUM(Targets[TargetAmount])
+
+)
+"><span>Target =
+
+<span>IF</span>(
+
+<span>HASONEVALUE</span>('Salesperson (Performance)'[Salesperson]),
+
+<span>SUM</span>(Targets[TargetAmount])
+
+)
+</span></code></pre>
+<p>The HASONEVALUE() function tests whether a single value in the <strong>Salesperson</strong> column is filtered. When true, the expression returns the sum of target amounts (for just that salesperson). When false, BLANK is returned.</p>
+</li>
+<li><p>Format the <strong>Target</strong> measure for zero decimal places.</p>
+<div>
+<p> Tip</p>
+<p>You can use the <strong>Measure Tools</strong> contextual ribbon.</p>
+</div>
+</li>
+<li><p>Hide the <strong>TargetAmount</strong> column.</p>
+<div>
+<p> Tip</p>
+<p>You can right-click the column in the <strong>Fields</strong> pane, and then select <strong>Hide</strong>.</p>
+</div>
+</li>
+<li><p>Add the <strong>Target</strong> measure to the table visual.</p>
+</li>
+<li><p>Notice that the <strong>Target</strong> column total is now BLANK.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-6-39-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-6-39-ssm.png" alt="Screenshot of the Target total with a blank value." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Use the snippets file definitions to create the following two measures for the <strong>Targets</strong> table:</p>
+<ul>
+<li>Variance</li>
+<li>Variance Margin</li>
+</ul>
+</li>
+<li><p>Format the <strong>Variance</strong> measure for zero decimal places.</p>
+</li>
+<li><p>Format the <strong>Variance Margin</strong> measure as percentage with two decimal places.</p>
+</li>
+<li><p>Add the <strong>Variance</strong> and <strong>Variance Margin</strong> measures to the table visual.</p>
+</li>
+<li><p>Resize the table visual so you can see all columns and rows.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-6-40-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-6-40-ss.png" alt="Screenshot of the widened table so all values are displayed." data-linktype="relative-path"></a></p>
+<p>While it appears that the salespeople are not meeting their targets, remember that the table visual isn’t yet filtered by a specific time period. You’ll produce sales performance reports that filter by a user-selected time period in the <strong>Design a report in Power BI Desktop, Part 1</strong> lab.</p>
+</li>
+<li><p>At the top-right corner of the <strong>Fields</strong> pane, collapse and then expand to open the pane.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-6-41-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-6-41-ssm.png" alt="Screenshot of the expand Fields pane icon." data-linktype="relative-path"></a></p>
+<p>Collapsing and re-opening the pane resets the content.</p>
+</li>
+<li><p>Notice that the <strong>Targets</strong> table now appears at the top of the list.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-6-42-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/lab-6-42-ssm.png" alt="Screenshot of the Targets table at the top of the list." data-linktype="relative-path"></a></p>
+<p>Tables that comprise only visible measures are automatically listed at the top of the list.</p>
+</li>
+</ol>
+<h3 id="finish-up">Finish up</h3>
+<p>In this task, you will complete the lab.</p>
+<ol>
+<li><p>Save the Power BI Desktop file.</p>
+</li>
+<li><p>If you intend to start the next lab, leave Power BI Desktop open.</p>
+</li>
+</ol>
+<p>You’ll enhance the data model with more advanced calculations using DAX in the <strong>Create DAX calculations in Power BI Desktop, Part 2</strong> lab.</p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Work with time intelligence</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/7-time-intelligence/" data-bi-name="continue" target="_top">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div>
+
+						<!-- </content> -->
+
+						</main>
+
+						<!-- page rating section -->
+						<!-- end page rating section -->
+
+<section>
+		<p>
+Need help? See our <a id="troubleshooting-guide" data-bi-name="troubleshooting" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-bizapps.create-measures-dax-power-bi.6-lab&amp;documentId=77b2f0b4-4323-443a-ebc2-e3ccc45081ca&amp;versionIndependentDocumentId=bd630997-b2e2-1e6b-376b-7918749eb844&amp;contentPath=%2FMicrosoftDocs%2Flearn-bizapps-pr%2Fblob%2Flive%2Flearn-bizapps-pr%2Fpower-bi%2Fcreate-measures-dax-power-bi%2F6-lab.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fcreate-measures-dax-power-bi%2F6-lab&amp;author=robde">troubleshooting guide</a> or provide specific feedback by <a id="module-unit-feedback-link" data-bi-name="feedback" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-bizapps.create-measures-dax-power-bi.6-lab&amp;documentId=77b2f0b4-4323-443a-ebc2-e3ccc45081ca&amp;versionIndependentDocumentId=bd630997-b2e2-1e6b-376b-7918749eb844&amp;contentPath=%2FMicrosoftDocs%2Flearn-bizapps-pr%2Fblob%2Flive%2Flearn-bizapps-pr%2Fpower-bi%2Fcreate-measures-dax-power-bi%2F6-lab.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fcreate-measures-dax-power-bi%2F6-lab&amp;author=robde#report-feedback">reporting an issue</a>.		</p>
+	</section>
+
+						<!-- recommendations section -->
+						<!-- end recommendations section -->
+
+						<!-- feedback section -->
+						<!-- end feedback section -->
+
+						<!-- feedback report section -->
+						<!-- end feedback report section -->
+
+						
+					</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

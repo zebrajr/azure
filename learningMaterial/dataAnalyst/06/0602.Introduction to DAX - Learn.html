@@ -1,0 +1,307 @@
+<html dir="ltr"><head><title>Introduction to DAX - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/1-introduction">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/create-measures-dax-power-bi/1-introduction</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Introduction to DAX - Learn</h1>
+  <div dir="auto" id="reader-credits">heyrob</div>
+  <div dir="auto" id="reader-estimated-time">9-11 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>10 minutes</li>
+		</ul>
+			<p>Data Analysis Expressions&nbsp;(DAX) is a programming language that is used throughout Microsoft Power BI for creating calculated columns, measures, and custom tables. It is a collection of functions, operators, and constants that can be used in a formula, or expression, to calculate and return one or more values. You can use DAX to solve a number of calculations and data analysis problems, which can help you create new information from data that is already in your model.</p>
+<p>In Power BI, you can use different calculation techniques and functions to create measures or calculated columns. Primarily, you will be able to achieve the same result by using these techniques; however, the key is to know how and when to apply them. By having a basic understanding of when and how to use which technique, you will be able to create robust and high-performance data models.</p>
+<p>By&nbsp;the end of this module, you'll&nbsp;be able to:&nbsp;</p>
+<ul>
+<li><p>Build quick measures.</p>
+</li>
+<li><p>Create calculated columns.</p>
+</li>
+<li><p>Use DAX to build measures.</p>
+</li>
+<li><p>Discover how context affects DAX measures.</p>
+</li>
+<li><p>Use the CALCULATE function to manipulate filters.</p>
+</li>
+<li><p>Implement time intelligence by using DAX.</p>
+</li>
+</ul>
+<h2 id="use-calculated-columns">Use calculated columns</h2>
+<p>DAX allows you to augment the data that you bring in from different data sources by creating a calculated column that didn't originally exist in the data source. This feature should be used sparingly, which will be explained later in this module.</p>
+<p>For example, assume that you are importing data from a database that contains sales transactions. Each individual sales transaction has the following columns: <strong>Order ID</strong>, <strong>Product ID</strong>, <strong>Quantity</strong>, and <strong>Unit Price</strong>. Notice that a column doesn't exist for the total sales amount for each order.</p>
+<div>
+<p> Note</p>
+<p>This module is not about data visualization, but it does show data visualization to demonstrate how DAX works. For more information, see the learning path, <strong>Visualize data in Power BI</strong>.&nbsp;&nbsp;</p>
+</div>
+<p>The following figure shows how the initial shape of the data appears in a Power BI table visual.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/02-table-visual-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/02-table-visual-ss.png" alt="Screenshot of the initial data without DAX in a table." data-linktype="relative-path"></a></p>
+<p>You can start using DAX by creating a calculated column that multiplies the unit price with the quantity. The calculated column will create a value for each row called Total Price. Create the new column by selecting the ellipsis (<strong>...</strong>) button on the table in the <strong>Fields</strong> list and then selecting <strong>New column</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/02-new-column-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/02-new-column-ss.png" alt="Screenshot of the ellipsis button on the fields list menu." data-linktype="relative-path"></a></p>
+<p>A new DAX formula appears in the formula bar underneath the ribbon at the top.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/02-new-dax-column-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/02-new-dax-column-ss.png" alt="Screenshot of the new DAX formula in the formula bar." data-linktype="relative-path"></a></p>
+<p>You can replace the "Column =" default text with the following example text:</p>
+<p><code>Total Price = 'Sales OrderDetails'[Quantity] * 'Sales OrderDetails'[Unit Price]</code></p>
+<p>The value on the left side of the equal sign is the column name. The text on the right side of the equal sign is the DAX expression. This simple DAX expression takes the quantity value and multiplies it with the unit price value for each individual row. It will produce one value for each record in the table. If you drag the new column from the <strong>Fields</strong> list to the visual, you will see the new values.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/02-new-total-price-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/02-new-total-price-ss.png" alt="Screenshot of the new total price column." data-linktype="relative-path"></a></p>
+<p>The previous screenshot shows that DAX is calculating correctly and displaying the results that you wanted.</p>
+<p>Calculated columns are materialized in the .pbix Power BI file extension, meaning that each time you add a calculated column, you are increasing the size of the overall file. Having too many calculated columns will slow performance and will cause you to reach the maximum Power BI data size sooner.</p>
+<h2 id="create-a-custom-column">Create a custom column</h2>
+<p>Three ways to create a custom column in Power BI are:</p>
+<ul>
+<li><p>Create the column in the source query when you get the data, for instance, by adding the calculation to a view in a relational database.</p>
+</li>
+<li><p>Create the custom column in Power Query.</p>
+</li>
+<li><p>Create a calculated column by using DAX in Power BI.</p>
+</li>
+</ul>
+<p>You can create a calculated column when you pull the data from the data source. Each data source would have a different technique for completing this action. For instance, if you were pulling data from a relational data source by using a view that was written in the SQL language, it would look like the following example:</p>
+<pre tabindex="0"><code data-author-content="CREATE VIEW OrdersWithTotalPrice
+AS
+SELECT unitprice, qty, unitprice * qty as TotalPrice 
+FROM sales.salesorders
+">CREATE VIEW OrdersWithTotalPrice
+AS
+SELECT unitprice, qty, unitprice * qty as TotalPrice 
+FROM sales.salesorders
+</code></pre>
+<p>Using SQL language is an efficient way of creating a column because it would make the data source do the calculations for you. In Power BI, the calculated column would appear like any other column.</p>
+<p>You can also use Power Query to create a custom column.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/02-custom-column-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/02-custom-column-ss.png" alt="Screenshot of the Power Query custom column feature." data-linktype="relative-path"></a></p>
+<p>The custom column dialog uses the M language to create the new column. M language is out of scope for the purposes of this module.</p>
+<p>The third way to create a calculated column is by using DAX in Power BI, as previously demonstrated.</p>
+<p>When you create a calculated column by using DAX, you do not need to refresh the dataset to see the new column. In the other methods, you would need a refresh to see changes. This process can be lengthy if you are working with a lot of data. However, this issue is irrelevant because, after columns have been created, they are rarely changed.</p>
+<p>The DAX calculated column does not compress as well as the other methods. The other column types do get compressed, which makes the .pbix file smaller and the performance usually faster.</p>
+<p>Generally, the earlier you can create a column, the better. It is not considered an optimum practice to use DAX for calculations if you can use a different mechanism.</p>
+<p>In addition, one way to avoid using a calculated column is to use one of the X functions, such as SUMX, COUNTX, MINX, and so on. The X functions are beyond the scope of this module; however, they allow you to create measures that are aware of the data in individual rows and calculate totals based on the totals in the row. These functions are called iterator functions because, though they are used in measures, they iterate over the individual rows to do their calculations. An X function will perform better and use less disk space than a calculated column. For more information about X functions, see the <a href="https://docs.microsoft.com/en-us/dax/sumx-function-dax/" data-linktype="absolute-path" target="az-portal">Microsoft documentation</a>.</p>
+<h2 id="use-measures">Use measures</h2>
+<p>Calculated columns are useful, but you are required to operate row by row. However, other situations might require a simpler method. For example, consider a situation where you want an aggregation that operates over the entire dataset and you want the total sales of all rows. Furthermore, you want to slice and dice that data by other criteria like total sales by year, by employee, or by product.</p>
+<p>To accomplish those tasks, you would use a measure. You can build a measure without writing DAX code; Power BI will write it for you when you create a quick measure.</p>
+<p>Many available categories of calculations and ways to modify each calculation exist to fit your needs. Another advantage is that you can see the DAX that's implemented by the quick measure while jumpstarting or expanding your own DAX knowledge.</p>
+<h2 id="create-a-quick-measure">Create a quick measure</h2>
+<p>To create a quick measure in Power BI Desktop, right-click or select the ellipsis (<strong>...</strong>) button&nbsp;next to any item in the <strong>Fields</strong> pane and then select <strong>New quick measure</strong> from the menu that appears. The <strong>Quick measures</strong> screen will appear.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/02-quick-measure-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/02-quick-measure-ssm.png" alt="Screenshot of the New quick measure menu item." data-linktype="relative-path"></a></p>
+<p>In the <strong>Quick measures</strong> window, you can select the calculation that you want and the fields to run the calculation against. For instance, you can select a calculation and the column that you want to operate over. Power BI creates the DAX measure for you and displays the DAX. This approach can be a helpful way to learn the DAX syntax.</p>
+<p>For more information, see the&nbsp;<a href="https://docs.microsoft.com/en-us/power-bi/desktop-quick-measures/" data-linktype="absolute-path" target="az-portal">Use quick measures for common calculations</a> documentation.</p>
+<h2 id="create-a-measure">Create a measure</h2>
+<p>Measures are used in some of the most common data analyses.</p>
+<p>To continue with the previous scenario, you want to create a measure that totals your new column for the entire dataset. Similar to how you created a calculated column, you can go to the <strong>Fields</strong> list and select <strong>New measure</strong>.</p>
+<p>Text will now appear in the formula bar underneath the ribbon.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/02-new-measure-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/02-new-measure-ss.png" alt="Screenshot of the new measure in the formula bar." data-linktype="relative-path"></a></p>
+<p>You can replace the "Measure =" text with the following text:</p>
+<p><code>Total Sales = sum('Sales OrderDetails'[Total Price])</code></p>
+<p>The new measure will now appear in the <strong>Fields</strong> list.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/02-new-measure-fields-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/02-new-measure-fields-ss.png" alt="Screenshot of the new measure in the fields list." data-linktype="relative-path"></a></p>
+<p>When you drag Total Sales over to the report design surface, you will see the total sales for the entire organization in a column chart.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/02-total-sales-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-measures-dax-power-bi/media/02-total-sales-ss.png" alt="Screenshot of the total sales measure in a column chart." data-linktype="relative-path"></a></p>
+<h2 id="differences-between-a-calculated-column-and-a-measure">Differences between a calculated column and a measure</h2>
+<p>The fundamental difference between a calculated column and a measure is that a calculated column creates a value for each row in a table. For this reason, the calculated column can only operate over columns that exist in the same table. For example, if the table has 1,000 rows, it will have 1,000 values in the calculated column. Calculated column values are stored in the Power BI .pbix file. Each calculated column will increase the space that is used in that file and potentially increase the refresh time.</p>
+<p>Measures are calculated on demand. Power BI calculates the correct value when the user requests it. When you previously dragged the Total Sales measure onto the report, Power BI calculated the correct total and displayed the visual. Measures do not add to the overall disk space of the Power BI .pbix file.</p>
+<p>Measures are calculated based on the filters that are used by the report user. These filters combine to create the filter context.</p>
+
+		
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>
