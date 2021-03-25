@@ -1,0 +1,714 @@
+<html dir="ltr"><head><title>Lab - Design a report in Power BI desktop, Part 1 - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/8-lab">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/visuals-power-bi/8-lab</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Lab - Design a report in Power BI desktop, Part 1 - Learn</h1>
+  <div dir="auto" id="reader-credits">heyrob</div>
+  <div dir="auto" id="reader-estimated-time">15-19 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>45 minutes</li>
+		</ul>
+			<h2 id="access-your-environment">Access your environment</h2>
+<p>Before you start this lab, select <strong>Launch lab</strong> above.</p>
+<p>To log in to your lab environment:</p>
+<ol>
+<li>Click anywhere on the Windows desktop in the lab window.</li>
+<li>On the <strong>Resources</strong> tab on the lab side bar, select the <strong>T</strong> icon next to <strong>Password</strong>. The machine password is automatically entered for you. You can log in with the Student profile.</li>
+<li>Press <strong>Enter</strong>.</li>
+</ol>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/includes/vm-login.png" alt="Image of the lab password on the Resources tab." data-linktype="relative-path"></p>
+<p>You can now begin your work on this lab.</p>
+<p><strong>The estimated time to complete the lab is 45 minutes.</strong></p>
+<p>In this lab, you'll create a three-page report. You'll publish it to Power BI, where you can open and interact with the report.</p>
+<p>In this lab, you learn how to:</p>
+<ul>
+<li><p>Design a report</p>
+</li>
+<li><p>Configure visual fields and format properties</p>
+</li>
+</ul>
+<h3 id="lab-story">Lab story</h3>
+<p>This lab is one of many in a series of labs that was designed as a complete story from data preparation to publication as reports and dashboards. You can complete the labs in any order. However, if you intend to work through multiple labs, for the first 10 labs, we suggest you do them in the following order:</p>
+<ol>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/get-data/lab-prepare/" data-linktype="absolute-path" target="az-portal">Prepare data in Power BI Desktop</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/clean-data-power-bi/8-lab/" data-linktype="absolute-path" target="az-portal">Load data in Power BI Desktop</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/design-model-power-bi/8-lab/" data-linktype="absolute-path" target="az-portal">Model data in Power BI Desktop, part 1</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/design-model-power-bi/9-lab/" data-linktype="absolute-path" target="az-portal">Model data in Power BI Desktop, part 2</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/create-measures-dax-power-bi/6-lab/" data-linktype="absolute-path" target="az-portal">Create DAX calculations in Power BI Desktop, part 1</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/create-measures-dax-power-bi/8-lab/" data-linktype="absolute-path" target="az-portal">Create DAX calculations in Power BI Desktop, part 2</a></p>
+</li>
+<li><p><strong>Design a report in Power BI Desktop, part 1</strong></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/data-driven-story-power-bi/13-lab/" data-linktype="absolute-path" target="az-portal">Design a report in Power BI Desktop, part 2</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/create-dashboards-power-bi/9-lab/" data-linktype="absolute-path" target="az-portal">Create a Power BI dashboard</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/ai-visuals-power-bi/5-lab/" data-linktype="absolute-path" target="az-portal">Perform data analysis in Power BI Desktop</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/create-paginated-reports-power-bi/6-lab/" data-linktype="absolute-path" target="az-portal">Create a Power BI paginated report</a></p>
+</li>
+</ol>
+<h2 id="exercise-1-create-a-report">Exercise 1: Create a report</h2>
+<p>In this exercise you-ll create a three-page report named <strong>Sales Report</strong>.</p>
+<h3 id="task-1-get-started---sign-in">Task 1: Get started - Sign in</h3>
+<p>In this task you'll set up the environment for the lab by signing in to Power BI.</p>
+<div>
+<p> Important</p>
+<p>If you have already signed in to Power BI, continue from the next task.</p>
+</div>
+<ol>
+<li><p>To open Microsoft Edge, on the taskbar, select the Microsoft Edge program shortcut.</p>
+</li>
+<li><p>In the Microsoft Edge browser window, navigate to <a href="https://powerbi.com/" data-linktype="external">Power BI</a>.</p>
+<div>
+<p> Tip</p>
+<p>You can also use the Power BI Service favorite on the Microsoft Edge favorites bar.</p>
+</div>
+</li>
+<li><p>Select <strong>Sign In</strong> (located at the top-right corner).</p>
+</li>
+<li><p>Enter the account details provided to you.</p>
+</li>
+<li><p>If prompted to update the password, reenter the provided password, and then enter and confirm a new password.</p>
+<div>
+<p> Important</p>
+<p>Be sure to record your new password.</p>
+</div>
+</li>
+<li><p>Complete the sign in process.</p>
+</li>
+<li><p>If prompted by Microsoft Edge to stay signed in, select <strong>Yes</strong>.</p>
+</li>
+<li><p>Leave the Microsoft Edge browser window open.</p>
+</li>
+</ol>
+<h3 id="task-2-get-started--open-report">Task 2: Get started – Open report</h3>
+<p>In this task you'll set up the environment for the lab by opening the starter report.</p>
+<div>
+<p> Important</p>
+<p>If you are continuing on from the previous lab (and you completed that lab successfully), do not complete this task; instead, continue from the next task.</p>
+</div>
+<ol>
+<li><p>To open the Power BI Desktop, on the taskbar, select the Microsoft Power BI Desktop shortcut.</p>
+</li>
+<li><p>To close the getting started window, at the top-right corner of the welcome screen, select <strong>X</strong>.</p>
+</li>
+<li><p>To sign in to the Power BI service, at the top right, select <strong>Sign In</strong>.</p>
+</li>
+<li><p>Complete the sign in process using the same account used to sign in to the Power BI service.</p>
+</li>
+<li><p>To open the starter Power BI Desktop file, select the <strong>File</strong> ribbon tab to open the backstage view.</p>
+</li>
+<li><p>Select <strong>Open Report</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-2-a-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-2-a-ssm.png" alt="Screenshot of the File menu expanded and the Open report option highlighted." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Select <strong>Browse reports</strong>.</p>
+</li>
+<li><p>In the <strong>Open</strong> window, navigate to the <strong>D:\DA100\Labs\design-report-in-power-bi-desktop\Starter</strong> folder.</p>
+</li>
+<li><p>Select the <strong>Sales Analysis</strong> file.</p>
+</li>
+<li><p>Select <strong>Open</strong>.</p>
+</li>
+<li><p>Close any informational windows that may open.</p>
+</li>
+<li><p>To create a copy of the file, select the <strong>File</strong> ribbon tab to open the backstage view.</p>
+</li>
+<li><p>Select <strong>Save As</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-2-b-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-2-b-ssm.png" alt="Screenshot of the File menu expanded and the Save as option highlighted." data-linktype="relative-path"></a></p>
+</li>
+<li><p>If prompted to apply changes, select <strong>Apply</strong>.</p>
+</li>
+<li><p>In the <strong>Save As</strong> window, navigate to the <strong>D:\DA100\MySolution</strong> folder.</p>
+</li>
+<li><p>Select <strong>Save</strong>.</p>
+</li>
+</ol>
+<h3 id="task-3-design-page-1">Task 3: Design page 1</h3>
+<p>In this task, you will design the first report page. When you've completed the design, the page will look like the following:</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-4-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-4-ss.png" alt="Screenshot of the completed report page." data-linktype="relative-path"></a></p>
+<ol>
+<li><p>In Power BI Desktop, to rename the page, at the bottom-left, right-click <strong>Page&nbsp;1</strong>, and then select <strong>Rename page</strong>.</p>
+<div>
+<p> Tip</p>
+<p>You can also double-click the page name.</p>
+</div>
+</li>
+<li><p>Rename the page as <strong>Overview</strong>, and then press <strong>Enter</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-6-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-6-ss.png" alt="Screenshot of the page name at the bottom of the page." data-linktype="relative-path"></a></p>
+</li>
+<li><p>To add an image, on the <strong>Insert</strong> ribbon tab, from inside the <strong>Elements</strong> group, select <strong>Image</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-7-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-7-ssm.png" alt="Screenshot of the Insert ribbon tab with the Image button highlighted." data-linktype="relative-path"></a></p>
+</li>
+<li><p>In the <strong>Open</strong> window, navigate to the <strong>D:\DA100\Resources</strong> folder.</p>
+</li>
+<li><p>Select the <strong>AdventureWorksLogo.jpg</strong> file, and then select <strong>Open</strong>.</p>
+</li>
+<li><p>Drag the image to reposition it at the top-left corner, and also drag the guide markers to resize it.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-7-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-7-ss.png" alt="Screenshot of the location and size of the image on the report." data-linktype="relative-path"></a></p>
+</li>
+<li><p>To add a slicer, first de-select the image by selecting an empty area of the report page.</p>
+</li>
+<li><p>In the <strong>Fields</strong> pane, select the <strong>Date&nbsp;|&nbsp;Year</strong> field (not the <strong>Year</strong> level of the hierarchy).</p>
+<p>The labs use a shorthand notation to reference a field. It will look like this: <strong>Date | Year</strong>. In this example, <strong>Date</strong> is the table name and <strong>Year</strong> is the field name.</p>
+</li>
+<li><p>Notice that a table of year values has been added to the report page.</p>
+</li>
+<li><p>To convert the visual from a table to a slicer, in the <strong>Visualizations</strong> pane, select the <strong>Slicer</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-8-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-8-ssm.png" alt="Screenshot of the Slicer visual on the Visualizations pane." data-linktype="relative-path"></a></p>
+</li>
+<li><p>To convert the slicer from a list to a dropdown, at the top-right of the slicer, select the down-arrow, and then select <strong>Dropdown</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-9-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-9-ssm.png" alt="Screenshot of the slicer down arrow with the Dropdown option highlighted." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Resize and reposition the slicer so it sits beneath the image and is the same width as the image.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-10-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-10-ss.png" alt="Screenshot of the location and size of the second image." data-linktype="relative-path"></a></p>
+</li>
+<li><p>In the <strong>Year</strong> slicer, select <strong>FY2020</strong>, and then collapse the dropdown list.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-11-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-11-ss.png" alt="Screenshot of the Year slicer with FY2020 added." data-linktype="relative-path"></a></p>
+<p>The report page is now filtered by year <strong>FY2020</strong>.</p>
+</li>
+<li><p>De-select the slicer by selecting an empty area of the report page.</p>
+</li>
+<li><p>Create a second slicer, based on the <strong>Region&nbsp;|&nbsp;Region</strong> field (not the <strong>Region</strong> level of the hierarch).</p>
+</li>
+<li><p>Leave the slicer as a list, and then resize and reposition the slicer beneath the <strong>Year</strong> slicer.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-12-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-12-ss.png" alt="Screenshot of the location and size of the slicer on the report page." data-linktype="relative-path"></a></p>
+</li>
+<li><p>To format the slicer, beneath the <strong>Visualizations</strong> pane, open the <strong>Format</strong> pane.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-13-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-13-ssm.png" alt="Screenshot of the Format Pane button below the Visualizations pane." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Expand the <strong>Selection&nbsp;Controls</strong> group.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-14-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-14-ssm.png" alt="Screenshot of the Selection Controls group." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Set the <strong>Show&nbsp;"Select&nbsp;all"&nbsp;option</strong> to <strong>On</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-15-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-15-ssm.png" alt="Screenshot of the Selects all toggle option." data-linktype="relative-path"></a></p>
+</li>
+<li><p>In the <strong>Region</strong> slicer, notice that the first item is now <strong>Select&nbsp;All</strong>.</p>
+<p>When selected, this item either selects all, or clears all items. It makes it easier for report users to set the right filters.</p>
+</li>
+<li><p>De-select the slicer by selecting an empty area of the report page.</p>
+</li>
+<li><p>To add a chart to the page, in the <strong>Visualizations</strong> pane, select the <strong>Line&nbsp;and&nbsp;Stacked&nbsp;Column&nbsp;Chart</strong> visual type.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-16-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-16-ssm.png" alt="Screenshot of the Line and Stacked Column Chart button on the Visualizations pane." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Resize and reposition the visual so it sits to the right of the logo, and so it fills the width of the report page.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-17-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-17-ss.png" alt="Image of the location and size of the fourth visual on the report page." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Drag the following fields into the visual:</p>
+<ul>
+<li><p>Date&nbsp;|&nbsp;Month</p>
+</li>
+<li><p>Sales&nbsp;|&nbsp;Sales</p>
+</li>
+</ul>
+</li>
+<li><p>In the visual fields pane (not the <strong>Fields</strong> pane, the visual fields pane is located beneath the <strong>Visualizations</strong> pane), notice that the fields are assigned to the <strong>Shared&nbsp;Axis</strong> and <strong>Column&nbsp;Values</strong> wells.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-18-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-18-ssm.png" alt="Screenshot of the visuals pane with Shared axis set to Month and Column values set to Sales." data-linktype="relative-path"></a></p>
+<p>By dragging visuals into a visual, they will be added to default wells. For precision, you can drag fields directly into the wells, as you will do next.</p>
+</li>
+<li><p>From the <strong>Fields</strong> pane, drag the <strong>Sales&nbsp;|&nbsp;Profit&nbsp;Margin</strong> field into the <strong>Line&nbsp;Values</strong> well.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-19-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-19-ssm.png" alt="Screenshot of the the Profit Margin field and where to drag it." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Notice that the visual has only 11 months.</p>
+<p>The last month of the year, 2020 June, does not have any sales (yet). By default, the visual has eliminated months with BLANK sales. You will now configure the visual to show all months.</p>
+</li>
+<li><p>In the visual fields pane, in the <strong>Shared&nbsp;Axis</strong> well, for the <strong>Month</strong> field, select the down-arrow, and then select <strong>Show&nbsp;Items&nbsp;With&nbsp;No&nbsp;Data</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-20-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-20-ssm.png" alt="Screenshot of the down-arrow on the Month field." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Notice that the month <strong>2020&nbsp;June</strong> now appears.</p>
+</li>
+<li><p>De-select the chart by selecting an empty area of the report page.</p>
+</li>
+<li><p>To add a chart to the page, in the <strong>Visualizations</strong> pane, select the <strong>Map</strong> visual type.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-21-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-21-ssm.png" alt="Screenshot of the map visual button on the Visualizations pane." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Resize and reposition the visual so it sits beneath the column/line chart, and so it fills half the width of the report page.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-22-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-22-ss.png" alt="Image of the location and size of the fifth visual on the report page." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Add the following fields to the visual wells:</p>
+<ul>
+<li><p>Location: <strong>Region&nbsp;|&nbsp;Country</strong></p>
+</li>
+<li><p>Legend: <strong>Product&nbsp;|&nbsp;Category</strong></p>
+</li>
+<li><p>Size: <strong>Sales&nbsp;|&nbsp;Sales</strong></p>
+</li>
+</ul>
+</li>
+<li><p>De-select the chart by selecting an empty area of the report page.</p>
+</li>
+<li><p>To add a chart to the page, in the <strong>Visualizations</strong> pane, select the <strong>Stacked&nbsp;Bar&nbsp;Chart</strong> visual type.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-23-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-23-ssm.png" alt="Screenshot of the Stacked Bar Chart button on the Visualizations pane." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Resize and reposition the visual so it fills the remaining report page space.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-24-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-24-ss.png" alt="Image of the location and size of the sixth and final visual on the report pane." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Add the following fields to the visual wells:</p>
+<ul>
+<li><p>Axis: <strong>Product&nbsp;|&nbsp;Category</strong></p>
+</li>
+<li><p>Value: <strong>Sales&nbsp;|&nbsp;Quantity</strong></p>
+</li>
+</ul>
+</li>
+<li><p>To format the visual, open the <strong>Format</strong> pane.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-24-a-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-24-a-ssm.png" alt="Screenshot with the Format pane icon highlighted." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Expand the <strong>Data&nbsp;Colors</strong> group, and then set the <strong>Default&nbsp;Color</strong> property to a suitable color (in contrast to the column/line chart).</p>
+</li>
+<li><p>Set the <strong>Data&nbsp;Labels</strong> property to <strong>On</strong>.</p>
+</li>
+<li><p>Save the Power&nbsp;BI&nbsp;Desktop file.</p>
+</li>
+</ol>
+<p>The design of the first page is now complete.</p>
+<h3 id="task-4-design-page-2">Task 4: Design page 2</h3>
+<p>In this task, you will design the second report page. When you've completed the design, the page will look like the following:</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-25-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-25-ss.png" alt="Screenshot of the final second report page." data-linktype="relative-path"></a></p>
+<div>
+<p> Important</p>
+<p>When detailed instructions have already been provided in the labs, the lab steps will provide more concise instructions. If you need the detailed instructions, you can refer back to other tasks in this lab.</p>
+</div>
+<ol>
+<li><p>To create a new page, at the bottom-left, select the plus icon.</p>
+</li>
+<li><p>Rename the page to <strong>Profit</strong>.</p>
+</li>
+<li><p>Add a slicer based on the <strong>Region&nbsp;|&nbsp;Region</strong> field.</p>
+</li>
+<li><p>Use the <strong>Format</strong> pane to enable the <strong>Select All</strong> option (in the <strong>Selection&nbsp;Controls</strong> group).</p>
+</li>
+<li><p>Resize and reposition the slicer so it sits at the left side of the report page, and so it is about half the page height.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-26-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-26-ss.png" alt="Image of the size and position of the slicer on the report pane." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Add a matrix visual, and resize and reposition it so it fills the remaining space of the report page</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-27-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-27-ss.png" alt="Image of the size and location of the matrix visual on the report pane." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Add the <strong>Date&nbsp;|&nbsp;Fiscal</strong> hierarchy to the matrix <strong>Rows</strong> well.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-28-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-28-ssm.png" alt="Screenshot of the Rows well with Year, Quarter, and Month nested under Fiscal." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Add the following five <strong>Sales</strong> table fields to the <strong>Values</strong> well:</p>
+<ul>
+<li><p>Orders (from the <strong>Counts</strong> folder)</p>
+</li>
+<li><p>Sales</p>
+</li>
+<li><p>Cost</p>
+</li>
+<li><p>Profit</p>
+</li>
+<li><p>Profit&nbsp;Margin</p>
+</li>
+</ul>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-29-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-29-ss.png" alt="Screenshot of the Values well populated with values." data-linktype="relative-path"></a></p>
+</li>
+<li><p>In the <strong>Filters</strong> pane (located at the left of the <strong>Visualizations</strong> pane), notice the <strong>Filter&nbsp;On&nbsp;This&nbsp;Page</strong> well (you may need to scroll down).</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-29-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-29-ssm.png" alt="Screenshot of the Filters pane with the &quot;Filters on this page&quot; well highlighted." data-linktype="relative-path"></a></p>
+</li>
+<li><p>From the <strong>Fields</strong> pane, drag the <strong>Product&nbsp;|&nbsp;Category</strong> field into the <strong>Filter&nbsp;On&nbsp;This&nbsp;Page</strong> well.</p>
+</li>
+<li><p>Inside the filter card, at the top-right, select the arrow to collapse the card.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-30-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-30-ssm.png" alt="Screenshot of the Filters on this page well with the Collapse arrow highlighted." data-linktype="relative-path"></a></p>
+<p>Fields added to the <strong>Filters</strong> pane can achieve the same result as a slicer. One difference is they don't take up space on the report page. Another difference is that they can be configured to achieve more sophisticated filtering requirements.</p>
+</li>
+<li><p>Add each of the following <strong>Product</strong> table fields to the <strong>Filter&nbsp;On&nbsp;This&nbsp;Page</strong> well, collapsing each, directly beneath the <strong>Category</strong> card:</p>
+<ul>
+<li><p>Subcategory</p>
+</li>
+<li><p>Product</p>
+</li>
+<li><p>Color</p>
+</li>
+</ul>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-31-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-31-ss.png" alt="Screenshot of the Filters on this page well." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Save the Power&nbsp;BI&nbsp;Desktop file.</p>
+</li>
+</ol>
+<p>The design of the second page is now complete.</p>
+<h3 id="task-5-design-page-3">Task 5: Design page 3</h3>
+<p>In this task, you will design the third and final report page. When you've completed the design, the page will look like the following:</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-32-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-32-ss.png" alt="Screenshot of the final report that you will build." data-linktype="relative-path"></a></p>
+<ol>
+<li><p>Create a new page, and then rename it as <strong>My&nbsp;Performance</strong>.</p>
+<p>You may recall that row-level security was configured to ensure users only ever see data for their sales regions and targets. When this report is distributed to salespeople, they’ll only ever see their sales performance results.</p>
+</li>
+<li><p>To simulate the row-level security filters during report design and testing, add the <strong>Salesperson (Performance) | Salesperson</strong> field to the <strong>Filters</strong> pane, inside the <strong>Filters On This Page</strong> well.</p>
+</li>
+<li><p>In the filter card, scroll down the list of salespeople, and then check <strong>Michael Blythe</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-33-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-33-ssm.png" alt="Screenshot of the Filters on this page card." data-linktype="relative-path"></a></p>
+<p>You’ll be instructed to delete this filter before publishing the report to Power BI.</p>
+</li>
+<li><p>Add a dropdown slicer based on the <strong>Date&nbsp;|&nbsp;Year</strong> field, and then resize and reposition it so it sits at the top-left corner of the page.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-34-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-34-ss.png" alt="Image of the size and location of the first slicer on the report pane." data-linktype="relative-path"></a></p>
+</li>
+<li><p>In the slicer, set the page to filter by <strong>FY2019</strong>.</p>
+</li>
+<li><p>Add a <strong>Multi-row&nbsp;Card</strong> visual, and then resize and reposition it so it sits to the right of the slicer and fills the remaining width of the page.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-35-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-35-ssm.png" alt="Screenshot of the Multi-row card visual on the Visualizations pane." data-linktype="relative-path"></a></p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-36-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-36-ss.png" alt="Image of the size and position of the second visual on the report pane." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Add the following four fields to the visual:</p>
+<ul>
+<li><p>Sales&nbsp;|&nbsp;Sales</p>
+</li>
+<li><p>Targets&nbsp;|&nbsp;Target</p>
+</li>
+<li><p>Targets&nbsp;|&nbsp;Variance</p>
+</li>
+<li><p>Targets&nbsp;|&nbsp;Variance&nbsp;Margin</p>
+</li>
+</ul>
+</li>
+<li><p>Format the visual:</p>
+<ul>
+<li><p>In the <strong>Data&nbsp;Labels</strong> group, increase the <strong>Text&nbsp;Size</strong> property to <strong>28pt</strong></p>
+</li>
+<li><p>In the <strong>Background</strong> group, set the <strong>Color</strong> to a light gray color</p>
+</li>
+</ul>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-37-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-37-ss.png" alt="Screenshot of the text size and color of the visual." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Add a <strong>Clustered&nbsp;Bar&nbsp;Chart</strong> visual, and then resize and reposition it so it sits beneath the multi-row card visual and fills the remaining height of the page, and half the width of the multi-row card visual.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-38-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-38-ssm.png" alt="Screenshot of the Clustered Bar Chart on the Visualizations pane." data-linktype="relative-path"></a></p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-39-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-39-ss.png" alt="Image of the size and position of the third chart on the report pane." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Add the following fields to the visual wells:</p>
+<ul>
+<li><p>Axis: <strong>Date&nbsp;|&nbsp;Month</strong></p>
+</li>
+<li><p>Value: <strong>Sales&nbsp;|&nbsp;Sales</strong> and <strong>Targets&nbsp;|&nbsp;Target</strong></p>
+</li>
+</ul>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-40-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-40-ss.png" alt="Screenshot of the bar chart visual for Sales and Target by Month." data-linktype="relative-path"></a></p>
+</li>
+<li><p>To create a copy of the visual, press <strong>Ctrl+C</strong>, and then press <strong>Ctrl+V</strong>.</p>
+</li>
+<li><p>Position the copied visual to the right of the original visual.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-41-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-41-ss.png" alt="Image of the size and position of the fourth and final visual on the report page." data-linktype="relative-path"></a></p>
+</li>
+<li><p>To modify the visualization type, in the <strong>Visualizations</strong> pane, select <strong>Clustered&nbsp;Column&nbsp;Chart</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-42-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-42-ssm.png" alt="Screenshot of the &quot;Clustered Column Chart&quot; visual on the Visualizations pane." data-linktype="relative-path"></a></p>
+</li>
+</ol>
+<p>It’s now possible to see the same data expressed by two different visualization types. This isn’t a good use of the page layout, however, you’ll improve it in the <strong>Design a report in Power BI Desktop, Part 2</strong> lab by superimposing the visuals. By adding buttons to the page, you’ll allow the report user to determine which of the two visuals is visible.</p>
+<p>The design of the third—and final—page is now complete.</p>
+<h3 id="task-6-publish-the-report">Task 6: Publish the report</h3>
+<p>In this task, you will publish the report.</p>
+<ol>
+<li><p>Select the <strong>Overview</strong> page.</p>
+</li>
+<li><p>Save the Power&nbsp;BI&nbsp;Desktop file.</p>
+</li>
+<li><p>On the <strong>Home</strong> ribbon tab, from inside the <strong>Share</strong> group, select <strong>Publish</strong>.</p>
+</li>
+<li><p>In the <strong>Publish to Power BI</strong> window, notice that <strong>My Workspace</strong> is selected.</p>
+</li>
+<li><p>To publish the report, click <strong>Select</strong>.</p>
+</li>
+<li><p>When the publication has succeeded, select <strong>Got It</strong>.</p>
+</li>
+<li><p>Leave Power&nbsp;BI&nbsp;Desktop open.</p>
+</li>
+</ol>
+<p>You’ll explore the report in the Power BI service in the next exercise.</p>
+<h2 id="exercise-2-explore-the-report">Exercise 2: Explore the report</h2>
+<p>In this exercise, you will explore the report that was published to Power BI.</p>
+<h3 id="task-1-explore-the-report">Task 1: Explore the report</h3>
+<p>In this task, you will explore the report in the Power BI service.</p>
+<ol>
+<li><p>In the Microsoft Edge browser window, in the Power BI service, in the <strong>Navigation</strong> pane (located at the left, possibly collapsed), expand <strong>My Workspace</strong>.</p>
+</li>
+<li><p>Review the contents of your workspace, noticing the <strong>Sales Analysis</strong> report and dataset.</p>
+<p>When you published the Power BI Desktop file, the data model was published as a dataset.</p>
+<p>If you don’t see it, press <strong>F5</strong> to reload the browser, and then expand the workspace again.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-44-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-44-ssm.png" alt="Screenshot of the Sales Analysis report and dataset in the Navigation pane." data-linktype="relative-path"></a></p>
+</li>
+<li><p>To open the report, select the <strong>Sales Analysis</strong> report.</p>
+</li>
+<li><p>In the <strong>Regions</strong> slicer, while pressing the <strong>Ctrl</strong> key, select multiple regions.</p>
+</li>
+<li><p>In the column/line chart, select any month column to cross filter the page.</p>
+</li>
+<li><p>While pressing the <strong>Ctrl</strong> key, select an additional month.</p>
+<p>By default, cross filtering filters all other visuals on the page.</p>
+</li>
+<li><p>Notice that the bar chart is filtered and highlighted, with the bold portion of the bars representing the filtered months.</p>
+</li>
+<li><p>Hover the cursor over the visual, and then at the top-right, hover the cursor over the filter icon.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-45-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-45-ssm.png" alt="Screenshot of the filter icon that is shaped like a funnel." data-linktype="relative-path"></a></p>
+<p>The filter icon allows you to understand all of the filters that are applied to the visual, including slicers and cross filters from other visuals.</p>
+</li>
+<li><p>Hover the cursor over a bar, and then notice the tooltip information.</p>
+</li>
+<li><p>To undo the cross filter, in the column/line chart, select an empty area of the visual.</p>
+</li>
+<li><p>Hover the cursor over the map visual, and then at the top-right, select the <strong>Focus mode</strong> icon.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-46-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-46-ssm.png" alt="Screenshot of the In Focus icon to the right of the filter icon." data-linktype="relative-path"></a></p>
+<p>Focus mode zooms the visual to full page size.</p>
+</li>
+<li><p>Hover the cursor over different segments of the pie charts to reveal tooltips.</p>
+</li>
+<li><p>To return to the report page, at the top-left, select <strong>Back&nbsp;to&nbsp;Report</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-47-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-47-ssm.png" alt="Screenshot of the Back to Report button." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Hover the cursor over the map visual again, and then select the ellipsis (...), and notice the menu options.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-48-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-48-ss.png" alt="Screenshot of the map visual menu options." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Try out each of the options, except <strong>Chat in Teams</strong>.</p>
+</li>
+<li><p>At the left, in the <strong>Pages</strong> pane, select the <strong>Profit</strong> page.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-49-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-49-ssm.png" alt="Screenshot of the Profit page on the Pages pane." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Notice that the <strong>Region</strong> slicer has a different selection than the <strong>Region</strong> slicer on the <strong>Overview</strong> page.</p>
+<p>The slicers are not synchronized. You’ll modify the report design to ensure they sync between pages in the <strong>Design a report in Power BI Desktop, Part 2</strong> lab.</p>
+</li>
+<li><p>In the <strong>Filters</strong> pane (located at the right), expand a filter card, and apply some filters.</p>
+<p>The <strong>Filters</strong> pane allows you to define more filters than could possibly fit on a page as slicers.</p>
+</li>
+<li><p>In the matrix visual, use the plus (+) button to drill into the <strong>Fiscal</strong> hierarchy.</p>
+</li>
+<li><p>Select the <strong>My&nbsp;Performance</strong> page.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-52-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-52-ssm.png" alt="Screenshot of the My Performance page on the Pages pane." data-linktype="relative-path"></a></p>
+</li>
+<li><p>At the top-right on the menu bar, select <strong>View</strong>, and then select <strong>Full&nbsp;Screen</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-53-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-53-ssm.png" alt="Screenshot of the View menu expanded to reveal the Full screen option." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Interact with the page by modifying the slicer, and cross filtering the page.</p>
+</li>
+<li><p>At the bottom of the window, notice the commands to change page, navigate backwards or forwards between pages, or to exit full screen mode.</p>
+</li>
+<li><p>Press escape or select the Full screen icon to exit full screen mode.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-50-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/lab-50-ssm.png" alt="Screenshot of the Full screen icon in the commands." data-linktype="relative-path"></a></p>
+</li>
+</ol>
+<h3 id="task-2-finish-up">Task 2: Finish up</h3>
+<p>In this task you'll complete the lab</p>
+<ol>
+<li><p>To return to the workspace, select <strong>My workspace</strong> in the upper left corner.</p>
+</li>
+<li><p>Leave the Microsoft Edge browser window open.</p>
+</li>
+</ol>
+<p>You will enhance the report design with advanced features in the <strong>Design a report in Power BI Desktop, Part 2</strong> lab.</p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Check your knowledge</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/9-check/" data-bi-name="continue" target="_top">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

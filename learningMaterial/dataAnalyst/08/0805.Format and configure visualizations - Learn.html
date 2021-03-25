@@ -1,0 +1,263 @@
+<html dir="ltr"><head><title>Format and configure visualizations - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/4-format">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/visuals-power-bi/4-format</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Format and configure visualizations - Learn</h1>
+  <div dir="auto" id="reader-credits">heyrob</div>
+  <div dir="auto" id="reader-estimated-time">7-8 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>6 minutes</li>
+		</ul>
+			<p>Power BI Desktop gives you a variety of options for customizing how your selected visualizations look, such as the colors and format of the text that they contain. You should take time to explore the options to determine what impact they each have on a visual.</p>
+<p>In this example, you will format and configure the default clustered column chart visualization to better meet the needs of your report requirements.</p>
+<p>Start by selecting the visualization on the canvas, and then select the <strong>Format</strong> button (paint roller icon) to display the <strong>Format</strong> pane.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/4-format-visualization-options-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/4-format-visualization-options-ssm.png" alt="Screenshot of the formatting options for visualization." data-linktype="relative-path"></a></p>
+<p>The formatting options that are available will depend on the type of visualization that you selected.</p>
+<p>Common formatting options include the <strong>Title</strong>, <strong>Background</strong>, and <strong>Border</strong>. In the <strong>Title</strong> section, you can add a title to the visual, if it does not have one, or edit the title, if it has one already. The aim of the title is to clearly describe what data is being presented in the visual. You can format the title by changing the text, text size, font, color, background, and alignment. The subsequent section shows an example of customizing a title.</p>
+<p>In the <strong>Background</strong> section, you can set any color or image as the background for the visual. If you plan to use an image as a background, try to select an image that won't have lines or shapes that would make it difficult for the user to read the data. It is best to keep a white background so the presented data can be clearly seen. The subsequent section shows an example of customizing a background.</p>
+<p>In the <strong>Border</strong> section, you can set a border around the visual to isolate the visual from other elements on the canvas, which helps make it easier for the user to read and understand the data. You can change the border color and radius to be consistent with your color scheme.</p>
+<p>If a <strong>General</strong> section is available, you'll be able to set the precise size and place for your visual on your canvas. This option might be suitable if the drag-and-drop feature is not placing the visual exactly where you want it to be. It can also be useful to ensure that you have aligned specific visuals consistently.</p>
+<p>You might also be able to format the colors and labels for specific data values. In the <strong>Data colors</strong> section, you can set the colors that you want to use for the data values in the visual. You can use different colors for different fields, but always try to be consistent when it comes to selecting those colors. It is best to use the same color scheme throughout the report. In the <strong>Data labels</strong> section, you can change fonts, size, and colors for all labels in the visual. Try to use solid colors so the labels are clearly visible. For example, if the background is white, use a black or dark grey color to display your labels.</p>
+<p>The <strong>Tooltips</strong> section allows you to add a customized tooltip that appears when you hover over the visual, based on report pages that you create in Power BI Desktop. Tooltips is a great feature because it provides more contextual information and detail to data points on a visual.&nbsp;The default tooltip displays the data point's value and category, but your custom tooltips can include visuals, images, and any other collection of items that you create in the report page. The subsequent section shows an example of customizing a tooltip.</p>
+<p>As you make changes in the <strong>Format</strong> pane, notice that the visualization updates immediately to reflect those changes. If you need to revert the changes that you make, select the <strong>Revert to default</strong> option at the bottom of each section in the <strong>Format</strong> pane.</p>
+<p>In the following examples, you will edit the title, change the background, and add a tooltip.</p>
+<h2 id="title">Title</h2>
+<p>You can edit a default title and add a title, if you don't have one. In this example, you will select the column chart visualization and then, in the <strong>Format</strong> pane, scroll down and expand the <strong>Title</strong> section. Edit the current title by adding a space between <strong>Sales</strong> and <strong>Amount</strong>, and then increase the font size to 16 points.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/4-format-visualization-title-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/4-format-visualization-title-ssm.png" alt="Screenshot of formatting the visualization title." data-linktype="relative-path"></a></p>
+<h2 id="background">Background</h2>
+<p>It is best practice to keep the default white background so the presented data can be clearly seen. However, you can change the default background color to make a visualization more colorful and easier to read or to match a particular color scheme. In this example, continue with the column chart that is selected and then, in the <strong>Format</strong> pane, expand the <strong>Background</strong> section and change the color to light grey.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/4-format-visualization-background-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/4-format-visualization-background-ssm.png" alt="Screenshot of formatting the visualization background." data-linktype="relative-path"></a></p>
+
+<p>Using tooltips is a clever way of providing more contextual information and detail to data points on a visual. When you add a visual, the default tooltip displays the data point's value and category, but you can customize this information to suit your needs. For example, you might want to provide your report users with additional context and information, or specify additional data points that you want users to see when they hover over the visual.</p>
+<p>To expand on the data points that are displayed in the default tooltip, you can drag a field (value) from the <strong>Fields</strong> panel into the <strong>Tooltips</strong> bucket. However, you should not add many more fields to the tooltips because adding too many fields can introduce performance issues and slow down your visuals.</p>
+<p>The following image shows the default tooltip first and then the customized tooltip that displays additional data.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/4-add-new-value-page-tooltip-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/4-add-new-value-page-tooltip-ssm.png" alt="Screenshot of adding a new value for the tooltip." data-linktype="relative-path"></a></p>
+<p>Another way to use tooltips is to display graphical information. The process of adding this type of tooltip is not as straightforward, but it is worthwhile. You would begin by creating a new page in the report.</p>
+<p>Open the new page and then open the <strong>Format</strong> pane. Expand the <strong>Page Size</strong> section and then select <strong>Tooltip</strong> from the <strong>Type</strong> list.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/4-add-new-report-page-tooltip-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/4-add-new-report-page-tooltip-ss.png" alt="Screenshot of adding a new report page for the tooltip." data-linktype="relative-path"></a></p>
+<p>In the <strong>Page information</strong> section, turn the <strong>Tooltip</strong> slider to <strong>On</strong> so that Power BI registers this page as a tooltip page</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/4-enable-tooltip-option-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/4-enable-tooltip-option-ss.png" alt="Screenshot of the Tooltip option enabled on page information." data-linktype="relative-path"></a></p>
+<p>Tooltips have limited canvas space, so to ensure that your visuals appear in the tooltip, on the <strong>View</strong> tab, set the <strong>Page view</strong> option to <strong>Actual size</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/4-change-page-view-size-tooltip-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/4-change-page-view-size-tooltip-ss.png" alt="Screenshot of changing the page view size for the tooltip." data-linktype="relative-path"></a></p>
+<p>Next, add one or more visuals to the tooltip page, in the same way that you would on any other report page.</p>
+<p>Now, you need to specify the fields for which you want the tooltip to display. Select the tooltip page and then select the <strong>Values</strong> tab in the <strong>Visualizations</strong> pane. Drag the fields from the <strong>Fields</strong> pane into the <strong>Tooltip</strong> bucket. In this example, you will drag the <strong>SalesAmount</strong> field into the <strong>Tooltip</strong> bucket.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/4-specify-fields-tooltip-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/4-specify-fields-tooltip-ssm.png" alt="Screenshot of specifying fields for the tooltip." data-linktype="relative-path"></a></p>
+<p>Return to the report page and apply the tooltip to one or more visuals on that page. Select a visual and then, in the <strong>Format</strong> pane, scroll down to the <strong>Tooltip</strong> section. Turn the tooltip option <strong>On</strong> and then select your tooltip page from the <strong>Page</strong> list.</p>
+<p>When you hover over the visual, the tooltip will display.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/4-display-tooltip-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/4-display-tooltip-ssm.png" alt="Screenshot of the visualization displaying the tooltip." data-linktype="relative-path"></a></p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Import a custom visual</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/5-custom/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

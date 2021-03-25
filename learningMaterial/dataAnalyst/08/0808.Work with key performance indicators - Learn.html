@@ -1,0 +1,246 @@
+<html dir="ltr"><head><title>Work with key performance indicators - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/7-key-performance-indicators">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/visuals-power-bi/7-key-performance-indicators</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Work with key performance indicators - Learn</h1>
+  <div dir="auto" id="reader-credits">heyrob</div>
+  <div dir="auto" id="reader-estimated-time">2-2 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="main" role="main" data-bi-name="content" lang="en-us" dir="ltr">
+		
+		
+		<ul>
+			<li>1 minute</li>
+		</ul>
+			<p>Key performance indicators (KPIs) are excellent in helping you track progress toward a specific goal over time. To use a KPI, you need three pieces of information:</p>
+<ul>
+<li><p>A unit of measurement that you want to track, for instance total sales, number of employee hires, number of loans serviced, or number of students enrolled.</p>
+</li>
+<li><p>A goal for the measurement so that you can compare your progress with that goal.</p>
+</li>
+<li><p>A time series, for instance daily, monthly, or yearly.</p>
+</li>
+</ul>
+<p>Start by adding the KPI visual to the design service. The following screenshot shows the KPI icon in the <strong>Visualizations</strong> pane.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/7-kpi-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/7-kpi-ss.png" alt="Screenshot of the KPI icon in the visualizations pane." data-linktype="relative-path"></a></p>
+<p>When configuring the KPI visual, enter the unit of measurement that you are tracking in the <strong>Indicator</strong> prompt. Then, enter the goal under <strong>Target goals</strong> and select the time series from the <strong>Trend axis</strong> drop-down list, as shown in the following screenshot.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/7-configure-kpi-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/7-configure-kpi-ss.png" alt="Screenshot of configuring the KPI visualization." data-linktype="relative-path"></a></p>
+<p>This action will produce a KPI that looks similar to the following screenshot.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/7-kpi-visual-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/7-kpi-visual-ss.png" alt="Screenshot of the KPI visualization on the Power BI report." data-linktype="relative-path"></a></p>
+<p>KPIs work best in a series, for instance, showing the daily, monthly, and yearly goals in the section of a Power BI report.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/7-kpi-series-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/media/7-kpi-series-ss.png" alt="Screenshot of a series of KPI visualizations." data-linktype="relative-path"></a></p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Lab - Design a report in Power BI desktop, Part 1</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/visuals-power-bi/8-lab/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div><section>
+		<p>
+Need help? See our <a id="troubleshooting-guide" data-bi-name="troubleshooting" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-bizapps.visuals-power-bi.7-key-performance-indicators&amp;documentId=2564c357-d494-cc6a-a90e-016c6dc2cbb1&amp;versionIndependentDocumentId=511987d4-b3e4-a72b-7369-24d5525fe948&amp;contentPath=%2FMicrosoftDocs%2Flearn-bizapps-pr%2Fblob%2Flive%2Flearn-bizapps-pr%2Fpower-bi%2Fvisuals-power-bi%2F7-key-performance-indicators.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fvisuals-power-bi%2F7-key-performance-indicators&amp;author=robde">troubleshooting guide</a> or provide specific feedback by <a id="module-unit-feedback-link" data-bi-name="feedback" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-bizapps.visuals-power-bi.7-key-performance-indicators&amp;documentId=2564c357-d494-cc6a-a90e-016c6dc2cbb1&amp;versionIndependentDocumentId=511987d4-b3e4-a72b-7369-24d5525fe948&amp;contentPath=%2FMicrosoftDocs%2Flearn-bizapps-pr%2Fblob%2Flive%2Flearn-bizapps-pr%2Fpower-bi%2Fvisuals-power-bi%2F7-key-performance-indicators.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fvisuals-power-bi%2F7-key-performance-indicators&amp;author=robde#report-feedback">reporting an issue</a>.		</p>
+	</section></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>
