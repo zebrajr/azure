@@ -1,0 +1,240 @@
+<html dir="ltr"><head><title>Use Power BI - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/get-started-with-power-bi/2-using-power-bi">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/get-started-with-power-bi/2-using-power-bi</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Use Power BI - Learn</h1>
+  <div dir="auto" id="reader-credits">MargoC</div>
+  <div dir="auto" id="reader-estimated-time">2-2 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="main" role="main" data-bi-name="content" lang="en-us" dir="ltr">
+		
+		
+		<ul>
+			<li>2 minutes</li>
+		</ul>
+			<p>Now that we've introduced the basics of Microsoft Power BI, let's jump into some hands-on experiences and a guided tour.</p>
+<p>The activities and analyses that you'll learn with Power BI generally follow a common flow. The <strong>common flow</strong> of activity looks like this:</p>
+<ol>
+<li>Bring data into Power BI Desktop, and create a report.</li>
+<li>Publish to the Power BI service, where you can create new visualizations or build dashboards.</li>
+<li>Share dashboards with others, especially people who are on the go.</li>
+<li>View and interact with shared dashboards and reports in Power BI Mobile apps.</li>
+</ol>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/get-started-with-power-bi/media/pbi-using_01.png" alt="Image of the Power B I cycle of use from Power B I Desktop to Power B I service to Power B I Mobile." data-linktype="relative-path"></p>
+<p>As mentioned earlier, you might spend all your time in the <strong>Power BI service</strong>, viewing visuals and reports that have been created by others. And that's fine. Someone else on your team might spend their time in <strong>Power BI Desktop</strong>, which is fine too. To help you understand the full continuum of Power BI and what it can do, we'll show you all of it. Then you can decide how to use it to your best advantage.</p>
+<p>So, let's jump in and step through the experience. Your first order of business is to learn the basic building blocks of Power BI, which will provide a solid basis for turning data into cool reports and visuals.</p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Building blocks of Power BI</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/get-started-with-power-bi/3-building-blocks-of-power-bi/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div><section>
+		<p>
+Need help? See our <a id="troubleshooting-guide" data-bi-name="troubleshooting" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-bizapps.get-started-with-power-bi.2-using-power-bi&amp;documentId=2ad1ea38-b3d0-ace4-dfd4-33837d5963fc&amp;versionIndependentDocumentId=8e73885b-6cc1-032a-1afe-a1f2c0868f0e&amp;contentPath=%2FMicrosoftDocs%2Flearn-bizapps-pr%2Fblob%2Flive%2Flearn-bizapps-pr%2Fpower-bi%2Fget-started-with-power-bi%2F2-using-power-bi.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fget-started-with-power-bi%2F2-using-power-bi&amp;author=margoc">troubleshooting guide</a> or provide specific feedback by <a id="module-unit-feedback-link" data-bi-name="feedback" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-bizapps.get-started-with-power-bi.2-using-power-bi&amp;documentId=2ad1ea38-b3d0-ace4-dfd4-33837d5963fc&amp;versionIndependentDocumentId=8e73885b-6cc1-032a-1afe-a1f2c0868f0e&amp;contentPath=%2FMicrosoftDocs%2Flearn-bizapps-pr%2Fblob%2Flive%2Flearn-bizapps-pr%2Fpower-bi%2Fget-started-with-power-bi%2F2-using-power-bi.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fget-started-with-power-bi%2F2-using-power-bi&amp;author=margoc#report-feedback">reporting an issue</a>.		</p>
+	</section></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

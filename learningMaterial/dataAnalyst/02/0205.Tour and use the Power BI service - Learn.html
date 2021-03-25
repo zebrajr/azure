@@ -1,0 +1,246 @@
+<html dir="ltr"><head><title>Tour and use the Power BI service - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/get-started-with-power-bi/4-exercise-touring-and-using-power-bi">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/get-started-with-power-bi/4-exercise-touring-and-using-power-bi</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Tour and use the Power BI service - Learn</h1>
+  <div dir="auto" id="reader-credits">MargoC</div>
+  <div dir="auto" id="reader-estimated-time">5-6 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>12 minutes</li>
+		</ul>
+			<p>As we learned in the previous unit, the common flow of work in Microsoft Power BI is to create a report in Power BI Desktop, publish it to the Power BI service, and then share it with others, so that they can view it in the service or on a mobile app.</p>
+<p>But because some people begin in the Power BI service, let's take a quick look at that first, and learn about an easy and popular way to quickly create visuals in Power BI: <em>apps</em>.</p>
+<p>An <strong>app</strong> is a collection of preset, ready-made visuals and reports that are shared with an entire organization. Using an app is like microwaving a TV dinner or ordering a fast-food value meal: you just have to press a few buttons or make a few comments, and you're quickly served a collection of entrees designed to go together, all presented in a tidy, ready-to-consume package.</p>
+<p>So, let's take a quick look at apps, the service, and how it works. We'll go into more detail about apps (and the service) in upcoming modules, but you can think of this as a taste to whet your appetite. You can sign into the service at <a href="https://powerbi.microsoft.com/" data-linktype="external" target="az-portal">https://powerbi.microsoft.com</a>.</p>
+<h2 id="create-out-of-box-dashboards-with-cloud-services">Create out-of-box dashboards with cloud services</h2>
+<p>With Power BI, connecting to data is easy. From the Power BI service, you can just select the <strong>Get Data</strong> button in the lower-left corner of the home page.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/get-started-with-power-bi/media/pbi-touring_01.png" alt="Screenshot of the Power B I Home page with the Get data button highlighted." data-linktype="relative-path"></p>
+<p>The <em>canvas</em> (the area in the center of the Power BI service) shows you the available sources of data in the Power BI service. In addition to common data sources like Microsoft Excel files, databases, or Microsoft Azure data, Power BI can just as easily connect to a whole assortment of <strong>software services</strong> (also called SaaS providers or cloud services): Salesforce, Facebook, Google Analytics, and more.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/get-started-with-power-bi/media/pbi-touring_02.png" alt="Screenshot of the Power B I Get Data page." data-linktype="relative-path"></p>
+<p>For these software services, the <strong>Power BI service</strong> provides a collection of ready-made visuals that are pre-arranged on dashboards and reports for your organization. This collection of visuals is called an <strong>app</strong>. Apps get you up and running quickly, with data and dashboards that your organization has created for you. For example, when you use the GitHub app, Power BI connects to your GitHub account (after you provide your credentials) and then populates a predefined collection of visuals and dashboards in Power BI.</p>
+<p>There are apps for all sorts of online services. The following image shows a page of apps that are available for different online services, in alphabetical order. This page is shown when you select the <strong>Get</strong> button in the <strong>Services</strong> box (shown in the previous image). As you can see from the following image, there are many apps to choose from.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/get-started-with-power-bi/media/pbi-touring_03.png" alt="Screenshot of the Power B I apps on the All apps tab." data-linktype="relative-path"></p>
+<p>For our purposes, we'll choose <strong>GitHub</strong>. GitHub is an application for online source control. When you select the <strong>Get it now</strong> button in the box for the GitHub app, the <strong>Connect to GitHub</strong> dialog box appears. Note that GitHub does not support Internet Explorer, so make sure you are working in another browser.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/get-started-with-power-bi/media/pbi-touring_03b.png" alt="Screenshot of the Connect to GitHub dialog." data-linktype="relative-path"></p>
+<p>After you enter the information and credentials for the GitHub app, installation of the app begins.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/get-started-with-power-bi/media/pbi-touring_04.png" alt="Screenshot of the Installing an app message." data-linktype="relative-path"></p>
+<p>After the data is loaded, the predefined GitHub app dashboard appears.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/get-started-with-power-bi/media/pbi-touring_05.png" alt="Screenshot of the Github dashboard loaded." data-linktype="relative-path"></p>
+<p>In addition to the app <strong>dashboard</strong>, the <strong>report</strong> that was generated (as part of the GitHub app) and used to create the dashboard is available, as is the <strong>dataset</strong> (the collection of data pulled from GitHub) that was created during data import and used to create the GitHub report.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/get-started-with-power-bi/media/pbi-touring_06.png" alt="Screenshot of the Github navigation with arrows to Dashboard and Report tabs." data-linktype="relative-path"></p>
+<p>You can select any of the visuals and interact with them. As you do so, all the other visuals on the page will respond. For example, when the <strong>AdamBJ</strong> in the treemap on the <strong>Pull Requests</strong> report the other visuals on the page adjust to reflect that selection.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/get-started-with-power-bi/media/pbi-touring_06b.png" alt="Screenshot of the Github app with the Pull Requests report selected." data-linktype="relative-path"></p>
+<h2 id="update-data-in-the-power-bi-service">Update data in the Power BI service</h2>
+<p>You can also choose to <strong>update</strong> the dataset for an app, or other data that you use in Power BI. To set update settings, select the schedule update icon for the dataset to update, and then use the menu that appears. You can also select the update icon (the circle with an arrow) next to the schedule update icon to update the dataset immediately.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/get-started-with-power-bi/media/pbi-touring_09.png" alt="Screenshot of scheduling an update for dashboards." data-linktype="relative-path"></p>
+<p>The <strong>Datasets</strong> tab is selected on the <strong>Settings</strong> page that appears. In the right pane, select the arrow next to <strong>Scheduled refresh</strong> to expand that section. The <strong>Settings</strong> dialog box appears on the canvas, letting you set the update settings that meet your needs.</p>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/get-started-with-power-bi/media/pbi-touring_10.png" alt="Screenshot of the Datasets tab with Scheduled refresh highlighted." data-linktype="relative-path"></p>
+<p>That's enough for our quick look at the Power BI service. There are many more things you can do with the service, and we'll cover these later in this module and in upcoming modules. Also, remember that there are many types of data you can connect to, and all sorts of apps, with more of both coming all the time.</p>
+
+		
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>
