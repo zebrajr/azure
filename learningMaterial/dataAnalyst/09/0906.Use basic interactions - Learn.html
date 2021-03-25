@@ -1,0 +1,249 @@
+<html dir="ltr"><head><title>Use basic interactions - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/5-basic-interactions">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/data-driven-story-power-bi/5-basic-interactions</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Use basic interactions - Learn</h1>
+  <div dir="auto" id="reader-credits">heyrob</div>
+  <div dir="auto" id="reader-estimated-time">4-5 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>4 minutes</li>
+		</ul>
+			<p>In Power BI Desktop, your report is dynamic. When you make a selection on one visual in the report, other visuals might change to reflect that selection. Similarly, if hierarchies are in your data, you can move up and down the hierarchy to see the data at different levels.</p>
+<p>The following sections explain how the basic interactions work and how you can use hierarchies in your visuals.</p>
+<h2 id="view-interactions">View interactions</h2>
+<p>When multiple visuals exist on the same report page, they all interact with each other. For that reason, you should become familiar with these interactions to see how your report changes.</p>
+<p>Compare the following two images. In the first image, the data displays at a high level.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/5-compare-interactions-high-level-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/5-compare-interactions-high-level-ssm.png" alt="Screenshot of high level data with the Edit interactions button highlighted." data-linktype="relative-path"></a></p>
+<p>When you select an element in a visual, such as <strong>Components</strong> in the <strong>Product Category</strong> visual, the other visuals update to reflect your selection, as illustrated in the second image.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/5-compare-interactions-after-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/5-compare-interactions-after-ssm.png" alt="Screenshot of data after selecting an element in the visual." data-linktype="relative-path"></a></p>
+<p>When you have become familiar with the interactions, you might want to make changes to control how those interactions flow between the visuals. This process is further explained later in this module.</p>
+<h2 id="use-hierarchies">Use hierarchies</h2>
+<p>A hierarchy is a structure in which groups are ranked one above the other according to a specific status. Think of your own organizational hierarchy, where the CEO is at the top level, then managers in the middle level, and employees at the lower level. Similarly, you'll likely have hierarchies for your data in Power BI. For example, you could have a time hierarchy with levels such as year, quarter, month, and day, or a product hierarchy with levels such as category, subcategory, and product.</p>
+<p>Regarding dates, Power BI creates hierarchies for you automatically. When you select the hierarchy in the <strong>Fields</strong> pane, the date hierarchy is added to the <strong>Axis</strong> field on the <strong>Visualizations</strong> pane and a blank visual is created for you, which is ready for additional fields. The hierarchy icons are located above the visual, as illustrated in the following image.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/5-add-default-hierarchy-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/5-add-default-hierarchy-ssm.png" alt="Screenshot of adding a default hierarchy." data-linktype="relative-path"></a></p>
+<p>When you add another field to the visual, the visual becomes useful, and you can then use the hierarchy icons to navigate through the hierarchy. Power BI creates a predefined drill path for the data. In the following image, the <strong>Gross Sales</strong> field was added to the visual and you can see the data at the highest level (year). Then, when the <strong>Expand all down one level in the hierarchy</strong> button was selected, the hierarchy was expanded down by one level (quarter). If you were to select the button again, the visual would update to display the next lower level in the hierarchy (month), and so on.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/5-expand-hierarchy-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/5-expand-hierarchy-ssm.png" alt="Screenshot of the hierarchy before and after being expanded." data-linktype="relative-path"></a></p>
+<p>Another navigation option is the <strong>Go to the next level in the hierarchy</strong> button. When you select either hierarchy option, select the <strong>Drill up</strong> button to move back up the hierarchy.</p>
+<p>The default date hierarchy feature in Power BI is quick and simple to use. However, if you have your own date table, you can use it to create the hierarchy instead. In the following image, the <strong>Year</strong>, <strong>Month</strong>, <strong>Quarter</strong>, and <strong>Day</strong> fields were added to the <strong>Axis</strong> field well on the <strong>Visualizations</strong> pane. The data result is the same as  the default hierarchy, so you can navigate through the hierarchy in the same way.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/5-use-own-hierarchy-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/5-use-own-hierarchy-ss.png" alt="Screenshot of the Date Base Hierarchy under Shared axis on the Visualizations pane." data-linktype="relative-path"></a></p>
+<p>You can also predefine the hierarchy path for your report users to remove any guesswork. For example, you might want to prevent users from viewing a particular hierarchy level. To do so, remove all fields from the <strong>Axis</strong> well and then, in the <strong>Fields</strong> pane, right-click the field that you want to set as the top level of the hierarchy and select <strong>New hierarchy</strong>. The new hierarchy displays in the list in the <strong>Fields</strong> pane. You can now drag and drop other fields into the new hierarchy or right-click each field and select <strong>Add to hierarchy</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/5-create-hierarchy-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/5-create-hierarchy-ssm.png" alt="Screenshot of the context menu with View hidden selected to reveal the hierarchy." data-linktype="relative-path"></a></p>
+<p>Ensure that your visual is selected, and then select the <strong>New hierarchy</strong> field in the <strong>Fields</strong> pane to apply it to the visual.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/5-apply-new-hierarchy-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/5-apply-new-hierarchy-ssm.png" alt="Screenshot of the visualization selected and the Fields pane with Year hierarchy selected." data-linktype="relative-path"></a></p>
+<p>You can use the hierarchy buttons above the visual to expand the hierarchy and drill back up again.</p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Use advanced interactions and drill through</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/6-advanced-interactions/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

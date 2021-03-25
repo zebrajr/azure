@@ -1,0 +1,294 @@
+<html dir="ltr"><head><title>Add buttons, bookmarks, and selections - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/3-buttons-bookmarks-selections">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/data-driven-story-power-bi/3-buttons-bookmarks-selections</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Add buttons, bookmarks, and selections - Learn</h1>
+  <div dir="auto" id="reader-credits">heyrob</div>
+  <div dir="auto" id="reader-estimated-time">7-9 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>7 minutes</li>
+		</ul>
+			<p>You can use the <strong>Bookmarks</strong>, <strong>Buttons</strong>, and <strong>Selections</strong> features in Power BI Desktop to make your report more compelling, interactive, and simpler for users to navigate.</p>
+<ul>
+<li><p><strong>Bookmarks</strong> - Capture the currently configured view of a report page so you can quickly return to that view later. You can use bookmarks for different reasons. For example, you can use them to keep track of your own progress when creating reports. You can also use them to build a PowerPoint-like presentation that goes through the bookmarks in order, thereby telling a story with your report.</p>
+</li>
+<li><p><strong>Buttons</strong> - Create a more interactive experience for the report users. With the addition of buttons that have assigned actions, your report behaves similar to an app, where users can hover, select, and interact more with the content.</p>
+</li>
+<li><p><strong>Selections</strong> - Allow you to determine what items in the report are visible and what items are hidden. Selections are used alongside bookmarks and buttons.</p>
+</li>
+</ul>
+<p>Consider a situation where you have designed a report page and want to have a second page that looks almost the same, except that one of the visuals will be different. Rather than creating a second page and manually making changes, you can use a combination of selections, bookmarks, and buttons to switch between the two visuals on one page.</p>
+<h2 id="add-bookmarks">Add bookmarks</h2>
+<p>When you add a bookmark, the following elements are saved with it:</p>
+<ul>
+<li><p>Current page</p>
+</li>
+<li><p>Filters</p>
+</li>
+<li><p>Slicers, including slicer type (for example, drop-down or list) and slicer state</p>
+</li>
+<li><p>Visual selection state (such as cross-highlight filters)</p>
+</li>
+<li><p>Sort order</p>
+</li>
+<li><p>Drill location</p>
+</li>
+<li><p>Visibility of an object (by using the&nbsp;<strong>Selection</strong>&nbsp;pane)</p>
+</li>
+<li><p>Focus or&nbsp;Spotlight&nbsp;modes of any visible object</p>
+</li>
+</ul>
+<p>In this example, you want to add bookmarks to allow users to switch between two visuals on one page. First, you need to set up how you want the page to initially display.</p>
+<p>When you have added and formatted all the visuals and other items on the page, you can add a bookmark to capture a snapshot of the page in its current state.</p>
+<p>Before adding a bookmark, go to the <strong>View</strong> tab in the ribbon and select <strong>Selection</strong>. The displayed <strong>Selection</strong> pane includes a list of all items on your page, along with an eye icon that indicates the items that are currently visible. You can rename the items in the list by double-clicking them so you clearly know which one is which.</p>
+<p>Now you are ready to add the bookmark. On the <strong>View</strong> tab, select <strong>Bookmarks</strong>. On the <strong>Bookmarks</strong> panel that displays, select <strong>Add</strong>. It's good practice to rename the new bookmark so its purpose is clear; this notion is especially true if you plan on adding multiple bookmarks. To rename a bookmark, double-click the bookmark and enter the new name. In this example, you want to change the bookmark name from <strong>Bookmark 1</strong> to <strong>Variance Chart</strong> because the <strong>Variance</strong> chart is the main focus of the page, as shown in the following image. In the <strong>Selection</strong> pane, the <strong>Variance</strong> chart displays and the other visuals are hidden.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/3-add-bookmark-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/3-add-bookmark-ssm.png" alt="Screenshot of the Bookmark menu expanded to show options." data-linktype="relative-path"></a></p>
+<p>Next, you can add the second bookmark. Start by making changes to how the page currently appears. In this example, you will add another bookmark for the main dashboard charts. Because you only want to see charts from the main dashboard, you can hide the <strong>Visual</strong> chart by selecting its eye icon on the <strong>Selections</strong> pane. Then, add a bookmark for this new view of the page and rename it as <strong>Main Dashboard</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/3-select-items-dashboard-bookmark-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/3-select-items-dashboard-bookmark-ssm.png" alt="Screenshot of selecting items to see with Main Dashboard bookmark." data-linktype="relative-path"></a></p>
+<p>Now, you can switch between the two bookmarks to see the difference in the page.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/3-main-dashboard-buttons-added-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/3-main-dashboard-buttons-added-ssm.png" alt="Screenshot of the Main Dashboard with buttons added." data-linktype="relative-path"></a></p>
+<p>Repeat these steps to add more bookmarks. In summary, you would select items that you want to show/hide on the report page, add a bookmark, and then give it a descriptive name.</p>
+<p>You can now assign those bookmarks to buttons so that users can switch between the bookmarks.</p>
+<h2 id="add-buttons">Add buttons</h2>
+<p>You can use buttons for many reasons, such as to switch between two visuals in a report (as required in the previous example), to drill down into the data in a visual, or to move from one page in your report to another. Power BI Desktop provides a range of button types that you can add to your report, as illustrated in the following image.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/3-button-options-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/3-button-options-ssm.png" alt="Screenshot of the Button menu expanded to show options." data-linktype="relative-path"></a></p>
+<p>In this example, you want to add customized buttons that are used to switch between two bookmarks. To add a button, go to the <strong>Insert</strong> tab on the ribbon and select <strong>Buttons</strong>. Then, select the type of button that you want to add from the list, which in this case, you would select the <strong>Blank</strong> option.</p>
+<p>When the button is added to the page, reposition the button to above the visual on the right side. Next, select the button and then, in the <strong>Visualizations</strong> pane, move the <strong>Button Text</strong> slider to the <strong>On</strong> position. Expand the <strong>Button Text</strong> section, and then enter the text that you want to display on the button, for example, <strong>Main Dashboard</strong>. You can then format the button text by changing its font, color, alignment, and text size. Expand the <strong>Background</strong> section and select a suitable color for the button.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/3-enable-customize-button-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/3-enable-customize-button-ssm.png" alt="Screenshot of the Enable and customize button text." data-linktype="relative-path"></a></p>
+<p>Now, you can add an action to the button. Go to the <strong>Action</strong> slider near the bottom of the <strong>Visualizations</strong> pane and move the slider to the <strong>On</strong> position. Then, expand the <strong>Actions</strong> section to view the options. The options for the button action types are as follows, some of which are explained in more detail in the subsequent sections.</p>
+<ul>
+<li><p><strong>Back</strong> - Returns the user to the previous page of the report. This option is useful for drillthrough pages or pages that are accessed from one main page.</p>
+</li>
+<li><p><strong>Bookmark</strong> - Presents the report page that's associated with a bookmark that is defined for the current report.</p>
+</li>
+<li><p><strong>Drill through</strong> - Brings the user to a drillthrough page that is filtered to their selection, without using bookmarks.</p>
+</li>
+<li><p><strong>Page navigation</strong> - Brings the user to a different page within the report, also without using bookmarks, which is an effective way to create a navigation experience for your report users. This type of button is discussed later in this module.</p>
+</li>
+<li><p><strong>Q&amp;A</strong> - Opens a <strong>Q&amp;A Explorer</strong> window, where users can enter questions to quickly find the information that they are looking for and specify the type of visual that they want to see the information displayed in. This option can be useful if you want to save space in the report but still offer <strong>Q&amp;A</strong> functionality to the user.</p>
+</li>
+<li><p><strong>Web URL</strong> - Opens a website in a new browser window. For example, you might want to give users quick access to your organization's website or intranet from within a report.</p>
+</li>
+</ul>
+<p>In this example, you select <strong>Bookmark</strong> as the action type. In the <strong>Bookmark</strong> list that displays, select the bookmark that you want to assign to the action, the <strong>Main Dashboard</strong> bookmark that you created previously. For enhanced accessibility, you should add a tooltip that users will see when they hover over the button, but in this case, it's not required because you have a descriptive button label.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/3-assign-bookmark-action-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/3-assign-bookmark-action-ssm.png" alt="Screenshot of assigning a bookmark as the action for a button." data-linktype="relative-path"></a></p>
+<p>Now that your button is set up, you can copy and paste the button so that you have two buttons with consistent formatting on the page. In this example, you rename the second button to <strong>Variance Chart</strong> and change the assigned action to the <strong>Variance Chart</strong> bookmark.</p>
+<p>You can then reposition the buttons anywhere on your canvas. For this example, you will position the new buttons on the left side of the canvas for easy navigation.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/3-two-buttons-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/3-two-buttons-ssm.png" alt="Screenshot of the two buttons on the left side." data-linktype="relative-path"></a></p>
+<p>Your buttons are now ready for use. You can use them to switch between two bookmarks with a different layout on the same page. When you select the <strong>Main Dashboard</strong> button, the main dashboard charts display, and when you select the <strong>Variance Chart</strong> button, the <strong>Variance</strong> chart displays.</p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Design report navigation</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/4-report-navigation/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

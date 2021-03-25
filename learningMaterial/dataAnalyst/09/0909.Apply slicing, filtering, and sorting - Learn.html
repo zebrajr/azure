@@ -1,0 +1,306 @@
+<html dir="ltr"><head><title>Apply slicing, filtering, and sorting - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/8-slicer-filters-sort">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/data-driven-story-power-bi/8-slicer-filters-sort</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Apply slicing, filtering, and sorting - Learn</h1>
+  <div dir="auto" id="reader-credits">heyrob</div>
+  <div dir="auto" id="reader-estimated-time">6-8 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>6 minutes</li>
+		</ul>
+			<p>Power BI Desktop provides three tools that you can use to edit and configure interactions between the visualizations that you add to your report: slicers, filters, and sorting.</p>
+<p>The process of filtering allows you to remove all the data that you don't need, so you can focus on the data that you do need. You can apply filtering directly by using the <strong>Filters</strong> pane or by adding and using a slicer. Slicers and filters are similar; both let you filter out the unnecessary data. Experiment with both options to see which one is the best mechanism for your report situation. You might decide to use one option over the other or use a combination of both.</p>
+<p>Contrary to filtering, the process of sorting allows you to highlight the important information without removing any of the data.</p>
+<h2 id="add-a-slicer">Add a slicer</h2>
+<p>A slicer is a type of filter that you can add to your report, so users can segment the data in the report by a specific value, such as by year or geographical location. Slicers narrow the portion of the dataset that is shown in the other report visualizations.</p>
+<p>You can use a slicer to:</p>
+<ul>
+<li><p>Provide quicker access to commonly used or important filters.</p>
+</li>
+<li><p>Simplify a user's ability to see the current filtered state without having to open a drop-down list.</p>
+</li>
+<li><p>Filter by columns that are unneeded and hidden in the data tables.</p>
+</li>
+<li><p>Create more focused reports (by putting slicers next to important visuals).</p>
+</li>
+<li><p>Defer queries to the data model by using a drop-down slicer, particularly when you are using DirectQuery.</p>
+</li>
+</ul>
+<p>Slicers are not supported for input fields and drilldown functions.</p>
+<p>When you add a slicer, you can change it to populate a list of items that you want to use to filter the elements of your page. You can make that list appear in a drop-down format if you want to save space for more important data on your report page. Rather than using a list format, you can turn your slicer into buttons to make it easier for users to filter data. Also, you can use your slicer with date type columns, so you can select a different data range by using the slider.</p>
+<p>To apply a slicer, select the <strong>Slicer</strong> icon in the <strong>Visualizations</strong> pane. Then, in the <strong>Fields</strong> pane, select the fields that you want to include in the slicer or drag them into the slicer visualization.</p>
+<p>The visualization then changes to a list of items (filters) with check boxes that you can use to segment the data. When you select an item's check box, Power BI will filter (slice) all the other visualizations on the same report page, as illustrated in the following image.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/8-use-slicer-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/8-use-slicer-ss.png" alt="Screenshot of the slicer icon in the Visualizations pane." data-linktype="relative-path"></a></p>
+<p>You can add as many slicers as you want to a report page. If you use a list type of slicer, you can configure the selection controls. Select the slicer and then, in the <strong>Format</strong> pane, expand the <strong>Selection controls</strong> section to view the following options:</p>
+<ul>
+<li><p><strong>Single select</strong> - This option is <strong>Off</strong> by default. It ensures that only one item can be selected at a time.</p>
+</li>
+<li><p><strong>Multi-select with CTRL</strong> - This option is <strong>On</strong> by default. It allows you to select multiple items by pressing the <strong>Ctrl</strong> key.</p>
+</li>
+<li><p><strong>Show "Select all"</strong> - This option is <strong>Off</strong> by default. If you turn on this option, a <strong>Select all</strong> check box is added to the slicer. You might want to add this option so that you can quickly select or clear all items in the list. If you select all items, selecting an item will clear it, allowing an <strong>is-not</strong> type of filter.</p>
+</li>
+</ul>
+<p>While slicers are useful, if you want to filter your data in a basic way, you don't need to add slicers to your report. Power BI Desktop has a <strong>Filters</strong> pane that can handle the basic slicer operations. Therefore, depending on your requirements, you might save time and effort by avoiding the use of slicers and using the <strong>Filters</strong> pane instead. By using this pane, you can reduce the total number of visuals on a report, which will improve performance.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/8-configure-slicer-controls-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/8-configure-slicer-controls-ss.png" alt="Screenshot of the Filters options for the visual." data-linktype="relative-path"></a></p>
+<h2 id="customize-filters">Customize filters</h2>
+<p>From the report user's perspective, the <strong>Filters</strong> pane contains filters that you, the report designer, have added to the report. The filters allow users to interact with the visuals at the report, page, and visual level.</p>
+<p>As a report designer, you can customize the <strong>Filters</strong> pane in Power BI Desktop as follows:</p>
+<ul>
+<li><p>Add and remove fields to filter on.</p>
+</li>
+<li><p>Change the filter state.</p>
+</li>
+<li><p>Format and customize the <strong>Filters</strong> pane so that it seems part of your report.</p>
+</li>
+<li><p>Define whether the <strong>Filters</strong> pane is open or collapsed by default when a consumer opens the report.</p>
+</li>
+<li><p>Hide the entire <strong>Filters</strong> pane or specific filters that you don't want report consumers to see.</p>
+</li>
+<li><p>Control and bookmark the visibility, open, and collapsed state of the <strong>Filters</strong> pane.</p>
+</li>
+<li><p>Lock filters that you don't want consumers to edit.</p>
+</li>
+</ul>
+<p>You can expand and collapse the <strong>Filters</strong> pane so that you can hide it when you do not need it. When you expand the <strong>Filters</strong> pane, depending on the item in the report that you have selected, you will see the following sections:</p>
+<ul>
+<li><p><strong>Filters on this visual</strong> - Filters that apply to the selected visual and nothing else. This section only displays if you have a visual selected.</p>
+</li>
+<li><p><strong>Filters on this page</strong> - Filters that apply to the whole page that you currently have open.</p>
+</li>
+<li><p><strong>Filters on all pages</strong> - Filters that apply to all the pages in your report.</p>
+</li>
+<li><p><strong>Drillthrough</strong> - Filters that apply to a single entity in a report.</p>
+</li>
+</ul>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/8-configure-filter-options-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/8-configure-filter-options-ss.png" alt="Screenshot of the Filters options set to Region is All and SalesAmount is All." data-linktype="relative-path"></a></p>
+<p>To apply a filter, drag and drop a field from the <strong>Fields</strong> pane into the relevant section of the <strong>Filter</strong> pane.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/8-add-field-filters-pane-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/8-add-field-filters-pane-ssm.png" alt="Screenshot of adding the field to the filters pane." data-linktype="relative-path"></a></p>
+<h2 id="sort-data">Sort data</h2>
+<p>You can sort the data that is displayed in your visuals so it's displayed to your specifications.</p>
+<p>Sorting helps you display the most important data in the most logical way, such as in alphabetical or numeric order. This basic feature can help when you are making significant business decisions. For example, if you display products with the highest sales first, you are helping users see which product is the most popular among the customer base. Similarly, the products with low sales can be discontinued or replaced with new products to help increase revenue.</p>
+<p>To sort a visual, start by selecting the <strong>More options...</strong> button in the upper-right corner of the visual, where you will have three sorting options:</p>
+<ul>
+<li><p><strong>Sort descending</strong> - Sorts the visual by the selected column in the order of greatest value to smallest value.</p>
+</li>
+<li><p><strong>Sort ascending</strong> - Sorts the visual by the selected column in the order of smallest value to greatest value.</p>
+</li>
+<li><p><strong>Sort by</strong> - Sorts the data by a specific column. Hover over this option to display the list of columns that you can select from.</p>
+</li>
+</ul>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/8-sort-visual-data-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/8-sort-visual-data-ss.png" alt="Screenshot of sorting the the data in a visual." data-linktype="relative-path"></a></p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Publish and export reports</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/9-reports/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

@@ -1,0 +1,367 @@
+<html dir="ltr"><head><title>Design a report layout - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/2-report-layout">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/data-driven-story-power-bi/2-report-layout</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Design a report layout - Learn</h1>
+  <div dir="auto" id="reader-credits">heyrob</div>
+  <div dir="auto" id="reader-estimated-time">14-18 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>13 minutes</li>
+		</ul>
+			<p>The page layout of the reports that you create in Power BI Desktop will likely depend on the business requirements, the context of the underlying data, and the output requirements. For example, if you are designing a dashboard, you'll need to present high-level information on a single page. If you are designing a report, it is a multi-perspective view into your dataset, with visuals that represent different findings and insights from that dataset.</p>
+<h2 id="report-design-best-practice">Report design best practice</h2>
+<p>The first step in designing an exceptional report layout is to choose the correct format. Likely, your manager (or whoever requested the report) will give you some requirements in terms of format. If not, you'll need to consider the audience and speculate about the kind of format that they'll want.</p>
+<p>For example, if your report users have a technical background and are looking for specific facts, you can use multiple, complex visuals that offer the most detail, along with interactive slicers. Conversely, if your users are looking for quick data insights at a high level, you could use a small range of basic visuals.</p>
+<p>If you have been given some layout requirements, you still need to carefully consider the report audience. Your goal is to provide the audience with the information that they need, in an optimal way. While you might have a strong opinion about what data to display and how to display it, ultimately, the report is not for you, it is for a dedicated audience that needs to make business decisions based on your report.</p>
+<p>Considering the different needs of the report audience is crucial. Your report audience might have hearing, motor, cognitive, or visual impairment. To accommodate those needs, you should create a report that offers an accessible experience, which means that the report will be simple to navigate and understand by keyboard or screen-reader users. You'll learn more about design and configuring your report for accessibility in subsequent sections.</p>
+<p>Carefully consider each visual and element that you plan on using in the report. Everything should have a purpose, and you should consider how each element will appear to your report users. While you might consider using different types of visuals for the sake of variety or to demonstrate your skill set, sometimes a simple visual is all that you need. Likely, your organization will have style guidelines for reports, in which case, you'll have to adhere to particular color scheme and font. Do keep in mind that the more visuals you use in your report, the more that they impact the performance of your report.</p>
+<p>Other key guidelines for creating a well-designed report layout include:</p>
+<ul>
+<li><p>Draw a sketch of your report layout. This approach will help you get an idea of what it will look like before you spend considerable time physically designing it. Alternatively, you could draw multiple sketches, where you try out different ideas and then discuss these ideas with your team to help select the best layout design.</p>
+</li>
+<li><p>Focus on the most important information. Highlight key parts of your report with a bright color or summary icon so that it stands out and draws users to the most critical metrics.</p>
+</li>
+<li><p>Select the right background for the context of your report. A white background can make your report look clean and professional, whereas a black background can draw attention to colorful highlights on the report. Using images as a background can add visual interest.</p>
+</li>
+</ul>
+<p>The following image shows a poorly designed report layout, which you should avoid. A later section will provide an example of the same report but with an improved design.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/2-example-bad-report-design-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/2-example-bad-report-design-ss.png" alt="Screenshot of an example of a bad report design." data-linktype="relative-path"></a></p>
+<p>The following sections provide more detailed guidance for setting up the report page and using visuals.</p>
+<h3 id="report-page">Report page</h3>
+<p>It is important to consider that you and the report users might view the reports on screens with different aspect ratios and sizes.</p>
+<p>The default display view is <strong>Fit to page</strong>, which means that the contents are scaled to best fit the page. If you need to change this view, go to the <strong>View</strong> tab, select <strong>Page view</strong>, and then select your preferred page view option, as illustrated in the following screenshot.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/2-page-view-options-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/2-page-view-options-ss.png" alt="Screenshot of the Page view options on the View tab." data-linktype="relative-path"></a></p>
+<p>To access the page settings, select the white space on your report canvas to open the <strong>Format</strong> pane. You can then configure the following settings to suit your needs: <strong>Page information</strong>, <strong>Page alignment</strong>, <strong>Page size</strong>, <strong>Wallpaper</strong>, <strong>Page background</strong>, and <strong>Filter pane</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/2-page-configuration-options-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/2-page-configuration-options-ssm.png" alt="Screenshot of the Page configuration options on Format pane." data-linktype="relative-path"></a></p>
+<h3 id="visuals">Visuals</h3>
+<p>You might want to use a combination of visuals in your report, such as cards, charts, tables, slicers, and so on. It is important to use the right number of visuals on a page, and then size and position those visuals strategically.</p>
+<h4 id="number-of-visuals">Number of visuals</h4>
+<p>Consider the number of visuals (including slicers) that you want to use on each report page. Using more visuals might have the opposite effect to what you are trying to achieve. More visuals might make your report look too busy, causing users to feel overwhelmed because they don't know where to focus their attention. Also, visuals are key factors in the performance of your report; they contribute to performance issues. The fewer visuals you use, the better the performance will be.</p>
+<p>It's best to limit the number of visuals that you use on a page. Examine each visual and ask yourself if it's necessary. If a visual does not add value to the audience, you should not use it in your report.</p>
+<p>Rather than using multiple visuals, you can provide information in other ways, such as drillthrough pages and report page tooltips. You'll learn more about these elements later in this module.</p>
+<h4 id="position-of-visuals">Position of visuals</h4>
+<p>When you add visualizations to a report, you can move those visuals to specific locations on the page and make them larger or smaller for a more effective display.</p>
+<p>It is best practice to place the most important visual in the upper-left corner of your report because your users most likely read left-to-right and top-to-bottom. You might also want to place your organization's logo in or near this area. You can then arrange the other visuals accordingly.</p>
+<p>To move a visualization, select any area of the visualization and then drag it to the new location.</p>
+<p>To evenly distribute distance between visuals that are located on the canvas, you can also use the <strong>Align</strong> function. Use <strong>CTRL</strong>+click to select all visuals that you want to align, select the <strong>Format</strong> tab, and then select <strong>Distribute horizontally</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/2-page-alignment-options-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/2-page-alignment-options-ssm.png" alt="Screenshot of the Page alignment options on Format tab." data-linktype="relative-path"></a></p>
+<p>The visuals will then be evenly distributed.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/2-evenly-distributed-visuals-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/2-evenly-distributed-visuals-ss.png" alt="Screenshot of evenly distributed visuals." data-linktype="relative-path"></a></p>
+<h4 id="size-of-visuals">Size of visuals</h4>
+<p>When you add a visual to a report, Power BI determines the size of that visual by default. You can resize that visual to ensure that it presents the displayed information most optimally. For example, if the visual is of a small car, you might want to make the visual smaller. Similarly, if you are working with a scatter chart visual with extensive data, you might want to make that visual larger in size so users can see the data clearly.</p>
+<p>To resize a visual, select the visual to display its border, and then select and drag the dark frame handles to the size that you want it to be.</p>
+<h4 id="interaction-of-visuals">Interaction of visuals</h4>
+<p>The visuals that you add to your report will interact with each other. For example, when you select an element in one visual, such as a product category, the other visuals will update in relation to that element; they might highlight or filter the specific data that they display. Therefore, when you are designing the report, it is important to understand these interactions and consider how they might affect the overall user experience of the report. You have control over how interactions flow between the visuals; therefore, you might want to change a filter action to a highlight (and contrariwise), or prevent an interaction from happening. This process will be further explained later in this module.</p>
+<h4 id="hierarchies-in-visuals">Hierarchies in visuals</h4>
+<p>Likely, you'll have a number of hierarchies in your data, so you should consider how these hierarchies will affect how the data displays in the visuals and the navigation experience of your report users. You can set how hierarchies are presented in the visuals. You can also determine the hierarchical path of visuals so that you have full control over what level of detail can be accessed. You'll learn more about hierarchies later in this module.</p>
+<h2 id="report-accessibility">Report accessibility</h2>
+<p>It is essential that you consider the possibility that your users might have hearing, motor, cognitive, or visual impairments. Therefore, make sure that you design a report that adheres to accessibility standards and that uses the available accessibility features within Power BI Desktop.</p>
+<p>Designing a report that offers an accessible experience will benefit all report users because it ensures that your report has an effective design and uses consistent formatting and color scheme or theme.</p>
+<p>Generally, when you are using Power BI with a screen reader, we recommend that you turn scan mode or browse mode off.</p>
+<p>To improve the process of creating reports with screen readers, a context menu is available. The menu allows you to move fields in the well up or down in the <strong>Fields</strong> list. The menu also allows you to move fields to other wells, such as <strong>Legend</strong>, <strong>Value</strong>, or others.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/2-context-menu-options-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/2-context-menu-options-ssm.png" alt="Screenshot of the context menu options with Move to > Legend selected." data-linktype="relative-path"></a></p>
+<h3 id="accessibility-standards">Accessibility standards</h3>
+<p>Power BI is committed to accessibility standards under the Web Content Accessibility Guidelines (WCAG). The standards help ensure that your Power BI experiences are accessible to as many people as possible. When you build accessible reports or dashboards, that content is accessible for anyone who views them by using Power BI Mobile.</p>
+<p>Web Content Accessibility Guidelines (WCAG) help make web content accessible to people with disabilities. The key principles of the guidelines are:</p>
+<ul>
+<li><p>Perceivable - Information and user interface components must be presentable to users in ways that they can perceive.</p>
+</li>
+<li><p>Operable - User interface components and navigation must be operable.</p>
+</li>
+<li><p>Understandable - Information and the operation of the user interface must be understandable.</p>
+</li>
+</ul>
+<h3 id="accessibility-features">Accessibility features</h3>
+<p>The following accessibility features are built in to Power BI Desktop, so you don't need to do any configuration in this regard:</p>
+<ul>
+<li><p>Keyboard navigation</p>
+</li>
+<li><p>Screen-reader compatibility</p>
+</li>
+<li><p>High contrast colors view</p>
+</li>
+<li><p>Focus mode</p>
+</li>
+<li><p>Show data table</p>
+</li>
+</ul>
+<p>Accessibility features that you do need to configure include:</p>
+<ul>
+<li><p>Alt text</p>
+</li>
+<li><p>Tab order</p>
+</li>
+<li><p>Titles and labels</p>
+</li>
+<li><p>Markers</p>
+</li>
+<li><p>Themes</p>
+</li>
+</ul>
+<h4 id="alt-text">Alt text</h4>
+<p>To accommodate report consumers who use screen readers, you can use alternative (alt) text to describe the appearance and function of objects (such as a visual, shape, and so on) on the report page. Alt text helps you ensure that users understand what you are trying to communicate with those objects, even if they are unable to see them.</p>
+<p>To add alt text to an object, select that object and, in the <strong>Visualizations</strong> pane, open the <strong>Format</strong> pane. Expand the <strong>General</strong> section, scroll to the bottom of the options, and then enter a description in the <strong>Alt Text</strong> box. Repeat this step for every object that conveys meaningful information on a report.</p>
+<p>If you do not want to use static text, you can use Data Analysis Expressions (DAX) measures and conditional formatting to create dynamic alt text. Screen readers will then call out values that are specific to the data that a report user is viewing.</p>
+<p>To apply conditional formatting, right-click the <strong>Alt Text</strong> box, select <strong>Conditional formatting</strong>, and then configure the settings as required.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/2-add-alt-text-option-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/2-add-alt-text-option-ssm.png" alt="Screenshot of adding alt text to an object." data-linktype="relative-path"></a></p>
+<h4 id="tab-order">Tab order</h4>
+<p>To help keyboard users navigate your report in an order that matches the way that visual users would, you can set the tab order.</p>
+<p>To set the tab order, select the <strong>View</strong> tab in the ribbon and then select <strong>Selection Pane</strong>. On the <strong>Selection</strong> pane that displays, use the arrow buttons to move the objects to the correct order, or select an object with your mouse and drag it into the position that you want in the list.</p>
+<p>To hide an object from the tab order, select the number next to that object. For example, it's best to hide decorative shapes and images that you have in your report.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/2-set-tab-order-objects-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/2-set-tab-order-objects-ss.png" alt="Screenshot of the Selection with the Tab order of objects." data-linktype="relative-path"></a></p>
+<h4 id="titles-and-labels">Titles and labels</h4>
+<p>To help all users, you should provide clear, concise, descriptive titles for your visuals and report pages. Avoid using acronyms or jargon that new users or users who are external to your organization will not understand.</p>
+<p>Compare the following images, where the image on the left shows a visual with an acronym in the title, and the image on the right shows a visual with a clearer title.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/2-comparison-visual-titles-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/2-comparison-visual-titles-ss.png" alt="Screenshot of the Comparison of visual titles" data-linktype="relative-path"></a></p>
+<p>Make sure that all labels within a visual are easy to read and understand. You can turn on or off the labels for each series in your visual or position them above or below a series to make them clearer. Don't turn on labels for every visual because it might have the opposite effect by distracting users and making your report less accessible.</p>
+<p>Compare the following images, where the first image has fewer numbers or descriptions of the data, whereas the second has several.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/2-comparison-visual-labels-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/2-comparison-visual-labels-ss.png" alt="Screenshot of a comparison of visual labels." data-linktype="relative-path"></a></p>
+<h4 id="markers">Markers</h4>
+<p>It's best practice to avoid using color (including the feature's conditional formatting) as the only way of conveying information. Instead, you can use markers to convey different series. For line, area, and combo visuals, including scatter and bubble visuals, you can turn on markers and use a different shape for each line.</p>
+<p>Keep in mind that, if you turn on markers for every visual, it might be distracting and make your report less accessible for users.</p>
+<p>To turn on markers, in the <strong>Format</strong> pane, expand the <strong>Shapes</strong> section, and then scroll down and move the <strong>Show marker</strong> slider to the <strong>On</strong> position.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/2-turn-markers-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/2-turn-markers-ssm.png" alt="Screenshot of the Shapes section with the Show marker option highlighted." data-linktype="relative-path"></a></p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/2-view-markers-visual-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/2-view-markers-visual-ss.png" alt="Screenshot of the markers added to the visual." data-linktype="relative-path"></a></p>
+<h4 id="themes">Themes</h4>
+<p>To make your reports even more accessible, ensure that enough contrast exists between the text and background colors; the contrast ratio should be at least 4.5:1. Several tools are available for you to use to check your report colors, such as Color Contrast Analyzer, WebAIM, and Accessible Colors.</p>
+<p>Some of your report viewers might have color vision deficiencies. Using fewer colors or a monochrome palette in your report can help mitigate the creation of inaccessible reports. The following color combinations are difficult for users with color vision deficiencies to distinguish, so you should avoid using them together in a chart or on the same report page.</p>
+<ul>
+<li><p>Green and red</p>
+</li>
+<li><p>Green and brown</p>
+</li>
+<li><p>Blue and purple</p>
+</li>
+<li><p>Green and blue</p>
+</li>
+<li><p>Light green and yellow</p>
+</li>
+<li><p>Blue and grey</p>
+</li>
+<li><p>Green and grey</p>
+</li>
+<li><p>Green and black</p>
+</li>
+</ul>
+<p>Power BI Desktop has built-in themes that you can use to make your report more accessible and generally look better. You can access these themes from the <strong>View</strong> tab. Select the <strong>Expand</strong> button to view all available themes and related options. Select any theme and it will automatically apply across the whole report. All visuals will use the colors and formatting from your selected theme as their defaults.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/2-view-theme-options-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/2-view-theme-options-ss.png" alt="Screenshot of the View tab theme options." data-linktype="relative-path"></a></p>
+<p>You can also import or create your custom themes by expanding the following <strong>Themes</strong> options.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/2-view-theme-options-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/2-view-theme-options-ssm.png" alt="Screenshot of the Import or Create theme options." data-linktype="relative-path"></a></p>
+<p>The following image depicts the same report that was shown at the beginning of this unit. However, in this image, the report has a better design; it has a planned layout and consistent color scheme and formatting.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/2-example-improved-report-design-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/2-example-improved-report-design-ss.png" alt="Screenshot of an example of an improved report design." data-linktype="relative-path"></a></p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Add buttons, bookmarks, and selections</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/3-buttons-bookmarks-selections/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

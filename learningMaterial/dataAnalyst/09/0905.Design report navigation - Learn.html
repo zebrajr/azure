@@ -1,0 +1,261 @@
+<html dir="ltr"><head><title>Design report navigation - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/4-report-navigation">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/data-driven-story-power-bi/4-report-navigation</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Design report navigation - Learn</h1>
+  <div dir="auto" id="reader-credits">heyrob</div>
+  <div dir="auto" id="reader-estimated-time">4-5 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>3 minutes</li>
+		</ul>
+			<p>Report navigation is the way in which your report users move from one page in your report to the next, move from one visual to another, and return to where they started. The design of your report navigation is important because, if users can't easily find their way around in your reports, they will become frustrated and will have a negative experience.</p>
+<p>You can use a range of buttons and bookmarks when designing your report navigation, and you can further enhance this navigation experience with the use of conditional formatting.</p>
+<h2 id="add-navigation-buttons">Add navigation buttons</h2>
+<p>To design the navigation within your report, you can create a new <strong>Navigation</strong> page in your report and add navigation buttons on that page. You can also use a combination of both options. When users select one of these buttons, they are brought directly to a different page within the report, which you can hide so that it can only be accessed through the <strong>Navigation</strong> page buttons.</p>
+<p>In the following example, you will create a <strong>Navigation</strong> page on which you add two navigation buttons to your other pages.</p>
+<p>Start by adding a button, as you did previously. This time, however, when you expand the <strong>Actions</strong> section in the <strong>Visualizations</strong> pane, select <strong>Page navigation</strong> as the action type, and then select the page in your report that is the <strong>Destination</strong> for the button.</p>
+<p>When you have set up the first navigation button, copy and paste that button to create the second navigation button so you preserve the formatting that you applied to the first button. Then, change the title and destination for the second button.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/4-assign-bookmark-as-action-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/4-assign-bookmark-as-action-ss.png" alt="Screenshot of assigning a bookmark as the action for a button." data-linktype="relative-path"></a></p>
+<p>When you select a button, you will be brought directly to the assigned page destination. When you are on that destination page, to return to the <strong>Navigation</strong> page, you can use one of the following <strong>Back</strong> button navigation options:</p>
+<ul>
+<li><p>Select the <strong>Back</strong> button from the main <strong>Buttons</strong> menu, and then reposition the button to where you want it to sit on the page.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/4-add-default-back-button-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/4-add-default-back-button-ssm.png" alt="Screenshot of the default back button at the top left." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Select the <strong>Blank</strong> button from the main <strong>Buttons</strong> menu, reposition and customize the button as required, and then select <strong>Back</strong> as the action type.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/4-add-customized-back-button-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/4-add-customized-back-button-ssm.png" alt="Screenshot of adding a customized back button." data-linktype="relative-path"></a></p>
+</li>
+</ul>
+<h2 id="set-the-navigation-destination">Set the navigation destination</h2>
+<p>You can use conditional formatting to set the navigation destination based on the output of a measure. One reason that you might want to use this type of navigation method is to save space in your report. For example, rather than using multiple navigation buttons (as illustrated in the previous image), you can use a single button to navigate to different pages based on the user's selection (as illustrated in the following image).</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/4-conditional-navigation-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/4-conditional-navigation-ss.png" alt="Screenshot of a Navigate to button with a drop-down selector." data-linktype="relative-path"></a></p>
+<p>Other reasons for using this type of navigation include:</p>
+<ul>
+<li><p>To specify the logical path that your report users should take. In other words, you determine the order in which users view each page.</p>
+</li>
+<li><p>To tell a data-driven story. For example, you could use it to give your employees a message that is backed up by the data. This method could be useful to help drive change, such as increase sales.</p>
+</li>
+<li><p>To create a reporting portal where users can navigate to a set of reports.</p>
+</li>
+</ul>
+<p>To use conditional formatting to set the navigation, start by creating a single-column table that contains the names of the navigation destinations. In the table, ensure that the entered values match your report page names.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/4-load-table-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/4-load-table-ss.png" alt="Screenshot of the Create Table dialog with a list of destinations to use for conditional navigation." data-linktype="relative-path"></a></p>
+<p>When you load the table, add it to the report page as a single-select slicer. Next, add a page navigation button. In the <strong>Actions</strong> section, ensure that <strong>None</strong> is set as the <strong>Destination</strong>, right-click the destination, and then select <strong>Conditional formatting</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/4-conditional-formatting-option-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/4-conditional-formatting-option-ss.png" alt="Screenshot of selecting the conditional formatting option for destination." data-linktype="relative-path"></a></p>
+<p>On the <strong>Destination</strong> window, select the name of the column that you created. Notice that, based on the user's selection, the button can navigate to different pages. Configure the conditional formatting to complete your navigation design.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/4-conditional-navigation-configuration-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/4-conditional-navigation-configuration-ss.png" alt="Screenshot of the Destination configuration options." data-linktype="relative-path"></a></p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Use basic interactions</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/5-basic-interactions/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

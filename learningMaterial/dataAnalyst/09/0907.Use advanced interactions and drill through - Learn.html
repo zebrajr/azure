@@ -1,0 +1,279 @@
+<html dir="ltr"><head><title>Use advanced interactions and drill through - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/6-advanced-interactions">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/data-driven-story-power-bi/6-advanced-interactions</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Use advanced interactions and drill through - Learn</h1>
+  <div dir="auto" id="reader-credits">heyrob</div>
+  <div dir="auto" id="reader-estimated-time">8-9 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>7 minutes</li>
+		</ul>
+			<p>To ensure that you have full control over the behavior of your report and can determine the expected user experience, you can edit the default interactions and use the drillthrough features.</p>
+<h2 id="edit-interactions">Edit interactions</h2>
+<p>You can use visual interaction controls to customize how the visualizations on your report page impact each other, in other words, filter and highlight each other.</p>
+<p>For example, when you select an item in a visual, the other visuals update to display data for that item; they might be highlighting or filtering the selected data. You can stop this occurrence from happening, or change a highlight action to a filter action and vice versa. Therefore, you have the power to determine what data is displayed for a specific selection that you've made.</p>
+<p>To enable the visual interaction controls, select a visualization, go to the <strong>Format</strong> tab in the ribbon, and then select <strong>Edit interactions</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/6-edit-interactions-button-option-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/6-edit-interactions-button-option-ssm.png" alt="Screenshot of the Edit interactions option." data-linktype="relative-path"></a></p>
+<p>The <strong>Edit interactions</strong> button turns grey to show that it's enabled, and <strong>Filter</strong>, <strong>Highlight</strong>, and/or <strong>None</strong> icons are added to the other visualizations on the report page. When you hover over an icon, a grey box displays over the related visual. The icon in bold is the one that is being applied. In the following image, notice that the donut chart is cross-filtering the card visuals and cross-highlighting the column chart. You can now change how the selected visualization interacts with the other visualizations on the report page.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/6-view-interactions-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/6-view-interactions-ssm.png" alt="Screenshot of the View interactions icon on visualizations." data-linktype="relative-path"></a></p>
+<p>You can now select each visualization on your report page, one at a time, to see how it interacts with the other visualizations. If you don't like the behavior that you see, you can change the interactions. These changes are saved with the report, so your report users will have the same visual interaction experience as you do.</p>
+<p>The following example shows how all elements are updated after the Components category has been selected. You can compare this image to the first image in this unit, when no category was selected.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/6-visual-interactions-one-element-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/6-visual-interactions-one-element-ss.png" alt="Screenshot of the visual interactions when one element is selected." data-linktype="relative-path"></a></p>
+<p>To change an interaction of a selected visual, select the required interaction icon. Remember, the applied interaction is displayed in bold. The following image shows that:</p>
+<ul>
+<li><p>The selected interaction is cross-filtered because the <strong>Filter</strong> icon is displayed in bold.</p>
+</li>
+<li><p>You can change the interaction to cross-highlight by selecting the <strong>Highlight</strong> icon.</p>
+</li>
+<li><p>You can remove the interaction altogether by selecting the <strong>None</strong> icon.</p>
+</li>
+</ul>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/6-change-interactions-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/6-change-interactions-ssm.png" alt="Screenshot of the icons used to change interactions." data-linktype="relative-path"></a></p>
+<p>Keep in mind that the number of interactions between your visuals will impact the performance of your report. To optimize the performance of your report, consider the query reduction options that are available within Power BI Desktop. You have the option to send fewer queries (which will reduce query chattiness) by disabling cross-highlighting/filtering by default. You can also disable certain interactions that would result in a poor experience, if the resulting queries take a long time to run.</p>
+<p>You can access the query reduction settings by selecting <strong>File</strong> &gt; <strong>Options and settings</strong> &gt; <strong>Options</strong>, then scrolling down and selecting the <strong>Query reduction</strong> option.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/6-query-reduction-settings-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/6-query-reduction-settings-ssm.png" alt="Screenshot of the Query reduction settings." data-linktype="relative-path"></a></p>
+<h2 id="drill-through">Drill through</h2>
+<p>You can use the <strong>Drill through</strong>&nbsp;feature to create a page in your report that focuses on a specific entity, such as a product, category, or region. You can then access this page when you drill through from the related visuals that are on other pages in your report. The information that displays on the drillthrough page will be specific to the item that you select on the visual, as illustrated in the following image.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/6-drill-through-example-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/6-drill-through-example-ssm.png" alt="Screenshot of the Drill through example." data-linktype="relative-path"></a></p>
+<p>In this example, you will create a drillthrough for the product category entity. You can start by creating a page in your report and rename it to <strong>Details Page</strong>. On that page, you will add a visual for the entity that you want to provide the drillthrough for (a table that displays data for the <strong>Category</strong>, <strong>SubCategory</strong>, <strong>Country</strong>, <strong>Gross Sales</strong>, and <strong>Net Sales</strong> fields).</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/6-drill-through-detail-page-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/6-drill-through-detail-page-ss.png" alt="Screenshot of the Drill through detail page." data-linktype="relative-path"></a></p>
+<p>Then, from the <strong>Values</strong> section of the <strong>Visualizations</strong> pane, drag the field (<strong>Category Name</strong>) for which you want to enable drillthrough in the <strong>Drill through</strong> filters well.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/6-drag-category-name-drill-through-filters-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/6-drag-category-name-drill-through-filters-ss.png" alt="Screenshot of dragging the Category name from the values section to drill-through filters." data-linktype="relative-path"></a></p>
+<p>Ensure that the <strong>Keep all filters</strong> option is set to <strong>ON</strong>, so when you drill through from a visual, the same filters will be applied on the <strong>Details</strong> page.</p>
+<p>Power BI Desktop automatically creates a <strong>Back</strong> button visual on the page for you. This button is for navigation purposes, so your report users can return to the report page from which they came. You can reposition and resize this button on the report page or replace it with your own type of button.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/6-back-button-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/6-back-button-ssm.png" alt="Screenshot of the Back button visual on the page." data-linktype="relative-path"></a></p>
+<p>To use drillthrough, right-click a data point on a visual in another report page, select <strong>Drill through</strong>, and then select the focused page (<strong>Details page</strong>) to get details that are filtered to that context.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/6-select-drill-through-context-menu-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/6-select-drill-through-context-menu-ssm.png" alt="Screenshot of the drill through context menu." data-linktype="relative-path"></a></p>
+<h2 id="cross-report-drillthrough">Cross-report drillthrough</h2>
+<p>The <strong>Cross-report drillthrough</strong> feature allows you to contextually jump from one report to another report in the same Power BI service workspace or app. This feature allows you to connect two or more reports that have related content. You can also pass filter context along with that cross-report connection.</p>
+<p>For example, you can select a data point on a visual in one report, then drill through to related, detailed information that is in another report.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/6-cross-report-drill-through-example-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/6-cross-report-drill-through-example-ssm.png" alt="Screenshot of the Cross-report drillthrough example." data-linktype="relative-path"></a></p>
+<p>To enable <strong>Cross-report drillthrough</strong>, you first need to validate the data models for the source and target reports. Though the schemas in each report don't have to be the same, both data models must contain the fields that you want to pass. Also, the names of those fields, and the names of the tables that they belong to, must be identical. The strings must match and are case-sensitive. If they are not identical, you must update the field name or table name in the underlying model.</p>
+<p>When you have validated your data models, you need to enable the <strong>Cross-report drillthrough</strong> feature in Power BI Desktop. Go to <strong>File &gt; Options and settings &gt; Options</strong>, then scroll down the <strong>Current File</strong> settings and select <strong>Report settings</strong>. In the <strong>Cross-report drillthrough</strong> section, select the check box for <strong>Allow visuals in this report to use drillthrough targets from other reports</strong> and then select <strong>OK</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/6-enable-cross-report-drill-through-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/6-enable-cross-report-drill-through-ssm.png" alt="Screenshot of the cross-report drillthrough option in Report settings." data-linktype="relative-path"></a></p>
+<div>
+<p> Note</p>
+<p>The <strong>Cross-report drillthrough</strong> feature can also be enabled/disabled in the <strong>Report settings</strong> in Power BI service.</p>
+</div>
+<p>Next, you will set up a target page for the cross-report drillthrough in the same way that you would set up a page for a drillthrough within a report in the previous section. The other visuals will target that page for drillthrough.</p>
+<p>When you have set up the target page, go to the <strong>Drillthrough</strong> section of the <strong>Visualizations</strong> pane and set the <strong>Cross-report</strong> option to the <strong>On</strong> position. Then, drag the fields that you want to use as drillthrough targets into the <strong>Drill through</strong> filters well. For each field, select whether you want to allow drillthrough when the field is used as a category or when it's summarized like a measure.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/6-select-fields-cross-report-drill-through-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/6-select-fields-cross-report-drill-through-ssm.png" alt="Screenshot of selecting fields for cross-report drillthrough." data-linktype="relative-path"></a></p>
+<p>Select whether you want the <strong>Keep all filters</strong> option <strong>On</strong> or <strong>Off</strong> for the visual. If you don't want to pass filters that are applied to the source visual to your target visual, select <strong>Off</strong>.</p>
+<p>Similar to when you create a drillthrough for a single report, Power BI Desktop automatically adds a <strong>Back</strong> button to the target drillthrough page. However, in this case, you should delete the <strong>Back</strong> button because it only works for navigation within a report.</p>
+<p>When you save and publish your changes, you can use the <strong>Cross-report drillthrough</strong> feature. Select the source report in the Power BI service, and then select a visual that uses the <strong>Drill through</strong> field in the way that you specified when you set up the target page. Right-click a data point on the visual, select <strong>Drill through</strong>, and then select the drillthrough target. Notice that the <strong>Cross-report drillthrough</strong> targets are formatted as Page name [Report name].</p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Configure conditional formatting</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/7-conditional-formatting/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

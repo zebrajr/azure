@@ -1,0 +1,657 @@
+<html dir="ltr"><head><title>Lab - Design a report in Power BI desktop, Part 2 - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/13-lab">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/data-driven-story-power-bi/13-lab</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Lab - Design a report in Power BI desktop, Part 2 - Learn</h1>
+  <div dir="auto" id="reader-credits">heyrob</div>
+  <div dir="auto" id="reader-estimated-time">14-17 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>45 minutes</li>
+		</ul>
+			<h2 id="access-your-environment">Access your environment</h2>
+<p>Before you start this lab, select <strong>Launch lab</strong> above.</p>
+<p>To log in to your lab environment:</p>
+<ol>
+<li>Click anywhere on the Windows desktop in the lab window.</li>
+<li>On the <strong>Resources</strong> tab on the lab side bar, select the <strong>T</strong> icon next to <strong>Password</strong>. The machine password is automatically entered for you. You can log in with the Student profile.</li>
+<li>Press <strong>Enter</strong>.</li>
+</ol>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/includes/vm-login.png" alt="Image of the lab password on the Resources tab." data-linktype="relative-path"></p>
+<p>You can now begin your work on this lab.</p>
+<p><strong>The estimated time to complete the lab is 45 minutes</strong></p>
+<p>In this lab, you will enhance the <strong>Sales&nbsp;Analysis</strong> with advanced design features.</p>
+<p>In this lab, you will learn how to:</p>
+<ul>
+<li><p>Sync slicers</p>
+</li>
+<li><p>Create a drillthrough page</p>
+</li>
+<li><p>Apply conditional formatting</p>
+</li>
+<li><p>Create and use bookmarks</p>
+</li>
+</ul>
+<h3 id="lab-story">Lab story</h3>
+<p>This lab is one of many in a series of labs that was designed as a complete story from data preparation to publication as reports and dashboards. You can complete the labs in any order. However, if you intend to work through multiple labs, for the first 10 labs, we suggest you do them in the following order:</p>
+<ol>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/get-data/lab-prepare/" data-linktype="absolute-path" target="az-portal">Prepare data in Power BI Desktop</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/clean-data-power-bi/8-lab/" data-linktype="absolute-path" target="az-portal">Load data in Power BI Desktop</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/design-model-power-bi/8-lab/" data-linktype="absolute-path" target="az-portal">Model data in Power BI Desktop, part 1</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/design-model-power-bi/9-lab/" data-linktype="absolute-path" target="az-portal">Model data in Power BI Desktop, part 2</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/create-measures-dax-power-bi/6-lab/" data-linktype="absolute-path" target="az-portal">Create DAX calculations in Power BI Desktop, part 1</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/create-measures-dax-power-bi/8-lab/" data-linktype="absolute-path" target="az-portal">Create DAX calculations in Power BI Desktop, part 2</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/visuals-power-bi/8-lab/" data-linktype="absolute-path" target="az-portal">Design a report in Power BI Desktop, part 1</a></p>
+</li>
+<li><p><strong>Design a report in Power BI Desktop, part 2</strong></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/create-dashboards-power-bi/9-lab/" data-linktype="absolute-path" target="az-portal">Create a Power BI dashboard</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/ai-visuals-power-bi/5-lab/" data-linktype="absolute-path" target="az-portal">Perform data analysis in Power BI Desktop</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/create-paginated-reports-power-bi/6-lab/" data-linktype="absolute-path" target="az-portal">Create a Power BI paginated report</a></p>
+</li>
+</ol>
+<h2 id="exercise-1-configure-sync-slicers">Exercise 1: Configure sync slicers</h2>
+<p>In this exercise, you will sync the report page slicers.</p>
+<h3 id="task-1-get-started---sign-in">Task 1: Get started - Sign in</h3>
+<p>In this task you'll set up the environment for the lab by signing in to Power BI.</p>
+<div>
+<p> Important</p>
+<p>If you have already signed into Power BI, continue from the next task.</p>
+</div>
+<ol>
+<li><p>To open Microsoft Edge, on the taskbar, select the Microsoft Edge program shortcut.</p>
+</li>
+<li><p>In the Microsoft Edge browser window, navigate to <a href="https://powerbi.com/" data-linktype="external">https://powerbi.com</a>.</p>
+<div>
+<p> Tip</p>
+<p>You can also use the Power BI Service favorite on the Microsoft Edge favorites bar.</p>
+</div>
+</li>
+<li><p>Select <strong>Sign In</strong> (located at the top-right corner).</p>
+</li>
+<li><p>Enter the account details provided to you.</p>
+</li>
+<li><p>If prompted to update the password, reenter the provided password, and then enter and confirm a new password.</p>
+<div>
+<p> Important</p>
+<p>Be sure to record your new password.</p>
+</div>
+</li>
+<li><p>Complete the sign in process.</p>
+</li>
+<li><p>If prompted by Microsoft Edge to stay signed in, select <strong>Yes</strong>.</p>
+</li>
+<li><p>In the Microsoft Edge browser window, in the Power BI service, in the <strong>Navigation</strong> pane, expand <strong>My Workspace</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/lab-1-a-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/lab-1-a-ssm.png" alt="Screenshot of the Navigation pane with the My workspace expand button highlighted." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Leave the Microsoft Edge browser window open.</p>
+</li>
+</ol>
+<h3 id="task-2-get-started--open-report">Task 2: Get started – Open report</h3>
+<p>In this task you'll set up the environment for the lab by opening the starter report.</p>
+<div>
+<p> Important</p>
+<p>If you're continuing on from the previous lab (and you completed that lab successfully), do not complete this task. Instead, continue from the next task.</p>
+</div>
+<ol>
+<li><p>To open the Power BI Desktop, on the taskbar, select the Microsoft Power BI Desktop shortcut.</p>
+</li>
+<li><p>To close the getting started window, at the top-left of the window, select <strong>X</strong>.</p>
+</li>
+<li><p>To sign in to the Power BI service, at the top-right, select <strong>Sign In</strong>.</p>
+</li>
+<li><p>Complete the sign in process using the same account used to sign in to the Power BI service.</p>
+</li>
+<li><p>To open the starter Power BI Desktop file, select the <strong>File</strong> ribbon tab to open the backstage view.</p>
+</li>
+<li><p>Select <strong>Open Report</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/lab-1-b-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/lab-1-b-ssm.png" alt="Screenshot of the File menu expanded and the Open report option highlighted." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Select <strong>Browse Reports</strong>.</p>
+</li>
+<li><p>In the Open window, navigate to the <strong>D:\DA100\Labs\design-report-in-power-bi-desktop-enhanced\Starter</strong> folder.</p>
+</li>
+<li><p>Select the <strong>Sales Analysis</strong> file.</p>
+</li>
+<li><p>Select <strong>Open</strong>.</p>
+</li>
+<li><p>Close any informational windows that may open.</p>
+</li>
+<li><p>To create a copy of the file, select the <strong>File</strong> ribbon tab to open the backstage view.</p>
+</li>
+<li><p>Select <strong>Save As</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/lab-1-c-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/lab-1-c-ssm.png" alt="Screenshot of the File menu expanded and the Save as option highlighted." data-linktype="relative-path"></a></p>
+</li>
+<li><p>If prompted to apply changes, select <strong>Apply</strong>.</p>
+</li>
+<li><p>In the <strong>Save As</strong> window, navigate to the <strong>D:\DA100\MySolution</strong> folder.</p>
+</li>
+<li><p>Select <strong>Save</strong>.</p>
+</li>
+</ol>
+<h3 id="task-3-sync-slicers">Task 3: Sync slicers</h3>
+<p>In this task, you will sync the <strong>Year</strong> and <strong>Region</strong> slicers.</p>
+<p>You will continue the development of the report created in the <strong>Design a report in Power BI Desktop, Part 1</strong> lab.</p>
+<ol>
+<li><p>In Power BI Desktop, on the <strong>Overview</strong> page, set the <strong>Year</strong> slicer to <strong>FY2018</strong>.</p>
+</li>
+<li><p>Go to the <strong>My&nbsp;Performance</strong> page, and then notice that the <strong>Year</strong> slicer is a different value.</p>
+<p>When slicers aren't synced, it can contribute to misrepresentation of data and frustration for report users. You'll now sync the report slicers.</p>
+</li>
+<li><p>Return to the <strong>Overview</strong> page, and then select the <strong>Year</strong> slicer.</p>
+</li>
+<li><p>On the <strong>View</strong> ribbon tab, from inside the <strong>Show&nbsp;Panes</strong> group, select <strong>Sync&nbsp;Slicers</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/lab-1-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/lab-1-ssm.png" alt="Screenshot of the Sync slicers button on the View tab." data-linktype="relative-path"></a></p>
+</li>
+<li><p>In the <strong>Sync&nbsp;Slicers</strong> pane (at the left of the <strong>Visualizations</strong> pane), in the second column (which represents syncing),  select the  checkboxes for the <strong>Overview</strong> and <strong>My&nbsp;Performance</strong> pages.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/lab-2-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/lab-2-ssm.png" alt="Screenshot of the Sync slicers pane with page names to select." data-linktype="relative-path"></a></p>
+</li>
+<li><p>On the <strong>Overview</strong> page, select the <strong>Region</strong> slicer.</p>
+</li>
+<li><p>Sync the slicer with the <strong>Overview</strong> and <strong>Profit</strong> pages.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/lab-3-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/lab-3-ssm.png" alt="Screenshot of the Sync slicers pane with Overview and Profit pages selected." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Test the sync slicers by selecting different filter options, and then verifying that the synced slicers filter by the same selection.</p>
+</li>
+<li><p>To close the <strong>Sync&nbsp;Slicer</strong> page, select the <strong>X</strong> located at the top-right of the pane.</p>
+</li>
+</ol>
+<h2 id="exercise-2-configure-drill-through">Exercise 2: Configure drill through</h2>
+<p>In this exercise, you will create a new page and configure it as a drill through page. When you've completed the design, the page will look like the following:</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/lab-4-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/lab-4-ss.png" alt="Screenshot of the final design of the drill through page that you will build." data-linktype="relative-path"></a></p>
+<h3 id="task-1-create-a-drill-through-page">Task 1: Create a drill through page</h3>
+<p>In this task, you will create a new page and configure it as a drill through page.</p>
+<ol>
+<li><p>Add a new report page named <strong>Product&nbsp;Details</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/lab-5-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/lab-5-ssm.png" alt="Screenshot of the new report page at the bottom of the screen." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Right-click the <strong>Product&nbsp;Details</strong> page tab, and then select <strong>Hide&nbsp;Page</strong>.</p>
+<p>Report users won't be able to go to the drill through page directly. They'll need to access it from visuals on other pages. You'll learn how to drill through to the page in the final exercise of this lab.</p>
+</li>
+<li><p>Beneath the <strong>Visualizations</strong> pane, in the <strong>Drill&nbsp;Through</strong> section, add the <strong>Product&nbsp;|&nbsp;Category</strong> field to the <strong>Add&nbsp;Drill-Through&nbsp;Fields&nbsp;Here</strong> box.</p>
+<p>The labs use a shorthand notation to reference a field. It looks like this: <strong>Product | Category</strong>. In this example, <strong>Product</strong> is the table name and <strong>Category</strong> is the field name.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/lab-6-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/lab-6-ssm.png" alt="Screenshot of the Drill through section with the Category field highlighted." data-linktype="relative-path"></a></p>
+</li>
+<li><p>To test the drill through page, in the drill through filter card, select <strong>Bikes</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/lab-7-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/lab-7-ssm.png" alt="Screenshot of the drill through filter card with Bikes selected." data-linktype="relative-path"></a></p>
+</li>
+<li><p>At the top-left of the report page, notice the arrow button.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/lab-8-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/lab-8-ss.png" alt="Screenshot of the top-left arrow button." data-linktype="relative-path"></a></p>
+<p>A button is added automatically when a field is added to the drill through well. It allows report users to navigate back to the page from which they drilled through.</p>
+</li>
+<li><p>Add a <strong>Card</strong> visual to the page, and then resize and reposition it so it sits to the right of the button and fills the remaining width of the page.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/lab-9-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/lab-9-ssm.png" alt="Screenshot of the Visualizations pane with the Card visual highlighted." data-linktype="relative-path"></a></p>
+
+<blockquote>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/lab-10-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/lab-10-ss.png" alt="Screenshot of the Image of the size and position of the Card visual." data-linktype="relative-path"></a></p>
+</blockquote>
+</li>
+<li><p>Drag the <strong>Product&nbsp;|&nbsp;Category</strong> field into the card visual.</p>
+</li>
+<li><p>Configure the format options for the visual, and then turn the <strong>Category&nbsp;Label</strong> property to <strong>Off</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/lab-11-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/lab-11-ssm.png" alt="Screenshot of the Category label turned off." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Set the <strong>Background&nbsp;Color</strong> property to a light shade of gray.</p>
+</li>
+<li><p>Add a <strong>Table</strong> visual to the page, and then resize and reposition it so it sits beneath the card visual and fills the remaining space on the page.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/lab-12-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/lab-12-ssm.png" alt="Screenshot of the Visualizations pane with the table visual highlighted." data-linktype="relative-path"></a></p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/lab-13-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/lab-13-ss.png" alt="Screenshot of the Image of the size and position of the table visual on the pane." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Add the following fields to the visual:</p>
+<ul>
+<li><p>Product&nbsp;|&nbsp;Subcategory</p>
+</li>
+<li><p>Product&nbsp;|&nbsp;Color</p>
+</li>
+<li><p>Sales&nbsp;|&nbsp;Quantity</p>
+</li>
+<li><p>Sales&nbsp;|&nbsp;Sales</p>
+</li>
+<li><p>Sales&nbsp;|&nbsp;Profit&nbsp;Margin</p>
+</li>
+</ul>
+</li>
+<li><p>Configure the format options for the visual, and in the <strong>Grid</strong> section, set the <strong>Text&nbsp;Size</strong> property to <strong>20pt</strong>.</p>
+<p>The design of the drill through page is almost complete. In the next exercise, you'll enhance the page with conditional formatting.</p>
+</li>
+</ol>
+<h2 id="exercise-3-add-conditional-formatting">Exercise 3: Add conditional formatting</h2>
+<p>In this exercise, you will enhance the drill through page with conditional formatting. When you've completed the design, the page will look like the following:</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/lab-14-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/lab-14-ss.png" alt="Screenshot of the final drill through page that you will build." data-linktype="relative-path"></a></p>
+<h3 id="task-1-add-conditional-formatting">Task 1: Add conditional formatting</h3>
+<p>In this task, you will enhance the drill through page with conditional formatting.</p>
+<ol>
+<li><p>Select the table visual.</p>
+</li>
+<li><p>In the visual fields pane, for the <strong>Profit&nbsp;Margin</strong> field, select the down-arrow, and then select <strong>Conditional&nbsp;Formatting&nbsp;|&nbsp;Icons</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/lab-15-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/lab-15-ssm.png" alt="Screenshot of the Screenshots of the Profit margin field down-arrow, Conditional formatting down-arrow and Icons selected." data-linktype="relative-path"></a></p>
+</li>
+<li><p>In the <strong>Icons&nbsp;-&nbsp;Profit&nbsp;Margin</strong> window, in the <strong>Icon&nbsp;Layout</strong> dropdown list, select <strong>Right&nbsp;of&nbsp;Data</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/lab-16-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/lab-16-ssm.png" alt="Screenshot of the Icons, Profit Margin window with Icon layout highlighted." data-linktype="relative-path"></a></p>
+</li>
+<li><p>To delete the middle rule, at the left of the yellow triangle, select <strong>X</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/lab-17-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/lab-17-ssm.png" alt="Screenshot of the X to delete the middle rule." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Configure the first rule (red diamond) as follows:</p>
+<ul>
+<li><p>In the second control, remove the value</p>
+</li>
+<li><p>In the third control, select <strong>Number</strong></p>
+</li>
+<li><p>In the fifth control, enter <strong>0</strong></p>
+</li>
+<li><p>In the sixth control, select <strong>Number</strong></p>
+</li>
+</ul>
+</li>
+<li><p>Configure the second rule (green circle) as follows:</p>
+<ul>
+<li><p>In the second control, enter <strong>0</strong></p>
+</li>
+<li><p>In the third control, select <strong>Number</strong></p>
+</li>
+<li><p>In the fifth control, remove the value</p>
+</li>
+<li><p>In the sixth control, select <strong>Number</strong></p>
+</li>
+</ul>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/lab-18-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/lab-18-ssm.png" alt="Screenshot of the second and third rules." data-linktype="relative-path"></a></p>
+<p>The rules are as follows:</p>
+<ul>
+<li>Display a red diamond if the profit margin value is less than 0.</li>
+<li>Otherwise if the value is greater than or equal to zero, display the green circle.</li>
+</ul>
+</li>
+<li><p>Select <strong>OK</strong>.</p>
+</li>
+<li><p>In the table visual, verify that the that the correct icons are displayed.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/lab-19-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/lab-19-ss.png" alt="Screenshot of the table visual with the green circles and red diamonds." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Configure background color conditional formatting for the <strong>Color</strong> field.</p>
+</li>
+<li><p>In the <strong>Background&nbsp;color&nbsp;-&nbsp;Color</strong> window, in the <strong>Format&nbsp;By</strong> dropdown list, select <strong>Field&nbsp;Value</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/lab-20-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/lab-20-ssm.png" alt="Screenshot of the Background color window." data-linktype="relative-path"></a></p>
+</li>
+<li><p>In the <strong>Based&nbsp;on&nbsp;field</strong> dropdown list, select <strong>Product&nbsp;|&nbsp;Formatting&nbsp;|&nbsp;Background&nbsp;Color&nbsp;Format</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/lab-21-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/lab-21-ssm.png" alt="Screenshot of the Based on field window." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Select <strong>OK</strong>.</p>
+</li>
+<li><p>Repeat the previous steps to configure font color conditional formatting for the <strong>Color</strong> field, using the <strong>Product&nbsp;|&nbsp;Formatting&nbsp;|&nbsp;Font&nbsp;Color&nbsp;Format</strong> field.</p>
+</li>
+</ol>
+<p>You may recall that the background and font colors were sourced from the <strong>ColorFormats.csv</strong> file in the <strong>Prepare data in Power BI Desktop</strong> lab, and then integrated with the <strong>Product</strong> query in the <strong>Load data in Power BI Desktop</strong> lab.</p>
+<h2 id="exercise-4-add-bookmarks-and-buttons">Exercise 4: Add bookmarks and buttons</h2>
+<p>In this exercise, you will enhance the <strong>My&nbsp;Performance</strong> page with buttons, allowing the report user to select the visual type to display. When you've completed the design, the page will look like the following:</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/lab-22-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/lab-22-ss.png" alt="Screenshot of the enhanced My Performance page that you will build." data-linktype="relative-path"></a></p>
+<h3 id="task-1-add-bookmarks">Task 1: Add bookmarks</h3>
+<p>In this task, you will add two bookmarks, one to display each of the monthly sales/targets visuals.</p>
+<ol>
+<li><p>Go to the <strong>My&nbsp;Performance</strong> page.</p>
+</li>
+<li><p>On the <strong>View</strong> ribbon tab, from inside the <strong>Show&nbsp;Panes</strong> group, select <strong>Bookmarks</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/lab-23-a-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/lab-23-a-ssm.png" alt="Screenshot of the View ribbon tab with Bookmarks highlighted." data-linktype="relative-path"></a></p>
+</li>
+<li><p>On the <strong>View</strong> ribbon tab, from inside the <strong>Show&nbsp;Panes</strong> group, select <strong>Selection</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/lab-23-b-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/lab-23-b-ssm.png" alt="Screenshot of the View ribbon tab with Selection highlighted" data-linktype="relative-path"></a></p>
+</li>
+<li><p>In the <strong>Selection</strong> pane, beside one of the <strong>Sales&nbsp;and&nbsp;Target&nbsp;by&nbsp;Month</strong> items, to hide the visual, select the eye icon.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/lab-23-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/lab-23-ssm.png" alt="Screenshot of the Selection pane with the eye icon." data-linktype="relative-path"></a></p>
+</li>
+<li><p>In the <strong>Bookmarks</strong> pane, select <strong>Add</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/lab-24-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/lab-24-ssm.png" alt="Screenshot of the Bookmarks pane with the Add button highlighted." data-linktype="relative-path"></a></p>
+</li>
+<li><p>To rename the bookmark, double-click the bookmark.</p>
+</li>
+<li><p>If the visible chart is the bar chart, rename the bookmark as <strong>Bar&nbsp;Chart&nbsp;ON</strong>, otherwise rename the bookmark as <strong>Column&nbsp;Chart&nbsp;ON</strong>.</p>
+</li>
+<li><p>To edit the bookmark, in the <strong>Bookmarks</strong> pane, hover the cursor over the bookmark, click the ellipsis, and then select <strong>Data</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/lab-25-a-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/lab-25-a-ssm.png" alt="Screenshot of the Bookmarks pane with the Bar Chart ON ellipsis selected and the Data option highlighted." data-linktype="relative-path"></a></p>
+<p>Disabling the <strong>Data</strong> option means the bookmark won’t use the current filter state. That’s important because otherwise the bookmark would permanently lock in the filter currently applied by the Year slicer.</p>
+</li>
+<li><p>To update the bookmark, click the ellipsis again, and then select Update.</p>
+<p>In the following steps, you’ll create and configure a second bookmark to show the second visual.</p>
+</li>
+<li><p>In the <strong>Selection</strong> pane, toggle the visibility of the two <strong>Sales&nbsp;and&nbsp;Target&nbsp;by&nbsp;Month</strong> items.</p>
+<p>In other words, make the visible visual hidden, and make the hidden visual visible.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/lab-25-b-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/lab-25-b-ssm.png" alt="Screenshot of the Selection pane with the visible icons highlighted." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Create a second bookmark, and name it appropriately (either <strong>Column&nbsp;Chart&nbsp;ON</strong> or <strong>Bar&nbsp;Chart&nbsp;ON).</strong></p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/lab-25-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/lab-25-ssm.png" alt="Screenshot of the Bookmarks pane with Bar Chart ON and Column Chart ON." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Configure the second bookmark to ignore filters (<strong>Data</strong> option off), and update the bookmark.</p>
+</li>
+<li><p>In the <strong>Selection</strong> pane, to make both visuals visible, show the hidden visual.</p>
+</li>
+<li><p>Resize and reposition both visuals so they fill the page beneath the multi-card visual, and completely overlap one another.</p>
+<div>
+<p> Tip</p>
+<p>To select the visual that is covered up, select it in the <strong>Selection</strong> pane.</p>
+</div>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/lab-26-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/lab-26-ss.png" alt="Screenshot of the Image of the size and position of the second visual on the pane." data-linktype="relative-path"></a></p>
+</li>
+<li><p>In the <strong>Bookmarks</strong> pane, select each of the bookmarks, and notice that only one of the visuals is visible.</p>
+</li>
+</ol>
+<p>The next stage of design is to add two buttons to the page, which will allow the report user to select the bookmarks.</p>
+<h3 id="task-2-add-buttons">Task 2: Add buttons</h3>
+<p>In this task, you will add two buttons, and assign bookmark actions to each.</p>
+<ol>
+<li><p>On the <strong>Insert</strong> ribbon, from inside the <strong>Elements</strong> group, select <strong>Button</strong>, and then select <strong>Blank</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/lab-27-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/lab-27-ssm.png" alt="Screenshot of the Insert, Buttons, Blank choices from the ribbon." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Reposition the button directly beneath the <strong>Year</strong> slicer.</p>
+</li>
+<li><p>Select the button, and the in the <strong>Visualizations</strong> pane, turn the <strong>Button&nbsp;Text</strong> property to <strong>On</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/lab-27-a-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/lab-27-a-ssm.png" alt="Screenshot of the Visualizations pane with Button Text set to On." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Expand the <strong>Button&nbsp;Text</strong> section, and then in the <strong>Button&nbsp;Text</strong> box, enter <strong>Bar&nbsp;Chart</strong>.</p>
+</li>
+<li><p>Expand the <strong>Background</strong> section, and then set a background color using a complementary color.</p>
+</li>
+<li><p>Turn the <strong>Action</strong> property to <strong>On</strong> (located near the bottom of the list).</p>
+</li>
+<li><p>Expand the <strong>Action</strong> section, and then set the <strong>Type</strong> dropdown list to <strong>Bookmark</strong>.</p>
+</li>
+<li><p>In the <strong>Bookmark</strong> dropdown list, select <strong>Bar&nbsp;Chart&nbsp;ON</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/lab-27-b-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/lab-27-b-ssm.png" alt="Screenshot of the Action section with Type and Bookmark highlighted." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Create a copy of the button by using copy and paste, and then configure the new button as follows:</p>
+<div>
+<p> Tip</p>
+<p>The shortcut commands for copy and paste are <strong>Ctrl+C</strong> followed by <strong>Ctrl+V.</strong></p>
+</div>
+<ul>
+<li><p>Set the <strong>Button&nbsp;Text</strong> property to <strong>Column&nbsp;Chart</strong></p>
+</li>
+<li><p>In the <strong>Action</strong> section, set the <strong>Bookmark</strong> dropdown list to <strong>Column&nbsp;Chart&nbsp;ON</strong></p>
+</li>
+</ul>
+</li>
+</ol>
+<p>The design of the Sales Analysis report is now complete.</p>
+<h3 id="task-3-publish-the-report">Task 3: Publish the report</h3>
+<p>In this task, you will publish the report.</p>
+<ol>
+<li><p>Select the <strong>Overview</strong> page.</p>
+</li>
+<li><p>In the <strong>Year</strong> slicer, select <strong>FY2020</strong>.</p>
+</li>
+<li><p>In the <strong>Region</strong> slicer, choose <strong>Select&nbsp;All</strong>.</p>
+</li>
+<li><p>Save the Power&nbsp;BI&nbsp;Desktop file.</p>
+<p>The file must always be saved prior to publishing to the Power BI service.</p>
+</li>
+<li><p>On the Home ribbon tab, from inside the <strong>Share</strong> group, click <strong>Publish</strong>.</p>
+<p>In the <strong>Publish to Power BI</strong> window, notice that <strong>My Workspace</strong> is selected.</p>
+</li>
+<li><p>To publish the report, choose <strong>Select</strong>.</p>
+</li>
+<li><p>If prompted to replace the report, select <strong>Replace</strong>.</p>
+</li>
+<li><p>When the publication has succeeded, click <strong>Got It</strong>.</p>
+</li>
+<li><p>Leave Power&nbsp;BI&nbsp;Desktop open.</p>
+</li>
+</ol>
+<p>In the next exercise, you will explore the report in the Power BI service.</p>
+<h2 id="exercise-5-explore-the-report">Exercise 5: Explore the report</h2>
+<p>In this exercise, you will explore the report in the Power BI service.</p>
+<h3 id="task-1-explore-the-report">Task 1: Explore the report</h3>
+<p>In this task, you will explore the report in the Power BI service.</p>
+<ol>
+<li><p>In the Microsoft Edge browser window, in the Power BI service, in the <strong>Navigation</strong> pane, select the <strong>Sales&nbsp;Analysis</strong> report.</p>
+</li>
+<li><p>To test the drill through report,  in the <strong>Overview</strong> page, in the <strong>Quantity&nbsp;by&nbsp;Category</strong> visual, right-click the <strong>Clothing</strong> bar, and then select <strong>Drill&nbsp;Through&nbsp;|&nbsp;Product&nbsp;Details</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/lab-28-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/lab-28-ssm.png" alt="Screenshot of the Drill through, Product Details choices." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Notice that the <strong>Product&nbsp;Details</strong> page is for <strong>Clothing</strong>.</p>
+</li>
+<li><p>To return to the source page, at the top-left corner, select the arrow button.</p>
+</li>
+<li><p>Select the <strong>My&nbsp;Performance</strong> page.</p>
+</li>
+<li><p>Select each of the buttons, and then notice that a different visual is displayed.</p>
+</li>
+</ol>
+<h3 id="task-2-finish-up">Task 2: Finish up</h3>
+<p>In this task, you will complete the lab.</p>
+<ol>
+<li><p>To return to the workspace, in the breadcrumb trail, select your workspace name.</p>
+</li>
+<li><p>Leave the Microsoft Edge browser window open.</p>
+</li>
+<li><p>In Power&nbsp;BI&nbsp;Desktop, go to the <strong>My&nbsp;Performance</strong> page, and in the <strong>Filters</strong> pane, remove the <strong>Salesperson</strong> filter card.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/lab-30-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/media/lab-30-ssm.png" alt="Screenshot of the removing the Salesperson filter card." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Select the <strong>Overview</strong> page.</p>
+</li>
+<li><p>Save the Power&nbsp;BI&nbsp;Desktop file, and then republish the report to Power BI.</p>
+</li>
+<li><p>Leave Power&nbsp;BI&nbsp;Desktop open.</p>
+</li>
+</ol>
+<p>When you share the report in the <strong>Publish and share Power BI content</strong> lab, the report will enforce row-level security.</p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Check your knowledge</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/data-driven-story-power-bi/14-check/" data-bi-name="continue" target="_top">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>
