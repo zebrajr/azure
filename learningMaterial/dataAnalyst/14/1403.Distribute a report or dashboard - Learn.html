@@ -1,0 +1,332 @@
+<html dir="ltr"><head><title>Distribute a report or dashboard - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/create-manage-workspaces-power-bi/2-distribute-report-dashboard">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/create-manage-workspaces-power-bi/2-distribute-report-dashboard</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Distribute a report or dashboard - Learn</h1>
+  <div dir="auto" id="reader-credits">heyrob</div>
+  <div dir="auto" id="reader-estimated-time">7-9 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>7 minutes</li>
+		</ul>
+			<p>Consider a scenario where you have created a few reports for the Sales team at Tailwind Traders. The issue that you have encountered is determining how to make these reports viewable and shareable. By creating a workspace in Power BI, you can house your reports in one location, make them shareable, collaborate with other teams, and update reports.</p>
+<h2 id="create-a-workspace">Create a workspace</h2>
+<p>Your first task is to create a workspace by following these steps:</p>
+<ol>
+<li><p>Go to <a href="https://powerbi.microsoft.com/" data-linktype="external" target="az-portal">Power BI service</a>.</p>
+</li>
+<li><p>Select the <strong>Workspaces</strong> drop-down menu.</p>
+</li>
+<li><p>Select the <strong>Create a workspace</strong> button at the bottom of the resulting panel.</p>
+</li>
+</ol>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-manage-workspaces-power-bi/media/02-create-new-app-5-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-manage-workspaces-power-bi/media/02-create-new-app-5-ss.png" alt="Screenshot of the Create a new workspace button." data-linktype="relative-path"></a></p>
+<ol start="4">
+<li>In the <strong>Create a workspace</strong> window, enter information in the <strong>Workspace name</strong> and <strong>Description</strong> fields and then upload a <strong>Workspace image</strong>.</li>
+</ol>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-manage-workspaces-power-bi/media/02-create-workspace-1-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-manage-workspaces-power-bi/media/02-create-workspace-1-ssm.png" alt="Screenshot of the Create a workspace window." data-linktype="relative-path"></a></p>
+<ol start="5">
+<li>In the <strong>Advanced</strong> drop-down menu, you can create a <strong>Contact list</strong> of users who will receive notifications if issues with the workspace occur.</li>
+</ol>
+<p>By default, these users are the workspace admins, but you can also add specific users. You can also add this workspace to a specific OneDrive and then choose whether this workspace will be a part of a dedicated capacity or not. Dedicated capacities are Power BI Premium features that ensure that your workspace will have its own computational resources as opposed to sharing resources with other users.</p>
+<ol start="6">
+<li>After you have filled out pertinent fields on the <strong>Create a workspace</strong> window, select <strong>Save</strong>.</li>
+</ol>
+<p>You have now created a workspace.</p>
+<p>You can complete the process of creating a workspace by using the new workspace experience. We recommend that you use the modern workspace experience over the classic workspace experience, unless the classic workspace is expressly needed.</p>
+<h2 id="assign-workspace-roles">Assign workspace roles</h2>
+<p>Now that you've successfully created a workspace, the Sales team wants to collaborate with other teams to build additional dashboards and reports. As the workspace owner, you want to ensure that appropriate access is given to members of the Products team because their team includes stakeholders and developers. Workspace roles allow you to designate who can do what within a workspace.</p>
+<p>The abilities of role types in a workspace include:</p>
+<ul>
+<li><p><strong>Admin</strong></p>
+<ul>
+<li><p>Add/remove other users</p>
+</li>
+<li><p>Publish, update, and/or share an app in a workspace</p>
+</li>
+<li><p>Create, edit, delete, and publish reports and content in a workspace</p>
+</li>
+<li><p>View and interact with reports and dashboards in a workspace</p>
+</li>
+<li><p>Configure data refreshes</p>
+</li>
+</ul>
+</li>
+<li><p><strong>Member</strong></p>
+<ul>
+<li><p>Can complete all tasks that are associated with admins but can't add or remove users</p>
+</li>
+<li><p>Cannot delete the workspace</p>
+</li>
+<li><p>Cannot update the metadata about the workspace</p>
+</li>
+</ul>
+</li>
+<li><p><strong>Contributor</strong></p>
+<ul>
+<li><p>Cannot add or remove users</p>
+</li>
+<li><p>Cannot publish, update, or edit an app in a workspace unless given this ability by admins/members</p>
+</li>
+<li><p>Can create, update, and publish content and reports within a workspace</p>
+</li>
+<li><p>Can schedule data refreshes</p>
+</li>
+</ul>
+</li>
+<li><p><strong>Viewer</strong></p>
+<ul>
+<li><p>Cannot add or remove users</p>
+</li>
+<li><p>Can only view a report or dashboard in a workspace</p>
+</li>
+<li><p>Can read data that is stored in workspace dataflows</p>
+</li>
+</ul>
+</li>
+</ul>
+<div>
+<p> Note</p>
+<p>If the workspace is backed by a Premium capacity, a non-Pro user can view content within the workspace under the <strong>Viewer</strong> role.</p>
+</div>
+<p>To assign these roles to users, go to the workspace that you've created and, in the upper-left corner of the ribbon, select <strong>Access</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-manage-workspaces-power-bi/media/02-workspace-access-3-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-manage-workspaces-power-bi/media/02-workspace-access-3-ss.png" alt="Screenshot of the Access button on the Workspace ribbon." data-linktype="relative-path"></a></p>
+<p>In the resulting <strong>Access</strong> window, you can add email addresses of individual users, mail-enabled security groups, distribution lists, Microsoft 365 groups, and regular security groups, and then assign them to their specific roles. You can also change the user's assigned role at the bottom of the page and delete the user from the workspace by selecting the ellipsis (<strong>...</strong>) next to their name.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-manage-workspaces-power-bi/media/02-workspace-app-7-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-manage-workspaces-power-bi/media/02-workspace-app-7-ss.png" alt="Screenshot of the Access window with user details." data-linktype="relative-path"></a></p>
+<h2 id="create-and-configure-an-app">Create and configure an app</h2>
+<p>After creating an app workspace and assigning your collaborator-specific roles, you want to add content to your app workspace. Content can be in the form of reports, dashboards, datasets, dataflows, and so on. An app is a published, read-only window into your data for mass distribution and viewing. When ready to share apps with your users, you can publish the app. This process requires a Power BI Pro license. Consuming and viewing an app requires a Pro license or it must be backed by a Premium capacity.</p>
+<p>When you have added your content to the app workspace, you can create the app. Go to your workspace, and on the ribbon, select <strong>+ New</strong>, as shown in the following screenshot. In this ribbon, you can choose to create a new report, dataset, streaming dataset, or dataflow, to name a few. Selecting any one of these options will generate a window where you can enter the name of the app and select the source of the report (for example, the dataset that is used to create a report).</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-manage-workspaces-power-bi/media/02-create-new-app-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-manage-workspaces-power-bi/media/02-create-new-app-ss.png" alt="Screenshot of the New drop down menu to create new content." data-linktype="relative-path"></a></p>
+<p>You can also select the <strong>Get Data</strong> button in the lower-left corner of the navigation bar, and then import already-existing reports from Power BI Desktop and add them to your workspace app.</p>
+<p>You can also configure your app and turn on the option to include the report or dashboard in the app when you publish, as shown in the following screenshot. If you do not want to include this report or dashboard in the app, then you can turn off this option.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-manage-workspaces-power-bi/media/02-create-workspace-window-2-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-manage-workspaces-power-bi/media/02-create-workspace-window-2-ss.png" alt="Screenshot of the Included in app option set to yes." data-linktype="relative-path"></a></p>
+<p>When you are ready to publish your app with its collection of reports, dashboards, and datasets, return to the workspace and select <strong>Create app</strong> in the upper-right corner of the ribbon.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-manage-workspaces-power-bi/media/02-update-app-10-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-manage-workspaces-power-bi/media/02-update-app-10-ss.png" alt="Screenshot of the Create app button from the ribbon." data-linktype="relative-path"></a></p>
+<p>This action retrieves the following window, where you can build your app by naming it, adding a description, and adding an app logo or theme color, if necessary.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-manage-workspaces-power-bi/media/02-workspace-access-3-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-manage-workspaces-power-bi/media/02-workspace-access-3-ssm.png" alt="Screenshot of the Build your app setup details." data-linktype="relative-path"></a></p>
+<p>Under the <strong>Navigation</strong> tab, you can change the order in which the content is oriented for the user by creating a custom navigation pane. For instance, you can change the name of the content, change the link, and then add it to a specific section on the navigation pane. You can also add content that is external to Power BI through a link. This external content can also be included within the content area. For example, a YouTube video or PowerPoint slide deck has to be an embed URL, not the raw URL</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-manage-workspaces-power-bi/media/02-publish-app-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-manage-workspaces-power-bi/media/02-publish-app-ss.png" alt="Screenshot of the Navigation pane with dashboard details." data-linktype="relative-path"></a></p>
+<p>Under the <strong>Permissions</strong> tab, you can grant access to all users in your organization or choose which users have access. You can also give your users build and share permissions, which means that they can create and share the content in the app. The <strong>Permissions</strong> tab provides a few other options. With Build permissions, you can allow your users to connect to underlying datasets so that they can reuse and build their own reports by using the same dataset. Build permissions are required if your users want to export the underlying data or build new content on top of the data. You can also allow your users to only create a copy of the report to view in another workspace, where they can modify and delete visuals according to their needs. You can also give your users Share permissions so that they can share underlying datasets and reports.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-manage-workspaces-power-bi/media/02-included-app-6-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-manage-workspaces-power-bi/media/02-included-app-6-ss.png" alt="Screenshot of the Permissions tab with Access details." data-linktype="relative-path"></a></p>
+<p>After making necessary edits, you can select <strong>Publish app</strong>, and your app will be published. Then, you will get the following screen with a link that you can share with your users.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-manage-workspaces-power-bi/media/02-publish-app-7-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-manage-workspaces-power-bi/media/02-publish-app-7-ss.png" alt="Screenshot of the Successfully published window." data-linktype="relative-path"></a></p>
+<h2 id="update-workspaces">Update workspaces</h2>
+<p>After publishing your app, you realize that you want to make updates within your workspace.</p>
+<p>To accomplish this task, return to the workspace, and make the necessary updates in the reports or dashboards. The workspace acts as a staging area where you can make any changes that you want, but they will not be added to the app until you select <strong>Update app</strong> in the upper-right corner of the ribbon (where you previously selected <strong>Publish app</strong>). Dataset and dataflow updates are updated immediately. When you decide to update the app, you can make changes to the <strong>Setup</strong>, <strong>Navigation</strong>, and <strong>Permissions</strong> tabs, and when ready, you can select the <strong>Update app</strong> button.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-manage-workspaces-power-bi/media/02-publish-app-9-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-manage-workspaces-power-bi/media/02-publish-app-9-ss.png" alt="Screenshot of the Update app button from the ribbon." data-linktype="relative-path"></a></p>
+<p>For more information, see <a href="https://docs.microsoft.com/en-us/power-bi/collaborate-share/service-create-distribute-apps/" data-linktype="absolute-path" target="az-portal">Publish an app in Power BI</a>.</p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Monitor usage and performance</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/create-manage-workspaces-power-bi/3-monitor-usage-performance/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

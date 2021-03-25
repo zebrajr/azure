@@ -1,0 +1,277 @@
+<html dir="ltr"><head><title>Troubleshoot data by viewing its lineage - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/create-manage-workspaces-power-bi/5-troubleshoot-data">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/create-manage-workspaces-power-bi/5-troubleshoot-data</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Troubleshoot data by viewing its lineage - Learn</h1>
+  <div dir="auto" id="reader-credits">heyrob</div>
+  <div dir="auto" id="reader-estimated-time">6-8 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>6 minutes</li>
+		</ul>
+			<p>The <strong>Lineage</strong> view feature in Power BI allows you to quickly refresh datasets and see the relationships between the artifacts in a workspace and their external dependencies.</p>
+<p>Consider this module's continuing scenario with Tailwind Traders as an example. Thus far, you've developed several reports and have published them to the Tailwind workspace. However, because you are also collaborating with the Products team, it has become increasingly difficult to track which reports need to be refreshed and which datasets are in which report. Consequently, you want the ability to determine which datasets need to be refreshed because you've been receiving reports of stale data. The path of data from its source to the destination can often be a considerable challenge, more so if you have multiple datasets.</p>
+<p>The <strong>Lineage</strong> view feature can help you accomplish this task efficiently and almost effortlessly.</p>
+<h2 id="data-lineage">Data lineage</h2>
+<p><em>Data lineage</em> refers to the path that data takes from the data source to the destination.</p>
+<p>The <strong>Lineage</strong> view feature in Power BI is crucial because it:</p>
+<ul>
+<li><p>Simplifies the troubleshooting process because you can see the path that the data takes from source to destination and determine pain points and bottlenecks.</p>
+</li>
+<li><p>Allows you to manage your workspaces and observe the impact of a single change in one dataset to reports and dashboards.</p>
+</li>
+<li><p>Saves time by simplifying your task of identifying reports and dashboards that haven't been refreshed.</p>
+</li>
+</ul>
+<h2 id="use-the-lineage-view">Use the Lineage view</h2>
+<p>The <strong>Lineage</strong> view is only accessible to <strong>Admin</strong>, <strong>Contributor</strong>, and <strong>Member</strong> roles. Additionally, it requires a Power BI Pro license and is only available for app workspaces. To access the <strong>Lineage</strong> view, go to the workspace, and then select <strong>Lineage</strong> from the <strong>View</strong> drop-down menu on the top ribbon.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-manage-workspaces-power-bi/media/05-opening-lineage-view-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-manage-workspaces-power-bi/media/05-opening-lineage-view-ssm.png" alt="Screenshot of the View menu with the lineage view highlighted." data-linktype="relative-path"></a></p>
+<p>When the view canvas opens, you can begin to explore this view. The following example shown an excerpt of the data lineage for the <strong>Tailwind Sales</strong> workspace.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-manage-workspaces-power-bi/media/05-excerpt-lineage-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-manage-workspaces-power-bi/media/05-excerpt-lineage-ssm.png" alt="Screenshot of the view canvas with excerpt of data lineage." data-linktype="relative-path"></a></p>
+<p>This view shows all the artifacts in your workspace. Artifacts include data sources, datasets and dataflows, reports, and dashboards. Each card represents an artifact, and the arrows in between these cards represent the flow of data or the relationship between different artifacts. By following the arrows from left to right, you can observe the flow of data from the source to the destination, which will often be a dashboard. Typically, the flow would be <strong>data sources &gt; datasets/dataflows &gt; reports &gt; dashboards</strong>.</p>
+<h2 id="data-sources">Data sources</h2>
+<p>Each of the following cards is a data source that is used in your workspace.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-manage-workspaces-power-bi/media/05-datasets-dataflows-lineage-view-3-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-manage-workspaces-power-bi/media/05-datasets-dataflows-lineage-view-3-ss.png" alt="Screenshot examples of data source cards used in your workspace." data-linktype="relative-path"></a></p>
+<p>The card tells you the type of data source (for example, <strong>Text/CSV</strong>) and the <strong>Gateway</strong>, which tells you the source of your data. If you are connected to the data through an on-premises data gateway, this card will tell you more information about the gateway. Additionally, if you double-click the card, you will get more details about the data source, such as the file path and the connection status.</p>
+<p>Selecting the lower-right icon on the card will highlight the path from the data source to the destination, as shown in the following screenshot, which clarifies the exact path that the data takes.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-manage-workspaces-power-bi/media/05-card-icon-detail-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-manage-workspaces-power-bi/media/05-card-icon-detail-ssm.png" alt="Screenshot of the lower right icon highlighted on a card with exact path data takes clarified." data-linktype="relative-path"></a></p>
+<p>Next are the datasets/dataflows, which are marked in blue.</p>
+<h2 id="datasetsdataflows">Datasets/dataflows</h2>
+<p>Often, datasets and dataflows can connect to external data sources, such as SQL Server, or to external datasets in other workspaces. The following examples show dataset and dataflow cards on the <strong>Lineage</strong> view.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-manage-workspaces-power-bi/media/05-dataset-from-different-workspace-4-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-manage-workspaces-power-bi/media/05-dataset-from-different-workspace-4-ssm.png" alt="Screenshot of the dataset and dataflow cards on the lineage view." data-linktype="relative-path"></a></p>
+<p>The <strong>Lineage</strong> view uses arrows to connect objects, such as datasets, with their data sources. On these cards, you can see when the dataset was last refreshed, and you can refresh the dataset by selecting the arrow icon on the lower-left corner of the card, as shown in the following screenshot.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-manage-workspaces-power-bi/media/05-opening-lineage-view-1-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-manage-workspaces-power-bi/media/05-opening-lineage-view-1-ssm.png" alt="Screenshot of the refresh data feature on a card." data-linktype="relative-path"></a></p>
+<p>This component is a powerful troubleshooting feature that helps ensure that your dataset refreshes are quick and uncomplicated.</p>
+<p>Returning to the initial quandary with Tailwind Traders, you wanted to determine if the company had stale datasets and then quickly refresh the data. By using the <strong>Lineage</strong> view feature, you can go through the different datasets in one view and then use the <strong>Refresh data</strong> button to refresh datasets that you determine as stale.</p>
+<p>Additionally, if a dataset or dataflow belongs to a different workspace (in this case, the <strong>Tailwind</strong> workspace), it will be indicated on the card, as shown in the following screenshot.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-manage-workspaces-power-bi/media/05-card-metadata-4-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-manage-workspaces-power-bi/media/05-card-metadata-4-ssm.png" alt="Screenshot of dataset from a different workspace." data-linktype="relative-path"></a></p>
+<p>By double-clicking on any card, you can view the metadata, such as the sensitivity, by whom it was configured, the last refresh date, and the names and count of tables within this dataset, as shown in the following figure.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-manage-workspaces-power-bi/media/05-card-icon-detail-2-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-manage-workspaces-power-bi/media/05-card-icon-detail-2-ssm.png" alt="Screenshot of the Dataset metadata view." data-linktype="relative-path"></a></p>
+<p>You can also view the impact of this dataset across workspaces. By selecting the overlapping window icon on the lower-right corner of a dataset card, you can determine the impact analysis of the dataset.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-manage-workspaces-power-bi/media/05-impact-analysis-icon-5-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-manage-workspaces-power-bi/media/05-impact-analysis-icon-5-ssm.png" alt="Screenshot of the icon for the Impact analysis of the dataset." data-linktype="relative-path"></a></p>
+<p>On the <strong>Impact analysis</strong> window, you can see how many workspaces, reports, and dashboards that this dataset is a part of and how many views that this dataset has gathered, as shown in the following screenshot.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-manage-workspaces-power-bi/media/05-excerpt-lineage-2-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-manage-workspaces-power-bi/media/05-excerpt-lineage-2-ssm.png" alt="Screenshot of the Impact Analysis window." data-linktype="relative-path"></a></p>
+<p>The bottom of the <strong>Impact Analysis</strong> window includes more detail about which specific reports and dashboards that this dataset is part of. Additionally, you can select <strong>Notify contacts</strong>, which allows you to notify dataset owners (or any other user) of changes in the dataset. Impact analysis is useful because it allows you to pinpoint datasets that aren't being used or looked at.</p>
+<h2 id="reports-and-dashboards">Reports and dashboards</h2>
+<p>The reports and dashboards cards have similar functionality as the data source and dataset cards.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-manage-workspaces-power-bi/media/05-report-metadata-7-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-manage-workspaces-power-bi/media/05-report-metadata-7-ssm.png" alt="Screenshot of the Reports and dashboards cards." data-linktype="relative-path"></a></p>
+<p>Selecting a card will bring up a window in which you can view the metadata about the report or dashboard. In this window, you can also go directly to the report or dashboard. You can also enable or disable whether you want to include this report or dashboard within the app.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-manage-workspaces-power-bi/media/05-refresh-feature-card-8-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-manage-workspaces-power-bi/media/05-refresh-feature-card-8-ssm.png" alt="Screenshot of the Report metadata window." data-linktype="relative-path"></a></p>
+<p>This card also contains useful options under the ellipsis (<strong>...</strong>), as shown in the following figure. From this menu, you can select to analyze the report in Microsoft Excel, delete a report, create Quick Insights, save a copy directly to your local drive, and more.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-manage-workspaces-power-bi/media/05-ellipsis-on-report-card-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-manage-workspaces-power-bi/media/05-ellipsis-on-report-card-ss.png" alt="Screenshot of the ellipsis menu options on the report card." data-linktype="relative-path"></a></p>
+<p>Now that you have had an in-depth look into the <strong>Lineage</strong> view in Power BI, you can commence with cleaning up the Tailwind Traders workspace. For more information, see <a href="https://docs.microsoft.com/en-us/power-bi/collaborate-share/service-data-lineage/" data-linktype="absolute-path" target="az-portal">Data Lineage</a>.</p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Configure data protection</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/create-manage-workspaces-power-bi/6-data-protection/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

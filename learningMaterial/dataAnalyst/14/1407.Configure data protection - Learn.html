@@ -1,0 +1,249 @@
+<html dir="ltr"><head><title>Configure data protection - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/create-manage-workspaces-power-bi/6-data-protection">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/create-manage-workspaces-power-bi/6-data-protection</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Configure data protection - Learn</h1>
+  <div dir="auto" id="reader-credits">heyrob</div>
+  <div dir="auto" id="reader-estimated-time">3-4 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>2 minutes</li>
+		</ul>
+			<p>As enterprises grow, so does their data. Often, strict requirements and regulations must be applied to ensure that this sensitive data is secure. Power BI provides a few different ways to help you accomplish this task:</p>
+<ul>
+<li><p>Use Microsoft sensitivity labels to label dashboards, reports, datasets, and dataflows by using the same taxonomy that is used to classify and protect files in Microsoft 365.</p>
+</li>
+<li><p>Add more protection measures such as encryption and watermarks when you are exporting the data.</p>
+</li>
+<li><p>Use Microsoft Cloud App Security to monitor and investigate activities in Power BI.</p>
+</li>
+</ul>
+<p>To continue with the module scenario, as more reports and dashboards are increasingly added to the Tailwind Traders workspace, the Sales team becomes concerned as they realize the urgency of securing their data. The team is concerned about the possibility of new users exporting data without permission. The Sales team doesn't want to roll back reports or dashboards, so they have asked you to implement comprehensive security measures that protect data access within and outside of Power BI. You can complete this task by configuring data protection labels in Power BI.</p>
+<p>Before you begin, ensure that you have the appropriate licensing, as shown <a href="https://docs.microsoft.com/en-us/power-bi/admin/service-security-data-protection-overview/" data-linktype="absolute-path" target="az-portal">here</a>.</p>
+<h2 id="sensitivity-labels">Sensitivity labels</h2>
+<p>Sensitivity labels specify which data can be exported. These labels are configured externally to Power BI, and Power BI allows you to quickly use them in your reports and dashboards. These labels allow you to define and protect content, even outside of Power BI. Datasets, dataflows, reports, and dashboards can use this mechanism, and all users in your corporation can use this feature unless exceptions have been defined.</p>
+<p>After you have verified your ability to add labels, go to any workspace and choose an object to secure. For this example, you will add a sensitivity label to <strong>Sales Data</strong> by going to the workspace and, under the ellipsis (<strong>...</strong>), selecting <strong>Settings</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-manage-workspaces-power-bi/media/06-exporting-excel-4-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-manage-workspaces-power-bi/media/06-exporting-excel-4-ssm.png" alt="Screenshot of the Settings feature for the Sales Dashboard." data-linktype="relative-path"></a></p>
+<p>This selection will take you to a window, where you can assign a sensitivity label to your data. For this example, the following labels have been externally configured, so you can now apply them to the data: <strong>None</strong>, <strong>Personal</strong>, <strong>General</strong>, <strong>Confidential</strong>, and <strong>Highly confidential</strong>. You can also go to <a href="https://security.microsoft.com/homepage/" data-linktype="external" target="az-portal">Microsoft 365 Security Center</a> to define your own labels.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-manage-workspaces-power-bi/media/06-sensitivity-settings-1-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-manage-workspaces-power-bi/media/06-sensitivity-settings-1-ssm.png" alt="Screenshot of the sensitivity label settings." data-linktype="relative-path"></a></p>
+<p>For example, if you want to assign a <strong>Confidential</strong> label to your <strong>Sales Data</strong> report, when you change this label on the <strong>Settings</strong> pane, it will appear as a label on the report, as shown in the following figure.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-manage-workspaces-power-bi/media/06-reports-dashboards-cards-6-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-manage-workspaces-power-bi/media/06-reports-dashboards-cards-6-ss.png" alt="Screenshot of the Dashboard with a sensitivity label." data-linktype="relative-path"></a></p>
+<p>This factor is crucial when you are exporting data. Data that is exported to Microsoft Excel, Microsoft PowerPoint, and PDF files will have sensitivity labels enforced. For instance, if you wanted to export data from <strong>Sales Data</strong> into an Excel file, if you are an authorized user, you will see the following Excel view when you export into Excel.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-manage-workspaces-power-bi/media/06-dashboard-with-label-4-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-manage-workspaces-power-bi/media/06-dashboard-with-label-4-ssm.png" alt="Screenshot of the sensitivity label on data exported to Excel." data-linktype="relative-path"></a></p>
+<p>However, if you didn't have established permissions, you would be denied access to see the data. This verification ensures that only appropriate users have access to view the data, which helps make sure that your data is secured.</p>
+<p>For more information, see <a href="https://docs.microsoft.com/en-us/power-bi/collaborate-share/service-security-apply-data-sensitivity-labels" data-linktype="absolute-path">Apply Data Sensitivity Labels in Power BI</a>.</p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Check your knowledge</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/create-manage-workspaces-power-bi/8-check/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>
