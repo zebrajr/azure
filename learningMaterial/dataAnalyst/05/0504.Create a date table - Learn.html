@@ -1,0 +1,316 @@
+<html dir="ltr"><head><title>Create a date table - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/3-date-table">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/design-model-power-bi/3-date-table</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Create a date table - Learn</h1>
+  <div dir="auto" id="reader-credits">heyrob</div>
+  <div dir="auto" id="reader-estimated-time">9-12 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>9 minutes</li>
+		</ul>
+			<p>During report creation in Power BI, a common business requirement is to make calculations based on date and time. Organizations want to know how their business is doing over months, quarters, fiscal years, and so on. For this reason, it is crucial that these time-oriented values are formatted correctly. Power BI autodetects for date columns and tables; however, situations can occur where you will need to take extra steps to get the dates in the format that your organization requires.</p>
+<p>For example, suppose that you are developing reports for the Sales team at your organization. The database contains tables for sales, orders, products, and more. You notice that many of these tables, including Sales and Orders, contain their own date columns, as shown by the <strong>ShipDate</strong> and <strong>OrderDate</strong> columns in the Sales and Orders tables. You are tasked with developing a table of the total sales and orders by year and month. How can you build a visual with multiple tables, each referencing their own date columns?</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/03-data-model-excerpt-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/03-data-model-excerpt-ssm.png" alt="Screenshot of data model excerpt with Sales.ShipDate and Order.OrderDate highlighted." data-linktype="relative-path"></a></p>
+<p>To solve this problem, you can create a common date table that can be used by multiple tables. The following section explains how you can accomplish this task in Power BI.</p>
+<h2 id="create-a-common-date-table">Create a common date table</h2>
+<p>Ways that you can build a common date table are:</p>
+<ul>
+<li><p>Source data</p>
+</li>
+<li><p>DAX</p>
+</li>
+<li><p>Power Query</p>
+</li>
+</ul>
+<h2 id="source-data">Source data</h2>
+<p>Occasionally, source databases and data warehouses already have their own date tables. If the administrator who designed the database did a thorough job, these tables can be used to perform the following tasks:</p>
+<ul>
+<li><p>Identify company holidays</p>
+</li>
+<li><p>Separate calendar and fiscal year</p>
+</li>
+<li><p>Identify weekends versus weekdays</p>
+</li>
+</ul>
+<p>Source data tables are mature and ready for immediate use. If you have a table as such, bring it into your data model and don't use any other methods that are outlined in this section. We recommend that you use a source date table because it is likely shared with other tools that you might be using in addition to Power BI.</p>
+<p>If you do not have a source data table, you can use other ways to build a common date table.</p>
+<h2 id="dax">DAX</h2>
+<p>You can use the Data Analysis Expression (DAX) functions CALENDARAUTO() or CALENDAR() to build your common date table. The CALENDAR() function returns a contiguous range of dates based on a start and end date that are entered as arguments in the function. Alternatively, the CALENDARAUTO() function returns a contiguous, complete range of dates that are automatically determined from your dataset. The starting date is chosen as the earliest date that exists in your dataset, and the ending date is the latest date that exists in your dataset plus data that has been populated to the fiscal month that you can choose to include as an argument in the CALENDARAUTO() function. For the purposes of this example, the CALENDAR() function is used because you only want to see the data from May 31, 2011 (the first day that Sales began its tracking of this data) and forward for the next 10 years.</p>
+<p>In Power BI Desktop, go to the <strong>Table</strong> tab on the ribbon. Select <strong>New Table</strong>, and then enter in the following DAX formula:</p>
+<pre tabindex="0"><code data-author-content="Dates  = CALENDAR(DATE(2011, 5, 31), DATE(2021, 5, 31))
+"><span>Dates  = <span>CALENDAR</span>(<span>DATE</span>(<span>2011</span>, <span>5</span>, <span>31</span>), <span>DATE</span>(<span>2021</span>, <span>5</span>, <span>31</span>))
+</span></code></pre>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/03-dax-function-calendar-auto-01-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/03-dax-function-calendar-auto-01-ss.png" alt="Screenshot of the CALENDAR formula in Power BI." data-linktype="relative-path"></a></p>
+<p>Now, you have a column of dates that you can use. However, this column is slightly sparse. You also want to see columns for just the year, the month number, the week of the year, and the day of the week. You can accomplish this task by selecting <strong>New Column</strong> on the ribbon and entering the following DAX equation, which will retrieve the year from your Date table.</p>
+<pre tabindex="0"><code data-author-content="Year = YEAR(Dates[Date])
+"><span><span>Year</span> = <span>YEAR</span>(Dates[Date])
+</span></code></pre>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/03-adding-columns-dax.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/03-adding-columns-dax.png" alt="Screenshot of adding columns using a DAX equation." data-linktype="relative-path"></a></p>
+<p>You can perform the same process to retrieve the month number, week number, and day of the week:</p>
+<pre tabindex="0"><code data-author-content="MonthNum = MONTH(Dates[Date])
+"><span>MonthNum = <span>MONTH</span>(Dates[Date])
+</span></code></pre>
+<pre tabindex="0"><code data-author-content="WeekNum = WEEKNUM(Dates[Date])
+"><span><span>WeekNum</span> = <span>WEEKNUM</span>(Dates[Date])
+</span></code></pre>
+<pre tabindex="0"><code data-author-content="DayoftheWeek = FORMAT(Dates[Date].[Day], &quot;DDDD&quot;)
+"><span>DayoftheWeek = <span>FORMAT</span>(Dates[Date].[Day], <span>"DDDD"</span>)
+</span></code></pre>
+<p>When you have finished, your table will contain the columns that are shown in the following figure.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/03-final-columns-dax-table-2-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/03-final-columns-dax-table-2-ss.png" alt="Screenshot of final columns in DAX table." data-linktype="relative-path"></a></p>
+<p>You have now created a common date table by using DAX. This process only adds your new table to the data model; you will still need to establish relationships between your date table and the Sales and Order tables, and then mark your table as the official date table of your data model. However, before you complete those tasks, make sure that you consider another way of building a common date table: by using Power Query.</p>
+<h2 id="power-query">Power Query</h2>
+<p>You can use M-language, the development language that is used to build queries in Power Query, to define a common date table.</p>
+<p>Select <strong>Transform Data</strong> in Power BI Desktop, which will direct you to Power Query. In the blank space of the left <strong>Queries</strong> pane, right-click to open the following drop-down menu, where you will select <strong>New Query &gt; Blank Query</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/03-new-query-common-date-table-03-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/03-new-query-common-date-table-03-ss.png" alt="Screenshot of building a new query in Power BI." data-linktype="relative-path"></a></p>
+<p>In the resulting <strong>New Query</strong> view, enter the following M-formula to build a calendar table:</p>
+<pre tabindex="0"><code data-author-content="= List.Dates(#date(2011,05,31), 365*10, #duration(1,0,0,0)
+"><span>= List.Dates(#<span>date</span>(<span>2011</span>,<span>05</span>,<span>31</span>), <span>365</span>*<span>10</span>, #duration(<span>1</span>,<span>0</span>,<span>0</span>,<span>0</span>)
+</span></code></pre>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/03-m-query-common-data-table-04-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/03-m-query-common-data-table-04-ss.png" alt="Screenshot of using an M-formula to develop a calendar table." data-linktype="relative-path"></a></p>
+<p>For your sales data, you want the start date to reflect the earliest date that you have in your data: May 31, 2011. Additionally, you want to see dates for the next 10 years, including dates in the future. This approach ensures that, as new sales data flows in, you won't have to re-create this table. You can also change duration. In this case, you want a data point for every day, but you can also increment by hours, minutes, and seconds. The following figure shows the result.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/03-list-power-query-11-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/03-list-power-query-11-ss.png" alt="Screenshot of the sales calendar as a list." data-linktype="relative-path"></a></p>
+<p>After you have realized success in the process, you notice that you have a list of dates instead of a table of dates. To correct this error, go to the <strong>Transform</strong> tab on the ribbon and select <strong>Convert &gt; To Table</strong>. As the name suggests, this feature will convert your list into a table. You can also rename the column to <strong>DateCol</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/03-converting-list-table-05-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/03-converting-list-table-05-ssm.png" alt="Screenshot of converting a list into a table in Power Query Editor." data-linktype="relative-path"></a></p>
+<p>Next, you want to add columns to your new table to see dates in terms of year, month, week, and day so that you can build a hierarchy in your visual. Your first task is to change the column type by selecting the icon next to the name of the column and, in the resulting drop-down menu, selecting the <strong>Date</strong> type.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/03-change-type-date-3-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/03-change-type-date-3-ss.png" alt="Screenshot of changing the type to date." data-linktype="relative-path"></a></p>
+<p>After you have finished selecting the <strong>Date</strong> type, you can add columns for year, months, weeks, and days. Go to <strong>Add Column</strong>, select the drop-down menu under <strong>Date</strong>, and then select <strong>Year</strong>, as shown in the following figure.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/03-adding-columns-power-query-5-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/03-adding-columns-power-query-5-ss.png" alt="Screenshot of adding columns through Power Query." data-linktype="relative-path"></a></p>
+<p>Notice that Power BI has added a column of all years that are pulled from <strong>DateCol</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/03-adding-columns-table-power-query-6-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/03-adding-columns-table-power-query-6-ss.png" alt="Screenshot of adding columns with Power Query on a table." data-linktype="relative-path"></a></p>
+<p>Complete the same process for months, weeks, and days. After you have finished this process, the table will contain the columns that are shown in the following figure.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/03-final-columns-using-power-query-7-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/03-final-columns-using-power-query-7-ss.png" alt="Screenshot of DateCol, Year, Month, Week of Year, and Day Name columns." data-linktype="relative-path"></a></p>
+<p>You have now successfully used Power Query to build a common date table.</p>
+<p>The previous steps show how to get the table into the data model. Now, you need to mark your table as the official date table so that Power BI can recognize it for all future values and ensure that formatting is correct.</p>
+<h2 id="mark-as-the-official-date-table">Mark as the official date table</h2>
+<p>Your first task in marking your table as the official date table is to find the new table on the <strong>Fields</strong> pane. Right-click the name of the table and then select <strong>Mark as date table</strong>, as shown in the following figure.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/03-mark-date-table-06-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/03-mark-date-table-06-ss.png" alt="Screenshot of the &quot;Mark as date table&quot; option." data-linktype="relative-path"></a></p>
+<p>By marking your table as a date table, Power BI performs validations to ensure that the data contains zero null values, is unique, and contains continuous date values over a period. You can also choose specific columns in your table to mark as the date, which can be useful when you have many columns within your table. Right-click the table, select <strong>Mark as date table</strong>, and then select <strong>Date table settings.</strong> The following window will appear, where you can choose which column should be marked as <strong>Date</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/03-mark-date-table-07-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/03-mark-date-table-07-ss.png" alt="Screenshot of the mark as date table dialog." data-linktype="relative-path"></a></p>
+<p>Selecting <strong>Mark as date table</strong> will remove autogenerated hierarchies from the <strong>Date</strong> field in the table that you marked as a date table. For other date fields, the auto hierarchy will still be present until you establish a relationship between that field and the date table or until you turn off the <strong>Auto Date/Time</strong> feature. You can manually add a hierarchy to your common date table by right-clicking the year, month, week, or day columns in the <strong>Fields</strong> pane and then selecting <strong>New hierarchy.</strong> This process is further discussed later in this module.</p>
+<h2 id="build-your-visual">Build your visual</h2>
+<p>To build your visual between the Sales and Orders tables, you will need to establish a relationship between this new common date table and the Sales and Orders tables. As a result, you will be able to build visuals by using the new date table. To complete this task, go to <strong>Model</strong> tab <strong>&gt;</strong> <strong>Manage Relationships</strong>, where you can create relationships between the common date table and the Orders and Sales tables by using the <strong>OrderDate</strong> column. The following screenshot shows an example of one such relationship.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/03-create-relationship-8-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/03-create-relationship-8-ss.png" alt="Screenshot of the Create relationship dialog." data-linktype="relative-path"></a></p>
+<p>After you have built the relationships, you can build your <strong>Total Sales and Order Quantity by Time</strong> visual with your common date table that you developed by using the DAX or Power Query method.</p>
+<p>To determine the total sales, you need to add all sales because the <strong>Amount</strong> column in the Sales table only looks at the revenue for each sale, not the total sales revenue. You can complete this task by using the following measure calculation, which will be explained in later discussions. The calculation that you will use when building this measure is as follows:</p>
+<pre tabindex="0"><code data-author-content="#Total Sales = SUM(Sales[‘Amount’])
+"><span>#Total Sales = <span>SUM</span>(Sales[‘Amount’])
+</span></code></pre>
+<p>After you have finished, you can create a table by returning to the <strong>Visualizations</strong> tab and selecting the <strong>Table</strong> visual. You want to see the total orders and sales by year and month, so you only want to include the Year and Month columns from your date table, the <strong>OrderQty</strong> column, and the <strong>#TotalSales</strong> measure. When you learn about hierarchies, you can also build a hierarchy that will allow you drill down from years to months. For this example, you can view them side-by-side. You have now successfully created a visual with a common date table.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/03-common-date-dax-5-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/03-common-date-dax-5-ss.png" alt="Screenshot of Common Date Column using DAX." data-linktype="relative-path"></a></p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Work with dimensions</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/4-dimensions/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

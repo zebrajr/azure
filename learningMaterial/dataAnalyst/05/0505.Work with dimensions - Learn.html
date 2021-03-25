@@ -1,0 +1,276 @@
+<html dir="ltr"><head><title>Work with dimensions - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/4-dimensions">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/design-model-power-bi/4-dimensions</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Work with dimensions - Learn</h1>
+  <div dir="auto" id="reader-credits">heyrob</div>
+  <div dir="auto" id="reader-estimated-time">7-8 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>6 minutes</li>
+		</ul>
+			<p>When building a star schema, you will have dimension and fact tables. Fact tables contain information about events such as sales orders, shipping dates, resellers, and suppliers. Dimension tables store details about business entities, such as products or time, and are connected back to fact tables through a relationship.</p>
+<p>You can use hierarchies as one source to help you find detail in dimension tables. These hierarchies form through natural segments in your data. For instance, you can have a hierarchy of dates in which your dates can be segmented into years, months, weeks, and days. Hierarchies are useful because they allow you to drill down into the specifics of your data instead of only seeing the data at a high level.</p>
+<h2 id="hierarchies">Hierarchies</h2>
+<p>When you are building visuals, Power BI automatically enters values of the date type as a hierarchy (if the table has not been marked as a date table).</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/04-example-hierarchy-7-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/04-example-hierarchy-7-ss.png" alt="Screenshot of the example of a hierarchy." data-linktype="relative-path"></a></p>
+<p>In the preceding <strong>Date</strong> column, the date is shown in increasingly finer detail through year, quarters, months, and days. You can also manually create hierarchies.</p>
+<p>For example, consider a situation where you want to create a stacked bar chart of <strong>Total Sales by Category and Subcategory</strong>. You can accomplish this task by creating a hierarchy in the <strong>Product</strong> table for categories and subcategories. To create a hierarchy, go to the <strong>Fields</strong> pane on Power BI and then right-click the column that you want the hierarchy for. Select <strong>New hierarchy</strong>, as shown in the following figure.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/04-new-hierarchy-8-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/04-new-hierarchy-8-ss.png" alt="Screenshot of the new hierarchy in the Product table." data-linktype="relative-path"></a></p>
+<p>Next, drag and drop the subcategory column into this new hierarchy that you've created. This column will be added as a sublevel on the hierarchy.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/04-new-hierarchy-9-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/04-new-hierarchy-9-ss.png" alt="Screenshot of the Category Name Hierarchy with Category Name and SubCategory Name nested." data-linktype="relative-path"></a></p>
+<p>Now, you can build the visual by selecting a stacked bar chart in the <strong>Visualizations</strong> pane. Add your <strong>Category Name Hierarchy</strong> in the <strong>Axis</strong> field and <strong>Total Sales</strong> in the <strong>Values</strong> field.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/04-hierarchy-visual-7-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/04-hierarchy-visual-7-ss.png" alt="Screenshot of the Category Name Hierarchy in the Axis field, and TotalSales in the Values field." data-linktype="relative-path"></a></p>
+<p>You can drill down on the visual to view both <strong>Category</strong> and <strong>Subcategory</strong>, depending on what you want to see. Hierarchies allow you to view increasing levels of data on a single view.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/04-example-hierarchy-8-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/04-example-hierarchy-8-ss.png" alt="Screenshot of the two views on a single visual." data-linktype="relative-path"></a></p>
+<p>Now that you have learned about hierarchies, you can take a step further and examine parent-child hierarchies and their role in multiple relationships between fact tables and dimension tables.</p>
+<h2 id="parent-child-hierarchy">Parent-child hierarchy</h2>
+<p>In the following example, you have an Employee table within the database that tells you important information about the employees, their managers, and their IDs. When looking at this table, you notice that <strong>Roy F</strong> has been repeated multiple times in the <strong>Manager</strong> column. As the image shows, multiple employees can have the same manager, which indicates a hierarchy between managers and employees.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/04-example-hierarchy-1-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/04-example-hierarchy-1-ss.png" alt="Screenshot of the employee table with Employee ID, Employee, Manager ID, and Manager columns." data-linktype="relative-path"></a></p>
+<p>The <strong>Manager</strong> column determines the hierarchy and is therefore the parent, while the "children" are the employees. For this example, you want to be able to see all levels of this hierarchy. Power BI does not default to showing you all levels of the hierarchy, so it is your responsibility to ensure that you see all levels of this hierarchy or "flatten" it so that you can see more data granularity.</p>
+<h2 id="flatten-parent-child-hierarchy">Flatten parent-child hierarchy</h2>
+<p>The process of viewing multiple child levels based on a top-level parent is known as <em>flattening the hierarchy</em>. In this process, you are creating multiple columns in a table to show the hierarchical path of the parent to the child in the same record. You will use PATH(), a simple DAX function that returns a text version of the managerial path for each employee, and PATHITEM() to separate this path into each level of managerial hierarchy.</p>
+<div>
+<p> Important</p>
+<p>DAX has not been covered yet; however, it will be in another module. This function is included in this section because it's explaining hierarchies. If use of DAX in this capacity is confusing, refer to the DAX module and then return to this section afterward.</p>
+</div>
+<p>While on the table, go to the <strong>Modeling</strong> tab and select <strong>New Column</strong>. In the resulting formula bar, enter the following function, which creates the text path between the employee and manager. This action creates a calculated column in DAX.</p>
+<pre tabindex="0"><code data-author-content="Path = PATH(Employee[Employee ID], Employee[Manager ID])
+"><span><span>Path</span> = <span>PATH</span>(Employee[Employee ID], Employee[Manager ID])
+</span></code></pre>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/04-dax-measure-hierarchy-2-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/04-dax-measure-hierarchy-2-ss.png" alt="Screenshot of the DAX measure for flattening parent child hierarchy." data-linktype="relative-path"></a></p>
+<p>The completed path between the employee and the manager appears in the new column, as shown in the following screenshot.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/04-path-function-example-10-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/04-path-function-example-10-ss.png" alt="Screenshot of the PATH function table in Power BI." data-linktype="relative-path"></a></p>
+<p>If you look at Roger M, the path of IDs is <strong>1010 | 1011 | 1013</strong>, which means that one level above Roger M (ID 1013) is his manager, Pam H (ID 1011), and one level above Pam H is her manager Roy F (ID 1010). In this row, Roger M is on the bottom of the hierarchy, at the child level, and Roy F is at the top of the hierarchy and is at the parent level. This path is created for every employee. To flatten the hierarchy, you can separate each level by using the PATHITEM function.</p>
+<p>To view all three levels of the hierarchy separately, you can create four columns in the same way that you did previously, by entering the following equations. You will use the PATHITEM function to retrieve the value that resides in the corresponding level of your hierarchy.</p>
+<ul>
+<li><em>Level 1 = PATHITEM(Employee[Path],1)</em></li>
+<li><em>Level 2 = PATHITEM(Employee[Path],2)</em></li>
+<li><em>Level 3 = PATHITEM(Employee[Path],3)</em></li>
+</ul>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/04-path-item-function-12-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/04-path-item-function-12-ss.png" alt="Screenshot of using the PATHITEM function." data-linktype="relative-path"></a></p>
+<p>After you have finished, notice that you now have each level of hierarchy within your table. Roy F is at the top of the hierarchy and, as you go through <strong>Levels 2-3</strong>, notice that the managers and employees map with each other.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/04-parent-child-hierarchy-table-06-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/04-parent-child-hierarchy-table-06-ssm.png" alt="Screenshot of flattening out the parent-child hierarchy." data-linktype="relative-path"></a></p>
+<p>Now, you can create a hierarchy on the <strong>Fields</strong> pane, as you did previously. Right-click <strong>Level 1</strong>, because this is the first hierarchy level, and then select <strong>New Hierarchy.</strong> Then, drag and drop <strong>Level 2</strong> and <strong>Level 3</strong> into this hierarchy.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/04-employee-level-hierarchy-14-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/04-employee-level-hierarchy-14-ss.png" alt="Screenshot of the New Hierarchy for Employee Levels." data-linktype="relative-path"></a></p>
+<p>You have now successfully flattened a hierarchy so that you can view individual levels.</p>
+<p>Previously, you've considered dimensions that have only one relationship with a fact table. However, situations do occur where your dimension table will have multiple relationships with a fact table.</p>
+<h2 id="role-playing-dimensions">Role-playing dimensions</h2>
+<p>Role-playing dimensions have multiple valid relationships with fact tables, meaning that the same dimension can be used to filter multiple columns or tables of data. As a result, you can filter data differently depending on what information you need to retrieve. This topic is complex, so it is only introduced in this section. Working with role-playing dimensions requires complex DAX functions that will be discussed in later sections.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/04-role-playing-dimension-05-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/04-role-playing-dimension-05-ss.png" alt="Screenshot of role-playing dimensions in a model." data-linktype="relative-path"></a></p>
+<p>The preceding visual shows the Calendar, Sales, and Order tables. Calendar is the dimension table, while Sales and Order are fact tables. The dimension table has two relationships: one with Sales and one with Order. This example is of a role-playing dimension because the Calendar table can be used to group data in both Sales and Order. If you wanted to build a visual in which the Calendar table references the Order and the Sales tables, the Calendar table would act as a role-playing dimension.</p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Define data granularity</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/5-data-granularity/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

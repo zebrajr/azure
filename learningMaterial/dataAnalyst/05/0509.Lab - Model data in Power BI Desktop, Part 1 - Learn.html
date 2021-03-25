@@ -1,0 +1,737 @@
+<html dir="ltr"><head><title>Lab - Model data in Power BI Desktop, Part 1 - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/8-lab">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/design-model-power-bi/8-lab</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Lab - Model data in Power BI Desktop, Part 1 - Learn</h1>
+  <div dir="auto" id="reader-credits">heyrob</div>
+  <div dir="auto" id="reader-estimated-time">16-20 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="main-column" data-bi-name="body">
+
+					<main id="main" role="main" data-bi-name="content" lang="en-us" dir="ltr">
+
+
+
+
+
+						
+
+
+						<!-- <content> -->
+							<div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>45 minutes</li>
+		</ul>
+			<h2 id="access-your-environment">Access your environment</h2>
+<p>Before you start this lab, select <strong>Launch lab</strong> above.</p>
+<p>To log in to your lab environment:</p>
+<ol>
+<li>Click anywhere on the Windows desktop in the lab window.</li>
+<li>On the <strong>Resources</strong> tab on the lab side bar, select the <strong>T</strong> icon next to <strong>Password</strong>. The machine password is automatically entered for you. You can log in with the Student profile.</li>
+<li>Press <strong>Enter</strong>.</li>
+</ol>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/includes/vm-login.png" alt="Image of the lab password on the Resources tab." data-linktype="relative-path"></p>
+<p>You can now begin your work on this lab.</p>
+<p><strong>The estimated time to complete the lab is 45 minutes</strong></p>
+<p>In this lab you will commence developing the data model. It will involve creating relationships between tables, and then configuring table and column properties to improve the friendliness and usability of the data model. You will also create hierarchies and create quick measures.</p>
+<p>In this lab you learn how to:</p>
+<ul>
+<li><p>Create model relationships</p>
+</li>
+<li><p>Configure table and column properties</p>
+</li>
+<li><p>Create hierarchies</p>
+</li>
+<li><p>Create quick measures</p>
+</li>
+</ul>
+<h3 id="lab-story"><strong>Lab story</strong></h3>
+<p>This lab is one of many in a series of labs that was designed as a complete story from data preparation to publication as reports and dashboards. You can complete the labs in any order. However, if you intend to work through multiple labs, for the first 10 labs, we suggest you do them in the following order:</p>
+<ol>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/get-data/lab-prepare/" data-linktype="absolute-path" target="az-portal">Prepare data in Power BI Desktop</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/clean-data-power-bi/8-lab/" data-linktype="absolute-path" target="az-portal">Load data in Power BI Desktop</a></p>
+</li>
+<li><p><strong>Model data in Power BI Desktop, Part 1</strong></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/design-model-power-bi/9-lab/" data-linktype="absolute-path" target="az-portal">Model data in Power BI Desktop, part 2</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/create-measures-dax-power-bi/6-lab/" data-linktype="absolute-path" target="az-portal">Create DAX calculations in Power BI Desktop, part 1</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/create-measures-dax-power-bi/8-lab/" data-linktype="absolute-path" target="az-portal">Create DAX calculations in Power BI Desktop, part 2</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/visuals-power-bi/8-lab/" data-linktype="absolute-path" target="az-portal">Design a report in Power BI Desktop, part 1</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/data-driven-story-power-bi/13-lab/" data-linktype="absolute-path" target="az-portal">Design a report in Power BI Desktop, part 2</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/create-dashboards-power-bi/9-lab/" data-linktype="absolute-path" target="az-portal">Create a Power BI dashboard</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/ai-visuals-power-bi/5-lab/" data-linktype="absolute-path" target="az-portal">Perform data analysis in Power BI Desktop</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/create-paginated-reports-power-bi/6-lab/" data-linktype="absolute-path" target="az-portal">Create a Power BI paginated report</a></p>
+</li>
+</ol>
+<h2 id="exercise-1-create-model-relationships">Exercise 1: Create Model Relationships</h2>
+<p>In this exercise you will create model relationships.</p>
+<h3 id="task-1-get-started">Task 1: Get started</h3>
+<p>In this task you will set up the environment for the lab.</p>
+<div>
+<p> Important</p>
+<p>If you are continuing on from the previous lab (and you completed that lab successfully), do not complete this task; instead, continue from the next task.</p>
+</div>
+<ol>
+<li><p>To open the Power BI Desktop, on the taskbar, select the Microsoft Power BI Desktop shortcut.</p>
+</li>
+<li><p>To close the getting started window, at the top-left of the window, select <strong>X</strong>.</p>
+</li>
+<li><p>To open the starter Power BI Desktop file, select the <strong>File</strong> ribbon tab to open the backstage view.</p>
+</li>
+<li><p>Select <strong>Open Report</strong>.</p>
+</li>
+<li><p>Select <strong>Browse Reports</strong>.</p>
+</li>
+<li><p>In the <strong>Open</strong> window, navigate to the <strong>D:\DA100\Labs\configure-data-model-in-power-bi-desktop\Starter</strong> folder.</p>
+</li>
+<li><p>Select the <strong>Sales Analysis</strong> file.</p>
+</li>
+<li><p>Select <strong>Open</strong>.</p>
+</li>
+<li><p>Close any informational windows that may open.</p>
+</li>
+<li><p>To create a copy of the file, select the <strong>File</strong> ribbon tab to open the backstage view.</p>
+</li>
+<li><p>Select <strong>Save As</strong>.</p>
+</li>
+<li><p>If prompted to apply changes, select <strong>Apply</strong>.</p>
+</li>
+<li><p>In the <strong>Save As</strong> window, navigate to the <strong>D:\DA100\MySolution</strong> folder.</p>
+</li>
+<li><p>Select <strong>Save</strong>.</p>
+</li>
+</ol>
+<h2 id="task-2-create-model-relationships">Task 2: Create model relationships</h2>
+<p>In this task, you'll create model relationships.</p>
+<ol>
+<li><p>In Power&nbsp;BI&nbsp;Desktop, at the left, select the <strong>Model</strong> view icon.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-1-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-1-ssm.png" alt="Screenshot of the Power B I Desktop Model view icon." data-linktype="relative-path"></a></p>
+</li>
+<li><p>If you do not see all seven tables, scroll horizontally to the right, and then drag and arrange the tables more closely together so they can all be seen at the same time.</p>
+<div>
+<p> Tip</p>
+<p>You can also use the zoom control located at the bottom of the window.</p>
+<p>In Model view, you can view each table and any relationships (connectors between tables). Presently, there are no relationships because in the <strong>Prepare data in Power BI Desktop</strong> lab, you disabled the data load relationship options.</p>
+</div>
+</li>
+<li><p>To return to Report view, at the left, select the <strong>Report view</strong> icon.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-2-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-2-ssm.png" alt="Screenshot of the Power B I Desktop Report view icon." data-linktype="relative-path"></a></p>
+</li>
+<li><p>To view all table fields, in the <strong>Fields</strong> pane, right-click an empty area, and then select <strong>Expand&nbsp;All</strong>.</p>
+</li>
+<li><p>To create a table visual, in the <strong>Fields</strong> pane, from inside the <strong>Product</strong> table, select the <strong>Category</strong> field.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-3-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-3-ssm.png" alt="Screenshot of the Power B I Desktop Fields pane." data-linktype="relative-path"></a></p>
+<div>
+<p> Note</p>
+<p>The labs use a shorthand notation to reference a field. It looks like this: <strong>Product | Category</strong>. In this example, <strong>Product</strong> is the table name and <strong>Category</strong> is the field name.</p>
+</div>
+</li>
+<li><p>To add a column to the table, in the <strong>Fields</strong> pane, select the <strong>Sales&nbsp;|&nbsp;Sales</strong> field.</p>
+</li>
+<li><p>Notice that the table visual lists four product categories, and that the sales value is the same for each, and the same for the total.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-4-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-4-ss.png" alt="Screenshot of the problem where every category lists the same sales amount." data-linktype="relative-path"></a></p>
+<p>The issue is that the table is based on fields from different tables. The expectation is that each product category displays the sales for that category. However, because there isn't a model relationship between these tables, the <strong>Sales</strong> table is not filtered. You'll now add a relationship to propagate filters between the tables.</p>
+</li>
+<li><p>On the <strong>Modeling</strong> ribbon tab, from inside the <strong>Relationships</strong> group, select <strong>Manage&nbsp;Relationships</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-5-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-5-ssm.png" alt="Screenshot of the Manage Relationships button." data-linktype="relative-path"></a></p>
+</li>
+<li><p>In the <strong>Manage&nbsp;Relationships</strong> window, notice that no relationships are yet defined.</p>
+</li>
+<li><p>To create a relationship, select <strong>New</strong>.</p>
+</li>
+<li><p>In the <strong>Create&nbsp;Relationship</strong> window, in the first dropdown list, select the <strong>Product</strong> table.</p>
+</li>
+<li><p>In the second dropdown list (beneath the <strong>Product</strong> table grid), select the <strong>Sales</strong> table.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-6-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-6-ssm.png" alt="Screenshot of the Create Relationship window." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Notice the <strong>ProductKey</strong> columns in each table have been selected.</p>
+<p>The columns were automatically selected because they share the same name and data type.</p>
+</li>
+<li><p>In the <strong>Cardinality</strong> dropdown list, notice that <strong>One&nbsp;To&nbsp;Many (1:*)</strong> is selected.</p>
+<p>The cardinality was automatically detected, because Power BI understands that the <strong>ProductKey</strong> column from the <strong>Product</strong> table contains unique values. One-to-many relationships are the most common cardinality, and all relationships you create in this lab will be of this type. You'll work with a many-to-many cardinality in the <strong>Model data in Power BI Desktop, Part 2</strong> lab.</p>
+</li>
+<li><p>In the <strong>Cross&nbsp;Filter&nbsp;Direction</strong> dropdown list, notice that <strong>Single</strong> is selected.</p>
+<p>Single filter direction means that filters propagate from the "one side" to the "many side". In this case, it means filters applied to the <strong>Product</strong> table will propagate to the <strong>Sales</strong> table, but not in the other direction. You’ll work with a bi-directional relationship in the <strong>Model data in Power BI Desktop, Part 2</strong> lab.</p>
+</li>
+<li><p>Notice that the <strong>Make&nbsp;This&nbsp;Relationship&nbsp;Active</strong> is selected.</p>
+<p>Active relationships will propagate filters. It's possible to mark a relationship as inactive so filters don't propagate. Inactive relationships can exist when there are multiple relationship paths between tables. In which case, model calculations can use special functions to activate them. You’ll work with an inactive relationship in the <strong>Model data in Power BI Desktop, Part 2</strong> lab.</p>
+</li>
+<li><p>Select <strong>OK</strong>.</p>
+</li>
+<li><p>In the <strong>Manage&nbsp;Relationships</strong> window, notice that the new relationship is listed, and then select <strong>Close</strong>.</p>
+</li>
+<li><p>In the report, notice that the table visual has updated to display different values for each product category.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-7-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-7-ss.png" alt="Screenshot of the corrected table with different sales amounts listed." data-linktype="relative-path"></a></p>
+<p>Filters applied to the <strong>Product</strong> table now propagate to the <strong>Sales</strong> table.</p>
+</li>
+<li><p>Switch to Model view, and then notice there is now a connector between the two tables. (It does not matter whether the tables are positioned next to each other.)</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-8-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-8-ss.png" alt="Screenshot of the visual connection between two tables." data-linktype="relative-path"></a></p>
+</li>
+<li><p>In the diagram, notice that you can interpret the cardinality, which is represented by the <strong>1</strong> and <strong>*</strong> indicators.</p>
+<div>
+<p> Note</p>
+<p>Filter direction is represented by the arrow head. A solid line represents an active relationship. A dashed line represents an inactive relationship.</p>
+</div>
+</li>
+<li><p>Hover the cursor over the relationship to reveal the related columns.</p>
+<p>There's an easier way to create a relationship. In the model diagram, you can drag and drop columns to create a new relationship.</p>
+</li>
+<li><p>To create a new relationship, from the <strong>Reseller</strong> table, drag the <strong>ResellerKey</strong> column on to the <strong>ResellerKey</strong> column of the <strong>Sales</strong> table.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-10-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-10-ssm.png" alt="Screenshot of the ResellerKey in the Reseller table dragged to the ResellerKey in the Sales table." data-linktype="relative-path"></a></p>
+<div>
+<p> Tip</p>
+<p>Sometimes a column doesn't want to be dragged. If this situation arises, select a different column and then try again.</p>
+</div>
+</li>
+<li><p>Create the following two model relationships:</p>
+<ul>
+<li><p><strong>Region&nbsp;|&nbsp;SalesTerritoryKey</strong> to <strong>Sales&nbsp;|&nbsp;SalesTerritoryKey</strong></p>
+</li>
+<li><p><strong>Salesperson&nbsp;|&nbsp;EmployeeKey</strong> to <strong>Sales&nbsp;|&nbsp;EmployeeKey</strong></p>
+</li>
+</ul>
+<p>In this lab, the <strong>SalespersonRegion</strong> and <strong>Targets</strong> tables will remain disconnected. There's a many-to-many relationship between salesperson and region. You'll work with this advanced scenario in the <strong>Model data in Power BI Destktop, Part 2</strong> lab.</p>
+</li>
+<li><p>In the diagram, place the <strong>Sales</strong> table in the center and arrange the related tables around it. Place the disconnected tables to the side.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-10-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-10-ss.png" alt="Screenshot of the relationships between different tables." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Save the Power&nbsp;BI&nbsp;Desktop file.</p>
+</li>
+</ol>
+<h2 id="exercise-2-configure-tables">Exercise 2: Configure tables</h2>
+<p>In this exercise, you will configure each table by creating hierarchies, and hiding, formatting, and categorizing columns.</p>
+<h3 id="task-1-configure-the-product-table">Task 1: Configure the Product table</h3>
+<p>In this task, you will configure the <strong>Product</strong> table.</p>
+<ol>
+<li><p>In Model view, in the <strong>Fields</strong> pane, if necessary, expand the <strong>Product</strong> table.</p>
+</li>
+<li><p>To create a hierarchy, in the <strong>Fields</strong> pane, right-click the <strong>Category</strong> column, and then select <strong>Create&nbsp;Hierarchy</strong>.</p>
+</li>
+<li><p>In the <strong>Properties</strong> pane (to the left of the <strong>Fields</strong> pane), in the <strong>Name</strong> box, replace the text with <strong>Products</strong>.</p>
+</li>
+<li><p>To add the second level to the hierarchy, in the <strong>Properties</strong> pane, in the <strong>Hierarchy</strong> dropdown list, scroll down and select <strong>Subcategory</strong>.</p>
+</li>
+<li><p>To add the third level to the hierarchy, in the <strong>Hierarchy</strong> dropdown list, select <strong>Product</strong>.</p>
+</li>
+<li><p>To complete the hierarchy design, select <strong>Apply&nbsp;Level&nbsp;Changes</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-11-a-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-11-a-ssm.png" alt="Screenshot of the Hierarchy drop-down list with Apply Level Changes highlighted." data-linktype="relative-path"></a></p>
+<div>
+<p> Tip</p>
+<p>Don't forget to select <strong>Apply&nbsp;Level&nbsp;Changes</strong>. It's a common mistake to overlook this step.</p>
+</div>
+</li>
+<li><p>In the <strong>Fields</strong> pane, notice the <strong>Products</strong> hierarchy.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-11-b-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-11-b-ssm.png" alt="Screenshot of the Fields pane with the Products folder collapsed." data-linktype="relative-path"></a></p>
+</li>
+<li><p>To reveal the hierarchy levels, expand the <strong>Products</strong> hierarchy.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-11-c-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-11-c-ssm.png" alt="Screenshot of the Fields pane with the Products folder expanded to show Category, Subcategory, and Product fields." data-linktype="relative-path"></a></p>
+</li>
+<li><p>To organize columns into a display folder, in the <strong>Fields</strong> pane, first select the <strong>Background&nbsp;Color&nbsp;Format</strong> column.</p>
+</li>
+<li><p>While pressing the <strong>Ctrl</strong> key, select the <strong>Font&nbsp;Color&nbsp;Format</strong> column.</p>
+</li>
+<li><p>In the <strong>Properties</strong> pane, in the <strong>Display&nbsp;Folder</strong> box, enter <strong>Formatting</strong>.</p>
+</li>
+<li><p>In the <strong>Fields</strong> pane, notice that the two columns are now inside a folder.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-11-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-11-ssm.png" alt="Screenshot of the Fields pane with the Formatting folder expanded to show Background Color Format and Font Color Format." data-linktype="relative-path"></a></p>
+<div>
+<p> Note</p>
+<p>Display folders are a great way to declutter tables, especially those that contain many fields.</p>
+</div>
+</li>
+</ol>
+<h3 id="task-2-configure-the-region-table">Task 2: Configure the Region table</h3>
+<p>In this task, you will configure the <strong>Region</strong> table.</p>
+<ol>
+<li><p>In the <strong>Region</strong> table, create a hierarchy named <strong>Regions</strong>, with the following three levels:</p>
+<ul>
+<li><p>Group</p>
+</li>
+<li><p>Country</p>
+</li>
+<li><p>Region</p>
+</li>
+</ul>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-12-a-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-12-a-ssm.png" alt="Screenshot of the Regions hierarchy in the Fields pane." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Select the <strong>Country</strong> column (not the <strong>Country</strong> hierarchy level).</p>
+</li>
+<li><p>In the <strong>Properties</strong> pane, expand the <strong>Advanced</strong> section at the bottom of the pane, and then in the <strong>Data&nbsp;Category</strong> dropdown list, select <strong>Country/Region</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-12-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-12-ssm.png" alt="Screenshot of the Properties pane and the Data category field." data-linktype="relative-path"></a></p>
+<div>
+<p> Note</p>
+<p>Data categorization can provide hints to the report designer. In this case, categorizing the column as country or region provides more accurate information when rendering a map visualization.</p>
+</div>
+</li>
+</ol>
+<h3 id="task-3-configure-the-reseller-table">Task 3: Configure the Reseller table</h3>
+<p>In this task, you will configure the <strong>Reseller</strong> table.</p>
+<ol>
+<li><p>In the <strong>Reseller</strong> table, create a hierarchy named <strong>Resellers</strong>, with the following two levels:</p>
+<ul>
+<li><p>Business Type</p>
+</li>
+<li><p>Reseller</p>
+</li>
+</ul>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-13-a-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-13-a-ssm.png" alt="Screenshot of the Resellers hierarchy in the Fields pane." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Create a second hierarchy named <strong>Geography</strong>, with the following four levels:</p>
+<ul>
+<li><p>Country-Region</p>
+</li>
+<li><p>State-Province</p>
+</li>
+<li><p>City</p>
+</li>
+<li><p>Reseller</p>
+</li>
+</ul>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-13-b-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-13-b-ssm.png" alt="Screenshot of the Geography hierarchy in the Fields pane." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Categorize the following three columns:</p>
+<ul>
+<li><p><strong>Country-Region</strong> as <strong>Country/Region</strong></p>
+</li>
+<li><p><strong>State-Province</strong> as <strong>State&nbsp;or&nbsp;Province</strong></p>
+</li>
+<li><p><strong>City</strong> as <strong>City</strong></p>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="task-4-configure-the-sales-table">Task 4: Configure the Sales table</h3>
+<p>In this task, you will configure the <strong>Sales</strong> table.</p>
+<ol>
+<li><p>In the <strong>Sales</strong> table, select the <strong>Cost</strong> column.</p>
+</li>
+<li><p>In the <strong>Properties</strong> pane, in the <strong>Description</strong> box, enter: <strong>Based on standard cost</strong></p>
+<p>Descriptions can be applied to table, columns, hierarchies, or measures. In the <strong>Fields</strong> pane, description text is revealed in a tooltip when a report author hovers their cursor over the field.</p>
+</li>
+<li><p>Select the <strong>Quantity</strong> column.</p>
+</li>
+<li><p>In the <strong>Properties</strong> pane, from inside the <strong>Formatting</strong> section, slide the <strong>Thousands&nbsp;Separator</strong> property to <strong>On</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-13-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-13-ssm.png" alt="Screenshot of the Properties pane and the Thousands separator toggle." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Select the <strong>Unit&nbsp;Price</strong> column.</p>
+</li>
+<li><p>In the <strong>Properties</strong> pane, from inside the <strong>Formatting</strong> section, slide the <strong>Decimal&nbsp;Places</strong> property to <strong>2</strong>.</p>
+</li>
+<li><p>In the <strong>Advanced</strong> group (you may need to scroll down to locate it), in the <strong>Summarize&nbsp;By</strong> dropdown list, select <strong>Average</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-14-a-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-14-a-ssm.png" alt="Screenshot of the Advanced group and the Summarize by property set to Average." data-linktype="relative-path"></a></p>
+<p>By default, numeric columns will summarize by summing values together. This default behavior is not suitable for a column like <strong>Unit&nbsp;Price</strong>, which represents a rate. Setting the default summarization to average will produce a useful and accurate result.</p>
+</li>
+</ol>
+<h3 id="task-5-bulk-update-properties">Task 5: Bulk update properties</h3>
+<p>In this task, you will update multiple columns in a single bulk update. You will use this approach to hide columns, and format column values.</p>
+<ol>
+<li><p>While pressing the <strong>Ctrl</strong> key, select the following 13 columns (spanning multiple tables):</p>
+<ul>
+<li><p>Product&nbsp;|&nbsp;ProductKey</p>
+</li>
+<li><p>Region&nbsp;|&nbsp;SalesTerritoryKey</p>
+</li>
+<li><p>Reseller&nbsp;|&nbsp;ResellerKey</p>
+</li>
+<li><p>Sales&nbsp;|&nbsp;EmployeeKey</p>
+</li>
+<li><p>Sales&nbsp;|&nbsp;ResellerKey</p>
+</li>
+<li><p>Sales&nbsp;|&nbsp;SalesOrderNumber</p>
+</li>
+<li><p>Sales&nbsp;|&nbsp;SalesTerritoryKey</p>
+</li>
+<li><p>Salesperson&nbsp;|&nbsp;EmployeeID</p>
+</li>
+<li><p>Salesperson&nbsp;|&nbsp;EmployeeKey</p>
+</li>
+<li><p>Salesperson&nbsp;|&nbsp;UPN</p>
+</li>
+<li><p>SalespersonRegion&nbsp;|&nbsp;EmployeeKey</p>
+</li>
+<li><p>SalespersonRegion&nbsp;|&nbsp;SalesTerritoryKey</p>
+</li>
+<li><p>Targets&nbsp;|&nbsp;EmployeeID</p>
+</li>
+</ul>
+</li>
+<li><p>In the <strong>Properties</strong> pane, toggle the <strong>Is&nbsp;Hidden</strong> property to <strong>On</strong>.</p>
+<p>The columns were hidden because they are either used by relationships or calculation logic.</p>
+<p>You’ll define row-level security in the <strong>Model data in Power BI Desktop, Part 2</strong> lab using the <strong>UPN</strong> column. You’ll use the <strong>SalesOrderNumber</strong> in a calculation in the <strong>Create DAX calculations in Power BI Desktop, Part 1</strong> lab.</p>
+</li>
+<li><p>Multi-select the following three columns:</p>
+<ul>
+<li><p>Product&nbsp;|&nbsp;Standard&nbsp;Cost</p>
+</li>
+<li><p>Sales&nbsp;|&nbsp;Cost</p>
+</li>
+<li><p>Sales&nbsp;|&nbsp;Sales</p>
+</li>
+</ul>
+</li>
+<li><p>In the <strong>Properties</strong> pane, from inside the <strong>Formatting</strong> section, set the <strong>Decimal&nbsp;Places</strong> property to <strong>0</strong> (zero).</p>
+</li>
+</ol>
+<h2 id="exercise-3-review-the-model-interface">Exercise 3: Review the model interface</h2>
+<p>In this exercise, you will switch to Report view, and review the model interface.</p>
+<h3 id="task-1-review-the-model-interface">Task 1: Review the model interface</h3>
+<p>In this task, you will switch to Report view, and review the model interface.</p>
+<ol>
+<li><p>Switch to Report view.</p>
+</li>
+<li><p>In the <strong>Fields</strong> pane, notice the following:</p>
+<ul>
+<li><p>Columns, hierarchies, and their levels are fields, which you can use to configure report visuals</p>
+</li>
+<li><p>Only fields relevant to report authoring are visible</p>
+</li>
+<li><p>The <strong>SalespersonRegion</strong> table is not visible because all of its fields are hidden</p>
+</li>
+<li><p>Spatial fields in the <strong>Region</strong> and <strong>Reseller</strong> table are adorned with a spatial icon</p>
+</li>
+<li><p>Fields adorned with the sigma symbol (Ʃ) will summarize by default</p>
+</li>
+<li><p>A tooltip appears when hovering the cursor over the <strong>Sales&nbsp;|&nbsp;Cost</strong> field</p>
+</li>
+</ul>
+</li>
+<li><p>Expand the <strong>Sales&nbsp;|&nbsp;OrderDate</strong> field, and then notice that it reveals a date hierarchy.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-14-b-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-14-b-ssm.png" alt="Screenshot of the Power B I Desktop Fields pane with OrderDate expanded to show a Date Hierarchy." data-linktype="relative-path"></a></p>
+<p>The <strong>Targets&nbsp;|&nbsp;TargetMonth</strong> field presents a similar hierarchy. These hierarchies were not created by you. They are created automatically. There is a problem, however. The Adventure Works financial year commences on July 1 of each year. But, the automatically created date hierarchy year commences on January 1 of each year.</p>
+<p>You'll now turn this automatic behavior off. In the <strong>Create DAX calculations in Power BI Desktop, Part 1</strong> lab, you’ll use DAX to create a date table and configure it to define the Adventure Works calendar.</p>
+</li>
+<li><p>To turn off auto/date time, select the <strong>File</strong> ribbon tab to open the backstage view.</p>
+</li>
+<li><p>At the left, select <strong>Options&nbsp;and&nbsp;Settings</strong>, and then select <strong>Options</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-14-c-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-14-c-ssm.png" alt="Screenshot of the Power B I Desktop Options and settings page with an arrow to Options." data-linktype="relative-path"></a></p>
+</li>
+<li><p>In the <strong>Options</strong> window, at the left, in the <strong>Current&nbsp;File</strong> group, select <strong>Data&nbsp;Load</strong>.</p>
+</li>
+<li><p>In the <strong>Time&nbsp;Intelligence</strong> section, clear the <strong>Auto&nbsp;Date/Time</strong> option.</p>
+</li>
+<li><p>Select <strong>OK</strong>.</p>
+</li>
+<li><p>In the <strong>Fields</strong> pane, notice that the date hierarchies are no longer available.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-14-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-14-ssm.png" alt="Screenshot of the Power B I Desktop Fields pane with OrderDate highlighted." data-linktype="relative-path"></a></p>
+</li>
+</ol>
+<h2 id="exercise-4-create-quick-measures">Exercise 4: Create quick measures</h2>
+<p>In this exercise you will create two quick measures.</p>
+<h3 id="task-1-create-quick-measures">Task 1: Create quick measures</h3>
+<p>In this task, you will create two quick measures to calculate profit and profit margin.</p>
+<ol>
+<li><p>In the <strong>Fields</strong> pane, right-click the <strong>Sales</strong> table, and then select <strong>New&nbsp;Quick&nbsp;Measure</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-15-a-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-15-a-ssm.png" alt="Screenshot of the Fields pane with the New quick measure option highlighted." data-linktype="relative-path"></a></p>
+</li>
+<li><p>In the <strong>Quick&nbsp;Measures</strong> window, in the <strong>Calculation</strong> dropdown list, from inside the <strong>Mathematical&nbsp;Operations</strong> group, select <strong>Subtraction</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-15-b-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-15-b-ssm.png" alt="Screenshot of the Quick measures dialog with the Subtraction option highlighted." data-linktype="relative-path"></a></p>
+</li>
+<li><p>In the <strong>Quick measures</strong> window <strong>Fields</strong> pane, expand the <strong>Sales</strong> table.</p>
+</li>
+<li><p>Drag the <strong>Sales</strong> field into the <strong>Base&nbsp;Value</strong> box.</p>
+</li>
+<li><p>Drag the <strong>Cost</strong> field into the <strong>Value&nbsp;to&nbsp;Subtract</strong> box.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-15-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-15-ssm.png" alt="Screenshot of the completed Quick Measures dialog." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Select <strong>OK</strong>.</p>
+<p>A quick measure creates the calculation for you. They're easy and fast to create for simple and common calculations. You’ll create measures without using this tool in the <strong>Create DAX calculations in Power BI Desktop, Part 1</strong> lab.</p>
+</li>
+<li><p>In the <strong>Fields</strong> pane, inside the <strong>Sales</strong> table, notice the new measure.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-16-a-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-16-a-ssm.png" alt="Screenshot of the Fields pane with the new Sales minus Cost measure highlighted." data-linktype="relative-path"></a></p>
+<p>Measures are adorned with the calculator icon.</p>
+</li>
+<li><p>To rename the measure, right-click it, and then select <strong>Rename</strong>.</p>
+<div>
+<p> Tip</p>
+<p>To rename a field, you can also double-click it, or select it and press <strong>F2</strong>.</p>
+</div>
+</li>
+<li><p>Rename the measure to <strong>Profit</strong>, and then press <strong>Enter</strong>.</p>
+</li>
+<li><p>In the <strong>Sales</strong> table, add a second quick measure, based on the following requirements:</p>
+<ul>
+<li><p>Use the <strong>Division</strong> mathematical operation</p>
+</li>
+<li><p>Set the <strong>Numerator</strong> to the <strong>Sales&nbsp;|&nbsp;Profit</strong> field</p>
+</li>
+<li><p>Set the <strong>Denominator</strong> to <strong>Sales&nbsp;|&nbsp;Sales</strong> field</p>
+</li>
+<li><p>Rename the measure as <strong>Profit&nbsp;Margin</strong></p>
+</li>
+</ul>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-16-b-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-16-b-ssm.png" alt="Screenshot of the Quick measures dialog with Profit and Sum of Sales highlighted." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Ensure the <strong>Profit&nbsp;Margin</strong> measure is selected, and then on the <strong>Measure&nbsp;Tools</strong> contextual ribbon, set the format to <strong>Percentage</strong>, with two decimal places.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-16-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-16-ssm.png" alt="Screenshot of the Measure Tools ribbon with Percentage and 2 highlighted." data-linktype="relative-path"></a></p>
+</li>
+<li><p>To test the two measures, first select the table visual on the report page.</p>
+</li>
+<li><p>In the <strong>Fields</strong> pane, select the two measures.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-17-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-17-ssm.png" alt="Screenshot of the Profit and Profit Margin measured selected." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Select and drag the right guide to widen the table visual.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-18-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-18-ssm.png" alt="Screenshot of the table visual and how to expand its width." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Verify that the measures produce reasonable result that is correctly formatted.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-19-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-19-ss.png" alt="Screenshot of the properly formatted table." data-linktype="relative-path"></a></p>
+</li>
+</ol>
+<h2 id="task-2-finish-up">Task 2: Finish up</h2>
+<p>In this task, you will complete the lab.</p>
+<ol>
+<li><p>To remove the table, select the table (by clicking it), and then press the <strong>Delete</strong> key.</p>
+</li>
+<li><p>Save the Power&nbsp;BI&nbsp;Desktop file.</p>
+</li>
+<li><p>If prompted to apply queries, click <strong>Apply Later</strong>.</p>
+</li>
+<li><p>If you intend to start the next lab, leave Power BI Desktop open.</p>
+<p>You’ll enhance the data model by configuring a many-to-many relationship and row-level security in the <strong>Model data in Power BI Desktop, Part 2</strong> lab.</p>
+</li>
+</ol>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Lab - Model data in Power BI Desktop, Part 2</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/9-lab/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div>
+
+						<!-- </content> -->
+
+						</main>
+
+						<!-- page rating section -->
+						<!-- end page rating section -->
+
+<section>
+		<p>
+Need help? See our <a id="troubleshooting-guide" data-bi-name="troubleshooting" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-bizapps.design-model-power-bi.8-lab&amp;documentId=88fda511-2667-d32c-d4b2-28cbaecabe16&amp;versionIndependentDocumentId=b4a9476d-e804-e732-397c-5e46b8541ee9&amp;contentPath=%2FMicrosoftDocs%2Flearn-bizapps-pr%2Fblob%2Flive%2Flearn-bizapps-pr%2Fpower-bi%2Fdesign-model-power-bi%2F8-lab.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fdesign-model-power-bi%2F8-lab&amp;author=robde">troubleshooting guide</a> or provide specific feedback by <a id="module-unit-feedback-link" data-bi-name="feedback" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-bizapps.design-model-power-bi.8-lab&amp;documentId=88fda511-2667-d32c-d4b2-28cbaecabe16&amp;versionIndependentDocumentId=b4a9476d-e804-e732-397c-5e46b8541ee9&amp;contentPath=%2FMicrosoftDocs%2Flearn-bizapps-pr%2Fblob%2Flive%2Flearn-bizapps-pr%2Fpower-bi%2Fdesign-model-power-bi%2F8-lab.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fdesign-model-power-bi%2F8-lab&amp;author=robde#report-feedback">reporting an issue</a>.		</p>
+	</section>
+
+						<!-- recommendations section -->
+						<!-- end recommendations section -->
+
+						<!-- feedback section -->
+						<!-- end feedback section -->
+
+						<!-- feedback report section -->
+						<!-- end feedback report section -->
+
+						
+					</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

@@ -1,0 +1,8 @@
+1. B
+Data granularity indicates the level the detail within the data, so the higher the granularity, the more detail that is represented in the data.
+
+2. A
+Fact tables contain observational data such as sales orders, employees, shipping dates, and so on, while dimension tables contain information about specific entities such as product IDs and dates.
+
+3. A
+Cardinality is the directionality of a relationship, such as one-to-many, one-to-one, and so on.

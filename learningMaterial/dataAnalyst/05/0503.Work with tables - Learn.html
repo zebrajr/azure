@@ -1,0 +1,274 @@
+<html dir="ltr"><head><title>Work with tables - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/2-tables">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/design-model-power-bi/2-tables</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Work with tables - Learn</h1>
+  <div dir="auto" id="reader-credits">heyrob</div>
+  <div dir="auto" id="reader-estimated-time">4-5 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>3 minutes</li>
+		</ul>
+			<p>When users see fewer tables, they will enjoy using your data model considerably more. For example, suppose you've imported dozens of tables from many data sources and now the visual appears disorderly. In this case, you need to ensure that, before you begin working on building reports, your data model and table structure are simplified.</p>
+<p>A simple table structure will:</p>
+<ul>
+<li><p>Be simple to navigate because of column and table properties that are specific and user-friendly.</p>
+</li>
+<li><p>Have merged or appended tables to simplify the tables within your data structure.</p>
+</li>
+<li><p>Have good-quality relationships between tables that make sense.</p>
+</li>
+</ul>
+<p>The following sections further explain how you might work with your tables to ensure a simple and readable table structure.</p>
+<h2 id="configure-data-model-and-build-relationships-between-tables">Configure data model and build relationships between tables</h2>
+<p>Assuming that you've already retrieved your data and cleaned it in Power Query, you can then go to the <strong>Model</strong> tab, where the data model is located. The following image shows how the relationship between the <strong>Order</strong> and <strong>Sales</strong> tables can be seen through the <strong>OrderDate</strong> column.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/02-data-model-example-01-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/02-data-model-example-01-ssm.png" alt="Screenshot of data model with a two-way relationship between Sales and Order tables." data-linktype="relative-path"></a></p>
+<p>To manage these relationships, go to <strong>Manage Relationships</strong> on the ribbon, where the following window will appear.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/02-manage-relationships-window-02-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/02-manage-relationships-window-02-ss.png" alt="Screenshot of Manage Relationships in Model view." data-linktype="relative-path"></a></p>
+<p>In this view, you can create, edit, and delete relationships between tables and also autodetect relationships that already exist. When you load your data into Power BI, the <strong>Autodetect</strong> feature will help you establish relationships between columns that are named similarly. Relationships can be inactive or active. Only one active relationship can exist between tables, which is discussed in a future module.</p>
+<p>While the <strong>Manage Relationships</strong> feature allows you to configure relationships between tables, you can also configure table and column properties to ensure organization in your table structure.</p>
+<h2 id="configure-table-and-column-properties">Configure table and column properties</h2>
+<p>The <strong>Model</strong> view in Power BI desktop provides many options within the column properties that you can view or update. A simple method to get to this menu to update the tables and fields is by Ctrl+clicking or Shift+clicking items on this page.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/02-configure-properties-03-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/02-configure-properties-03-ss.png" alt="Screenshot of the column properties dialog." data-linktype="relative-path"></a></p>
+<p>Under the <strong>General</strong> tab, you can:</p>
+<ul>
+<li><p>Edit the name and description of the column.</p>
+</li>
+<li><p>Add synonyms that can be used to identify the column when you are using the Q&amp;A feature.</p>
+</li>
+<li><p>Add a column into a folder to further organize the table structure.</p>
+</li>
+<li><p>Hide or show the column.</p>
+</li>
+</ul>
+<p>Under the <strong>Formatting</strong> tab, you can:</p>
+<ul>
+<li><p>Change the data type.</p>
+</li>
+<li><p>Format the date.</p>
+</li>
+</ul>
+<p>For instance, suppose that the dates in your column are formatted, as seen in the previous screenshot, in the form of "Wednesday, March 14, 2001". If you want to change the format so that the date was in the "mm/dd/yyyy" format, you would select the drop-down menu under <strong>All date time formats</strong> and then choose the appropriate date format, as shown in the following figure.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/02-change-date-format-05-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/02-change-date-format-05-ss.png" alt="Screenshot of All date formats with mm/dd/yyyy selected." data-linktype="relative-path"></a></p>
+<p>After selecting the appropriate date format, return to the <strong>Date</strong> column, where you should see that the format has indeed changed, as shown in the following figure.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/02-result-changing-format-06-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/02-result-changing-format-06-ss.png" alt="Screenshot of the date column with the date format changed." data-linktype="relative-path"></a></p>
+<p>Under the <strong>Advanced</strong> tab, you can:</p>
+<ul>
+<li><p>Sort by a specific column.</p>
+</li>
+<li><p>Assign a specific category to the data.</p>
+</li>
+<li><p>Summarize the data.</p>
+</li>
+<li><p>Determine if the column or table contains null values.</p>
+</li>
+</ul>
+<p>Additionally, Power BI has a new functionality to update these properties on many tables and fields by Ctrl+clicking or Shift+clicking items.</p>
+<p>These examples are only some of the many types of transformations that you can make to simplify the table structure. This step is important to take before you begin making your visuals so that you don't have to go back and forth when making formatting changes. This process of formatting and configuring tables can also be done in Power Query.</p>
+
+		
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

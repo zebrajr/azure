@@ -1,0 +1,470 @@
+<html dir="ltr"><head><title>Lab - Model data in Power BI Desktop, Part 2 - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/9-lab">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/design-model-power-bi/9-lab</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Lab - Model data in Power BI Desktop, Part 2 - Learn</h1>
+  <div dir="auto" id="reader-credits">heyrob</div>
+  <div dir="auto" id="reader-estimated-time">11-13 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>45 minutes</li>
+		</ul>
+			<h2 id="access-your-environment">Access your environment</h2>
+<p>Before you start this lab, select <strong>Launch lab</strong> above.</p>
+<p>To log in to your lab environment:</p>
+<ol>
+<li>Click anywhere on the Windows desktop in the lab window.</li>
+<li>On the <strong>Resources</strong> tab on the lab side bar, select the <strong>T</strong> icon next to <strong>Password</strong>. The machine password is automatically entered for you. You can log in with the Student profile.</li>
+<li>Press <strong>Enter</strong>.</li>
+</ol>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/includes/vm-login.png" alt="Image of the lab password on the Resources tab." data-linktype="relative-path"></p>
+<p>You can now begin your work on this lab.</p>
+<p><strong>The estimated time to complete the lab is 45 minutes</strong></p>
+<p>In this lab you will create a many-to-many relationship between the <strong>Salesperson</strong> table and the <strong>Sales</strong> table. You will also enforce row-level security to ensure that a salesperson can only analyze sales data for their assigned region(s).</p>
+<p>In this lab you learn how to:</p>
+<ul>
+<li><p>Configure many-to-many relationships</p>
+</li>
+<li><p>Enforce row-level security</p>
+</li>
+</ul>
+<h3 id="lab-story"><strong>Lab story</strong></h3>
+<p>This lab is one of many in a series of labs that was designed as a complete story from data preparation to publication as reports and dashboards. You can complete the labs in any order. However, if you intend to work through multiple labs, for the first 10 labs, we suggest you do them in the following order:</p>
+<ol>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/get-data/lab-prepare/" data-linktype="absolute-path" target="az-portal">Prepare data in Power BI Desktop</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/clean-data-power-bi/8-lab/" data-linktype="absolute-path" target="az-portal">Load data in Power BI Desktop</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/design-model-power-bi/8-lab/" data-linktype="absolute-path" target="az-portal">Model data in Power BI Desktop, part 1</a></p>
+</li>
+<li><p><strong>Model data in Power BI Desktop, Part 2</strong></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/create-measures-dax-power-bi/6-lab/" data-linktype="absolute-path" target="az-portal">Create DAX calculations in Power BI Desktop, part 1</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/create-measures-dax-power-bi/8-lab/" data-linktype="absolute-path" target="az-portal">Create DAX calculations in Power BI Desktop, part 2</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/visuals-power-bi/8-lab/" data-linktype="absolute-path" target="az-portal">Design a report in Power BI Desktop, part 1</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/data-driven-story-power-bi/13-lab/" data-linktype="absolute-path" target="az-portal">Design a report in Power BI Desktop, part 2</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/create-dashboards-power-bi/9-lab/" data-linktype="absolute-path" target="az-portal">Create a Power BI dashboard</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/ai-visuals-power-bi/5-lab/" data-linktype="absolute-path" target="az-portal">Perform data analysis in Power BI Desktop</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/create-paginated-reports-power-bi/6-lab/" data-linktype="absolute-path" target="az-portal">Create a Power BI paginated report</a></p>
+</li>
+</ol>
+<h2 id="exercise-1-create-a-many-to-many-relationship">Exercise 1: Create a many-to-many relationship</h2>
+<p>In this exercise, you will create a many-to-many relationship between the <strong>Salesperson</strong> table and the <strong>Sales</strong> table.</p>
+<h3 id="task-1-get-started">Task 1: Get started</h3>
+<p>In this task, you will set up the environment for the lab.</p>
+<div>
+<p> Important</p>
+<p>If you are continuing on from the previous lab (and you completed that lab successfully), do not complete this task. Instead, continue from the next task.</p>
+</div>
+<ol>
+<li><p>To open the Power BI Desktop, on the taskbar, select the Microsoft Power BI Desktop shortcut.</p>
+</li>
+<li><p>To close the getting started window, at the top-left of the window, select <strong>X</strong>.</p>
+</li>
+<li><p>To open the starter Power BI Desktop file, select the <strong>File</strong> ribbon tab to open the backstage view.</p>
+</li>
+<li><p>Select <strong>Open Report</strong>.</p>
+</li>
+<li><p>Select <strong>Browse Reports</strong>.</p>
+</li>
+<li><p>In the Open window, navigate to the <strong>D:\DA100\Labs\configure-data-model-in-power-bi-desktop-advanced\Starter</strong> folder.</p>
+</li>
+<li><p>Select the <strong>Sales Analysis</strong> file.</p>
+</li>
+<li><p>Select <strong>Open</strong>.</p>
+</li>
+<li><p>Close any informational windows that may open.</p>
+</li>
+<li><p>To create a copy of the file, select the <strong>File</strong> ribbon tab to open the backstage view.</p>
+</li>
+<li><p>Select <strong>Save As</strong>.</p>
+</li>
+<li><p>If prompted to apply changes, select <strong>Apply</strong>.</p>
+</li>
+<li><p>In the <strong>Save As</strong> window, navigate to the <strong>D:\DA100\MySolution</strong> folder.</p>
+</li>
+<li><p>Select <strong>Save</strong>.</p>
+</li>
+</ol>
+<h3 id="task-2-create-a-many-to-many-relationship">Task 2: Create a many-to-many relationship</h3>
+<p>In this task you will create a many-to-many relationship between the <strong>Salesperson</strong> table and the <strong>Sales</strong> table.</p>
+<ol>
+<li><p>In Power&nbsp;BI&nbsp;Desktop, in Report view, in the <strong>Fields</strong> pane, select the following two fields to create a table visual:</p>
+<ul>
+<li><p>Salesperson&nbsp;|&nbsp;Salesperson</p>
+</li>
+<li><p>Sales&nbsp;|&nbsp;Sales</p>
+</li>
+</ul>
+<p>The labs use a shorthand notation to reference a field. It looks like this: <strong>Salesperson | Salesperson</strong>. In this example, <strong>Salesperson</strong> is the table name and <strong>Salesperson</strong> is the field name.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-2-1-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-2-1-ss.png" alt="Screenshot of the resulting table visual." data-linktype="relative-path"></a></p>
+<p>The table displays sales made by each salesperson. However, there is another relationship between salespeople and sales. Some salespeople belong to one, two, or possibly more sales regions. In addition, sales regions can have multiple salespeople assigned to them.</p>
+<p>From a performance management perspective, a salesperson's sales (based on their assigned territories) need to be analyzed and compared with sales targets. In the next exercise, you'll create relationships to support this analysis.</p>
+</li>
+<li><p>Notice that Michael&nbsp;Blythe has sold almost $9 million.</p>
+</li>
+<li><p>Switch to Model view.</p>
+</li>
+<li><p>Drag the <strong>SalespersonRegion</strong> table to position it between the <strong>Region</strong> and <strong>Salesperson</strong> tables.</p>
+</li>
+<li><p>Use the drag-and-drop technique to create the following two model relationships:</p>
+<ul>
+<li><p><strong>Salesperson&nbsp;|&nbsp;EmployeeKey</strong> to <strong>SalespersonRegion&nbsp;|&nbsp;EmployeeKey</strong></p>
+</li>
+<li><p><strong>Region&nbsp;|&nbsp;SalesTerritoryKey</strong> to <strong>SalespersonRegion&nbsp;|&nbsp;SalesTerritoryKey</strong></p>
+</li>
+</ul>
+<p>The <strong>SalespersonRegion</strong> table can be considered a bridging table.</p>
+</li>
+<li><p>Switch to Report view, and then notice that the visual has not updated. The sales result for Michael&nbsp;Blythe has not changed.</p>
+</li>
+<li><p>Switch back to Model view, and then follow the relationship filter directions (arrowhead) from the <strong>Salesperson</strong> table.</p>
+<p>Consider that the <strong>Salesperson</strong> table filters the <strong>Sales</strong> table. It also filters the <strong>SalespersonRegion</strong> table, but it does not continue to propagate filters to the <strong>Region</strong> table. (The arrowhead is pointing the wrong way.)</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-2-2-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-2-2-ssm.png" alt="Screenshot of the relationship between the Region, SalespersonRegion, and Salesperson tables." data-linktype="relative-path"></a></p>
+</li>
+<li><p>To edit the relationship between the <strong>Region</strong> and <strong>SalespersonRegion</strong> tables, double-click the relationship.</p>
+</li>
+<li><p>In the <strong>Edit&nbsp;Relationship</strong> window, in the <strong>Cross&nbsp;filter&nbsp;direction</strong> dropdown list, select <strong>Both</strong>.</p>
+</li>
+<li><p>Select the <strong>Apply&nbsp;Security&nbsp;Filter&nbsp;in&nbsp;Both&nbsp;Directions</strong> checkbox.</p>
+<p>This setting will ensure that bi-directional filtering is applied when row-level security is being enforced. You'll configure a security role in the next exercise.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-2-3-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-2-3-ssm.png" alt="Screenshot of Cross filter direction dropdown list." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Select <strong>OK</strong>.</p>
+</li>
+<li><p>Notice that the relationship has a double arrowhead.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-2-4-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-2-4-ssm.png" alt="Screenshot of relationship arrow with a double arrowhead visible." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Switch to Report view, and then notice that the sales values have not changed.</p>
+<p>The issue now relates to the fact that there are two possible filter propagation paths between the <strong>Salesperson</strong> and <strong>Sales</strong> tables. This ambiguity is internally resolved, based on a "least number of tables" assessment. To be clear, you should not design models with this type of ambiguity. The issue will be addressed in part later in this lab, and by the completion of the <strong>Create DAX calculations in Power BI Desktop, Part 1</strong> lab.</p>
+</li>
+<li><p>Switch to Model view.</p>
+</li>
+<li><p>To force filter propagation via the bridging table, double-click the relationship between the <strong>Salesperson</strong> and <strong>Sales</strong> tables.</p>
+</li>
+<li><p>In the <strong>Edit&nbsp;Relationship</strong> window, clear the <strong>Make&nbsp;This&nbsp;Relationship&nbsp;Active</strong> checkbox.</p>
+</li>
+<li><p>Select <strong>OK</strong>.</p>
+<p>The filter propagation now follows the only active path.</p>
+</li>
+<li><p>In the diagram, notice that the inactive relationship is represented by a dashed line.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-2-5-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-2-5-ss.png" alt="Screenshot of a relationship arrow on a dashed line." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Switch to Report view, and then notice that the sales for Michael&nbsp;Blythe is now nearly $22 million.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-2-6-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-2-6-ss.png" alt="Screenshot of the updated table visual with Michael Blythe's updated sales." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Notice also, that the sales for each salesperson, if added, would exceed the table total.</p>
+<p>It’s a common observation of a many-to-many relationship due to the double, triple, etc. counting of regional sales results. Consider Brian Welcker, the second salesperson listed. His sales amount equals the total sales amount. It’s the correct result simply due to the fact the he’s the Director of Sales; his sales are measured by the sales of all regions.</p>
+<p>While the many-to-many relationship is now working, it’s now not possible to analyze sales made by a salesperson (because the relationship is inactive). You’ll be able to reactive the relationship when you introduce a calculated table that to represent salesperson for performance analysis (of their regions) in the <strong>Create DAX calculations in Power BI Desktop, Part 1</strong> lab.</p>
+</li>
+<li><p>Switch to Modeling view, and then in the diagram, select the <strong>Salesperson</strong> table.</p>
+</li>
+<li><p>In the <strong>Properties</strong> pane, in the <strong>Name</strong> box, replace the text with <strong>Salesperson&nbsp;(Performance)</strong>.</p>
+<p>The renamed table now reflects its purpose: it is used to report and analyze the performance of salespeople based on the sales of their assigned sales regions.</p>
+</li>
+</ol>
+<h3 id="task-3-relate-the-targets-table">Task 3: Relate the Targets table</h3>
+<p>In this task, you will create a relationship to the <strong>Targets</strong> table</p>
+<ol>
+<li><p>Create a relationship from the <strong>Salesperson&nbsp;(Performance)&nbsp;|&nbsp;EmployeeID</strong> column and the <strong>Targets&nbsp;|&nbsp;EmployeeID</strong> column.</p>
+</li>
+<li><p>In Report view, add the <strong>Targets&nbsp;|&nbsp;Target</strong> field to the table visual.</p>
+</li>
+<li><p>Widen the table visual to reveal all data.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-2-7-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-2-7-ss.png" alt="Screenshot of the widened table visual with Salesperson, Sales, and Target columns." data-linktype="relative-path"></a></p>
+<p>It's now possible to visualize sales and targets. But take care, for two reasons. First, there is no filter on a time period, and so targets also include future target values. Second, targets are not additive, and so the total should not be displayed. They can either disabled by using a visual formatting property or removed by using calculation logic. You’ll follow the second approach by creating a target measure in the <strong>Create DAX calculations in Power BI Desktop, Part 2</strong> lab that’ll return BLANK when more than one salesperson is filtered.</p>
+</li>
+</ol>
+<h2 id="exercise-2-enforce-row-level-security">Exercise 2: Enforce row-level security</h2>
+<p>In this exercise you will enforce row-level security to ensure a salesperson can only ever see sales made in their assigned regions.</p>
+<h3 id="task-1-enforce-row-level-security">Task 1: Enforce row-level security</h3>
+<p>In this task you will enforce row-level security to ensure a salesperson can only see sales made in their assigned regions.</p>
+<ol>
+<li><p>Switch to Data view.</p>
+</li>
+<li><p>In the <strong>Fields</strong> pane, select the <strong>Salesperson (Performance)</strong> table.</p>
+</li>
+<li><p>Review the data, noticing that Michael Blythe (EmployeeKey 281) has a UPN value of: <code>michael-blythe@adventureworks.com</code></p>
+<p>Recall that Michael Blythe is assigned to three sales regions: US Northeast, US Central, and US Southeast.</p>
+</li>
+<li><p>Switch to Report view.</p>
+</li>
+<li><p>On the <strong>Modeling</strong> ribbon tab, from inside the Security group, select <strong>Manage Roles</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-2-8-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-2-8-ssm.png" alt="Screenshot of the Modeling ribbon tab with Manage roles highlighted." data-linktype="relative-path"></a></p>
+</li>
+<li><p>In the <strong>Manage Roles</strong> window, select <strong>Create</strong>.</p>
+</li>
+<li><p>In the <strong>Roles</strong> box, replace the selected text with the name of the role: <strong>Salespeople</strong>, and then press <strong>Enter</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-2-11-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-2-11-ssm.png" alt="Screenshot of the Manage roles window with the Roles option highlighted." data-linktype="relative-path"></a></p>
+</li>
+<li><p>To assign a filter for the <strong>Salesperson (Performance)</strong> table, select the ellipsis icon (…), and then select <strong>Add Filter | [UPN]</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-2-12-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-2-12-ssm.png" alt="Screenshot of the Tables pane with the Salesperson (Performance) ellipsis button selected, then Add filter, with the U P N option highlighted." data-linktype="relative-path"></a></p>
+</li>
+<li><p>In the <strong>Table Filter DAX Expression</strong> box, modify the expression by replacing <strong>Value</strong> with <strong>USERPRINCIPALNAME()</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-2-13-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-2-13-ssm.png" alt="Screenshot of the Table filter DAX expression box." data-linktype="relative-path"></a></p>
+<p>USERPRINCIPALNAME() is a Data Analysis Expressions (DAX) function that returns the name of the authenticated user. It means that the <strong>Salesperson (Performance)</strong> table will filter by the User Principal Name (UPN) of the user querying the model.</p>
+</li>
+<li><p>Select <strong>Save</strong>.</p>
+</li>
+<li><p>To test the security role, on the <strong>Modeling</strong> ribbon tab, from inside the <strong>Security</strong> group, select <strong>View As</strong>.</p>
+</li>
+<li><p>In the <strong>View as roles</strong> window, select the <strong>Other User</strong> item, and then in the corresponding box, enter: <code>michael-blythe@adventureworks.com</code></p>
+</li>
+<li><p>Select the <strong>Salespeople</strong> role.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-2-14-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-2-14-ssm.png" alt="Screenshot of the View as roles window with Salespeople and Other user selected." data-linktype="relative-path"></a></p>
+<p>This configuration results in using the <strong>Salespeople</strong> role and impersonating the user with your Michael Blythe’s name.</p>
+</li>
+<li><p>Select <strong>OK</strong>.</p>
+</li>
+<li><p>Notice the yellow banner above the report page, describing the test security context.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-2-15-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-2-15-ssm.png" alt="Screenshot of the yellow banner with the message Now viewing report as salespeople, michael-blythe@adventureworks.com." data-linktype="relative-path"></a></p>
+</li>
+<li><p>In the table visual, notice that only the salesperson <strong>Michael Blythe</strong> is listed.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-2-16-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-2-16-ssm.png" alt="Screenshot of the table visual with only Michael Blythe listed." data-linktype="relative-path"></a></p>
+</li>
+<li><p>To stop testing, at the right side of the yellow banner, select <strong>Stop Viewing</strong>.</p>
+<p>When the Power BI Desktop file is published to the Power BI service, you’ll need to complete a post-publication task to map security principals to the <strong>Salespeople</strong> role. You won’t do that in this lab.</p>
+</li>
+<li><p>To delete the role, on the <strong>Modeling</strong> ribbon tab, from inside the <strong>Security</strong> group, select <strong>Manage Roles</strong>.</p>
+<p>You won’t work any further with row-level security in the labs.</p>
+</li>
+<li><p>In the <strong>Manage Roles</strong> window, select <strong>Delete</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-2-17-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/lab-2-17-ssm.png" alt="Screenshot of the Manage roles window with the Delete button highlighted." data-linktype="relative-path"></a></p>
+</li>
+<li><p>When prompted to confirm the deletion, select <strong>Yes</strong>, <strong>Delete</strong>.</p>
+</li>
+<li><p>Select Save.</p>
+</li>
+</ol>
+<h3 id="task-2-finish-up">Task 2: Finish up</h3>
+<p>In this task you will complete the lab.</p>
+<ol>
+<li><p>Save the Power BI Desktop file.</p>
+</li>
+<li><p>If prompted to apply queries, select <strong>Apply Later</strong>.</p>
+</li>
+<li><p>If you intend to start the next lab, leave Power BI Desktop open.</p>
+<p>You’ll enhance the data model with calculations using DAX in the <strong>Create DAX calculations in Power BI Desktop, Part 2</strong> lab.</p>
+</li>
+</ol>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Check your knowledge</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/10-check/" data-bi-name="continue" target="_top">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

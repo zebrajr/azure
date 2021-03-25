@@ -1,0 +1,296 @@
+<html dir="ltr"><head><title>Work with relationships and cardinality - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/6-relationships-cardinality">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/design-model-power-bi/6-relationships-cardinality</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Work with relationships and cardinality - Learn</h1>
+  <div dir="auto" id="reader-credits">heyrob</div>
+  <div dir="auto" id="reader-estimated-time">6-8 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>5 minutes</li>
+		</ul>
+			<p>Unlike other database management systems, Power BI has the concept of <em>directionality</em> to a relationship. This directionality, or <em>cardinality</em>, plays an important role in filtering data between multiple tables. When you load data, Power BI automatically looks for relationships that exist within the data by matching column names. You can also use <strong>Manage Relationships</strong> to edit these options manually.</p>
+<p>For example, you've retrieved many tables from the Sales database, and the following image is an example of your data model. Power BI has autodetected several relationships, but you can't discern what they mean. You want to make sure that the relationships accurately reflect those that exist in your data.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/06-example-data-model-1-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/06-example-data-model-1-ss.png" alt="Screenshot of the Example data model" data-linktype="relative-path"></a></p>
+<h2 id="cardinality">Cardinality</h2>
+<p>The following are different types of cardinality that you'll find in Power BI.</p>
+<p>Many-to-one <code>(*:1)</code> or one-to-many <code>(1: *)</code> cardinality:</p>
+<ul>
+<li><p>Describes a relationship in which you have many instances of a value in one column that are related to only one unique corresponding instance in another column.</p>
+</li>
+<li><p>Describes the directionality between fact and dimension tables.</p>
+</li>
+<li><p>Is the most common type of directionality and is the Power BI default when you are automatically creating relationships.</p>
+</li>
+</ul>
+<p>An example of a one-to-many relationship would be between the CountryName and Territory tables, where you can have many territories that are associated with one unique country.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/06-many-to-one-2-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/06-many-to-one-2-ss.png" alt="Screenshot of the many-to-one relationship." data-linktype="relative-path"></a></p>
+<p>One-to-one (1:1) cardinality:</p>
+<ul>
+<li><p>Describes a relationship in which only one instance of a value is common between two tables.</p>
+</li>
+<li><p>Requires unique values in both tables.</p>
+</li>
+<li><p>Is not recommended because this relationship stores redundant information and suggests that the model is not designed correctly. It is better practice to combine the tables.</p>
+</li>
+</ul>
+<p>An example of a one-to-one relationship would be if you had products and product IDs in two different tables. Creating a one-to-one relationship is redundant and these two tables should be combined.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/06-one-to-one-example-12-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/06-one-to-one-example-12-ss.png" alt="Screenshot of the one-to-one relationship." data-linktype="relative-path"></a></p>
+<p>Many-to-many (<em>.</em>) cardinality:</p>
+<ul>
+<li><p>Describes a relationship where many values are in common between two tables.</p>
+</li>
+<li><p>Does not require unique values in either table in a relationship.</p>
+</li>
+<li><p>Is not recommended; a lack of unique values introduces ambiguity and your users might not know which column of values is referring to what.</p>
+</li>
+</ul>
+<p>For instance, the following figure shows a many-to-many relationship between the Sales and Order tables on the <strong>OrderDate</strong> column because multiple sales can have multiple orders associated with them. Ambiguity is introduced because both tables can have the same order date.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/06-many-to-many-4-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/06-many-to-many-4-ss.png" alt="Screenshot of the many-to-many relationship." data-linktype="relative-path"></a></p>
+<h2 id="cross-filter-direction">Cross-filter direction</h2>
+<p>Data can be filtered on one or both sides of a relationship.</p>
+<p>With a <strong>single cross-filter direction</strong>:</p>
+<ul>
+<li><p>Only one table in a relationship can be used to filter the data. For instance, Table 1 can be filtered by Table 2, but Table 2 cannot be filtered by Table 1.</p>
+<div>
+<p> Tip</p>
+<p>Follow the direction of the arrow on the relationship between your tables to know which direction the filter will flow. You typically want these arrows to point to your fact table.</p>
+</div>
+</li>
+<li><p>For a one-to-many or many-to-one relationship, the cross-filter direction will be from the "one" side, meaning that the filtering will occur in the table that has unique values.</p>
+</li>
+</ul>
+<p>With <strong>both cross-filter directions</strong> or <strong>bi-directional cross-filtering</strong>:</p>
+<ul>
+<li><p>One table in a relationship can be used to filter the other. For instance, a dimension table can be filtered through the fact table, and the fact tables can be filtered through the dimension table.</p>
+</li>
+<li><p>You might have lower performance when using bi-directional cross-filtering with many-to-many relationships.</p>
+</li>
+</ul>
+<p>A word of caution regarding bi-directional cross-filtering: You should not enable bi-directional cross-filtering relationships unless you fully understand the ramifications of doing so. Enabling it can lead to ambiguity, over-sampling, unexpected results, and potential performance degradation.</p>
+<h2 id="cardinality-and-cross-filter-direction">Cardinality and cross-filter direction</h2>
+<p>For one-to-one relationships, the only option that is available is bi-directional cross-filtering. Data can be filtered on either side of this relationship and result in one distinct, unambiguous value. For instance, you can filter on one Product ID and be returned a single Product, and you can filter on a Product and be returned a single Product ID.</p>
+<p>For many-to-many relationships, you can choose to filter in a single direction or in both directions by using bi-directional cross-filtering. The ambiguity that is associated with bi-directional cross-filtering is amplified in a many-to-many relationship because multiple paths will exist between different tables. If you create a measure, calculation, or filter, unintended consequences can occur where your data is being filtered and, depending on which relationship that the Power BI engine chooses when applying the filter, the final result might be different. This situation is also true for bi-directional relationships and why you should be cautious when using them.</p>
+<p>For this reason, many-to-many relationships and/or bi-directional relationships are complicated. Unless you are certain what your data looks like when aggregated, these types of open-ended relationships with multiple filtering directions can introduce multiple paths through the data.</p>
+<h2 id="create-many-to-many-relationships">Create many-to-many relationships</h2>
+<p>Consider the scenario where you are tasked with building a visual that examines budgets for customers and accounts. You can have multiple customers on the same account and multiple accounts with the same customer, so you know that you need to create a many-to-many relationship.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/06-many-to-many-relationship-01-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/06-many-to-many-relationship-01-ssm.png" alt="Screenshot of many-to-many relationship." data-linktype="relative-path"></a></p>
+<p>To create this relationship, go to <strong>Manage Relationships</strong> <strong>&gt;</strong> <strong>New</strong>. In the resulting window, create a relationship between the <strong>Customer ID</strong> column in CustomerTable and AccountTable. The cardinality is set to many-to-many, and the filter type is in both directions. Immediately, you will be warned that you should only use this type of relationship if it is expected that neither column will have unique values because you might get unexpected values. Because you want to filter in both directions, choose <strong>bi-directional cross-filtering</strong>.</p>
+<p>Select <strong>OK</strong>. You have now successfully created a many-to-many relationship.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/06-manage-relationships-04-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/06-manage-relationships-04-ssm.png" alt="Screenshot of many-to-many relationship in Manage Relationship." data-linktype="relative-path"></a></p>
+<p>For more information, see <a href="https://docs.microsoft.com/en-us/power-bi/transform-model/desktop-many-to-many-relationships/" data-linktype="absolute-path" target="az-portal">Many-to-many relationships in Power BI</a>.</p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Resolve modeling challenges</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/7-modeling-challenges/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

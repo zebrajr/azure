@@ -1,0 +1,262 @@
+<html dir="ltr"><head><title>Define data granularity - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/5-data-granularity">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/design-model-power-bi/5-data-granularity</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Define data granularity - Learn</h1>
+  <div dir="auto" id="reader-credits">heyrob</div>
+  <div dir="auto" id="reader-estimated-time">5-7 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>4 minutes</li>
+		</ul>
+			<p>Data granularity is the detail that is represented within your data, meaning that the more granularity your data has, the greater the level of detail within your data.</p>
+<p>Data granularity is an important topic for all data analysts, regardless of the Power BI tools that you are using. Defining the correct data granularity can have a big impact on the performance and usability of your Power BI reports and visuals.</p>
+<h3 id="data-granularity-defined">Data granularity defined</h3>
+<p>Consider a scenario where your company manages 1,000 refrigerated semi-trucks. Every few minutes, each truck uses a Microsoft Azure IoT application to record its current temperature. This temperature is important to your organization because, if the refrigeration were to malfunction, it could spoil the entire load, costing thousands of dollars. With so many trucks and so many sensors, extensive data is generated every day. Your report users don't want to sift through numerous records to find the ones that they are particularly interested in.</p>
+<p>How can you change the granularity of the data to make the dataset more usable?</p>
+<p>In this scenario, you might want to import the data by using a daily average for each truck. That approach would reduce the records in the database to one record for each truck for each day. If you decide that the approach was acceptable enough for tracking costs and errors, then you could use that data granularity. Alternatively, you could select the last recorded temperature, or you could only import records that are above or below a normal range of temperatures. Any of these methods will reduce the total records that you import, while still bringing in data that is comprehensive and valuable.</p>
+<p>For different scenarios, you could settle on data granularity that is defined weekly, monthly, or quarterly. Generally, the fewer the records that you are working with, the faster your reports and visuals will function. This approach translates to a faster refresh rate for the entire dataset, which might mean that you can refresh more frequently.</p>
+<p>However, that approach has a drawback. If your users want to drill into every single transaction, summarizing the granularity will prevent them from doing that, which can have a negative impact on the user experience. It is important to negotiate the level of data granularity with report users so they understand the implications of these choices.</p>
+<h3 id="change-data-granularity-to-build-a-relationship-between-two-tables">Change data granularity to build a relationship between two tables</h3>
+<p>Data granularity can also have an impact when you are building relationships between tables in Power BI.</p>
+<p>For example, consider that you are building reports for the Sales team at Tailwind Traders. You have been asked to build a matrix of total sales and budget over time by using the Calendar, Sales, and Budget tables. You notice that the lowest level of time-based detail that the Sales table goes into is by day, for instance 5/1/2020, 6/7/2020, and 6/18/2020. The Budget table only goes to the monthly level, for instance, the budget data is 5/2020 and 6/2020.These tables have different granularities that need to be reconciled before you can build a relationship between tables.</p>
+<p>The following figure shows your current data model.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/05-data-granularity-example-01-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/05-data-granularity-example-01-ss.png" alt="Screenshot of data granularity in a data model." data-linktype="relative-path"></a></p>
+<p>As shown in the preceding figure, a relationship between Budget and Calendar is missing. Therefore, you need to create this relationship before you can build your visual. Notice that if you transform the <strong>Year</strong> and <strong>Month</strong> columns in the Budget table, you can match the format of the <strong>Date</strong> column in the Calendar table. Then, you can establish a relationship between the two columns. To complete this task, you will concatenate the <strong>Year</strong> and <strong>Month</strong> columns and then change the format.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/05-budget-calendar-tables-9-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/05-budget-calendar-tables-9-ss.png" alt="Screenshot of the Budget and Calendar tables." data-linktype="relative-path"></a></p>
+<p>Select <strong>Transform Data</strong> on the ribbon. On <strong>Applied Steps</strong>, on the right pane, right-click the last step and then select <strong>Insert Step After</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/05-applied-steps-10-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/05-applied-steps-10-ss.png" alt="Screenshot of the Applied Steps Visual's Edit Settings context menu." data-linktype="relative-path"></a></p>
+<p>Under <strong>Add Column</strong> on the Home ribbon, select <strong>Custom Column</strong>. Enter the following equation, which will concatenate the <strong>Year</strong> and <strong>Month</strong> columns, and then add a dash in between the column names.</p>
+<pre tabindex="0"><code data-author-content="Column = Table.AddColumn(#&quot;Renamed Columns&quot;, &quot;Custom&quot;, each [Year] &amp; &quot;-&quot; &amp;[Month])
+"><span>Column = Table.AddColumn(#<span>"Renamed Columns"</span>, <span>"Custom"</span>, each [Year] &amp; <span>"-"</span> &amp;[Month])
+</span></code></pre>
+<p>Change the data type to <strong>Date</strong> and then rename the column. Your Budget table should resemble the following figure.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/05-custom-column-date-02-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/05-custom-column-date-02-ssm.png" alt="Screenshot of the custom column for date." data-linktype="relative-path"></a></p>
+<p>Now, you can create a relationship between the Budget and the Calendar tables.</p>
+<h2 id="create-a-relationship-between-tables">Create a relationship between tables</h2>
+<p>Power BI automatically detects relationships, but you can also go to <strong>Manage Relationships &gt; New</strong> and create the relationship on the <strong>Date</strong> column. The relationship should resemble the following figure.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/05-establishing-relationships-03-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/05-establishing-relationships-03-ssm.png" alt="Screenshot of establishing relationships." data-linktype="relative-path"></a></p>
+<p>By completing this task, you have ensured that the granularity is the same between your different tables. Now, you need to create DAX measures to calculate <strong>Total Sales</strong> and <strong>BudgetAmount</strong>. Go to the <strong>Data</strong> pane on Power BI Desktop, select <strong>New Measure</strong>, and then create two measures with the following equations:</p>
+<pre tabindex="0"><code data-author-content="TotalSales = SUM(Sales[Total Sales])/100
+"><span>TotalSales = <span>SUM</span>(Sales[Total Sales])/<span>100</span>
+</span></code></pre>
+<pre tabindex="0"><code data-author-content="BudgetAmount = SUM (Budget[BudgetAmount])
+"><span>BudgetAmount = <span>SUM</span> (Budget[BudgetAmount])
+</span></code></pre>
+<p>Select the matrix visual on the <strong>Visualization</strong> pane, and then enter these measures and the <strong>Date</strong> into the <strong>Values</strong> field**.** You have now accomplished the goal of building a matrix of the total sales and budgets over time.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/05-matrix-visual-being-built-04-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/media/05-matrix-visual-being-built-04-ssm.png" alt="Screenshot of the Matrix visual being built." data-linktype="relative-path"></a></p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Work with relationships and cardinality</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/design-model-power-bi/6-relationships-cardinality/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>
