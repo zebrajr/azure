@@ -1,0 +1,232 @@
+<html dir="ltr"><head><title>Configure data classification - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/7-configure-data-classification">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/create-dashboards-power-bi/7-configure-data-classification</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Configure data classification - Learn</h1>
+  <div dir="auto" id="reader-credits">heyrob</div>
+  <div dir="auto" id="reader-estimated-time">3-4 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>2 minutes</li>
+		</ul>
+			<p>Power BI dashboards are an effective and visually pleasing way to disseminate information. They allow you to share business insights and concisely tell you the story of the data. However, because they can be seen by anyone who has been given access or a link, an important concern is security.</p>
+<p>For instance, consider that you have built a few dashboards for the Sales team at your organization. You want to make sure that the users who have been given access know how the data within these dashboards is classified. Your organization has multiple ways to classify the data, and you want to incorporate and customize the data classification so that the dashboards have these custom classifications. Data classification in Power BI service allows you to complete this task.</p>
+<h2 id="set-up-data-classification-on-dashboards">Set up data classification on dashboards</h2>
+<p>Data classification helps the dashboard owner raise security awareness to viewers of a dashboard so that they know what level of security should be considered when viewing or sharing a dashboard. Data classification does not enforce policies because data protection does.</p>
+<p>Data classification is a feature that can be turned on and off in accordance with your organization's business needs. All dashboards are defaulted to a certain classification type; however, the dashboard owner can manually make changes to the classification. To manually make changes, admin rights are required in Power BI service.</p>
+<p>To continue with the module scenario, you are working on the <strong>Tickets</strong> dashboard and want to add data classification to it. The first action that you will need to take is to ensure that your organization's custom data classification settings are added into the Power BI system. Data classification is done by an administrator.</p>
+<p>Next, you will have three classifications to choose from: <strong>DO NOT SHARE</strong>, <strong>ASK FOR PERMISSION</strong>, and <strong>OK TO SHARE</strong>, which can be added directly as well as the shorthand versions of these classifications. To access data classification on a dashboard, go to a specific dashboard in Power BI service. Hover over the ellipsis (<strong>...</strong>) by the name of the dashboard and then select <strong>Settings</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/07-data-classification-settings-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/07-data-classification-settings-ss.png" alt="Screenshot of the Settings feature accessed from the ellipsis next to the dashboard name." data-linktype="relative-path"></a></p>
+<p>In the resulting window, under <strong>Dashboards</strong>, you can use the drop-down menu under <strong>Data classification</strong> to choose how you want the data to be classified. The <strong>Tickets</strong> dashboard contains highly sensitive information, so it must be marked as <strong>DO NOT SHARE.</strong> After you have made this selection, the dashboard will follow the default data rules or the rules that you have established under <strong>Tenant settings</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/07-data-classification-dashboard-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/07-data-classification-dashboard-ss.png" alt="Screenshot of the Data Classification field under Dashboard settings." data-linktype="relative-path"></a></p>
+<p>When you open the dashboard, it will now be marked by this new data classification, as shown in the following screenshot.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/07-dashboard-tag-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/07-dashboard-tag-ss.png" alt="Screenshot of the Data classification set as high on a dashboard." data-linktype="relative-path"></a></p>
+<p>You have now added custom data classification to your dashboards and the Sales team is pleased. Data classification is an important feature because it allows you to add a level of security to your Power BI dashboards. Additionally, because you can personalize them in any way that your organization requires, data classification also adds a layer of personalization to your dashboards.</p>
+<p>For more information, see <a href="https://docs.microsoft.com/en-us/power-bi/create-reports/service-data-classification/" data-linktype="absolute-path" target="az-portal">Dashboard data classification</a>.</p>
+
+		
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

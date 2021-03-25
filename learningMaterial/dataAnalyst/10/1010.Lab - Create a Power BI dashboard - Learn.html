@@ -1,0 +1,558 @@
+<html dir="ltr"><head><title>Lab - Create a Power BI dashboard - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/9-lab">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/create-dashboards-power-bi/9-lab</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Lab - Create a Power BI dashboard - Learn</h1>
+  <div dir="auto" id="reader-credits">heyrob</div>
+  <div dir="auto" id="reader-estimated-time">11-14 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>45 minutes</li>
+		</ul>
+			<h2 id="access-your-environment">Access your environment</h2>
+<p>Before you start this lab, select <strong>Launch lab</strong> above.</p>
+<p>To log in to your lab environment:</p>
+<ol>
+<li>Click anywhere on the Windows desktop in the lab window.</li>
+<li>On the <strong>Resources</strong> tab on the lab side bar, select the <strong>T</strong> icon next to <strong>Password</strong>. The machine password is automatically entered for you. You can log in with the Student profile.</li>
+<li>Press <strong>Enter</strong>.</li>
+</ol>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/includes/vm-login.png" alt="Image of the lab password on the Resources tab." data-linktype="relative-path"></p>
+<p>You can now begin your work on this lab.</p>
+<p><strong>The estimated time to complete the lab is 45 minutes</strong></p>
+<p>In this lab, you will create the <strong>Sales&nbsp;Monitoring</strong> dashboard.</p>
+<p>In this lab, you learn how to:</p>
+<ul>
+<li><p>Pin visuals to a dashboard</p>
+</li>
+<li><p>Use Q&amp;A to create dashboard tiles</p>
+</li>
+<li><p>Configure a dashboard tile alert</p>
+</li>
+</ul>
+<h3 id="lab-story">Lab story</h3>
+<p>This lab is one of many in a series of labs that was designed as a complete story from data preparation to publication as reports and dashboards. You can complete the labs in any order. However, if you intend to work through multiple labs, for the first 10 labs, we suggest you do them in the following order:</p>
+<ol>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/get-data/lab-prepare/" data-linktype="absolute-path" target="az-portal">Prepare data in Power BI Desktop</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/clean-data-power-bi/8-lab/" data-linktype="absolute-path" target="az-portal">Load data in Power BI Desktop</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/design-model-power-bi/8-lab/" data-linktype="absolute-path" target="az-portal">Model data in Power BI Desktop, part 1</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/design-model-power-bi/9-lab/" data-linktype="absolute-path" target="az-portal">Model data in Power BI Desktop, part 2</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/create-measures-dax-power-bi/6-lab/" data-linktype="absolute-path" target="az-portal">Create DAX calculations in Power BI Desktop, part 1</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/create-measures-dax-power-bi/8-lab/" data-linktype="absolute-path" target="az-portal">Create DAX calculations in Power BI Desktop, part 2</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/visuals-power-bi/8-lab/" data-linktype="absolute-path" target="az-portal">Design a report in Power BI Desktop, part 1</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/data-driven-story-power-bi/13-lab/" data-linktype="absolute-path" target="az-portal">Design a report in Power BI Desktop, part 2</a></p>
+</li>
+<li><p><strong>Create a Power BI dashboard</strong></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/ai-visuals-power-bi/5-lab/" data-linktype="absolute-path" target="az-portal">Perform data analysis in Power BI Desktop</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/create-paginated-reports-power-bi/6-lab/" data-linktype="absolute-path" target="az-portal">Create a Power BI paginated report</a></p>
+</li>
+</ol>
+<h2 id="exercise-1-create-a-dashboard">Exercise 1: Create a dashboard</h2>
+<p>In this exercise, you will create the <strong>Sales&nbsp;Monitoring</strong> dashboard. The completed dashboard will look like the following:</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/lab-1-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/lab-1-ss.png" alt="Screenshot of the Sales Monitoring dashboard." data-linktype="relative-path"></a></p>
+<h3 id="task-1-get-started--sign-in"><strong>Task 1: Get started – Sign in</strong></h3>
+<p>In this task you'll set up the environment for the lab by signing in to Power BI.</p>
+<div>
+<p> Important</p>
+<p>If you have already signed in to Power BI in a previous lab, continue from the next task.</p>
+</div>
+<ol>
+<li><p>To open Microsoft Edge, on the taskbar, select the Microsoft Edge program shortcut.</p>
+</li>
+<li><p>In the Microsoft Edge browser window, navigate to <a href="https://powerbi.com/" data-linktype="external">https://powerbi.com</a>.</p>
+<div>
+<p> Tip</p>
+<p>You can also use the Power BI Service favorite on the Microsoft Edge favorites bar.</p>
+</div>
+</li>
+<li><p>Select <strong>Sign In</strong> (located at the top-right corner).</p>
+</li>
+<li><p>Enter the account details provided to you.</p>
+</li>
+<li><p>If prompted to update the password, reenter the provided password, and then enter and confirm a new password.</p>
+<div>
+<p> Important</p>
+<p>Be sure to record your new password.</p>
+</div>
+</li>
+<li><p>Complete the sign in process.</p>
+</li>
+<li><p>If prompted by Microsoft Edge to stay signed in, select <strong>Yes</strong>.</p>
+</li>
+<li><p>In the Microsoft Edge browser window, in the Power BI service, in the <strong>Navigation</strong> pane, expand <strong>My Workspace</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/lab-1-a-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/lab-1-a-ssm.png" alt="Screenshot of the Navigation pane with the My workspace expand icon highlighted." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Leave the Microsoft Edge browser window open.</p>
+</li>
+</ol>
+<h3 id="task-2-get-started--open-report"><strong>Task 2: Get started – Open report</strong></h3>
+<p>In this task you'll set up the environment for the lab by opening the starter report.</p>
+<div>
+<p> Important</p>
+<p>If you are continuing on from the previous lab (and you completed that lab successfully), do not complete this task. Instead, continue from the next task.</p>
+</div>
+<ol>
+<li><p>To open the Power BI Desktop, on the taskbar, select the Microsoft Power BI Desktop shortcut.</p>
+</li>
+<li><p>To close the getting started window, at the top-left of the window, select <strong>X</strong>.</p>
+</li>
+<li><p>If Power BI Desktop is not signed in to the Power BI service, at the top-right, select <strong>Sign In</strong>.</p>
+</li>
+<li><p>Complete the sign in process using the same account used to sign in to the Power BI service.</p>
+</li>
+<li><p>To open the starter Power BI Desktop file, select the <strong>File</strong> ribbon tab to open the backstage view.</p>
+</li>
+<li><p>Select <strong>Open Report</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/lab-1-b-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/lab-1-b-ssm.png" alt="Screenshot of the File menu expanded and the Open report option highlighted." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Select <strong>Browse Reports</strong>.</p>
+</li>
+<li><p>In the <strong>Open</strong> window, navigate to the <strong>D:\DA100\Labs\create-power-bi-dashboard\Starter</strong> folder.</p>
+</li>
+<li><p>Select the <strong>Sales Analysis</strong> file.</p>
+</li>
+<li><p>Select <strong>Open</strong>.</p>
+</li>
+<li><p>Close any informational windows that may open.</p>
+</li>
+<li><p>To create a copy of the file, select the <strong>File</strong> ribbon tab to open the backstage view.</p>
+</li>
+<li><p>Select <strong>Save As</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/lab-1-c-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/lab-1-c-ssm.png" alt="Screenshot of the File menu expanded and the Save as option highlighted." data-linktype="relative-path"></a></p>
+</li>
+<li><p>If prompted to apply changes, select <strong>Apply</strong>.</p>
+</li>
+<li><p>In the <strong>Save As</strong> window, navigate to the <strong>D:\DA100\MySolution</strong> folder.</p>
+</li>
+<li><p>Select <strong>Save</strong>.</p>
+</li>
+</ol>
+<h3 id="task-3-get-started--publish-the-report"><strong>Task 3: Get started – Publish the report</strong></h3>
+<p>In this task you'll set up the environment for the lab by creating a dataset.</p>
+<div>
+<p> Important</p>
+<p>If you've already published the report in the <strong>Design a report in Power BI Desktop, Part 2</strong> lab, continue from the next task.</p>
+</div>
+<ol>
+<li><p>In the Microsoft Edge browser window, in the Power BI service, in the <strong>Navigation</strong> pane, at the bottom, select <strong>Get Data</strong>.</p>
+</li>
+<li><p>In the <strong>Files</strong> tile, select <strong>Get</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/lab-1-d-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/lab-1-d-ssm.png" alt="Screenshot of the Files tile with the Get button highlighted." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Select the <strong>Local File</strong> tile.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/lab-1-e-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/lab-1-e-ssm.png" alt="Screenshot of the Power B I Local File tile." data-linktype="relative-path"></a></p>
+</li>
+<li><p>In the <strong>Open</strong> window, navigate to the <strong>D:\DA100\Labs\design-report-in-power-bi-desktop-enhanced\Solution</strong> folder.</p>
+</li>
+<li><p>Select the <strong>Sales Analysis.pbix</strong> file, and then select <strong>Open</strong>.</p>
+</li>
+<li><p>If prompted to replace the dataset, select <strong>Replace</strong>.</p>
+</li>
+</ol>
+<h3 id="task-4-create-a-dashboard"><strong>Task 4: Create a dashboard</strong></h3>
+<p>In this task you'll create the <strong>Sales Monitoring</strong> dashboard. You'll pin a visual from the report, and add a tile based on an image data URI, and use Q&amp;A to create a tile.</p>
+<ol>
+<li><p>In the Microsoft Edge browser window, in the Power BI service, open the <strong>Sales Analysis</strong> report.</p>
+</li>
+<li><p>In the <strong>Overview</strong> page, set the <strong>Year</strong> slicer to <strong>FY2020</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/lab-2-b-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/lab-2-b-ssm.png" alt="Screenshot of the Year slicer set to F Y 2020." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Set the <strong>Region</strong> slicer to <strong>Select All</strong>.</p>
+<p>When pinning visuals to a dashboard, they will use the current filter context. Once pinned, the filter context cannot be changed. For time-based filters, it’s a better idea to use a relative date slicer (or, Q&amp;A using a relative time-based question).</p>
+</li>
+<li><p>To create a dashboard and pin a visual, hover the cursor over the <strong>Sales and Profit Margin by Month</strong> (column/line) visual.</p>
+</li>
+<li><p>At the top-right corner, select the pushpin.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/lab-2-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/lab-2-ssm.png" alt="Screenshot of the pushpin in the top right corner." data-linktype="relative-path"></a></p>
+</li>
+<li><p>In the <strong>Pin&nbsp;to&nbsp;Dashboard</strong> window, in the <strong>Dashboard&nbsp;Name</strong> box, enter <strong>Sales&nbsp;Monitoring</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/lab-2-a-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/lab-2-a-ssm.png" alt="Screenshot of the Pin to dashboard window." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Select <strong>Pin</strong>.</p>
+</li>
+<li><p>Open the <strong>Navigation</strong> pane, and then open the <strong>Sales Monitoring</strong> dashboard.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/lab-3-a-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/lab-3-a-ssm.png" alt="Screenshot of the Sales Monitoring dashboard in the Navigation pane." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Notice that the dashboard has a single tile.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/lab-3-b-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/lab-3-b-ssm.png" alt="Screenshot of the Sales, Profit Margin by month chart tile." data-linktype="relative-path"></a></p>
+</li>
+<li><p>To add a tile based on a question, at the top-left of the dashboard, select <strong>Ask a Question About Your Data</strong>.</p>
+<p>You can use the Q&amp;A feature to ask a question, and Power BI will respond with a visual.</p>
+</li>
+<li><p>Select any one of the suggested questions beneath the Q&amp;A box, in blue boxes.</p>
+</li>
+<li><p>Review the response.</p>
+</li>
+<li><p>Remove all text from the Q&amp;A box.</p>
+</li>
+<li><p>In the Q&amp;A box, enter the following: <strong>Sales YTD</strong></p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/lab-3-c-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/lab-3-c-ssm.png" alt="Screenshot of the Q &amp; A box." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Notice the response of <strong>(Blank)</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/lab-5-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/lab-5-ss.png" alt="Screenshot of the Sales YTD showing the word Blank." data-linktype="relative-path"></a></p>
+<p>You may recall you added the <strong>Sales YTD</strong> measure in the <strong>Create DAX calculations in Power BI Desktop, Part 2</strong> lab. This measure is a Time Intelligence expression, so it requires a filter on the <strong>Date</strong> table to produce a result.</p>
+</li>
+<li><p>Extend the question with: <strong>in year FY2020</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/lab-6-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/lab-6-ssm.png" alt="Screenshot of the Q &amp; A field with the text Sales Y T D in year FY2020." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Notice the response is now <strong>$33M</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/lab-7-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/lab-7-ss.png" alt="Screenshot of Blank response replaced with $33M." data-linktype="relative-path"></a></p>
+</li>
+<li><p>To pin the response to the dashboard, at the top-right corner, click <strong>Pin Visual</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/lab-8-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/lab-8-ssm.png" alt="Screenshot of the Pin Visual option on the Pin to dashboard window." data-linktype="relative-path"></a></p>
+</li>
+<li><p>When prompted to pin the tile to the dashboard, select <strong>Pin</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/lab-9-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/lab-9-ssm.png" alt="Screenshot of the Pin to dashboard window with the Pin button highlighted." data-linktype="relative-path"></a></p>
+</li>
+<li><p>To return to the dashboard, at the top-left corner, select <strong>Exit&nbsp;Q&amp;A</strong>.</p>
+</li>
+<li><p>To add the company logo, on the menu bar, click <strong>Edit</strong>, and then select <strong>Add a tile</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/lab-4-a-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/lab-4-a-ss.png" alt="Screenshot of the Edit menu expanded with the Add a tile option highlighted." data-linktype="relative-path"></a></p>
+<p>Using this technique to add a dashboard tile lets you embellish your dashboard with media, including web content, images, richly-formatted text boxes, and video (using YouTube or Vimeo links).</p>
+</li>
+<li><p>In the Add a Tile pane (located at the right), select the Image tile.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/lab-4-b-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/lab-4-b-ss.png" alt="Screenshot of the Image tile in the Add a Tile pane." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Select <strong>Next</strong>.</p>
+</li>
+<li><p>In the <strong>Add Image Tile</strong> pane, in the <strong>URL</strong> box, enter the complete URL found in the <strong>D:\DA100\Resources\AdventureWorksLogo_DataURL.txt</strong> file.</p>
+<div>
+<p> Note</p>
+<p>You can embed an image by using its URL, or you can use a data URL, which embeds content inline.</p>
+</div>
+</li>
+<li><p>At the bottom of the pane, click <strong>Apply</strong>.</p>
+</li>
+<li><p>To resize the logo tile, drag the bottom-right corner, and resize the tile to become one unit wide, and two units high.</p>
+<p>Tile sizes are constrained into a rectangular shape. It's only possible to resize into multiples of the rectangular shape.</p>
+</li>
+<li><p>Organize the tiles so that the logo appears at the top-left, with the <strong>Sales YTD</strong> tile beneath it, and the <strong>Sales, Profit Margin</strong> tile at the right.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/lab-4-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/lab-4-ss.png" alt="Screenshot of the two tiles on the Sales Monitoring dashboard." data-linktype="relative-path"></a></p>
+</li>
+</ol>
+<h3 id="task-5-edit-tile-details">Task 5: Edit tile details</h3>
+<p>In this task, you will edit the details of two tiles.</p>
+<ol>
+<li><p>Hover the cursor over the <strong>Sales&nbsp;YTD</strong> tile, and then at the top-right of the tile, select the ellipsis, and then select <strong>Edit&nbsp;Details</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/lab-10-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/lab-10-ssm.png" alt="Screenshot of the drop-down menu showing Edit details." data-linktype="relative-path"></a></p>
+</li>
+<li><p>In the <strong>Tile&nbsp;Details</strong> pane (located at the right), in the <strong>Subtitle</strong> box, enter <strong>FY2020</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/lab-11-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/lab-11-ssm.png" alt="Screenshot of the Tile details window with the Subtitle field highlighted and containing F Y 2020." data-linktype="relative-path"></a></p>
+</li>
+<li><p>At the bottom of the pane, select <strong>Apply</strong>.</p>
+</li>
+<li><p>Notice that the <strong>Sales&nbsp;YTD</strong> tile displays a subtitle.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/lab-12-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/lab-12-ssm.png" alt="Screenshot of F Y 2020 text displayed as a subtitle under Sales Y T D on the tile." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Edit the tile details for the <strong>Sales,&nbsp;Profit&nbsp;Margin</strong> tile.</p>
+</li>
+<li><p>In the <strong>Tile&nbsp;Details</strong> pane, in the <strong>Functionality</strong> section, check <strong>Display&nbsp;Last&nbsp;Refresh&nbsp;Time</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/lab-13-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/lab-13-ssm.png" alt="Screenshot of the Funtionality section with Display last refresh time checked." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Select <strong>Apply</strong>.</p>
+</li>
+<li><p>Notice that the tile describes the last refresh time (which you did when refreshing the data model in Power&nbsp;BI&nbsp;Desktop).</p>
+<p>You'll simulate a data refresh later in the lab and see that the refresh time updates.</p>
+</li>
+</ol>
+<h3 id="task-6-configure-an-alert">Task 6: Configure an alert</h3>
+<p>In this task, you will configure a data alert.</p>
+<p>Data alerts can only be configured on dashboard tiles, and specifically tiles that display a single numeric value.</p>
+<ol>
+<li><p>Hover the cursor over the <strong>Sales&nbsp;YTD</strong> tile, select the ellipsis, and then select <strong>Manage&nbsp;Alerts</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/lab-14-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/lab-14-ssm.png" alt="Screenshot of the ellipsis drop-down menu with Manage alerts highlighted." data-linktype="relative-path"></a></p>
+</li>
+<li><p>In the <strong>Manage&nbsp;Alerts</strong> pane (located at the right), select <strong>Add&nbsp;Alert&nbsp;Rule</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/lab-15-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/lab-15-ssm.png" alt="Screenshot of the Manage alerts pane with Add alert rule button." data-linktype="relative-path"></a></p>
+</li>
+<li><p>In the <strong>Threshold</strong> box, replace the value with <strong>35000000</strong> (35 million).</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/lab-16-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/lab-16-ssm.png" alt="Screenshot of the Threshold box with the Threshold field containing 35000000." data-linktype="relative-path"></a></p>
+<p>This configuration ensures you'll be notified whenever the tile updates to a value above 35 million.</p>
+</li>
+<li><p>At the bottom of the pane, select <strong>Save&nbsp;and&nbsp;Close</strong>.</p>
+</li>
+</ol>
+<p>You’ll refresh the dataset in the next exercise. Typically, this would be achieved by using scheduled refresh, in which case Power BI would use a gateway to connect to the SQL Server database. However, due to constraints in the classroom setup, there is no gateway. So, you’ll open Power BI Desktop, perform a manual data refresh, and then upload the file to your workspace.</p>
+<h2 id="exercise-2-refresh-the-dataset">Exercise 2: Refresh the dataset</h2>
+<p>In this exercise, you'll first load sales order data for June 2020 into the <strong>AdventureWorksDW2020</strong> database. Then you'll open your Power&nbsp;BI&nbsp;Desktop file, perform a data refresh, and then upload the file to your workspace.</p>
+<h3 id="task-1-update-the-lab-database">Task 1: Update the lab database</h3>
+<p>In this task, you'll run a PowerShell script to update data in the <strong>AdventureWorksDW2020</strong> database.</p>
+<ol>
+<li><p>In File&nbsp;Explorer, inside the <strong>D:\DA100\Setup</strong> folder, right-click the <strong>UpdateDatabase-2-AddSales.ps1</strong> file, and then select <strong>Run&nbsp;with&nbsp;PowerShell</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/lab-17-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/lab-17-ssm.png" alt="Screenshot of the Run with PowerShell option." data-linktype="relative-path"></a></p>
+</li>
+<li><p>If prompted to change the execution policy, press <strong>A</strong>.</p>
+</li>
+<li><p>When prompted to press any key to continue, press <strong>Enter</strong> again.</p>
+<p>The <strong>AdventureWorksDW2020</strong> database now includes sales orders for June 2020.</p>
+</li>
+</ol>
+<h3 id="task-2-refresh-the-power-bi-desktop-file">Task 2: Refresh the Power BI Desktop file</h3>
+<p>In this task, you will open the Sales&nbsp;Analysis Power&nbsp;BI&nbsp;Desktop file, perform a data refresh, and then upload the file to your <strong>Sales&nbsp;Analysis</strong> workspace.</p>
+<ol>
+<li><p>In Power BI Desktop file, in the <strong>Fields</strong> pane, right-click the <strong>Sales</strong> table, and then select <strong>Refresh data</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/lab-18-a-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/lab-18-a-ssm.png" alt="Screenshot of the context menu with Refresh data highlighted." data-linktype="relative-path"></a></p>
+</li>
+<li><p>When the refresh completes, save the Power&nbsp;BI&nbsp;Desktop file.</p>
+</li>
+<li><p>To publish the file to your workspace, on the <strong>Home</strong> ribbon tab, from inside the <strong>Share</strong> group, click <strong>Publish</strong>.</p>
+</li>
+<li><p>When prompted to replace the dataset, select <strong>Replace</strong>.</p>
+<p>The dataset in the Power BI service now has June 2020 sales data.</p>
+</li>
+<li><p>Close Power&nbsp;BI&nbsp;Desktop.</p>
+</li>
+</ol>
+<h2 id="exercise-3-review-the-dashboard">Exercise 3: Review the dashboard</h2>
+<p>In this exercise, you will review the dashboard to verify updated sales, and that the alert was triggered.</p>
+<h3 id="task-1-review-the-dashboard">Task 1: Review the dashboard</h3>
+<p>In this task, you will review the dashboard to verify updated sales, and that the alert was triggered.</p>
+<ol>
+<li><p>In the Microsoft Edge browser window, in the Power BI service, review the <strong>Sales&nbsp;Monitoring</strong> dashboard.</p>
+</li>
+<li><p>In the <strong>Sales,&nbsp;Profit&nbsp;Margin</strong> tile, in the subtitle, verify that the data was refreshed <strong>NOW</strong>.</p>
+</li>
+<li><p>Verify also that there is now a column for <strong>2020&nbsp;Jun</strong>.</p>
+<p>If you don’t see the June 2020 data, you might need to press F5 to reload the web browser.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/lab-18-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/lab-18-ssm.png" alt="Screenshot of the Sales, Profit Margin tile." data-linktype="relative-path"></a></p>
+<p>The alert on the <strong>Sales&nbsp;YTD</strong> tile should have triggered also. After a short while, the alert should notify you that sales now exceeds the configured threshold value.</p>
+</li>
+<li><p>Notice that the <strong>Sales&nbsp;YTD</strong> tile has updated to <strong>$37M</strong>.</p>
+</li>
+<li><p>Verify that the <strong>Sales&nbsp;YTD</strong> tile displays an alert notification icon.</p>
+<p>If you don't see the notification, you might need to press <strong>F5</strong> to reload the browser. If you still don't see the notification, wait some minutes longer.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/lab-19-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/lab-19-ssm.png" alt="Screenshot of the notification icon on the Sales YTD tile." data-linktype="relative-path"></a></p>
+<p>Alert notifications appear on the dashboard tile, and can be delivered by email, and push notifications to mobile apps including the Apple Watch.</p>
+</li>
+<li><p>At the top-right corner of the web page, select the <strong>Notifications</strong> icon.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/lab-19-a-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/lab-19-a-ssm.png" alt="Screenshot of the notifications icon in the top-right corner." data-linktype="relative-path"></a></p>
+</li>
+<li><p>In the <strong>All Notifications</strong> pane, review the details of the alert notification.</p>
+</li>
+<li><p>To close the pane, select <strong>Close</strong>.</p>
+</li>
+</ol>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Check your knowledge</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/10-check/" data-bi-name="continue" target="_top">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

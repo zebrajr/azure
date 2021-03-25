@@ -1,0 +1,241 @@
+<html dir="ltr"><head><title>Configure a real-time dashboard - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/6-configure-real-time-dashboard">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/create-dashboards-power-bi/6-configure-real-time-dashboard</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Configure a real-time dashboard - Learn</h1>
+  <div dir="auto" id="reader-credits">heyrob</div>
+  <div dir="auto" id="reader-estimated-time">3-4 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>2 minutes</li>
+		</ul>
+			<p>In this data-centric world, it has become increasingly important to have the ability to view how data changes in real time. This ability is important in the context of dashboards; these are the canvases on which you can tell the story of the data, so the ability to show real-time, streaming data on these dashboards can be important to your business. With Power BI's real-time streaming capabilities, you can stream data and update dashboards as soon as the data is logged.</p>
+<p>To continue with the module scenario, you are helping Tailwind Traders understand how well their manufacturing floor is operating. The assembly line has machines that are broadcasting a telemetry event each time that they perform their functions. You are collecting those event messages and want to display them with a Power BI visual. Dashboards allow you to use streaming datasets for this purpose.</p>
+<h2 id="stream-in-power-bi">Stream in Power BI</h2>
+<p>Streaming data can come from various sources, including from social media, factory sensors, service-usage metrics, and other sources that contain a constant stream of data points.</p>
+<p>For instance, in the case with Tailwind Traders, sensors on the machines constantly send a stream of telemetry data to the IoT hub, where they will be housed in their native, messy format. From the IoT hub, you can use a stream insight job to aggregate the data, meaning that it will clean the data and quiet the noisy messages. Then, you can retrieve the data into Power BI as a streaming dataset, where you can consume the information and build the pertinent visuals.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/06-diagram-iot-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/06-diagram-iot-ss.png" alt="Diagram of the streaming dataset example." data-linktype="relative-path"></a></p>
+<p>Data that comes from a streaming dataset is not stored in a Power BI data model; instead, it is stored in a temporary cache. So, you cannot model the data with this type of dataset. The only way to visualize the data from a streaming data source is to create a tile directly on a dashboard and use a custom streaming data source. These tiles are optimized for displaying the data quickly and, because no database exists to pull the data from, these types of tiles have low latency and are best suited for data that doesn't need other transformations, such as temperature or humidity.</p>
+<h2 id="visualize-real-time-data-in-power-bi">Visualize real-time data in Power BI</h2>
+<p>To visualize streaming data, you need to create a new tile directly on an existing or new dashboard.</p>
+<p>To complete this task, go to and open a dashboard and then select <strong>Add Tile</strong>. The following window will appear, where you can select <strong>Custom Streaming Datasets</strong> under <strong>Real-Time Data</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/06-new-tile-added-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/06-new-tile-added-ss.png" alt="Screenshot of the add custom streaming dataset tile." data-linktype="relative-path"></a></p>
+<p>Select <strong>Next</strong>, which will redirect you to the following window where you can choose an existing streaming dataset, or get new streaming datasets, as shown in the following image.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/06-add-new-streaming-dataset-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/06-add-new-streaming-dataset-ss.png" alt="Screenshot of the Add a custom streaming data tile window." data-linktype="relative-path"></a></p>
+<p>After you have selected the new dataset, select <strong>Next</strong>, enter the details for your streaming dataset, and then add a new streaming dataset tile. Streaming dataset tiles can be in the form of line charts, stacked bar charts, cards, and gauges and are formatted similarly to any other kind of tile.</p>
+<p>For more information, see <a href="https://docs.microsoft.com/en-us/power-bi/connect-data/service-real-time-streaming/" data-linktype="absolute-path" target="az-portal">Real-time streaming in Power BI</a>.</p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Configure data classification</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/7-configure-data-classification/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

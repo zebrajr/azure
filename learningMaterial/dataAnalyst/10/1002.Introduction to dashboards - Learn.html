@@ -1,0 +1,267 @@
+<html dir="ltr"><head><title>Introduction to dashboards - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/1-introduction">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/create-dashboards-power-bi/1-introduction</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Introduction to dashboards - Learn</h1>
+  <div dir="auto" id="reader-credits">heyrob</div>
+  <div dir="auto" id="reader-estimated-time">5-6 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>5 minutes</li>
+		</ul>
+			<p>Microsoft Power BI dashboards are different than Power BI reports. Dashboards allow report consumers to create a single artifact of directed data that is personalized just for them. Dashboards can be comprised of pinned visuals that are taken from different reports. Where a Power BI report uses data from a single dataset, a Power BI dashboard can contain visuals from different datasets.</p>
+<p>Well-built dashboards capture the main, most important highlights of the story that you are trying to tell. The following screenshot is an example of a well-built dashboard.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/01-dashboard-example-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/01-dashboard-example-ss.png" alt="Screenshot example of a well built dashboard." data-linktype="relative-path"></a></p>
+<p>Power BI dashboards is a feature that is only included in Power BI service. You can also view dashboards on mobile devices, though you can't build them there.</p>
+<p>Consider dashboards as the display window at a bakery, where you want people to be able to view the most important items, while inside the shop (and in your reports in Power BI Desktop) is where all ingredients are transformed to produce the display.</p>
+<h2 id="dashboards-vs-reports">Dashboards vs. reports</h2>
+<p>When would you want to build a dashboard versus a report? The following list explains the key similarities and differences worth noting when you are determining the right path for you:</p>
+<ul>
+<li><p>Dashboards can be created from multiple datasets or reports.</p>
+</li>
+<li><p>Dashboards do not have the <strong>Filter</strong>, <strong>Visualization</strong>, and <strong>Fields</strong> panes that are in Power BI Desktop, meaning that you can't add new filters and slicers, and you can't make edits.</p>
+</li>
+<li><p>Dashboards can only be a single page, whereas reports can be multiple pages.</p>
+</li>
+<li><p>You can't see the underlying dataset directly in a dashboard, while you can see the dataset in a report under the <strong>Data</strong> tab in Power BI Desktop.</p>
+</li>
+<li><p>Both dashboards and reports can be refreshed to show the latest data.</p>
+</li>
+</ul>
+<p>Dashboards allow a user to pin visuals from different reports and datasets onto a single canvas, making it simple to group what's important to the user. Reports, on the other hand, are more focused on being able to visualize and apply transformations to a single dataset. Consider dashboards as the next step that you want to take after building your reports in Power BI Desktop.</p>
+<p>Now that you've learned about the background of dashboards and reports, you can learn about dashboards in depth, specifically about their individual components.</p>
+<h2 id="manage-tiles-on-a-dashboard">Manage tiles on a dashboard</h2>
+<p>Tiles are the individual report elements, or snapshots, of your data that are then pinned to a dashboard. Tiles can be sourced from a multitude of places including reports, datasets, other dashboards, Microsoft Excel, SQL Server Reporting Services, and more. When pinning a report element to a dashboard, you create a direct connection between the dashboard and the report that the snapshot came from.</p>
+<p>Your first task in this module is to create a basic dashboard. For this scenario, you have created a simple report in Power BI Desktop called <strong>Tailwind Sales</strong>.</p>
+<h2 id="pin-a-tile-to-a-dashboard">Pin a tile to a dashboard</h2>
+<p>You've uploaded your reports into Power BI service and are now viewing the report in Power BI service. How do you create a dashboard? You can pin an entire report page, or you can pin individual tiles, both of which will be discussed later.</p>
+<p>The pinning process pulls visuals from your report and "pins" them to a dashboard for easy viewing. When you make changes to any of the visuals in the report, changes will be reflected on the dashboard.</p>
+<p>To look at a specific visual, consider that you want to pin your tile, <strong>Sales by Category</strong>, onto a new dashboard for easy viewing. You can complete this task by hovering over the visual. In the visual header, select the <strong>Pin Visual</strong> icon, as shown in the following image.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/01-pin-visual-button-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/01-pin-visual-button-ss.png" alt="Screenshot of the Pin the visual button." data-linktype="relative-path"></a></p>
+<p>After you have selected the icon, a window will appear, where you can choose to pin this visual to a new or existing dashboard. For this example, you want your tile to be on a new dashboard called <strong>Tailwind Dashboard</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/01-pin-dashboard-window-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/01-pin-dashboard-window-ss.png" alt="Screenshot of the Pin to dashboard window." data-linktype="relative-path"></a></p>
+<p>After you have selected <strong>Pin</strong>, you will be redirected to your new dashboard, where you have just pinned a tile from your report. You can resize and move this visual around the dashboard by selecting the visual, dragging, and then dropping it.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/01-pin-single-tile-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/01-pin-single-tile-ss.png" alt="Screenshot of a single pinned tile on a dashboard." data-linktype="relative-path"></a></p>
+<p>One of the biggest benefits of a dashboard is being able to pin a visual that is sourced from a different dataset. The following section explains how you can add a visual to your <strong>Category</strong> dashboard.</p>
+<h2 id="pin-a-tile-from-a-different-report">Pin a tile from a different report</h2>
+<p>What if you want to pin a visual from a different report (and different dataset) to an existing dashboard? To continue with the scenario, you want to add an <strong>Orders over Time</strong> visual, which is housed in a different report to <strong>Tailwind Dashboard</strong>. You can perform the same procedure in which you hover over the visual in the original report and then select the <strong>Pin</strong> icon. The following window will appear, but this time, you want to pin this visual onto an existing dashboard called <strong>Category</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/01-pin-dash-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/01-pin-dash-ss.png" alt="Screenshot of the Pin to dashboard window with orders over time visual." data-linktype="relative-path"></a></p>
+<p>When you navigate to your dashboard, notice that both visuals are now pinned, regardless of the underlying dataset.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/01-pin-tiles-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/01-pin-tiles-ss.png" alt="Screenshot of both visuals pinned to dashboard." data-linktype="relative-path"></a></p>
+<p>Now that you have learned how to pin individual tiles, you can learn how to pin an entire report page, which will be discussed later in this module.</p>
+<p>For more information, see <a href="https://docs.microsoft.com/en-us/power-bi/create-reports/service-dashboard-tiles/" data-linktype="absolute-path" target="az-portal">Introduction to dashboard tiles.</a></p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Configure data alerts</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/2-data-alerts/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

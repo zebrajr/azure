@@ -1,0 +1,240 @@
+<html dir="ltr"><head><title>Set mobile view - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/8-set-mobile-view">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/create-dashboards-power-bi/8-set-mobile-view</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Set mobile view - Learn</h1>
+  <div dir="auto" id="reader-credits">heyrob</div>
+  <div dir="auto" id="reader-estimated-time">2-3 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="main" role="main" data-bi-name="content" lang="en-us" dir="ltr">
+		
+		
+		<ul>
+			<li>2 minutes</li>
+		</ul>
+			<p>Power BI reports are built in Power BI Desktop and then deployed to Power BI service, where they can be viewed and shared. However, if you are building dashboards for the Sales team at your organization and you receive a requirement that the dashboards should also be viewable on mobile devices, Power BI will help you to set dashboards to mobile view.</p>
+<p>To navigate to mobile view in Power BI Desktop, select <strong>View</strong> on the ribbon and then select <strong>Mobile Layout</strong>, which will redirect you to the mobile view, as shown in the following figure.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/08-mobile-view-updates-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/08-mobile-view-updates-ss.png" alt="Screenshot of the Mobile view in Power BI Desktop." data-linktype="relative-path"></a></p>
+<p>In the mobile view in Power BI Desktop, you are able to accomplish several tasks. This view emulates the view of a user who is looking at visuals on their phone, so you can add visuals to this view, resize them, and change the formatting on them, as shown in the ensuing screenshot. In the June 2020 release of Power BI Desktop, a new grid has been added to this view so that you can orient your visuals with more ease and overlay visuals on top of each other. This feature can be useful if you want to insert a visual on top of an image.</p>
+<p>After you have published to Power BI service, you can view your visuals on a mobile device.</p>
+<p>Alternatively, you can also optimize your dashboards for mobile view in Power BI service. To see a dashboard in mobile view, select the ellipsis (<strong>...</strong>) on the home ribbon and select <strong>Mobile view</strong>, as shown in the following Sales dashboard.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/08-mobile-view-dashboard-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/08-mobile-view-dashboard-ssm.png" alt="Screenshot of the Mobile view feature on dashboard." data-linktype="relative-path"></a></p>
+<p>This selection will take you to the following view, where you can choose which tiles that you want to see on the phone view.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/08-mobile-view-dash-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/08-mobile-view-dash-ss.png" alt="Screenshot of the Mobile view page where tiles can be selected." data-linktype="relative-path"></a></p>
+<p>You can also resize and reorient the tiles and visuals in whichever order you want. This phone view is customizable for each person who uses the dashboard; selecting <strong>Phone view</strong> will allow you to create a new view that you can see on your phone when signing in to Power BI service.</p>
+<p>For more information, see <a href="https://docs.microsoft.com/en-us/power-bi/create-reports/service-create-dashboard-mobile-phone-view/" data-linktype="absolute-path" target="az-portal">Optimize a dashboard for mobile phones</a>.</p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Lab - Create a Power BI dashboard</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/9-lab/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div><section>
+		<p>
+Need help? See our <a id="troubleshooting-guide" data-bi-name="troubleshooting" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-bizapps.create-dashboards-power-bi.8-set-mobile-view&amp;documentId=7fe3d8be-d6bf-6cda-3426-ddc5d6a78aab&amp;versionIndependentDocumentId=92440bc1-ff32-b5a8-f4f5-483cdd958ee4&amp;contentPath=%2FMicrosoftDocs%2Flearn-bizapps-pr%2Fblob%2Flive%2Flearn-bizapps-pr%2Fpower-bi%2Fcreate-dashboards-power-bi%2F8-set-mobile-view.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fcreate-dashboards-power-bi%2F8-set-mobile-view&amp;author=robde">troubleshooting guide</a> or provide specific feedback by <a id="module-unit-feedback-link" data-bi-name="feedback" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-bizapps.create-dashboards-power-bi.8-set-mobile-view&amp;documentId=7fe3d8be-d6bf-6cda-3426-ddc5d6a78aab&amp;versionIndependentDocumentId=92440bc1-ff32-b5a8-f4f5-483cdd958ee4&amp;contentPath=%2FMicrosoftDocs%2Flearn-bizapps-pr%2Fblob%2Flive%2Flearn-bizapps-pr%2Fpower-bi%2Fcreate-dashboards-power-bi%2F8-set-mobile-view.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fcreate-dashboards-power-bi%2F8-set-mobile-view&amp;author=robde#report-feedback">reporting an issue</a>.		</p>
+	</section></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

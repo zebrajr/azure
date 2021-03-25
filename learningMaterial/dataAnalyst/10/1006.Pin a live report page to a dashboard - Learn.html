@@ -1,0 +1,239 @@
+<html dir="ltr"><head><title>Pin a live report page to a dashboard - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/5-pin-live-report">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/create-dashboards-power-bi/5-pin-live-report</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Pin a live report page to a dashboard - Learn</h1>
+  <div dir="auto" id="reader-credits">heyrob</div>
+  <div dir="auto" id="reader-estimated-time">3-4 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>3 minutes</li>
+		</ul>
+			<p>The process of building reports and dashboards is iterative. As data is constantly refreshed and business requirements change, it is expected that your reports and dashboards might also change; both in what filters or slicers you might have and also in what report elements, charts, and cards you have. For this reason, it is crucial that Power BI supports this iterative process. Through Power BI's innate functionality to pin live report pages to a dashboard, you can ensure that you aren't using old data and the visuals on your dashboards reflect changes live.</p>
+<p>To continue the module scenario, you have built a few reports for Tailwind Toys. Several months go by, and the business requirements in the Sales team change, where they want you to change and add a few more visuals to the reports. When deploying your reports to Power BI service and creating dashboards, you want to ensure that you won't have to keep publishing new reports and dashboards every time a change occurs. You want to make sure that your changes are shown live. By using the pinning live reports to a dashboard feature from Power BI, you can complete this task in an intuitive manner.</p>
+<h2 id="pin-a-live-page">Pin a live page</h2>
+<p>When you pin a visual, you can add it to a new or an existing dashboard. You can do the same with entire reports; when you pin a report page, all visuals on the report will be pinned to a dashboard and they are also live, meaning that any changes you make on the report will be immediately reflected on the dashboard that you have pinned the report to.</p>
+<p>Pinning a live page is a simple way to pin all visuals at once so that you don't have to do any reformatting on the dashboard. To pin a live page, select the ellipsis (<strong>...</strong>) on the navigation bar of the report and then select <strong>Pin a live Page</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/05-pin-live-page-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/05-pin-live-page-ssm.png" alt="Screenshot of the Pin a live page feature." data-linktype="relative-path"></a></p>
+<p>After you have made the selection, you can choose whether you want to pin this report to a new dashboard or an existing one. For this scenario, you want to pin your report to a new dashboard called <strong>Sales Figures</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/05-pin-live-page-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/05-pin-live-page-ss.png" alt="Screenshot of the Pin to dashboard window." data-linktype="relative-path"></a></p>
+<p>After selecting <strong>Pin live</strong>, you will be redirected to a new window where you can see your dashboard. On the dashboard, you can modify the visuals as needed. Note that all your slicers and filters still work and that the visuals have the same data as in the report.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/05-dashboard-example-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/media/05-dashboard-example-ss.png" alt="Screenshot of the pinned live dashboard example." data-linktype="relative-path"></a></p>
+<p>Any changes that you make to the tickets report will automatically show on the dashboard when the page is refreshed. In Power BI Desktop, you can make changes to your visuals or data as needed and then deploy to the appropriate workspace file, which will update the report and simultaneously update the dashboard as well.</p>
+<p>You have now learned how to pin visuals as individual tiles and as entire live report pages. A word of caution: Dashboards are intended to be a collection from various sources, not just as a "launching pad" for reports. We recommend that you pin at the tile level first and foremost, and if needed, the entire report page can also be pinned. Seeing an entire report page in a dashboard tile can be difficult.</p>
+<p>For more information, see <a href="https://docs.microsoft.com/en-us/power-bi/create-reports/service-dashboard-pin-live-tile-from-report/" data-linktype="absolute-path" target="az-portal">Pin an entire report page</a>.</p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Configure a real-time dashboard</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/create-dashboards-power-bi/6-configure-real-time-dashboard/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>
