@@ -1,0 +1,246 @@
+<html dir="ltr"><head><title>Introduction - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/data-analytics-microsoft/1-introduction">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/data-analytics-microsoft/1-introduction</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Introduction - Learn</h1>
+  <div dir="auto" id="reader-credits">heyrob</div>
+  <div dir="auto" id="reader-estimated-time">4-5 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>3 minutes</li>
+		</ul>
+			<p>As a data analyst, you are on a journey. Think about all the data that is being generated each day and that is available in an organization, from transactional data in a traditional database, telemetry data from services that you use, to signals that you get from different areas like social media.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/data-analytics-microsoft/media/abundance-data-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/data-analytics-microsoft/media/abundance-data-ss.png" alt="Diagram of the abundance of data generated filtered into reporting." data-linktype="relative-path"></a></p>
+<p>For example, today's retail businesses collect and store massive amounts of data that track the items you browsed and purchased, the pages you've visited on their site, the aisles you purchase products from, your spending habits, and much more.</p>
+<p>With data and information as the most strategic asset of a business, the underlying challenge that organizations have today is understanding and using their data to positively effect change within the business. Businesses continue to struggle to use their data in a meaningful and productive way, which impacts their ability to act.</p>
+<p>A retail business should be able to use their vast amounts of data and information in such a way that impacts the business, including:</p>
+<ul>
+<li>Tracking inventory</li>
+<li>Identifying purchase habits</li>
+<li>Detecting user trends and patterns</li>
+<li>Recommending purchases</li>
+<li>Determining price optimizations</li>
+<li>Identifying and stopping fraud</li>
+</ul>
+<p>Additionally, you might be looking for daily/monthly sale patterns. Common data segments that you might want to examine include day-over-day, week-over-week, and month-over-month so that you can compare how sales have been to where they were in the same week last year, for example.</p>
+<p>The key to unlocking this data is being able to tell a story with it. In today's highly competitive and fast-paced business world, crafting reports that tell that story is what helps business leaders take action on the data. Business decision makers depend on an accurate story to drive better business decisions. The faster a business can make precise decisions, the more competitive they will be and the better advantage they will have. Without the story, it is difficult to understand what the data is trying to tell you.</p>
+<p>However, having data alone is not enough. You need to be able to act on the data to effect change within the business. That action could involve reallocating resources within the business to accommodate a need, or it could be identifying a failing campaign and knowing when to change course. These situations are where telling a story with your data is important.</p>
+<p>The underlying challenge that businesses face today is understanding and using their data in such a way that impacts their business and ultimately their bottom line. You need to be able to look at the data and facilitate trusted business decisions. Then, you need the ability to look at metrics and clearly understand the meaning behind those metrics.</p>
+<p>This requirement might seem daunting, but it's a task that you can accomplish. Your first step is to partner with data experts within your organization, such as data engineers and data scientists, to help get the data that you need to tell that story. Ask these experts to participate in that data journey with you.</p>
+<p>Your journey of telling a story with data also ties into building that data culture within your organization. While telling the story is important, <em>where</em> that story is told is also crucial, ensuring that the story is told to the right people. Also, make sure that people can discover the story, that they know where to find it, and that it is part of the regular interactions.</p>
+<p>Data analysis exists to help overcome these challenges and pain points, ultimately assisting businesses in finding insights and uncovering hidden value in troves of data through storytelling. As you read on, you will learn how to use and apply analytical skills to go beyond a single report and help impact and influence your organization by telling stories with data and driving that data culture.</p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Overview of data analysis</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/data-analytics-microsoft/2-data-analysis/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>
