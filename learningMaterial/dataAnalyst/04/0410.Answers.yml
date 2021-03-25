@@ -1,0 +1,8 @@
+1. C
+Correct. AVERAGE takes the total and divides by the number of non-null values. If NULL is synonymous with zero in the data, the average will be higher than the accurate average.
+
+2. A
+Correct. Append will take two tables and combine it into one query. The combined query will have more rows while keeping the same number of columns.
+
+3. B
+Correct. Abbreviations lead to confusion because they are often overused or not universally agreed on.

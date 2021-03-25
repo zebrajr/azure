@@ -1,0 +1,287 @@
+<html dir="ltr"><head><title>Evaluate and change column data types - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/4-column-data-types">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/clean-data-power-bi/4-column-data-types</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Evaluate and change column data types - Learn</h1>
+  <div dir="auto" id="reader-credits">heyrob</div>
+  <div dir="auto" id="reader-estimated-time">4-5 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>10 minutes</li>
+		</ul>
+			<p>When you import a table from any data source, Power BI Desktop
+automatically starts scanning the first 1,000 rows (default setting) and
+tries to detect the type of data in the columns. Some situations might
+occur where Power BI Desktop does not detect the correct data type.
+Where incorrect data types occur, you will experience performance
+issues.</p>
+<p>You have a higher chance of getting data type errors when you are
+dealing with flat files, such as comma-separated values (.CSV) files and
+Excel workbooks (.XLSX), because data was entered manually into the
+worksheets and mistakes were made. Conversely, in databases, the data
+types are predefined when tables or views are created.</p>
+<p>A best practice is to evaluate the column data types in Power Query
+Editor before you load the data into a Power BI data model. If you
+determine that a data type is incorrect, you can change it. You might
+also want to apply a format to the values in a column and change the
+summarization default for a column.</p>
+<p>To continue with the scenario where you are cleaning and transforming
+sales data in preparation for reporting, you now need to evaluate the
+columns to ensure that they have the correct data type. You need to
+correct any errors that you identify.</p>
+<p>You evaluate the <strong>OrderDate</strong> column. As expected, it contains numeric
+data, but Power BI Desktop has incorrectly set the column data type to
+Text. To report on this column, you need to change the data type of this
+column from Text to Date.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/04-column-data-type-setas-text-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/04-column-data-type-setas-text-ssm.png" alt="Column OrderDate data type set as text" data-linktype="relative-path"></a></p>
+<h2 id="implications-of-incorrect-data-types">Implications of incorrect data types</h2>
+<p>The following information provides insight into problems that can arise
+when Power BI does not detect the correct data type.</p>
+<p>Incorrect data types will prevent you from creating certain
+calculations, deriving hierarchies, or creating proper relationships
+with other tables. For example, if you try to calculate the Quantity of
+Orders YTD, you will get the following error stating that the
+<strong>OrderDate</strong> column data type is not Date, which is required in
+time-based calculations.</p>
+<p><code>Quantity of Orders YTD = TOTALYTD(SUM('Sales'[OrderQty]), 'Sales'[OrderDate])</code></p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/04-error-calculated-measure-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/04-error-calculated-measure-ss.png" alt="Error for time based calculated measure" data-linktype="relative-path"></a></p>
+<p>Another issue with having an incorrect data type applied on a date field is the inability to create a date hierarchy, which would allow you to analyze your data on a yearly, monthly, or weekly basis. The following screenshot shows that the SalesDate field is not recognized as type Date and will only be presented as a list of dates in the Table visual. However, it is a best practice to use a date table and turn off the auto date/time to get rid of the auto generated hierarchy. For more information about this process, see <a href="https://docs.microsoft.com/en-us/power-bi/guidance/auto-date-time/" data-linktype="absolute-path" target="az-portal">Auto generated data type</a> documentation.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/04-additions-sales-date-options-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/04-additions-sales-date-options-ssm.png" alt="Additions SalesDate options" data-linktype="relative-path"></a></p>
+<h2 id="change-the-column-data-type">Change the column data type</h2>
+<p>You can change the data type of a column in two places: in Power Query
+Editor and in the Power BI Desktop Report view by using the column
+tools. It is best to change the data type in the Power Query Editor
+before you load the data.</p>
+<h3 id="change-the-column-data-type-in-power-query-editor">Change the column data type in Power Query Editor</h3>
+<p>In Power Query Editor, you can change the column data type in two ways.
+One way is to select the column that has the issue, select <strong>Data Type</strong>
+in the <strong>Transform</strong> tab, and then select the correct data type from the
+list.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/04-select-data-type-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/04-select-data-type-ssm.png" alt="Select data type under transform ribbon" data-linktype="relative-path"></a></p>
+<p>Another method is to select the data type icon next to the column header
+and then select the correct data type from the list.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/04-select-data-type-from-list-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/04-select-data-type-from-list-ssm.png" alt="Select data type from list" data-linktype="relative-path"></a></p>
+<p>As with any other changes that you make in Power Query Editor, the
+change that you make to the column data type is saved as a programmed
+step. This step is called <strong>Changed Type</strong> and it will be iterated every
+time the data is refreshed.</p>
+<p>After you have completed all steps to clean and transform your data,
+select <strong>Close &amp; Apply</strong> to close Power Query Editor and apply your
+changes to your data model. At this stage, your data should be in great
+shape for analysis and reporting.</p>
+<p>For more information, see <a href="https://docs.microsoft.com/en-us/power-bi/connect-data/desktop-data-types/" data-linktype="absolute-path" target="az-portal">Data types in Power BI Desktop</a>.</p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Combine multiple tables into a single table</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/5-combine-tables/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

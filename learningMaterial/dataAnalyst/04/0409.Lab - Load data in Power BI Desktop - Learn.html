@@ -1,0 +1,998 @@
+<html dir="ltr"><head><title>Lab - Load data in Power BI Desktop - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/8-lab">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/clean-data-power-bi/8-lab</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Lab - Load data in Power BI Desktop - Learn</h1>
+  <div dir="auto" id="reader-credits">heyrob</div>
+  <div dir="auto" id="reader-estimated-time">18-22 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="main-column" data-bi-name="body">
+
+					<main id="main" role="main" data-bi-name="content" lang="en-us" dir="ltr">
+
+
+
+
+
+						
+
+
+						<!-- <content> -->
+							<div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>45 minutes</li>
+		</ul>
+			<h2 id="access-your-environment">Access your environment</h2>
+<p>Before you start this lab, select <strong>Launch lab</strong> above.</p>
+<p>To log in to your lab environment:</p>
+<ol>
+<li>Click anywhere on the Windows desktop in the lab window.</li>
+<li>On the <strong>Resources</strong> tab on the lab side bar, select the <strong>T</strong> icon next to <strong>Password</strong>. The machine password is automatically entered for you. You can log in with the Student profile.</li>
+<li>Press <strong>Enter</strong>.</li>
+</ol>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/includes/vm-login.png" alt="Image of the lab password on the Resources tab." data-linktype="relative-path"></p>
+<p>You can now begin your work on this lab.</p>
+<p><strong>The estimated time to complete the lab is 45 minutes.</strong></p>
+<p>In this lab, you'll begin to apply transformations to
+queries. You'll then apply the queries to
+load each as a table to the data model.</p>
+<p>In this lab, you learn how to:</p>
+<ul>
+<li><p>Apply various transformations</p>
+</li>
+<li><p>Apply queries to load them to the data model</p>
+</li>
+</ul>
+<h3 id="lab-story">Lab story</h3>
+<p>This lab is one of many in a series of labs that was designed as a complete story from data preparation to publication as reports and dashboards. You can complete the labs in any order. However, if you intend to work through multiple labs, for the first 10 labs, we suggest you do them in the following order:</p>
+<ol>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/get-data/lab-prepare/" data-linktype="absolute-path" target="az-portal">Prepare data in Power BI Desktop</a></p>
+</li>
+<li><p><strong>Load data in Power BI Desktop</strong></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/design-model-power-bi/8-lab/" data-linktype="absolute-path" target="az-portal">Model data in Power BI Desktop, part 1</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/design-model-power-bi/9-lab/" data-linktype="absolute-path" target="az-portal">Model data in Power BI Desktop, part 2</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/create-measures-dax-power-bi/6-lab/" data-linktype="absolute-path" target="az-portal">Create DAX calculations in Power BI Desktop, part 1</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/create-measures-dax-power-bi/8-lab/" data-linktype="absolute-path" target="az-portal">Create DAX calculations in Power BI Desktop, part 2</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/visuals-power-bi/8-lab/" data-linktype="absolute-path" target="az-portal">Design a report in Power BI Desktop, part 1</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/data-driven-story-power-bi/13-lab/" data-linktype="absolute-path" target="az-portal">Design a report in Power BI Desktop, part 2</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/create-dashboards-power-bi/9-lab/" data-linktype="absolute-path" target="az-portal">Create a Power BI dashboard</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/ai-visuals-power-bi/5-lab/" data-linktype="absolute-path" target="az-portal">Perform data analysis in Power BI Desktop</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/create-paginated-reports-power-bi/6-lab/" data-linktype="absolute-path" target="az-portal">Create a Power BI paginated report</a></p>
+</li>
+</ol>
+<h2 id="exercise-1-load-data">Exercise 1: Load Data</h2>
+<p>In this exercise, you'll apply transformations to each of the queries created in the previous lab.</p>
+<h3 id="task-1-get-started">Task 1: Get started</h3>
+<p>In this task you'll set up the environment for the lab.</p>
+<div>
+<p> Important</p>
+<p>If you are continuing on from the previous lab (and you completed that lab successfully), do not complete this task; instead, continue from the next task.</p>
+</div>
+<ol>
+<li><p>To open the Power BI Desktop, on the taskbar, select the Microsoft Power BI Desktop shortcut.</p>
+</li>
+<li><p>To close the getting started window, in the top-right corner, select <strong>X</strong>.</p>
+</li>
+<li><p>To open the starter Power BI Desktop file, from the <strong>File</strong> ribbon tab, select <strong>Open report</strong>, and then <strong>Browse reports</strong>.</p>
+</li>
+<li><p>In the <strong>Open</strong> window, navigate to the <strong>D:\DA100\Labs\load-data-with-power-query-in-power-bi-desktop\Starter</strong> folder.</p>
+</li>
+<li><p>Select the <strong>Sales Analysis</strong> file and select <strong>Open</strong>.</p>
+</li>
+<li><p>Close any informational windows that may open.</p>
+</li>
+<li><p>Notice the yellow warning message beneath the ribbon.</p>
+<p>The message alerts you to the fact that the queries have not been applied to load as model tables. You’ll apply the queries later in this lab.</p>
+</li>
+<li><p>To dismiss the warning message, at the right of the yellow warning message, select <strong>X</strong>.</p>
+</li>
+<li><p>To create a copy of the file, select the <strong>File</strong> ribbon tab to open the backstage view and select <strong>Save As</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-6-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-6-ssm.png" alt="Screenshot of the File menu with Save as highlighted." data-linktype="relative-path"></a></p>
+</li>
+<li><p>If prompted to apply changes, select <strong>Apply Later</strong>.</p>
+</li>
+<li><p>In the <strong>Save As</strong> window, navigate to the <strong>D:\DA100\MySolution</strong> folder and select <strong>Save</strong>.</p>
+</li>
+<li><p>To open the <strong>Power Query Editor</strong> window, on the <strong>Home</strong> ribbon tab, from inside the <strong>Queries</strong> group, select the <strong>Transform Data</strong> icon.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-10-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-10-ssm.png" alt="Screenshot of the Home ribbon tab with Transform data highlighted." data-linktype="relative-path"></a></p>
+</li>
+</ol>
+<h3 id="task-2-configure-the-salesperson-query">Task 2: Configure the Salesperson query</h3>
+<p>In this task, you'll configure the <strong>Salesperson</strong> query.</p>
+<ol>
+<li><p>In the <strong>Power&nbsp;Query&nbsp;Editor</strong> window, in the <strong>Queries</strong> pane,
+select the <strong>DimEmployee</strong> query.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-15-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-15-ssm.png" alt="Screenshot of the Queries pane with DimEmployee highlighted." data-linktype="relative-path"></a></p>
+</li>
+<li><p>To rename the query, in the <strong>Query&nbsp;Settings</strong> pane (located at the
+right), in the <strong>Name</strong> box, replace the text with <strong>Salesperson</strong>,
+and then press <strong>Enter</strong>.</p>
+<p>The query name will determine the model table name. It's recommended to
+define concise, yet friendly, names.</p>
+</li>
+<li><p>In the <strong>Queries</strong> pane, verify that the query name has updated.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-2-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-2-ssm.png" alt="Screenshot of the Queries pane with Salesperson highlighted." data-linktype="relative-path"></a></p>
+<p>You'll now filter the query rows to retrieve only employees who are salespeople.</p>
+</li>
+<li><p>To locate a specific column, on the <strong>Home</strong> ribbon tab, from inside
+the <strong>Manage&nbsp;Columns</strong> group, select the <strong>Choose&nbsp;Columns</strong>
+down-arrow, and then select <strong>Go&nbsp;to&nbsp;Column</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-3-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-3-ssm.png" alt="Screenshot of the Go to Column option under Choose Columns." data-linktype="relative-path"></a></p>
+<div>
+<p> Tip</p>
+<p>This technique is useful when a query contains many columns.
+With fewer columns, you can scroll horizontally to locate the column.</p>
+</div>
+</li>
+<li><p>In the <strong>Go&nbsp;to&nbsp;Column</strong> window, to order the list by column name,
+select the <strong>AZ</strong> sort button, and then select <strong>Name</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-4-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-4-ssm.png" alt="Screenshot of the Go to Column window with A to Z sort and Name highlighted." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Select the <strong>SalesPersonFlag</strong> column, and then select <strong>OK</strong>.</p>
+</li>
+<li><p>To filter the query, in the <strong>SalesPersonFlag</strong> column header, select
+the down-arrow, and then clear the <strong>FALSE</strong> checkbox.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-5-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-5-ssm.png" alt="Screenshot of the column header dropdown menu." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Select <strong>OK</strong>.</p>
+</li>
+<li><p>In the <strong>Query&nbsp;Settings</strong> pane, in the <strong>Applied&nbsp;Steps</strong> list,
+notice the addition of the <strong>Filtered&nbsp;Rows</strong> step.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-24-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-24-ssm.png" alt="Screenshot of the Applied Steps list with Filtered Rows highlighted." data-linktype="relative-path"></a></p>
+<p>Each transformation you create results in additional step logic. You can edit or delete steps. You can also select a step to preview the query results at that stage of transformation.</p>
+</li>
+<li><p>To remove columns, on the <strong>Home</strong> ribbon tab, from inside the
+<strong>Manage&nbsp;Columns</strong> group, select the <strong>Choose&nbsp;Columns</strong> icon.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-23-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-23-ssm.png" alt="Screenshot of the Home ribbon tab with the Choose Columns icon highlighted." data-linktype="relative-path"></a></p>
+</li>
+<li><p>In the <strong>Choose&nbsp;Columns</strong> window, to clear all columns, clear
+the <strong>(Select&nbsp;All&nbsp;Columns)</strong> item.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-31-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-31-ssm.png" alt="Screenshot of the Choose Columns window with the Select All Columns checkbox highlighted." data-linktype="relative-path"></a></p>
+</li>
+<li><p>To include columns, select the following six columns:</p>
+<ul>
+<li><p>EmployeeKey</p>
+</li>
+<li><p>EmployeeNationalIDAlternateKey</p>
+</li>
+<li><p>FirstName</p>
+</li>
+<li><p>LastName</p>
+</li>
+<li><p>Title</p>
+</li>
+<li><p>EmailAddress</p>
+</li>
+</ul>
+</li>
+<li><p>Select <strong>OK</strong>.</p>
+</li>
+<li><p>In the <strong>Applied&nbsp;Steps</strong> list, notice the addition of another query
+step.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-11-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-11-ssm.png" alt="Screenshot of the Applied Steps list with Removed Other Columns highlighted." data-linktype="relative-path"></a></p>
+</li>
+<li><p>To create a single name column, first select the <strong>FirstName</strong> column header.</p>
+</li>
+<li><p>While pressing the <strong>Ctrl</strong> key, select the <strong>LastName</strong> column.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-39-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-39-ssm.png" alt="Screenshot of the FirstName and LastName columns selected." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Right-click either of the select column headers, and then in the
+context menu, select <strong>Merge&nbsp;Columns</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-52-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-52-ssm.png" alt="Screenshot of the context menu with Merge Columns highlighted." data-linktype="relative-path"></a></p>
+<div>
+<p> Note</p>
+<p>Many common transformations can be applied by right-clicking the column header, and then choosing them from the context menu. However, more transformations are available in the ribbon.</p>
+</div>
+</li>
+<li><p>In the <strong>Merge&nbsp;Columns</strong> window, in the <strong>Separator</strong> dropdown list,
+select <strong>Space</strong>.</p>
+</li>
+<li><p>In the <strong>New&nbsp;Column&nbsp;Name</strong> box, replace the text with
+<strong>Salesperson</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-14-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-14-ssm.png" alt="Screenshot of the Merge Columns window with the Separator and New Column Name options highlighted." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Select <strong>OK</strong>.</p>
+</li>
+<li><p>To rename the <strong>EmployeeNationalIDAlternateKey</strong> column,
+double-click the <strong>EmployeeNationalIDAlternateKey</strong> column header.</p>
+</li>
+<li><p>Replace the text with <strong>EmployeeID</strong>, and then press <strong>Enter</strong>.</p>
+<div>
+<p> Important</p>
+<p>When instructed to rename columns, it's important that you rename them exactly as described.</p>
+</div>
+</li>
+<li><p>Use the previous steps to rename the <strong>EmailAddress</strong> column to
+<strong>UPN</strong>.</p>
+<p>UPN is an acronym for User Principal Name. The values in this column will be used when you configure row-level security in the <strong>Model data in Power BI Desktop, Part 2</strong> lab.</p>
+</li>
+<li><p>At the bottom-left, in the status bar, verify that the query has
+5 columns and 18 rows.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-16-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-16-ss.png" alt="Screenshot of the status bar showing 5 columns, 18 rows." data-linktype="relative-path"></a></p>
+<div>
+<p> Important</p>
+<p><strong>Do not proceed</strong> if your query does not produce the correct result or you'll be unable to complete later labs. If the query columns or rows don’t match, refer back to the steps in this task to fix any problems.</p>
+</div>
+</li>
+</ol>
+<h3 id="task-3-configure-the-salespersonregion-query">Task 3: Configure the SalespersonRegion query</h3>
+<p>In this task, you'll configure the <strong>SalespersonRegion</strong> query.</p>
+<ol>
+<li><p>In the <strong>Queries</strong> pane, select the <strong>DimEmployeeSalesTerritory</strong> query.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-54-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-54-ssm.png" alt="Screenshot of the Queries pane with DimeEmployeeSalesTerritory highlighted." data-linktype="relative-path"></a></p>
+</li>
+<li><p>In the <strong>Query&nbsp;Settings</strong> pane, rename the query to
+<strong>SalespersonRegion</strong>.</p>
+</li>
+<li><p>To remove the last two columns, first select the <strong>DimEmployee</strong>
+column header.</p>
+</li>
+<li><p>While pressing the <strong>Ctrl</strong> key, select the <strong>DimSalesTerritory</strong>
+column header.</p>
+</li>
+<li><p>Right-click either of the select column headers, and then in the
+context menu, select <strong>Remove&nbsp;Columns</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-55-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-55-ssm.png" alt="Screenshot of the context menu with Remove Columns highlighted." data-linktype="relative-path"></a></p>
+</li>
+<li><p>In the status bar, verify that the query has 2 columns and 39 rows.</p>
+</li>
+</ol>
+<h3 id="task-4-configure-the-product-query">Task 4: Configure the Product query</h3>
+<p>In this task, you'll configure the <strong>Product</strong> query.</p>
+<div>
+<p> Important</p>
+<p>When detailed instructions have already been provided for a task that is repeated, the lab steps will now provide more concise instructions. If you need the detailed instructions, you can refer back to the steps of previous tasks.</p>
+</div>
+<ol>
+<li><p>Select the <strong>DimProduct</strong> query.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-20-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-20-ssm.png" alt="Screenshot of the Queries pane with DimProduct highlighted." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Rename the query to <strong>Product</strong>.</p>
+</li>
+<li><p>Locate the <strong>FinishedGoodsFlag</strong> column, and then filter the column
+to retrieve products that are finished goods (that is, TRUE).</p>
+</li>
+<li><p>Remove all columns, except the following:</p>
+<ul>
+<li><p>ProductKey</p>
+</li>
+<li><p>EnglishProductName</p>
+</li>
+<li><p>StandardCost</p>
+</li>
+<li><p>Color</p>
+</li>
+<li><p>DimProductSubcategory</p>
+</li>
+</ul>
+</li>
+<li><p>Notice that the <strong>DimProductSubcategory</strong> column represents a
+related table (it contains <strong>Value</strong> links).</p>
+</li>
+<li><p>In the <strong>DimProductSubcategory</strong> column header, at the right of the
+column name, select the expand button.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-21-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-21-ssm.png" alt="Screenshot of the expand button on DimProductSubcategory." data-linktype="relative-path"></a></p>
+</li>
+<li><p>To clear all columns, clear the <strong>(Select&nbsp;All&nbsp;Columns)</strong> item.</p>
+</li>
+<li><p>Select the <strong>EnglishProductSubcategoryName</strong> and
+<strong>DimProductCategory</strong> columns.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-22-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-22-ssm.png" alt="Screenshot of the list with two selected columns." data-linktype="relative-path"></a></p>
+<p>By selecting these two columns, a transformation will be applied to join to the <strong>DimProductSubcategory</strong> table, and then include these columns. The <strong>DimProductCategory</strong> column is, in fact, another related table in the data source.</p>
+</li>
+<li><p>Clear the <strong>Use&nbsp;Original&nbsp;Column&nbsp;Name&nbsp;as&nbsp;Prefix</strong> checkbox.</p>
+<p>Query column names must always be unique. When selected, this checkbox
+would prefix each column with the expanded column name (in this case
+<strong>DimProductSubcategory</strong>). Because it's known that the selected columns
+don't collide with columns in the <strong>Product</strong> query, the option is
+deselected.</p>
+</li>
+<li><p>Select <strong>OK</strong>.</p>
+<p>Notice that the transformation resulted in the addition of two columns, and that the <strong>DimProductSubcategory</strong> column has been removed.</p>
+</li>
+<li><p>Expand the <strong>DimProductCategory</strong>, and then introduce only the
+<strong>EnglishProductCategoryName</strong> column.</p>
+</li>
+<li><p>Rename the following four columns:</p>
+<ul>
+<li><p><strong>EnglishProductName</strong> to <strong>Product</strong></p>
+</li>
+<li><p><strong>StandardCost</strong> to <strong>Standard&nbsp;Cost</strong> (include a space)</p>
+</li>
+<li><p><strong>EnglishProductSubcategoryName</strong> to <strong>Subcategory</strong></p>
+</li>
+<li><p><strong>EnglishProductCategoryName</strong> to <strong>Category</strong></p>
+</li>
+</ul>
+</li>
+<li><p>In the status bar, verify that the query has six columns and 397
+rows.</p>
+</li>
+</ol>
+<h3 id="task-5-configure-the-reseller-query">Task 5: Configure the Reseller query</h3>
+<p>In this task, you will configure the <strong>Reseller</strong> query.</p>
+<ol>
+<li><p>Select the <strong>DimReseller</strong> query.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-42-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-42-ss.png" alt="Screenshot of the Queries page with DimReseller selected." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Rename the query to <strong>Reseller</strong>.</p>
+</li>
+<li><p>Remove all columns, except the following:</p>
+<ul>
+<li><p>ResellerKey</p>
+</li>
+<li><p>BusinessType</p>
+</li>
+<li><p>ResellerName</p>
+</li>
+<li><p>DimGeography</p>
+</li>
+</ul>
+</li>
+<li><p>Expand the <strong>DimGeography</strong> column, to include only the following three columns:</p>
+<ul>
+<li><p>City</p>
+</li>
+<li><p>StateProvinceName</p>
+</li>
+<li><p>EnglishCountryRegionName</p>
+</li>
+</ul>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-56-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-56-ss.png" alt="DimGeography context menu with three columns selected." data-linktype="relative-path"></a></p>
+</li>
+<li><p>In the <strong>Business&nbsp;Type</strong> column header, select the down-arrow, and
+then review the items, and the incorrect spelling of warehouse.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-28-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-28-ssm.png" alt="Screenshot of &quot;Ware House&quot; spelled incorrectly." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Right-click the <strong>Business&nbsp;Type</strong> column header, and then select
+<strong>Replace&nbsp;Values</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-25-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-25-ss.png" alt="Screenshot of the context menu with Replace Values highlighted." data-linktype="relative-path"></a></p>
+</li>
+<li><p>In the <strong>Replace&nbsp;Values</strong> window, configure the following values:</p>
+<ul>
+<li><p>In the <strong>Value&nbsp;to&nbsp;Find</strong> box, enter <strong>Ware&nbsp;House</strong></p>
+</li>
+<li><p>In the <strong>Replace&nbsp;With</strong> box, enter <strong>Warehouse</strong></p>
+</li>
+</ul>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-30-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-30-ssm.png" alt="Screenshot of the Replace Values window." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Select <strong>OK</strong>.</p>
+</li>
+<li><p>Rename the following four columns:</p>
+<ul>
+<li><p><strong>BusinessType</strong> to <strong>Business&nbsp;Type</strong> (include a space)</p>
+</li>
+<li><p><strong>ResellerName</strong> to <strong>Reseller</strong></p>
+</li>
+<li><p><strong>StateProvinceName</strong> to <strong>State-Province</strong></p>
+</li>
+<li><p><strong>EnglishCountryRegionName</strong> to <strong>Country-Region</strong></p>
+</li>
+</ul>
+</li>
+<li><p>In the status bar, verify that the query has 6 columns and 701
+rows.</p>
+</li>
+</ol>
+<h3 id="task-6-configure-the-region-query">Task 6: Configure the Region query</h3>
+<p>In this task, you'll configure the <strong>Region</strong> query.</p>
+<ol>
+<li><p>Select the <strong>DimSalesTerritory</strong> query.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-64-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-64-ssm.png" alt="Screenshot of the Queries pane with DimSalesTerritory highlighted." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Rename the query to <strong>Region</strong>.</p>
+</li>
+<li><p>Apply a filter to the <strong>SalesTerritoryAlternateKey</strong> column to
+remove the value 0 (zero).</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-34-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-34-ssm.png" alt="Screenshot of the SalesTerritoryAlternateKey column with the zero checkbox cleared." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Remove all columns, except the following:</p>
+<ul>
+<li><p>SalesTerritoryKey</p>
+</li>
+<li><p>SalesTerritoryRegion</p>
+</li>
+<li><p>SalesTerritoryCountry</p>
+</li>
+<li><p>SalesTerritoryGroup</p>
+</li>
+</ul>
+</li>
+<li><p>Rename the following three columns:</p>
+<ul>
+<li><p><strong>SalesTerritoryRegion</strong> to <strong>Region</strong></p>
+</li>
+<li><p><strong>SalesTerritoryCountry</strong> to <strong>Country</strong></p>
+</li>
+<li><p><strong>SalesTerritoryGroup</strong> to <strong>Group</strong></p>
+</li>
+</ul>
+</li>
+<li><p>In the status bar, verify that the query has 4 columns and 10
+rows.</p>
+</li>
+</ol>
+<h3 id="task-7-configure-the-sales-query">Task 7: Configure the Sales query</h3>
+<p>In this task, you will configure the <strong>Sales</strong> query.</p>
+<ol>
+<li><p>Select the <strong>FactResellerSales</strong> query.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-65-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-65-ssm.png" alt="Screenshot of the Queries pane with FactResellerSales highlighted." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Rename the query to <strong>Sales</strong>.</p>
+</li>
+<li><p>Remove all columns, except the following:</p>
+<ul>
+<li><p>SalesOrderNumber</p>
+</li>
+<li><p>OrderDate</p>
+</li>
+<li><p>ProductKey</p>
+</li>
+<li><p>ResellerKey</p>
+</li>
+<li><p>EmployeeKey</p>
+</li>
+<li><p>SalesTerritoryKey</p>
+</li>
+<li><p>OrderQuantity</p>
+</li>
+<li><p>UnitPrice</p>
+</li>
+<li><p>TotalProductCost</p>
+</li>
+<li><p>SalesAmount</p>
+</li>
+<li><p>DimProduct</p>
+</li>
+</ul>
+<p>You may recall in the <strong>Prepare data in Power BI Desktop</strong> lab that a small percentage of <strong>FactResellerSales</strong>
+rows had missing <strong>TotalProductCost</strong> values. The <strong>DimProduct</strong> column
+has been included to retrieve the product standard cost, to help fix the
+missing values.</p>
+</li>
+<li><p>Expand the <strong>DimProduct</strong> column, and then include the
+<strong>StandardCost</strong> column.</p>
+</li>
+<li><p>To create a custom column, on the <strong>Add&nbsp;Column</strong> ribbon tab, from
+inside the <strong>General</strong> group, select <strong>Custom&nbsp;Column</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-37-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-37-ssm.png" alt="Screenshot of the Custom Column button" data-linktype="relative-path"></a></p>
+</li>
+<li><p>In the <strong>Custom&nbsp;Column</strong> window, in the <strong>New&nbsp;Column&nbsp;Name</strong> box,
+replace the text with <strong>Cost</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-71-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-71-ssm.png" alt="Screenshot of the Custom Column window with New column name set to Cost." data-linktype="relative-path"></a></p>
+</li>
+<li><p>In the <strong>Custom&nbsp;Column&nbsp;Formula</strong> box, enter the following expression
+(after the equals symbol):</p>
+<div>
+<p> Note</p>
+<p>For your convenience, you can copy the expression from the
+<strong>D:\DA100\Labs\load-data-with-power-query-in-power-bi-desktop\Assets\Snippets.txt</strong> file.</p>
+</div>
+<p>Power Query</p>
+<p><code>if [TotalProductCost] = null then [OrderQuantity] * [StandardCost] else [TotalProductCost]</code></p>
+<p>This expression tests whether the <strong>TotalProductCost</strong> value is missing. If it is, it produces a value by multiplying the <strong>OrderQuantity</strong> value by the <strong>StandardCost</strong> value; otherwise, it uses the existing
+<strong>TotalProductCost</strong> value.</p>
+</li>
+<li><p>Select <strong>OK</strong>.</p>
+</li>
+<li><p>Remove the following two columns:</p>
+<ul>
+<li><p>TotalProductCost</p>
+</li>
+<li><p>StandardCost</p>
+</li>
+</ul>
+</li>
+<li><p>Rename the following three columns:</p>
+<ul>
+<li><p><strong>OrderQuantity</strong> to <strong>Quantity</strong></p>
+</li>
+<li><p><strong>UnitPrice</strong> to <strong>Unit&nbsp;Price</strong> (include a space)</p>
+</li>
+<li><p><strong>SalesAmount</strong> to <strong>Sales</strong></p>
+</li>
+</ul>
+</li>
+<li><p>To modify the column data type, in the <strong>Quantity</strong> column header,
+at the left of the column name, select the <strong>1.2</strong> icon, and then
+select <strong>Whole&nbsp;Number</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-40-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-40-ssm.png" alt="Screenshot of the Quantity column header Format context menu." data-linktype="relative-path"></a></p>
+<p>Configuring the correct data type is important. When the column contains
+numeric value, it's also important to choose the correct type if you
+expect to perform mathematic calculations.</p>
+</li>
+<li><p>Modify the following three-column data types to
+<strong>Fixed&nbsp;Decimal&nbsp;Number</strong>.</p>
+<ul>
+<li><p>Unit&nbsp;Price</p>
+</li>
+<li><p>Sales</p>
+</li>
+<li><p>Cost</p>
+</li>
+</ul>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-59-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-59-ss.png" alt="Screenshot of the Format context menu with Fixed decimal number highlighted." data-linktype="relative-path"></a></p>
+<div>
+<p> Note</p>
+<p>The fixed decimal number data type stores values with full precision,
+and so requires more storage space than the decimal number. It's important
+to use the fixed decimal number type for financial values, or rates
+(like exchange rates).</p>
+</div>
+</li>
+<li><p>In the status bar, verify that the query has 10 columns and 999+
+rows.</p>
+<p>A maximum of 1000 rows is loaded as preview data for each query.</p>
+</li>
+</ol>
+<h3 id="task-8-configure-the-targets-query">Task 8: Configure the Targets query</h3>
+<p>In this task, you'll configure the <strong>Targets</strong> query.</p>
+<ol>
+<li><p>Select the <strong>ResellerSalesTargets</strong> query.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-67-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-67-ss.png" alt="Screenshot of the Queries pane with ResellerSalesTargets highlighted." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Rename the query to <strong>Targets</strong>.</p>
+</li>
+<li><p>To unpivot the 12-month columns (<strong>M01</strong>-<strong>M12</strong>), first
+multi-select the <strong>Year</strong> and <strong>EmployeeID</strong> column headers.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-44-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-44-ssm.png" alt="Screenshot of the Year and EmployeeID columns selected." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Right-click either of the select column headers, and then in the
+context menu, select <strong>Unpivot&nbsp;Other&nbsp;Columns</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-48-a-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-48-a-ssm.png" alt="Screenshot of the context menu with Unpivot other columns highlighted." data-linktype="relative-path"></a></p>
+<p>Notice that the column names now appear in the <strong>Attribute</strong> column,
+and the values appear in the <strong>Value</strong> column.</p>
+</li>
+<li><p>Apply a filter to the <strong>Value</strong> column to remove hyphen (-) values.</p>
+<p>You may recall that the hyphen character was used in the source CSV file to represent zero (0).</p>
+</li>
+<li><p>Rename the following two columns:</p>
+<ul>
+<li><p><strong>Attribute</strong> to <strong>MonthNumber</strong> (No space between the two words. It will be removed later.)</p>
+</li>
+<li><p><strong>Value</strong> to <strong>Target</strong></p>
+</li>
+</ul>
+<p>You'll now apply transformations to produce a date column. The date
+will be derived from the <strong>Year</strong> and <strong>MonthNumber</strong> columns. You'll
+create the column by using the <strong>Columns&nbsp;From&nbsp;Examples</strong> feature.</p>
+</li>
+<li><p>To prepare the <strong>MonthNumber</strong> column values, right-click the
+<strong>MonthNumber</strong> column header, and then select <strong>Replace&nbsp;Values</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-48-b-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-48-b-ssm.png" alt="Screenshot of the context menu with Replace Values selected." data-linktype="relative-path"></a></p>
+</li>
+<li><p>In the <strong>Replace&nbsp;Values</strong> window, in the <strong>Value&nbsp;To&nbsp;Find</strong> box,
+enter <strong>M</strong>.</p>
+</li>
+<li><p>Select <strong>OK</strong>.</p>
+</li>
+<li><p>Modify the <strong>MonthNumber</strong> column data type to <strong>Whole&nbsp;Number</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-48-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-48-ssm.png" alt="Screenshot of the column data type and icon." data-linktype="relative-path"></a></p>
+</li>
+<li><p>On the <strong>Add&nbsp;Column</strong> ribbon tab, from inside the <strong>General</strong> group,
+select The <strong>Column&nbsp;From&nbsp;Examples</strong> icon.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-49-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-49-ssm.png" alt="Screenshot of the Column From Examples button." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Notice that the first row is for year <strong>2017</strong> and month number
+<strong>7</strong>.</p>
+</li>
+<li><p>In the <strong>Column1</strong> column, in the first grid cell, enter
+<strong>7/1/2017</strong>, and then press <strong>Enter</strong>.</p>
+<p>The virtual machine uses US regional settings, so this date is in fact
+July 1, 2017.</p>
+</li>
+<li><p>Notice that the grid cells update with predicted values.</p>
+<p>The feature has accurately predicted that you're combining values from
+the <strong>Year</strong> and <strong>MonthNumber</strong> columns.</p>
+</li>
+<li><p>Notice also the formula presented above the query grid.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-50-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-50-ssm.png" alt="Screenshot of the complete formula under Add Column From Examples." data-linktype="relative-path"></a></p>
+</li>
+<li><p>To rename the new column, double-click the <strong>Merged</strong> column header.</p>
+</li>
+<li><p>Rename the column as <strong>TargetMonth</strong>.</p>
+</li>
+<li><p>To add the new column, select <strong>OK</strong>.</p>
+</li>
+<li><p>Remove the following columns:</p>
+<ul>
+<li><p>Year</p>
+</li>
+<li><p>MonthNumber</p>
+</li>
+</ul>
+</li>
+<li><p>Modify the following column data types:</p>
+<ul>
+<li><p><strong>Target</strong> as fixed decimal number</p>
+</li>
+<li><p><strong>TargetMonth</strong> as date</p>
+</li>
+</ul>
+</li>
+<li><p>To multiply the <strong>Target</strong> values by 1000, select the <strong>Target</strong>
+column header, and then on the <strong>Transform</strong> ribbon tab, from inside
+the <strong>Number&nbsp;Column</strong> group, select <strong>Standard</strong>, and then select
+<strong>Multiply</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-53-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-53-ssm.png" alt="Screenshot of the Standard button and Multiply option." data-linktype="relative-path"></a></p>
+<p>You may recall that the target values were stored as thousands.</p>
+</li>
+<li><p>In the <strong>Multiply</strong> window, in the <strong>Value</strong> box, enter <strong>1000</strong>.</p>
+</li>
+<li><p>Select <strong>OK</strong>.</p>
+</li>
+<li><p>In the status bar, verify that the query has 3 columns and 809
+rows.</p>
+</li>
+</ol>
+<h3 id="task-9-configure-the-colorformats-query">Task 9: Configure the ColorFormats query</h3>
+<p>In this task, you'll configure the <strong>ColorFormats</strong> query.</p>
+<ol>
+<li><p>Select the <strong>ColorFormats</strong> query.</p>
+</li>
+<li><p>Notice that the first row contains the column names.</p>
+</li>
+<li><p>On the <strong>Home</strong> ribbon tab, from inside the <strong>Transform</strong> group,
+select <strong>Use&nbsp;First&nbsp;Row&nbsp;as&nbsp;Headers</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-58-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-58-ssm.png" alt="Screenshot of the Use First Row as Headers button." data-linktype="relative-path"></a></p>
+</li>
+<li><p>In the status bar, verify that the query has 3 columns and 10
+rows.</p>
+</li>
+</ol>
+<h3 id="task-10-update-the-product-query">Task 10: Update the Product query</h3>
+<p>In this task, you'll update the <strong>Product</strong> query by merging the
+<strong>ColorFormats</strong> query.</p>
+<ol>
+<li><p>Select the <strong>Product</strong> query.</p>
+</li>
+<li><p>To merge the <strong>ColorFormats</strong> query, on the <strong>Home</strong> ribbon tab,
+from inside the <strong>Combine</strong> group, select <strong>Merge&nbsp;Queries</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-61-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-61-ssm.png" alt="Screenshot of the Home ribbon tab with the Merge Queries button highlighted." data-linktype="relative-path"></a></p>
+<p>Merging queries allows you to integrate data, in this case from different
+data sources (SQL Server and a CSV file).</p>
+</li>
+<li><p>In the <strong>Merge</strong> window, in the <strong>Product</strong> query grid, select the
+<strong>Color</strong> column header.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-62-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-62-ssm.png" alt="Screenshot of the Merge window with the Color column highlighted." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Beneath the <strong>Product</strong> query grid, in the dropdown list, select
+the <strong>ColorFormats</strong> query.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-63-a-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-63-a-ssm.png" alt="Screenshot of the Merge window with ColorFormats selected." data-linktype="relative-path"></a></p>
+</li>
+<li><p>In the <strong>ColorFormats</strong> query grid, select the <strong>Color</strong> column
+header.</p>
+</li>
+<li><p>When the <strong>Privacy&nbsp;Levels</strong> window opens, for each of the two data
+sources, in the corresponding dropdown list, select
+<strong>Organizational</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-63-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-63-ssm.png" alt="Screenshot of the Privacy Levels window." data-linktype="relative-path"></a></p>
+<p>Privacy levels can be configured for data source to determine whether
+data can be shared between sources. Setting each data source as
+<strong>Organizational</strong> allows them to share data, if necessary. Private data sources can never be shared with other data sources. It
+doesn't mean that Private data cannot be shared; it means that the Power
+Query engine cannot share data between the sources.</p>
+</li>
+<li><p>Select <strong>Save</strong>.</p>
+</li>
+<li><p>In the <strong>Merge</strong> window, select <strong>OK</strong>.</p>
+</li>
+<li><p>Expand the <strong>ColorFormats</strong> column to include the following two
+columns:</p>
+<ul>
+<li><p>Background Color Format</p>
+</li>
+<li><p>Font Color Format</p>
+</li>
+</ul>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-69-a-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-69-a-ssm.png" alt="Screenshot of the dialog with Expand selected and two columns selected." data-linktype="relative-path"></a></p>
+</li>
+<li><p>In the status bar, verify that the query now has 8 columns and
+397 rows.</p>
+</li>
+</ol>
+<h3 id="task-11-update-the-colorformats-query">Task 11: Update the ColorFormats query</h3>
+<p>In this task, you'll update the <strong>ColorFormats</strong> to disable its load.</p>
+<ol>
+<li><p>Select the <strong>ColorFormats</strong> query.</p>
+</li>
+<li><p>In the <strong>Query&nbsp;Settings</strong> pane, select the <strong>All&nbsp;Properties</strong> link.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-69-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-69-ssm.png" alt="Screenshot of the All Properties link." data-linktype="relative-path"></a></p>
+</li>
+<li><p>In the <strong>Query&nbsp;Properties</strong> window, clear the
+<strong>Enable&nbsp;Load&nbsp;To&nbsp;Report</strong> checkbox.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-70-a-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-70-a-ssm.png" alt="Screenshot of the Query Properties window." data-linktype="relative-path"></a></p>
+<p>Disabling the load means it won't load as a table to the data model.
+This is done because the query was merged with the Product query, which
+is enabled to load to the data model.</p>
+</li>
+<li><p>Select <strong>OK</strong>.</p>
+</li>
+</ol>
+<h3 id="task-12-finish-up">Task 12: Finish up</h3>
+<p>In this task, you'll complete the lab.</p>
+<ol>
+<li><p>Verify that you have eight queries, correctly named as follows:</p>
+<ul>
+<li><p>Salesperson</p>
+</li>
+<li><p>SalespersonRegion</p>
+</li>
+<li><p>Product</p>
+</li>
+<li><p>Reseller</p>
+</li>
+<li><p>Region</p>
+</li>
+<li><p>Sales</p>
+</li>
+<li><p>Targets</p>
+</li>
+<li><p>ColorFormats (which won't load to the data model)</p>
+</li>
+</ul>
+</li>
+<li><p>To load the data model, on the <strong>File</strong> backstage view, select
+<strong>Close&nbsp;&amp;&nbsp;Apply</strong>.</p>
+<p>All load-enabled queries are now loaded to the data model.</p>
+</li>
+<li><p>In the <strong>Fields</strong> pane (located at the right), notice the seven
+tables loaded to the data model.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-73-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/lab-73-ss.png" alt="Screenshot of the Fields pane and the 7 tables." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Save the Power&nbsp;BI&nbsp;Desktop file.</p>
+</li>
+<li><p>If you intend to start the next lab, leave Power&nbsp;BI&nbsp;Desktop open.</p>
+</li>
+</ol>
+<p>You'll configure data model tables and relationships in the <strong>Model data in Power BI Desktop, Part 1</strong> lab.</p>
+<p><strong>Ending Your Lab</strong></p>
+<p>To end this lab, click the menu icon in the upper right hand corner of this instruction window and select <strong>End Lab</strong>.</p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Check your knowledge</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/9-check/" data-bi-name="continue" target="_top">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div>
+
+						<!-- </content> -->
+
+						</main>
+
+						<!-- page rating section -->
+						<!-- end page rating section -->
+
+<section>
+		<p>
+Need help? See our <a id="troubleshooting-guide" data-bi-name="troubleshooting" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-bizapps.clean-data-power-bi.8-lab&amp;documentId=f698115a-d933-cd0d-fdbb-a482c670a7b9&amp;versionIndependentDocumentId=370ea8ce-0cf6-cb7d-235c-aa3778dad080&amp;contentPath=%2FMicrosoftDocs%2Flearn-bizapps-pr%2Fblob%2Flive%2Flearn-bizapps-pr%2Fpower-bi%2Fclean-data-power-bi%2F8-lab.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fclean-data-power-bi%2F8-lab&amp;author=robde">troubleshooting guide</a> or provide specific feedback by <a id="module-unit-feedback-link" data-bi-name="feedback" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-bizapps.clean-data-power-bi.8-lab&amp;documentId=f698115a-d933-cd0d-fdbb-a482c670a7b9&amp;versionIndependentDocumentId=370ea8ce-0cf6-cb7d-235c-aa3778dad080&amp;contentPath=%2FMicrosoftDocs%2Flearn-bizapps-pr%2Fblob%2Flive%2Flearn-bizapps-pr%2Fpower-bi%2Fclean-data-power-bi%2F8-lab.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fclean-data-power-bi%2F8-lab&amp;author=robde#report-feedback">reporting an issue</a>.		</p>
+	</section>
+
+						<!-- recommendations section -->
+						<!-- end recommendations section -->
+
+						<!-- feedback section -->
+						<!-- end feedback section -->
+
+						<!-- feedback report section -->
+						<!-- end feedback report section -->
+
+						
+					</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

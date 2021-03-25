@@ -1,0 +1,373 @@
+<html dir="ltr"><head><title>Shape the initial data - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/2-shape-data">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/clean-data-power-bi/2-shape-data</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Shape the initial data - Learn</h1>
+  <div dir="auto" id="reader-credits">heyrob</div>
+  <div dir="auto" id="reader-estimated-time">9-11 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>18 minutes</li>
+		</ul>
+			<p>Power Query&nbsp;Editor&nbsp;in Power BI Desktop allows you to shape (transform)
+your imported data. You can accomplish actions such as renaming columns
+or tables, changing text to numbers, removing rows, setting the first
+row as headers, and much more. It is important to shape your data&nbsp;to
+ensure that it&nbsp;meets your needs and is suitable for use in reports.&nbsp;&nbsp;</p>
+<p>You&nbsp;have&nbsp;loaded&nbsp;raw&nbsp;sales&nbsp;data&nbsp;from&nbsp;two&nbsp;sources&nbsp;into&nbsp;a&nbsp;Power
+BI&nbsp;model.&nbsp;Some of the data&nbsp;came&nbsp;from&nbsp;a .csv file&nbsp;that
+was&nbsp;created&nbsp;manually in Microsoft Excel by the&nbsp;Sales team.&nbsp;The other
+data was loaded&nbsp;through&nbsp;a connection to&nbsp;your organization's&nbsp;Enterprise
+Resource Planning (ERP)&nbsp;system.&nbsp;Now, when you look at the data&nbsp;in Power
+BI&nbsp;Desktop,&nbsp;you notice that it's in disarray;&nbsp;some data that you don't
+need and some data that you do need are in the wrong format.&nbsp;&nbsp;</p>
+<p>You need to&nbsp;use Power Query Editor to&nbsp;clean up and shape this
+data&nbsp;before you&nbsp;can&nbsp;start building reports.&nbsp;</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/02-shape-data-query-editor-overview-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/02-shape-data-query-editor-overview-ss.png" alt="Transform data with query&nbsp;editor" data-linktype="relative-path"></a></p>
+<h2 id="get-started-withpowerquery-editor">Get started with&nbsp;Power&nbsp;Query Editor&nbsp;&nbsp;</h2>
+<p>To&nbsp;start&nbsp;shaping your data,&nbsp;open Power Query Editor by
+selecting&nbsp;the&nbsp;<strong>Transform data</strong>&nbsp;option on the&nbsp;<strong>Home</strong>&nbsp;tab&nbsp;of Power BI
+Desktop.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/02-open-query-editor-transform-button-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/02-open-query-editor-transform-button-ssm.png" alt="Open&nbsp;power&nbsp;query editor" data-linktype="relative-path"></a></p>
+<p>In&nbsp;Power&nbsp;Query Editor,&nbsp;the data in your selected query&nbsp;displays&nbsp;in the
+middle of the screen&nbsp;and, on the left side, the&nbsp;<strong>Queries</strong>&nbsp;pane&nbsp;lists
+the&nbsp;available&nbsp;queries&nbsp;(tables).&nbsp;&nbsp;</p>
+<p>When you work in&nbsp;Power Query Editor, all steps that you take to shape
+your data&nbsp;are recorded. Then,&nbsp;each time the&nbsp;query connects to the data
+source, it automatically applies your steps, so your data is always
+shaped the way that you specified.&nbsp;Power&nbsp;Query Editor only makes changes
+to a&nbsp;particular view&nbsp;of your data, so you&nbsp;can feel confident about
+changes that are being made to your original data source.&nbsp;You can see a
+list of your steps on the right side of the screen, in the&nbsp;<strong>Query
+Settings</strong>&nbsp;pane, along with the query's properties.&nbsp;</p>
+<p>The&nbsp;Power Query Editor ribbon&nbsp;contains many buttons&nbsp;you can use to select,&nbsp;view,&nbsp;and shape your data.</p>
+<p>To learn more about the available features and functions, see&nbsp;<a href="https://docs.microsoft.com/en-us/power-query/power-query-quickstart-using-power-bi#the-query-ribbon" data-linktype="absolute-path">The query ribbon</a>.&nbsp;</p>
+<div>
+<p> Note</p>
+<p>In Power&nbsp;Query Editor,&nbsp;the&nbsp;right-click&nbsp;context&nbsp;menus&nbsp;and&nbsp;<strong>Transform</strong>&nbsp;tab&nbsp;in the&nbsp;ribbon&nbsp;provide many of the same options.</p>
+</div>
+<h3 id="identify-column-headers-and-names">Identify column headers and names&nbsp;</h3>
+<p>The first&nbsp;step in shaping&nbsp;your&nbsp;initial data&nbsp;is&nbsp;to&nbsp;identify the column
+headers and names within the&nbsp;data and&nbsp;then evaluate where they are
+located to ensure that they are in&nbsp;the right place.</p>
+<p>In the following screenshot, the source data&nbsp;in the csv file for SalesTarget (sample not provided)&nbsp;had a target categorized by products and a subcategory split by
+months, both of which are organized into columns.&nbsp;</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/02-identify-headers-names-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/02-identify-headers-names-ssm.png" alt="Identify column headers and names" data-linktype="relative-path"></a></p>
+<p>However,&nbsp;you notice that the&nbsp;data&nbsp;did not import as expected.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/02-identify-columns.ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/02-identify-columns.ss.png" alt="Original Excel data" data-linktype="relative-path"></a></p>
+<p>Consequently,&nbsp;the data is&nbsp;difficult to read. A problem has occurred with the data in its current state because column headers are in different rows&nbsp;(marked in red),&nbsp;and&nbsp;several columns&nbsp;have&nbsp;undescriptive&nbsp;names,&nbsp;such as&nbsp;<strong>Column1</strong>,&nbsp;<strong>Column2</strong>,&nbsp;and so on.</p>
+<p>When&nbsp;you have identified where the column headers and names are&nbsp;located, you can make changes to&nbsp;reorganize the data.&nbsp;</p>
+
+<p>When a table is created&nbsp;in Power BI&nbsp;Desktop, Power&nbsp;Query&nbsp;Editor&nbsp;assumes that&nbsp;all&nbsp;data belongs in table rows. However, a data source might have a first row that contains column names,&nbsp;which is what happened in the&nbsp;previous SalesTarget&nbsp;example.&nbsp;To correct this inaccuracy, you need to promote the first table row&nbsp;into column headers.</p>
+<p>You can&nbsp;promote&nbsp;headers&nbsp;in two ways: by selecting the&nbsp;<strong>Use First Row as Headers</strong>&nbsp;option on the&nbsp;<strong>Home</strong>&nbsp;tab&nbsp;or by selecting the drop-down button next to&nbsp;<strong>Column1</strong> and then selecting&nbsp;<strong>Use First Row as Headers</strong>.&nbsp;</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/02-use-first-row-headers-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/02-use-first-row-headers-ssm.png" alt="Different options to use first row as&nbsp;headers" data-linktype="relative-path"></a></p>
+<p>The following image illustrates&nbsp;how the&nbsp;<strong>Use First Row as Headers</strong> feature impacts the data:&nbsp;</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/02-use-first-row-headers-result-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/02-use-first-row-headers-result-ssm.png" alt="Use first row as headers result" data-linktype="relative-path"></a></p>
+<h2 id="renamecolumns">Rename&nbsp;columns&nbsp;</h2>
+<p>The next&nbsp;step in shaping your data is to&nbsp;examine the&nbsp;column&nbsp;headers. You
+might&nbsp;discover that&nbsp;one or more columns have&nbsp;the wrong headers,&nbsp;a header
+has&nbsp;a spelling error, or&nbsp;the&nbsp;header&nbsp;naming convention is not consistent
+or user-friendly.&nbsp;</p>
+<p>Refer to the previous screenshot,&nbsp;which shows&nbsp;the&nbsp;impact of the&nbsp;<strong>Use
+First Row as Headers</strong>&nbsp;feature. Notice that&nbsp;the column&nbsp;that contains&nbsp;the
+subcategory&nbsp;<strong>Name</strong>&nbsp;data&nbsp;now&nbsp;has&nbsp;<strong>Month</strong>&nbsp;as&nbsp;its&nbsp;column header.
+This&nbsp;column header&nbsp;is incorrect,&nbsp;so&nbsp;it needs to be renamed.&nbsp;</p>
+<p>You can rename&nbsp;column headers&nbsp;in two ways. One approach is to right-click&nbsp;the header, select&nbsp;<strong>Rename</strong>, edit&nbsp;the&nbsp;name,&nbsp;and&nbsp;then&nbsp;press&nbsp;<strong>Enter</strong>.&nbsp;Alternatively, you can double-click the column header and&nbsp;overwrite the name with the&nbsp;correct name.&nbsp;</p>
+<p>You can also&nbsp;work around this issue by&nbsp;removing (skipping)&nbsp;the&nbsp;first&nbsp;two
+rows and&nbsp;then renaming&nbsp;the columns to the&nbsp;correct&nbsp;name.&nbsp;</p>
+<h2 id="remove-toprows">Remove top&nbsp;rows&nbsp;</h2>
+<p>When shaping your data,&nbsp;you might&nbsp;need to remove some of the top rows,
+for example,&nbsp;if they&nbsp;are blank or if they contain data that you do not
+need in your reports.&nbsp;</p>
+<p>Continuing with the&nbsp;SalesTarget&nbsp;example,&nbsp;notice&nbsp;that&nbsp;the first&nbsp;row is
+blank&nbsp;(it has no data)&nbsp;and the second row has data&nbsp;that is
+no&nbsp;longer&nbsp;required.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/02-remove-top-rows-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/02-remove-top-rows-ssm.png" alt="Remove top rows" data-linktype="relative-path"></a></p>
+<p>To remove these&nbsp;excess rows,&nbsp;select&nbsp;<strong>Remove&nbsp;Rows</strong>&nbsp;&gt;&nbsp;<strong>Remove&nbsp;Top
+Rows</strong> on the&nbsp;<strong>Home</strong>&nbsp;tab.&nbsp;</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/02-remove-top-rows-feature-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/02-remove-top-rows-feature-ssm.png" alt="Remove top rows feature" data-linktype="relative-path"></a></p>
+<h2 id="remove-columns">Remove columns&nbsp;</h2>
+<p>A key step in the data shaping process is to&nbsp;remove unnecessary
+columns.&nbsp;It is much better to remove columns as early as possible. One
+way to remove columns would be to limit the column when you get data
+from data source. For instance, if you are extracting data from a
+relational database by using SQL, you would want to limit the column
+that you extract by using a column list in the SELECT statement.</p>
+<p>Removing columns at an early stage in the process rather than later is
+best, especially when you have established relationships between your
+tables.&nbsp;Removing unnecessary columns will help you to focus on the data
+that you need and help improve the overall performance of your Power BI
+Desktop datasets and reports.&nbsp;</p>
+<p>Examine each column and ask yourself if you really need the data that it
+contains. If you don't plan on using that&nbsp;data in a report,&nbsp;the&nbsp;column
+adds no value to your data model. Therefore, the column&nbsp;should be
+removed.&nbsp;You can always add the column later, if&nbsp;your requirements
+change over time.&nbsp;</p>
+<p>You can&nbsp;remove&nbsp;columns&nbsp;in two ways. The first method is to select the columns that you want to remove and then, on&nbsp;the&nbsp;<strong>Home</strong>&nbsp;tab,&nbsp;select&nbsp;<strong>Remove Columns</strong>.&nbsp;</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/02-remove-columns-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/02-remove-columns-ssm.png" alt="Remove columns feature" data-linktype="relative-path"></a></p>
+<p>Alternatively, you can select&nbsp;the columns that you&nbsp;want&nbsp;to&nbsp;keep and
+then,&nbsp;on the&nbsp;<strong>Home</strong>&nbsp;tab, select&nbsp;<strong>Remove Columns</strong>&nbsp;&gt;&nbsp;<strong>Remove
+Other Columns</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/02-remove-other-columsn-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/02-remove-other-columsn-ssm.png" alt="Remove other columns feature" data-linktype="relative-path"></a></p>
+<h2 id="unpivotcolumns">Unpivot&nbsp;columns&nbsp;</h2>
+<p>Unpivoting is a useful feature of Power BI. You can use this feature
+with data from any data source, but you would most often use it when
+importing data from Excel. The following example shows a sample Excel
+document with sales data.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/02-excel-data-multiple-columns-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/02-excel-data-multiple-columns-ss.png" alt="Excel data that needs to be unpivoted" data-linktype="relative-path"></a></p>
+<p>Though the data might initially make sense, it would be difficult to
+create a total of all sales combined from 2018 and 2019. Your goal would
+then be to use this data in Power BI with three columns: <strong>Month</strong>,
+<strong>Year</strong>, and <strong>SalesAmount</strong>.</p>
+<p>When you import the data into Power Query, it will look like the
+following image.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/02-original-data-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/02-original-data-ss.png" alt="Original Power Query data" data-linktype="relative-path"></a></p>
+<p>Next, rename the first column to <strong>Month</strong>. This column was mislabeled
+because that header in Excel was labeling the 2018 and 2019 columns.
+Highlight the 2018 and 2019 columns, select the <strong>Transform</strong> tab in
+Power Query, and then select <strong>Unpivot</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/02-unpivot-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/02-unpivot-ss.png" alt="Unpivot results in Power Query" data-linktype="relative-path"></a></p>
+<p>You can rename the <strong>Attribute</strong> column to <strong>Year</strong> and the <strong>Value</strong>
+column to <strong>SalesAmount</strong>.</p>
+<p>Unpivoting streamlines the process of creating DAX measures on the data
+later. By completing this process, you have now created a simpler way of
+slicing the data with the <strong>Year</strong> and <strong>Month</strong> columns.</p>
+<h2 id="pivotcolumns">Pivot&nbsp;columns&nbsp;</h2>
+<p>If the data that you are shaping&nbsp;is flat (in other words, it&nbsp;has&nbsp;lot of
+detail but is&nbsp;not&nbsp;organized or grouped in any way), the lack of
+structure can complicate your ability to identify patterns in the data.</p>
+<p>You can use the&nbsp;<strong>Pivot Column</strong>&nbsp;feature to&nbsp;convert your flat data into
+a&nbsp;table that contains an aggregate value for each unique value in a
+column. For example, you might&nbsp;want to use this feature&nbsp;to summarize
+data&nbsp;by using different math functions such as&nbsp;<strong>Count</strong>, <strong>Minimum</strong>,
+<strong>Maximum</strong>, <strong>Median</strong>, <strong>Average</strong>, or <strong>Sum</strong>.&nbsp;</p>
+<p>In&nbsp;the&nbsp;SalesTarget&nbsp;example,&nbsp;you can&nbsp;pivot&nbsp;the&nbsp;columns to get the quantity of product subcategories in each&nbsp;product&nbsp;category.</p>
+<p>On the&nbsp;<strong>Transform</strong>&nbsp;tab, select <strong>Transform &gt; Pivot Columns</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/02-pivot-column-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/02-pivot-column-ssm.png" alt="Pivot Column" data-linktype="relative-path"></a></p>
+<p>On the&nbsp;<strong>Pivot Column</strong>&nbsp;window that displays, select a column from the&nbsp;<strong>Values Column</strong>&nbsp;list, such as&nbsp;<strong>Subcategory name</strong>.&nbsp;Expand the advanced options&nbsp;and select&nbsp;an&nbsp;option from the <strong>Aggregate Value Function</strong> list, such as&nbsp;<strong>Count (All)</strong>, and then select <strong>OK</strong>.&nbsp;</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/02-aggregate-value-function-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/02-aggregate-value-function-ssm.png" alt="Aggregate value function" data-linktype="relative-path"></a></p>
+<p>The following image illustrates how the&nbsp;<strong>Pivot Column</strong>&nbsp;feature changes
+the way that the data is organized.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/02-pivot-column-feature-display-data-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/02-pivot-column-feature-display-data-ssm.png" alt="pivot column feature changes how data is organized" data-linktype="relative-path"></a></p>
+<p>Power Query Editor records&nbsp;all steps that you take to shape your data,
+and the list of steps are shown in the&nbsp;<strong>Query Settings</strong>&nbsp;pane.&nbsp;If you
+have made all the required changes, select <strong>Close &amp; Apply</strong>&nbsp;to
+close&nbsp;Power&nbsp;Query Editor and apply your changes to your data model.
+However,&nbsp;before you&nbsp;select&nbsp;<strong>Close &amp; Apply</strong>, you can take further
+steps&nbsp;to clean up&nbsp;and transform&nbsp;your data in&nbsp;Power&nbsp;Query Editor.&nbsp;These
+additional steps are covered later in this module.&nbsp;</p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Simplify the data structure</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/3-data-structure/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

@@ -1,0 +1,328 @@
+<html dir="ltr"><head><title>Profile data in Power BI - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/6-profile-data">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/clean-data-power-bi/6-profile-data</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Profile data in Power BI - Learn</h1>
+  <div dir="auto" id="reader-credits">heyrob</div>
+  <div dir="auto" id="reader-estimated-time">7-8 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>20 minutes</li>
+		</ul>
+			<p>Profiling data is about studying the nuances of the data:&nbsp;determining
+anomalies, examining and developing the underlying data
+structures,&nbsp;and&nbsp;querying data statistics such as&nbsp;row counts, value
+distributions, minimum and maximum values, averages, and so on. This
+concept is important because it allows you&nbsp;to shape and organize the
+data so that interacting with the data and identifying&nbsp;the distribution
+of the data is uncomplicated, therefore helping to make your task of
+working with the data on the front end to develop report elements near
+effortless.</p>
+<p>Assume that you&nbsp;are developing reports for&nbsp;the Sales team at&nbsp;your
+organization.&nbsp;You are uncertain how the data is structured and&nbsp;contained
+within the tables,&nbsp;so you want to profile the data&nbsp;behind the
+scenes&nbsp;before you begin developing the visuals.&nbsp;Power BI has inherent
+functionality that makes these tasks&nbsp;user-friendly and straightforward.</p>
+<h2 id="examine-data-structures">Examine data structures</h2>
+<p>Before you begin&nbsp;examining&nbsp;the data in Power Query Editor, you should
+first learn about the underlying data structures that data&nbsp;is organized
+in. You can view the current data model under the&nbsp;<strong>Model</strong> tab on Power
+BI Desktop.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/06-data-model-ribbon-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/06-data-model-ribbon-ss.png" alt="example data structure&nbsp;and ribbon bar" data-linktype="relative-path"></a></p>
+<p>On the <strong>Model</strong> tab, you can&nbsp;edit specific column and table properties
+by selecting a table or columns, and you can transform the data by using
+the&nbsp;<strong>Transform Data</strong> button, which takes you to Power Query Editor.
+Additionally, you can manage, create, edit, and delete relationships
+between different tables by using&nbsp;<strong>Manage Relationships</strong>, which
+is located on the ribbon.&nbsp;</p>
+<h2 id="find-data-anomaliesand-data-statistics">Find data anomalies&nbsp;and data statistics&nbsp;</h2>
+<p>After you have created a connection to a data source and have selected
+<strong>Transform Data</strong>, you are brought to Power Query Editor, where you can
+determine if anomalies exist within your data.&nbsp;Data anomalies are
+outliers within your data. Determining what those anomalies are can help
+you identify what the normal distribution of your data looks like and
+whether specific data points exist that you need to investigate
+further.&nbsp;Power Query Editor determines data anomalies by using
+the&nbsp;<strong>Column Distribution</strong> feature.</p>
+<p>Select&nbsp;<strong>View</strong>&nbsp;on the ribbon,&nbsp;and under&nbsp;<strong>Data Preview</strong>, you can
+choose from a few options.&nbsp;To understand data anomalies&nbsp;and statistics,
+select the&nbsp;<strong>Column Distribution</strong>,&nbsp;<strong>Column Quality</strong>, and&nbsp;<strong>Column
+Profile</strong> options.&nbsp;The following figure shows the statistics that
+appear.</p>
+<p><strong>Column quality</strong> and&nbsp;<strong>Column distribution</strong> are shown in the graphs
+above the columns of data.&nbsp;<strong>Column quality</strong> shows you&nbsp;the percentages
+of data that is valid, in error, and empty. In an ideal situation, you
+want 100 percent of the data to be valid.&nbsp;</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/06-column-statistics-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/06-column-statistics-ssm.png" alt="anomalies and data statistics for a column of data" data-linktype="relative-path"></a></p>
+<div>
+<p> Note</p>
+<p>By default, Power Query examines the first 1000 rows of your data set. To change this, select the profiling status in the status bar and select <strong>Column profiling based on entire data set</strong>.</p>
+</div>
+<p><strong>Column distribution</strong> shows you&nbsp;the&nbsp;distribution of the data within
+the column and the counts of distinct and unique values, both of which
+can tell you&nbsp;details about the data counts. Distinct
+values&nbsp;are&nbsp;all&nbsp;values in a column, including duplicates and null values,
+while unique values do not include duplicates or
+nulls.&nbsp;Therefore,&nbsp;<strong>distinct</strong> in this table tells you the total count
+of how many values&nbsp;are present, while&nbsp;<strong>unique</strong> tells you&nbsp;how many of
+those values only appear once.</p>
+<p><strong>Column profile</strong>&nbsp;gives you a more in-depth look into the statistics
+within the columns for the first 1,000 rows of data. This&nbsp;column&nbsp;provides several different values,
+including&nbsp;the count of rows,&nbsp;which is important when&nbsp;verifying whether
+the importing of your&nbsp;data&nbsp;was successful. For example, if your original
+database had&nbsp;100 rows, you could use this row count to verify that 100
+rows were, in fact, imported correctly. Additionally, this row count
+will show how many rows that Power BI has deemed as being outliers (and
+therefore "errors"), empty rows&nbsp;and strings, and the min and max, which
+will tell you the smallest and largest&nbsp;value in a column, respectively.
+This distinction is particularly important in the case of numeric data
+because it will immediately notify you if you have a maximum value that
+is&nbsp;beyond what your business identifies as a "maximum." This value calls
+to your attention these values,&nbsp;which means that you can then focus your
+efforts when delving deeper into the data.&nbsp;In the case where data was in
+the text column, as seen in the previous image,&nbsp;the minimum&nbsp;value is the
+first&nbsp;value and the maximum value is the last value when in alphabetical
+order.</p>
+<p>Additionally, the&nbsp;<strong>Value distribution</strong> graph tells you the counts&nbsp;for each unique value in that specific column. When looking at the graph in the previous image, notice that the value distribution indicates that "Anthony Grosse"&nbsp;appears&nbsp;the greatest&nbsp;number of times within the&nbsp;<strong>SalesPerson</strong>&nbsp;column and that&nbsp;"Lily Code" appears the least amount of times. This information is particularly important because it identifies outliers.&nbsp;If a value appears far more than other values in a column, the <strong>Value distribution</strong> feature allows you to pinpoint&nbsp;a place to begin your investigation into why&nbsp;this is so.</p>
+<p>On a numeric column,&nbsp;<strong>Column Statistics</strong> will also include&nbsp;how many
+zeroes&nbsp;and null values exist, along with&nbsp;the average value in the
+column, the standard deviation of the values in the column, and&nbsp;how many
+even and odd values are in the column. These statistics give you an idea
+of the distribution of data within the column, and are important because
+they summarize&nbsp;the data in the column and serve as a starting point to
+determine what the outliers are.</p>
+<p>For example,&nbsp;while looking through invoice data, you notice that
+the&nbsp;<strong>Value distribution</strong> graph shows that&nbsp;a few salespeople&nbsp;in
+the&nbsp;<strong>SalesPerson</strong> column appear the same amount of times within the
+data. Additionally, you notice the same situation has occurred in
+the&nbsp;<strong>Profit</strong> column and in a few&nbsp;other tables as well. During your
+investigation, you discover that the data you were using was bad data
+and needed to be refreshed, so you immediately complete the refresh.
+Without&nbsp;viewing this graph, you might not have seen this error so
+quickly and, for this reason,&nbsp;value distribution is essential.&nbsp;</p>
+<p>After you have completed your edits in&nbsp;Power Query Editor and are ready
+to begin building visuals, return to&nbsp;<strong>Home</strong> on the Power Query Editor
+ribbon. Select&nbsp;<strong>Close &amp; Apply</strong>, which will return you to Power BI
+Desktop and any column edits/transformations will&nbsp;also be applied.</p>
+<p>You have now determined the elements that make up profiling data in
+Power BI, which include&nbsp;loading data in Power BI, interrogating column
+properties to gain clarity about and make further edits to the type and
+format of data in columns,&nbsp;finding data anomalies, and viewing data
+statistics&nbsp;in Power Query Editor. With this knowledge, you can&nbsp;include
+in your toolkit the ability to study your data in an efficient and
+effective manner.&nbsp;</p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Use Advanced Editor to modify M code</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/7-advanced-editor/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

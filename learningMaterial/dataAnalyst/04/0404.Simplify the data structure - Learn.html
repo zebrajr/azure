@@ -1,0 +1,309 @@
+<html dir="ltr"><head><title>Simplify the data structure - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/3-data-structure">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/clean-data-power-bi/3-data-structure</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Simplify the data structure - Learn</h1>
+  <div dir="auto" id="reader-credits">heyrob</div>
+  <div dir="auto" id="reader-estimated-time">5-7 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>8 minutes</li>
+		</ul>
+			<p>When&nbsp;you import data&nbsp;from multiple sources&nbsp;into Power BI
+Desktop,&nbsp;the&nbsp;data&nbsp;retains&nbsp;its predefined&nbsp;table and column names. You might&nbsp;want&nbsp;to&nbsp;change&nbsp;some&nbsp;of these names so&nbsp;that&nbsp;they are in a consistent format,&nbsp;easier to work with,&nbsp;and&nbsp;more&nbsp;meaningful to a user.&nbsp;You can use&nbsp;Power Query Editor in Power BI Desktop to make these name changes and simplify your data structure.&nbsp;</p>
+<p>To continue with the previous scenario&nbsp;where you shaped the
+initial&nbsp;data&nbsp;in your model, you need to take further action&nbsp;to simplify
+the structure of&nbsp;the sales data&nbsp;and&nbsp;get it ready for&nbsp;developing&nbsp;reports
+for the Sales team.&nbsp;You have already renamed the columns, but now you
+need to examine the names of the queries (tables) to determine if any
+improvements can be made. You also need to&nbsp;review the contents of the
+columns&nbsp;and replace&nbsp;any&nbsp;values&nbsp;that require correction.&nbsp;</p>
+<h2 id="renamea-query">Rename&nbsp;a query&nbsp;</h2>
+<p>It's good practice to change uncommon or unhelpful query names to names
+that are more obvious or that the user is more familiar
+with.&nbsp;For&nbsp;instance,&nbsp;if you import a product fact table&nbsp;into Power BI
+Desktop and the query name displays as&nbsp;<em>FactProductTable</em>, you might
+want to change it to a more user-friendly name, such as&nbsp;<em>Products</em>.
+Similarly, if you import a view, the view might have a name that
+contains a prefix of&nbsp;<em>v</em>, such as&nbsp;<em>vProduct</em>. People might find this
+name unclear and confusing, so you might want to remove the prefix.&nbsp;</p>
+<p>In this example, you&nbsp;have examined&nbsp;the&nbsp;name of
+the&nbsp;TargetSales&nbsp;query&nbsp;and&nbsp;realize that this name is unhelpful because
+you'll have a query&nbsp;with this name for&nbsp;every year.&nbsp;To avoid confusion,
+you want to add the year to the query name.&nbsp;</p>
+<p>In&nbsp;Power Query Editor, in&nbsp;the&nbsp;<strong>Queries</strong> pane&nbsp;to the left of your data,
+select the&nbsp;query&nbsp;that you want to rename. Right-click&nbsp;the query&nbsp;and
+select&nbsp;<strong>Rename</strong>.&nbsp;Edit the current name or type&nbsp;a&nbsp;new
+name,&nbsp;and&nbsp;then&nbsp;press&nbsp;<strong>Enter</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/03-rename-query-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/03-rename-query-ssm.png" alt="Rename a query" data-linktype="relative-path"></a></p>
+<h2 id="replace-values">Replace values</h2>
+<p>You can use the&nbsp;<strong>Replace Values</strong>&nbsp;feature&nbsp;in Power Query Editor&nbsp;to
+replace any value with another value in a selected column.&nbsp;</p>
+<p>In this example, you&nbsp;notice&nbsp;that,&nbsp;in the&nbsp;<strong>Attribute</strong>&nbsp;column,&nbsp;the month
+December&nbsp;is misspelled.&nbsp;You need to correct this spelling
+mistake.&nbsp;Select the column that contains the value that you want to
+replace&nbsp;(<strong>Attribute</strong>&nbsp;in this case), and then select&nbsp;<strong>Replace
+Values</strong>&nbsp;on the&nbsp;<strong>Transform</strong>&nbsp;tab.&nbsp;</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/03-replace-value-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/03-replace-value-ssm.png" alt="Replace value&nbsp;feature in Power Query Editor" data-linktype="relative-path"></a></p>
+<p>In the&nbsp;<strong>Value to Find</strong>&nbsp;box, enter the&nbsp;name of the&nbsp;value&nbsp;that you want
+to replace, and then&nbsp;in the&nbsp;<strong>Replace With</strong>&nbsp;box, enter the correct
+value name&nbsp;and&nbsp;then&nbsp;select&nbsp;<strong>OK</strong>.&nbsp;In Power Query, you can't select one
+cell and change one value, like you might have done in Excel.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/03-value-find-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/03-value-find-ssm.png" alt="replace&nbsp;one value with another in the value to find box" data-linktype="relative-path"></a></p>
+<p>You can review the list of steps that you took to restructure and
+correct your data&nbsp;in the&nbsp;<strong>Query Settings</strong>&nbsp;pane.&nbsp;When&nbsp;you have
+completed&nbsp;all steps&nbsp;that you want to take,&nbsp;you can select&nbsp;<strong>Close&nbsp;&amp;
+Apply</strong>&nbsp;to close&nbsp;Power&nbsp;Query Editor and apply your changes to your data
+model.&nbsp;However, you can take further&nbsp;action&nbsp;to clean and transform your
+data.</p>
+<h2 id="replacenull-values">Replace&nbsp;null values</h2>
+<p>Occasionally, you might find that your&nbsp;data sources&nbsp;contain null values. For&nbsp;example, a&nbsp;freight&nbsp;amount on a&nbsp;sales&nbsp;order&nbsp;might&nbsp;have a null value&nbsp;if&nbsp;it's synonymous with zero. If the value stays null, the averages will not calculate&nbsp;correctly.&nbsp;One&nbsp;solution would be to change the nulls to zero, which will produce the more accurate&nbsp;freight average. In this instance, using the same steps that you followed previously will help you replace the null values with zero.&nbsp;</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/03-replace-null-zero-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/03-replace-null-zero-ss.png" alt="Replace null value with zero" data-linktype="relative-path"></a></p>
+<h2 id="remove-duplicates">Remove duplicates&nbsp;</h2>
+<p>You can also remove duplicates from columns to only keep unique names in
+a selected column by using the&nbsp;<strong>Remove Duplicates</strong>&nbsp;feature in Power
+Query.&nbsp;</p>
+<p>In this example, notice that the&nbsp;<strong>Category Name</strong>&nbsp;column contains
+duplicates for each category. As a result, you want to create a table
+with unique categories and use it in your data model. You can achieve
+this action by selecting a column, right-clicking on the header of the
+column, and then selecting the&nbsp;<strong>Remove Duplicates</strong>&nbsp;option.&nbsp;</p>
+<p>You might consider copying the table before removing the duplicates. The
+<strong>Copy</strong> option is at the top of the context menu, as shown in the
+following screenshot. Copying the table before removing duplicates will
+give you a comparison of the tables and will let you use both tables, if
+needed.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/03-remove-duplicates-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/03-remove-duplicates-ssm.png" alt="Remove duplicates feature" data-linktype="relative-path"></a></p>
+<h2 id="best-practices-for-naming-tables-columns-and-values">Best practices for naming tables, columns, and values</h2>
+<p>Naming conventions for tables, columns, and values have no fixed rules;
+however, we recommend that you use the language and abbreviations that
+are commonly used within your organization and that everyone agrees on
+and considers them as common terminology.&nbsp;</p>
+<p>A best practice is to give your tables, columns, and measures
+descriptive business terms and replace underscores ("_") with spaces.
+Be&nbsp;consistent with abbreviations, prefaces, and words like "number" and
+"ID." Excessively short abbreviations can cause confusion if they are
+not commonly used within the organization.&nbsp;</p>
+<p>Also, by removing prefixes or suffixes that you might use in table names
+and instead naming them in a simple format, you will help avoid
+confusion.</p>
+<p>When replacing values, try to imagine how those values will appear on
+the report. Values that are too long might be difficult to read and fit
+on a visual. Values that are too short might be difficult to interpret.
+Avoiding acronyms in values is also a good idea, provided that the text
+will fit on the visual.</p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Evaluate and change column data types</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/4-column-data-types/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

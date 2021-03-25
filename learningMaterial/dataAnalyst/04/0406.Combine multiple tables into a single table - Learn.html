@@ -1,0 +1,320 @@
+<html dir="ltr"><head><title>Combine multiple tables into a single table - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/5-combine-tables">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/clean-data-power-bi/5-combine-tables</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Combine multiple tables into a single table - Learn</h1>
+  <div dir="auto" id="reader-credits">heyrob</div>
+  <div dir="auto" id="reader-estimated-time">5-7 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>8 minutes</li>
+		</ul>
+			<p>The ability to combine queries is powerful because it allows you to
+append or merge different tables or queries together. You can combine
+tables into a single table in the following circumstances:</p>
+<ul>
+<li><p>Too many tables exist, making it difficult to navigate an overly-complicated data model.</p>
+</li>
+<li><p>Several tables have a similar role.</p>
+</li>
+<li><p>A table has only a column or two that can fit into a different table.</p>
+</li>
+<li><p>You want to use several columns from different tables in a custom column.</p>
+</li>
+</ul>
+<p>You can combine the tables in two different ways: merging and appending.</p>
+<p>Assume that you&nbsp;are&nbsp;developing&nbsp;Power BI reports for the Sales&nbsp;and
+HR&nbsp;teams. They have asked you to&nbsp;create&nbsp;a contact&nbsp;information&nbsp;report
+that contains the&nbsp;contact information and location of every
+employee,&nbsp;supplier, and&nbsp;customer.&nbsp;The data is in the HR.Employees,
+Production.Suppliers, and the Sales.Customers tables, as shown in the
+following image.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/05-choosing-tables-combine-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/05-choosing-tables-combine-ss.png" alt="Screenshot of choosing tables in Power Query Editor" data-linktype="relative-path"></a></p>
+<p>However,&nbsp;this data&nbsp;comes from multiple tables, so the dilemma is
+determining how you can merge the data in these multiple tables and
+create one&nbsp;source-of-truth table to create a report from. The inherent
+functionality of Power BI allows you to combine and merge queries into a
+single table.</p>
+<h2 id="append-queries">Append queries</h2>
+<p>When you append queries, you will be adding rows of data to another table or query.&nbsp;For example, you could have two&nbsp;tables, one with 300 rows and another with 100 rows, and when you append queries, you will end up with 400 rows.&nbsp;When you merge queries,&nbsp;you will be adding columns from one table (or query)&nbsp;into another.&nbsp;To merge two tables, you&nbsp;must have a column that is&nbsp;the key&nbsp;between the two&nbsp;tables.</p>
+<p>For the previously mentioned scenario,&nbsp;you&nbsp;will append&nbsp;the HR.Employees&nbsp;table with the
+Production.Suppliers&nbsp;and&nbsp;Sales.Customers&nbsp;tables so that you have one
+master list of contact information.&nbsp;Because you want to create one&nbsp;table
+that has all contact information&nbsp;for employees, suppliers, and
+customers, when you&nbsp;combine&nbsp;the&nbsp;queries, the pertinent columns that you
+require in your combined&nbsp;table must be named the same in your original
+data tables to see one consolidated view.</p>
+<p>Before you begin combining queries, you can remove extraneous columns
+that you don't need for this task from your tables. To complete this
+task, format each table to have only four columns with your pertinent
+information, and rename them so they all have the same&nbsp;column headers:
+ID, company, name, and phone.&nbsp;The following images are snippets of the
+reformatted Sales.Customers, Production.Suppliers, and HR.Employees
+tables.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/05-reformatting-appending-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/05-reformatting-appending-ss.png" alt="reformatting for appending" data-linktype="relative-path"></a></p>
+<p>After you have finished reformatting, you can combine the queries.&nbsp;On
+the&nbsp;<strong>Home</strong> tab&nbsp;on the Power Query Editor ribbon,&nbsp;select&nbsp;the drop-down
+list for&nbsp;<strong>Append Queries</strong>.&nbsp;You can select <strong>Append&nbsp;Queries&nbsp;as
+New</strong>,&nbsp;which means that the output of appending will result in a new
+query or table, or you can select&nbsp;<strong>Append Queries</strong>,&nbsp;which will add
+the rows from&nbsp;an existing&nbsp;table into another.</p>
+<p>Your next task is to create a new master table, so&nbsp;you need to
+select&nbsp;<strong>Append Queries as New</strong>. This selection will bring you to a
+window where you&nbsp;can add the&nbsp;tables that you want to append
+from&nbsp;<strong>Available Tables</strong> to&nbsp;<strong>Tables to Append</strong>, as shown in the
+following image.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/05-append-new-window-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/05-append-new-window-ss.png" alt="Append Queries as New in Power Query Editor" data-linktype="relative-path"></a></p>
+<p>After you have added the tables that you want to append, select <strong>OK</strong>.
+You will be routed to a new query&nbsp;that contains all rows from all three
+of your tables, as shown in the following image.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/05-appending-new-final-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/05-appending-new-final-ss.png" alt="append as new final" data-linktype="relative-path"></a></p>
+<p>You have now succeeded in creating a master table that contains the
+information for the employees, suppliers, and customers. You can exit
+Power Query Editor and build any report elements surrounding this master
+table.</p>
+<p>However, if&nbsp;you wanted to merge tables instead of appending the data
+from one table to another, the process would be different.</p>
+<h2 id="merge-queries">Merge queries</h2>
+<p>When you merge queries, you are combining the data from multiple tables into one based on a column that is common between the tables.&nbsp;This process is similar to the JOIN clause in SQL.&nbsp;Consider a scenario where the Sales team now wants you to consolidate orders and their corresponding details (which are currently in two tables) into a single table. You can accomplish this task by merging the two tables, Orders and OrderDetails, as shown in the following image. The column that is shared between these two tables&nbsp;is&nbsp;<strong>OrderID</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/05-merging-tables-example-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/05-merging-tables-example-ss.png" alt="Order and Order Details tables to be merged " data-linktype="relative-path"></a>&nbsp;</p>
+<p>Go to&nbsp;<strong>Home</strong> on the&nbsp;Power Query Editor ribbon and select&nbsp;the <strong>Merge
+Queries</strong> drop-down menu,&nbsp;where you can select <strong>Merge Queries as
+New</strong>.&nbsp;This selection will&nbsp;open a&nbsp;new window, where&nbsp;you
+can&nbsp;choose&nbsp;the&nbsp;tables that you want to merge from the drop-down list,
+and then select the column that is matching between the tables, which in
+this case is&nbsp;<strong>orderid</strong>.&nbsp;</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/05-merge-queries-new-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/05-merge-queries-new-ss.png" alt="merge queries window" data-linktype="relative-path"></a></p>
+<p>You can also&nbsp;choose how to&nbsp;join the two tables together, a process that
+is also similar to JOIN statements in SQL.&nbsp;These join options include:&nbsp;</p>
+<ul>
+<li><p><strong>Left&nbsp;Outer</strong> - Displays&nbsp;all&nbsp;rows from the first table and only the
+matching rows from the second.</p>
+</li>
+<li><p><strong>Full Outer</strong> -&nbsp;Displays&nbsp;all rows from both tables.</p>
+</li>
+<li><p><strong>Inner</strong> - Displays the matched rows between the two tables.</p>
+</li>
+</ul>
+<p>For this scenario, you will choose to use a <strong>Left Outer</strong> join. Select
+<strong>OK</strong>, which will route you to a new window where you can view your
+merged query.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/05-merge-queries-final-view-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/media/05-merge-queries-final-view-ss.png" alt="Merged Queries final view" data-linktype="relative-path"></a></p>
+<p>Now, you can merge two queries or tables in different ways so that you
+can view your data in&nbsp;the most appropriate way for your business
+requirements.</p>
+<p>For more information on this topic, see the&nbsp;<a href="https://docs.microsoft.com/en-us/power-bi/connect-data/desktop-shape-and-combine-data/" data-linktype="absolute-path" target="az-portal">Shape and Combine Data in Power BI</a> documentation.</p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Profile data in Power BI</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/clean-data-power-bi/6-profile-data/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>
