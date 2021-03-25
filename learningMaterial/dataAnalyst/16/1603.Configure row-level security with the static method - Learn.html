@@ -1,0 +1,284 @@
+<html dir="ltr"><head><title>Configure row-level security with the static method - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/row-level-security-power-bi/2-static-method">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/row-level-security-power-bi/2-static-method</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Configure row-level security with the static method - Learn</h1>
+  <div dir="auto" id="reader-credits">heyrob</div>
+  <div dir="auto" id="reader-estimated-time">5-6 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>4 minutes</li>
+		</ul>
+			<p>The static method in row-level security (RLS) uses a fixed value in the DAX filter, while the dynamic method uses a DAX function.</p>
+<p>RLS involves several configuration steps, which should be completed in the following order:</p>
+<ol>
+<li><p>Create a report in Microsoft Power BI Desktop.</p>
+<ol>
+<li><p>Import the data.</p>
+</li>
+<li><p>Confirm the data model between both tables.</p>
+</li>
+<li><p>Create the report visuals.</p>
+</li>
+</ol>
+</li>
+<li><p>Create RLS roles in Power BI Desktop by using DAX.</p>
+</li>
+<li><p>Test the roles in Power BI Desktop.</p>
+</li>
+<li><p>Deploy the report to Microsoft Power BI service.</p>
+</li>
+<li><p>Add members to the role in Power BI service.</p>
+</li>
+<li><p>Test the roles in Power BI service.</p>
+</li>
+</ol>
+<h2 id="create-a-report-in-power-bi-desktop">Create a report in Power BI Desktop</h2>
+<p>Follow the typical steps to create a report in Power BI Desktop. Use Microsoft Power Query to retrieve and clean the data. Then, confirm that the relationship exists between the two tables by using the <strong>Modeling</strong> tab; it should be a one-to-many relationship on the <strong>empID</strong> column.</p>
+<p>Your next step is to create a Power BI report.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/row-level-security-power-bi/media/02-power-bi-report-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/row-level-security-power-bi/media/02-power-bi-report-ss.png" alt="Screenshot of the Power BI report we will use in RLS." data-linktype="relative-path"></a></p>
+<p>Notice how the preceding table has rows for all sales, including all departments. You will be limiting visibility so that only employees of a specific department can see their own sales.</p>
+<h2 id="create-rls-roles-in-power-bi-desktop">Create RLS roles in Power BI Desktop</h2>
+<p>To create RLS roles in Power BI Desktop, select the <strong>Modeling</strong> tab, and then select <strong>Manage Roles</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/row-level-security-power-bi/media/02-manage-roles-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/row-level-security-power-bi/media/02-manage-roles-ss.png" alt="Screenshot of Manage roles from the modeling tab in Power BI Desktop." data-linktype="relative-path"></a></p>
+<p>On the <strong>Manage roles</strong> page, select <strong>Create</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/row-level-security-power-bi/media/02-create-button-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/row-level-security-power-bi/media/02-create-button-ss.png" alt="Screenshot of Create button from Manage roles." data-linktype="relative-path"></a></p>
+<p>Power BI row-level security (RLS) uses DAX to control who can see which data. Consider it as always adding another filter to the appropriate users, regardless of the filters, slicers, or interactions that the users choose on a Power BI report.</p>
+<p>On the <strong>Manage roles</strong> page, create a role for each department and then add a DAX expression to it. For instance, you can create a role called <strong>Game</strong> and then add the DAX expression <strong>[department] = "Game"</strong>. Then, whenever a member of that role interacts with the report, Power BI will add that filter to their interactions, thus limiting what they see.</p>
+<p>A fixed value is used in the filter on the right side of the equal sign (in this case, "Game"). The intention is that, if you ever need to add a category, you will need to create a new role with a new value in the DAX expression.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/row-level-security-power-bi/media/02-manage-roles-dax-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/row-level-security-power-bi/media/02-manage-roles-dax-ss.png" alt="Screenshot of the Manage roles dialog showing roles, tables, and table filter DAX expression." data-linktype="relative-path"></a></p>
+<p>Notice how the DAX filter is applied on the dimension table. Row-level security performs better when the data is organized in a star schema. Apply the DAX filter to a dimension table, as was done with the Products table.</p>
+<p>The DAX filter is applied to every interaction, slicer, and filter that the user applies. If you have a DAX filter that performs poorly, the user experience will be negatively impacted. Therefore, keep the DAX filter as simple as possible.</p>
+<h2 id="test-the-roles-in-power-bi-desktop">Test the roles in Power BI Desktop</h2>
+<p>You can validate that the filter is working by selecting the <strong>Modeling</strong> tab and then selecting <strong>View as Roles</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/row-level-security-power-bi/media/02-view-role-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/row-level-security-power-bi/media/02-view-role-ssm.png" alt="Screenshot of the View as roles button on the modeling tab." data-linktype="relative-path"></a></p>
+<p>In the <strong>View as roles</strong> window, select the <strong>Game</strong> role. The report now renders as if you were in that role, and you will only see the records that are included in the Game department.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/row-level-security-power-bi/media/02-row-level-security-results-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/row-level-security-power-bi/media/02-row-level-security-results-ss.png" alt="Screenshot of the Row-level security working in Power BI Desktop." data-linktype="relative-path"></a></p>
+<p>You can undo this filter by selecting <strong>View as roles</strong> again and then selecting <strong>None</strong>.</p>
+<h2 id="deploy-the-report-to-power-bi-service">Deploy the report to Power BI service</h2>
+<p>You can deploy the report to Power BI service by selecting the <strong>Publish</strong> button on the <strong>Home</strong> tab and then selecting a workspace.</p>
+<h2 id="add-members-to-the-role-in-power-bi-service">Add members to the role in Power BI service</h2>
+<p>To add members to the role in Power BI service, go to your workspace in Power BI service. Find the dataset that you created with the same name as your report. Select the ellipsis (<strong>...</strong>) button and then select <strong>Security</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/row-level-security-power-bi/media/02-dataset-secuirty-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/row-level-security-power-bi/media/02-dataset-secuirty-ssm.png" alt="Screenshot of the security button on the dataset." data-linktype="relative-path"></a></p>
+<p>In the <strong>Row-Level Security</strong> screen, you can add Microsoft Azure Active Directory (Azure AD) users and security groups to the security role. When members are added to this role, the DAX filter that you previously defined will be applied to them. If members are not added to the role, but they have access to the report, RLS will not apply to them. You can add the three people in the Game department to the <strong>Game</strong> role. Now, when those members sign in, they will only see the report with data that applies to them.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/row-level-security-power-bi/media/02-row-level-security-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/row-level-security-power-bi/media/02-row-level-security-ss.png" alt="Screenshot of the Row-Level Security screen." data-linktype="relative-path"></a></p>
+<h2 id="test-the-roles-in-power-bi-service">Test the roles in Power BI service</h2>
+<p>You can test the roles inside Power BI service by selecting the ellipsis (<strong>...</strong>) next to the <strong>Game</strong> role on the <strong>Row-Level Security</strong> screen and then selecting <strong>Test as role</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/row-level-security-power-bi/media/02-test-as-role-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/row-level-security-power-bi/media/02-test-as-role-ss.png" alt="Screenshot of the ellipsis button and test as role option." data-linktype="relative-path"></a></p>
+<p>This selection will display the report as if you were a member of the role in Power BI service.</p>
+<p>And there you have it! We've successfully implemented row-level security in Power BI.</p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Configure row-level security with the dynamic method</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/row-level-security-power-bi/3-dynamic-method/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

@@ -1,0 +1,5 @@
+1. A
+The USERPRINCIPALNAME() function will tell you which user is signed in to view a report.
+
+2. C
+You can use Power BI Desktop and Power BI service to test RLS.
