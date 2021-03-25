@@ -1,0 +1,8 @@
+1. A
+The benefit of analyzing the metadata is that you can clearly identify data inconsistences with your dataset.
+
+2. B
+Deleting unnecessary rows and columns will reduce a dataset size and its good practice to load only necessary data into your data model.
+
+3. B
+No, it is not possible to create a relationship between two columns if they are different DATA TYPE columns. Both columns in a relationship must be sharing the same DATA TYPE.

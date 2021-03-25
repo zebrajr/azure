@@ -1,0 +1,347 @@
+<html dir="ltr"><head><title>Review performance of measures, relationships, and visuals - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/optimize-model-power-bi/2-performance">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/optimize-model-power-bi/2-performance</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Review performance of measures, relationships, and visuals - Learn</h1>
+  <div dir="auto" id="reader-credits">heyrob</div>
+  <div dir="auto" id="reader-estimated-time">15-19 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>13 minutes</li>
+		</ul>
+			<p>If your data model has multiple tables, complex relationships, intricate calculations, multiple visuals, and redundant data, a potential exists for poor report performance. The poor performance of a report leads to a negative user experience.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/optimize-model-power-bi/media/2-graphic-factors-impacting-performance-c.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/optimize-model-power-bi/media/2-graphic-factors-impacting-performance-c.png" alt="Conceptual graphic of factors impacting report performance." data-linktype="relative-path"></a></p>
+<p>To optimize performance, you must first identify where the problem is coming from; in other words, find out which elements of your report and data model are causing the performance issues. Afterward, you can take action to resolve those issues and, therefore, improve performance.</p>
+<h2 id="identify-report-performance-bottlenecks">Identify report performance bottlenecks</h2>
+<p>To achieve optimal performance in your reports, you need to create an efficient data model that has fast running queries and measures. When you have a good foundation, you can improve the model further by analyzing the query plans and dependencies and then making changes to further optimize performance.</p>
+<p>You should review the measures and queries in your data model to ensure that you are using the most efficient way to get the results that you want. Your starting point should be to identify bottlenecks that exist in the code. When you identify the slowest query in the data model, you can focus on the biggest bottleneck first and establish a priority list to work through the other issues.</p>
+<h3 id="analyze-performance">Analyze performance</h3>
+<p>You can use <strong>Performance analyzer</strong> in Power BI Desktop to help you find out how each of your report elements are performing when users interact with them. For example, you can determine how long it takes for a particular visual to refresh when it is initiated by a user interaction. <strong>Performance analyzer</strong> will help you identify the elements that are contributing to your performance issues, which can be useful during troubleshooting.</p>
+<p>Before you run <strong>Performance analyzer</strong>, to ensure you get the most accurate results in your analysis (test), make sure that you start with a clear visual cache and a clear data engine cache.</p>
+<ul>
+<li><p><strong>Visual cache</strong> - When you load a visual, you can't clear this visual cache without closing Power BI Desktop and opening it again. To avoid any caching in play, you need to start your analysis with a clean visual cache.</p>
+<p>To ensure that you have a clear visual cache, add a blank page to your Power BI Desktop (.pbix) file and then, with that page selected, save and close the file. Reopen the Power BI Desktop (.pbix) file that you want to analyze. It will open on the blank page.</p>
+</li>
+<li><p><strong>Data engine cache</strong> - When a query is run, the results are cached, so the results of your analysis will be misleading. You need to clear the data cache before rerunning the visual.</p>
+<p>To clear the data cache, you can either restart Power BI Desktop or connect DAX Studio to the data model and then call Clear Cache.</p>
+</li>
+</ul>
+<p>When you have cleared the caches and opened the Power BI Desktop file on the blank page, go to the <strong>View</strong> tab and select the <strong>Performance analyzer</strong> option.</p>
+<p>To begin the analysis process, select <strong>Start recording</strong>, select the page of the report that you want to analyze, and interact with the elements of the report that you want to measure. You will see the results of your interactions display in the <strong>Performance analyzer</strong> pane as you work. When you are finished, select the <strong>Stop</strong> button.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/optimize-model-power-bi/media/2-performance-analyzer-overview-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/optimize-model-power-bi/media/2-performance-analyzer-overview-ssm.png" alt="Screenshot of the Performance analyzer with the Start recording button highlighted." data-linktype="relative-path"></a></p>
+<p>For more detailed information, see <a href="https://docs.microsoft.com/en-us/power-bi/create-reports/desktop-performance-analyzer/" data-linktype="absolute-path" target="az-portal">Use Performance Analyzer to examine report element performance.</a>.</p>
+<h3 id="review-results">Review results</h3>
+<p>You can review the results of your performance test in the <strong>Performance analyzer</strong> pane. To review the tasks in order of duration, longest to shortest, right-click the <strong>Sort</strong> icon next to the <strong>Duration (ms)</strong> column header, and then select <strong>Total time</strong> in <strong>Descending</strong> order.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/optimize-model-power-bi/media/2-sort-results-performance-analyzer-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/optimize-model-power-bi/media/2-sort-results-performance-analyzer-ss.png" alt="Sort results in performance analyzer overview." data-linktype="relative-path"></a></p>
+<p>The log information for each visual shows how much time it took (duration) to complete the following categories of tasks:</p>
+<ul>
+<li><p><strong>DAX query</strong> - The time it took for the visual to send the query, along with the time it took Analysis Services to return the results.</p>
+</li>
+<li><p><strong>Visual display</strong> - The time it took for the visual to render on the screen, including the time required to retrieve web images or geocoding.</p>
+</li>
+<li><p><strong>Other</strong> - The time it took the visual to prepare queries, wait for other visuals to complete, or perform other background processing tasks. If this category displays a long duration, the only real way to reduce this duration is to optimize DAX queries for other visuals, or reduce the number of visuals in the report.</p>
+</li>
+</ul>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/optimize-model-power-bi/media/2-categories-performance-analyze-results-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/optimize-model-power-bi/media/2-categories-performance-analyze-results-ss.png" alt="Categories in performance analyzer results." data-linktype="relative-path"></a></p>
+<p>The results of the analysis test help you to understand the behavior of your data model and identify the elements that you need to optimize. You can compare the duration of each element in the report and identify the elements that have a long duration. You should focus on those elements and investigate why it takes them so long to load on the report page.</p>
+<p>To analyze your queries in more detail, you can use DAX Studio, which is a free, open-source tool that is provided by another service.</p>
+<h2 id="resolve-issues-and-optimize-performance">Resolve issues and optimize performance</h2>
+<p>The results of your analysis will identify areas for improvement and opportunities for performance optimization. You might find that you need to carry out improvements to the visuals, the DAX query, or other elements in your data model. The following information provides guidance on what to look for and the changes that you can make.</p>
+<h3 id="visuals">Visuals</h3>
+<p>If you identify visuals as the bottleneck leading to poor performance, you should find a way to improve performance with minimal impact to user experience.</p>
+<p>Consider the number of visuals on the report page; less visuals means better performance. Ask yourself if a visual is really necessary and if it adds value to the end user. If the answer is no, you should remove that visual. Rather than using multiple visuals on the page, consider other ways to provide additional details, such as drill-through pages and report page tooltips.</p>
+<p>Examine the number of fields in each visual. The more visuals you have on the report, the higher chance for performance issues. In addition, the more visuals, the more the report can appear crowded and lose clarity. The upper limit for visuals is 100 fields (measures or columns), so a visual with more than 100 fields will be slow to load. Ask yourself if you really need all of this data in a visual. You might find that you can reduce the number of fields that you currently use.</p>
+<h3 id="dax-query">DAX query</h3>
+<p>When you examine the results in the <strong>Performance analyzer</strong> pane, you can see how long it took the Power BI Desktop engine to evaluate each query (in milliseconds). A good starting point is any DAX query that is taking longer than 120 milliseconds. In this example, you identify one particular query that has a large duration time.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/optimize-model-power-bi/media/2-performance-analyzer-large-duration-measures-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/optimize-model-power-bi/media/2-performance-analyzer-large-duration-measures-ssm.png" alt="Performance Analyzer with large duration time." data-linktype="relative-path"></a></p>
+<p><strong>Performance analyzer</strong> highlights potential issues but does not tell you what needs to be done to improve them. You might want to conduct further investigation into why this measure takes so long to process. You can use DAX Studio to investigate your queries in more detail.</p>
+<p>For example, select <strong>Copy Query</strong> to copy the calculation formula onto the clipboard, then paste it into Dax Studio. You can then review the calculation step in more detail. In this example, you are trying to count the total number of products with order quantities greater than or equal to five.</p>
+<pre tabindex="0"><code data-author-content="Count Customers =
+CALCULATE (
+    DISTINCTCOUNT ( Order[ProductID] ),
+    FILTER ( Order, Order[OrderQty] >= 5 )
+)
+"><span><span>Count</span> Customers =
+<span>CALCULATE</span> (
+    <span>DISTINCTCOUNT</span> ( Order[ProductID] ),
+    <span>FILTER</span> ( Order, Order[OrderQty] &gt;= <span>5</span> )
+)
+</span></code></pre>
+<p>After analyzing the query, you can use your own knowledge and experience to identify where the performance issues are. You can also try using different DAX functions to see if they improve performance. In the following example, the FILTER function was replaced with the KEEPFILTER function. When the test was run again in <strong>Performance analyzer</strong>, the duration was shorter as a result of the KEEPFILTER function.</p>
+<pre tabindex="0"><code data-author-content="Count Customers =
+CALCULATE (
+    DISTINCTCOUNT ( Order[ProductID] ),
+    KEEPFILTERS (Order[OrderQty] >= 5 )
+)
+"><span><span>Count</span> Customers =
+<span>CALCULATE</span> (
+    <span>DISTINCTCOUNT</span> ( Order[ProductID] ),
+    <span>KEEPFILTERS</span> (Order[OrderQty] &gt;= <span>5</span> )
+)
+</span></code></pre>
+<p>In this case, you can replace the FILTER function with the KEEPFILTER function to significantly reduce the evaluation duration time for this query. When you make this change, to check whether the duration time has improved or not, clear the data cache and then rerun the <strong>Performance analyzer</strong> process.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/optimize-model-power-bi/media/2-performance-analyzer-small-duration-measures-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/optimize-model-power-bi/media/2-performance-analyzer-small-duration-measures-ssm.png" alt="Performance Analyzer with small duration time." data-linktype="relative-path"></a></p>
+<h3 id="data-model">Data model</h3>
+<p>If the duration of measures and visuals are displaying low values (in other words they have a short duration time), they are not the reason for the performance issues. Instead, if the DAX query is displaying a high duration value, it is likely that a measure is written poorly or an issue has occurred with the data model. The issue might be caused by the relationships, columns, or metadata in your model, or it could be the status of the <strong>Auto date/time</strong> option, as explained in the following section.</p>
+<h3 id="relationships">Relationships</h3>
+<p>You should review the relationships between your tables to ensure that you have established the correct relationships. Check that relationship cardinality properties are correctly configured. For example, a one-side column that contains unique values might be incorrectly configured as a many-side column. You will learn more about how cardinality affects performance later in this module.</p>
+<h3 id="columns">Columns</h3>
+<p>It is best practice to not import columns of data that you do not need. To avoid deleting columns in Power Query Editor, you should try to deal with them at the source when loading data into Power BI Desktop. However, if it is impossible to remove redundant columns from the source query or the data has already been imported in its raw state, you can always use Power Query Editor to examine each column. Ask yourself if you really need each column and try to identify the benefit that each one adds to your data model. If you find that a column adds no value, you should remove it from your data model. For example, suppose that you have an ID column with thousands of unique rows. You know that you won't use this particular column in a relationship, so it will not be used in a report. Therefore, you should consider this column as unnecessary and admit that it is wasting space in your data model.</p>
+<p>When you remove an unnecessary column, you will reduce the size of the data model which, in turn, results in a smaller file size and faster refresh time. Also, because the dataset contains only relevant data, the overall report performance will be improved.</p>
+<p>For more information, see <a href="https://docs.microsoft.com/en-us/power-bi/guidance/import-modeling-data-reduction/" data-linktype="absolute-path" target="az-portal">Data reduction techniques for Import modeling</a>.</p>
+<h3 id="metadata">Metadata</h3>
+<p>Metadata is information about other data. Power BI metadata contains information on your data model, such as the name, data type and format of each of the columns, the schema of the database, the report design, when the file was last modified, the data refresh rates, and much more.</p>
+<p>When you load data into Power BI Desktop, it is good practice to analyze the corresponding metadata so you can identify any inconsistences with your dataset and normalize the data before you start to build reports. Running analysis on your metadata will improve data model performance because, while analyzing your metadata, you will identify unnecessary columns, errors within your data, incorrect data types, the volume of data being loaded (large datasets, including transactional or historic data, will take longer to load), and much more.</p>
+<p>You can use Power Query Editor in Power BI Desktop to examine the columns, rows, and values of the raw data. You can then use the available tools, such as those highlighted in the following screenshot, to make the necessary changes.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/optimize-model-power-bi/media/2-query-editor-home-tab-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/optimize-model-power-bi/media/2-query-editor-home-tab-ssm.png" alt="Screenshot of the Query editor home tab options." data-linktype="relative-path"></a></p>
+<p>The Power Query options include:</p>
+<ul>
+<li><p><strong>Unnecessary columns</strong> - Evaluates the need for each column. If one or more columns will not be used in the report and are therefore unnecessary, you should remove them by using the <strong>Remove Columns</strong> option on the <strong>Home</strong> tab.</p>
+</li>
+<li><p><strong>Unnecessary rows</strong> - Checks the first few rows in the dataset to see if they are empty or if they contain data that you do not need in your reports; if so, it removes those rows by using the <strong>Remove Top Rows</strong> option on the <strong>Home</strong> tab.</p>
+</li>
+<li><p><strong>Data type</strong> - Evaluates the column data types to ensure that each one is correct. If you identify a data type that is incorrect, change it by selecting the column, selecting <strong>Data Type</strong> on the <strong>Transform</strong> tab, and then selecting the correct data type from the list.</p>
+</li>
+<li><p><strong>Query names</strong> - Examines the query (table) names in the <strong>Queries</strong> pane. Just like you did for column header names, you should change uncommon or unhelpful query names to names that are more obvious or names that the user is more familiar with. You can rename a query by right-clicking that query, selecting <strong>Rename</strong>, editing the name as required, and then pressing <strong>Enter</strong>.</p>
+</li>
+<li><p><strong>Column details</strong> - Power Query Editor has the following three data preview options that you can use to analyze the metadata that is associated with your columns. You can find these options on the <strong>View</strong> tab, as illustrated in the following screenshot.</p>
+<ul>
+<li><p><strong>Column quality</strong> - Determines what percentage of items in the column are valid, have errors, or are empty. If the Valid percentage is not 100, you should investigate the reason, correct the errors, and populate empty values.</p>
+</li>
+<li><p><strong>Column distribution</strong> - Identifies how many distinct items you have and how many are unique. This information is useful when you want to identify the cardinality of a column. You will investigate this further later in this module.</p>
+</li>
+<li><p><strong>Column profile</strong> - Shows more statistics for the column and a chart showing the distribution of the unique items.</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/optimize-model-power-bi/media/2-data-preview-column-profile-options-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/optimize-model-power-bi/media/2-data-preview-column-profile-options-ssm.png" alt="Screenshot of the Column details options." data-linktype="relative-path"></a></p>
+<div>
+<p> Note</p>
+<p>If you are reviewing a large dataset with more than 1,000 rows, and you want to analyze that whole dataset, you need to change the default option at the bottom of the window. Select <strong>Column profiling based on top 1000 rows</strong> <strong>&gt;</strong> <strong>Column profiling based on entire data set</strong>.</p>
+</div>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/optimize-model-power-bi/media/2-column-profile-rows-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/optimize-model-power-bi/media/2-column-profile-rows-ssm.png" alt="Screenshot of the Column profiling rows." data-linktype="relative-path"></a></p>
+<p>Other metadata that you should consider is the information about the data model as a whole, such as the file size and data refresh rates. You can find this metadata in the associated Power BI Desktop (.pbix) file. The data that you load into Power BI Desktop is compressed and stored to the disk by the VertiPaq storage engine. The size of your data model has a direct impact on its performance; a smaller sized data model uses less resources (memory) and achieves faster data refresh, calculations, and rendering of visuals in reports.</p>
+<h3 id="auto-datetime-feature">Auto date/time feature</h3>
+<p>Another item to consider when optimizing performance is the <strong>Auto date/time</strong> option in Power BI Desktop. By default, this feature is enabled globally, which means that Power BI Desktop automatically creates a hidden calculated table for each date column, provided that certain conditions are met. The new, hidden tables are in addition to the tables that you already have in your dataset.</p>
+<p>The <strong>Auto date/time</strong> option allows you to work with time intelligence when filtering, grouping, and drilling down through calendar time periods. We recommend that you keep the <strong>Auto date/time</strong> option enabled only when you work with calendar time periods and when you have simplistic model requirements in relation to time.</p>
+<p>If your data source already defines a date dimension table, that table should be used to consistently define time within your organization, and you should disable the global <strong>Auto date/time</strong> option. Disabling this option can lower the size of your data model and reduce the refresh time.</p>
+<p>You can enable/disable this <strong>Auto date/time</strong> option globally so that it applies to all of your Power BI Desktop files, or you can enable/disable the option for the current file so that it applies to an individual file only.</p>
+<p>To enable/disable this <strong>Auto date/time</strong> option, go to <strong>File</strong> <strong>&gt;</strong> <strong>Options and settings</strong> <strong>&gt;</strong> <strong>Options</strong>, and then select either the <strong>Global</strong> or <strong>Current File</strong> page. On either page, select <strong>Data Load</strong> and then, in the <strong>Time Intelligence</strong> section, select or clear the check box as required.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/optimize-model-power-bi/media/2-auto-date-time-configure-global-options-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/optimize-model-power-bi/media/2-auto-date-time-configure-global-options-ssm.png" alt="Configure auto date/time options matrix." data-linktype="relative-path"></a></p>
+<p>For an overview and general introduction to the <strong>Auto date/time</strong> feature, see <a href="https://docs.microsoft.com/en-us/power-bi/transform-model/desktop-auto-date-time/" data-linktype="absolute-path" target="az-portal">Apply auto date/time in Power BI Desktop</a>.</p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Use variables to improve performance and troubleshooting</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/optimize-model-power-bi/3-variables/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

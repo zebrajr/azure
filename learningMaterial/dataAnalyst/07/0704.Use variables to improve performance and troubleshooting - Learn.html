@@ -1,0 +1,281 @@
+<html dir="ltr"><head><title>Use variables to improve performance and troubleshooting - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/optimize-model-power-bi/3-variables">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/optimize-model-power-bi/3-variables</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Use variables to improve performance and troubleshooting - Learn</h1>
+  <div dir="auto" id="reader-credits">heyrob</div>
+  <div dir="auto" id="reader-estimated-time">5-6 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>4 minutes</li>
+		</ul>
+			<p>You can use variables in your DAX formulas to help you write less complex and more efficient calculations. Variables are underused by developers who are starting out in Power BI Desktop, but they are effective and you should use them by default when you are creating measures.</p>
+<p>Some expressions involve the use of many nested functions and the reuse of expression logic. These expressions take a longer time to process and are difficult to read and, therefore, troubleshoot. If you use variables, you can save query processing time. This change is a step in the right direction toward optimizing the performance of a data model.</p>
+<p>The use of variables in your data model provides the following advantages:</p>
+<ul>
+<li><p><strong>Improved performance</strong> - Variables can make measures more efficient because they remove the need for Power BI to evaluate the same expression multiple times. You can achieve the same results in a query in about half the original processing time.</p>
+</li>
+<li><p><strong>Improved readability</strong> - Variables have short, self-describing names and are used in place of an ambiguous, multi-worded expression. You might find it easier to read and understand the formulas when variables are used.</p>
+</li>
+<li><p><strong>Simplified debugging</strong> - You can use variables to debug a formula and test expressions, which can be helpful during troubleshooting.</p>
+</li>
+<li><p><strong>Reduced complexity</strong> - Variables do not require the use of EARLIER or EARLIEST DAX functions, which are difficult to understand. These functions were required before variables were introduced, and were written in complex expressions that introduced new filter contexts. Now that you can use variables instead of those functions, you can write fewer complex formulas.</p>
+</li>
+</ul>
+<h2 id="use-variables-to-improve-performance">Use variables to improve performance</h2>
+<p>To illustrate how you can use a variable to make a measure more efficient, the following table displays a measure definition in two different ways. Notice that the formula repeats the expression that calculates "same period last year" but in two different ways: the first instance uses the normal DAX calculation method and the second one uses variables in the calculation.</p>
+<p>The second row of the table shows the improved measure definition. This definition uses the VAR keyword to introduce a variable named <strong>SalesPriorYear</strong>, and it uses an expression to assign the "same period last year" result to that new variable. It then uses the variable twice in the RETURN expression.</p>
+<p><strong>Without variable</strong></p>
+<pre tabindex="0"><code data-author-content="Sales YoY Growth =
+DIVIDE (
+    ( [Sales] - CALCULATE ( [Sales], PARALLELPERIOD ( 'Date'[Date], -12, MONTH ) ) ),
+    CALCULATE ( [Sales], PARALLELPERIOD ( 'Date'[Date], -12, MONTH ) )
+)
+"><span>Sales YoY Growth =
+<span>DIVIDE</span> (
+    ( [Sales] - <span>CALCULATE</span> ( [Sales], <span>PARALLELPERIOD</span> ( 'Date'[Date], -<span>12</span>, <span>MONTH</span> ) ) ),
+    <span>CALCULATE</span> ( [Sales], <span>PARALLELPERIOD</span> ( 'Date'[Date], -<span>12</span>, <span>MONTH</span> ) )
+)
+</span></code></pre>
+<p><strong>With variable</strong></p>
+<pre tabindex="0"><code data-author-content="Sales YoY Growth =
+VAR SalesPriorYear =
+    CALCULATE ( [Sales], PARALLELPERIOD ( 'Date'[Date], -12, MONTH ) )
+VAR SalesVariance =
+    DIVIDE ( ( [Sales] - SalesPriorYear ), SalesPriorYear )
+RETURN
+    SalesVariance
+"><span>Sales YoY Growth =
+<span>VAR</span> SalesPriorYear =
+    <span>CALCULATE</span> ( [Sales], <span>PARALLELPERIOD</span> ( 'Date'[Date], -<span>12</span>, <span>MONTH</span> ) )
+<span>VAR</span> SalesVariance =
+    <span>DIVIDE</span> ( ( [Sales] - SalesPriorYear ), SalesPriorYear )
+<span>RETURN</span>
+    SalesVariance
+</span></code></pre>
+<p>In the first measure definition in the table, the formula is inefficient because it requires Power BI to evaluate the same expression twice. The second definition is more efficient because, due to the variable, Power BI only needs to evaluate the expression once.</p>
+<p>If your data model has multiple queries with multiple measures, the use of variables could cut the overall query processing time in half and improve the overall performance of the data model. Furthermore, this solution is a simple one; imagine the savings as the formulas get more complicated, for instance, when you are dealing with percentages and running totals.</p>
+<h2 id="use-variables-to-improve-readability">Use variables to improve readability</h2>
+<p>In addition to improved performance, you might notice how the use of variables makes the code simpler to read.</p>
+<p>When using variables, it is best practice to use descriptive names for the variables. In the previous example, the variable is called <strong>SalesPriorYear</strong>, which clearly states what the variable is calculating. Consider the outcome of using a variable that was called <strong>X</strong>, <strong>temp</strong> or <strong>variable1</strong>; the purpose of the variable would not be clear at all.</p>
+<p>Using clear, concise, meaningful names will help make it easier for you to understand what you are trying to calculate, and it will be much simpler for other developers to maintain the report in the future.</p>
+<h2 id="use-variables-to-troubleshoot-multiple-steps">Use variables to troubleshoot multiple steps</h2>
+<p>You can use variables to help you debug a formula and identify what the issue is. Variables help simplify the task of troubleshooting your DAX calculation by evaluating each variable separately and by recalling them after the RETURN expression.</p>
+<p>In the following example, you test an expression that is assigned to a variable. You temporarily rewrite the RETURN expression to write to the variable. The measure definition returns only the <strong>SalesPriorYear</strong> variable and it comments-out the intended RETURN expression.</p>
+<pre tabindex="0"><code data-author-content="Sales YoY Growth % =
+VAR SalesPriorYear =  CALCULATE([Sales], PARALLELPERIOD('Date'[Date], -12, MONTH))
+VAR SalesPriorYear% = DIVIDE(([Sales] - SalesPriorYear), SalesPriorYear)  
+RETURN  SalesPriorYear
+"><span>Sales YoY Growth % =
+<span>VAR</span> SalesPriorYear =  <span>CALCULATE</span>([Sales], <span>PARALLELPERIOD</span>('Date'[Date], -<span>12</span>, <span>MONTH</span>))
+<span>VAR</span> SalesPriorYear% = <span>DIVIDE</span>(([Sales] - SalesPriorYear), SalesPriorYear)  
+<span>RETURN</span>  SalesPriorYear
+</span></code></pre>
+<p>The RETURN expression will display the <strong>SalesPriorYear</strong> value only. This technique allows you to revert the expression when you have completed the debugging. It also makes calculations simpler to understand due to reduced complexity of the DAX code.</p>
+
+		
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

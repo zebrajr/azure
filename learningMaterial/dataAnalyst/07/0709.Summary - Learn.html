@@ -1,0 +1,231 @@
+<html dir="ltr"><head><title>Summary - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/optimize-model-power-bi/8-summary">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/optimize-model-power-bi/8-summary</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Summary - Learn</h1>
+  <div dir="auto" id="reader-credits">heyrob</div>
+  <div dir="auto" id="reader-estimated-time">3-3 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="main" role="main" data-bi-name="content" lang="en-us" dir="ltr">
+		
+		
+		<ul>
+			<li>2 minutes</li>
+		</ul>
+			<p>In this module's scenario, one of your organization's Power BI Desktop data models was inefficient and causing problems. Users were dissatisfied with the report performance, and the model's file size was too large, so it was putting a strain on the organization's resources.</p>
+<p>You were asked to review the data model to identify the cause of the performance issues and make changes to optimize performance and reduce the size of the model.</p>
+<p>Power BI Desktop provides a range of tools and features for you to analyze and optimize the performance of its data models. You started the optimization process by using Performance analyzer and other tools to review the performance of measures, relationships, and visuals, and then made improvements based on the analysis results. Next, you used variables to write less complex and more efficient calculations. You then took a closer look at the column distribution and reduced the cardinality of your relationships. At that stage, the data model was more optimized. You considered how the situation would be different if your organization used a DirectQuery model, and then you identified how to optimize performance from Power BI Desktop and the source database. Finally, you used aggregations to significantly reduce the size of the data model.</p>
+<p>If Power BI Desktop did not give you the opportunity to optimize inefficient data models, you would have to spend a lot of time in your multiple data sources to improve the data there. In particular, without <strong>Performance Analyzer</strong>, you wouldn't have identified the reasons for the performance issues in your reports and the bottlenecks in the queries that need to be cleared. As a result, users would be frustrated and unmotivated and might avoid using the reports.</p>
+<p>Now that you have optimized the report, users can access the data that they need in a faster time, so they are more productive and have greater job satisfaction. The reduction that you made to the model's file size will ease the strain on resources, bringing about a range of benefits to your organization. You have successfully accomplished the task you were given.</p>
+<p><a href="https://docs.microsoft.com/en-us/power-bi/create-reports/desktop-performance-analyzer/" data-linktype="absolute-path" target="az-portal">Use Performance Analyzer to examine report element performance</a></p>
+<p><a href="https://docs.microsoft.com/en-us/power-bi/transform-model/desktop-auto-date-time/" data-linktype="absolute-path" target="az-portal">Apply auto date/time in Power BI Desktop</a></p>
+<p><a href="https://docs.microsoft.com/en-us/power-bi/guidance/import-modeling-data-reduction#group-by-and-summarize/?azure-portal=true" data-linktype="absolute-path" target="az-portal">Data reduction techniques for Import modeling</a></p>
+<p><a href="https://docs.microsoft.com/en-us/power-bi/guidance/directquery-model-guidance/" data-linktype="absolute-path" target="az-portal">DirectQuery model guidance in Power BI Desktop</a></p>
+<p><a href="https://docs.microsoft.com/en-us/power-bi/transform-model/desktop-aggregations/" data-linktype="absolute-path" target="az-portal">Use aggregations in Power BI Desktop</a></p>
+
+		<div id="next-section"><hr><div><h2 id="next-module">Module complete:</h2></div></div>
+	</div><section>
+		<p>
+Need help? See our <a id="troubleshooting-guide" data-bi-name="troubleshooting" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-bizapps.optimize-model-power-bi.8-summary&amp;documentId=699eda59-785f-4730-6265-5f4ac5288ab4&amp;versionIndependentDocumentId=c14c9e45-66e7-fa96-d187-97926b36608f&amp;contentPath=%2FMicrosoftDocs%2Flearn-bizapps-pr%2Fblob%2Flive%2Flearn-bizapps-pr%2Fpower-bi%2Foptimize-model-power-bi%2F8-summary.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Foptimize-model-power-bi%2F8-summary&amp;author=robde">troubleshooting guide</a> or provide specific feedback by <a id="module-unit-feedback-link" data-bi-name="feedback" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-bizapps.optimize-model-power-bi.8-summary&amp;documentId=699eda59-785f-4730-6265-5f4ac5288ab4&amp;versionIndependentDocumentId=c14c9e45-66e7-fa96-d187-97926b36608f&amp;contentPath=%2FMicrosoftDocs%2Flearn-bizapps-pr%2Fblob%2Flive%2Flearn-bizapps-pr%2Fpower-bi%2Foptimize-model-power-bi%2F8-summary.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Foptimize-model-power-bi%2F8-summary&amp;author=robde#report-feedback">reporting an issue</a>.		</p>
+	</section></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

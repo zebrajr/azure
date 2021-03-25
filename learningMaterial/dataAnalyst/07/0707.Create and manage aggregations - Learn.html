@@ -1,0 +1,269 @@
+<html dir="ltr"><head><title>Create and manage aggregations - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/optimize-model-power-bi/6-aggregations">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/optimize-model-power-bi/6-aggregations</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Create and manage aggregations - Learn</h1>
+  <div dir="auto" id="reader-credits">heyrob</div>
+  <div dir="auto" id="reader-estimated-time">5-7 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>5 minutes</li>
+		</ul>
+			<p>When aggregating data, you summarize that data and present it in at a higher grain (level). For example, you can summarize all sales data and group it by date, customer, product, and so on. The aggregation process reduces the table sizes in the data model, allowing you to focus on important data and helping to improve the query performance.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/optimize-model-power-bi/media/6-aggregate-data-overview.ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/optimize-model-power-bi/media/6-aggregate-data-overview.ss.png" alt="Screenshot of aggregated data reducing row size." data-linktype="relative-path"></a></p>
+<p>Your organization might decide to use aggregations in their data models for the following reasons:</p>
+<ul>
+<li><p>If you are dealing with a large amount of data (big data), aggregations will provide better query performance and help you analyze and reveal the insights of this large data. Aggregated data is cached and, therefore, uses a fraction of the resources that are required for detailed data.</p>
+</li>
+<li><p>If you are experiencing a slow refresh, aggregations will help you speed up the refresh process. The smaller cache size reduces the refresh time, so data gets to users faster. Instead of refreshing what could be millions of rows, you would refresh a smaller amount of data.</p>
+</li>
+<li><p>If you have a large data model, aggregations can help you reduce and maintain the size of your model.</p>
+</li>
+<li><p>If you anticipate your data model growing in size in the future, you can use aggregations as a proactive step toward future proofing your data model by lessening the potential for performance and refresh issues and overall query problems.</p>
+</li>
+</ul>
+<p>Continuing with the&nbsp;Tailwind Traders&nbsp;scenario,&nbsp;you have taken several steps to optimize the performance of the data model, but the IT team has informed you that the file size is still too large. The file size is currently 1 gigabyte (GB), so you need to reduce it to around 50 megabytes (MB). During your performance review, you identified that the previous developer did not use aggregations in the data model, so you now want to create some aggregations for the sales data to reduce the file size and further optimize the performance.</p>
+<h2 id="create-aggregations">Create aggregations</h2>
+<p>Before you start creating aggregations, you should decide on the grain (level) on which you want to create them. In this example, you want to aggregate the sales data at the day level.</p>
+<p>When you decide on the grain, the next step is to decide on how you want to create the aggregations. You can create aggregations in different ways and each method will yield the same results, for example:</p>
+<ul>
+<li><p>If you have access to the database, you could create a table with the aggregation and then import that table into Power BI Desktop.</p>
+</li>
+<li><p>If you have access to the database, you could create a view for the aggregation and then import that view into Power BI Desktop.</p>
+</li>
+<li><p>In Power BI Desktop, you can use Power Query Editor to create the aggregations step-by-step.</p>
+</li>
+</ul>
+<p>In this example, you open a query in Power Query Editor and notice that the data has not been aggregated; it has over 999 rows, as illustrated the following screenshot.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/optimize-model-power-bi/media/6-aggregate-data-before-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/optimize-model-power-bi/media/6-aggregate-data-before-ssm.png" alt="Screenshot before aggregation with 999+ rows." data-linktype="relative-path"></a></p>
+<p>You want to aggregate the data by the <strong>OrderDate</strong> column and view the <strong>OrderQuantity</strong> and <strong>SalesAmount</strong> columns. Start by selecting <strong>Choose Columns</strong> on the <strong>Home</strong> tab. On the window that displays, select the columns that you want in the aggregation and then select <strong>OK</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/optimize-model-power-bi/media/6-aggregate-choose-columns-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/optimize-model-power-bi/media/6-aggregate-choose-columns-ssm.png" alt="Screenshot of Choose Columns pop up with columns to use in aggregation." data-linktype="relative-path"></a></p>
+<p>When the selected columns display on the page, select the <strong>Group By</strong> option on the <strong>Home</strong> tab. On the window that displays, select the column that you want to group by (<strong>OrderDate</strong>) and enter a name for the new column (<strong>OnlineOrdersCount</strong>).</p>
+<p>Select the <strong>Advanced</strong> option and then select the <strong>Add aggregation</strong> button to display another column row. Enter a name for the aggregation column, select the operation of the column, and then select the column to which you want to link the aggregation. Repeat these steps until you have added all the aggregations and then select <strong>OK</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/optimize-model-power-bi/media/6-aggregate-group-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/optimize-model-power-bi/media/6-aggregate-group-ssm.png" alt="Screenshot of selecting a group and adding aggregations." data-linktype="relative-path"></a></p>
+<p>It might take a few minutes for your aggregation to display, but when it does, you'll see how the data has been transformed. The data will be aggregated into each date, and you will be able to see the values for the orders count and the respective sum of the sales amount and order quantity.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/optimize-model-power-bi/media/6-aggregate-data-after-new-columns-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/optimize-model-power-bi/media/6-aggregate-data-after-new-columns-ss.png" alt="Screenshot of the results of aggregation." data-linktype="relative-path"></a></p>
+<p>Select the <strong>Close and Apply</strong> button to close Power Query Editor and apply the changes to your data model. Return to the <strong>Power BI Desktop</strong> page and then select the <strong>Refresh</strong> button to see the results. Observe the screen because a brief message will display the number of rows that your data model now has. This number of rows should be significantly less than the number that you started with. You can also see this number when you open Power Query Editor again, as illustrated in the following screenshot. In this example, the number of rows was reduced to 30.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/optimize-model-power-bi/media/6-aggregate-data-after-less-rows-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/optimize-model-power-bi/media/6-aggregate-data-after-less-rows-ssm.png" alt="Screenshot after aggregation showing only 30 rows." data-linktype="relative-path"></a></p>
+<p>Remember, you started with over 999 rows. Using aggregation has significantly reduced the number of rows in your dataset, which means that Power BI has less data to refresh and your model should perform better.</p>
+<h2 id="manage-aggregations">Manage aggregations</h2>
+<p>When you have created aggregations, you can manage those aggregations in Power BI Desktop and make changes to their behavior, if required.</p>
+<p>You can open the <strong>Manage Aggregations</strong> window from any view in Power BI Desktop. In the <strong>Fields</strong> pane, right-click the table and then select <strong>Manage aggregations</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/optimize-model-power-bi/media/6-open-manage-aggregations-window-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/optimize-model-power-bi/media/6-open-manage-aggregations-window-ssm.png" alt="Screenshot of the manage aggregations window." data-linktype="relative-path"></a></p>
+<p>For each aggregation column, you can select an option from the <strong>Summarization</strong> drop-down list and make changes to the selected detail table and column. When you are finished managing the aggregations, select <strong>Apply All</strong>.</p>
+<p>For more detailed information on how to create and manage aggregations, see <a href="https://docs.microsoft.com/en-us/power-bi/transform-model/desktop-aggregations/" data-linktype="absolute-path" target="az-portal">Use aggregations in Power BI Desktop</a>.</p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Check your knowledge</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/optimize-model-power-bi/7-check/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

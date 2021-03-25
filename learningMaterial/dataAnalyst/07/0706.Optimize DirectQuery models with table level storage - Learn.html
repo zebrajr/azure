@@ -1,0 +1,320 @@
+<html dir="ltr"><head><title>Optimize DirectQuery models with table level storage - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/optimize-model-power-bi/5-directquery-models">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/optimize-model-power-bi/5-directquery-models</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Optimize DirectQuery models with table level storage - Learn</h1>
+  <div dir="auto" id="reader-credits">heyrob</div>
+  <div dir="auto" id="reader-estimated-time">10-13 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>8 minutes</li>
+		</ul>
+			<p>DirectQuery is one way to get data into Power BI Desktop. The DirectQuery method involves connecting directly to data in its source repository from within Power BI Desktop. It is an alternative to importing data into Power BI Desktop.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/optimize-model-power-bi/media/5-direct-query-option-getting-data-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/optimize-model-power-bi/media/5-direct-query-option-getting-data-ssm.png" alt="Screenshot of the Get data DirectQuery option." data-linktype="relative-path"></a></p>
+<p>When you use the DirectQuery method, the overall user experience depends heavily on the performance of the underlying data source. Slow query response times will lead to a negative user experience and, in the worst-case scenarios, queries might time out. Also, the number of users who are opening the reports at any one time will impact the load that is placed on the data source. For example, if your report has 20 visuals in it and 10 people are using the report, 200 queries or more will exist on the data source because each visual will issue one or more queries.</p>
+<p>Unfortunately, the performance of your Power BI model will not only be impacted by the performance of the underlying data source, but also by other uncontrollable factors, such as:</p>
+<ul>
+<li><p>Network latency; faster networks return data quicker.</p>
+</li>
+<li><p>The performance of the data source's server and how many other workloads are on that server. For example, consider the implications of a server refresh taking place while hundreds of people are using the same server for different reasons.</p>
+</li>
+</ul>
+<p>Therefore, using DirectQuery poses a risk to the quality of your model's performance. To optimize performance in this situation, you need to have control over, or access to, the source database.</p>
+<p>For more detailed information, see <a href="https://docs.microsoft.com/en-us/power-bi/guidance/directquery-model-guidance/" data-linktype="absolute-path" target="az-portal">DirectQuery model guidance in Power BI Desktop</a>.</p>
+<h2 id="implications-of-using-directquery">Implications of using DirectQuery</h2>
+<p>It is best practice to import data into Power BI Desktop, but your organization might need to use the DirectQuery data connectivity mode because of one of the following reasons (benefits of DirectQuery):</p>
+<ul>
+<li><p>It is suitable in cases where data changes frequently and near real-time reporting is required.</p>
+</li>
+<li><p>It can handle large data without the need to pre-aggregate.</p>
+</li>
+<li><p>It applies data sovereignty restrictions to comply with legal requirements.</p>
+</li>
+<li><p>It can be used with a multidimensional data source that contains measures such as SAP Business Warehouse (BW).</p>
+</li>
+</ul>
+<p>If your organization needs to use DirectQuery, you should clearly understand its behavior within Power BI Desktop and be aware of its limitations. You will then be in a good position to take action to optimize the DirectQuery model as much as possible.</p>
+<h3 id="behavior-of-directquery-connections">Behavior of DirectQuery connections</h3>
+<p>When you use DirectQuery to connect to data in Power BI Desktop, that connection behaves in the following way:</p>
+<ul>
+<li><p>When you initially use the <strong>Get Data</strong> feature in Power BI Desktop, you will select the source. If you connect to a relational source, you can select a set of tables and each one will define a query that logically returns a set of data. If you select a multidimensional source, such as SAP BW, you can only select the source.</p>
+</li>
+<li><p>When you load the data, no data is imported into the Power BI Desktop, only the schema is loaded. When you build a visual within Power BI Desktop, queries are sent to the underlying source to retrieve the necessary data. The time it takes to refresh the visual depends on the performance of the underlying data source.</p>
+</li>
+<li><p>If changes are made to the underlying data, they won't be immediately reflected in the existing visuals in Power BI due to caching. You need to carry out a refresh to see those changes. The necessary queries are resent for each visual, and the visuals are updated accordingly.</p>
+</li>
+<li><p>When you publish the report to the Power BI service, it will result in a dataset in Power BI service, the same as for import. However, no data is included with that dataset.</p>
+</li>
+<li><p>When you open an existing report in Power BI service, or build a new one, the underlying source is again queried to retrieve the necessary data. Depending on the location of the original source, you might have to configure an on-premises data gateway.</p>
+</li>
+<li><p>You can pin visuals, or entire report pages, as dashboard tiles. The tiles are automatically refreshed on a schedule, for example, every hour. You can control the frequency of this refresh to meet your requirements. When you open a dashboard, the tiles reflect the data at the time of the last refresh and might not include the latest changes that are made to the underlying data source. You can always refresh an open dashboard to ensure that it's up-to-date.</p>
+</li>
+</ul>
+<h3 id="limitations-of-directquery-connections">Limitations of DirectQuery connections</h3>
+<p>The use of DirectQuery can have negative implications. The limitations vary, depending on the specific data source that is being used. You should take the following points into consideration:</p>
+<ul>
+<li><p><strong>Performance</strong> - As previously discussed, your overall user experience depends heavily on the performance of the underlying data source.</p>
+</li>
+<li><p><strong>Security</strong> - If you use multiple data sources in a DirectQuery model, it is important to understand how data moves between the underlying data sources and the associated security implications. You should also identify if security rules are applicable to the data in your underlying source because, in Power BI, every user can see that data.</p>
+</li>
+<li><p><strong>Data transformation</strong> - Compared to imported data, data that is sourced from DirectQuery has limitations when it comes to applying data transformation techniques within Power Query Editor. For example, if you connect to an OLAP source, such as SAP BW, you can't make any transformations at all; the entire external model is taken from the data source. If you want to make any transformations to the data, you will need to do this in the underlying data source.</p>
+</li>
+<li><p><strong>Modeling</strong> - Some of the modeling capabilities that you have with imported data aren't available, or are limited, when you use DirectQuery.</p>
+</li>
+<li><p><strong>Reporting</strong> -- Almost all the reporting capabilities that you have with imported data are also supported for DirectQuery models, provided that the underlying source offers a suitable level of performance. However, when the report is published in Power BI service, the Quick Insights and Q&amp;A features are not supported. Also, the use of the Explore feature in Excel will likely result in poorer performance.</p>
+</li>
+</ul>
+<p>For more detailed information on the limitations of using DirectQuery, see <a href="https://docs.microsoft.com/en-us/power-bi/connect-data/desktop-directquery-about#implications-of-using-directquery" data-linktype="absolute-path">Implications of using DirectQuery</a>.</p>
+<p>Now that you have a brief understanding of how DirectQuery works and the limitations that it poses, you can take action to improve the performance.</p>
+<h2 id="optimize-performance">Optimize performance</h2>
+<p>Continuing with the&nbsp;Tailwind Traders&nbsp;scenario,&nbsp;during your review of the data model, you discover that the query used DirectQuery to connect Power BI Desktop to the source data. This use of DirectQuery is the reason why users are experiencing poor report performance. It's taking too long to load the pages in the report, and tables are not refreshing quickly enough when certain selections are made. You need to take action to optimize the performance of the DirectQuery model.</p>
+<p>You can examine the queries that are being sent to the underlying source and try to identify the reason for the poor query performance. You can then make changes in Power BI Desktop and the underlying data source to optimize overall performance.</p>
+<h3 id="optimize-data-in-power-bi-desktop">Optimize data in Power BI Desktop</h3>
+<p>When you have optimized the data source as much as possible, you can take further action within Power BI Desktop by using <strong>Performance analyzer</strong>, where you can isolate queries to validate query plans.</p>
+<p>You can analyze the duration of the queries that are being sent to the underlying source to identify the queries that are taking a long time to load. In other words, you can identify where the bottlenecks exist.</p>
+<p>You don't need to use a special approach when optimizing a DirectQuery model; you can apply the same optimization techniques that you used on the imported data to tune the data from the DirectQuery source. For example, you can reduce the number of visuals on the report page or reduce the number of fields that are used in a visual. You can also remove unnecessary columns and rows.</p>
+<p>For more detailed guidance on how a optimize a DirectQuery query, see: <a href="https://docs.microsoft.com/en-us/power-bi/guidance/directquery-model-guidance/" data-linktype="absolute-path" target="az-portal">DirectQuery model guidance in Power BI Desktop</a> and <a href="https://docs.microsoft.com/en-us/power-bi/connect-data/desktop-directquery-about#guidance-for-using-directquery-successfully/?azure-portal=true" data-linktype="absolute-path" target="az-portal">Guidance for using DirectQuery successfully</a>.</p>
+<h3 id="optimize-the-underlying-data-source-connected-database">Optimize the underlying data source (connected database)</h3>
+<p>Your first stop is the data source. You need to tune the source database as much as possible because anything you do to improve the performance of that source database will in turn improve Power BI DirectQuery. The actions that you take in the database will do the most good.</p>
+<p>Consider the use of the following standard database practices that apply to most situations:</p>
+<ul>
+<li><p>Avoid the use of complex calculated columns because the calculation expression will be embedded into the source queries. It is more efficient to push the expression back to the source because it avoids the push down. You could also consider adding surrogate key columns to dimension-type tables.</p>
+</li>
+<li><p>Review the indexes and verify that the current indexing is correct. If you need to create new indexes, ensure that they are appropriate.</p>
+</li>
+</ul>
+<p>Refer to the guidance documents of your data source and implement their performance recommendations.</p>
+<h3 id="customize-the-query-reduction-options">Customize the Query reduction options</h3>
+<p>Power BI Desktop gives you the option to send fewer queries and to disable certain interactions that will result in a poor experience if the resulting queries take a long time to run. Applying these options prevents queries from continuously hitting the data source, which should improve performance.</p>
+<p>In this example, you edit the default settings to apply the available data reduction options to your model. You access the settings by selecting <strong>File</strong> <strong>&gt;</strong> <strong>Options and settings</strong> <strong>&gt;</strong> <strong>Options</strong>, scrolling down the page, and then selecting the <strong>Query reduction</strong> option.</p>
+<p>The following query reduction options are available:</p>
+<ul>
+<li><p><strong>Reduce number of queries sent by</strong> - By default, every visual interacts with every other visual. Selecting this check box disables that default interaction. You can then optionally choose which visuals interact with each other by using the <strong>Edit interactions</strong> feature.</p>
+</li>
+<li><p><strong>Slicers</strong> - By default, the <strong>Instantly apply slicer changes</strong> option is selected. To force the report users to manually apply slicer changes, select the <strong>Add an apply button to each slicer to apply changes when you're ready</strong> option.</p>
+</li>
+<li><p><strong>Filters</strong> - By default, the <strong>Instantly apply basic filter changes</strong> option is selected. To force the report users to manually apply filter changes, select one of the alternative options:</p>
+<ul>
+<li><p><strong>Add an apply button to all basic filters to apply changes when you're ready</strong></p>
+</li>
+<li><p><strong>Add a single apply button to the filter pane to apply changes at once (preview)</strong></p>
+</li>
+</ul>
+</li>
+</ul>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/optimize-model-power-bi/media/5-query-reduction-settings-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/optimize-model-power-bi/media/5-query-reduction-settings-ssm.png" alt="Screenshot of the query reduction settings under Options." data-linktype="relative-path"></a></p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Create and manage aggregations</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/optimize-model-power-bi/6-aggregations/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

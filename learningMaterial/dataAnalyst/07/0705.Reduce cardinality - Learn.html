@@ -1,0 +1,263 @@
+<html dir="ltr"><head><title>Reduce cardinality - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/optimize-model-power-bi/4-reduce-cardinality">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/optimize-model-power-bi/4-reduce-cardinality</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Reduce cardinality - Learn</h1>
+  <div dir="auto" id="reader-credits">heyrob</div>
+  <div dir="auto" id="reader-estimated-time">6-8 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>5 minutes</li>
+		</ul>
+			<p>Cardinality is a term that is used to describe the uniqueness of the values in a column. Cardinality is also used in the context of the relationships between two tables, where it describes the direction of the relationship.</p>
+<h2 id="identify-cardinality-levels-in-columns">Identify cardinality levels in columns</h2>
+<p>Previously, when you used Power Query Editor to analyze the metadata, the <strong>Column distribution</strong> option on the <strong>View</strong> tab displayed statistics on how many distinct and unique items were in each column in the data.</p>
+<ul>
+<li><p><strong>Distinct values count</strong> - The total number of different values found in a given column.</p>
+</li>
+<li><p><strong>Unique values count</strong> - The total number of values that only appear once in a given column.</p>
+</li>
+</ul>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/optimize-model-power-bi/media/4-column-distribution-statistics-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/optimize-model-power-bi/media/4-column-distribution-statistics-ssm.png" alt="Screenshot of the View tab column distribution statistics." data-linktype="relative-path"></a></p>
+<p>A column that has a lot of repeated values in its range (distinct count is low) will have a low level of cardinality. Conversely, a column that has a lot of unique values in its range (unique count is high) will have a high level of cardinality.</p>
+<p>Lower cardinality leads to more optimized performance, so you might need to reduce the number of high cardinally columns in your dataset.</p>
+<h2 id="reduce-relationship-cardinality">Reduce relationship cardinality</h2>
+<p>When you import multiple tables, it is possible that you'll do some analysis by using data from all those tables. Relationships between those tables are necessary to accurately calculate results and display the correct information in your reports. Power BI Desktop helps make creating those relationships easier. In fact, in most cases, you won't have to do anything, the autodetect feature does it for you. However, you might occasionally have to create relationships or need to make changes to a relationship. Regardless, it's important to understand relationships in Power BI Desktop and how to create and edit them.</p>
+<p>When you create or edit a relationship, you can configure additional options. By default, Power BI Desktop automatically configures additional options based on its best guess, which can be different for each relationship based on the data in the columns.</p>
+<p>The relationships can have different cardinality. Cardinality is the direction of the relationship, and each model relationship must be defined with a cardinality type. The cardinality options in Power BI are:</p>
+<ul>
+<li><p><strong>Many-to-one (*:1)</strong> - This relationship is the most common, default type. It means that the column in one table can have more than one instance of a value, and the other related table, often known as the lookup table, has only one instance of a value.</p>
+</li>
+<li><p><strong>One-to-one (1:1)</strong> - In this relationship type, the column in one table has only one instance of a particular value, and the other related table has only one instance of a particular value.</p>
+</li>
+<li><p><strong>One-to-many (1:*)</strong> - In this relationship type, the column in one table has only one instance of a particular value, and the other related table can have more than one instance of a value.</p>
+</li>
+<li><p><strong>Many-to-many (:)</strong> - With composite models, you can establish a many-to-many relationship between tables, which removes requirements for unique values in tables. It also removes previous workarounds, such as introducing new tables only to establish relationships.</p>
+</li>
+</ul>
+<p>During development, you will be creating and editing relationships in your model, so when you are building new relationships in your model, regardless of what cardinality you have chosen, always ensure that both of the columns that you are using to participate in a relationship are sharing the same data type. Your model will never work if you try to build a relationship between two columns, where one column has a text data type and another column has an integer data type.</p>
+<p>In the following example, the <strong>ProductID</strong> field has the data type <strong>Whole number</strong> in the Product and Sales tables. The columns with data type <strong>Integer</strong> perform better than columns with data type <strong>Text</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/optimize-model-power-bi/media/4-product-id-type-whole-number-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/optimize-model-power-bi/media/4-product-id-type-whole-number-ssm.png" alt="Screenshot of the ProductID data type set to whole number." data-linktype="relative-path"></a></p>
+<h2 id="improve-performance-by-reducing-cardinality-levels">Improve performance by reducing cardinality levels</h2>
+<p>Power BI Desktop offers different techniques that you can use to help reduce the data that is loaded into data models, such as summarization. Reducing the data that is loaded into your model will improve the relationship cardinality of the report. For this reason, it is important that you strive to minimize the data that will be loaded into your models. This case is especially true for large models, or models that you anticipate will grow to become large over time.</p>
+<p>Perhaps the most effective technique to reduce a model size is to use a summary table from the data source.&nbsp;Where a detail table might contain every transaction, a summary table would contain one record per day, per week, or per month. It might be an average of all of the transactions per day, for instance.</p>
+<p>For example, a source sales fact table stores one row for each order line. Significant data reduction could be achieved by summarizing all sales metrics if you group by date, customer, and product, and individual transaction detail is not needed.</p>
+<p>Consider, then, that an even more significant data reduction could be achieved by grouping by date at month level. It could achieve a possible 99 percent reduction in model size; but, reporting at day level or an individual order level is no longer possible. Deciding to summarize fact-type data will always involve a tradeoff with the detail of your data. A disadvantage is that you may lose the ability to drill into data because the detail no longer exists.&nbsp;This tradeoff could be mitigated by using a mixed model design.</p>
+<p>In Power BI Desktop, a Mixed mode design produces a composite model. Essentially, it allows you to determine a storage mode for each table. Therefore, each table can have its <strong>Storage Mode</strong> property set as <strong>Import</strong> or <strong>DirectQuery</strong>.</p>
+<p>An effective technique to reduce the model size is to set the <strong>Storage Mode</strong> property for larger fact-type tables to <strong>DirectQuery</strong>. This design approach can work well in conjunction with techniques that are used to summarize your data. For example, the summarized sales data could be used to achieve high performance "summary" reporting. A drill-through page could be created to display granular sales for specific (and narrow) filter context, displaying all in-context sales orders. The drill-through page would include visuals based on a DirectQuery table to retrieve the sales order data (sales order details).</p>
+<p>For more information, see <a href="https://docs.microsoft.com/en-us/power-bi/guidance/import-modeling-data-reduction#group-by-and-summarize/?azure-portal=true" data-linktype="absolute-path" target="az-portal">Data reduction techniques for Import modeling</a>.</p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Optimize DirectQuery models with table level storage</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/optimize-model-power-bi/5-directquery-models/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>
