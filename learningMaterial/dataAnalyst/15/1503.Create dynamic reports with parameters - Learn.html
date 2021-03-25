@@ -1,0 +1,353 @@
+<html dir="ltr"><head><title>Create dynamic reports with parameters - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/2-report-parameters">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/manage-datasets-power-bi/2-report-parameters</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Create dynamic reports with parameters - Learn</h1>
+  <div dir="auto" id="reader-credits">heyrob</div>
+  <div dir="auto" id="reader-estimated-time">7-8 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>6 minutes</li>
+		</ul>
+			<p>Dynamic reports are reports in which the data can be changed by a developer according to user specifications. Dynamic reports are valuable because a single report can be used for multiple purposes. If you use dynamic reports, you'll have fewer individual reports to create, which will save organizational time and resources.</p>
+<p>You can use parameters by determining the values that you want to see data for in the report, and the report updates accordingly by filtering the data for you.</p>
+<p>Creating dynamic reports allows you to give users more power over the data that is displayed in your reports; they can change the data source and filter the data by themselves.</p>
+<p>In the following example, you've created a report for the Sales team at Tailwind Traders that displays the sales data in the SQL Server database. The report gives a holistic view of how the Sales team is performing. While the report is useful, the Sales team members want to be able to filter the report so that they can view their own data only and track their performance against their sales targets.</p>
+<h2 id="create-dynamic-reports-for-individual-values">Create dynamic reports for individual values</h2>
+<p>To create a dynamic report, you first need to write your SQL query. Then, you will use the <strong>Get data</strong> feature in Power BI Desktop to connect to the database.</p>
+<p>In this example, you will connect to your database on SQL Server by following these steps:</p>
+<ol>
+<li><p>After you have entered your server details, in the <strong>SQL Server database</strong> window, select <strong>Advanced options</strong>.</p>
+</li>
+<li><p>Paste the SQL query into the <strong>SQL statement</strong> box and then select <strong>OK</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/media/2-sql-query-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/media/2-sql-query-ss.png" alt="Screenshot of the SQL Query that selects 10 fields from TailwindTraders where the SalesPersonID is 279." data-linktype="relative-path"></a></p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/media/2-add-query-execution-statement-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/media/2-add-query-execution-statement-ssm.png" alt="Screenshot of the query added to the SQL statement box." data-linktype="relative-path"></a></p>
+</li>
+</ol>
+<p>When the connection is made, the data will be shown in the preview window.</p>
+<ol>
+<li>Select <strong>Edit</strong> to open the data in Power Query Editor.</li>
+</ol>
+<p>Next, you will create the parameter by following these steps:</p>
+<ol>
+<li><p>On the <strong>Home</strong> tab, select <strong>Manage parameters &gt; New parameter</strong>.</p>
+</li>
+<li><p>On the <strong>Parameters</strong> window, change the default parameter name to something more descriptive so that its purpose is clear. In this case, you will change the name to <strong>SalesPerson</strong>.</p>
+</li>
+<li><p>Select <strong>Text</strong> from the <strong>Type</strong> list and then select <strong>Any value</strong> from the <strong>Suggested value</strong> list.</p>
+</li>
+<li><p>Select <strong>OK</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/media/2-add-parameter-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/media/2-add-parameter-ss.png" alt="Screenshot of the Manage parameters dialog with the New command highlighted." data-linktype="relative-path"></a></p>
+<p>A new query will now be shown for the parameter that you created.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/media/2-parameter-query-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/media/2-parameter-query-ss.png" alt="Screenshot of Queries with the new query added for the new parameter." data-linktype="relative-path"></a></p>
+</li>
+</ol>
+<p>Now, you need to adjust the code in SQL query to assess your new parameter:</p>
+<ol>
+<li><p>Right-click <strong>Query1</strong> and then select <strong>Advanced editor</strong>.</p>
+</li>
+<li><p>Replace the existing value in the execute statement with an ampersand (<strong>&amp;</strong>) followed by your parameter name (<strong>SalesPerson</strong>), as illustrated in the following image.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/media/2-adjust-sql-query-statement-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/media/2-adjust-sql-query-statement-ssm.png" alt="Screenshot of adjusting the sql query statement." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Make sure that no errors are shown at bottom of the window and then select <strong>Done</strong>.</p>
+</li>
+</ol>
+<p>Though you won't notice a difference on the screen, Power BI will have run the query.</p>
+<ol>
+<li><p>To confirm that the query was run, you can run a test by selecting the parameter query and entering a new value in the <strong>Current Value</strong> box.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/media/2-enter-parameter-value-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/media/2-enter-parameter-value-ss.png" alt="Screenshot of entering a value into the parameter." data-linktype="relative-path"></a></p>
+</li>
+<li><p>A warning icon might display next to the query. If so, select that query to view the warning message, which states that permission is required to run this native database query. Select <strong>Edit Permission</strong> and then select <strong>Run</strong>.</p>
+<p>When the query runs successfully, the parameter will update and display the new value.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/media/2-paramenter-updated-values-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/media/2-paramenter-updated-values-ss.png" alt="Screenshot of the parameter with updated values." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Select <strong>Close and Apply</strong> to return to the report editor.</p>
+</li>
+</ol>
+<p>Now, you can apply the parameter to the report:</p>
+<ol>
+<li><p>Select <strong>Edit queries &gt; Edit parameters</strong>.</p>
+</li>
+<li><p>On the <strong>Edit Parameters</strong> window, enter a new value and then select <strong>OK</strong>.</p>
+</li>
+<li><p>Select <strong>Apply changes</strong> and then run the native query again.</p>
+<p>Now, when you view the data, you'll see the data for the new value that was passed through the parameter.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/media/2-apply-parameter-report-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/media/2-apply-parameter-report-ss.png" alt="Screenshot of the result of applying the parameter to the report." data-linktype="relative-path"></a></p>
+</li>
+</ol>
+<p>You can now create a report that displays data for one particular value at a time. If you want to display data for multiple values at the same time, you need to complete additional steps, as outlined in the next section.</p>
+<h2 id="create-dynamic-reports-for-multiple-values">Create dynamic reports for multiple values</h2>
+<p>To accommodate multiple values at a time, you first need to create a Microsoft Excel worksheet that has a table consisting of one column that contains the list of values.</p>
+<p>Next, use the <strong>Get data</strong> feature in Power BI Desktop to connect to the data in that Excel worksheet, and then follow these steps:</p>
+<ol>
+<li><p>On the <strong>Navigator</strong> window, select <strong>Edit</strong> to open the data in Power Query Editor, where you'll see a new query for the data table.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/media/2-table-query-pane-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/media/2-table-query-pane-ss.png" alt="Screenshot of the Table in the Query pane." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Rename the column in the table to something more descriptive.</p>
+</li>
+<li><p>Change the column data type to <strong>Text</strong> so that it matches the parameter type and you avoid data conversion problems.</p>
+</li>
+<li><p>In the query <strong>Properties</strong> section, change the name of the data source to something more descriptive. For this example, enter <strong>SalesPersonID</strong>.</p>
+</li>
+</ol>
+<p>Next, you need to create a function that will pass the new <strong>SalesPersonID</strong> query into <strong>Query1</strong>:</p>
+<ol>
+<li><p>Right-click <strong>Query1</strong> and then select <strong>Create function</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/media/2-create-function-option-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/media/2-create-function-option-ssm.png" alt="Screenshot of Query1 right-clicked to show the create function option." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Enter a name for the function and then select <strong>OK</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/media/2-create-function-window-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/media/2-create-function-window-ss.png" alt="Screenshot of the create function dialog." data-linktype="relative-path"></a></p>
+</li>
+</ol>
+<p>Your new function will appear in the <strong>Queries</strong> pane.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/media/2-function-query-pane-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/media/2-function-query-pane-ssm.png" alt="Screenshot of the function in the Queries pane." data-linktype="relative-path"></a></p>
+<ol>
+<li><p>To ensure that <strong>Query1</strong> doesn't show up in the field list for the report, which could potentially confuse users, you can disable it from loading in the report by right-clicking <strong>Query1</strong> again and then selecting <strong>Enable load</strong> (selected by default) to disable the feature.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/media/2-enable-load-option-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/media/2-enable-load-option-ssm.png" alt="Screenshot of Query1 right-clicked to show the Enable load option." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Select the <strong>SalesPerson</strong> query that you loaded from the Excel worksheet and then, on the <strong>Add Column</strong> tab, select <strong>Invoke custom function</strong> to run the custom function that you created.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/media/2-invoke-custom-function-option-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/media/2-invoke-custom-function-option-ssm.png" alt="Screenshot of the Add Column tab with the Invoke custom function option highlighted." data-linktype="relative-path"></a></p>
+</li>
+<li><p>On the <strong>Invoke Custom Function</strong> window, select your function from the <strong>Function query</strong> list.</p>
+</li>
+</ol>
+<p>The <strong>New column name</strong> will update automatically and the table that contains the values that you're going to pass through the parameter will be selected by default.</p>
+<ol>
+<li><p>Select <strong>OK</strong> and, if necessary, run the native query.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/media/2-invoke-custom-function-window-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/media/2-invoke-custom-function-window-ss.png" alt="Screenshot of the Invoke custom function dialog." data-linktype="relative-path"></a></p>
+<p>A new column for your <strong>GetSalesFromSalesPerson</strong> function will appear next to the <strong>SalesPersonID</strong> column.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/media/2-function-column-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/media/2-function-column-ss.png" alt="Screenshot of the new column for the function." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Select the two arrows icon in the new column header and then select the check boxes of the columns that you want to load. This section is where you will determine the details that will be available in the report for each value (sales person ID).</p>
+</li>
+<li><p>Clear the <strong>Use original column name as prefix</strong> check box at the bottom of the screen because you don't need to see a prefix with the column names in the report.</p>
+</li>
+<li><p>Select <strong>OK</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/media/2-select-columns-function-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/media/2-select-columns-function-ss.png" alt="Screenshot of the columns selected for the  function." data-linktype="relative-path"></a></p>
+<p>You should be able to view the data for the columns that you selected, for each value (sales person ID).</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/media/2-view-columns-function-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/media/2-view-columns-function-ss.png" alt="Screenshot of the the columns added to the function." data-linktype="relative-path"></a></p>
+<p>If necessary, you can add more values (sales people IDs) to the <strong>SalesPersonID</strong> column in the Excel worksheet, or you can change the existing values.</p>
+</li>
+<li><p>Save your changes and then return to Power Query Editor.</p>
+</li>
+<li><p>On the <strong>Home</strong> tab, select <strong>Refresh Preview</strong>, and then run the native query again (if necessary). You should see the sales from the new sales people IDs that you added into the worksheet.</p>
+</li>
+<li><p>Select <strong>Close and Apply</strong> to return to the report editor, where you'll see the new column names in the Fields pane.</p>
+</li>
+</ol>
+<p>Now, you can start building your report.</p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Create what-if parameters</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/3-what-if-parameters/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

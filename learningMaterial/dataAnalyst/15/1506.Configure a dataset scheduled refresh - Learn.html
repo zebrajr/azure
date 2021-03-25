@@ -1,0 +1,273 @@
+<html dir="ltr"><head><title>Configure a dataset scheduled refresh - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/5-dataset-refresh">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/manage-datasets-power-bi/5-dataset-refresh</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Configure a dataset scheduled refresh - Learn</h1>
+  <div dir="auto" id="reader-credits">heyrob</div>
+  <div dir="auto" id="reader-estimated-time">4-5 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>4 minutes</li>
+		</ul>
+			<p>The <strong>Scheduled refresh</strong> feature in Power BI allows you to define the frequency and time slots to refresh a particular dataset. Scheduling the refresh of your data will save you time because you don't have to manually refresh the data. It also ensures that users can access the most up-to-date data.</p>
+<p>In this example, you are creating a report, but then realize that the version of the sales data that you're using isn't the most up to date. You check the refresh status and notice that it was last refreshed 10 days ago, and no refresh is scheduled to take place.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/media/5-view-dataset-last-refresh-time-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/media/5-view-dataset-last-refresh-time-ss.png" alt="Screenshot of the last refresh time for the dataset." data-linktype="relative-path"></a></p>
+<p>Considering how important it is to have accurate sales data, you need to find a solution. Usually, the data is updated weekly, but you don't want to return to the report every week to manually refresh the dataset, and you know that you occasionally forget to do so. Therefore, you decide to use the <strong>Scheduled refresh</strong> functionality in Power BI to solve this problem.</p>
+<h2 id="set-up-a-refresh-schedule">Set up a refresh schedule</h2>
+<p>Before you can set up a refresh schedule, you need to have created a gateway connection.</p>
+<p>To set up a refresh schedule for your dataset, follow these steps:</p>
+<ol>
+<li><p>Go to the <strong>Datasets + dataflows</strong> page.</p>
+</li>
+<li><p>Hover over the dataset for which you want to set up the schedule and then select the <strong>Schedule refresh</strong> icon.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/media/5-select-schedule-refresh-option-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/media/5-select-schedule-refresh-option-ssm.png" alt="Screenshot of the dataset schedule refresh button." data-linktype="relative-path"></a></p>
+</li>
+<li><p>On the <strong>Settings</strong> page, turn on the <strong>Scheduled refresh</strong> feature.</p>
+</li>
+<li><p>Select the <strong>Refresh frequency</strong> and ensure that the correct time zone is selected.</p>
+</li>
+<li><p>Add the time(s) that you want the refresh to occur. You can configure up to eight daily time slots, if your dataset is on shared capacity, or 48 time slots on Power BI Premium.</p>
+</li>
+<li><p>When you have finished configuring the scheduled refresh, select <strong>Apply</strong>.</p>
+</li>
+</ol>
+<div>
+<p> Note</p>
+<p>While you can set a time for the refresh, be aware that the refresh might not take place at that exact time. Power BI starts scheduled refreshes on a best effort basis. The goal is to initiate the refresh within 15 minutes of the scheduled time slot, but a delay of up to one hour can occur if the service can't allocate the required resources sooner.</p>
+</div>
+<p>In this example, you want the system to refresh the sales data on a daily basis, at 6:00 AM, 10:00 AM, and 3:00 PM, as illustrated in the following image.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/media/5-select-schedule-refresh-settings-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/media/5-select-schedule-refresh-settings-ss.png" alt="Screenshot of the scheduled refresh settings." data-linktype="relative-path"></a></p>
+<p>When you have configured a refresh schedule, the dataset settings page informs you of the next refresh time, as shown in the following image.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/media/5-view-dataset-next-refresh-time-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/media/5-view-dataset-next-refresh-time-ssm.png" alt="Screenshot of the dataset with the next refresh time highlighted." data-linktype="relative-path"></a></p>
+<h2 id="perform-an-on-demand-refresh">Perform an on-demand refresh</h2>
+<p>In addition to the scheduled refreshes, you can refresh a dataset at any time by performing an on-demand refresh. This type of refresh doesn't affect the next scheduled refresh time.</p>
+<p>For example, you might want to refresh now because you need to view the most recent data and can't wait for the next refresh time, or you might want to test your gateway and data source configuration.</p>
+<p>To perform an on-demand refresh, on the <strong>Datasets + dataflows</strong> page, hover over the dataset that you want to refresh and then select the <strong>Refresh now</strong> icon.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/media/5-select-refresh-now-option-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/media/5-select-refresh-now-option-ss.png" alt="Screenshot of the dataset Refresh now button." data-linktype="relative-path"></a></p>
+<h2 id="check-the-refresh-status-and-history">Check the refresh status and history</h2>
+<p>You can check the refresh status and history at any time. This feature is useful if you want to find out when the last refresh occurred and when the next one is scheduled. It is also good practice to check the status of your datasets occasionally to check if refresh errors have occurred.</p>
+<div>
+<p> Note</p>
+<p>Power BI deactivates your refresh schedule after four consecutive failures or when the service detects an unrecoverable error that requires a configuration update, such as invalid or expired credentials. It is not possible to change the consecutive failures threshold.</p>
+</div>
+<p>A quick way to check the refresh status is to view the list of datasets in a workspace.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/media/5-view-dataset-next-refresh-time-2-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/media/5-view-dataset-next-refresh-time-2-ssm.png" alt="Screenshot of the dataset last and next refresh times." data-linktype="relative-path"></a></p>
+<p>If a dataset displays a small warning icon, you'll know that the dataset is currently experiencing an issue. Select the warning icon to get more information.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/media/5-refresh-error-message-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/media/5-refresh-error-message-ssm.png" alt="Screenshot of the refresh error message." data-linktype="relative-path"></a></p>
+<p>You should also check the refresh history occasionally to review the success or failure status of past synchronization cycles. To view the refresh history, open the dataset's settings page and then select <strong>Refresh history</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/media/5-check-refresh-history-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/media/5-check-refresh-history-ssm.png" alt="Screenshot of the Refresh history dialog." data-linktype="relative-path"></a></p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Configure incremental refresh settings</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/6-incremental-refresh/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

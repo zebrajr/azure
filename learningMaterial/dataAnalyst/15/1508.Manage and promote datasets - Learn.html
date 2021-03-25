@@ -1,0 +1,254 @@
+<html dir="ltr"><head><title>Manage and promote datasets - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/7-manage-datasets">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/manage-datasets-power-bi/7-manage-datasets</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Manage and promote datasets - Learn</h1>
+  <div dir="auto" id="reader-credits">heyrob</div>
+  <div dir="auto" id="reader-estimated-time">4-5 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>3 minutes</li>
+		</ul>
+			<p>Business intelligence involves collaboration, and sharing datasets across workspaces is a powerful way to collaborate within your organization. However, if your organization has many different datasets that can be accessed by many users, you might want to take measures to manage those datasets. For instance, you might want to direct your users to the most up-to-date and highest-quality datasets in your workspaces, or you might want to restrict the reuse of datasets across your workspaces.</p>
+<p>To ensure that your organization has consistent data for making decisions and a healthy data culture, it's important to create and share optimized datasets and then endorse those datasets as the <em>one source of truth</em>. Report creators can then reuse those endorsed datasets to build accurate, standardized reports.</p>
+<p>Power BI provides two ways to endorse your datasets:</p>
+<ul>
+<li><p><strong>Promotion</strong> - Promote your datasets when they're ready for broad usage. Any workspace member with Write permissions can promote your datasets.</p>
+</li>
+<li><p><strong>Certification</strong> - Request certification for a promoted dataset from an admin user that is defined in the Dataset Certification tenant admin setting. This certification adds another layer of security for your datasets. Certification can be a highly selective process, so only the truly reliable and authoritative datasets are used across the organization.</p>
+</li>
+</ul>
+<p>In this example, you and the other teams are using a workspace in Power BI service to organize all your reports and dashboards. However, you begin to receive emails from confused users who expected to see a sales report and are now looking at a product report instead. You need to make some changes to direct your users to the datasets that they should be accessing, and you can accomplish this task with the endorsing capability in Power BI.</p>
+<p>In this example, the certification type of endorsement is best suited for the Sales team because it will require users to have special access before they can view the Sales dashboards. By implementing the certification, you'll lead your users to the most appropriate reports and dashboards, avoiding the inevitable confusion that might arise with building and sharing a diversity of reports.</p>
+<p>Though you'll soon learn how to certify the dataset, you'll first learn how to promote a dataset, in case you prefer to use that method.</p>
+
+<p>You can only promote a dataset if you're a Power BI admin user or the owner of that dataset.</p>
+<p>To promote a dataset, go to your workspace in Power BI service, and then open the settings page for the dataset that you want to promote. In this example, you want to promote the Tailwind Traders dataset.</p>
+<p>Select the <strong>Endorsement</strong> setting.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/media/7-select-endorsement-option-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/media/7-select-endorsement-option-ssm.png" alt="Screenshot of the Power B I Settings Endorsement option." data-linktype="relative-path"></a></p>
+<p>In the <strong>Endorsement</strong> settings, select the <strong>Promoted</strong> option, and then select <strong>Apply</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/media/7-select-endorsement-settings-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/media/7-select-endorsement-settings-ss.png" alt="Screenshot of the Endorsement settings dialog." data-linktype="relative-path"></a></p>
+<p>When you return to your workspace, a badge in the <strong>Endorsement</strong> column for that dataset will appear, indicating that it's ready for viewing by all of your users.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/media/7-promoted-dataset-badge-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/media/7-promoted-dataset-badge-ssm.png" alt="Screenshot of the Promoted dataset badge." data-linktype="relative-path"></a></p>
+<h2 id="certify-a-dataset">Certify a dataset</h2>
+<p>You can only certify a dataset if you've been listed as a user in the tenant settings. The certification option will appear dimmed for other users.</p>
+<p>To certify a dataset, you would start the same way as you did to promote the dataset. This time, however, you will select the <strong>Certified</strong> option in the <strong>Endorsement</strong> settings.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/media/7-select-certified-option-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/media/7-select-certified-option-ssm.png" alt="Screenshot of the Endorsement Certified option." data-linktype="relative-path"></a></p>
+<p>When you apply your change, the <strong>Certified</strong> setting will update to display a message regarding who certified the dataset and when they did so.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/media/7-view-certified-details-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/media/7-view-certified-details-ss.png" alt="Screenshot of the Certified details. Request certification from experts in your org to get a badge that shows it's recommended for use by others." data-linktype="relative-path"></a></p>
+<p>For more information, see <a href="https://docs.microsoft.com/en-us/power-bi/service-datasets-promote/" data-linktype="absolute-path" target="az-portal">Promote your dataset</a>&nbsp;or&nbsp;<a href="https://docs.microsoft.com/en-us/power-bi/service-datasets-certify/" data-linktype="absolute-path" target="az-portal">Certify datasets</a>.</p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Troubleshoot service connectivity</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/8-troubleshoot-connectivity/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

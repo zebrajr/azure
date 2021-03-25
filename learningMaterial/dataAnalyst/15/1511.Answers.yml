@@ -1,0 +1,8 @@
+1. A
+Dataset-scheduled refreshes are configured in Power BI service.
+
+2. C
+RangeStart and RangeEnd configure the start and end of where Incremental refresh should occur.
+
+3. A
+Promotion does not need specific permissions while Certification requires permission from the dataset owner to access to the dataset.

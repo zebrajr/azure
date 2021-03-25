@@ -1,0 +1,268 @@
+<html dir="ltr"><head><title>Create what-if parameters - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/3-what-if-parameters">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/manage-datasets-power-bi/3-what-if-parameters</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Create what-if parameters - Learn</h1>
+  <div dir="auto" id="reader-credits">heyrob</div>
+  <div dir="auto" id="reader-estimated-time">4-5 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>3 minutes</li>
+		</ul>
+			<p>You can use <em>what-if</em> parameters to run scenarios and scenario-type analysis on your data. What-if parameters are powerful additions to your Power BI data models and reports because they enable you to look at historical data to analyze potential outcomes if a different scenario had occurred. Additionally, what-if parameters can help you look forward, to predict or forecast what could happen in the future.</p>
+<p>You can use what-if parameters in multiple situations, such as to determine the effect of increased sales to deeper discounts, or to let sales consultants see their compensation if they meet certain sales goals or percentages.</p>
+<p>In the following example, you want to enable the Sales team to find out how much growth (percentage), from a sales perspective, that they need to make to earn USD 2 million gross sales each month.</p>
+<h2 id="create-a-what-if-parameter">Create a what-if parameter</h2>
+<p>To create a what-if parameter, follow these steps:</p>
+<ol>
+<li><p>Go to the <strong>Modeling</strong> tab and select <strong>New Parameter</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/media/3-add-what-if-parameter-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/media/3-add-what-if-parameter-ssm.png" alt="Screenshot of the Modeling tab with the New parameter button highlighted." data-linktype="relative-path"></a></p>
+</li>
+<li><p>On the <strong>What-if parameter</strong> window, configure the new parameter.</p>
+</li>
+<li><p>For this example, change the parameter name to <strong>Sales Forecast Percentage</strong>.</p>
+</li>
+<li><p>Select <strong>Fixed decimal number</strong> as the <strong>Data type</strong> list because you are using currency in your forecast.</p>
+</li>
+<li><p>Set the <strong>Minimum</strong> value to <strong>1</strong>, the <strong>Maximum</strong> value to <strong>1.50</strong>, and the <strong>Increment</strong> value to <strong>0.05</strong>, which is how much the parameter will adjust when it is interacted with in a report.</p>
+</li>
+<li><p>Set the <strong>Default</strong> value to <strong>1.00</strong>.</p>
+</li>
+<li><p>Leave the <strong>Add slicer to this page</strong> check box selected so that Power BI will automatically add a slicer with your what-if parameter onto the current report page.</p>
+</li>
+<li><p>Select <strong>OK</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/media/3-configure-what-if-parameter-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/media/3-configure-what-if-parameter-ssm.png" alt="Screenshot of the what-if parameter dialog." data-linktype="relative-path"></a></p>
+</li>
+</ol>
+<div>
+<p> Note</p>
+<p>For decimal numbers, make sure that you precede the value with a zero (as in <strong>0.50</strong> versus <strong>.50</strong>). Otherwise, the number won't validate and the <strong>OK</strong> button won't be selectable.</p>
+</div>
+<p>The new slicer visual will appear on the current report page. You can move the slider to see the numbers increase according to the settings that you applied. You should also see a new field for the Sales Forecast Percentage table in the Fields pane, and when you expand that field, the what-if parameter should be selected.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/media/3-view-what-if-slicer-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/media/3-view-what-if-slicer-ssm.png" alt="Screenshot of the Sales Forecast Percentage slider." data-linktype="relative-path"></a></p>
+<p>Similarly, you should see that a measure was also created. You can use this measure to visualize the current value of the what-if parameter.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/media/3-view-what-if-measure-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/media/3-view-what-if-measure-ssm.png" alt="Screenshot of the Sales Forecast Percentage Value measure." data-linktype="relative-path"></a></p>
+<p>After you have created a what-if parameter, the parameter and the measure will become part of your model; therefore, they will be available throughout the report and can be used on other report pages. Additionally, because the parameter and measure are part of the model, you can delete the slicer from the report page. If you want it back, you can drag the what-if parameter from the <strong>Fields</strong> list onto the canvas and then change the visual type to a slicer.</p>
+<h2 id="use-a-what-if-parameter">Use a what-if parameter</h2>
+<p>If you want to use the what-if parameter after you've created it, you will need to create a new measure whose value adjusts with the slider. You can create complex and unique measures that let your report users visualize the variable of your what-if parameter. However, to keep this example simple, the new measure is the total sales amount, with the forecast percentage applied, as illustrated in the following image.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/media/3-create-new-measure-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/media/3-create-new-measure-ss.png" alt="Screenshot of the formula Gross Sales Forecast equals Gross Sales times Sales Forecast Percentage Value." data-linktype="relative-path"></a></p>
+<p>Next, you will create a clustered column chart with the <strong>MonthName</strong> field on the axis and the <strong>GrossSales</strong> and <strong>Gross Sales Forecast</strong> measures as the values.</p>
+<p>Initially, the bars are similar; however, as you move the slider, notice that the <strong>Gross Sales Forecast</strong> column reflects the sales forecast percentage amount.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/media/3-use-what-if-slicer-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/media/3-use-what-if-slicer-ssm.png" alt="Screenshot of the bar chart with the slider set to 1.00 and another set to 1.40." data-linktype="relative-path"></a></p>
+<p>To enhance the visual, you can add a constant line so that you can clearly see how the organization is performing against a particular threshold or target. In this example, you will add a constant line with USD 2 million as the threshold value. Then, you will use the slider to find out what percentage of gross sales needs to increase by, each month, to reach that threshold. In the following image, the gross sales need to increase by 1.40 percent to reach the USD 2 million threshold.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/media/3-add-constant-line-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/media/3-add-constant-line-ss.png" alt="Screenshot of the constant line added to the visualization." data-linktype="relative-path"></a></p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Use a Power BI gateway to connect to on-premises data sources</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/4-power-bi-gateway/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

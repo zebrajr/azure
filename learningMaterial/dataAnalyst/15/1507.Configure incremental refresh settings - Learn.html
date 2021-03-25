@@ -1,0 +1,289 @@
+<html dir="ltr"><head><title>Configure incremental refresh settings - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/6-incremental-refresh">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/manage-datasets-power-bi/6-incremental-refresh</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Configure incremental refresh settings - Learn</h1>
+  <div dir="auto" id="reader-credits">heyrob</div>
+  <div dir="auto" id="reader-estimated-time">5-7 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>5 minutes</li>
+		</ul>
+			<p>The <strong>Incremental refresh</strong> feature in Power BI is a popular feature because it allows you to refresh large datasets quickly and as often as you need, without having to reload historical data each time.</p>
+<div>
+<p> Warning</p>
+<p>Incremental refresh should only be used on data sources and queries that support query folding. If query folding isn't supported, incremental refresh could lead to a bad user experience because, while it will still issue the queries for the relevant partitions, it will pull all data, potentially multiple times.</p>
+</div>
+<p>Traditionally, complex code was required for running incremental refreshes, but you can now define a refresh policy within Power BI Desktop. The refresh policy is applied when you publish to Power BI service, which then does the work of managing partitions for optimized data loads, resulting in the following benefits:</p>
+<ul>
+<li><p><strong>Quicker refreshes</strong> - Only data that needs to be changed gets refreshed. For example, if you have five years' worth of data, and you only need to refresh the last 10 days because that is the only data that has changed, the incremental refresh will refresh only those 10 days of data. Undoubtedly, the time it takes to refresh 10 days of data is much shorter than five years of data.</p>
+</li>
+<li><p><strong>More reliable refreshes</strong> - You no longer need to keep your long-running data connections open to schedule a refresh.</p>
+</li>
+<li><p><strong>Reduced resource consumption</strong> - Because you only need to refresh the smaller the amount of data, the overall consumption of memory and other resources is reduced.</p>
+</li>
+</ul>
+<p>In this example, the Sales team has come to you with a dilemma. The data in their report is already out-of-date. It isn't feasible for you to manually refresh the data by adding a new file because the refreshes need to happen regularly to match the frequency of the sales transactions that are occurring. Also, the manual refresh task is becoming more difficult because the datasets have millions of rows. Consequently, you need to implement a better data refresh solution.</p>
+<p>You can define an incremental refresh policy to solve this business problem. This process involves the following steps:</p>
+<ol>
+<li><p>Define the filter parameters.</p>
+</li>
+<li><p>Use the parameters to apply a filter.</p>
+</li>
+<li><p>Define the incremental refresh policy.</p>
+</li>
+<li><p>Publish changes to Power BI service.</p>
+</li>
+</ol>
+<h2 id="define-filter-parameters">Define filter parameters</h2>
+<p>Whether you are using incremental refresh or not, large datasets are commonly filtered when they are imported into Power BI Desktop because the PBIX file is limited by the memory resources that are available on the desktop computer. For incremental refresh, the datasets are filtered by two date/time parameters: <strong>RangeStart</strong> and <strong>RangeEnd</strong>. These parameters have a dual purpose. In Power BI Desktop, they are the filtering window because they restrict the used data to the range that is listed in the start and end dates. After they have been published to the service, the parameters are taken over to be the sliding window to determine what data to pull in.</p>
+<p>To define the parameters for the incremental refresh, follow these steps:</p>
+<ol>
+<li><p>Open your dataset in Power Query Editor.</p>
+</li>
+<li><p>On the <strong>Home</strong> tab, select <strong>Manage Parameters</strong>.</p>
+</li>
+<li><p>On the <strong>Parameters</strong> window that displays, add two new parameters, <strong>RangeStart</strong> and <strong>RangeEnd</strong>, ensuring that for both parameters, the <strong>Type</strong> is set to <strong>Date/Time</strong> and the <strong>Suggested Value</strong> is set to <strong>Any value</strong>.</p>
+</li>
+<li><p>Regarding the <strong>Current Value</strong>, for the <strong>RangeStart</strong> parameter, enter the date on which you want to begin the import, and for the <strong>RangeEnd</strong> parameter, enter the date on which you want the import to end.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/media/6-add-filter-parameters-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/media/6-add-filter-parameters-ssm.png" alt="Screenshot of the Home tab with the Manage Parameters option highlighted." data-linktype="relative-path"></a></p>
+</li>
+</ol>
+<h2 id="apply-the-filter">Apply the filter</h2>
+<p>When you have defined the new parameters, you can apply the filter by following these steps:</p>
+<ol>
+<li><p>Go to the applicable <strong>Date</strong> column and then right-click that column and select <strong>Custom Filter</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/media/6-select-custom-filter-option-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/media/6-select-custom-filter-option-ssm.png" alt="Screenshot of selecting the custom filter option." data-linktype="relative-path"></a></p>
+</li>
+<li><p>In the <strong>Filter Rows</strong> window that displays, to avoid the double counting of rows, make sure that you keep rows where <strong>OrderDate</strong> is after or equal to the <strong>RangeStart</strong> parameter and before the <strong>RangeEnd</strong> parameter.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/media/6-select-filter-rows-settings-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/media/6-select-filter-rows-settings-ss.png" alt="Screenshot of the filter rows settings dialog." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Select <strong>Close and Apply</strong> from the Power Query Editor.</p>
+</li>
+</ol>
+<p>You should now see a subset of the dataset in Power BI Desktop.</p>
+<h2 id="define-the-incremental-refresh-policy">Define the incremental refresh policy</h2>
+<p>When you have filtered the data, you can define the incremental refresh policy for the data table, which sets up the refresh process.</p>
+<p>Right-click the applicable table and then select <strong>Incremental refresh</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/media/6-select-incremental-refresh-option-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/media/6-select-incremental-refresh-option-ssm.png" alt="Screenshot of the Incremental refresh option." data-linktype="relative-path"></a></p>
+<p>On the <strong>Incremental refresh</strong> window that displays, turn on the <strong>Incremental refresh</strong> option. Then, configure the refresh as required. In this example, you will define a refresh policy to store data for five full calendar years, plus data for the current year up to the current date, and incrementally refresh 10 days of data.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/media/6-select-incremental-refresh-settings-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/media/6-select-incremental-refresh-settings-ssm.png" alt="Screenshot of the Incremental refresh settings." data-linktype="relative-path"></a></p>
+<p>The first refresh operation in Power BI service will load the historical data for the last five years. The subsequent refresh operations are incremental, and they will refresh the data that was changed in the last 10 days up to the current date. The incremental refreshes will also remove calendar years that are older than five years prior to the current date.</p>
+<h2 id="publish-to-power-bi-service">Publish to Power BI service</h2>
+<p>When you have defined the incremental refresh policy in Power BI Desktop, to apply that refresh policy, you need to publish the report to Power BI service.</p>
+<p>For more information, see&nbsp;<a href="https://docs.microsoft.com/en-us/power-bi/service-premium-incremental-refresh/" data-linktype="absolute-path" target="az-portal">Incremental refresh on Power BI</a>.</p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Manage and promote datasets</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/manage-datasets-power-bi/7-manage-datasets/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>
