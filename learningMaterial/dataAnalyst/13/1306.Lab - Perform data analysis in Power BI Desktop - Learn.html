@@ -1,0 +1,604 @@
+<html dir="ltr"><head><title>Lab - Perform data analysis in Power BI Desktop - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/5-lab">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/ai-visuals-power-bi/5-lab</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Lab - Perform data analysis in Power BI Desktop - Learn</h1>
+  <div dir="auto" id="reader-credits">heyrob</div>
+  <div dir="auto" id="reader-estimated-time">11-14 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>45 minutes</li>
+		</ul>
+			<h2 id="access-your-environment">Access your environment</h2>
+<p>Before you start this lab, select <strong>Launch lab</strong> above.</p>
+<p>To log in to your lab environment:</p>
+<ol>
+<li>Click anywhere on the Windows desktop in the lab window.</li>
+<li>On the <strong>Resources</strong> tab on the lab side bar, select the <strong>T</strong> icon next to <strong>Password</strong>. The machine password is automatically entered for you. You can log in with the Student profile.</li>
+<li>Press <strong>Enter</strong>.</li>
+</ol>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/includes/vm-login.png" alt="Image of the lab password on the Resources tab." data-linktype="relative-path"></p>
+<p>You can now begin your work on this lab.</p>
+<p><strong>The estimated time to complete the lab is 45 minutes</strong></p>
+<p>In this lab, you'll create the <strong>Sales&nbsp;Exploration</strong> report.</p>
+<p>In this lab you learn how to:</p>
+<ul>
+<li><p>Create animated scatter charts.</p>
+</li>
+<li><p>Use a visual to forecast values.</p>
+</li>
+<li><p>Work with the decomposition tree visual.</p>
+</li>
+<li><p>Work with the key influencers visual.</p>
+</li>
+</ul>
+<h3 id="lab-story">Lab story</h3>
+<p>This lab is one of many in a series of labs that was designed as a complete story from data preparation to publication as reports and dashboards. You can complete the labs in any order. However, if you intend to work through multiple labs, for the first 10 labs, we suggest you do them in the following order:</p>
+<ol>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/get-data/lab-prepare/" data-linktype="absolute-path" target="az-portal">Prepare data in Power BI Desktop</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/clean-data-power-bi/8-lab/" data-linktype="absolute-path" target="az-portal">Load data in Power BI Desktop</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/design-model-power-bi/8-lab/" data-linktype="absolute-path" target="az-portal">Model data in Power BI Desktop, part 1</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/design-model-power-bi/9-lab/" data-linktype="absolute-path" target="az-portal">Model data in Power BI Desktop, part 2</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/create-measures-dax-power-bi/6-lab/" data-linktype="absolute-path" target="az-portal">Create DAX calculations in Power BI Desktop, part 1</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/create-measures-dax-power-bi/8-lab/" data-linktype="absolute-path" target="az-portal">Create DAX calculations in Power BI Desktop, part 2</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/visuals-power-bi/8-lab/" data-linktype="absolute-path" target="az-portal">Design a report in Power BI Desktop, part 1</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/data-driven-story-power-bi/13-lab/" data-linktype="absolute-path" target="az-portal">Design a report in Power BI Desktop, part 2</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/create-dashboards-power-bi/9-lab/" data-linktype="absolute-path" target="az-portal">Create a Power BI dashboard</a></p>
+</li>
+<li><p><strong>Perform data analysis in Power BI Desktop</strong></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/create-paginated-reports-power-bi/6-lab/" data-linktype="absolute-path" target="az-portal">Create a Power BI paginated report</a></p>
+</li>
+</ol>
+<h2 id="exercise-1-create-the-report">Exercise 1: Create the report</h2>
+<p>In this exercise you will create the <strong>Sales Exploration</strong> report.</p>
+<h3 id="task-1-get-started--sign-in">Task 1: Get started – Sign in</h3>
+<p>In this task you'll set up the environment for the lab by signing in to Power BI.</p>
+<div>
+<p> Important</p>
+<p>If you have already signed in to Power BI in a previous lab, continue from the next task.</p>
+</div>
+<ol>
+<li><p>To open Microsoft Edge, on the taskbar, select the Microsoft Edge program shortcut.</p>
+</li>
+<li><p>In the Microsoft Edge browser window, navigate to <a href="https://powerbi.com/" data-linktype="external">https://powerbi.com</a>.</p>
+<div>
+<p> Tip</p>
+<p>You can also use the Power BI Service favorite on the Microsoft Edge favorites bar.</p>
+</div>
+</li>
+<li><p>Select <strong>Sign In</strong> (located at the top-right corner).</p>
+</li>
+<li><p>Enter the account details provided to you.</p>
+</li>
+<li><p>If prompted to update the password, reenter the provided password, and then enter and confirm a new password.</p>
+<div>
+<p> Important</p>
+<p>Be sure to record your new password.</p>
+</div>
+</li>
+<li><p>Complete the sign in process.</p>
+</li>
+<li><p>If prompted by Microsoft Edge to stay signed in, select <strong>Yes</strong>.</p>
+</li>
+<li><p>In the Microsoft Edge browser window, in the Power BI service, in the <strong>Navigation</strong> pane, expand <strong>My Workspace</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/media/lab-1-a-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/media/lab-1-a-ssm.png" alt="Screenshot of the Navigation pane with My workspace highlighted." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Leave the Microsoft Edge browser window open.</p>
+</li>
+</ol>
+<h3 id="task-2-get-started--create-a-dataset">Task 2: Get started – Create a dataset</h3>
+<p>In this task you'll set up the environment for the lab by creating a dataset.</p>
+<div>
+<p> Important</p>
+<p>If you have already published the dataset in the <strong>Create a Power BI Dashboard</strong> lab, continue from the next task.</p>
+</div>
+<ol>
+<li><p>In the Microsoft Edge browser window, in the Power BI service, in the <strong>Navigation</strong> pane, at the bottom, select <strong>Get Data</strong>.</p>
+</li>
+<li><p>In the <strong>Files</strong> tile, select <strong>Get</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/media/lab-1-b-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/media/lab-1-b-ssm.png" alt="Screenshot of the Files tile with the Get button highlighted." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Select the <strong>Local File</strong> tile.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/media/lab-1-c-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/media/lab-1-c-ssm.png" alt="Screenshot of the Power B I Local File tile." data-linktype="relative-path"></a></p>
+</li>
+<li><p>In the <strong>Open</strong> window, navigate to the <strong>D:\DA100\Labs\create-power-bi-dashboard\Solution</strong> folder.</p>
+</li>
+<li><p>Select the <strong>Sales Analysis.pbix</strong> file, and then select <strong>Open</strong>.</p>
+</li>
+<li><p>If prompted to replace the dataset, select <strong>Replace</strong>.</p>
+</li>
+</ol>
+<h3 id="task-3-create-the-report">Task 3: Create the report</h3>
+<p>In this task you will create the <strong>Sales Exploration</strong> report.</p>
+<ol>
+<li><p>To open the Power BI Desktop, on the taskbar, select the Microsoft Power BI Desktop shortcut.</p>
+<div>
+<p> Important</p>
+<p>If you already have Power BI Desktop open (from a previous lab), close that instance.</p>
+</div>
+</li>
+<li><p>To close the getting started window, at the top-right corner of the welcome screen, select <strong>X</strong>.</p>
+</li>
+<li><p>If Power BI Desktop is not signed in to the Power BI service, at the top-right, select <strong>Sign in</strong>.</p>
+</li>
+<li><p>Complete the sign in process using the same account used to sign in to the Power BI service.</p>
+</li>
+<li><p>To save the file, select the <strong>File</strong> ribbon tab to open the backstage view.</p>
+</li>
+<li><p>Select <strong>Save</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/media/lab-1-d-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/media/lab-1-d-ssm.png" alt="Screenshot of the File menu expanded and the Save option highlighted." data-linktype="relative-path"></a></p>
+</li>
+<li><p>In the <strong>Save As</strong> window, navigate to the <strong>D:\DA100\MySolution</strong> folder.</p>
+</li>
+<li><p>In the <strong>File Name</strong> box, enter <strong>Sales Exploration</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/media/lab-2-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/media/lab-2-ssm.png" alt="Screenshot of Sales Exploration in the File name box." data-linktype="relative-path"></a></p>
+</li>
+<li><p>To create a live connection to the <strong>Sales Analysis</strong> dataset, on the <strong>Home</strong> ribbon tab, from inside the <strong>Data</strong> group, select <strong>Power BI Datasets</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/media/lab-1-f-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/media/lab-1-f-ssm.png" alt="Screenshot of the Power B I datasets button." data-linktype="relative-path"></a></p>
+</li>
+<li><p>In the <strong>Select a Dataset to Create a Report</strong> window, select the <strong>Sales Analysis</strong> dataset.</p>
+</li>
+<li><p>Click <strong>Create</strong>.</p>
+</li>
+<li><p>Save the Power BI Desktop file.</p>
+<p>You'll now create four report pages, and on each page you’ll work with a different visual to analyze and explore data.</p>
+</li>
+</ol>
+<h2 id="exercise-2-create-a-scatter-chart">Exercise 2: Create a scatter chart</h2>
+<p>In this exercise, you'll create a scatter chart that can be animated.</p>
+<h3 id="task-1-create-an-animated-scatter-chart">Task 1: Create an animated scatter chart</h3>
+<p>In this task, you'll create a scatter chart that can be animated.</p>
+<ol>
+<li><p>Rename <strong>Page&nbsp;1</strong> as <strong>Scatter&nbsp;Chart</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/media/lab-4-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/media/lab-4-ssm.png" alt="Screenshot of Page 1 renamed as Scatter Chart." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Add a scatter&nbsp;chart visual to the report page, and then position and resize it so that it fills the entire page.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/media/lab-5-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/media/lab-5-ssm.png" alt="Screenshot of the scatter chart visualization." data-linktype="relative-path"></a></p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/media/lab-6-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/media/lab-6-ss.png" alt="Screenshot of the scatter chart on the report page repositioned and resized to fill the page." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Add the following fields to the visual wells:</p>
+<p>The labs use a shorthand notation to reference a field. It looks like this: <strong>Reseller | Business Type</strong>. In this example, <strong>Reseller</strong> is the table name and <strong>Business Type</strong> is the field name.</p>
+<ul>
+<li><p>Legend: <strong>Reseller&nbsp;|&nbsp;Business&nbsp;Type</strong></p>
+</li>
+<li><p>X Axis: <strong>Sales&nbsp;|&nbsp;Sales</strong></p>
+</li>
+<li><p>Y Axis: <strong>Sales&nbsp;|&nbsp;Profit&nbsp;Margin</strong></p>
+</li>
+<li><p>Size: <strong>Sales&nbsp;|&nbsp;Quantity</strong></p>
+</li>
+<li><p>Play Axis: <strong>Date&nbsp;|&nbsp;Quarter</strong></p>
+</li>
+</ul>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/media/lab-7-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/media/lab-7-ssm.png" alt="Screenshot of the legend, X axis, Y axis, Size, and Play axis fields." data-linktype="relative-path"></a></p>
+<p>The chart can be animated when a field is added to the <strong>Play&nbsp;Axis</strong> well.</p>
+</li>
+<li><p>In the <strong>Filters</strong> pane, add the <strong>Product&nbsp;|&nbsp;Category</strong> field to the <strong>Filters&nbsp;on&nbsp;this&nbsp;page</strong> well.</p>
+</li>
+<li><p>In the filter card, filter by <strong>Bikes</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/media/lab-8-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/media/lab-8-ssm.png" alt="Screenshot of the filter card filtered by Bikes." data-linktype="relative-path"></a></p>
+</li>
+<li><p>To animate the chart, in the bottom-left corner, select <strong>Play</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/media/lab-9-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/media/lab-9-ssm.png" alt="Screenshot of the Play button used to animate the chart." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Watch the entire animation cycle from <strong>FY2018&nbsp;Q1</strong> to <strong>FY2020&nbsp;Q4</strong>.</p>
+<p>The scatter chart allows you to see the measure values simultaneously. In this case, you can see order quantity, sales revenue, and profit margin.</p>
+<p>Each bubble represents a reseller business type. Changes in the bubble size reflect increased or decreased order quantities. Horizontal movements represent increases or decreases in sales revenue. Vertical movements represent increases or decreases in profitability.</p>
+</li>
+<li><p>When the animation stops, select one of the bubbles to reveal its tracking over time.</p>
+</li>
+<li><p>Hover the cursor over any bubble to reveal a tooltip that describes the measure values for the reseller type at that point in time.</p>
+</li>
+<li><p>In the <strong>Filters</strong> pane, filter by <strong>Clothing</strong> only, and notice that it produces a different result.</p>
+</li>
+<li><p>Save the Power&nbsp;BI&nbsp;Desktop file.</p>
+</li>
+</ol>
+<h2 id="exercise-3-create-a-forecast">Exercise 3: Create a forecast</h2>
+<p>In this exercise, you will create a forecast to determine possible future sales revenue.</p>
+<h3 id="task-1-create-a-forecast">Task 1: Create a forecast</h3>
+<p>In this task, you will create a forecast to determine possible future sales revenue.</p>
+<ol>
+<li><p>Add a new page, and then rename the page to <strong>Forecast</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/media/lab-10-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/media/lab-10-ssm.png" alt="Screenshot of the new page renamed Forecast." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Add a line&nbsp;chart visual to the report page, and then reposition and resize it so that it fills the entire page.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/media/lab-11-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/media/lab-11-ssm.png" alt="Screenshot of the line chart visualization." data-linktype="relative-path"></a></p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/media/lab-12-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/media/lab-12-ss.png" alt="Screenshot of the line chart added to the report page repositioned and resized to fill the page." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Add the following fields to the visual wells:</p>
+<ul>
+<li><p>Axis: <strong>Date&nbsp;|&nbsp;Date</strong></p>
+</li>
+<li><p>Values: <strong>Sales&nbsp;|&nbsp;Sales</strong></p>
+</li>
+</ul>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/media/lab-13-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/media/lab-13-ssm.png" alt="Screenshot of the Axis and Values fields populated." data-linktype="relative-path"></a></p>
+</li>
+<li><p>In the <strong>Filters</strong> pane, add the <strong>Date&nbsp;|&nbsp;Year</strong> field to the <strong>Filters&nbsp;on&nbsp;this&nbsp;page</strong> well.</p>
+</li>
+<li><p>In the filter card, filter by two years: <strong>FY2019</strong> and <strong>FY2020</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/media/lab-14-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/media/lab-14-ssm.png" alt="Screenshot of the filter card filtered by FY2019 and FY2020." data-linktype="relative-path"></a></p>
+<p>When forecasting over a time line, you will need at least two cycles (years) of data to produce an accurate and stable forecast.</p>
+</li>
+<li><p>Add the <strong>Product&nbsp;|&nbsp;Category</strong> field to the <strong>Filters&nbsp;on&nbsp;this&nbsp;page</strong> well, and then filter by <strong>Bikes</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/media/lab-15-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/media/lab-15-ssm.png" alt="Screenshot of the product category filtered by Bikes." data-linktype="relative-path"></a></p>
+</li>
+<li><p>To add a forecast, beneath the <strong>Visualizations</strong> pane, select the <strong>Analytics</strong> pane.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/media/lab-16-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/media/lab-16-ssm.png" alt="Screenshot of the Analytics pane under the Visualizations pane." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Expand the <strong>Forecast</strong> section.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/media/lab-17-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/media/lab-17-ssm.png" alt="Screenshot of the Forecast section expand feature." data-linktype="relative-path"></a></p>
+<p>If the <strong>Forecast</strong> section is not available, it's likely because the visual hasn't been correctly configured. Forecasting is only available when two conditions are met:</p>
+<ul>
+<li>The axis has a single field of type Date,</li>
+<li>and only one value field exists.</li>
+</ul>
+</li>
+<li><p>Select <strong>Add</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/media/lab-18-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/media/lab-18-ssm.png" alt="Screenshot of the Add feature in the Forecast section." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Configure the following forecast properties:</p>
+<ul>
+<li><p><strong>Forecast length</strong> - 1 month</p>
+</li>
+<li><p><strong>Confidence interval</strong> - 80%</p>
+</li>
+<li><p><strong>Seasonality</strong> - 365</p>
+</li>
+</ul>
+</li>
+<li><p>Select <strong>Apply</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/media/lab-19-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/media/lab-19-ssm.png" alt="Screenshot of the Apply button on the forecast properties details page." data-linktype="relative-path"></a></p>
+</li>
+<li><p>In the line visual, notice that the forecast has extended one month beyond the history data.</p>
+<p>The gray area represents the confidence. The wider the confidence, the less stable and, therefore, the less accurate the forecast is likely to be.</p>
+<p>When you know the length of the cycle, in this case annual, you should enter the seasonality points. Sometimes, it could be weekly (7), or monthly (30).</p>
+</li>
+<li><p>In the <strong>Filters</strong> pane, filter by <strong>Clothing</strong> only, and notice that it produces a different result.</p>
+</li>
+<li><p>Save the Power&nbsp;BI&nbsp;Desktop file.</p>
+</li>
+</ol>
+<h2 id="exercise-4-work-with-a-decomposition-tree">Exercise 4: Work with a decomposition tree</h2>
+<p>In this exercise, you will create a decomposition tree to explore the relationships between reseller geography and profit margin.</p>
+<h3 id="task-1-work-with-a-decomposition-tree">Task 1: Work with a decomposition tree</h3>
+<p>In this task, you'll create a decomposition tree to explore the relationships between reseller geography and profit margin.</p>
+<ol>
+<li><p>Add a new page, and then rename the page to <strong>Decomposition&nbsp;Tree</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/media/lab-20-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/media/lab-20-ssm.png" alt="Screenshot of the new page renamed Decomposition Tree." data-linktype="relative-path"></a></p>
+</li>
+<li><p>On the <strong>Insert</strong> ribbon, from inside the <strong>AI&nbsp;visuals</strong> group, select <strong>Decomposition&nbsp;Tree</strong>.</p>
+<div>
+<p> Tip</p>
+<p>The AI visuals are also available in the <strong>Visualizations</strong> pane.</p>
+</div>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/media/lab-21-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/media/lab-21-ssm.png" alt="Screenshot of the Decomposition Tree on the Insert ribbon." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Reposition and resize the visual so that it fills the entire page.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/media/lab-22-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/media/lab-22-ss.png" alt="Screenshot of the visual repositioned and resized to fill the screen." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Add the following fields to the visual wells:</p>
+<ul>
+<li><p>Analyze: <strong>Sales&nbsp;|&nbsp;Profit&nbsp;Margin</strong></p>
+</li>
+<li><p>Explain by: <strong>Reseller&nbsp;|&nbsp;Geography</strong> (the entire hierarchy)</p>
+</li>
+</ul>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/media/lab-23-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/media/lab-23-ssm.png" alt="Screenshot of the Analyze and Explain by fields added to the visual wells." data-linktype="relative-path"></a></p>
+</li>
+<li><p>In the <strong>Filters</strong> pane, add the <strong>Date&nbsp;|&nbsp;Year</strong> field to the <strong>Filters&nbsp;on&nbsp;this&nbsp;page</strong> well, and then set the filter to <strong>FY2020</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/media/lab-24-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/media/lab-24-ssm.png" alt="Screenshot of the Date Year field filtered by FY2020." data-linktype="relative-path"></a></p>
+</li>
+<li><p>In the <strong>Decomposition Tree</strong> visual, notice that the root of the tree is <strong>Profit&nbsp;Margin</strong> at <strong>-0.94%</strong></p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/media/lab-25-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/media/lab-25-ss.png" alt="Screenshot of the Decomposition Tree visual Profit Margin -0.94%." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Select the plus icon (<strong>+</strong>), and in the context menu, select <strong>High&nbsp;value</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/media/lab-26-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/media/lab-26-ssm.png" alt="Screenshot of the High value from the plus icon." data-linktype="relative-path"></a></p>
+<p>Notice that the decision tree presents resellers, ordered by highest profit margin.</p>
+</li>
+<li><p>To remove the level, at the top of visual, beside the <strong>Reseller</strong> label, select <strong>X</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/media/lab-27-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/media/lab-27-ssm.png" alt="Screenshot of the x used to remove the level." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Select the plus icon again and then expand to the <strong>Country-Region</strong> level.</p>
+</li>
+<li><p>Expand from the <strong>United&nbsp;States</strong> to the <strong>State-Province</strong> level.</p>
+</li>
+<li><p>Use the down-arrow located at the bottom of the visual for <strong>State-Province</strong>, and then scroll down to the less profitable states.</p>
+</li>
+<li><p>Notice that <strong>New&nbsp;York</strong> state has negative profitability.</p>
+</li>
+<li><p>Expand from <strong>New&nbsp;York</strong> to the <strong>Reseller</strong> level.</p>
+</li>
+<li><p>Notice that it is easy to isolate root cause.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/media/lab-28-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/media/lab-28-ss.png" alt="Screenshot example of the root cause isolated." data-linktype="relative-path"></a></p>
+<p><strong>United&nbsp;States</strong> is not producing profit in <strong>FY2020</strong>. <strong>New&nbsp;York</strong> is one state that is not achieving positive profit, and it's due to four resellers paying less than standard costs for their goods.</p>
+</li>
+<li><p>Save the Power&nbsp;BI&nbsp;Desktop file.</p>
+</li>
+</ol>
+<h2 id="exercise-5-work-with-key-influencers">Exercise 5: Work with key influencers</h2>
+<p>In this exercise, you will use the <strong>Key influencers</strong> AI visual to determine what influences profitability within reseller business types and geography.</p>
+<h3 id="task-1-work-with-key-influencers">Task 1: Work with key influencers</h3>
+<p>In this task, you will use the <strong>Key influencers</strong> AI visual to determine what influences profitability within reseller business types and geography.</p>
+<ol>
+<li><p>Add a new page, and then rename the page to <strong>Key&nbsp;Influencers</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/media/lab-29-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/media/lab-29-ssm.png" alt="Screenshot of the new page renamed Key Influencers." data-linktype="relative-path"></a></p>
+</li>
+<li><p>On the <strong>Insert</strong> ribbon, from inside the <strong>AI&nbsp;visuals</strong> group, select <strong>Key&nbsp;influencers</strong>.</p>
+<div>
+<p> Tip</p>
+<p>AI visuals are also available in the <strong>Visualizations</strong> pane.</p>
+</div>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/media/lab-30-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/media/lab-30-ssm.png" alt="Screenshot of Key Influencers in the Visualizations pane." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Reposition and resize the visual so that it fills the entire page.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/media/lab-31-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/media/lab-31-ss.png" alt="Screenshot of the visual resized and repositioned to fill the page." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Add the following fields to the visual wells:</p>
+<ul>
+<li><p>Analyze: <strong>Sales&nbsp;|&nbsp;Profit&nbsp;Margin</strong></p>
+</li>
+<li><p>Explain by: <strong>Reseller&nbsp;|&nbsp;Business&nbsp;Type</strong> and <strong>Reseller&nbsp;|&nbsp;Geography</strong> (the entire hierarchy)</p>
+</li>
+<li><p>Expand by: <strong>Sales&nbsp;|&nbsp;Quantity</strong></p>
+</li>
+</ul>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/media/lab-32-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/media/lab-32-ssm.png" alt="Screenshot of Analyze, Explain by, and Expand by added to the visual wells." data-linktype="relative-path"></a></p>
+</li>
+<li><p>At the top left corner of the visual, notice that <strong>Key&nbsp;influencers</strong> is in focus, and the specific influence is set to understand what influences profit margin to increase.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/media/lab-33-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/media/lab-33-ssm.png" alt="Screenshot of the Key influencers in focus with the specific influence set to What influences Profit Margin to increase." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Review the result, which is that the city of <strong>Bothel</strong> is likely to increase.</p>
+</li>
+<li><p>Modify the target to determine what influences the profit margin to <em>decrease</em>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/media/lab-34-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/media/lab-34-ssm.png" alt="Screenshot of the target modified to determine what influences the profit margin to decrease." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Review the result.</p>
+</li>
+<li><p>To detect segments, in the upper-left corner, select <strong>Top&nbsp;segments</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/media/lab-35-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/media/lab-35-ssm.png" alt="Screenshot of the Top segments selected." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Notice that the target is now to determine segments when profit margin is likely to be high.</p>
+</li>
+<li><p>When the visual displays the segments (as circles), select one of them to reveal information about it.</p>
+</li>
+<li><p>Review the segment results.</p>
+</li>
+</ol>
+<h3 id="task-2-finish-up">Task 2: Finish up</h3>
+<p>In this task, you'll complete the lab.</p>
+<ol>
+<li><p>Select the <strong>Scatter Chart</strong> page.</p>
+</li>
+<li><p>Save the Power&nbsp;BI&nbsp;Desktop file.</p>
+</li>
+<li><p>To publish the file to your workspace, on the <strong>Home</strong> ribbon tab, from inside the <strong>Share</strong> group, click <strong>Publish</strong>.</p>
+</li>
+<li><p>Close Power&nbsp;BI&nbsp;Desktop.</p>
+</li>
+</ol>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Check your knowledge</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/6-check/" data-bi-name="continue" target="_top">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

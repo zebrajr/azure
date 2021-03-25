@@ -1,0 +1,254 @@
+<html dir="ltr"><head><title>Use the Q&A visual - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/2-visual">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/ai-visuals-power-bi/2-visual</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Use the Q&amp;A visual - Learn</h1>
+  <div dir="auto" id="reader-credits">heyrob</div>
+  <div dir="auto" id="reader-estimated-time">5-7 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>5 minutes</li>
+		</ul>
+			<p>The <strong>Q&amp;A</strong> feature in Power BI lets you explore your data in your own words by allowing you to ask natural language questions and then providing you with answers to those questions.</p>
+<p>This ability to ask questions is valuable to you, as the report author, and to your report users. It gives you ideas for the type of visuals that you can display in your report and lets you quickly add those visuals. Additionally, it gives your report users an effective tool that they can use to get quick answers to their questions about the data, independently. This self-help aspect to Power BI saves time for everyone involved.</p>
+<p>Power BI records all questions that are asked, and you can use this information to set up the <strong>Q&amp;A</strong> feature to be more effective. When the <strong>Q&amp;A</strong> feature answers so many questions, you'll have fewer people turning to you for those answers.</p>
+<p>Consider a situation where you've created a report for the Supply Chain team, and now the team members have questions about various views or insights that they are interested in. You have become inundated with questions and don't have time to address each one individually. Consequently, you have decided to implement the <strong>Q&amp;A</strong> feature so that users can ask questions and get answers by themselves.</p>
+<h2 id="add-the-qa-visual-to-your-report-canvas">Add the Q&amp;A visual to your report canvas</h2>
+<p>To get access to the <strong>Q&amp;A</strong> feature, you need to add the <strong>Q&amp;A</strong> visual to your report. You can double-click anywhere on the canvas, and the visual should appear. Alternatively, you can select the <strong>Q&amp;A</strong> icon on the <strong>Visualizations</strong> pane.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/media/2-add-visualization-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/media/2-add-visualization-ssm.png" alt="Screenshot of the add Q&amp;A visualization feature." data-linktype="relative-path"></a></p>
+<p>The <strong>Q&amp;A</strong> feature is also available as a button, which is a useful option if you want to save space on your report canvas.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/media/2-add-button-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/media/2-add-button-ssm.png" alt="Screenshot of the add Q&amp;A feature button." data-linktype="relative-path"></a></p>
+<p>When the <strong>Q&amp;A</strong> visual or button is added to your report, you can reposition and resize it. You can also customize the formatting in the same way that you would for any other type of visual or button.</p>
+<p>You can start asking questions immediately by selecting one of the suggested questions or by entering a question into the question box. As you type, Power BI will automatically display suggestions to help you complete your question.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/media/2-ask-question-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/media/2-ask-question-ss.png" alt="Screenshot of question typed in question box." data-linktype="relative-path"></a></p>
+<h2 id="set-up-the-qa-feature">Set up the Q&amp;A feature</h2>
+<p>When you have added the <strong>Q&amp;A</strong> visual to your report, you can set up the underlying Q&amp;A feature so that it improves in answering questions about your data. Basically, you will teach the <strong>Q&amp;A</strong> feature to better understand people. This setup can be useful from the outset so that you can get the visual ready for active use. However, setup does not stop at that point; you can proactively monitor and review the questions that are coming through from users, and then you can address misunderstandings or common typos. You can also manage the key terms that are associated with your data, so you can add a library of synonyms that might be entered by different users across the organization when they are asking questions about the data. You can constantly calibrate the <strong>Q&amp;A</strong> feature so that it provides better answers to your organization's questions.</p>
+<p>In this example, you receive feedback from users saying that they can't get data on sales by country. To assess the problem, you enter <strong>sales by country</strong> into the question box. The visual does not update; it does not answer your question. The following image shows that the word <em>country</em> is underlined in red. When a red underline occurs, Power BI is telling you that it does not understand this term. Knowing that the word <em>country</em> is not used in your dataset, you decide to use the term <em>region</em> instead and ultimately discover why the question is not being answered. Accordingly, you realize that you need to teach Power BI what you mean by adding a new term to its thesaurus.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/media/2-problem-question-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/media/2-problem-question-ss.png" alt="Screenshot of problem with question asked with misunderstood term underlined." data-linktype="relative-path"></a></p>
+<p>Select the settings icon to the right of the question box to open the <strong>Q&amp;A setup</strong> window. Then, select the <strong>Teach Q&amp;A</strong> option.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/media/2-setup-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/media/2-setup-ss.png" alt="Screenshot of the Q&amp;A setup window with Teach Q&amp;A option." data-linktype="relative-path"></a></p>
+<p>Enter your question again, and then select the <strong>Submit</strong> button. In the <strong>Define the terms Q&amp;A didn't understand</strong> section that displays, enter your alternative term or synonym. In this case, you will enter <strong>region</strong>. The following image shows that Power BI displays a preview result so that you can see if this new term will return the results that you are looking for. If this result is correct, select <strong>Save</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/media/2-define-terms-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/media/2-define-terms-ss.png" alt="Screenshot of the Define the terms Q&amp;A didn't understand section." data-linktype="relative-path"></a></p>
+<p>Now, when users search for sales by country, Power BI will know that they really mean sales by region and will automatically display the associated data in the visual.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/media/2-problem-resolved-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/media/2-problem-resolved-ss.png" alt="Screenshot of the problem with question resolved with data in visual displayed." data-linktype="relative-path"></a></p>
+<h2 id="use-the-qa-feature-to-build-visuals">Use the Q&amp;A feature to build visuals</h2>
+<p>When Power BI answers a question, and you find the visual result to be engaging or helpful, you can add it as a standard visual to your report.</p>
+<p>For example, if you review the questions that are being asked, and you see that several users are asking the same question, you can add the answer to this question as a standard visual in the report so they no longer have to ask the question. Similarly, you can also use the <strong>Q&amp;A</strong> feature to start building your report by asking questions and adopting the suggested visual result formats from Power BI.</p>
+<p>To turn a <strong>Q&amp;A</strong> result into a standard visual, select the icon next to the question box.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/media/2-visualization-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/media/2-visualization-ss.png" alt="Screenshot of the Q&amp;A result standard visual button." data-linktype="relative-path"></a></p>
+<p>The <strong>Q&amp;A</strong> feature is unique in that it does not require users to have knowledge of Power BI to use the visual; users can ask their questions and they, too, can create insightful visuals.</p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Find important factors with the Key influencers visual</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/ai-visuals-power-bi/3-key-influencers/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>
