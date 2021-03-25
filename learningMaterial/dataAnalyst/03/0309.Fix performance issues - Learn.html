@@ -1,0 +1,274 @@
+<html dir="ltr"><head><title>Fix performance issues - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/get-data/8-performance-issues">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/get-data/8-performance-issues</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Fix performance issues - Learn</h1>
+  <div dir="auto" id="reader-credits">heyrob</div>
+  <div dir="auto" id="reader-estimated-time">7-8 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>7 minutes</li>
+		</ul>
+			<p>Occasionally, organizations will need to address performance issues when running reports. Power BI provides the Performance Analyzer tool to help fix problems and streamline the process.</p>
+<p>Consider the scenario where you are building reports for the Sales team in your organization. You’ve imported your data, which is in several tables within the Sales team’s SQL database, by creating a data connection to the database through DirectQuery. When you create preliminary visuals and filters, you notice that some tables are queried faster than others, and some filters are taking longer to process compared to others.</p>
+<h2 id="optimize-performance-in-power-query">Optimize performance in Power Query</h2>
+<p>The performance in Power Query depends on the performance at the data source level. The variety of data sources that Power Query offers is very wide, and the performance tuning techniques for each source are equally wide. For instance, if you extract data from a Microsoft SQL Server, you should follow the performance tuning guidelines for the product. Good SQL Server performance tuning techniques includes index creation, hardware upgrades, execution plan tuning, and data compression. These topics are beyond the scope here, and are covered only as an example to build familiarity with your data source and reap the benefits when using Power BI and Power Query.</p>
+<p>Power Query takes advantage of good performance at the data source through a technique called Query Folding.</p>
+<h3 id="query-folding">Query folding</h3>
+<p>The query folding within Power Query Editor helps you increase the performance of your Power BI reports. <em>Query folding</em> is the process by which the transformations and edits that you make in Power Query Editor are simultaneously tracked as native queries, or simple <strong>Select</strong> SQL statements, while you are actively making transformations. The reason for implementing this process is to ensure that these transformations can take place in the original data source server and do not overwhelm Power BI computing resources.</p>
+<p>You can use Power Query to load data into Power BI. Using Power Query Editor you can then make further transformations to your data, such as renaming or deleting columns, appending, parsing, filtering, or grouping your data.</p>
+<p>Consider a scenario where you’ve renamed a few columns in the Sales data and merged a city and state column together in the “city state” format. Meanwhile, the query folding feature tracks those changes in native queries. Then, when you load your data, the transformations take place independently in the original source, this ensures that performance is optimized in Power BI.</p>
+<p>The benefits to query folding include:</p>
+<ul>
+<li><p><strong>More efficiency in data refreshes and incremental refreshes.</strong> When you import data tables by using query folding, Power BI is better able to allocate resources and refresh the data faster because Power BI does not have to run through each transformation locally.</p>
+</li>
+<li><p><strong>Automatic compatibility with DirectQuery and Dual storage modes.</strong> All DirectQuery and Dual storage mode data sources must have the back-end server processing abilities to create a direct connection, which means that query folding is an automatic capability that you can use. If all transformations can be reduced to a single <strong>Select</strong> statement, then query folding can occur.</p>
+</li>
+</ul>
+<p>The following scenario shows query folding in action. In this scenario, you apply a set of queries to multiple tables. After you add a new data source by using Power Query, and you are directed to the Power Query Editor, you go to the <strong>Query Settings</strong> pane and right-click the last applied step, as shown in the following figure.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/8-view-native-query-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/8-view-native-query-ss.png" alt="Screenshot of the last applied step right-clicked to show the context menu." data-linktype="relative-path"></a></p>
+<p>If the <strong>View Native Query</strong> option is not available (not displayed in bold type), that query folding is not possible for this step, and you will have to work backward in the <strong>Applied Steps</strong> area until you reach the step in which <strong>View Native Query</strong> is available (displays in bold type). This process will reveal the native query that is used to transform the dataset.</p>
+<p>Native queries are not possible for the following transformations:</p>
+<ul>
+<li>Adding an index column</li>
+<li>Merging and appending columns of different tables with two different sources</li>
+<li>Changing the data type of a column</li>
+<li>Running complex DAX functions</li>
+</ul>
+<p>A good guideline to remember is that if you can translate a transformation into a <strong>Select</strong> SQL statement, which includes operators and clauses such as GROUP BY, SORT BY, WHERE, UNION ALL, and JOIN, you can use query folding.</p>
+<p>While query folding is one option to optimize performance when retrieving, importing, and preparing data, another option is query diagnostics.</p>
+<h3 id="query-diagnostics">Query diagnostics&nbsp;&nbsp;</h3>
+<p>Another tool that you can use to study query performance is <em>query diagnostics</em>. This feature allows you to determine what bottlenecks (if any) exist while loading and transforming your data, refreshing your data in Power Query, running SQL statements in Query Editor, and so on.</p>
+<p>To access query diagnostics in Power Query Editor, go to <strong>Tools</strong> in the Home ribbon. When you are ready to begin transforming your data or making other edits in Power Query Editor, select <strong>Start Diagnostics</strong> on the <strong>Session Diagnostics</strong> tab. When you are finished, make sure that you select <strong>Stop Diagnostics</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/8-navigating-query-diagnostics-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/8-navigating-query-diagnostics-ss.png" alt="Screenshot of the Tools tab with session diagnostics options in the Power query Editor." data-linktype="relative-path"></a></p>
+<p>Selecting <strong>Diagnose Step</strong> shows you the length of time that it takes to run that step, as shown in the following image. This selection can tell you if a step takes longer to complete than others, which then serves as a starting point for further investigation.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/8-applying-query-diagnostics-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/8-applying-query-diagnostics-ss.png" alt="Screenshot of applying query diagnostics." data-linktype="relative-path"></a></p>
+<p>This tool is useful when you want to analyze performance on
+the Power Query side for tasks such as loading datasets, running data
+refreshes, or running other transformative tasks.</p>
+<h2 id="other-techniques-to-optimize-performance">Other techniques to optimize performance&nbsp;&nbsp;</h2>
+<p>Other ways to optimize query performance in Power BI include:</p>
+<ul>
+<li><p><strong>Process as much data as possible in the original data source.</strong> Power Query and Power Query Editor allow you to process the data; however, the processing power that is required to complete this task might lower performance in other areas of your reports. Generally, a good practice is to process, as much as possible, in the native data source.</p>
+</li>
+<li><p><strong>Use native SQL queries.</strong> When using DirectQuery for SQL databases, such as the case for our scenario, make sure that you are not pulling data from stored procedures or common table expressions (CTEs).</p>
+</li>
+<li><p><strong>Separate date and time, if bound together.</strong> If any of your tables have columns that combine date and time, make sure that you separate them into distinct columns before importing them into Power BI. This approach will increase compression abilities.</p>
+</li>
+</ul>
+<p>For more information, refer to <a href="https://docs.microsoft.com/en-us/power-bi/guidance/power-query-folding/" data-linktype="absolute-path" target="az-portal">Query Folding Guidance</a> and <a href="https://docs.microsoft.com/en-us/power-query/power-query-folding/" data-linktype="absolute-path" target="az-portal">Query Folding</a>.</p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Resolve data import errors</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/get-data/9-import-errors/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

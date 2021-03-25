@@ -1,0 +1,272 @@
+<html dir="ltr"><head><title>Get data from online services - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/get-data/5-online-services">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/get-data/5-online-services</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Get data from online services - Learn</h1>
+  <div dir="auto" id="reader-credits">heyrob</div>
+  <div dir="auto" id="reader-estimated-time">3-4 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>2 minutes</li>
+		</ul>
+			<p>To support their daily operations, organizations frequently use a range
+of&nbsp;software&nbsp;applications, such as SharePoint, OneDrive, Dynamics 365,
+Google Analytics and so on. These applications produce their own data.
+Power BI can combine the data from multiple applications to produce more
+meaningful insights and reports.</p>
+<h2 id="scenario">Scenario</h2>
+<p>Tailwind Traders uses SharePoint to collaborate and store sales
+data.&nbsp;It's&nbsp;the start of the new financial year and the sales
+managers&nbsp;want to&nbsp;enter&nbsp;new goals for the sales team.&nbsp;The form that the leadership uses exists&nbsp;in SharePoint. You&nbsp;are required&nbsp;to establish a
+connection to this data within Power BI Desktop, so that the&nbsp;sales goals
+can be used alongside other&nbsp;sales&nbsp;data to&nbsp;determine the health of the
+sales pipeline.</p>
+<p>The following sections examine&nbsp;how to use the Power BI Desktop&nbsp;<strong>Get Data</strong>&nbsp;feature to connect to data sources that are produced by external applications. To illustrate this process, an example is provided that shows how to connect to a SharePoint site and import data from an online list.&nbsp;&nbsp;</p>
+<h3 id="connect-to-data-in-an-application">Connect to data in an application</h3>
+<p>When connecting to data in an application, you would begin&nbsp;in the same
+way as you would when connecting to the other data sources:
+by&nbsp;selecting&nbsp;the&nbsp;<strong>Get data</strong> feature in Power BI Desktop.&nbsp;Then, select
+the option that you need from the&nbsp;<strong>Online Services</strong>&nbsp;category. In this
+example, you select <strong>SharePoint Online List</strong>.&nbsp;&nbsp;</p>
+<p>After you have selected <strong>Connect</strong>,&nbsp;you'll be&nbsp;asked for&nbsp;your
+SharePoint URL. This URL is the one that you use to sign into your
+SharePoint site through a web browser. You can copy the URL from your
+SharePoint site and paste it into the connection window in Power BI. You
+do not need to enter your full URL file path; you only need to load your
+site URL because, when you are connected, you can select the specific
+list that you want to load. Depending on the URL that you copied, you
+might need to delete the last part of your URL, as illustrated in the
+following image.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/5-sharepoint-url-orig-location-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/5-sharepoint-url-orig-location-ssm.png" alt="Screenshot of the SharePoint Online List U R L." data-linktype="relative-path"></a></p>
+<p>After you have entered your URL,&nbsp;select&nbsp;<strong>OK</strong>. Power BI needs to
+authorize the connection to SharePoint, so sign in with your Microsoft
+account and&nbsp;then select&nbsp;<strong>Connect</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/5-authorization-step-sharepoint-access-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/5-authorization-step-sharepoint-access-ssm.png" alt="Screenshot of the Authorization step to get access to SharePoint." data-linktype="relative-path"></a></p>
+<h3 id="choosethe-applicationdata-to-import">Choose&nbsp;the application&nbsp;data to import</h3>
+<p>After Power BI has made the connection with SharePoint,&nbsp;the
+<strong>Navigator</strong> window appears, as it does when you connect to other data
+sources.&nbsp;The window displays the tables and entities within your
+SharePoint site. Select the list that you want to load into Power BI
+Desktop. Similar to when you import from other data sources, you have
+the option to automatically load your data into Power BI model or launch
+the Power Query Editor to transform your data before loading it.</p>
+<p>For&nbsp;this example,&nbsp;you&nbsp;select&nbsp;the <strong>Load</strong> option.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/5-navigator-window-view-tables-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/5-navigator-window-view-tables-ss.png" alt="Screenshot of the Navigator window view with available tables." data-linktype="relative-path"></a></p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/5-close-apply-step-changes-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/5-close-apply-step-changes-ssm.png" alt="Screenshot of the Close and Apply step to apply changes." data-linktype="relative-path"></a></p>
+<p>When you are satisfied with your data,&nbsp;select&nbsp;the&nbsp;<strong>Close &amp; Apply</strong>&nbsp;button
+to apply&nbsp;your&nbsp;changes and load your data into Power BI Desktop.</p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Select a storage mode</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/get-data/6-storage-mode/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

@@ -1,0 +1,521 @@
+<html dir="ltr"><head><title>Lab - Prepare data in Power BI Desktop - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/get-data/lab-prepare">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/get-data/lab-prepare</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Lab - Prepare data in Power BI Desktop - Learn</h1>
+  <div dir="auto" id="reader-credits">heyrob</div>
+  <div dir="auto" id="reader-estimated-time">11-14 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>45 minutes</li>
+		</ul>
+			<h2 id="access-your-environment">Access your environment</h2>
+<p>Before you start this lab, select <strong>Launch lab</strong> above.</p>
+<p>To log in to your lab environment:</p>
+<ol>
+<li>Click anywhere on the Windows desktop in the lab window.</li>
+<li>On the <strong>Resources</strong> tab on the lab side bar, select the <strong>T</strong> icon next to <strong>Password</strong>. The machine password is automatically entered for you. You can log in with the Student profile.</li>
+<li>Press <strong>Enter</strong>.</li>
+</ol>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/includes/vm-login.png" alt="Image of the lab password on the Resources tab." data-linktype="relative-path"></p>
+<p>You can now begin your work on this lab.</p>
+<p><strong>The estimated time to complete the lab is 45 minutes.</strong></p>
+<p>In this lab, you commence the development of a Power BI Desktop solution
+for the Adventure Works company. It involves connecting to source data,
+previewing the data, and using data preview techniques to understand the
+characteristics and quality of the source data.</p>
+<p>In this lab, you learn how to:</p>
+<ul>
+<li><p>Open Power BI Desktop</p>
+</li>
+<li><p>Set Power BI Desktop options</p>
+</li>
+<li><p>Connect to source data</p>
+</li>
+<li><p>Preview source data</p>
+</li>
+<li><p>Use data preview techniques to better understand the data</p>
+</li>
+</ul>
+<h3 id="lab-story">Lab story</h3>
+<p>This lab is one of many in a series of labs that was designed as a complete story from data preparation to publication as reports and dashboards. You can complete the labs in any order. However, if you intend to work through multiple labs, for the first 10 labs, we suggest you do them in the following order:</p>
+<ol>
+<li><p><strong>Prepare data in Power BI Desktop</strong></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/clean-data-power-bi/8-lab/" data-linktype="absolute-path" target="az-portal">Load data in Power BI Desktop</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/design-model-power-bi/8-lab/" data-linktype="absolute-path" target="az-portal">Model data in Power BI Desktop, part 1</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/design-model-power-bi/9-lab/" data-linktype="absolute-path" target="az-portal">Model data in Power BI Desktop, part 2</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/create-measures-dax-power-bi/6-lab/" data-linktype="absolute-path" target="az-portal">Create DAX calculations in Power BI Desktop, part 1</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/create-measures-dax-power-bi/8-lab/" data-linktype="absolute-path" target="az-portal">Create DAX calculations in Power BI Desktop, part 2</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/visuals-power-bi/8-lab/" data-linktype="absolute-path" target="az-portal">Design a report in Power BI Desktop, part 1</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/data-driven-story-power-bi/13-lab/" data-linktype="absolute-path" target="az-portal">Design a report in Power BI Desktop, part 2</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/create-dashboards-power-bi/9-lab/" data-linktype="absolute-path" target="az-portal">Create a Power BI dashboard</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/ai-visuals-power-bi/5-lab/" data-linktype="absolute-path" target="az-portal">Perform data analysis in Power BI Desktop</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/create-paginated-reports-power-bi/6-lab/" data-linktype="absolute-path" target="az-portal">Create a Power BI paginated report</a></p>
+</li>
+</ol>
+<h2 id="exercise-1-prepare-data">Exercise 1: Prepare data</h2>
+<p>In this exercise you will create eight Power BI Desktop queries. Six queries will source data from SQL Server, and two from CSV files.</p>
+<h3 id="task-1-save-the-power-bi-desktop-file"><strong>Task 1: Save the Power BI Desktop file</strong></h3>
+<p>In this task, you will first save the Power BI Desktop file.</p>
+<ol>
+<li><p>To open the Power BI Desktop, on the taskbar, select the Microsoft Power BI Desktop shortcut.</p>
+</li>
+<li><p>To close the getting started window, at the top-left of the window, select <strong>X</strong>.</p>
+</li>
+<li><p>To save the file, select the <strong>File</strong> ribbon tab to open the backstage view.</p>
+</li>
+<li><p>Select <strong>Save</strong>.</p>
+</li>
+<li><p>In the <strong>Save As</strong> window, navigate to the <strong>D:\DA100\MySolution</strong>
+folder.</p>
+</li>
+<li><p>In the <strong>File Name</strong> box, enter <strong>Sales Analysis</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/lab-002.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/lab-002.png" alt="Screenshot of the File name box filled in." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Select <strong>Save</strong>.</p>
+<div>
+<p> Tip</p>
+<p>You can also save the file by selecting the <strong>Save</strong> icon located at
+the top-left.</p>
+</div>
+</li>
+</ol>
+<h3 id="task-2-set-power-bi-desktop-options">Task 2: Set Power BI Desktop options</h3>
+<p>In this task, you will set Power BI Desktop options.</p>
+<ol>
+<li><p>In Power BI Desktop, select the <strong>File</strong> ribbon tab to open the
+backstage view.</p>
+</li>
+<li><p>At the left, select <strong>Options and Settings</strong>, and then select
+<strong>Options</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/lab-005.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/lab-005.png" alt="Screenshot of the Options and Settings page." data-linktype="relative-path"></a></p>
+</li>
+<li><p>In the <strong>Options</strong> window, at the left, in the <strong>Current File</strong>
+group, select <strong>Data Load</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/lab-007-a.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/lab-007-a.png" alt="Screenshot of the Options window with Data Load highlighted." data-linktype="relative-path"></a></p>
+<p>The <strong>Data Load</strong> settings for the current file allow setting options that determine default behaviors when modeling.</p>
+</li>
+<li><p>In the <strong>Relationships</strong> group, clear the two options that are selected.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/lab-007.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/lab-007.png" alt="Screenshot of the Relationships options." data-linktype="relative-path"></a></p>
+<p>While these two options can be helpful when developing a data model, they have been disabled to support the lab experience. When you create relationships in <strong>Lab 03A</strong>, you will learn why you are adding each one.</p>
+</li>
+<li><p>Select <strong>OK</strong>.</p>
+</li>
+<li><p>Save the Power BI Desktop file.</p>
+</li>
+</ol>
+<h3 id="task-3-get-data-from-sql-server">Task 3: Get data from SQL Server</h3>
+<p>In this task, you will create queries based on SQL Server tables.</p>
+<ol>
+<li><p>On the <strong>Home</strong> ribbon tab, from inside the <strong>Data</strong> group, select
+<strong>SQL Server</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/lab-011.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/lab-011.png" alt="Screenshot of the Home ribbon tab with SQL Server highlighted." data-linktype="relative-path"></a></p>
+</li>
+<li><p>In the <strong>SQL Server Database</strong> window, in the <strong>Server</strong> box, enter
+<strong>localhost</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/lab-013.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/lab-013.png" alt="Screenshot of the SQL Server database window with Server set to localhost." data-linktype="relative-path"></a></p>
+<p>In the labs, you will connect to the SQL Server database by using <strong>localhost</strong>. This isn’t a recommended practice, however, when creating your own solutions. It’s because gateway data sources cannot resolve <strong>localhost</strong>.</p>
+</li>
+<li><p>Select <strong>OK</strong>.</p>
+</li>
+<li><p>Notice that the default authentication is to <strong>Use My Current Credentials</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/lab-012.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/lab-012.png" alt="Screenshot of the localhost Use my current credentials setting." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Select <strong>Connect</strong>.</p>
+</li>
+<li><p>When prompted about encryption support, select <strong>OK</strong>.</p>
+</li>
+<li><p>In the <strong>Navigator</strong> window, at the left, expand the <strong>AdventureWorksDW2020</strong> database.</p>
+<p>The <strong>AdventureWorksDW2020</strong> database is based on the <strong>AdventureWorksDW2017</strong> sample database. It has been modified to support the learning objectives of the course labs.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/lab-008.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/lab-008.png" alt="Screenshot of the Navigator window with AdventureWorks D W 2020." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Select but don’t check the <strong>DimEmployee</strong> table.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/lab-016.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/lab-016.png" alt="Screenshot of the selected DimEmployee option." data-linktype="relative-path"></a></p>
+</li>
+<li><p>In the right pane, notice a preview of the table.</p>
+<p>The preview allows you to determine the columns and a sample of rows.</p>
+</li>
+<li><p>To create queries, select the following six tables:</p>
+<ul>
+<li>DimEmployee</li>
+<li>DimEmployeeSalesTerritory</li>
+<li>DimProduct</li>
+<li>DimReseller</li>
+<li>DimSalesTerritory</li>
+<li>FactResellerSales</li>
+</ul>
+</li>
+<li><p>To apply transformations to the data of the selected tables, select
+<strong>Transform Data</strong>.</p>
+<p>You won’t be transforming the data in this lab. The objectives of this lab are to explore and profile the data in the <strong>Power Query Editor</strong> window.</p>
+</li>
+</ol>
+<h3 id="task-4-preview-sql-server-queries">Task 4: Preview SQL Server queries</h3>
+<p>In this task, you will preview the data of the SQL Server queries. First, you will learn relevant information about the data. You will also use column quality, column distribution, and column profile tools to understand the data, and assess data quality.</p>
+<ol>
+<li><p>In the <strong>Power Query Editor</strong> window, at the left, notice the <strong>Queries</strong> pane.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/lab-014.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/lab-014.png" alt="Screenshot of the FactResellerSales query selected in the Queries pane." data-linktype="relative-path"></a></p>
+<p>The <strong>Queries</strong> pane contains one query for each selected table.</p>
+</li>
+<li><p>Select the first query <strong>DimEmployee</strong>.</p>
+<p>The <strong>DimEmployee</strong> table stores one row for each employee. A subset of the rows represent the salespeople, which will be relevant to the model you’ll develop.</p>
+</li>
+<li><p>At the bottom left, in the status bar, notice the table statistics - the table has 33 columns, and 296 rows.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/lab-020.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/lab-020.png" alt="Screenshot of the status bar showing 33 columns and 296 rows." data-linktype="relative-path"></a></p>
+</li>
+<li><p>In the data preview pane, scroll horizontally to review all columns.</p>
+</li>
+<li><p>Notice that the last five columns contain <strong>Table</strong> or <strong>Value</strong>
+links.</p>
+<p>These five columns represent relationships to other tables in the database. They can be used to join tables together. You will join tables in <strong>Lab 03A</strong>.</p>
+</li>
+<li><p>To assess column quality, on the <strong>View</strong> ribbon tab, from inside
+the <strong>Data Preview</strong> group, select <strong>Column Quality</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/lab-021.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/lab-021.png" alt="Screenshot of the View ribbon tab with Column quality selected." data-linktype="relative-path"></a></p>
+<p>Column quality allows you to easily determine the percentage of valid, error, or empty values.</p>
+</li>
+<li><p>For the <strong>Position</strong> column (sixth last column), notice that 94% of
+rows are empty (null).</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/lab-022.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/lab-022.png" alt="Screenshot of the Position column with Empty at 94%." data-linktype="relative-path"></a></p>
+</li>
+<li><p>To assess column distribution, on the <strong>View</strong> ribbon tab, from inside the <strong>Data Preview</strong> group, select <strong>Column Distribution</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/lab-003.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/lab-003.png" alt="Screenshot of the View ribbon tab with Column distribution selected." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Review the <strong>Position</strong> column again, and notice that there are four distinct values, and one unique value.</p>
+</li>
+<li><p>Review the column distribution for the <strong>EmployeeKey</strong> (first)
+column—there are 296 distinct values, and 296 unique values.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/lab-024.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/lab-024.png" alt="Screenshot of the column distribution with 296 values." data-linktype="relative-path"></a></p>
+<p>When the distinct and unique counts are the same, it means the column contains unique values. When modeling, it’s important that some tables contain unique columns. You can use these unique columns to create one-to-many relationships, which you will do in the <strong>Model Data in Power BI Desktop, Part 1</strong> lab.</p>
+</li>
+<li><p>In the <strong>Queries</strong> pane, select the <strong>DimEmployeeSalesTerritory</strong> query.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/lab-001.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/lab-001.png" alt="Screenshot of the Queries pane with DimEmployeeSalesTerritory selected." data-linktype="relative-path"></a></p>
+<p>The <strong>DimEmployeeSalesTerritory</strong> table stores one row for each employee and the sales territory regions they manage. The table supports relating many regions to a single employee. Some employees manage one, two, or possibly more regions. When you model this data, you’ll need to define a many-to-many relationship, which you’ll do in the <strong>Model Data in Power BI Desktop, Part 2</strong> lab.</p>
+</li>
+<li><p>In the <strong>Queries</strong> pane, select the <strong>DimProduct</strong> query.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/lab-017.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/lab-017.png" alt="Screenshot of the Queries pane with DimProduct selected." data-linktype="relative-path"></a></p>
+<p>The <strong>DimProduct</strong> table contains one row per product sold by the company.</p>
+</li>
+<li><p>Horizontally scroll to reveal the last columns.</p>
+</li>
+<li><p>Notice the <strong>DimProductSubcategory</strong> column.</p>
+<p>When you add transformations to this query in the <strong>Load Data in Power BI Desktop</strong> lab, you’ll use the <strong>DimProductSubcategory</strong> column to join tables.</p>
+</li>
+<li><p>In the <strong>Queries</strong> pane, select the <strong>DimReseller</strong> query.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/lab-034.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/lab-034.png" alt="Screenshot of the Queries pane with DimReseller selected." data-linktype="relative-path"></a></p>
+<p>The <strong>DimReseller</strong> table contains one row per reseller. Resellers sell, distribute, or add value to Adventure Works’ products.</p>
+</li>
+<li><p>To view column values, on the <strong>View</strong> ribbon tab, from inside the <strong>Data Preview</strong> group, select <strong>Column Profile</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/lab-028.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/lab-028.png" alt="Screenshot of the View ribbon tab with Column profile selected." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Select the <strong>BusinessType</strong> column header.</p>
+</li>
+<li><p>Notice that a new pane opens beneath the data preview pane.</p>
+</li>
+<li><p>Review the column statistics and value distribution.</p>
+</li>
+<li><p>Notice the data quality issue: there are two labels for warehouse
+(<strong>Warehouse</strong>, and the misspelled <strong>Ware House</strong>).</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/lab-029.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/lab-029.png" alt="Screenshot of value distribution with two labels: Warehouse and Ware House." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Hover the cursor over the <strong>Ware House</strong> bar, and notice that there are five rows with this value.</p>
+<p>You’ll apply a transformation to relabel these five rows in the <strong>Load Data in Power BI Desktop</strong> lab.</p>
+</li>
+<li><p>In the <strong>Queries</strong> pane, select the <strong>DimSalesTerritory</strong> query.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/lab-040.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/lab-040.png" alt="Screenshot of the Queries pane with DimSalesTerritory selected." data-linktype="relative-path"></a></p>
+<p>The <strong>DimSalesTerritory</strong> table contains one row per sales region, including <strong>Corporate HQ</strong> (headquarters). Regions are assigned to a country, and countries are assigned to groups. In the <strong>Model Data in Power BI Desktop, Part 1</strong> lab, you’ll create a hierarchy to support analysis at region, country, or group level.</p>
+</li>
+<li><p>In the <strong>Queries</strong> pane, select the <strong>FactResellerSales</strong> query.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/lab-031-a.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/lab-031-a.png" alt="Screenshot of the Queries pane with FactResellerSales selected." data-linktype="relative-path"></a></p>
+<p>The <strong>FactResellerSales</strong> table contains one row per sales order line - a sales order contains one or more line items.</p>
+</li>
+<li><p>Review the column quality for the <strong>TotalProductCost</strong> column, and
+notice that 8% of the rows are empty.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/lab-032.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/lab-032.png" alt="Screenshot of the TotalProductCost column showing Empty at 8%." data-linktype="relative-path"></a></p>
+<p>Missing <strong>TotalProductCost</strong> column values is a data quality issue. To address the issue in the <strong>Load Data in Power BI Desktop</strong> lab, you'll apply transformations to fill in missing values by using the product standard cost, which is stored in the <strong>DimProduct</strong> table.</p>
+</li>
+</ol>
+<h3 id="task-5-get-data-from-a-csv-file">Task 5: Get data from a CSV file</h3>
+<p>In this task, you will create a query based on a CSV file.</p>
+<ol>
+<li><p>To add a new query, in the <strong>Power Query Editor</strong> window, on the
+<strong>Home</strong> ribbon tab, from inside the <strong>New Query</strong> group, select the
+<strong>New Source</strong> down-arrow, and then select <strong>Text/CSV</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/lab-033.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/lab-033.png" alt="Screenshot of the New Source button on the Home ribbon." data-linktype="relative-path"></a></p>
+</li>
+<li><p>In the <strong>Open</strong> window, navigate to the <strong>D:\DA100\Resources</strong> folder,
+and select the <strong>ResellerSalesTargets.csv</strong> file.</p>
+</li>
+<li><p>Select <strong>Open</strong>.</p>
+</li>
+<li><p>In the <strong>ResellerSalesTargets.csv</strong> window, review the data preview.</p>
+</li>
+<li><p>Select <strong>OK</strong>.</p>
+</li>
+<li><p>In the <strong>Queries</strong> pane, notice the addition of the
+<strong>ResellerSalesTargets</strong> query.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/lab-036-a.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/lab-036-a.png" alt="Screenshot of the Queries pane with ResellerSalesTargets selected." data-linktype="relative-path"></a></p>
+<p>The <strong>ResellerSalesTargets</strong> CSV file contains one row per salesperson, per year. Each row records 12 monthly sales targets (expressed in thousands). The business year for the Adventure Works company commences on July 1.</p>
+</li>
+<li><p>Notice that no columns contain empty values. When there isn’t a monthly sales target, a hyphen character is stored instead.</p>
+</li>
+<li><p>Review the icons in each column header, to the left of the column
+name.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/lab-036.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/lab-036.png" alt="Screenshot of the icon in the column headers." data-linktype="relative-path"></a></p>
+<p>The icons represent the column data type. <strong>123</strong> is whole number, and <strong>ABC</strong> is text.</p>
+<p>You’ll apply many transformations to achieve a different shaped result consisting of only three columns: <strong>Date</strong>, <strong>EmployeeKey</strong>, and <strong>TargetAmount</strong> in the <strong>Load Data in Power BI Desktop</strong> lab.</p>
+</li>
+</ol>
+<h3 id="task-6-get-additional-data-from-a-csv-file">Task 6: Get additional data from a CSV file</h3>
+<p>In this task, you will create an additional query based on a different
+CSV file.</p>
+<p>Use the steps in the previous task to create a query based on the
+<strong>D:\DA100\Resources\ColorFormats.csv</strong> file.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/lab-037-a.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/lab-037-a.png" alt="Screenshot of the Queries pane with ColorFormats selected." data-linktype="relative-path"></a></p>
+<p>The <strong>ColorFormats</strong> CSV file contains one row per product color. Each row records the HEX codes to format background and font colors. You’ll integrate this data with the <strong>DimProduct</strong> query data in the <strong>Load Data in Power BI Desktop</strong> lab.</p>
+<h3 id="task-7-finish-up">Task 7: Finish up</h3>
+<p>In this task, you'll complete the lab.</p>
+<ol>
+<li><p>On the <strong>View</strong> ribbon tab, from inside the <strong>Data Preview</strong> group, clear the three data preview options:</p>
+<ul>
+<li>Column quality</li>
+<li>Column distribution</li>
+<li>Column profile</li>
+</ul>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/lab-038.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/lab-038.png" alt="Screenshot of the View ribbon tab with Column quality, Column distribution, and Column profile boxes cleared." data-linktype="relative-path"></a></p>
+</li>
+<li><p>To save the Power BI Desktop file, on the <strong>File</strong> backstage view, select <strong>Save</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/lab-041.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/lab-041.png" alt="Screenshot of the File menu expanded to show the Save option." data-linktype="relative-path"></a></p>
+</li>
+<li><p>When prompted to apply the queries, select <strong>Apply Later</strong>.</p>
+<p>Applying the queries will load their data to the data model. You’re not ready to do that, as there are many transformations that must be applied first.</p>
+</li>
+<li><p>If you intend to start the next lab, leave Power BI Desktop open.</p>
+<p>You’ll apply various transformations to the queries and then apply the queries to load them to the data model in the Load Data in Power BI Desktop lab.</p>
+</li>
+</ol>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Check your knowledge</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/get-data/10-check/" data-bi-name="continue" target="_top">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

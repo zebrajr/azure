@@ -1,0 +1,8 @@
+1. B
+True. T-SQL is the query language that you would use for SQL Server.
+
+2. B
+This will reflect cube changes immediately.
+
+3. A
+Power Query and Power Query Editor are built to allow you to process the data, however, the processing power required to do this may lower performance in other areas of your reports. It is good practice to process as much as possible in the native data source.

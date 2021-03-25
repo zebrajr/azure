@@ -1,0 +1,365 @@
+<html dir="ltr"><head><title>Get data from relational data sources - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/get-data/3-relational-data">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/get-data/3-relational-data</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Get data from relational data sources - Learn</h1>
+  <div dir="auto" id="reader-credits">heyrob</div>
+  <div dir="auto" id="reader-estimated-time">8-9 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>6 minutes</li>
+		</ul>
+			<p>If your organization uses a&nbsp;relational database&nbsp;to record its sales
+transactions, you&nbsp;can use&nbsp;Power BI Desktop to&nbsp;establish a connection
+to&nbsp;your organization's&nbsp;relational&nbsp;database, rather than getting data
+from individual flat files.</p>
+<p>Connecting Power BI to your database will help you to monitor the
+progress of your business&nbsp;and&nbsp;identify trends,&nbsp;so you can forecast sales
+figures, plan budgets and&nbsp;set performance indicators and targets.&nbsp;&nbsp;Power
+BI&nbsp;Desktop&nbsp;can connect to many relational databases&nbsp;that&nbsp;are either&nbsp;in
+the&nbsp;cloud&nbsp;or&nbsp;on-premises.</p>
+<h2 id="scenario">Scenario</h2>
+<p>The Sales team at Tailwind Traders have requested that you connect to the organization's on-premises&nbsp;SQL Server&nbsp;database&nbsp;and get&nbsp;the&nbsp;sales data into Power BI Desktop so you can build sales reports.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/3-get-data-sql-server-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/3-get-data-sql-server-ssm.png" alt="Screenshot of the Data flow from SQL database into Power B I." data-linktype="relative-path"></a></p>
+<h3 id="connect-to-data-in-a-relational-database">Connect to data in a relational database</h3>
+<p>You&nbsp;can use the&nbsp;<strong>Get data</strong> feature&nbsp;in Power BI
+Desktop&nbsp;and&nbsp;select&nbsp;the&nbsp;applicable&nbsp;option for your&nbsp;relational
+database.&nbsp;For this example,&nbsp;you would&nbsp;select the&nbsp;<strong>SQL Server</strong>&nbsp;option,
+as shown in the following screenshot.&nbsp;&nbsp;</p>
+<div>
+<p> Tip</p>
+<p>Next to the <strong>Get Data</strong> button are quick access data source
+options, such as <strong>SQL Server.</strong></p>
+</div>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/3-get-data-sql-server-dropdown-ssm..png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/3-get-data-sql-server-dropdown-ssm..png" alt="Screenshot of the Get Data menu expanded to show SQL Server." data-linktype="relative-path"></a></p>
+<p>Your next step is to&nbsp;enter your database&nbsp;server name and a database name in the <strong>SQL Server database</strong> window.&nbsp;The&nbsp;two&nbsp;options in data connectivity mode are: <strong>Import</strong> (selected&nbsp;by default, recommended) and <strong>DirectQuery</strong>.&nbsp;Mostly, you select <strong>Import.</strong>&nbsp;Other advanced&nbsp;options&nbsp;are also available in the <strong>SQL Server database</strong> window,&nbsp;but you can&nbsp;ignore them&nbsp;for&nbsp;now.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/3-get-data-sql-server-db-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/3-get-data-sql-server-db-ss.png" alt="Screenshot of the SQL Server database details." data-linktype="relative-path"></a></p>
+<p>After you have added your server and database names, you&nbsp;will be&nbsp;prompted&nbsp;to sign in with a username and password.&nbsp;You will have three&nbsp;sign-in&nbsp;options:</p>
+<ul>
+<li><p><strong>Windows</strong>&nbsp;-&nbsp;Use&nbsp;your&nbsp;Windows&nbsp;account (Azure Active Directory credentials).</p>
+</li>
+<li><p><strong>Database</strong>&nbsp;-&nbsp;Use&nbsp;your database&nbsp;credentials.&nbsp; For instance, SQL Server has&nbsp;its&nbsp;own sign-in and authentication system that is sometimes used.&nbsp; If the database administrator gave you a unique sign-in to the database, you might need to enter those credentials on the <strong>Database</strong> tab.</p>
+</li>
+<li><p><strong>Microsoft account</strong>&nbsp;- Use your Microsoft account credentials.&nbsp;This option is often used for Azure services.</p>
+</li>
+</ul>
+<p>Select a sign-in option,&nbsp;enter&nbsp;your&nbsp;username&nbsp;and password,&nbsp;and
+then&nbsp;select&nbsp;<strong>Connect</strong>.&nbsp;&nbsp;</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/3-sql-creds-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/3-sql-creds-ssm.png" alt="Screenshot of the database authorization&nbsp;details." data-linktype="relative-path"></a></p>
+<h3 id="selectdata-to-import">Select&nbsp;data to import</h3>
+<p>After the database has been connected to Power BI Desktop,
+the&nbsp;<strong>Navigator</strong>&nbsp;window&nbsp;displays the&nbsp;data that is available in your
+data source&nbsp;(the SQL database in this example). You can select a table
+or entity to preview its contents&nbsp;and&nbsp;make sure that the correct data
+will be loaded into the Power BI model.&nbsp;&nbsp;</p>
+<p>Select the check box(es) of the&nbsp;table(s)&nbsp;that you want to bring in to Power BI&nbsp;Desktop, and then select either the&nbsp;<strong>Load</strong>&nbsp;or&nbsp;<strong>Transform Data</strong>&nbsp;option.</p>
+<ul>
+<li><p><strong>Load</strong>&nbsp;-&nbsp;Automatically load your data into&nbsp;a&nbsp;Power BI model&nbsp;in its current state.</p>
+</li>
+<li><p><strong>Transform Data</strong>&nbsp;-&nbsp;Open&nbsp;your data in Microsoft Power Query, where you can&nbsp;perform actions such as&nbsp;deleting&nbsp;unnecessary rows or columns,&nbsp;grouping&nbsp;your data, removing&nbsp;errors,&nbsp;and&nbsp;many other data quality tasks.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/3-table-selection-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/3-table-selection-ssm.png" alt="Screenshot of the Navigator window with available tables." data-linktype="relative-path"></a></p>
+</li>
+</ul>
+<h3 id="import-data-by-writing-ansqlquery">Import data by writing an&nbsp;SQL&nbsp;query&nbsp;&nbsp;</h3>
+<p>Another way you can import data is&nbsp;to&nbsp;write an&nbsp;SQL query&nbsp;to&nbsp;specify&nbsp;only&nbsp;the&nbsp;tables and&nbsp;columns that you need.</p>
+<p>To&nbsp;write&nbsp;your&nbsp;SQL query,&nbsp;on the&nbsp;<strong>SQL Server&nbsp;database</strong>&nbsp;window, enter your&nbsp;server and database names, and then&nbsp;select&nbsp;the&nbsp;arrow next to&nbsp;<strong>Advanced options</strong> to&nbsp;expand this section and view your options. In the&nbsp;<strong>SQL statement</strong>&nbsp;box,&nbsp;write your query&nbsp;statement, and then&nbsp;select <strong>OK</strong>.&nbsp;In this example, you will use the <strong>Select</strong>&nbsp;SQL statement to load the ID, NAME and SALESAMOUNT columns&nbsp;<strong>from</strong> the SALES table.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/3-sql-statement-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/3-sql-statement-ss.png" alt="Screenshot of the SQL Server database dialog with a SQL query." data-linktype="relative-path"></a></p>
+<h3 id="change-data-source-settings">Change data source settings&nbsp;&nbsp;</h3>
+<p>After you&nbsp;create a&nbsp;data source&nbsp;connection&nbsp;and load data into Power BI
+Desktop, you can return and change your connection settings at any
+time.&nbsp;This action&nbsp;is&nbsp;often&nbsp;required&nbsp;due to a&nbsp;security policy within the
+organization, for example,&nbsp;when the password needs to be updated every 90
+days.&nbsp;You can change the data source, edit permissions or clear
+permissions.</p>
+<p>On&nbsp;the&nbsp;<strong>Home</strong> tab, select&nbsp;<strong>Transform data,</strong>&nbsp;and then
+select&nbsp;the&nbsp;<strong>Data source settings</strong>&nbsp;option.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/3-change-sql-settings-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/3-change-sql-settings-ssm.png" alt="Screenshot of the Transform data menu expanded with Data source settings highlighted." data-linktype="relative-path"></a></p>
+<p>From the list of data sources&nbsp;that displays, select the&nbsp;data source that you want&nbsp;to&nbsp;update.&nbsp;Then, you can right-click&nbsp;that&nbsp;data source&nbsp;to view the&nbsp;available update options&nbsp;or you can use&nbsp;the&nbsp;update option&nbsp;buttons&nbsp;on the lower left of the window.&nbsp;Select the&nbsp;update&nbsp;option&nbsp;that you need, change&nbsp;the&nbsp;settings as required, and then&nbsp;apply your changes.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/3-sql-data-source-edit-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/3-sql-data-source-edit-ssm.png" alt="Screenshot of the Data source settings options." data-linktype="relative-path"></a></p>
+<p>You&nbsp;can&nbsp;also&nbsp;change your data source settings&nbsp;from within&nbsp;Power Query.&nbsp;Select&nbsp;the&nbsp;table, and then&nbsp;select&nbsp;the&nbsp;<strong>Data source settings</strong>&nbsp;option on&nbsp;the <strong>Home</strong>&nbsp;ribbon. Alternatively, you can go to the&nbsp;<strong>Query Settings</strong>&nbsp;panel on&nbsp;the right&nbsp;side of&nbsp;the screen&nbsp;and&nbsp;select&nbsp;the settings&nbsp;icon next to&nbsp;Source&nbsp;(or double&nbsp;Select&nbsp;Source).&nbsp;In the&nbsp;window&nbsp;that displays,&nbsp;update&nbsp;the&nbsp;server and database details, and&nbsp;then select&nbsp;<strong>OK</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/3-edit-creds-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/3-edit-creds-ssm.png" alt="Screenshot of the Data source settings button." data-linktype="relative-path"></a></p>
+<p>After&nbsp;you have made the&nbsp;changes,&nbsp;select&nbsp;<strong>Close and Apply</strong>&nbsp;to
+apply&nbsp;those&nbsp;changes to your data source settings.</p>
+<h3 id="write-ansql-statement">Write an&nbsp;SQL statement</h3>
+<p>As previously mentioned,&nbsp;you can import data into your Power BI model by
+using&nbsp;an&nbsp;SQL query.&nbsp;SQL stands for Structured Query Language&nbsp;and&nbsp;is a
+standardized programming language&nbsp;that is&nbsp;used to manage relational
+databases and perform various data management operations.</p>
+<p>Consider the scenario where your database has a large table that is comprised of&nbsp;sales data over several years.&nbsp; Sales data from 2009 is not relevant to the report that you are creating.&nbsp;This situation is&nbsp;where SQL&nbsp;is&nbsp;beneficial because&nbsp;it&nbsp;allows you to load only&nbsp;the&nbsp;required set of data by specifying exact columns&nbsp;and rows&nbsp;in your SQL statement&nbsp;and then&nbsp;importing&nbsp;them into your data model.&nbsp;You&nbsp;can also join different tables, run specific calculations, create logical&nbsp;statements,&nbsp;and filter data in your SQL query.</p>
+<p>The following example shows a simple query where the ID, NAME and&nbsp;SALESAMOUNT are selected&nbsp;from the SALES table.</p>
+<p>The SQL query starts with&nbsp;a&nbsp;<strong>Select</strong> statement, which allows you to
+choose&nbsp;the&nbsp;specific&nbsp;fields&nbsp;that you&nbsp;want&nbsp;to pull from your database.&nbsp;In
+this example, you want&nbsp;to&nbsp;load&nbsp;the&nbsp;ID, NAME, and SALESAMOUNT columns.</p>
+<pre tabindex="0"><code data-author-content="SELECT
+ID
+, NAME
+, SALESAMOUNT
+FROM
+"><span><span>SELECT</span>
+<span>ID</span>
+, <span>NAME</span>
+, SALESAMOUNT
+<span>FROM</span>
+</span></code></pre>
+<p>FROM specifies the name of the table that you want to pull the data
+from. In this case,&nbsp;it's&nbsp;the SALES table. The following example is the
+full SQL query:</p>
+<pre tabindex="0"><code data-author-content="SELECT
+ID
+, NAME
+, SALESAMOUNT
+FROM
+SALES
+"><span><span>SELECT</span>
+<span>ID</span>
+, <span>NAME</span>
+, SALESAMOUNT
+<span>FROM</span>
+SALES
+</span></code></pre>
+<p>When using an SQL query to import data,&nbsp;try&nbsp;to&nbsp;avoid&nbsp;using&nbsp;the&nbsp;wildcard character (*) in your query. If you use&nbsp;the&nbsp;wildcard character (*) in your SELECT statement,&nbsp;you import all columns that you don't need from&nbsp;the&nbsp;specified table.</p>
+<p>The following example shows the query using the wildcard character. &nbsp;</p>
+<pre tabindex="0"><code data-author-content="SELECT *
+FROM
+SALES
+"><span><span>SELECT</span> *
+<span>FROM</span>
+SALES
+</span></code></pre>
+<p>The wildcard character (*) will&nbsp;import all columns within&nbsp;the&nbsp;<strong>Sales</strong> table. This&nbsp;method is not recommended&nbsp;because it will lead to&nbsp;redundant
+data in your data model, which&nbsp;will cause performance issues and require
+additional steps to normalize your data for reporting.&nbsp;&nbsp;</p>
+<p>All queries should also have a <strong>WHERE</strong> clause. This clause will filter the rows to pick only filtered records that you want. In this example, if you want to get recent sales data after Jan 1, 2020, add a <strong>WHERE</strong> clause. The evolved query would look like the following example.</p>
+<pre tabindex="0"><code data-author-content="SELECT
+ID
+, NAME
+, SALESAMOUNT
+FROM
+SALES
+WHERE
+OrderDate >= ‘1/1/2020’
+"><span><span>SELECT</span>
+<span>ID</span>
+, <span>NAME</span>
+, SALESAMOUNT
+<span>FROM</span>
+SALES
+<span>WHERE</span>
+OrderDate &gt;= ‘<span>1</span>/<span>1</span>/<span>2020</span>’
+</span></code></pre>
+<p>It is a best practice to avoid doing this directly in Power BI.  Instead, consider writing a query like this in a view. A view is an object in a relational database, similar to a table. Views have rows and columns, and can contain almost every operator in the SQL language. If Power BI uses a view, when it retrieves data, it participates in query folding, a feature of Power Query. Query folding will be explained later, but in short, Power Query will optimize data retrieval according to how the data is being used later.</p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Get data from a NoSQL database</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/get-data/4-nosql-database/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

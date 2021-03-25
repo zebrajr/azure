@@ -1,0 +1,277 @@
+<html dir="ltr"><head><title>Get data from a NoSQL database - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/get-data/4-nosql-database">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/get-data/4-nosql-database</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Get data from a NoSQL database - Learn</h1>
+  <div dir="auto" id="reader-credits">heyrob</div>
+  <div dir="auto" id="reader-estimated-time">3-4 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>3 minutes</li>
+		</ul>
+			<p>Some&nbsp;organization don't use a relational database&nbsp;but&nbsp;instead&nbsp;use
+a&nbsp;<em>NoSQL</em>&nbsp;database.&nbsp;A&nbsp;NoSQL&nbsp;database (also referred to as non-SQL, not
+only SQL&nbsp;or&nbsp;<em>non-relational</em>) is a flexible type of database that does
+not use tables to store data.&nbsp;&nbsp;</p>
+<h2 id="scenario">Scenario</h2>
+<p>Software developers at Tailwind Traders created an application to manage
+shipping and tracking products from their warehouses that uses&nbsp;CosmosDB,
+a NoSQL database, as the data repository.&nbsp; This application uses&nbsp;Cosmos
+DB&nbsp;to store JSON documents, which are open standard file formats that
+are primarily used to transmit data between a server and web
+application.&nbsp;You need to import this data into a Power BI data model for
+reporting.</p>
+<h3 id="connect-to-a-nosql-database-azure-cosmos-db">Connect to a NoSQL database (Azure Cosmos DB)</h3>
+<p>In this scenario, you will use the&nbsp;<strong>Get data</strong>&nbsp;feature in Power BI Desktop. However, this time you will select&nbsp;the&nbsp;<strong>More...</strong>&nbsp;option&nbsp;to locate and connect to the type of database that you use. In this example,&nbsp;you will&nbsp;select&nbsp;the&nbsp;<strong>Azure</strong>&nbsp;category,&nbsp;select&nbsp;<strong>Azure Cosmos&nbsp;DB,</strong>&nbsp;and&nbsp;then&nbsp;select&nbsp;<strong>Connect</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/4-get-data-cosmos-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/4-get-data-cosmos-ssm.png" alt="Screenshot of the Get Data from Azure Cosmos D B option." data-linktype="relative-path"></a></p>
+<p>On the&nbsp;<strong>Preview Connector</strong>&nbsp;window,&nbsp;select&nbsp;<strong>Continue</strong> and then enter
+your database credentials. In this example, on the&nbsp;<strong>Azure Cosmos
+DB</strong>&nbsp;window,&nbsp;you can&nbsp;enter the database details. You can specify the
+Azure Cosmos DB account endpoint URL that you want to get the data
+from&nbsp;(you can get the URL from the&nbsp;<strong>Keys</strong>&nbsp;blade of your Azure portal).
+Alternatively, you can enter the database name, collection name or use
+the navigator to select the database and collection to identify the data
+source.</p>
+<p>If you are connecting to an endpoint for the first time,&nbsp;as you are in
+this example,&nbsp;make sure that you enter your account key. You can find
+this key in the&nbsp;<strong>Primary Key</strong>&nbsp;box in the&nbsp;<strong>Read-only Keys</strong>&nbsp;blade of
+your Azure portal.</p>
+<h3 id="import-a-json-file">Import a JSON file</h3>
+<p>JSON type records must be extracted and normalized before you can report
+on them, so you need to transform the data before loading it into Power
+BI Desktop.</p>
+<p>After you have connected to the database account,
+the&nbsp;<strong>Navigator</strong>&nbsp;window opens, showing a list of databases under that
+account. Select the table that you want to import. In this&nbsp;example, you
+will select the Product table.&nbsp;The preview pane only shows <strong>Record</strong>
+items&nbsp;because&nbsp;all records in the&nbsp;document are represented as a Record
+type in Power BI.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/4-cosmos-navigator-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/4-cosmos-navigator-ss.png" alt="Screenshot of the Navigator window with list of available records." data-linktype="relative-path"></a></p>
+<p>Select&nbsp;the&nbsp;<strong>Edit</strong>&nbsp;button to open the records in Power Query.&nbsp;&nbsp;</p>
+<p>In Power Query,&nbsp;select&nbsp;the&nbsp;<strong>Expander</strong> button&nbsp;to the right side of
+the&nbsp;<strong>Column1</strong>&nbsp;header, which will display the context menu with a list
+of fields. Select the fields that you want to load into Power BI
+Desktop, clear the&nbsp;<strong>Use original column name as prefix</strong>&nbsp;checkbox, and
+then&nbsp;select&nbsp;<strong>OK</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/4-expand-record-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/4-expand-record-ssm.png" alt="Screenshot of the Expand records function." data-linktype="relative-path"></a></p>
+<p>Review&nbsp;the&nbsp;selected&nbsp;data to ensure that you are satisfied with it,
+then&nbsp;select&nbsp;<strong>Close &amp; Apply</strong>&nbsp;to load&nbsp;the&nbsp;data into Power BI&nbsp;Desktop.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/4-cosmos-results-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/4-cosmos-results-ssm.png" alt="Screenshot of the Close and Apply step in Power Query." data-linktype="relative-path"></a></p>
+<p>The data now resembles a table with rows and columns.&nbsp;Data from&nbsp;Cosmos
+DB&nbsp;can now be related to data from other data sources and can eventually
+be used in a Power BI report.</p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Get data from online services</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/get-data/5-online-services/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

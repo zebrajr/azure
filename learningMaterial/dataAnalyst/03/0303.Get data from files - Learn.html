@@ -1,0 +1,315 @@
+<html dir="ltr"><head><title>Get data from files - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/get-data/2-data-files">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/get-data/2-data-files</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Get data from files - Learn</h1>
+  <div dir="auto" id="reader-credits">heyrob</div>
+  <div dir="auto" id="reader-estimated-time">6-7 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>5 minutes</li>
+		</ul>
+			<p>Organizations often export and store data in files.&nbsp;One possible file
+format is a flat file. A flat file is a type of file that has only one
+data table and every row of data is in the same structure. The file does
+not contain hierarchies.&nbsp;Likely, you're familiar with the most common
+types of flat files, which are comma-separated values (.csv) files,
+delimited text (.txt) files, and fixed width files. Another type of file
+would be the output files from different applications, like
+Microsoft&nbsp;Excel workbooks (.xlsx).</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/2-file-types-c.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/2-file-types-c.png" alt="Screenshot of data from flat files icons." data-linktype="relative-path"></a></p>
+<p>Power BI Desktop allows you to get data from many types of files. You
+can find a list of the available options when you use the&nbsp;<strong>Get
+data</strong>&nbsp;feature in Power BI Desktop.&nbsp;The following sections explain how
+you can import data from an Excel file that is stored on a local
+computer.</p>
+<h2 id="scenario">Scenario</h2>
+<p>The Human Resources (HR) team at Tailwind Traders has prepared a flat file that contains some of your organization's&nbsp;employee&nbsp;data, such as&nbsp;employee name,&nbsp;hire date, position, and manager.&nbsp;They've requested that you build Power BI reports by using this data, and data that is located in several other data sources.</p>
+<h3 id="flat-file-location">Flat file location</h3>
+<p>The first step is to determine which file location that you want to use to export and store your data.</p>
+<p>Your Excel files might exist in one of the following locations:</p>
+<ul>
+<li><p><strong>Local</strong> - You can import data from a local file into Power BI.
+The file&nbsp;isn't&nbsp;moved into Power BI, and a link doesn't remain to
+it. Instead, a new dataset is created in Power BI, and data from
+the Excel file is loaded into it. Accordingly, changes to the
+original Excel file are not reflected in your Power BI dataset.
+You can use local data import for data that&nbsp;doesn't&nbsp;change.</p>
+</li>
+<li><p><strong>OneDrive for Business</strong>&nbsp;- You can pull data from OneDrive for
+Business into Power BI. This method is effective in keeping an
+Excel file and your dataset, reports, and dashboards in Power BI
+synchronized. Power BI connects regularly to your file on
+OneDrive. If any changes are found, your dataset, reports, and
+dashboards are&nbsp;automatically updated in Power BI.</p>
+</li>
+<li><p><strong>OneDrive - Personal</strong>&nbsp;- You can use data from files on a personal
+OneDrive account, and get many of the same benefits that you would
+with OneDrive for Business. However,&nbsp;you'll&nbsp;need to sign in with
+your personal OneDrive account, and select the <strong>Keep me signed in</strong>
+option. Check with your system administrator to determine whether
+this type of connection is allowed in your organization.</p>
+</li>
+<li><p><strong>SharePoint - Team Sites</strong>&nbsp;- Saving your Power BI Desktop files to SharePoint Team Sites is similar to saving to OneDrive for Business. The main difference is how you connect to the file from Power BI. You can specify a URL or connect to the root folder.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/2-local-vs-cloud-c.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/2-local-vs-cloud-c.png" alt="Image of getting data from files stored locally or from the cloud&nbsp;OneDrive or SharePoint." data-linktype="relative-path"></a></p>
+</li>
+</ul>
+<p>Using a cloud option such as OneDrive or SharePoint Team Sites&nbsp;is the
+most effective way to keep your file and your dataset, reports, and
+dashboards in Power BI in-sync. However,&nbsp;if your data does not change
+regularly,&nbsp;saving files on a local computer&nbsp;is a suitable option.&nbsp;&nbsp;</p>
+<h3 id="connect-to-data-in-a-file">Connect to data in a file</h3>
+<p>In Power BI, on the <strong>Home</strong> tab,&nbsp;select&nbsp;<strong>Get data</strong>. In the list that displays, select the option that you require, such as&nbsp;<strong>Text/CSV</strong> or&nbsp;<strong>XML</strong>.&nbsp;For&nbsp;this example,&nbsp;you will select&nbsp;<strong>Excel</strong>.</p>
+<div>
+<p> Tip</p>
+<p>The <strong>Home</strong> tab contains quick access data source options, such as&nbsp;<strong>Excel</strong>, next to the&nbsp;<strong>Get data</strong>&nbsp;button.&nbsp;&nbsp;</p>
+</div>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/2-get-data-excel-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/2-get-data-excel-ssm.png" alt="Screenshot of the Home Ribbon get data dropdown menu select excel." data-linktype="relative-path"></a></p>
+<p>Depending on your selection, you need to find and open your data source. You might be prompted to sign into a service, such as OneDrive, to authenticate your request. In this example, you will open the&nbsp;<strong>Employee Data</strong>&nbsp;Excel workbook that is stored on the Desktop.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/2-excel-save-data-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/2-excel-save-data-ssm.png" alt="Screenshot of selecting the file called employee data stored on the desktop." data-linktype="relative-path"></a></p>
+<h3 id="select-the-file-data-to-import">Select the file data to import</h3>
+<p>After the file has connected to Power BI Desktop, the <strong>Navigator</strong> window opens. This window shows you the data that is available in your data source (the Excel file in this example). You can select a table or entity to preview its contents, to ensure that the correct data is loaded into the Power BI model.</p>
+<p>Select the check box(es) of the table(s) that you want to bring in to Power BI. This selection activates the&nbsp;<strong>Load</strong>&nbsp;and&nbsp;<strong>Transform Data</strong>&nbsp;buttons as shown in the following image.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/2-excel-worksheet-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/2-excel-worksheet-ssm.png" alt="Screenshot of the Navigator window in Power B I Desktop." data-linktype="relative-path"></a></p>
+<p>You now have the option to select&nbsp;the&nbsp;<strong>Load</strong>&nbsp;button to automatically load your data into the Power BI model or&nbsp;select&nbsp;the&nbsp;<strong>Transform Data</strong>&nbsp;button to launch the Power Query Editor, where you can review and clean your data before loading it into the Power BI model.</p>
+<p>We&nbsp;often recommend that you transform data, but&nbsp;that process will be discussed later in this module. For&nbsp;this example,&nbsp;you can&nbsp;select&nbsp;<strong>Load</strong>.</p>
+<h3 id="change-the-source-file">Change the source file</h3>
+<p>You might have to&nbsp;change the location of a source file for a data source
+during development, or if a file storage location changes.&nbsp;To keep your
+reports up to date,&nbsp;you'll&nbsp;need to update your file connection paths in
+Power BI.</p>
+<p>Power Query provides a number of ways for you to accomplish this
+task,&nbsp;so that you can make this type of change when needed.</p>
+<ol>
+<li>Data source settings&nbsp;&nbsp;</li>
+<li>Query settings&nbsp;&nbsp;</li>
+<li>Advanced Editor</li>
+</ol>
+<div>
+<p> Warning</p>
+<p>If you are changing a file path, make sure that you
+reconnect to the same file with the same file structure. Any structural
+changes to a file, such as deleting or renaming columns in the source
+file, will break the reporting model.</p>
+</div>
+<p>For example,&nbsp;try&nbsp;changing&nbsp;the&nbsp;data source file path&nbsp;in the data source
+settings.&nbsp;Select&nbsp;<strong>Data source settings</strong>&nbsp;in Power Query. In the&nbsp;<strong>Data
+source settings</strong>&nbsp;window,&nbsp;select your file&nbsp;and&nbsp;then select&nbsp;<strong>Change
+Source</strong>. Update&nbsp;the&nbsp;<strong>File path</strong>&nbsp;or use&nbsp;the&nbsp;<strong>Browse</strong>&nbsp;option to
+locate your file,&nbsp;select&nbsp;<strong>OK</strong>, and then&nbsp;select&nbsp;<strong>Close</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/2-excel-data-source-settings-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/2-excel-data-source-settings-ssm.png" alt="Screenshot of the Data Source settings window in Power B I Desktop." data-linktype="relative-path"></a></p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Get data from relational data sources</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/get-data/3-relational-data/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

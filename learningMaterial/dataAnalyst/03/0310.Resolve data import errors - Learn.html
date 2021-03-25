@@ -1,0 +1,277 @@
+<html dir="ltr"><head><title>Resolve data import errors - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/get-data/9-import-errors">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/get-data/9-import-errors</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Resolve data import errors - Learn</h1>
+  <div dir="auto" id="reader-credits">heyrob</div>
+  <div dir="auto" id="reader-estimated-time">4-6 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>3 minutes</li>
+		</ul>
+			<p>While importing data into Power BI, you may encounter errors resulting from factors such as:</p>
+<ul>
+<li>Power BI imports from numerous data sources.</li>
+<li>Each data source might have dozens (and sometimes hundreds) of different error messages.</li>
+<li>Other components can cause errors, such as hard drives, networks, software services, and operating systems.</li>
+<li>Data can often not comply with any specific schema.</li>
+</ul>
+<p>The following sections cover some of the more common error messages that you might encounter in Power BI.</p>
+<h3 id="query-timeout-expired">Query timeout expired</h3>
+<p>Relational source systems often have many people who are concurrently using the same data in the same database. Some relational systems and their administrators seek to limit a user from monopolizing all hardware resources by setting a query timeout. These timeouts can be configured for any timespan, from as little as five seconds to as much as 30 minutes or more.</p>
+<p>For instance, if you’re pulling data from your organization’s SQL Server, you might see the error shown in the following figure.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/9-data-import-query-timeout-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/9-data-import-query-timeout-ss.png" alt="Screenshot of the data import errors for query timeout." data-linktype="relative-path"></a></p>
+<h3 id="power-bi-query-error-timeout-expired">Power BI Query Error: Timeout expired</h3>
+<p>This error indicates that you’ve pulled too much data according to your organization’s policies. Administrators incorporate this policy to avoid slowing down a different application or suite of applications that might also be using that database.</p>
+<p>You can resolve this error by pulling fewer columns or rows from a single table. While you are writing SQL statements, it might be a common practice to include groupings and aggregations. You can also join multiple tables in a single SQL statement. Additionally, you can perform complicated subqueries and nested queries in a single statement. These complexities add to the query processing requirements of the relational system and can greatly elongate the time of implementation.</p>
+<p>If you need the rows, columns, and complexity, consider taking small chunks of data and then bringing them back together by using Power Query. For instance, you can combine half the columns in one query and the other half in a different query. Power Query can merge those two queries back together after you are finished.</p>
+<h3 id="we-couldnt-find-any-data-formatted-as-a-table">We couldn't find any data formatted as a table</h3>
+<p>Occasionally, you may encounter the “We couldn’t find any data formatted as a table” error while importing data from Microsoft Excel. Fortunately, this error is self-explanatory. Power BI expects to find data formatted as a table from Excel. The error event tells you the resolution. Perform the following steps to resolve the issue:</p>
+<ol>
+<li><p>Open your Excel workbook, and highlight the data that you want to import.</p>
+</li>
+<li><p>Press the <strong>Ctrl-T</strong> keyboard shortcut. The first row will likely be your column headers.</p>
+</li>
+<li><p>Verify that the column headers reflect how you want to name your columns. Then, try to import data from Excel again. This time, it should work.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/9-format-as-table-excel-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/9-format-as-table-excel-ss.png" alt="Screenshot of the Power B I Excel error: We couldn't find any data formatted as a table." data-linktype="relative-path"></a></p>
+</li>
+</ol>
+<h3 id="could-not-find-file">Could not find file</h3>
+<p>While importing data from a file, you may get the "Could not find file" error.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/9-file-location-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/9-file-location-ss.png" alt="Screenshot of the Could not find file error screen." data-linktype="relative-path"></a></p>
+<p>Usually, this error is caused by the file moving locations or the permissions to the file changing. If the cause is the former, you need to find the file and change the source settings.</p>
+<ol>
+<li><p>Open Power Query by selecting the <strong>Transform Data</strong> button in Power BI.</p>
+</li>
+<li><p>Highlight the query that is creating the error.</p>
+</li>
+<li><p>On the left, under <strong>Query Settings</strong>, select the gear icon next to <strong>Source</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/9-query-changes-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/9-query-changes-ss.png" alt="Screenshot of the query settings pane with Source selected under Applied Steps." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Change the file location to the new location.&nbsp;&nbsp;</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/9-file-location-new-location-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/get-data/media/9-file-location-new-location-ss.png" alt="Screenshot of the file location settings pane." data-linktype="relative-path"></a></p>
+</li>
+</ol>
+<h3 id="data-type-errors">Data type errors</h3>
+<p>Sometimes, when you import data into Power BI, the columns appear blank. This situation happens because of an error in interpreting the data type in Power BI. The resolution to this error is unique to the data source. For instance, if you are importing data from SQL Server and see blank columns, you could try to convert to the correct data type in the query.</p>
+<p>Instead of using this query:</p>
+<p><code>SELECT CustomerPostalCode FROM Sales.Customers</code></p>
+<p>Use this query:</p>
+<p><code>SELECT CAST(CustomerPostalCode as varchar(10)) FROM Sales.Customers</code></p>
+<p>By specifying the correct type at the data source, you eliminate many of these common data source errors.</p>
+<p>You may encounter different types of errors in Power BI that are caused by the diverse data source systems where your data resides. If you encounter an error that was not discussed in the preceding sections, you can search Microsoft documentation for the error message to find the resolution you need.</p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Lab - Prepare data in Power BI Desktop</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/get-data/lab-prepare/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>
