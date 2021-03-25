@@ -1,0 +1,243 @@
+<html dir="ltr"><head><title>Use advanced analytics custom visuals - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/perform-analytics-power-bi/8-advanced-analytics-custom-visuals">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/perform-analytics-power-bi/8-advanced-analytics-custom-visuals</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Use advanced analytics custom visuals - Learn</h1>
+  <div dir="auto" id="reader-credits">heyrob</div>
+  <div dir="auto" id="reader-estimated-time">3-4 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="main" role="main" data-bi-name="content" lang="en-us" dir="ltr">
+		
+		
+		<ul>
+			<li>5 minutes</li>
+		</ul>
+			<p>In addition to the out-of-the-box visualizations that you see in Power BI Desktop, Microsoft AppSource has a vast library of custom visuals that you can import into Power BI Desktop. These custom visuals give you a wider choice of options when it comes to using advanced analytics. A custom visual might exist that solves a business problem that the standard visuals can't solve, or you might find one that presents your data in a way that the standard visuals can't.</p>
+<div>
+<p> Note</p>
+<p>Some organizations prefer not to use custom visuals, or only permit certain custom visuals, for security or other reasons. Before you import custom visuals, check with your organization to see whether they are allowed or not. If they are not allowed, you can still create reports in Power BI Desktop with them, but they will not render in Power BI service.</p>
+</div>
+<p>Previously, you imported a custom visual from Microsoft AppSource for the purposes of time series analysis. For this example, you'll focus on the range of Advanced Analytics custom visuals that are available. These custom visuals include box-and-whisker plots, variance charts, hierarchical trees, Gantt plots, clustering plots, and much more. Using advanced analytics visuals adds a layer of complexity to your reports and allows you to further analyze the data and develop granularity within your visuals.</p>
+<p>In this example, you've produced some charts and visuals for the Customer Service team, but now they want you to create a variance chart so they can study the variance in the Help tickets. You decide to browse Microsoft AppSource to see if an advanced analytics visual exists that you can use to satisfy this request.</p>
+<p>In the <strong>Visualizations</strong> pane, select the <strong>Get more visuals</strong> icon and then select <strong>Get more visuals</strong>. On the <strong>Power BI Visuals</strong> window that displays, select the <strong>Advanced Analytics</strong> category. Browse the available options and then select the <strong>Add</strong> button for the visual that you want to import. In this example, you will add the <strong>Variance Chart</strong> custom visual.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/perform-analytics-power-bi/media/8-add-advanced-analytics-custom-visual-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/perform-analytics-power-bi/media/8-add-advanced-analytics-custom-visual-ssm.png" alt="Screenshot of adding an advanced analytics custom visual." data-linktype="relative-path"></a></p>
+<p>When the visual has been imported, an icon for the new custom visual displays under the other visual icons in the <strong>Visualizations</strong> pane.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/perform-analytics-power-bi/media/8-add-variance-chart-custom-visual-report-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/perform-analytics-power-bi/media/8-add-variance-chart-custom-visual-report-ssm.png" alt="Screenshot of adding a variance chart custom visual to report." data-linktype="relative-path"></a></p>
+<p>You can then add fields to the new visual and customize it in the same way that you would for any other visual. In this example, you will add <strong>Country</strong> to the <strong>Category</strong> field, <strong>Gross Sales</strong> to the <strong>Primary Value</strong> field, and <strong>Net Sales</strong> to the <strong>Comparison Value</strong> field.</p>
+<p>Then, you should notice that you have a variance visual that contains multiple charts, which is a task that you couldn't complete without importing the Advanced Analytics custom visual from AppSource.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/perform-analytics-power-bi/media/8-set-up-advanced-analytics-custom-visual-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/perform-analytics-power-bi/media/8-set-up-advanced-analytics-custom-visual-ssm.png" alt="Screenshot of setting up an advanced analytics custom visual." data-linktype="relative-path"></a></p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Review Quick insights</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/perform-analytics-power-bi/9-quick-insights/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div><section>
+		<p>
+Need help? See our <a id="troubleshooting-guide" data-bi-name="troubleshooting" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-bizapps.perform-analytics-power-bi.8-advanced-analytics-custom-visuals&amp;documentId=21bbf0b6-0b7e-e38d-df30-0159738eafdf&amp;versionIndependentDocumentId=ea1ef9e6-da07-7ef3-a854-29d9a75edbd5&amp;contentPath=%2FMicrosoftDocs%2Flearn-bizapps-pr%2Fblob%2Flive%2Flearn-bizapps-pr%2Fpower-bi%2Fperform-analytics-power-bi%2F8-advanced-analytics-custom-visuals.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fperform-analytics-power-bi%2F8-advanced-analytics-custom-visuals&amp;author=robde">troubleshooting guide</a> or provide specific feedback by <a id="module-unit-feedback-link" data-bi-name="feedback" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-bizapps.perform-analytics-power-bi.8-advanced-analytics-custom-visuals&amp;documentId=21bbf0b6-0b7e-e38d-df30-0159738eafdf&amp;versionIndependentDocumentId=ea1ef9e6-da07-7ef3-a854-29d9a75edbd5&amp;contentPath=%2FMicrosoftDocs%2Flearn-bizapps-pr%2Fblob%2Flive%2Flearn-bizapps-pr%2Fpower-bi%2Fperform-analytics-power-bi%2F8-advanced-analytics-custom-visuals.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fperform-analytics-power-bi%2F8-advanced-analytics-custom-visuals&amp;author=robde#report-feedback">reporting an issue</a>.		</p>
+	</section></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

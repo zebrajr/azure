@@ -1,0 +1,250 @@
+<html dir="ltr"><head><title>Review Quick insights - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/perform-analytics-power-bi/9-quick-insights">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/perform-analytics-power-bi/9-quick-insights</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Review Quick insights - Learn</h1>
+  <div dir="auto" id="reader-credits">heyrob</div>
+  <div dir="auto" id="reader-estimated-time">3-4 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="main" role="main" data-bi-name="content" lang="en-us" dir="ltr">
+		
+		
+		<ul>
+			<li>10 minutes</li>
+		</ul>
+			<p>The <strong>Quick insights</strong> feature in Power BI uses machine learning algorithms to go over your entire dataset and produce insights (results) for you quickly. This feature is a great way to build dashboards when you don't know where to start. It also helps you find insights you might have missed when building your reports. From the insights that Power BI discovers, you can generate appealing, interactive visualizations.</p>
+<div>
+<p> Note</p>
+<p>This feature is available in the Power BI web service only. Also, this feature doesn't work with DirectQuery; it only works with data that is imported to Power BI.</p>
+</div>
+<p>Consider the scenario where one of the datasets that you've been given contains substantial data concerning the Help tickets that were created for the Customer Service team. Because of the extensive data, you don't know where to begin analyzing, so you decide to let Power BI do it for you.</p>
+<h2 id="get-quick-insights-on-your-dataset">Get quick insights on your dataset</h2>
+<p>To get quick insights on your dataset, open your Power BI web service and then select the <strong>Content</strong> tab. Locate your report for which you want to get quick insights, which in this case is <strong>TailwindTraders</strong>. Then, select <strong>More options (...) &gt; Quick insights</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/perform-analytics-power-bi/media/9-get-quick-insights-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/perform-analytics-power-bi/media/9-get-quick-insights-ssm.png" alt="Screenshot of the ellipsis button with the Quick insights option." data-linktype="relative-path"></a></p>
+<p>Power BI will use various algorithms to search for trends in your dataset. This process might take a few seconds, but when it is finished, you'll see a message in the upper-right corner letting you know that the results are ready to be viewed.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/perform-analytics-power-bi/media/9-insights-message-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/perform-analytics-power-bi/media/9-insights-message-ss.png" alt="Screenshot of Insights are ready message." data-linktype="relative-path"></a></p>
+<p>Select <strong>View insights</strong> to open the <strong>Quick Insights</strong> page for the selected dataset, and then view the insights that Power BI has found for you. The <strong>Quick Insights</strong> page contains up to 32 separate insight cards, and each card has a chart or graph plus a short description. In this example, one of the insights is a card that displays a visual for <strong>Count of Product by Category Name</strong>, as illustrated in the following image.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/perform-analytics-power-bi/media/9-insights-card-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/perform-analytics-power-bi/media/9-insights-card-ss.png" alt="Screenshot of the Count of Product Quick Insights card." data-linktype="relative-path"></a></p>
+<h2 id="add-a-quick-insights-result-card-to-a-report">Add a Quick insights result card to a report</h2>
+<p>If you see an insight card that is particularly compelling, you can add it to your report. On the <strong>Quick Insights</strong> page, hover over the card, then select the pin icon. The visual is added to your dashboard, where you can reposition it as required.</p>
+<h2 id="interact-with-the-quick-insights-results">Interact with the quick insights results</h2>
+<p>To take a closer look at a particular insight card on the <strong>Quick Insights</strong> page, select an insight card to open. The insight screen opens in <strong>Focus</strong> mode.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/perform-analytics-power-bi/media/9-insights-focus-mode-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/perform-analytics-power-bi/media/9-insights-focus-mode-ss.png" alt="Screenshot of the Quick Insights focus mode." data-linktype="relative-path"></a></p>
+<p>You can then perform the following actions:</p>
+<ul>
+<li><p>Filter the visualization by using the available options in the <strong>Filters</strong> panel.</p>
+</li>
+<li><p>Pin the insight card to a dashboard by selecting <strong>Pin visual</strong>.</p>
+</li>
+<li><p>Run insights on the card (scoped insights) by selecting <strong>Get insights</strong> in the upper-right corner. The scoped insights allow you to drill into your data.</p>
+</li>
+<li><p>Return to the original insights canvas by selecting <strong>Exit Focus mode</strong> in the upper-left corner.</p>
+</li>
+</ul>
+
+		
+	</div><section>
+		<p>
+Need help? See our <a id="troubleshooting-guide" data-bi-name="troubleshooting" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-bizapps.perform-analytics-power-bi.9-quick-insights&amp;documentId=3e1eea3c-ee6e-b827-1839-e74e044569fa&amp;versionIndependentDocumentId=9f88a386-ba99-6d63-67cb-7485a4cc5a9b&amp;contentPath=%2FMicrosoftDocs%2Flearn-bizapps-pr%2Fblob%2Flive%2Flearn-bizapps-pr%2Fpower-bi%2Fperform-analytics-power-bi%2F9-quick-insights.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fperform-analytics-power-bi%2F9-quick-insights&amp;author=robde">troubleshooting guide</a> or provide specific feedback by <a id="module-unit-feedback-link" data-bi-name="feedback" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-bizapps.perform-analytics-power-bi.9-quick-insights&amp;documentId=3e1eea3c-ee6e-b827-1839-e74e044569fa&amp;versionIndependentDocumentId=9f88a386-ba99-6d63-67cb-7485a4cc5a9b&amp;contentPath=%2FMicrosoftDocs%2Flearn-bizapps-pr%2Fblob%2Flive%2Flearn-bizapps-pr%2Fpower-bi%2Fperform-analytics-power-bi%2F9-quick-insights.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fperform-analytics-power-bi%2F9-quick-insights&amp;author=robde#report-feedback">reporting an issue</a>.		</p>
+	</section></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

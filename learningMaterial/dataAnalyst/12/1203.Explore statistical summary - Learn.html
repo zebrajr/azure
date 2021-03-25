@@ -1,0 +1,289 @@
+<html dir="ltr"><head><title>Explore statistical summary - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/perform-analytics-power-bi/2-statistical-summary">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/perform-analytics-power-bi/2-statistical-summary</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Explore statistical summary - Learn</h1>
+  <div dir="auto" id="reader-credits">heyrob</div>
+  <div dir="auto" id="reader-estimated-time">7-8 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>6 minutes</li>
+		</ul>
+			<p>Data is often intertwined with statistics because statistics are one way in which you can explore your data. Statistics show you the distribution of your data and help you to identify key takeaways and trends and determine whether outliers exist.</p>
+<p>The statistical summary is the information that provides a quick and simple description of your data. Power BI has many functions that help you to conduct a statistical analysis, such as Data Analysis Expressions (DAX) functions, visuals such as histograms and bell curves, advanced analytics visuals, and statistical programming languages such as Python and R.</p>
+<p>Exploring the statistical summary gives the user a high-level view of the available data, where they can see clusters, patterns on behavioral data, data averages, and more. They can gain insights about their data that will help drive business decisions.</p>
+<p>For example, the Supply Chain team asks you to create a report that shows the frequency of orders for certain products and what the top 10 products are in terms of sales.</p>
+<h2 id="statistical-functions">Statistical functions</h2>
+<p>Power BI Desktop has a number of DAX functions that you can use to get quick statistics based on your data. You can access these quick functions by right-clicking the <strong>Values</strong> field in the <strong>Visualizations</strong> pane, as illustrated in the following image.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/perform-analytics-power-bi/media/2-statistical-functions-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/perform-analytics-power-bi/media/2-statistical-functions-ssm.png" alt="Screenshot of the statistical functions." data-linktype="relative-path"></a></p>
+<p>However, to avoid performance issues, it's better to create the statistical measures yourself by using DAX functions to calculate average, sum, min, max, and so on. For example, to analyze the inventory data to find the average order quantity for each product, you could use the following formula:</p>
+<pre tabindex="0"><code data-author-content="Average Qty =
+AVERAGE ( Sales[Order Qty] )
+"><span><span>Average</span> Qty =
+<span>AVERAGE</span> ( Sales[Order Qty] )
+</span></code></pre>
+<h2 id="histogram">Histogram</h2>
+<p>Histograms and bell curves are the most common way to display statistics about your datasets. In Power BI terms, you can represent a histogram with one of the bar or column chart visuals and represent a bell curve with an area chart visual, as illustrated in the following image. You can also use the Q&amp;A visual to ask a direct question about the top or bottom items in a list.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/perform-analytics-power-bi/media/2-bar-area-charts-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/perform-analytics-power-bi/media/2-bar-area-charts-ss.png" alt="Screenshot of the Power BI bar and area charts." data-linktype="relative-path"></a></p>
+<p>A typical bar or column chart visual in Power BI relates two data points: a measure and a dimension. A histogram differs slightly from a standard bar chart in that it only visualizes a single data point.</p>
+<p>In this example, you use the clustered column chart visual to present a histogram that determines the order quantities by order sizes.</p>
+<p>You start by selecting the clustered column chart icon on the <strong>Visualization</strong> pane. Next, create a new grouping for the x-axis. You will learn more about grouping and binning later in this module, but they are useful in this context also.</p>
+<p>To create the group, in the <strong>Fields</strong> pane, right-click the data field that you want to analyze and then select <strong>New Group</strong>. In this case, you use the <strong>OrderQty</strong> field. In the <strong>Groups</strong> window that displays, set up the bin group as follows:</p>
+<ol>
+<li><p>Rename the group as <strong>Order Bins (Buckets)</strong>.</p>
+</li>
+<li><p>Set the <strong>Group type</strong> option to <strong>Bin</strong> and the <strong>Bin Type</strong> option to <strong>Number of bins</strong>.</p>
+</li>
+<li><p>Enter <strong>5</strong> as the <strong>Bin count</strong>, <strong>1</strong> as the <strong>Min value</strong>, and <strong>44</strong> as the <strong>Max value</strong>.</p>
+</li>
+</ol>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/perform-analytics-power-bi/media/2-add-group-histogram-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/perform-analytics-power-bi/media/2-add-group-histogram-ss.png" alt="Screenshot of the adding groups for histograms." data-linktype="relative-path"></a></p>
+<p>Next, populate the visual as follows:</p>
+<ol>
+<li><p>Drag and drop the <strong>OrderQty</strong> field from the <strong>Fields</strong> pane into the <strong>Value</strong> field on the <strong>Visualizations</strong> pane.</p>
+</li>
+<li><p>Drag and drop the <strong>Order Bins (Buckets)</strong> group from the <strong>Fields</strong> pane into the <strong>Axis</strong> field on the <strong>Visualizations</strong> pane.</p>
+</li>
+</ol>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/perform-analytics-power-bi/media/2-set-up-histogram-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/perform-analytics-power-bi/media/2-set-up-histogram-ssm.png" alt="Screenshot of setting up a bar chart for Qty orders by bin size." data-linktype="relative-path"></a></p>
+<p>The visual now shows that the data is grouped into buckets on the x-axis, with the order quantities of that variable on the y-axis.</p>
+<p>You have now produced a histogram that displays the order quantity (<strong>OrderQty</strong> field) by order size buckets for the Supply Chain team.</p>
+<h2 id="top-n-analysis">Top N analysis</h2>
+<p>The TOPN DAX function returns the top N rows of a specified table. The Top N analysis is a great way to present data that might be important, such as the top 10 selling products, top 10 performers in an organization, or top 10 customers. Alternatively, you can look at it from the other perspective and present the bottom 10 items in a list, in other words, the worst performers. Depending on the requirements, you might want to use one or both of these options.</p>
+<p>In this example, the Supply Chain team wants to know what the top 10 selling products are. You accomplish this task in one of three ways: by using a Q&amp;A visual, using a Top N filter, or writing a DAX formula.</p>
+<h3 id="use-the-qa-visual-to-find-the-top-n">Use the Q&amp;A visual to find the top N</h3>
+<p>You've created a report for the Supply Chain team, and now the team members have questions about various other views or insights that they are interested in. Power BI has a built-in Q&amp;A visual that allows users to ask their own questions and get answers so you don't have to address each individual question. The Q&amp;A visual is an effective tool because it allows users to quickly get answers about the data independently, which saves time for everyone involved. The Q&amp;A visual is unique in that it does not require knowledge of Power BI to use the visual; users can ask their question and they, too, can create insightful visuals.</p>
+<p>Add the <strong>Q&amp;A</strong> visualization to your report, and then reposition the visual and customize its formatting, as required.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/perform-analytics-power-bi/media/2-add-question-answer-visual-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/perform-analytics-power-bi/media/2-add-question-answer-visual-ssm.png" alt="Screenshot of adding the Q&amp;A visualization." data-linktype="relative-path"></a></p>
+<p>Now, you can use the visual to get answers. In this case, you want to know what the top 10 selling products are, so you enter a question such as, "What are my top 10 products by sales?" Power BI will automatically display those results for you.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/perform-analytics-power-bi/media/2-use-question-answer-find-top-n-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/perform-analytics-power-bi/media/2-use-question-answer-find-top-n-ss.png" alt="Screenshot of using the Q&amp;A visualization to find top N." data-linktype="relative-path"></a></p>
+<h3 id="use-a-top-n-filter-type">Use a Top N filter type</h3>
+<p>Top N is a filtering option that is available on the <strong>Filters</strong> pane. Select the field that you want to analyze on your report page (in this example, it's the <strong>Product Name</strong> field). In the <strong>Filters</strong> pane, expand the <strong>Filter type</strong> list and select <strong>Top N</strong>. In the <strong>Show items</strong> settings, select <strong>Top</strong> and <strong>10</strong>. Then, select <strong>Cost of Sales</strong> as the value that you want to filter the field by. The visual updates accordingly.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/perform-analytics-power-bi/media/2-use-filter-find-top-n-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/perform-analytics-power-bi/media/2-use-filter-find-top-n-ssm.png" alt="Screenshot of using the filter type to find Top N." data-linktype="relative-path"></a></p>
+<h3 id="use-a-topn-dax-function">Use a TOPN DAX function</h3>
+<p>You can also calculate your top 10 products in DAX by using the TOPN function. This option could be useful if you want to present the top 10 in a different context, such as how much of the top 10 best-selling products contributed toward the overall total sales.</p>
+<p>Start by creating a new measure called <strong>Top 10 Products</strong>. Then, use the TOPN function, along with the SUMX function, to calculate your top 10 products by total sales, as follows:</p>
+<pre tabindex="0"><code data-author-content="Top 10 Products =
+SUMX ( TOPN ( 10, Product, Product[Product Name], ASC ), [Total Sales] )
+"><span>Top <span>10</span> Products =
+<span>SUMX</span> ( <span>TOPN</span> ( <span>10</span>, <span>Product</span>, <span>Product</span>[Product Name], ASC ), [Total Sales] )
+</span></code></pre>
+<p>The following image shows how much the top 10 products contribute toward the overall sales.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/perform-analytics-power-bi/media/2-use-dax-function-calculate-top-n-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/perform-analytics-power-bi/media/2-use-dax-function-calculate-top-n-ss.png" alt="Screenshot of using the DAX function TOP N to calculate Top 10 Products." data-linktype="relative-path"></a></p>
+<p>You can adjust the DAX formula to present the same result in percentages.</p>
+<p>For more information about the statistical capabilities of Power BI, see <a href="https://docs.microsoft.com/en-us/dax/statistical-functions-dax/" data-linktype="absolute-path" target="az-portal">Statistical Functions - DAX</a>.</p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Identify outliers with Power BI visuals</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/perform-analytics-power-bi/3-visuals/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

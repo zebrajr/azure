@@ -1,0 +1,256 @@
+<html dir="ltr"><head><title>Conduct time series analysis - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/perform-analytics-power-bi/6-time-series-analysis">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/perform-analytics-power-bi/6-time-series-analysis</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Conduct time series analysis - Learn</h1>
+  <div dir="auto" id="reader-credits">heyrob</div>
+  <div dir="auto" id="reader-estimated-time">5-6 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>4 minutes</li>
+		</ul>
+			<p>In 2004, Hans Rosling presented a Ted Talk titled, "The best stats you've ever seen." In that talk, Hans showed a video that allowed him to analyze data over time by playing an animated chart. The chart progressed, year-by-year, where viewers could watch how the longevity and family size moved over time for the entire world. This presentation initiated tremendous interest in the power of data visualization, particularly as it related to time series analysis.</p>
+<p>Time series analysis involves analyzing a series of data in time order to identify meaningful information and trends and make predictions. The result of time series analysis is the best data that you can use for forecasting activities.</p>
+<p>Time series analysis often involves the use of visuals such as Gantt charts, project planning, and stock movement datasets. In Power BI, you can use visuals to view how your data is progressing over time, which in turn allows you to make observations, such as if any major events disrupted your data.</p>
+<p>To conduct a time series analysis in Power BI, you need to use a visualization type that is suitable for displaying trends and changes over time, such as a line chart, area chart, or scatter chart. You can also import a time series custom visual into Power BI Desktop from Microsoft AppSource. The following example uses a standard scatter chart.</p>
+<p>In addition to the range of time series custom visuals, Microsoft AppSource has an animation custom visual called <strong>Play Axis</strong> that works like a dynamic slicer and is a compelling way to display time trends and patterns in your data without user interaction. This visual is similar to the one that Hans Rosling used in his original presentation and is used alongside the scatter chart in the following example.</p>
+<div>
+<p> Note</p>
+<p>Some organizations prefer not to use custom visuals for security or other reasons. Before you import custom visuals, check with your organization to see if they are allowed or not. If they are not allowed, you can instead use the <strong>Play Axis</strong> visual that is available for scatter chart visualizations within Power BI Desktop because it has similar functionality.</p>
+</div>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/perform-analytics-power-bi/media/6-play-axis-option-scatter-chart-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/perform-analytics-power-bi/media/6-play-axis-option-scatter-chart-ssm.png" alt="Screenshot of the Play Axis option on Scatter chart." data-linktype="relative-path"></a></p>
+<p>In this example, you are developing a Sales report. The Sales team wants to study the quarterly sales trends and identify which models sell better, depending on the time of the season. You decide to use two visuals, a scatter chart and line chart, for the purpose of time series analysis, and then enhance those visuals with animation so the Sales team can see how the sales data changes over time.</p>
+<p>You start by adding your visuals to the report page to show the sales data.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/perform-analytics-power-bi/media/6-scatter-line-charts-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/perform-analytics-power-bi/media/6-scatter-line-charts-ss.png" alt="Screenshot of the Scatter and Line charts." data-linktype="relative-path"></a></p>
+<p>Next, you will import the animation custom visual to use with the visuals. In the <strong>Visualizations</strong> pane, select the <strong>Get more visuals</strong> icon and then select <strong>Get more visuals</strong>. On the <strong>Power BI Visuals</strong> window that displays, search for <strong>play axis</strong>, and then select the <strong>Add</strong> button for the <strong>Play Axis (Dynamic Slicer)</strong> visual.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/perform-analytics-power-bi/media/6-import-custom-play-axis-visual-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/perform-analytics-power-bi/media/6-import-custom-play-axis-visual-ss.png" alt="Screenshot of importing the custom Play Axis visual to Power BI desktop." data-linktype="relative-path"></a></p>
+<p>A message will display, stating that the visual was successfully imported. When you return to Power BI Desktop, you'll see the new <strong>Play Axis</strong> icon in the <strong>Visualizations</strong> pane. Select the page, and then select the <strong>Play Axis</strong> icon to add that visual to the page.</p>
+<p>With the new visual selected, select the field (<strong>Quarter</strong>) that you want to use as the slicer in the <strong>Play Axis</strong> animation. Animation controls become available on the visual.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/perform-analytics-power-bi/media/6-play-axis-visual-animation-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/perform-analytics-power-bi/media/6-play-axis-visual-animation-ss.png" alt="Screenshot of play buttons on the Axis visual animation." data-linktype="relative-path"></a></p>
+<p>You can now resize and reposition the new visual and customize its formatting so that it's consistent with the other visuals on the page. Specific formatting options that you might want to use include:</p>
+<ul>
+<li><p>In the <strong>Animation Settings</strong> section, you can control the play functionality of the <strong>Play Axis</strong> visual, such as making the animation automatically start, continue looping, and then change the speed at which the animation occurs.</p>
+</li>
+<li><p>In the <strong>Colors</strong> section, you can change the appearance of the <strong>Play Axis</strong> visual by adjusting its overall color, or selecting the <strong>Show all</strong> option, and then changing the color of each control button.</p>
+</li>
+<li><p>The <strong>Enable Caption On</strong> section allows you to turn on/off the text that is displayed next to the visual or adjust the formatting of it.</p>
+</li>
+</ul>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/perform-analytics-power-bi/media/6-play-axis-visual-format-options-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/perform-analytics-power-bi/media/6-play-axis-visual-format-options-ss.png" alt="Screenshot of the Play Axis visual format options." data-linktype="relative-path"></a></p>
+<p>When you have set up the <strong>Play Axis</strong> visual to meet your requirements, you are ready to use it with your other visuals. Select the <strong>Play</strong> button and then watch how the data in each visual on the page evolves over the time. You can use the control buttons to pause the animation, restart it, and so on.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/perform-analytics-power-bi/media/6-animated-play-axis-visual.gif#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/perform-analytics-power-bi/media/6-animated-play-axis-visual.gif" alt="Animated screenshot of the play axis visual." data-linktype="relative-path"></a></p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Use the Analyze feature</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/perform-analytics-power-bi/7-analyze-feature/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

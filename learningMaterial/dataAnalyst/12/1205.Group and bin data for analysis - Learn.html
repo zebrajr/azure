@@ -1,0 +1,248 @@
+<html dir="ltr"><head><title>Group and bin data for analysis - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/perform-analytics-power-bi/4-group-data">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/perform-analytics-power-bi/4-group-data</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Group and bin data for analysis - Learn</h1>
+  <div dir="auto" id="reader-credits">heyrob</div>
+  <div dir="auto" id="reader-estimated-time">5-6 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>4 minutes</li>
+		</ul>
+			<p>When you create visuals, Power BI Desktop aggregates your data into groups, based on the values that it finds in the underlying data. You can refine how those default groups are presented. You can also create new groups by grouping two or more data points in a visual or putting values into equal-sized groups (binning).</p>
+<p>Grouping is used for categories of data. Binning is similar to grouping, but it is used for grouping continuous fields, such as numbers and dates.</p>
+<p>You can use the grouping and binning features to ensure that the visuals in your reports display your data according to your preference. Using these features will help you to clearly view, analyze, and explore the data and trends in your visuals. Additionally, you'll be able to identify clusters, patterns of behavior, data averages, and more. The results of this analysis will provide your users with more specific insights on their data, which can help drive business decisions.</p>
+<p>In this example, the Customer Service team has returned to you, greatly impressed by the analysis that you have done. Now, they want you to further analyze their Help ticket data, asking if you can segment the data into different groups and clusters. In particular, they want to identify the cities with the highest sales.</p>
+<h2 id="create-a-group">Create a group</h2>
+<p>The following image shows a bar chart in which Power BI has automatically segmented the data in the way that it found most useful: Total Sales by State. However, you want to group some of the bars (states) together so that you can view them as one category, which will help the Sales team identify the cities with the highest sales.</p>
+<p>To create the group, use <strong>Ctrl + click</strong> to select the data points on the visual that you want to group. In this case, it's states with sales greater than 500,000 dollars. Right-click one of those selected data points and then select the <strong>Group data</strong> option.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/perform-analytics-power-bi/media/4-group-data-visual-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/perform-analytics-power-bi/media/4-group-data-visual-ssm.png" alt="Screenshot of the Group data property on a visualization." data-linktype="relative-path"></a></p>
+<p>When the group is created, notice that the visual updates to take into account the new group. The following image shows that the other states, which are the states with lower sales (less than 500,000 dollars) have been grouped together and are highlighted in a different shade.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/perform-analytics-power-bi/media/4-updated-visual-group-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/perform-analytics-power-bi/media/4-updated-visual-group-ssm.png" alt="Screenshot of the updated visualization with grouping." data-linktype="relative-path"></a></p>
+<p>The new group field displays in the <strong>Legend</strong> bucket for the visual and is listed in the <strong>Fields</strong> pane.</p>
+<p>When you create a group, you can change the way that the data is displayed in the visual. For example, you might want to switch the values in each axis. You can also use the group in any of the other visuals in your report. To do so, drag the group field from the <strong>Fields</strong> pane and then drop it into the visual in which you want to use it.</p>
+<h2 id="edit-a-group">Edit a group</h2>
+<p>Continuing with the previous example, you now want to edit the categories that make up your group. Right-click the group field in either the <strong>Legend</strong> bucket or the <strong>Fields</strong> pane, and then select <strong>Edit Groups</strong>.</p>
+<p>In the <strong>Groups</strong> window that displays is a list of the groups and the different items within those groups. The following image shows the <strong>States with Sales &gt; 500k</strong> group and its members, along with the <strong>Other</strong> group (<strong>States with Sales &lt; 500k</strong>) that contains all other values that have not been put into the first group. If you refresh your data, and new items appear in the ungrouped values list, they'll all go into the <strong>Other</strong> group.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/perform-analytics-power-bi/media/4-edit-group-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/perform-analytics-power-bi/media/4-edit-group-ssm.png" alt="Screenshot of editing groups and members in a group." data-linktype="relative-path"></a></p>
+<p>You can now make changes to the group. You can rename any group by double-clicking the group title in the <strong>Groups and members</strong> section and entering a new name. You can add ungrouped values into an existing group, remove values from an existing group, and create a new group.</p>
+<h2 id="create-bin-groups">Create bin groups</h2>
+<p>The process of binning allows you to group your numerical and time field data into "bins" of equal size. This approach allows you to visualize and identify trends in your data in more meaningful ways. Binning allows you to right-size the data that Power BI Desktop displays.</p>
+<p>In this example, you want to create bins (groups) for the <strong>Order Qty</strong> field. Start in the <strong>Fields</strong> pane by right-clicking the <strong>Order Qty</strong> field that you want to create the bins for, and then select <strong>New Group</strong>. On the <strong>Groups</strong> window that displays, set the <strong>Bin size</strong> to the size that you want, adjust other settings as required, and then select <strong>OK</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/perform-analytics-power-bi/media/4-create-bin-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/perform-analytics-power-bi/media/4-create-bin-ss.png" alt="Screenshot of a bin group named Order Qty (Bins)." data-linktype="relative-path"></a></p>
+<p>When you have set up the bin group, you'll see a new field in the <strong>Fields</strong> pane with <strong>(bins)</strong> appended to its name. You can then drag that field onto the canvas to use the bin size in a visual.</p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Apply clustering techniques</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/perform-analytics-power-bi/5-clustering-techniques/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>
