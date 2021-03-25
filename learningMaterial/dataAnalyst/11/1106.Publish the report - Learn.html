@@ -1,0 +1,266 @@
+<html dir="ltr"><head><title>Publish the report - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/5-publish">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/create-paginated-reports-power-bi/5-publish</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Publish the report - Learn</h1>
+  <div dir="auto" id="reader-credits">heyrob</div>
+  <div dir="auto" id="reader-estimated-time">3-4 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="main" role="main" data-bi-name="content" lang="en-us" dir="ltr">
+		
+		
+		<ul>
+			<li>2 minutes</li>
+		</ul>
+			<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/04-save-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/04-save-ss.png" alt="Screenshot of the Save as menu with Power BI Service selected." data-linktype="relative-path"></a></p>
+<p>To publish your report, select <strong>File &gt;</strong> <strong>Save as</strong> and then select <strong>Power BI Service</strong>. Your report will now appear in Power BI service. For more information, go to <a href="https://docs.microsoft.com/en-us/power-bi/create-reports/desktop-upload-desktop-files/" data-linktype="absolute-path" target="az-portal">Publish datasets and reports from Power BI Desktop</a>.</p>
+<h2 id="best-practices">Best practices</h2>
+<p>Creating a report is meant to inform and drive action on the part of the report user. It isn't enough to create a report with sales information on it; the report author should always ask themselves several questions:</p>
+<ul>
+<li><p>What purpose is this report for?</p>
+</li>
+<li><p>Who is using the report?</p>
+</li>
+<li><p>How can I help people do a better job?</p>
+</li>
+<li><p>What is the most important information and how can I highlight it?</p>
+</li>
+<li><p>Is this report readable?</p>
+</li>
+<li><p>Can people change the elements that they need to if their questions change?</p>
+</li>
+<li><p>Do I have visuals that are distracting from the core message of the report?</p>
+</li>
+<li><p>Is this report staying focused in a single topic or only a few topics?</p>
+</li>
+<li><p>Am I providing all information that the user expects to see in the report?</p>
+</li>
+</ul>
+<p>Creating good headers and footers is an excellent way to help the user interpret the report. You can provide guidance to the user by documenting why this report was created. Adding a report implementation date and time is an excellent practice. Occasionally, reports are run and then saved. People who are looking at a report will not know that they are looking at an older version unless that fact is highlighted in a footer.</p>
+<p>Target the report for your appropriate region. English speakers read top-down, left-to-right. Putting important information, like totals, at the top of the report will highlight that information for English speakers. Europeans read dates differently than users from the US. Localize data formats to the appropriate target user.</p>
+<p>In addition to focusing on the visual aspects of the report, a good report author will consider report delivery and data source usage. Good delivery focuses on how the user wants to see the report. Therefore, report authors should ask themselves the following questions to test the appropriate delivery format and ensure that the report is rendering correctly in that format:</p>
+<ul>
+<li><p>Does the user want the report sent to them in an email message?</p>
+</li>
+<li><p>Does the user want the report in a printable format?</p>
+</li>
+<li><p>Does the user read the report in a web browser?</p>
+</li>
+</ul>
+<p>Pay attention to the height and width of the report page. Verify that the report is not running off the page when the report renders for the user.</p>
+<p>A good report author creates reports that are easy on the data source. If you continue to recall data that you don't need from a data source, you will overburden the data source and affect performance in unpredictable ways. Focusing on only getting pertinent data will help you be a responsible teammate to others who are using the same data.</p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Lab - Create a Power BI paginated report</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/6-lab/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div><section>
+		<p>
+Need help? See our <a id="troubleshooting-guide" data-bi-name="troubleshooting" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-bizapps.create-paginated-reports-power-bi.5-publish&amp;documentId=da746f73-24ed-43fe-13d1-16f5e8dd4e3d&amp;versionIndependentDocumentId=2f069c6e-101a-897d-0468-f5235ab47947&amp;contentPath=%2FMicrosoftDocs%2Flearn-bizapps-pr%2Fblob%2Flive%2Flearn-bizapps-pr%2Fpower-bi%2Fcreate-paginated-reports-power-bi%2F5-publish.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fcreate-paginated-reports-power-bi%2F5-publish&amp;author=robde">troubleshooting guide</a> or provide specific feedback by <a id="module-unit-feedback-link" data-bi-name="feedback" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-bizapps.create-paginated-reports-power-bi.5-publish&amp;documentId=da746f73-24ed-43fe-13d1-16f5e8dd4e3d&amp;versionIndependentDocumentId=2f069c6e-101a-897d-0468-f5235ab47947&amp;contentPath=%2FMicrosoftDocs%2Flearn-bizapps-pr%2Fblob%2Flive%2Flearn-bizapps-pr%2Fpower-bi%2Fcreate-paginated-reports-power-bi%2F5-publish.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fcreate-paginated-reports-power-bi%2F5-publish&amp;author=robde#report-feedback">reporting an issue</a>.		</p>
+	</section></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

@@ -1,0 +1,265 @@
+<html dir="ltr"><head><title>Get data - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/2-get-data">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/create-paginated-reports-power-bi/2-get-data</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Get data - Learn</h1>
+  <div dir="auto" id="reader-credits">heyrob</div>
+  <div dir="auto" id="reader-estimated-time">4-5 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>3 minutes</li>
+		</ul>
+			<p>The first step in creating a report is to get data from a data source. Though this process might seem similar to getting data in Power BI, it is different. Power BI paginated reports do not use Power Query when connecting to data sources.</p>
+<p>Getting data in a Power BI paginated report does not involve data cleaning steps. In fact, data is not stored in a Power BI paginated report dataset. When data is refreshed on the report, it is retrieved in an unaltered form from the data source, according to the query that was used to retrieve it.</p>
+<p>Data can be collected from multiple data sources, including Microsoft Excel, Oracle, SQL Server, and many more. However, after the data has been collected, the different data sources cannot be merged into a single data model. Each source must be used for a different purpose. For instance, data from an Excel source can be used for a chart, while data from SQL Server can be used for a table on a single report. Paginated reports have an expression language that can be used to look up data in different datasets, but it is nothing like Power Query.</p>
+<p>Power BI paginated reports can use a dataset from Power BI service. These datasets have used Power Query to clean and alter the data. The difference is that this work was done in Power BI Desktop or SQL Server Data Tools prior to using Power BI Report Builder, which doesn't have that tool in the user interface.</p>
+<h3 id="create-and-configure-a-data-source">Create and configure a data source</h3>
+<p>To retrieve data, open Power BI Report Builder. From the <strong>Getting Started</strong> screen, select <strong>New Report</strong>. You can choose whether to create a report with a table on it, a chart, or a blank report. For the purposes of this example, a blank report has been selected. These choices create a default visual on your a new report, which can be changed at any time. Next, go to the <strong>Report Data</strong> window, which is typically on the left side of the tool, though it can be moved around.</p>
+<p>Right-click the <strong>Data Sources</strong> folder and select <strong>Add Data Source</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/04-add-data-source-part-1-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/04-add-data-source-part-1-ssm.png" alt="Screenshot of the Add data source feature in Data Sources." data-linktype="relative-path"></a></p>
+<p>On the <strong>General</strong> tab, name the data source.</p>
+<p>After naming the data source, choose the correct connection string by selecting the <strong>Build</strong> button.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/04-data-source-properties-build-button-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/04-data-source-properties-build-button-ssm.png" alt="Screenshot of the Data Source Properties window with Build button." data-linktype="relative-path"></a></p>
+<p>After you have selected <strong>Build</strong>, the <strong>Connection Properties</strong> screen appears. The properties on this screen will be unique for each data source. The following figure is an example of what you might see in the screen. The figure shows the properties of a SQL Server connection that you, the report author, will enter:</p>
+<ol>
+<li><p>Server name</p>
+</li>
+<li><p>Database name</p>
+</li>
+<li><p>A button for testing the connection</p>
+</li>
+<li><p>Select <strong>OK</strong> to continue</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/04-connection-properties-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/04-connection-properties-ssm.png" alt="Screenshot of the connection properties details." data-linktype="relative-path"></a></p>
+</li>
+</ol>
+<p>You can also enter username and password information on the <strong>Connection Properties</strong> screen, or you can leave it on the default setting and use your Windows credentials. Select <strong>OK</strong> again.</p>
+<p>You've now created a data source.</p>
+<p>Generally, authentication is beyond the scope of this course. Typically, you will receive the connection information from your IT department, application specialist, or the software vendor.</p>
+<h3 id="create-and-configure-a-dataset">Create and configure a dataset</h3>
+<p>A data source is the connection information to a particular resource, like SQL Server. A dataset is the saved information of the query against the data source, not the data. The data always resides in its original location.</p>
+<p>Right-click <strong>Datasets</strong> in the <strong>Report View</strong> window and select <strong>Add Dataset</strong>. Ensure that the correct data source is selected. This action will run the query against the correct data source.</p>
+<p>From the window that displays, you can:</p>
+<ol>
+<li><p>Name the query.</p>
+</li>
+<li><p>Choose whether to use a text command or a stored procedure.</p>
+</li>
+<li><p>Enter a query into the text box.</p>
+</li>
+</ol>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/04-dataset-properties-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/04-dataset-properties-ssm.png" alt="Screenshot of the Dataset Properties window with name, type, and query." data-linktype="relative-path"></a></p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Create a paginated report</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/3-paginated-report/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

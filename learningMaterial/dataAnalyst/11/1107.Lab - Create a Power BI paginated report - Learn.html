@@ -1,0 +1,805 @@
+<html dir="ltr"><head><title>Lab - Create a Power BI paginated report - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/6-lab">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/create-paginated-reports-power-bi/6-lab</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Lab - Create a Power BI paginated report - Learn</h1>
+  <div dir="auto" id="reader-credits">heyrob</div>
+  <div dir="auto" id="reader-estimated-time">19-24 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="main-column" data-bi-name="body">
+
+					<main id="main" role="main" data-bi-name="content" lang="en-us" dir="ltr">
+
+
+
+
+
+						
+
+
+						<!-- <content> -->
+							<div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>45 minutes</li>
+		</ul>
+			<h2 id="access-your-environment">Access your environment</h2>
+<p>Before you start this lab, select <strong>Launch lab</strong> above.</p>
+<p>To log in to your lab environment:</p>
+<ol>
+<li>Click anywhere on the Windows desktop in the lab window.</li>
+<li>On the <strong>Resources</strong> tab on the lab side bar, select the <strong>T</strong> icon next to <strong>Password</strong>. The machine password is automatically entered for you. You can log in with the Student profile.</li>
+<li>Press <strong>Enter</strong>.</li>
+</ol>
+<p><img src="https://docs.microsoft.com/en-gb/learn/modules/includes/vm-login.png" alt="Image of the lab password on the Resources tab." data-linktype="relative-path"></p>
+<p>You can now begin your work on this lab.</p>
+<p><strong>The estimated time to complete the lab is 45 minutes</strong></p>
+<p>In this lab, you will use Power&nbsp;BI&nbsp;Report&nbsp;Builder to develop a pixel-perfect paginated report layout that sources data from the <strong>AdventureWorksDW2020</strong> SQL Server database. You will create a data source and dataset, and also configure a report parameter. The report layout will allow data to be rendered over multiple pages, and to be exported in PDF and other formats.</p>
+<p>The final report will look like the following:</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-1-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-1-ss.png" alt="Screenshot example of the final report details." data-linktype="relative-path"></a></p>
+<p>In this lab, you learn how to:</p>
+<ul>
+<li><p>Use Power&nbsp;BI&nbsp;Report&nbsp;Builder</p>
+</li>
+<li><p>Design a multi-page report layout</p>
+</li>
+<li><p>Define a data source</p>
+</li>
+<li><p>Define a dataset</p>
+</li>
+<li><p>Create a report parameter</p>
+</li>
+<li><p>Export a report to PDF</p>
+</li>
+</ul>
+<h3 id="lab-story">Lab story</h3>
+<p>This lab is one of many in a series of labs that was designed as a complete story from data preparation to publication as reports and dashboards. You can complete the labs in any order. However, if you intend to work through multiple labs, for the first 10 labs, we suggest you do them in the following order:</p>
+<ol>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/get-data/lab-prepare/" data-linktype="absolute-path" target="az-portal">Prepare data in Power BI Desktop</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/clean-data-power-bi/8-lab/" data-linktype="absolute-path" target="az-portal">Load data in Power BI Desktop</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/design-model-power-bi/8-lab/" data-linktype="absolute-path" target="az-portal">Model data in Power BI Desktop, part 1</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/design-model-power-bi/9-lab/" data-linktype="absolute-path" target="az-portal">Model data in Power BI Desktop, part 2</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/create-measures-dax-power-bi/6-lab/" data-linktype="absolute-path" target="az-portal">Create DAX calculations in Power BI Desktop, part 1</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/create-measures-dax-power-bi/8-lab/" data-linktype="absolute-path" target="az-portal">Create DAX calculations in Power BI Desktop, part 2</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/visuals-power-bi/8-lab/" data-linktype="absolute-path" target="az-portal">Design a report in Power BI Desktop, part 1</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/data-driven-story-power-bi/13-lab/" data-linktype="absolute-path" target="az-portal">Design a report in Power BI Desktop, part 2</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/create-dashboards-power-bi/9-lab/" data-linktype="absolute-path" target="az-portal">Create a Power BI dashboard</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/learn/modules/ai-visuals-power-bi/5-lab/" data-linktype="absolute-path" target="az-portal">Perform data analysis in Power BI Desktop</a></p>
+</li>
+<li><p><strong>Create a Power BI paginated report</strong></p>
+</li>
+</ol>
+<h2 id="exercise-1-get-started">Exercise 1: Get started</h2>
+<p>In this exercise, you will open Power&nbsp;BI&nbsp;Report&nbsp;Builder to create and then save a report.</p>
+<h3 id="task-1-create-the-report">Task 1: Create the report</h3>
+<p>In this task, you will open Power&nbsp;BI&nbsp;Report&nbsp;Builder to create and then save a report.</p>
+<ol>
+<li><p>To open Power BI Report Builder, on the taskbar, click the <strong>Power BI Report Builder</strong> shortcut.</p>
+</li>
+<li><p>In the Power&nbsp;BI&nbsp;Report&nbsp;Builder window, to create a new report, in the <strong>Getting&nbsp;Started</strong> window, click <strong>Blank&nbsp;Report</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-3-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-3-ssm.png" alt="Screenshot of the Getting Started window with Blank Report selected." data-linktype="relative-path"></a></p>
+</li>
+<li><p>To save the report, click the <strong>File</strong> tab (located at the top-left), and then select <strong>Save</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-4-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-4-ssm.png" alt="Screenshot of the File tab with Save selected." data-linktype="relative-path"></a></p>
+</li>
+<li><p>In the <strong>Save&nbsp;As&nbsp;Report</strong> window, navigate to the <strong>D:\DA100\MySolution</strong> folder.</p>
+</li>
+<li><p>In the <strong>Name</strong> box, enter <strong>Sales&nbsp;Order&nbsp;Report</strong>.</p>
+</li>
+<li><p>Click <strong>Save</strong>.</p>
+</li>
+</ol>
+<h2 id="exercise-2-design-the-report-layout">Exercise 2: Design the report layout</h2>
+<p>In this exercise, you will develop the report layout, and explore the final report design.</p>
+
+<p>In this task, you will configure the report header.</p>
+<ol>
+<li><p>In the report designer, notice the default report layout, which consists of a body region and a report footer region.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-5-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-5-ssm.png" alt="Screenshot of the Report Designer with the default layout displayed." data-linktype="relative-path"></a></p>
+<p>The body contains a single textbox ready for a report title, and the report footer contains a single textbox describing the report execution time.</p>
+<p>The default design will render the report title once, in the body, on the first rendered page. However, you will now modify the report design by adding a report header region, and by moving the report title textbox into this region. This way, the report title will repeat on every page. You will also add an image of the company logo.</p>
+</li>
+<li><p>To add a report header region, on the <strong>Insert</strong> ribbon tab, from inside the <strong>Header&nbsp;&amp;&nbsp;Footer</strong> group, click <strong>Header</strong>, and then select <strong>Add&nbsp;Header</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-6-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-6-ssm.png" alt="Screenshot of the Header menu with Add Header selected." data-linktype="relative-path"></a></p>
+</li>
+<li><p>In the report designer, notice that a report header region has been added to the report layout.</p>
+</li>
+<li><p>To select the body textbox, click the "Click to add title" textbox.</p>
+</li>
+<li><p>To move the textbox, click the four-headed arrow icon, and then drag it into the header region to then drop it at the very top-left of the report header region.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-7-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-7-ssm.png" alt="Screenshot of the four headed arrow icon used to move the text." data-linktype="relative-path"></a></p>
+</li>
+<li><p>To modify the report title textbox text, click inside the text box, and then enter: <strong>Sales&nbsp;Order&nbsp;Report</strong></p>
+<p>To resize the textbox, you will first open the <strong>Properties</strong> pane. For fine-grained control of location and size properties, you will need use the <strong>Properties</strong> pane.</p>
+</li>
+<li><p>On the <strong>View</strong> ribbon tab, from inside the <strong>Show/Hide</strong> group, select the <strong>Properties</strong> checkbox.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-8-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-8-ssm.png" alt="Screenshot of the View ribbon with the Properties set to show." data-linktype="relative-path"></a></p>
+</li>
+<li><p>To select the report title textbox, first click an area outside the textbox, and then click the textbox again.</p>
+<p>The textbox is selected when you see the border of the textbox highlighted and resizing handles (small circles) appear on the border.</p>
+</li>
+<li><p>In the <strong>Properties</strong> pane (located at the right), scroll down the list to locate the <strong>Position</strong> group.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-9-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-9-ssm.png" alt="Screenshot of the Properties pane with the Position group highlighted." data-linktype="relative-path"></a></p>
+<p>The <strong>Position</strong> group allows you to set exact values for the location and size of report items.</p>
+<p>It's important that you enter the values as directed in this lab. Pixel-perfect layout is required to achieve the page rendering at the end of the lab.</p>
+</li>
+<li><p>Within the <strong>Position</strong> group, expand the <strong>Location</strong> group, and ensure that the <strong>Left</strong> and <strong>Top</strong> properties are each set to <strong>0in</strong>.</p>
+<p>The location and size units are in inches because the regional settings of the lab virtual machine is set to the United States. If your region uses metric measurements, centimeters would be the default unit.</p>
+</li>
+<li><p>Within the <strong>Position</strong> group, expand the <strong>Size</strong> group, and then set the <strong>Width</strong> property to <strong>4</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-10-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-10-ssm.png" alt="Screenshot of the Position group with the Size width set to 4 inches." data-linktype="relative-path"></a></p>
+</li>
+<li><p>To insert an image, on the <strong>Insert</strong> ribbon tab, from inside the <strong>Report&nbsp;Items</strong> group, click <strong>Image</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-11-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-11-ssm.png" alt="Screenshot of the Insert ribbon with Image selected." data-linktype="relative-path"></a></p>
+</li>
+<li><p>To add the image to the report design, click inside the report header region, to the right of the report title textbox.</p>
+</li>
+<li><p>In the <strong>Image&nbsp;Properties</strong> window, to import from an image file, click <strong>Import</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-12-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-12-ssm.png" alt="Screenshot of the Image Properties with Import selected." data-linktype="relative-path"></a></p>
+</li>
+<li><p>In the <strong>Open</strong> window, navigate to the <strong>D:\DA100\Resources</strong> folder, and then select the <strong>AdventureWorksLogo.jpg</strong> file.</p>
+</li>
+<li><p>Click <strong>Open</strong>.</p>
+</li>
+<li><p>In the <strong>Image&nbsp;Properties</strong> window, click <strong>OK</strong>.</p>
+</li>
+<li><p>In the report designer, notice that the image was added, and is selected.</p>
+</li>
+<li><p>To position and resize the image, in the <strong>Properties</strong> pane, configure the following properties:</p>
+
+</li>
+<li><p>To resize the report header region, first select the region by clicking a blank area of the region.</p>
+</li>
+<li><p>In the <strong>Properties</strong> pane, set the <strong>General&nbsp;|&nbsp;Height</strong> property to <strong>1</strong>.</p>
+</li>
+<li><p>Verify that the report header region contains a single textbox and image, and looks like the following:</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-13-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-13-ss.png" alt="Screenshot of the report header with textbox and image." data-linktype="relative-path"></a></p>
+</li>
+<li><p>To save the report, on the <strong>File</strong> tab, click <strong>Save</strong>.</p>
+<div>
+<p> Tip</p>
+<p>You can also click the disk icon located at the top-left.</p>
+</div>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-14-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-14-ssm.png" alt="Screenshot of the disk icon located at the top left." data-linktype="relative-path"></a></p>
+</li>
+</ol>
+<p>You are now ready to configure the report to retrieve a database query result.</p>
+<h3 id="task-2-retrieve-data">Task 2: Retrieve data</h3>
+<p>In this task, you will create a data source and dataset to retrieve a query result from the <strong>AdventureWorksDW2020</strong> SQL Server database.</p>
+<ol>
+<li><p>In the <strong>Report&nbsp;Data</strong> pane (located at the left), right-click the <strong>Data&nbsp;Sources</strong> folder, and then select <strong>Add Data&nbsp;Source</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-15-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-15-ssm.png" alt="Screenshot of the Data Sources with Add Data Source selected." data-linktype="relative-path"></a></p>
+<p>It is possible to retrieve data from cloud or on-premises databases, or a Power BI dataset.</p>
+</li>
+<li><p>In the <strong>Data&nbsp;Source&nbsp;Properties</strong> window, in the <strong>Name</strong> box, replace the text with <strong>AdventureWorksDW2020</strong>.</p>
+</li>
+<li><p>In the <strong>Select&nbsp;Connection&nbsp;Type</strong> dropdown list, notice that <strong>Microsoft&nbsp;SQL&nbsp;Server</strong> is selected.</p>
+</li>
+<li><p>To build the connection string, click <strong>Build</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-16-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-16-ssm.png" alt="Screenshot of the Build button to build the connection string." data-linktype="relative-path"></a></p>
+</li>
+<li><p>In the <strong>Connection&nbsp;Properties</strong> window, in the <strong>Server&nbsp;Name</strong> box, enter <strong>localhost</strong>.</p>
+<p>In the labs, you will connect to the SQL Server database by using <strong>localhost</strong>. This isn't a recommended practice, however, when creating your own solutions. It's because gateway data sources cannot resolve <strong>localhost</strong>.</p>
+</li>
+<li><p>In the <strong>Select&nbsp;or&nbsp;Enter&nbsp;a&nbsp;Database&nbsp;Name</strong> dropdown list, select the <strong>AdventureWorksDW2020</strong>.</p>
+</li>
+<li><p>Click <strong>OK</strong>.</p>
+</li>
+<li><p>In the <strong>Data&nbsp;Source&nbsp;Properties</strong> window, click <strong>OK</strong>.</p>
+</li>
+<li><p>In the <strong>Report&nbsp;Data</strong> pane, notice the addition of the <strong>AdventureWorksDW2020</strong> data source.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-17-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-17-ssm.png" alt="Screenshot of the Report Data pane data source selected.." data-linktype="relative-path"></a></p>
+</li>
+<li><p>To create a dataset, in the <strong>Report&nbsp;Data</strong> pane, right-click the <strong>AdventureWorksDW2020</strong> data source, and then select <strong>Add&nbsp;Dataset</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-18-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-18-ssm.png" alt="Screenshot of the Report Data pane with Add Dataset selected from the data source menu." data-linktype="relative-path"></a></p>
+<p>A report dataset is different in purpose and structure from a Power BI dataset.</p>
+</li>
+<li><p>In the <strong>Dataset&nbsp;Properties</strong> window, in the <strong>Name</strong> box, replace the text with <strong>SalesOrder</strong>.</p>
+</li>
+<li><p>To import a pre-defined query, click <strong>Import</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-19-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-19-ssm.png" alt="Screenshot of the Dataset Properties Import button." data-linktype="relative-path"></a></p>
+</li>
+<li><p>In the <strong>Import&nbsp;Query</strong> window, navigate to the <strong>D:\DA100\Labs\create-power-bi-paginated-report\Assets</strong> folder, and then select the <strong>SalesOrder.sql</strong> file.</p>
+</li>
+<li><p>Click <strong>Open</strong>.</p>
+</li>
+<li><p>In the <strong>Query</strong> box, review the query, and be sure to scroll down to the bottom of the query text.</p>
+<p>It is not important that you understand the details of the query statement. It has been designed to retrieve sales order line details. The WHERE clause includes a predicate to restrict the query result to a single sales order. The ORDER BY clause ensures the rows are returned by line number order.</p>
+</li>
+<li><p>Notice the use of <strong>@SalesOrderNumber</strong> in the WHERE clause, which represents a query parameter.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-20-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-20-ssm.png" alt="Screenshot of the @SalesOrderNumber used in the Where clause." data-linktype="relative-path"></a></p>
+<p>A query parameter is a placeholder for a value that will be passed in at query execution time. You will configure a report parameter to prompt the report user for a single sales order number which will then be passed to the query parameter.</p>
+</li>
+<li><p>Click <strong>OK</strong>.</p>
+</li>
+<li><p>In the <strong>Report&nbsp;Data</strong> pane, notice the addition of the <strong>SalesOrder</strong> dataset and its fields.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-21-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-21-ssm.png" alt="Screenshot of the SalesOrder dataset and fields in the Report Data pane." data-linktype="relative-path"></a></p>
+<p>Fields are used to configure data regions in the report layout. They were derived from the dataset query columns.</p>
+</li>
+<li><p>Save the report.</p>
+</li>
+</ol>
+<h3 id="task-3-configure-the-report-parameter">Task 3: Configure the report parameter</h3>
+<p>In this task, you will configure the report parameter with a default value.</p>
+<ol>
+<li><p>In the <strong>Report&nbsp;Data</strong> pane, expand the <strong>Parameters</strong> folder to reveal the <strong>SalesOrderNumber</strong> report parameter.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-22-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-22-ssm.png" alt="Screenshot of the Report Data pane with Parameters expanded to show SalesOrderNumber." data-linktype="relative-path"></a></p>
+<p>The <strong>SalesOrderNumber</strong> report parameter was added automatically when the dataset was created. This is because the dataset query included the <strong>@SalesOrderNumber</strong> query parameter.</p>
+</li>
+<li><p>To edit the report parameter, right-click the <strong>SalesOrderNumber</strong> report parameter, and then select <strong>Parameter&nbsp;Properties</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-23-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-23-ssm.png" alt="Screenshot of the SalesOrderNumber parameter with Parameter Properties selected." data-linktype="relative-path"></a></p>
+</li>
+<li><p>In the <strong>Report&nbsp;Parameter&nbsp;Properties</strong> window, at the left, select the <strong>Default&nbsp;Values</strong> pages.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-24-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-24-ssm.png" alt="Screenshot of the Report Parameter Properties with Default Values selected." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Select the <strong>Specify&nbsp;Values</strong> option.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-25-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-25-ssm.png" alt="Screenshot of the Specify values selection from the choose default values menu." data-linktype="relative-path"></a></p>
+</li>
+<li><p>To add a default value, click <strong>Add</strong>.</p>
+</li>
+<li><p>In the <strong>Value</strong> dropdown list, replace the text with <strong>43659</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-26-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-26-ssm.png" alt="Screenshot of the Add button with Value drop down menu." data-linktype="relative-path"></a></p>
+<p>Sales order 43659 is the value you will initially use to test the report design.</p>
+</li>
+<li><p>Click <strong>OK</strong>.</p>
+</li>
+<li><p>Save the report.</p>
+</li>
+</ol>
+<p>You will now complete the report header region design by adding textboxes to describe the sales order.</p>
+
+<p>In this task, you will finalize the report header region design by adding textboxes.</p>
+<ol>
+<li><p>To add a textbox to the report header region, on the <strong>Insert</strong> ribbon tab, from inside the <strong>Report&nbsp;Items</strong> group, click <strong>Text&nbsp;Box</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-27-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-27-ssm.png" alt="Screenshot of the Text box option from the Insert menu." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Click inside the report header region, directly beneath the report title textbox.</p>
+</li>
+<li><p>Inside the textbox, enter <strong>Sales&nbsp;Order:</strong> followed by a space.</p>
+</li>
+<li><p>To insert a place holder, immediately after the space just entered, right-click and then select <strong>Create&nbsp;Placeholder</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-28-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-28-ssm.png" alt="Screenshot of the Create Placeholder feature from the menu." data-linktype="relative-path"></a></p>
+</li>
+<li><p>In the <strong>Placeholder&nbsp;Properties</strong> window, at the right of the <strong>Value</strong> dropdown list, click the <strong>fx</strong> button.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-29-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-29-ssm.png" alt="Screenshot of the Placeholder Properties window with the function button highlighted." data-linktype="relative-path"></a></p>
+<p>The <strong>fx</strong> button allows you to enter a custom expression. This expression will be used to return the sales order number.</p>
+</li>
+<li><p>In the <strong>Expression</strong> window, in the <strong>Category</strong> list, select <strong>Parameters</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-30-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-30-ssm.png" alt="Screenshot of the Category list with Parameters selected." data-linktype="relative-path"></a></p>
+</li>
+<li><p>In the <strong>Values</strong> list, double-click the <strong>SalesOrderNumber</strong> parameter.</p>
+</li>
+<li><p>In the expression box, notice that a programmatic reference to the <strong>SalesOrderNumber</strong> report parameter was added.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-31-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-31-ssm.png" alt="Screenshot of the programmatic reference to SalesOrderNumber parameter." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Click <strong>OK</strong>.</p>
+</li>
+<li><p>In the <strong>Placeholder&nbsp;Properties</strong> window, click <strong>OK</strong>.</p>
+</li>
+<li><p>Click a blank area of the report header region, and then select the new textbox.</p>
+</li>
+<li><p>In the <strong>Properties</strong> pane, configure the following position properties:</p>
+
+</li>
+<li><p>To format part of the textbox text, inside the new textbox, select only the "<strong>Sales&nbsp;Order:</strong> " text.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-32-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-32-ss.png" alt="Screenshot of the Sales Order: text selected." data-linktype="relative-path"></a></p>
+</li>
+<li><p>On the <strong>Home</strong> ribbon tab, from inside the <strong>Font</strong> group, click the <strong>Bold</strong> command.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-33-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-33-ssm.png" alt="Screenshot of the Bold command from the Home ribbon." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Add another textbox to the report header region, and then enter the text <strong>Reseller:</strong> followed by a space.</p>
+<div>
+<p> Tip</p>
+<p>You can also add a textbox by right-clicking the canvas, and then selected <strong>Insert&nbsp;|&nbsp;Text&nbsp;Box</strong>.</p>
+</div>
+</li>
+<li><p>After the space, insert a placeholder, and then set the value of the placeholder to use an expression.</p>
+</li>
+<li><p>In the <strong>Expression</strong> window, in the <strong>Category</strong> list, select <strong>Datasets</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-34-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-34-ssm.png" alt="Screenshot of the Category list with Datasets selected." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Base the expression value on <strong>First(Reseller)</strong> value.</p>
+</li>
+<li><p>In the <strong>Properties</strong> pane, configure the following position properties:</p>
+
+</li>
+<li><p>Format the <strong>Reseller:</strong> text in bold.</p>
+</li>
+<li><p>Add a third (and last) textbox to the report header region, and then enter the text <strong>Order&nbsp;Date:</strong> followed by a space.</p>
+</li>
+<li><p>After the space, insert a placeholder, and set the value of the placeholder to use an expression based on the <strong>Datasets</strong> category, <strong>First(OrderDate)</strong> value.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-35-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-35-ss.png" alt="Screenshot of the Expression with the value of the placeholder set." data-linktype="relative-path"></a></p>
+</li>
+<li><p>To format the date value, in the <strong>Placeholder&nbsp;Properties</strong> window, select the <strong>Number</strong> page.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-36-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-36-ssm.png" alt="Screenshot of the Placeholder Properties window with Number selected." data-linktype="relative-path"></a></p>
+</li>
+<li><p>In the <strong>Category</strong> list, select <strong>Date</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-37-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-37-ss.png" alt="Screenshot of the Category list with Date selected." data-linktype="relative-path"></a></p>
+</li>
+<li><p>In the <strong>Type</strong> list, select a suitable date format type.</p>
+</li>
+<li><p>In the <strong>Placeholder&nbsp;Properties</strong> window , click <strong>OK</strong>.</p>
+</li>
+<li><p>In the <strong>Properties</strong> pane, configure the following position properties:</p>
+
+</li>
+<li><p>Format the <strong>Order&nbsp;Date:</strong> text in bold.</p>
+</li>
+<li><p>Finally, click a blank area of the report header region.</p>
+</li>
+<li><p>In the <strong>Properties</strong> pane, set the <strong>Height</strong> property to <strong>1.5</strong>.</p>
+</li>
+<li><p>Verify that the report header region looks like the following:</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-38-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-38-ss.png" alt="Screenshot of the report header region example." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Save the report.</p>
+</li>
+<li><p>To preview the report, on the <strong>Home</strong> ribbon tab, from inside the <strong>Views</strong> group, click <strong>Run</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-39-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-39-ssm.png" alt="Screenshot of the Run button on the Home ribbon." data-linktype="relative-path"></a></p>
+<p>Running the report renders the report in HTML. As the only report parameter has a default value, the report will run automatically.</p>
+</li>
+<li><p>Verify that the rendered report looks like the following:</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-40-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-40-ss.png" alt="Screenshot of the rendered report example." data-linktype="relative-path"></a></p>
+</li>
+<li><p>To return to design view, on the <strong>Run</strong> ribbon tab, from inside the <strong>Views</strong> group, click <strong>Design</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-41-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-41-ssm.png" alt="Screenshot of the Run ribbon with the Design view selected." data-linktype="relative-path"></a></p>
+</li>
+</ol>
+<p>You will now add a table to the report body to display a formatted layout of the sales order lines.</p>
+<h3 id="task-5-add-a-table-data-region">Task 5: Add a table data region</h3>
+<p>In this task, you will add a table data region to the report body.</p>
+<ol>
+<li><p>On the <strong>Insert</strong> ribbon tab, from inside the <strong>Data&nbsp;Regions</strong> group, click <strong>Table</strong>, and then select <strong>Insert&nbsp;Table</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-42-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-42-ssm.png" alt="Screenshot of the Insert ribbon with Table menu and Insert Table selected." data-linktype="relative-path"></a></p>
+</li>
+<li><p>To add the table, click a blank area inside the report body.</p>
+</li>
+<li><p>In the <strong>Properties</strong> pane, configure the following position properties:</p>
+
+<p>The table will display five columns. By default, the table template includes only three columns.</p>
+</li>
+<li><p>To add a column to the table, right-click inside any cell of the last column, and then select <strong>Insert&nbsp;Column&nbsp;|&nbsp;Right</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-43-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-43-ssm.png" alt="Screenshot of the Insert Column with Right selected." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Repeat the last step to add a second new column.</p>
+</li>
+<li><p>Hover the cursor over the cell in the second row of the first column to reveal the field picker icon.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-44-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-44-ss.png" alt="Screenshot of the field picker icon revealed." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Click the field picker icon, and then select the <strong>Line</strong> field.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-45-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-45-ssm.png" alt="Screenshot of the Line field selected from the field picker." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Notice that the table now includes a text value in the first row (header), and a field reference in the detail row.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-46-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-46-ssm.png" alt="Screenshot of the text value in the first row and field reference in the detail row." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Add fields to the next four columns, in order, as follows:</p>
+<ul>
+<li><p>Product</p>
+</li>
+<li><p>Quantity</p>
+</li>
+<li><p>UnitPrice</p>
+</li>
+<li><p>Amount</p>
+</li>
+</ul>
+</li>
+<li><p>Verify that the table design looks like the following:</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-47-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-47-ss.png" alt="Screenshot of the table design view example." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Save the report.</p>
+</li>
+<li><p>Preview the report.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-48-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-48-ssm.png" alt="Screenshot of the the Run button from the Home tab." data-linktype="relative-path"></a></p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-49-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-49-ss.png" alt="Screenshot of the Sales Order Report example." data-linktype="relative-path"></a></p>
+</li>
+</ol>
+<p>The table includes a header and 12 sales order line rows. There are many improvements that can be made by formatting the table layout.</p>
+<p>In the next task you will:</p>
+<ul>
+<li><p>Format the table header by using a background color and bold font style</p>
+</li>
+<li><p>Modify column widths to remove redundant space and to prevent long text values from wrapping</p>
+</li>
+<li><p>Left-justify the first column values</p>
+</li>
+<li><p>Right-justify the last three column values</p>
+</li>
+<li><p>Format currency values using a currency symbol (for USD)</p>
+</li>
+<li><p>Add and format a total row for the table</p>
+</li>
+</ul>
+<h3 id="task-6-format-the-table-data-region">Task 6: Format the table data region</h3>
+<p>In this task, you will format the table data region.</p>
+<ol>
+<li><p>Return to design view.</p>
+</li>
+<li><p>Click any cell in the table to reveal the gray cell guides.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-50-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-50-ss.png" alt="Screenshot of the gray cell guides in the table." data-linktype="relative-path"></a></p>
+<p>The cell guides are there to help you configure entire rows or columns.</p>
+</li>
+<li><p>To format the table header, click the header row guide.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-51-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-51-ssm.png" alt="Screenshot of the header row guide selected to format the table header." data-linktype="relative-path"></a></p>
+<p>Selecting a row or a column guide selects all cells in the row or column. Each cell is in fact a textbox. Formatting single textbox or a multi-selection of textboxes can then be achieved by using the <strong>Properties</strong> pane, or the ribbon commands.</p>
+</li>
+<li><p>In the <strong>Properties</strong> pane (or the ribbon), configure the following properties:</p>
+
+</li>
+<li><p>Select the first column guide.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-52-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-52-ssm.png" alt="Screenshot of the first column guide selected." data-linktype="relative-path"></a></p>
+</li>
+<li><p>In the <strong>Properties</strong> pane, set the <strong>Position&nbsp;|&nbsp;Size&nbsp;|&nbsp;Width</strong> property to <strong>0.5</strong>.</p>
+</li>
+<li><p>Set the width of the second column to <strong>2.5</strong>.</p>
+</li>
+<li><p>While pressing the <strong>Ctrl</strong> key, multi-select the last three column header textboxes (<strong>Quantity</strong>, <strong>Unit&nbsp;Price</strong> and <strong>Amount</strong>).</p>
+</li>
+<li><p>In the <strong>Properties</strong> pane (or ribbon), set the <strong>Alignment&nbsp;|&nbsp;TextAlign</strong> property to <strong>Right</strong>.</p>
+</li>
+<li><p>Set the <strong>Line</strong> detail textbox to left align.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-53-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-53-ssm.png" alt="Screenshot of the line detail textbox set to left align." data-linktype="relative-path"></a></p>
+</li>
+<li><p>On the <strong>Home</strong> ribbon tab, from inside the <strong>Number</strong> group, set the last two detail (not header) textboxes (<strong>UnitPrice</strong> and <strong>Amount</strong>) to format with a currency symbol.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-54-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-54-ssm.png" alt="Screenshot of the format set to the currency symbol." data-linktype="relative-path"></a></p>
+</li>
+<li><p>To add a total row to the table, right-click the <strong>Quantity</strong> detail textbox, and then select <strong>Add&nbsp;Total</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-55-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-55-ssm.png" alt="Screenshot of the Quantity detail textbox menu with Add Total selected." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Notice that a new row, which represents the table footer, has been added, and that the expression will evaluate the sum of <strong>Quantity</strong> values.</p>
+</li>
+<li><p>Repeat the last step to add a total for the <strong>Amount</strong> detail textbox.</p>
+</li>
+<li><p>In the first cell of the table footer row, enter the word <strong>Total</strong>.</p>
+</li>
+<li><p>Format all textboxes in the footer row to format as bold.</p>
+</li>
+<li><p>Verify that the table design looks like the following:</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-56-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-56-ss.png" alt="Screenshot of the table design example view." data-linktype="relative-path"></a></p>
+</li>
+<li><p>To remove any trailing space after the table, hover the cursor over the dashed line between the report body and report footer region, and then drag upwards to touch the bottom of the table.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-57-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-57-ssm.png" alt="Screenshot of the process to remove trailing spaces." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Save the report</p>
+</li>
+<li><p>Preview the report.</p>
+</li>
+<li><p>Verify that the rendered report looks like the following:</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-58-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-58-ss.png" alt="Screenshot of the rendered report view example." data-linktype="relative-path"></a></p>
+</li>
+<li><p>In the <strong>Sales&nbsp;Order&nbsp;Number</strong> parameter box, replace the value with <strong>51721</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-59-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-59-ssm.png" alt="Screenshot of the Sales Order Number parameter box." data-linktype="relative-path"></a></p>
+</li>
+<li><p>To re-run the report, at the right, click <strong>View&nbsp;Report</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-60-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-60-ss.png" alt="Screenshot of the View Report feature to re-run the report." data-linktype="relative-path"></a></p>
+<p>This sales order has 72 sales order lines, so the data will render over many pages.</p>
+</li>
+<li><p>To navigate to the second page of the report, on the <strong>Run</strong> ribbon tab, from inside the <strong>Navigation</strong> group, click <strong>Next</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-61-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-61-ssm.png" alt="Screenshot of the Run ribbon with Next selected." data-linktype="relative-path"></a></p>
+</li>
+<li><p>On page 2, notice that the table header does not appear.</p>
+<p>You will address this issue in the next task.</p>
+</li>
+<li><p>Scroll to the bottom of the page, and then notice that the report footer displays only the execution time.</p>
+</li>
+</ol>
+<p>In the next task, you will improve the footer text by appending the page number.</p>
+<h3 id="task-7-finalize-the-report-design">Task 7: Finalize the report design</h3>
+<p>In this task, you will finalize the report design by ensuring multi-page reports render appropriately.</p>
+<ol>
+<li><p>Switch to the design view.</p>
+</li>
+<li><p>To ensure the table header repeats on all pages, first select any textbox of the table.</p>
+</li>
+<li><p>In the <strong>Grouping</strong> pane (located along the bottom of the report designer), at the far right of the <strong>Column&nbsp;Groups</strong>, click the down-arrow, and then select <strong>Advanced&nbsp;Mode</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-62-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-62-ssm.png" alt="Screenshot of the Group pane down arrow with Advanced Mode selected." data-linktype="relative-path"></a></p>
+</li>
+<li><p>In the <strong>Row&nbsp;Groups</strong> section, select the first static group.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-63-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-63-ssm.png" alt="Screenshot of the Row Groups section with static selected." data-linktype="relative-path"></a></p>
+<p>This selected the table header row.</p>
+</li>
+<li><p>In the <strong>Properties</strong> pane, set the <strong>Other&nbsp;|&nbsp;RepeatOnNewPage</strong> property to <strong>True</strong>.</p>
+<p>This ensures that the first static group (representing the table header) will repeat on all pages.</p>
+</li>
+<li><p>In the table footer region, right-click the <strong>ExecutionTime</strong> textbox, and then select <strong>Expression</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-64-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-64-ssm.png" alt="Screenshot of the ExecutionTime menu with Expression selected." data-linktype="relative-path"></a></p>
+</li>
+<li><p>In the <strong>Expression</strong> window, in the expression box, append a space, followed by <strong>&amp;&nbsp;"&nbsp;|&nbsp;Page&nbsp;"&nbsp;&amp;</strong>, to produce the following:</p>
+<pre tabindex="0"><code data-author-content="=Globals!ExecutionTime &amp; &quot; | Page &quot; &amp;
+"><span>=Globals!ExecutionTime &amp; <span>" | Page "</span> &amp;
+</span></code></pre>
+</li>
+<li><p>Ensure that a space follows the last ampersand (&amp;).</p>
+</li>
+<li><p>In the <strong>Category</strong> list, select <strong>Built-in&nbsp;Fields</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-65-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-65-ssm.png" alt="Screenshot of the Category list with Built in fields selected." data-linktype="relative-path"></a></p>
+</li>
+<li><p>To inject the page number value into the expression, in the <strong>Item</strong> list, double-click <strong>PageNumber</strong>.</p>
+</li>
+<li><p>Verify that the complete expression reads as follows:</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-66-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-66-ss.png" alt="Screenshot of the complete expression view example." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Click <strong>OK</strong>.</p>
+</li>
+<li><p>Drag the left side of the textbox to increase the width to the width of the report page.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-67-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-67-ssm.png" alt="Screenshot of the textbox increased in width." data-linktype="relative-path"></a></p>
+<p>The design of the report is now complete. Lastly, you will ensure that the page width is set to exactly six inches, and also remove the report parameter default value.</p>
+</li>
+<li><p>To select the report body, right-click any table textbox, and then select <strong>Select&nbsp;|&nbsp;Body</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-68-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-68-ssm.png" alt="Screenshot of the Select menu with Body selected." data-linktype="relative-path"></a></p>
+<p>As the table fills the entire report body, this technique must be used to select the report body.</p>
+</li>
+<li><p>In the <strong>Properties</strong> pane, ensure that the <strong>Position&nbsp;|&nbsp;Size&nbsp;|&nbsp;Width</strong> property is set to <strong>6</strong>.</p>
+<p>It is important the width is not greater than six inches, as rendering to print format would break the table up across multiple pages.</p>
+</li>
+<li><p>In the <strong>Report&nbsp;Data</strong> pane, open the <strong>SalesOrderNumber</strong> report parameter properties.</p>
+</li>
+<li><p>On the <strong>Default&nbsp;Values</strong> page, select the <strong>No&nbsp;Default&nbsp;Value</strong> option.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-69-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-69-ssm.png" alt="Screenshot of the Default Values page with No default value selected." data-linktype="relative-path"></a></p>
+</li>
+<li><p>Click <strong>OK</strong>.</p>
+</li>
+<li><p>Save the report.</p>
+</li>
+</ol>
+<h3 id="task-8-explore-the-final-report">Task 8: Explore the final report</h3>
+<p>In this task, you will view the report in print layout mode.</p>
+<ol>
+<li><p>Preview the report.</p>
+</li>
+<li><p>In the <strong>Sales&nbsp;Order&nbsp;Number</strong> parameter box, enter the value with <strong>51721</strong></p>
+</li>
+<li><p>On the <strong>Run</strong> ribbon tab, from inside the <strong>Print</strong> group, click <strong>Print&nbsp;Layout</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-70-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/lab-70-ssm.png" alt="Screenshot of the Print Layout option from the Run ribbon." data-linktype="relative-path"></a></p>
+<p>Print layout mode provides a preview of what the report will look like when printed to the strict page size.</p>
+</li>
+<li><p>Navigate to pages 2 and 3.</p>
+</li>
+</ol>
+<p>In this lab, you won't publish the report. Paginated reports can only be rendered in the Power BI service when they are stored in a workspace on dedicated capacity, and when that capacity has the paginated reports workload enabled. These requirements do not exist for the class.</p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Check your knowledge</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/7-check/" data-bi-name="continue" target="_top">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div>
+
+						<!-- </content> -->
+
+						</main>
+
+						<!-- page rating section -->
+						<!-- end page rating section -->
+
+<section>
+		<p>
+Need help? See our <a id="troubleshooting-guide" data-bi-name="troubleshooting" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-bizapps.create-paginated-reports-power-bi.6-lab&amp;documentId=696883e9-ac29-023a-b73c-ebebfa28e21f&amp;versionIndependentDocumentId=47a9b416-a975-ea71-1dd9-ed9fb42c9b2e&amp;contentPath=%2FMicrosoftDocs%2Flearn-bizapps-pr%2Fblob%2Flive%2Flearn-bizapps-pr%2Fpower-bi%2Fcreate-paginated-reports-power-bi%2F6-lab.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fcreate-paginated-reports-power-bi%2F6-lab&amp;author=robde">troubleshooting guide</a> or provide specific feedback by <a id="module-unit-feedback-link" data-bi-name="feedback" href="https://docs.microsoft.com/en-gb/learn/support/troubleshooting?uid=learn-bizapps.create-paginated-reports-power-bi.6-lab&amp;documentId=696883e9-ac29-023a-b73c-ebebfa28e21f&amp;versionIndependentDocumentId=47a9b416-a975-ea71-1dd9-ed9fb42c9b2e&amp;contentPath=%2FMicrosoftDocs%2Flearn-bizapps-pr%2Fblob%2Flive%2Flearn-bizapps-pr%2Fpower-bi%2Fcreate-paginated-reports-power-bi%2F6-lab.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-gb%2Flearn%2Fmodules%2Fcreate-paginated-reports-power-bi%2F6-lab&amp;author=robde#report-feedback">reporting an issue</a>.		</p>
+	</section>
+
+						<!-- recommendations section -->
+						<!-- end recommendations section -->
+
+						<!-- feedback section -->
+						<!-- end feedback section -->
+
+						<!-- feedback report section -->
+						<!-- end feedback report section -->
+
+						
+					</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

@@ -1,0 +1,8 @@
+1. B
+Parameters can be used in the report dataset, the report design surface, and other places. Users insert values into the available parameters, and the report author uses those values in the appropriate location in the report.
+
+2. C
+They are only built by using the Power BI Report Builder.
+
+3. B
+Power BI paginated reports was built from SQL Server Reporting Services.

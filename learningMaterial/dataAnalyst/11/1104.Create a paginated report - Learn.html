@@ -1,0 +1,278 @@
+<html dir="ltr"><head><title>Create a paginated report - Learn :: Reader View</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+}
+body[data-mode="light"] {
+  color:  #222;
+  background-color:  whitesmoke;
+}
+body[data-mode="dark"] {
+  color:  #eee;
+  background-color:  #333;
+}
+body[data-mode="sepia"] {
+  color:  #5b4636;
+  background-color:  #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color:  #586e75;
+  background-color:  #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color:  #2e3440;
+  background-color:  #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color:  #cec4ac;
+  background-color:  #282828;
+}
+body[data-mode="solarized-dark"] {
+  color:  #93a1a1;
+  background-color:  #002b36;
+}
+body[data-mode="nord-dark"] {
+  color:  #e5e9f0;
+  background-color:  #2e3440;
+}
+@media print {
+  body[data-mode="light"],
+  body[data-mode="dark"],
+  body[data-mode="sepia"],
+  body[data-mode="solarized-light"],
+  body[data-mode="nord-light"],
+  body[data-mode="groove-dark"],
+  body[data-mode="solarized-dark"],
+  body[data-mode="nord-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+a {
+  color: #0095dd;
+  text-decoration: none;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-style: italic;
+}
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:empty {
+  display: none;
+}
+body[data-speech="true"] .tts-box {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 0 1000vw rgba(128, 128, 128, 0.2);
+}
+body[data-speech="true"] .tts-word {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: red;
+  height: 2px;
+}
+.tts-word.hidden,
+.tts-box.hidden {
+  display: none;
+}
+body[data-speech="false"] .tts-speaking::after {
+  display: none;
+}
+mark.hghlght {
+  background-color: #ffff81;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {
+}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+</head>
+<body data-images="true" data-mode="sepia" data-font="sans-serif" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/3-paginated-report">
+    <span>docs.microsoft.com</span>
+    <span>/en-gb/learn/modules/create-paginated-reports-power-bi/3-paginated-report</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Create a paginated report - Learn</h1>
+  <div dir="auto" id="reader-credits">heyrob</div>
+  <div dir="auto" id="reader-estimated-time">4-5 minutes</div>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="unit-inner-section">
+		
+		
+		<ul>
+			<li>3 minutes</li>
+		</ul>
+			<p>To create a report, you must add a visual to the design surface, similar to what you would do in Power BI Desktop. Select the <strong>Insert</strong> tab from the ribbon at the top to see your options for adding a visual.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/04-insert-tab-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/04-insert-tab-ss.png" alt="Screenshot of the Insert tab with options for adding a visual." data-linktype="relative-path"></a></p>
+<p>For the purposes of this example, a table visual has been added to the design surface.</p>
+<p>When you select the <strong>Table</strong> drop-down menu, you can choose from two options: <strong>Insert Table</strong> or <strong>Table Wizard</strong>. Select <strong>Insert Table</strong>.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/04-insert-a-table-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/04-insert-a-table-ss.png" alt="Screenshot of the Insert table feature from the menu." data-linktype="relative-path"></a></p>
+<p>You can now draw a table on the design surface. From the <strong>Report data</strong> window, drag fields from the dataset to the table on the design surface.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/04-add-fields-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/04-add-fields-ss.png" alt="Screenshot of the dataset fields on the table design surface." data-linktype="relative-path"></a></p>
+<p>When you have finished, notice that the field is added to the lower portion of the table in the square brackets. The header will also be added. You can rename or apply formatting to the headers, such as bolding or underlining the text.</p>
+<p>To test this simple report, select the <strong>Run</strong> button from the <strong>Home</strong> tab in the ribbon.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/04-run-button-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/04-run-button-ss.png" alt="Screenshot of the Run button from the Home tab." data-linktype="relative-path"></a></p>
+<p>The report will run and display actual data in the table.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/04-display-report-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/04-display-report-ss.png" alt="Screenshot of the table with data after the report is run." data-linktype="relative-path"></a></p>
+<p>Notice that some items have changed in the report: a title was entered at the top, table headers were renamed and are in bold font, and a background color was selected on the header. These changes were implemented to help make using the report easier for the report reader.</p>
+<p>If you want to return to the design surface, select the <strong>Design</strong> button.</p>
+<p>Another aspect of creating a report is to add a parameter. Parameters can be used for different reasons, for example, when you want the user to enter information that displays on a visual on the report. The most popular reason to add a parameter is to affect which data is retrieved from the data source.</p>
+<p>Consider the scenario where you are creating a report that retrieves data from a sales database. You only want sales data from between a begin date and an end date. In this case, you would create two parameters and then modify the dataset query to include those parameters in the WHERE clause of the query. Your first step in this situation is to add a parameter.</p>
+<h3 id="add-parameters">Add parameters</h3>
+<p>To add a parameter, right-click <strong>Parameters</strong> and select <strong>Add Parameter</strong>. The <strong>Report Parameter Properties</strong> dialog box opens.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/04-add-parameter-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/04-add-parameter-ssm.png" alt="Screenshot of the Add parameter feature from the Parameters menu." data-linktype="relative-path"></a></p>
+<p>On the <strong>General</strong> tab, name the parameter, select the data type, and then choose the prompt that the user will see.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/04-report-parameter-properties-ssm.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/04-report-parameter-properties-ssm.png" alt="Screenshot of the Report parameter properties showing the Name, Prompt, Data type, and parameter visibility fields." data-linktype="relative-path"></a></p>
+<ol>
+<li><p>In <strong>Name</strong>, type a name for the parameter or accept the default name.</p>
+</li>
+<li><p>In <strong>Prompt</strong>, type text to appear next to the parameter text box when the user runs the report.</p>
+</li>
+<li><p>In <strong>Data type</strong>, select the data type for the parameter value.</p>
+</li>
+<li><p>If the parameter can contain a blank value, select <strong>Allow blank value</strong>.</p>
+</li>
+<li><p>If the parameter can contain a null value, select <strong>Allow null value</strong>.</p>
+</li>
+<li><p>To allow a user to select more than one value for the parameter, select <strong>Allow multiple values</strong>.</p>
+</li>
+<li><p>Set the visibility option.</p>
+<ul>
+<li><p>To show the parameter on the toolbar at the top of the report, select <strong>Visible</strong>.</p>
+</li>
+<li><p>To hide the parameter so that it does not display on the toolbar, select <strong>Hidden</strong>.</p>
+</li>
+<li><p>To hide the parameter and protect it from being modified on the report server after the report is published, select <strong>Internal</strong>. The report parameter can then only be viewed in the report definition. For this option, you must set a default value or allow the parameter to accept a null value.</p>
+</li>
+</ul>
+</li>
+<li><p>Select <strong>OK</strong>.</p>
+</li>
+</ol>
+<p>On the <strong>Available Values</strong> tab, enter options that the user can choose from. The <strong>Default Values</strong> tab has the initial value of the parameter when the report loads, but it can be changed by the user.</p>
+<p>You can also get parameter values from a query. For more information, see the <a href="https://docs.microsoft.com/en-us/power-bi/paginated-reports/paginated-reports-parameters/" data-linktype="absolute-path" target="az-portal">Microsoft documentation</a> on parameters.</p>
+<p>After you have created a parameter, you can use it to interact with the report. If you return to the dataset, you can connect that parameter with the query.</p>
+<p><a href="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/04-dataset-properties-parameter-ss.png#lightbox" data-linktype="relative-path" data-bi-name="lightbox" aria-haspopup="dialog"><img src="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/media/04-dataset-properties-parameter-ss.png" alt="Screenshot of the Dataset Properties with the name, data source, type, and query details." data-linktype="relative-path"></a></p>
+<p>The parameter reference starts with the at (<strong>@</strong>) symbol. Add the parameter name to the query text. Now, when the report refreshes, the data will be pulled from the data source according to the WHERE clause and the parameter value.</p>
+
+		<div id="next-section"><hr><div>
+		<h2>Next unit: Work with charts on the report</h2>
+		<p>
+			<a href="https://docs.microsoft.com/en-gb/learn/modules/create-paginated-reports-power-bi/4-charts/" data-bi-name="continue">
+			<span>Continue</span>
+			
+			</a>
+		</p>
+	</div></div>
+	</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+</body><style>body {
+      font-size:  13px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    .page {
+      line-height: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>
